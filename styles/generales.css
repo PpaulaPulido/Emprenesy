@@ -1,5 +1,116 @@
+/*estilos de la barra de navegacion*/
+#cabeza {
+  background-color: #213859;
+  display: flex;
+
+}
+
+.logoedit {
+  width: 120px;
+  height: 100px;
+  text-align: left;
+  padding: 20px;
+}
+
+.logo {
+  position: absolute;
+  top: -18px;
+  left: -3%;
+  width: 310px;
+  height: auto;
+}
+
+.barraedit {
+  width: 1000px;
+  height: 20px;
+  text-align: center;
+  margin-left: 600px;
+  padding: 60px;
+}
+
+#barra {
+  text-align: center;
+}
+
+.link {
+  margin: 0 20px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+}
+
+.link1 {
+  margin: 0 20px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+  padding: 20px;
+  border: solid #b4dbdc;
+  overflow: hidden;
+}
+
+.link:hover {
+  color: #b4dbdc;
+}
+
+.link1:hover {
+  color: #b4dbdc;
+}
+
+@media (max-width: 1400px) {
+  #cabeza {
+      height: 73px;
+  }
+  .logoedit {
+      margin: 0 auto;
+      width: 0;
+      height: 0;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      padding: 0px;
+  }
+  .logo {
+      position: absolute;
+      top: -10px;
+      left: -2%;
+      width: 170px;
+      height: auto;
+      max-width: 100%;
+  }
+  .titulo {
+      color: #fff;
+      font-size: 30px;
+      font-weight: 700;
+      font-family: 'Nunito', sans-serif;
+      letter-spacing: 4px;
+      position: relative;
+      top: 35px;
+      right: 250px;
+  }
+  #barra{
+      position: absolute;
+  }
+  .barraedit {
+      width: auto;
+      height: 0;
+      margin: 0;
+      padding: 20px;
+      position: relative;
+  }
+  .link {
+      margin: 0 20px;
+      font-size: 18px;
+      font-weight: 700;
+  }
+  .link1 {
+      font-size: 18px;
+      font-weight: 700;
+      padding: 7px;
+  }
+}
 /*estilos del footer*/
-.principal {
+.principal_footer {
     position:relative;
     text-align:center;
   }

@@ -1,4 +1,4 @@
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -39,7 +39,7 @@ p,a{
     padding: 60px;
 }
 
-.barra {
+#barra {
     text-align: center;
 }
 
@@ -73,7 +73,6 @@ p,a{
         height: 73px;
     }
     .logoedit {
-        max-width: 200px;
         margin: 0 auto;
         width: 0;
         height: 0;
@@ -96,17 +95,20 @@ p,a{
         font-weight: 700;
         font-family: 'Nunito', sans-serif;
         letter-spacing: 4px;
-        margin: 70px 0 0 110px;
-
+        position: relative;
+        top: 35px;
+        right: 250px;
     }
-
+    #barra{
+        position: absolute;
+    }
     .barraedit {
-        width: 1000px;
+        width: auto;
         height: 0;
-        margin-left: 550px;
+        margin: 0;
         padding: 20px;
+        position: relative;
     }
-
     .link {
         margin: 0 20px;
         font-size: 18px;
@@ -115,7 +117,7 @@ p,a{
     .link1 {
         font-size: 18px;
         font-weight: 700;
-        padding: 10px;
+        padding: 7px;
     }
 }
 
@@ -127,7 +129,6 @@ p,a{
     background-size: cover;
     background-position: center;
     padding: 20px;
-
 }
 
 .container_buscador {
@@ -189,4 +190,4 @@ p,a{
     width: 100%;
     height: auto;
     display: block;
-}
+}  

@@ -21,7 +21,20 @@
     left: -3%;
     width: 310px;
     height: auto; 
+    
+    
 }
+
+.titulo {
+    color: #fff;
+    font-size: 40px;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    letter-spacing: 4px;
+    position: relative;
+    margin-left: 150%;
+    top: 35%;
+}  
 
 .barraedit{
     width: 1000px;
@@ -64,31 +77,147 @@
     font-size: 45px;
     top: 0;
     text-align: center;
-    border: solid;
     padding: 50px;
- 
-
+    
+   
 
 }
 .titulomision{
-    border: solid;
+ 
+    background-color: #fcefb2;
     padding: 10px;
+    width: 70%;
+    margin-left: 10%;
+
+
+}
+
+
+.mision_logo{
+    position: absolute;
+    top: 278px;
+    left: 12.2%;
+    width: 320px;
+    height: auto; 
+    background-color: #fcefb2;
+    padding: 3%;
+}
+
+.misiontexto{
+    text-align: justify;
+    width: 42%;
+    margin-left: 35%;
+    font-size: 60%;
+    padding: 2%;
+}
+
+
+.titulovision{
+    
+    background-color: #b4dbdc;
+    padding: 10px;
+    width: 70%;
+    margin-left: 10%;
+
+ 
+    
+}
+
+.vision_logo{
+   
+    width: 250px;
+    height: auto;
+    margin-right: -44.3%;
+    padding: 2%;
+    background-color: #b4dbdc;
+}
+.visiontexto{
+   
+    text-align: justify;
+    margin-top: -19.3%;
+    width: 42%;
+    margin-left: 10%;
+    font-size: 60%;
+    padding: 3%;
+
 }
 .vision{
     font-family: "Poppins", sans-serif;
     font-size: 45px;
+    top: 0;
     text-align: center;
+    padding: 50px;
+}
+
+.titulonosotros{
+    background-color: #f5b1b2;
+    padding: 10px;
+    width: 70%;
+    margin-left: 10%;
+   
+
 }
 .nosotros{
     font-family: "Poppins", sans-serif;
     font-size: 45px;
     text-align: center;
+   
+  
+
+
 }
-.mision_logo{
-    position: absolute;
-    top: 200px;
-    left: 10%;
-    width: 280px;
-    height: auto; 
-    border: solid;
+.fotopaula{
+    
+    width: 25%;
+    height: auto;
+    margin-left: 6%;
+    margin-top: 1%;
+
+    
+
 }
+.foto_paula{
+   
+    width: 25%;
+    height: auto;
+}
+.fotodaniela{
+  
+    width: 25%;
+    height: auto;
+    margin-left: 26%;
+    margin-top: -10.2%;
+
+}
+.foto_daniela{
+  
+    width: 23.8%;
+}
+.fotonatalia{
+  
+    width: 25%;
+    height: auto;
+    margin-left: 45%;
+    margin-top: -10.3%;
+
+}
+.foto_natalia{
+    
+    width: 23.9%;
+    height: auto;
+}
+.fotodavid{
+   
+   
+    width: 23%;
+    height: auto;
+    margin-left: 66%;
+    margin-top: -10.2%;
+ 
+}
+.foto_david{
+  
+    width: 23.9%;
+    height: auto;
+}
+

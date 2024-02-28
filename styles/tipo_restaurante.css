@@ -1,0 +1,127 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*estilos del buscador*/
+.contenedor_restaurante {
+    height: 220px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/buscador.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+}
+
+.container_buscador {
+    width: 56%;
+    padding: 2px;
+    border-radius: 15px;
+    border: 2px solid #ffffff;
+    background-color: transparent;
+    display: flex;
+    margin: 40px auto;
+}
+
+.container_filtrado {
+    margin: 10px 15px;
+
+}
+
+.container_filtrado .selector {
+    height: 40px;
+    width: 200px;
+    border: none;
+    padding: 5px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    font-size: 17PX;
+    text-align: center;
+    cursor: pointer;
+
+}
+
+.container_input {
+    text-align: center;
+    margin: 10px 15px;
+    position: relative;
+}
+
+#input_buscar {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 470px;
+    height: 40px;
+}
+
+.container_icon {
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    position: absolute;
+    bottom: 6px;
+    left: 430px;
+    cursor: pointer;
+}
+
+.container_icon img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+/**/
+.tipos_restaurantes{
+    display: flex;
+    margin: 100px 200px;
+    background-color: gainsboro;
+}
+
+.tipo_imagen{
+    margin-bottom: 10px;
+}
+.tipo_imagen img{
+    width: 700px;
+    margin: 30px 30px;
+}
+.tipo_image img{
+    width: 700px;
+    margin-bottom: 100px;
+    margin: 30px 30px;
+}
+.tipo_imag img{
+    width: 700px;
+    margin-bottom: 100px;
+    margin: 30px 30px;
+}
+.tipo_imagi img{
+    width: 700px;
+    margin-bottom: 100px;
+    margin: 30px 30px;
+}
+
+.btn_restaurante{
+    background-color: beige;
+    margin: 20px 300px;
+}
+.contenido_texto p{
+    margin-top: 10%;
+    font-family: 'Times New Roman', Times, serif;
+}
+.contenido_textp{
+    margin-top: 20%;
+    font-family: 'Times New Roman', Times, serif;
+}
+.cont_textopi{
+    margin-top: 25%;
+    font-family: 'Times New Roman', Times, serif;
+}
+.contenido_tiptex{
+    margin-top: 20%;
+    font-family: 'Times New Roman', Times, serif;
+}
+.contenid_tex{
+    margin-top: 30%;
+    font-family: 'Times New Roman', Times, serif;
+}

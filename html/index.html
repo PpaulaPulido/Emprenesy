@@ -1,11 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emprenesy</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emprenesy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito&display=swap">
+  <link rel="icon" href="../img/Logo2.jpeg" type="image/icon type">
+  <link rel="stylesheet" href="../styles/index.css">
+  <link rel="stylesheet" href="../styles/generales.css">
+
 </head>
+
 <body>
+
+  <header id="cabeza">
+    <div class="logoedit">
+      <img class="logo" src="../img/logo_Emprenesy.png" alt="Emprenesy">
+      <span class="titulo">Emprenesy</span>
+    </div>
+
+    <div id="Barra">
+      <nav class="barraedit">
+        <a class="link" href="SobreNosotros">Sobre Nosotros</a>
+        <a class="link" href="Inicio">Inicio</a>
+        <a class="link" href="Iniciarsesion">Iniciar Sesión</a>
+        <a class="link1" href="Crearcuenta">Crear Cuenta</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="contenedor">
+      <div class="container_buscador">
+        <div class="container_filtrado">
+          <select name="tipo" id="tipo" class="selector">
+            <option value="">Seleccione</option>
+            <option value="restaurante">Restaurantes</option>
+            <option value="evento">Eventos</option>
+            <option value="manualidad">Manualidades</option>
+          </select>
+        </div>
+        <div class="container_input">
+          <input type="text" id="input_buscar" placeholder="Buscar...">
+          <div class="container_icon">
+            <img src="../img/lupa.png" alt="buscador">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contenedor_tarjetas">
+      <div class="contenedor_tarjeta">
+        <img src="../img/restaurante.png" alt="logo restaurante" class="tarjeta_img">
+        <div class="tarjeta">
+          <div class="tarjeta_efecto">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <div class="tarjeta_content">
+              <h2>Conoce los mejores lugares para comer</h2>
+              <p>Explora rincones gastronómicos que despiertan un festín para tus sentidos en una travesía deliciosa</p>
+            </div>
+          </div>
+        </div>
+        <img src="../img/evento.png" alt="logo evento" class="tarjeta_img">
+        <div class="tarjeta">
+          <div class="tarjeta_efecto">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <div class="tarjeta_content">
+              <h2>Disfruta con tus amigos</h2>
+              <p>Sumérgete en la diversión y vive momentos inolvidables en eventos llenos de energía y emoción</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="contenedor_slider">
+
+      <div class="container_slider">
+
+        <div class="slider_tarjetas">
+          <div class="tarjetas">1</div>
+          <div class="tarjetas">2</div>
+          <div class="tarjetas">3</div>
+          <div class="tarjetas">4</div>
+          <div class="tarjetas">5</div>
+        </div>
     
+        <div class="controles">
+          <button class="button_anterior button"><img src="../img/flecha_izquierda.png" alt="flecha  izquierda"></button>
+          <div class="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <button class="button_siguiente button"><img src="../img/flecha_derecha.png" alt="flecha derecha"></button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="principal_footer">
+      <div>
+        <svg class="olas" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+          <defs>
+            <path id="vector-olas" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+          </defs>
+          <g class="efecto">
+            <use xlink:href="#vector-olas" x="48" y="0" fill="rgba(255,255,255,0.7" />
+            <use xlink:href="#vector-olas" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+            <use xlink:href="#vector-olas" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+            <use xlink:href="#vector-olas" x="48" y="7" fill=" #213859" />
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="contenedor_footer">
+      <div class="contenedor_content">
+
+        <div class="contenedor_list">
+          <ul class="footer_list">
+            <li>Preguntas Frecuentes</li>
+            <li>Términos y Condiciones</li>
+          </ul>
+        </div>
+
+        <div class="contenedor_list2">
+          <ul class="footer_list">
+            <li>Contáctanos</li>
+            <li>Nosotros</li>
+          </ul>
+        </div>
+
+        <div class="contenedor_list3">
+          <ul class="footer_list">
+            <li>Siguenos en</li>
+            <div class="iconos">
+              <img src="../img/tik-tok.png" alt="tiktok">
+              <img src="../img/facebook.png" alt="facebook">
+              <img src="../img/instagram1.png" alt="instagram">
+            </div>
+          </ul>
+        </div>
+
+      </div>
+      <p class="copy">&copy;2024-Emprensy.Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="../js/index.js"></script>
 </body>
+
 </html>

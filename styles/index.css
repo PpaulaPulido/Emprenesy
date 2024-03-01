@@ -3,123 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-<<<<<<< HEAD
-h1{
-    font-family: "Poppins", sans-serif; ;
-}
-p,a{
-    font-family: "Open Sans", sans-serif;
-}
-/*estilos de la barra de navegacion*/
-#cabeza {
-    background-color: #213859;
-    display: flex;
-
-}
-
-.logoedit {
-    width: 120px;
-    height: 100px;
-    text-align: left;
-    padding: 20px;
-}
-
-.logo {
-    position: absolute;
-    top: -18px;
-    left: -3%;
-    width: 310px;
-    height: auto;
-}
-
-.barraedit {
-    width: 1000px;
-    height: 20px;
-    text-align: center;
-    margin-left: 600px;
-    padding: 60px;
-}
-
-.barra {
-    text-align: center;
-}
-
-.link {
-    margin: 0 20px;
-    text-decoration: none;
-    color: #fff;
-    font-size: 20px;
-}
-
-.link1 {
-    margin: 0 20px;
-    text-decoration: none;
-    color: #fff;
-    font-size: 20px;
-    padding: 20px;
-    border: solid #b4dbdc;
-    overflow: hidden;
-}
-
-.link:hover {
-    color: #b4dbdc;
-}
-
-.link1:hover {
-    color: #b4dbdc;
-}
-
-@media (max-width: 1400px) {
-    #cabeza {
-        height: 73px;
-    }
-    .logoedit {
-        max-width: 200px;
-        margin: 0 auto;
-        width: 0;
-        height: 0;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        padding: 0px;
-    }
-    .logo {
-        position: absolute;
-        top: -10px;
-        left: -2%;
-        width: 170px;
-        height: auto;
-        max-width: 100%;
-    }
-    .titulo {
-        color: #fff;
-        font-size: 30px;
-        font-weight: 700;
-        font-family: 'Nunito', sans-serif;
-        letter-spacing: 4px;
-        margin: 70px 0 0 110px;
-
-    }
-
-    .barraedit {
-        width: 1000px;
-        height: 0;
-        margin-left: 550px;
-        padding: 20px;
-    }
-
-    .link {
-        margin: 0 20px;
-        font-size: 18px;
-        font-weight: 700;
-    }
-    .link1 {
-        font-size: 18px;
-        font-weight: 700;
-        padding: 10px;
-    }
-}
-=======
 
 h1 {
     font-family: "Poppins", sans-serif;
@@ -130,7 +13,6 @@ p,
 a {
     font-family: "Open Sans", sans-serif;
 }
->>>>>>> david
 
 /*estilos del buscador*/
 .contenedor {
@@ -140,29 +22,16 @@ a {
     background-size: cover;
     background-position: center;
     padding: 20px;
-<<<<<<< HEAD
-
-}
-
-.container_buscador {
-    width: 55%;
-=======
 }
 
 .container_buscador {
     width: 56%;
->>>>>>> david
     padding: 2px;
     border-radius: 15px;
     border: 2px solid #ffffff;
     background-color: transparent;
     display: flex;
     margin: 40px auto;
-<<<<<<< HEAD
-
-
-=======
->>>>>>> david
 }
 
 .container_filtrado {

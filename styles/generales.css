@@ -1,8 +1,13 @@
 /*estilos de la barra de navegacion*/
 #cabeza {
-  background-color: #213859;
+  background-color: transparent;
   display: flex;
-
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Agrega una sombra suave */
+  transition: background-color 0.3s ease;
 }
 
 .logoedit {
@@ -68,6 +73,7 @@
 @media (max-width: 1400px) {
   #cabeza {
       height: 73px;
+      
   }
   .logoedit {
       margin: 0 auto;

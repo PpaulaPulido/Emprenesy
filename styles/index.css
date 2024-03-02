@@ -16,15 +16,46 @@ a {
 
 /*estilos del buscador*/
 .contenedor {
-    height: 220px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/buscador.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    padding: 20px;
+    height: 450px;
+    overflow: hidden;
+}
+
+.carousel-inner {
+    height: 500px;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+}
+
+#carouselExampleSlidesOnly {
+    position: relative;
+    z-index: 0;
+    /* Asegura que el slider esté por debajo del buscador */
+}
+
+#carouselExampleSlidesOnly .carousel-inner {
+    position: relative;
+}
+
+#carouselExampleSlidesOnly .carousel-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.384);
+    /* Color negro semi-transparente */
+    z-index: 1;
+    /* Asegura que la capa esté por encima de las imágenes */
 }
 
 .container_buscador {
+    position: relative;
+    z-index: 2;
+    background-color: transparent;
     width: 56%;
     padding: 2px;
     border-radius: 15px;
@@ -32,6 +63,9 @@ a {
     background-color: transparent;
     display: flex;
     margin: 40px auto;
+    position: absolute;
+    top: 150px;
+    left: 250px;
 }
 
 .container_filtrado {
@@ -90,16 +124,26 @@ a {
     align-items: center;
     flex-wrap: wrap;
     padding: 20px 0;
+    background-image: url(../img/bogota_noche.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 95%;
+    margin: 40px auto;
+    color: #fff;
+    border-radius: 20px;
+    position: relative;
 }
 
 .contenedor_tarjeta {
     display: flex;
+    margin-right: 70px;
+    padding: 30px;
 }
 
 .tarjeta {
     position: relative;
     display: inline-block;
-    margin: 0 70px 30px 70px;
+    margin: 0 10px 30px 0px;
     padding: 0 20px;
     width: 300px;
     height: fit-content;
@@ -107,6 +151,7 @@ a {
     overflow: hidden;
     margin-top: 40px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border: 3px solid #fff;
 }
 
 .tarjeta_efecto .tarjeta_content {
@@ -124,17 +169,17 @@ a {
     top: 0;
     left: -100%;
     width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #03e9f4);
+    height: 6px;
+    background: linear-gradient(90deg, transparent, #cc80ff);
     animation: btn-anim1 1s linear infinite;
 }
 
 .tarjeta_efecto span:nth-child(2) {
     top: -300%;
     right: 0;
-    width: 2px;
+    width: 6px;
     height: 100%;
-    background: linear-gradient(180deg, transparent, #03e9f4);
+    background: linear-gradient(180deg, transparent, #cc80ff);
     animation: btn-anim2 1s linear infinite;
     animation-delay: .25s;
 }
@@ -143,8 +188,8 @@ a {
     bottom: 0;
     right: -100%;
     width: 100%;
-    height: 2px;
-    background: linear-gradient(270deg, transparent, #03e9f4);
+    height: 6px;
+    background: linear-gradient(270deg, transparent, #cc80ff);
     animation: btn-anim3 1s linear infinite;
     animation-delay: .5s;
 }
@@ -152,9 +197,9 @@ a {
 .tarjeta_efecto span:nth-child(4) {
     bottom: -100%;
     left: 0;
-    width: 2px;
+    width: 6px;
     height: 100%;
-    background: linear-gradient(360deg, transparent, #03e9f4);
+    background: linear-gradient(360deg, transparent, #cc80ff);
     animation: btn-anim4 1s linear infinite;
     animation-delay: .75s;
 }
@@ -207,7 +252,7 @@ a {
     width: 60px;
     height: 60px;
     position: relative;
-    left: 250px;
+    left: 180px;
 }
 
 .tarjeta_content h2 {
@@ -221,9 +266,11 @@ a {
 }
 
 /*Estilos de slider de tarjetas*/
-.contenedor_slider {
+.contenedor_restaurantes {
     padding: 20px 0;
+    background: linear-gradient(to right, #1523a7, #03d348);
 }
+
 .container_slider {
     width: 80%;
     margin: 0 auto;
@@ -236,61 +283,173 @@ a {
     overflow-x: hidden;
     justify-content: center;
 }
+
 .tarjetas {
     width: 300px;
-    height: 200px;
+    height: 300px;
     background-color: #f0f0f0;
     margin-right: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 24px;
-}
-.controles {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    overflow: hidden;
+    padding: 8px;
 
 }
-.button img{
+
+.cardBox {
+    float: left;
+    font-size: 1.2em;
+    margin: 1% 0 0 1%;
+    perspective: 800px;
+    transition: all 0.3s ease 0s;
+    width: 23.7%;
+    max-width: 100%;
+    width: 500px;
+    overflow: hidden;
+    height: 290px;
+}
+
+.cardBox:hover .card {
+    transform: rotateY(180deg);
+}
+
+.card {
+    background-color: #fff;
+    border: none;
+    cursor: default;
+    height: 300px;
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease 0s;
+    width: 100%;
+    -webkit-animation: giro 1s 1;
+    animation: giro 1s 1;
+}
+
+.front_imagen {
+    width: 100%;
+    height: 100%;
+}
+
+.front_imagen img {
+    max-width: 100%;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.card .front,
+.card .back {
+    backface-visibility: hidden;
+    box-sizing: border-box;
+    color: white;
+    display: block;
+    font-size: 1.2em;
+    height: 100%;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+.card .back {
+    transform: rotateY(180deg);
+}
+
+.card .back h3 {
+    color: #000;
+    margin: 45px 0 30px 0;
+    text-align: center;
+
+}
+
+.card .back a {
+    background: #213859;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 25px;
+    padding: 5px 10px;
+
+}
+
+.card .back a:hover {
+    background-color: #03d348;
+}
+
+.cardBox .card .back {
+    background-color: #fff;
+}
+
+
+
+@-webkit-keyframes giro {
+    from {
+        transform: rotateY(180deg);
+    }
+
+    to {
+        transform: rotateY(0deg);
+    }
+}
+
+@keyframes giro {
+    from {
+        transform: rotateY(180deg);
+    }
+
+    to {
+        transform: rotateY(0deg);
+    }
+}
+
+/*estilos a los controles del slider de tarjetas*/
+.controles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button img {
     width: 20px;
 }
+
 .button_anterior,
 .button_siguiente {
     border: none;
     padding: 15px;
-    margin: 0 10px;
     cursor: pointer;
-    position: relative;
-    bottom: 150px;
     border-radius: 50%;
     background-color: #ffffff;
-}
-.button_anterior{
-    right: 440px;
-}
-.button_siguiente{
-    left: 430px;
+    position: relative;
+    top: -180px;
 }
 
- .button_siguiente:hover,.button_anterior:hover{
+.button_anterior {
+    right: 40px;
+}
+
+.button_siguiente {
+    left: 30px;
+}
+
+.button_siguiente:hover,
+.button_anterior:hover {
     background-color: #ffd8e6;
 }
 
 .dots {
-    display: flex;
+    display: flex;   
 }
 
 .dot {
-    width: 10px;
-    height: 10px;
-    background-color: #333;
+    width: 15px;
+    height: 15px;
+    background-color: #fff;
     border-radius: 50%;
     margin: 0 5px;
     cursor: pointer;
 }
 
-.dot.active {
+.dot.active{
     background-color: #03e9f4;
 }

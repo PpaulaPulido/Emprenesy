@@ -1,33 +1,27 @@
 window.datosTarjetas = [
   {
-    imagen: "../img/slider4.jpeg",
+    imagen: "../img/restaurante1.jpg",
     titulo: "Evento 1",
     enlace: "#"
   },
   {
-    imagen: "../img/evento2.png",
+    imagen: "../img/restaurante2.jpg",
     titulo: "Evento 2",
     enlace: "#"
   },
   {
-    imagen: "../img/evento3.png",
+    imagen: "../img/restaurante3.jpg",
     titulo: "Evento 3",
     enlace: "#"
   },
   {
-    imagen: "../img/evento3.png",
+    imagen: "../img/restaurante5.jpg",
     titulo: "Evento 4",
     enlace: "#"
   },
   {
-    imagen: "../img/evento3.png",
+    imagen: "../img/restaurante4.png",
     titulo: "Evento 5",
     enlace: "#"
   },
-  {
-    imagen: "../img/evento3.png",
-    titulo: "Evento 6",
-    enlace: "#"
-  }
-
 ];

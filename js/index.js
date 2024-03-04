@@ -1,9 +1,12 @@
 const sliderTarjetas = document.querySelector('.slider_tarjetas');
 const sliderTarjetas2 = document.querySelector('.slider_tarjetas2');
+const sliderTarjetas3 = document.querySelector('.slider_tarjetas3');
 const btn_anterior = document.querySelector('.button_anterior');
 const btn_siguiente = document.querySelector('.button_siguiente');
 const btn_anterior2 = document.querySelector('.button_anterior2');
 const btn_siguiente2 = document.querySelector('.button_siguiente2');
+const btn_anterior3 = document.querySelector('.button_anterior3');
+const btn_siguiente3 = document.querySelector('.button_siguiente3');
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -91,8 +94,8 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   cntSliderTarjetas(datosTarjetas,sliderTarjetas,btn_anterior,btn_siguiente);
-
   cntSliderTarjetas(datosTarjetas,sliderTarjetas2,btn_anterior2,btn_siguiente2);
+  cntSliderTarjetas(datosTarjetas,sliderTarjetas3,btn_anterior3,btn_siguiente3);
 });
 
 

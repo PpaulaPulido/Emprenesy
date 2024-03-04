@@ -26,7 +26,7 @@ window.datosTarjetas = [
   },
   {
     imagen: "../img/evento3.png",
-    titulo: "Evento 5",
+    titulo: "Evento 6",
     enlace: "#"
   }
 

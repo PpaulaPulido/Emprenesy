@@ -1,89 +1,103 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: 0;
 }
-#cabeza{
+
+/*estilos de la barra de navegacion*/
+#cabeza {
     background-color: #213859;
     display: flex;
-
-}
-.logoedit{
-    width: 120px;
-    height: 100px;
-    text-align: left;
-    padding: 20px;
+    height: 73px;
 }
 
-.logo{
+.logoedit {
+    margin: 0 auto;
+    width: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 0px;
+}
+
+.logo {
     position: absolute;
-    top: -18px;
-    left: -3%;
-    width: 310px;
-    height: auto; 
-    
-    
+    top: -10px;
+    left: -2%;
+    width: 170px;
+    height: auto;
+    max-width: 100%;
+
 }
 
 .titulo {
     color: #fff;
-    font-size: 40px;
+    font-size: 30px;
     font-weight: 700;
     font-family: 'Nunito', sans-serif;
     letter-spacing: 4px;
     position: relative;
-    margin-left: 150%;
-    top: 35%;
-}  
-
-.barraedit{
-    width: 1000px;
-    height: 20px;
-    text-align: center;
-    margin-left: 600px;
-    padding: 60px;
-}
-.barra{
-    text-align: center;
- 
+    top: 0;
+    right: 240px;
 }
 
-.link{
-    margin: 0 20px;
-    text-decoration: none;
-    color: #fff;
-    font-family: "Poppins", sans-serif;
-    font-size: 20px;
-}
-.link1{
-    margin: 0 20px;
-    text-decoration: none;
-    color: #fff;
-    font-family: "Poppins", sans-serif;
-    font-size: 20px;
+.barraedit {
+    width: auto;
+    height: 0;
+    margin: 0;
     padding: 20px;
+    position: relative;
+}
+
+.barra {
+    text-align: center;
+}
+
+.link {
+    margin: 0 20px;
+    text-decoration: none;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.link1 {
+    margin: 0 20px;
+    text-decoration: none;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
     border: solid #b4dbdc;
     overflow: hidden;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 7px;
 }
-.link:hover{
-    color: #b4dbdc;
+
+.link:hover {
+    color: #6efadc;
+    border-bottom: 1px solid #6efadc;
+    padding-bottom: 3px;
 }
-.link1:hover{
+
+.link1:hover {
     color: #b4dbdc;
 }
 
-.mision{
+/*estilos de mision,vision*/
+.mision {
     font-family: "Poppins", sans-serif;
     font-size: 45px;
     top: 0;
     text-align: center;
     padding: 50px;
-    
-   
+
+
 
 }
-.titulomision{
- 
+
+.titulomision {
+
     background-color: #fcefb2;
     padding: 10px;
     width: 70%;
@@ -93,17 +107,17 @@
 }
 
 
-.mision_logo{
+.mision_logo {
     position: absolute;
     top: 278px;
     left: 12.2%;
     width: 320px;
-    height: auto; 
+    height: auto;
     background-color: #fcefb2;
     padding: 3%;
 }
 
-.misiontexto{
+.misiontexto {
     text-align: justify;
     width: 42%;
     margin-left: 35%;
@@ -112,27 +126,28 @@
 }
 
 
-.titulovision{
-    
+.titulovision {
+
     background-color: #b4dbdc;
     padding: 10px;
     width: 70%;
     margin-left: 10%;
 
- 
-    
+
+
 }
 
-.vision_logo{
-   
+.vision_logo {
+
     width: 250px;
     height: auto;
     margin-right: -44.3%;
     padding: 2%;
     background-color: #b4dbdc;
 }
-.visiontexto{
-   
+
+.visiontexto {
+
     text-align: justify;
     margin-top: -19.3%;
     width: 42%;
@@ -141,7 +156,8 @@
     padding: 3%;
 
 }
-.vision{
+
+.vision {
     font-family: "Poppins", sans-serif;
     font-size: 45px;
     top: 0;
@@ -149,75 +165,183 @@
     padding: 50px;
 }
 
-.titulonosotros{
+.titulonosotros {
     background-color: #f5b1b2;
     padding: 10px;
     width: 70%;
     margin-left: 10%;
-   
+
 
 }
-.nosotros{
+
+.nosotros {
     font-family: "Poppins", sans-serif;
     font-size: 45px;
     text-align: center;
-   
-  
+
+
 
 
 }
-.fotopaula{
-    
+
+.fotopaula {
+
     width: 25%;
     height: auto;
     margin-left: 6%;
     margin-top: 1%;
 
-    
+
 
 }
-.foto_paula{
-   
+
+.foto_paula {
+
     width: 25%;
     height: auto;
 }
-.fotodaniela{
-  
+
+.fotodaniela {
+
     width: 25%;
     height: auto;
     margin-left: 26%;
     margin-top: -10.2%;
 
 }
-.foto_daniela{
-  
+
+.foto_daniela {
+
     width: 23.8%;
 }
-.fotonatalia{
-  
+
+.fotonatalia {
+
     width: 25%;
     height: auto;
     margin-left: 45%;
     margin-top: -10.3%;
 
 }
-.foto_natalia{
-    
-    width: 23.9%;
-    height: auto;
-}
-.fotodavid{
-   
-   
-    width: 23%;
-    height: auto;
-    margin-left: 66%;
-    margin-top: -10.2%;
- 
-}
-.foto_david{
-  
+
+.foto_natalia {
+
     width: 23.9%;
     height: auto;
 }
 
+.fotodavid {
+
+
+    width: 23%;
+    height: auto;
+    margin-left: 66%;
+    margin-top: -10.2%;
+
+}
+
+.foto_david {
+
+    width: 23.9%;
+    height: auto;
+}
+
+/*estilos del footer*/
+.principal_footer {
+    position: relative;
+    text-align: center;
+}
+
+.olas {
+    position: relative;
+    width: 100%;
+    height: 25vh;
+    margin-bottom: -7px;
+    min-height: 100px;
+    max-height: 150px;
+
+}
+
+/* Animacion */
+.efecto>use {
+    animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
+}
+
+.efecto>use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+
+}
+
+.efecto>use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+
+}
+
+.efecto>use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+
+}
+
+.efecto>use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+
+}
+
+@keyframes move-forever {
+    0% {
+        transform: translate3d(-90px, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(85px, 0, 0);
+    }
+}
+
+@media (max-width: 768px) {
+    .olas {
+        height: 40px;
+        min-height: 40px;
+    }
+}
+
+.contenedor_footer {
+    background-color: #213859;
+    color: #ffffff;
+    padding: 10px;
+}
+
+.contenedor_content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contenedor_list3 {
+    margin-right: 50px;
+}
+
+.footer_list {
+    margin: 20px 40px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.footer_list li {
+    list-style: none;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+.iconos img {
+    width: 30px;
+    margin: 10px 5px;
+}
+
+.copy {
+    text-align: center;
+    font-size: 15px;
+    margin: 10px 0;
+}

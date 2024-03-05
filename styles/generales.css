@@ -3,19 +3,23 @@
   background-color: transparent;
   display: flex;
   position: fixed;
+  justify-content: space-between;
   top: 0;
-  width: 100%;
   z-index: 1000;
+  height: 73px;
+  width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   /* Agrega una sombra suave */
   transition: background-color 0.3s ease;
 }
 
 .logoedit {
-  width: 120px;
-  height: 100px;
-  text-align: left;
-  padding: 20px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  padding: 10px;
+  margin-left: -40px;
+
 }
 
 .titulo {
@@ -24,45 +28,39 @@
   font-weight: 700;
   font-family: 'Nunito', sans-serif;
   letter-spacing: 4px;
-  position: relative;
-
+  margin-left: -40px;
 }
 
 .logo {
-  position: absolute;
-  top: -18px;
-  left: -3%;
-  width: 310px;
+  width: 170px;
   height: auto;
 }
 
 .barraedit {
-  width: 1000px;
-  height: 20px;
+  width: auto;
   text-align: center;
-  margin-left: 600px;
-  padding: 60px;
-}
-
-#barra {
-  text-align: center;
+  font-size: 18px;
+  padding: 20px;
 }
 
 .link {
   margin: 0 20px;
   text-decoration: none;
   color: #fff;
-  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
 }
 
 .link1 {
   margin: 0 20px;
   text-decoration: none;
   color: #fff;
-  font-size: 20px;
-  padding: 20px;
-  border: 3px solid #b4dbdc;
+  font-family: "Poppins", sans-serif;
+  border: solid #b4dbdc;
   overflow: hidden;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 7px;
 }
 
 .link:hover {
@@ -75,70 +73,9 @@
   color: #6efadc;
 }
 
-@media (max-width: 1400px) {
-  #cabeza {
-    height: 73px;
-
-  }
-
-  .logoedit {
-    margin: 0 auto;
-    width: 0;
-    height: 0;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    padding: 0px;
-  }
-
-  .logo {
-    position: absolute;
-    top: -10px;
-    left: -2%;
-    width: 170px;
-    height: auto;
-    max-width: 100%;
-  }
-
-  .titulo {
-    color: #fff;
-    font-size: 30px;
-    font-weight: 700;
-    font-family: 'Nunito', sans-serif;
-    letter-spacing: 4px;
-    position: relative;
-    top: 35px;
-    right: 250px;
-  }
-
-  #barra {
-    position: absolute;
-  }
-
-  .barraedit {
-    width: auto;
-    height: 0;
-    margin: 0;
-    padding: 20px;
-    position: relative;
-  }
-
-  .link {
-    margin: 0 20px;
-    font-size: 18px;
-    font-weight: 700;
-  }
-
-  .link1 {
-    font-size: 18px;
-    font-weight: 700;
-    padding: 7px;
-  }
-}
-
 /*menu toggle*/
 @media only screen and (max-width: 991px) {
-  
+
   #Barra {
     display: none;
 
@@ -155,6 +92,7 @@
     width: 180px;
   }
 }
+
 /*estilos del footer*/
 .principal_footer {
   position: relative;

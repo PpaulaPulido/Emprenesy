@@ -11,6 +11,7 @@
     height: 73px;
     justify-content: space-between;
 }
+
 .logoedit {
     text-align: center;
     display: flex;
@@ -18,10 +19,12 @@
     padding: 10px;
     margin-left: -40px;
 }
+
 .logo {
     width: 170px;
     height: auto;
 }
+
 .titulo {
     margin-left: -40px;
     color: #fff;
@@ -30,12 +33,14 @@
     font-family: 'Nunito', sans-serif;
     letter-spacing: 3px;
 }
+
 .barraedit {
     width: auto;
     padding: 20px;
     font-size: 18px;
     text-align: center;
 }
+
 .link {
     margin: 0 20px;
     text-decoration: none;
@@ -43,6 +48,7 @@
     font-family: "Poppins", sans-serif;
     font-weight: 700;
 }
+
 .link1 {
     margin: 0 20px;
     text-decoration: none;
@@ -54,6 +60,7 @@
     font-weight: 700;
     padding: 7px;
 }
+
 .link:hover {
     color: #6efadc;
     border-bottom: 1px solid #6efadc;
@@ -63,6 +70,7 @@
 .link1:hover {
     color: #b4dbdc;
 }
+
 /*estilos del buscador*/
 
 .container_buscador {
@@ -73,6 +81,7 @@
     margin-right: 280px;
     margin-top: 5px;
 }
+
 .container_input {
     text-align: center;
     margin: 10px 15px;
@@ -104,48 +113,65 @@
     height: auto;
     display: block;
 }
+
 @media only screen and (max-width: 991px) {
     .container_buscador {
-        width: 80%; 
-        top: 100px; 
+        width: 80%;
+        top: 100px;
         left: 50%;
         transform: translateX(-50%);
-      }
-    
-      #input_buscar {
-        width: 100%; 
-      }
-      .container_icon {
+    }
+
+    #input_buscar {
+        width: 100%;
+    }
+
+    .container_icon {
         left: calc(100% - 40px);
-      }  
+    }
 }
-/*estilos de mision,vision*/
-.mision {
-    font-family: "Poppins", sans-serif;
-    font-size: 45px;
-    top: 0;
+
+/*estilos de container head*/
+.container_img img {
+    width: 100%;
+    height: 450px;
+    display: block;
+    margin: 0 auto;
+}
+
+.title {
+    position: relative;
+    bottom: 400px;
     text-align: center;
-    padding: 50px;
+    color: #fff;
+    font-size: 60px;
+    font-style: italic;
+}
 
-
+/*estilos de mision,vision*/
+.container_mision {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
 
 }
 
 .titulomision {
-
     background-color: #fcefb2;
     padding: 10px;
-    width: 70%;
-    margin-left: 10%;
-
-
+    width: 80%;
+    font-size: 45px;
+    margin: 0 auto;
 }
 
+.mision {
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+}
 
 .mision_logo {
-    position: absolute;
-    top: 278px;
-    left: 12.2%;
     width: 320px;
     height: auto;
     background-color: #fcefb2;
@@ -154,132 +180,105 @@
 
 .misiontexto {
     text-align: justify;
-    width: 42%;
-    margin-left: 35%;
-    font-size: 60%;
     padding: 2%;
+    font-size: 22px;
+    line-height: 1.4;
 }
 
+.container_vision {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+}
 
 .titulovision {
-
     background-color: #b4dbdc;
-    padding: 10px;
-    width: 70%;
-    margin-left: 10%;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    font-size: 45px;
+    margin: 0 auto;
+}
 
-
-
+.titulo h2 {
+    background: linear-gradient(90deg, blue, red);
+    font-family: system-ui;
+    font-size: 4rem;
+    line-height: 115%;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 
 .vision_logo {
-
-    width: 250px;
     height: auto;
-    margin-right: -44.3%;
-    padding: 2%;
     background-color: #b4dbdc;
+    width: 320px;
+    padding: 3%;
 }
 
 .visiontexto {
 
     text-align: justify;
-    margin-top: -19.3%;
-    width: 42%;
-    margin-left: 10%;
-    font-size: 60%;
-    padding: 3%;
+    padding: 2%;
+    font-size: 22px;
+    line-height: 1.4;
 
 }
 
 .vision {
     font-family: "Poppins", sans-serif;
-    font-size: 45px;
-    top: 0;
     text-align: center;
-    padding: 50px;
+    margin-top: 80px;
+}
+
+.nosotros {
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    margin: 30px 0;
+
 }
 
 .titulonosotros {
     background-color: #f5b1b2;
     padding: 10px;
-    width: 70%;
-    margin-left: 10%;
-
-
-}
-
-.nosotros {
-    font-family: "Poppins", sans-serif;
+    width: 80%;
     font-size: 45px;
+    margin: 0 auto;
+}
+
+.container_nosotros {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tarjeta {
+    flex: 1;
+    max-width: 200px;
+    padding: 20px;
+    margin: 40px 10px 20px 10px;
+    border-radius: 10px;
     text-align: center;
-
-
-
-
+    background-color: #f5b1b2;
 }
 
-.fotopaula {
-
-    width: 25%;
-    height: auto;
-    margin-left: 6%;
-    margin-top: 1%;
-
-
-
+.tarjeta h5 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+    margin: 10px 0;
 }
 
-.foto_paula {
-
-    width: 25%;
-    height: auto;
+.tarjeta img {
+    width: 100%;
+    border-radius: 50%;
+    margin-bottom: 10px;
 }
 
-.fotodaniela {
 
-    width: 25%;
-    height: auto;
-    margin-left: 26%;
-    margin-top: -10.2%;
-
-}
-
-.foto_daniela {
-
-    width: 23.8%;
-}
-
-.fotonatalia {
-
-    width: 25%;
-    height: auto;
-    margin-left: 45%;
-    margin-top: -10.3%;
-
-}
-
-.foto_natalia {
-
-    width: 23.9%;
-    height: auto;
-}
-
-.fotodavid {
-
-
-    width: 23%;
-    height: auto;
-    margin-left: 66%;
-    margin-top: -10.2%;
-
-}
-
-.foto_david {
-
-    width: 23.9%;
-    height: auto;
-}
 
 /*estilos del footer*/
 .principal_footer {

@@ -65,10 +65,26 @@ button {
     cursor: pointer;
     font-size: 18px;
 
-    
+
 }
+
 .forgot-passaword {
     color: #ffffff;
     text-decoration: none;
 
+}
+
+/*estilos del sweatalert*/
+
+.border-blue {
+    border: 3px solid #213859 !important;
+    box-shadow: 0 0 15px #fff;
+}
+.swal2-success-ring{
+
+    border: 3px solid #213859 !important;
+}
+.swal2-title{
+    color: #050047;
+    font-size: 25px;
 }

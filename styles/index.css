@@ -302,7 +302,8 @@ a {
     color: #000;
 }
 .contenedor_texto h2{
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.185);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    font-size: 30px;
 }
 .contenedor_texto a{
     color: #fff;

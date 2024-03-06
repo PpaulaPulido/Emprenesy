@@ -208,8 +208,8 @@
     font-family: system-ui;
     font-size: 4rem;
     line-height: 115%;
-    -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .vision_logo {

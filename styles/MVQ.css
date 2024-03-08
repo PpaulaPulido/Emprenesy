@@ -149,6 +149,7 @@
 }
 
 /*estilos de mision,vision*/
+
 .container_mision {
     display: flex;
     justify-content: center;
@@ -157,24 +158,24 @@
     margin: 0 auto;
 
 }
-
 .titulomision {
-    background-color: #fcefb2;
     padding: 10px;
     width: 80%;
     font-size: 45px;
-    margin: 0 auto;
+    margin: 0 auto 50px auto;
 }
 
 .mision {
     font-family: "Poppins", sans-serif;
     text-align: center;
+    margin: 0 auto;
+    width: 80%;
+    box-shadow: 2px 2px 4px 3px rgba(0,0,0,0.5);
 }
 
 .mision_logo {
     width: 320px;
     height: auto;
-    background-color: #fcefb2;
     padding: 3%;
 }
 
@@ -194,27 +195,24 @@
 }
 
 .titulovision {
-    background-color: #b4dbdc;
     padding: 10px 20px;
     text-transform: uppercase;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 80%;
     font-size: 45px;
     margin: 0 auto;
 }
 
 .titulo h2 {
-    background: linear-gradient(90deg, blue, red);
+    color: #213859;
     font-family: system-ui;
-    font-size: 4rem;
+    font-size: 3rem;
     line-height: 115%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    text-align: left;
+
 }
 
 .vision_logo {
     height: auto;
-    background-color: #b4dbdc;
     width: 320px;
     padding: 3%;
 }
@@ -231,18 +229,20 @@
 .vision {
     font-family: "Poppins", sans-serif;
     text-align: center;
-    margin-top: 80px;
+    margin: 80px auto;
+    width: 80%;
+    box-shadow: 2px 2px 4px 3px rgba(0,0,0,0.5);
 }
 
 .nosotros {
     font-family: "Poppins", sans-serif;
     text-align: center;
-    margin: 30px 0;
-
+    margin: 30px auto;
+    width: 80%;
+    box-shadow: 2px 2px 4px 3px rgba(0,0,0,0.5);
 }
 
 .titulonosotros {
-    background-color: #f5b1b2;
     padding: 10px;
     width: 80%;
     font-size: 45px;
@@ -262,7 +262,8 @@
     margin: 40px 10px 20px 10px;
     border-radius: 10px;
     text-align: center;
-    background-color: #f5b1b2;
+    background-color: #eee8e8;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.5);
 }
 
 .tarjeta h5 {

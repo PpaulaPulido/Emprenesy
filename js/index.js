@@ -12,14 +12,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function cntSliderTarjetas(datos,contenedor_slider,btnAnteior,btnSiguiente) {
 
-    // Índice inicial del conjunto de tarjetas que se muestra en el html
-    let contador = 0;
+
     // Función para mostrar las tarjetas
-    function mostrarTarjeta(index) {
+    function mostrarTarjeta(index,cardSlider) {
       // Elimina todas las tarjetas existentes dentro del contenedor
       contenedor_slider.innerHTML = '';
       // Muestra las tarjetas desde el índice hasta el índice + 3
-      for (let i = index; i < index + 3 && i < datos.length; i++) {
+      for (let i = index; i < index + cardSlider && i < datos.length; i++) {
         const tarjeta = crearCarta(datos[i]);
         contenedor_slider.appendChild(tarjeta);
       }
@@ -27,26 +26,33 @@ document.addEventListener('DOMContentLoaded', function () {
     
     // Función para el botón de slide anterior
     function slide_anterior() {
-      contador--;
+      contador --;
       if (contador < 0) {
-        contador = Math.max(0, datos.length - 3);
+        contador = Math.max(0, datos.length - cardSlider);
       }
-      mostrarTarjeta(contador);
+      mostrarTarjeta(contador,cardSlider);
       
     }
 
     // Función para el botón de slide siguiente
     function slide_siguiente() {
-      contador++;
-      if (contador > Math.max(0, datos.length - 3)) {
+      contador ++;
+      if (contador > Math.max(0, datos.length - cardSlider)) {
         contador = 0;
       }
-      mostrarTarjeta(contador);
+      mostrarTarjeta(contador,cardSlider);
     }
+
+    let cardSlider = 3;
+    if (window.innerWidth < 1024) {
+      cardSlider = 2; 
+    }
+    // Índice inicial del conjunto de tarjetas que se muestra en el html
+    let contador = 0;
 
     btnAnteior.addEventListener('click', slide_anterior);
     btnSiguiente.addEventListener('click', slide_siguiente);
-    mostrarTarjeta(contador);
+    mostrarTarjeta(contador,cardSlider);
   
 
     // Función para crear una tarjeta

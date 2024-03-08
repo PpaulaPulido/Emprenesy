@@ -11,6 +11,6 @@ function iniciar_sesion(){
           }
         
       }).then(function(){
-        window.location.href = '../html/index.html';
+        window.location.href = '../html/index_user.html';
       })
 }

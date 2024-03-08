@@ -159,7 +159,6 @@ ol {
     width: 56%;
     padding: 2px;
     border-radius: 15px;
-    border: 2px solid #ffffff;
     background-color: transparent;
     display: flex;
     margin: 40px auto;
@@ -614,6 +613,79 @@ ol {
 .button_siguiente:hover,
 .button_anterior:hover {
     background-color: #ffd8e6;
+}
+/*estilos emprendimientos*/
+.emprendimientos {
+    background-color: #213859;
+    padding: 20rem 0;
+    position: relative;
+    overflow: hidden;
+    margin-top: -40px;
+}
+
+.emprendimientos::before,
+.emprendimientos::after {
+    background-color: #fff;
+    content: '';
+    height: 10rem;
+    width: 120%;
+    position: absolute;
+}
+
+.emprendimientos::before {
+    top: -3rem;
+    left: 0;
+    transform: rotate(3deg);
+}
+
+.emprendimientos::after {
+    bottom: -3rem;
+    left: 0;
+    transform: rotate(-3deg);
+}
+
+.emprendimientos__contenedor {
+    display: flex;
+    padding: 0 50px;
+    color: #fff;
+}
+
+.empredimientos_imagen img {
+    border-radius: 10px;
+}
+
+.empredimientos_content {
+    text-align: center;
+}
+
+.empredimientos_content h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.empredimientos_content p {
+    margin: 40px 50px;
+    line-height: 1.8;
+    font-size: 20px;
+    text-align: left;
+}
+
+.emprendimiento_btn {
+    background-color: #cc80ff;
+    color: #fff;
+    width: 50%;
+    padding: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 15px;
+    cursor: pointer;
+    margin: auto;
+    border: none;
+}
+
+.emprendimiento_btn:hover {
+    background-color: #ff5ef7;
 }
 
 

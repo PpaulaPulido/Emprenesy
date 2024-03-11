@@ -65,6 +65,7 @@ body {
 .form-register .botons {
     width: 100%;
     background-color: #CFE567;
+    cursor: pointer;
     border: none;
     padding: 12px;
     color: black;

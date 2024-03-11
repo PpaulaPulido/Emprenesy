@@ -138,7 +138,16 @@
     font-size: 60px;
     font-style: italic;
 }
-
+/*estilos de acerca de emprenesy*/
+.acerca_emprenesy{
+    margin: 0 80px 90px 80px;
+}
+.acerca_emprenesy h2{
+    margin-bottom: 40px;
+}
+.acerca_emprenesy p{
+    font-size: 18px;
+}
 /*estilos de mision,vision*/
 .titulo h2 {
     font-size: 80px;

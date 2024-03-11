@@ -53,12 +53,6 @@ a {
     /* Color negro semi-transparente */
     z-index: 1;
     /* Asegura que la capa esté por encima de las imágenes */
-    height: 220px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/buscador.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    padding: 20px;
 }
 
 .container_buscador {

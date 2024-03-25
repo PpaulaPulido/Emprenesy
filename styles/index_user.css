@@ -1,6 +1,7 @@
 * {
     margin: 0px;
     padding: 0px;
+    box-sizing: border-box;
 }
 
 /*estilos de la barra de navegacion*/
@@ -112,6 +113,31 @@ ol {
         left: 80%;
         width: 180px;
     }
+}
+.perfil_list {
+    display: none;
+    position: absolute;
+    min-width: 140px;
+    right: 40px;
+    background-color: #213859;
+    padding: 20px 35px;
+    border-radius: 10px;
+}
+.perfil_list li{
+    margin: 20px 0;
+}
+.perfil_list a{
+    text-decoration: none;
+    color: #fff;
+    width: auto;
+    padding:5px 12px;
+}
+.perfil_list a:hover{
+    color: #6efadc;
+    text-decoration: underline;
+}
+.nav_list li:hover >ul{
+    display: block;
 }
 
 /*estilos del buscador*/
@@ -234,31 +260,6 @@ ol {
     }
 }
 
-.perfil_list {
-    display: none;
-    position: absolute;
-    min-width: 140px;
-    right: 40px;
-    background-color: #213859;
-    padding: 20px 35px;
-    border-radius: 10px;
-}
-.perfil_list li{
-    margin: 20px 0;
-}
-.perfil_list a{
-    text-decoration: none;
-    color: #fff;
-    width: auto;
-    padding:5px 12px;
-}
-.perfil_list a:hover{
-    color: #6efadc;
-    text-decoration: underline;
-}
-.nav_list li:hover >ul{
-    display: block;
-}
 
 /*estilos de tarjetas*/
 .contenedor_tarjetas {

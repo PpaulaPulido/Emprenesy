@@ -9,7 +9,6 @@
   height: 73px;
   width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  /* Agrega una sombra suave */
   transition: background-color 0.3s ease;
 }
 
@@ -27,7 +26,8 @@
   font-size: 30px;
   font-weight: 700;
   font-family: 'Nunito', sans-serif;
-  letter-spacing: 4px;
+  letter-spacing: 2px;
+  font-style: oblique;
   margin-left: -40px;
 }
 
@@ -39,7 +39,7 @@
 .barraedit {
   width: auto;
   text-align: center;
-  font-size: 18px;
+  font-size: 21px;
   padding: 20px;
 }
 
@@ -52,6 +52,7 @@
 }
 
 .link1 {
+
   margin: 0 20px;
   text-decoration: none;
   color: #fff;

@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       let a = document.createElement("a");
       a.href = data.enlace;
-      a.textContent = "Button 1";
+      a.textContent = "Ver detalles";
 
       frontImagenDiv.appendChild(img);
       frontDiv.appendChild(frontImagenDiv);
@@ -100,8 +100,8 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   cntSliderTarjetas(datosTarjetas,sliderTarjetas,btn_anterior,btn_siguiente);
-  cntSliderTarjetas(datosTarjetas,sliderTarjetas2,btn_anterior2,btn_siguiente2);
-  cntSliderTarjetas(datosTarjetas,sliderTarjetas3,btn_anterior3,btn_siguiente3);
+  cntSliderTarjetas(datosEventos,sliderTarjetas2,btn_anterior2,btn_siguiente2);
+  cntSliderTarjetas(datosEmpredimientos,sliderTarjetas3,btn_anterior3,btn_siguiente3);
 });
 
 
@@ -118,3 +118,5 @@ function scrollFunction() {
     document.getElementById("cabeza").style.backgroundColor = "transparent"; // Vuelve a ser transparente
   }
 }
+
+

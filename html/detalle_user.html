@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito&display=swap">
+    <link rel="icon" href="../img/Logo2.jpeg" type="image/icon type">
+    <link rel="stylesheet" href="../styles/generales_user.css">
+    <link rel="stylesheet" href="../styles/detalles.css">
+</head>
+
+<body>
+    <header>
+        <section class="contenedor">
+            <!--barra de navegacion-->
+            <div id="cabeza">
+                <div class="logoedit">
+                    <img class="logo" src="../img/logo_Emprenesy.png" alt="Emprenesy">
+                    <span class="titulo">Emprenesy</span>
+                </div>
+                <div id="Barra">
+                    <nav class="barraedit">
+                        <ul class="nav_list">
+                            <li><a class="link" href="/html/MVQ.html">Sobre Nosotros</a></li>
+                            <li><a class="link" href="/html/index.html">Inicio</a></li>
+                            <li><a class="link" href="#">Mis favoritos</a></li>
+                            <li><a class="link1" href="#"><img src="../img/perfil_user.png" alt="perfil"></a>
+                                <ul class="perfil_list">
+                                    <li><a href="#">Ver perfil</a></li>
+                                    <li><a href="#">Notificaciones</a></li>
+                                    <li><a href="#">Configuración</a></li>
+                                    <li><a href="#">Cerrar sesión</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </nav>
+                </div>
+            </div>
+            <!--buscador-->
+
+            <!--menu toggle-->
+            <div class="menu"></div>
+        </section>
+    </header>
+    <main>
+        <section class="contenedor_principal">
+            <div class="contenedor_buscador">
+                <div class="container_buscador">
+                    <div class="container_input">
+                        <input type="text" id="input_buscar" placeholder="Buscar...">
+                        <div class="container_icon">
+                            <img src="../img/lupa.png" alt="buscador">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container__scroller">
+                <div class="scroller" data-direction="right" data-speed="slow">
+                    <div class="scroller__inner" id="dynamicImages">
+                       
+                    </div>
+                </div>
+            </div>
+
+            <div class="container__info">
+                <h2 class="info_title">Frenessí</h2>
+                <div class="info__detalles">
+                    <div class="detalles info">
+                        <h2>Detalles</h2>
+                        <h3>Horario de atención</h3>
+                        <p>12 pm - 10 pm</p>
+                        <h3>Sitio Web</h3>
+                        <p>No aplica</p>
+                        <h3>Contacto</h3>
+                        <p>3114506070</p>
+                        <h3>Comidas</h3>
+                        <p>Almuerzo,cena</p>
+                        <div class="contenedor_button">
+                            <button class="btn_info">Ver Características</button>
+                        </div>
+                    </div>
+                    <div class="detalles__ubicacion info">
+                        <h2>Ubicación e información</h2>
+                        <div class="mapa">
+
+                        </div>
+
+                        <h3>Autopista Norte 114 - 44, Bogotá Colombia</h3>
+                        <div class="contenedor_button">
+                            <button class="btn_info">Ver Mapa</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="principal_footer">
+            <div>
+                <svg class="olas" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                    <defs>
+                        <path id="vector-olas"
+                            d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                    </defs>
+                    <g class="efecto">
+                        <use xlink:href="#vector-olas" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                        <use xlink:href="#vector-olas" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                        <use xlink:href="#vector-olas" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                        <use xlink:href="#vector-olas" x="48" y="7" fill=" #213859" />
+                    </g>
+                </svg>
+            </div>
+        </div>
+
+        <div class="contenedor_footer">
+            <div class="contenedor_content">
+
+                <div class="contenedor_list">
+                    <ul class="footer_list">
+                        <li>Preguntas Frecuentes</li>
+                        <li>Términos y Condiciones</li>
+                    </ul>
+                </div>
+
+                <div class="contenedor_list2">
+                    <ul class="footer_list">
+                        <li>Contáctenos</li>
+                        <li>Nosotros</li>
+                    </ul>
+                </div>
+
+                <div class="contenedor_list3">
+                    <ul class="footer_list">
+                        <li>Siguenos en</li>
+                        <div class="iconos">
+                            <img src="../img/tik-tok.png" alt="tiktok">
+                            <img src="../img/facebook.png" alt="facebook">
+                            <img src="../img/instagram1.png" alt="instagram">
+                        </div>
+                    </ul>
+                </div>
+
+            </div>
+            <p class="copy">&copy;2024-Emprenesy.Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/e8d0c66caa.js" crossorigin="anonymous"></script>
+    <script src="../js/detalles.js"></script>
+</body>
+
+</html>

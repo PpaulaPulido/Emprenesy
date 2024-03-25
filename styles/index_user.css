@@ -20,7 +20,6 @@ ol {
     height: 73px;
     width: 100%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* Agrega una sombra suave */
     transition: background-color 0.3s ease;
 }
 
@@ -38,7 +37,8 @@ ol {
     font-size: 30px;
     font-weight: 700;
     font-family: 'Nunito', sans-serif;
-    letter-spacing: 4px;
+    letter-spacing: 2px;
+    font-style: oblique;
     margin-left: -40px;
 }
 
@@ -172,10 +172,7 @@ ol {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.384);
-    /* Color negro semi-transparente */
     z-index: 1;
-    /* Asegura que la capa esté por encima de las imágenes */
 }
 
 .container_buscador {
@@ -262,13 +259,14 @@ ol {
 
 
 /*estilos de tarjetas*/
+/*estilos de tarjetas*/
 .contenedor_tarjetas {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     padding: 20px 0;
-    background-image: url(../img/bogota_noche.png);
+    background-image: url(../img/bogota.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     width: 95%;
@@ -285,6 +283,7 @@ ol {
 }
 
 .tarjeta {
+    background-color: #000000dc;
     position: relative;
     display: inline-block;
     margin: 0 10px 30px 0px;
@@ -408,33 +407,39 @@ ol {
     font-size: 16px;
     font-style: italic;
 }
+
 @media only screen and (max-width: 991px) {
     .contenedor_tarjeta {
-        width: 100%; 
-        margin-right: 0; 
-        margin-bottom: 20px; 
-        padding: 20px; 
-        box-sizing: border-box; 
-      }
-      .tarjeta_img {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .tarjeta_img {
         display: none;
-      }
+    }
 }
+
 /*Estilos de slider de tarjetas*/
 .contenedor_slider {
     padding: 20px 0;
 }
-.contenedor_texto{
+
+.contenedor_texto {
     display: flex;
     justify-content: space-between;
     margin: 20px 50px;
     color: #000;
 }
-.contenedor_texto h2{
+
+.contenedor_texto h2 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
     font-size: 30px;
 }
-.contenedor_texto a{
+
+.contenedor_texto a {
     color: #fff;
     font-size: 18px;
     margin-right: 50px;
@@ -446,14 +451,19 @@ ol {
     padding: 10px;
     border-radius: 10px;
 }
-.container_slider{
+.contenedor_texto a:hover{
+    background-color: #3d77ba;
+}
+.container_slider {
     width: 80%;
     margin: 0 auto;
     position: relative;
     padding: 15px;
 }
 
-.slider_tarjetas, .slider_tarjetas2,.slider_tarjetas3 {
+.slider_tarjetas,
+.slider_tarjetas2,
+.slider_tarjetas3 {
     display: flex;
     overflow-x: hidden;
     justify-content: center;
@@ -509,7 +519,7 @@ ol {
 }
 
 .front_imagen img {
-    max-width: 100%;
+    width: fit-content;
     margin: 0 auto;
     height: 100%;
 }
@@ -529,6 +539,7 @@ ol {
 
 .card .back {
     transform: rotateY(180deg);
+    padding: 20px;
 }
 
 .card .back h3 {
@@ -549,7 +560,7 @@ ol {
 }
 
 .card .back a:hover {
-    background-color: #03d348;
+    background-color: #6efadc;
 }
 
 .cardBox .card .back {
@@ -672,7 +683,7 @@ ol {
 }
 
 .emprendimiento_btn {
-    background-color: #cc80ff;
+    background-color: #f27a93;
     color: #fff;
     width: 50%;
     padding: 10px;

@@ -1,25 +1,42 @@
 window.datosTarjetas = [
   {
+    id: 1,
     imagen: "../img/restaurante1.png",
     titulo: "Storia D'Amore",
-    enlace: "../html/detalle_user.html"
+    enlace: "../html/detalle_user.html",
+    galeria: [
+      "../img/restaurante1.png",
+      "../img/restaurante1.png",
+      "../img/restaurante1.png",
+      "../img/restaurante1.png"
+    ]
   },
   {
+    id: 2,
     imagen: "../img/restaurante2.png",
     titulo: "Ushin Japanese and Grill",
-    enlace: "../html/detalle_user.html"
+    enlace: "../html/detalle_user.html",
+    galeria:[
+      "../img/restaurante2.png",
+      "../img/restaurante2.png",
+      "../img/restaurante2.png",
+      "../img/restaurante2.png"
+    ]
   },
   {
+    id: 3,
     imagen: "../img/restaurante3.png",
     titulo: "Osaka–Cocina Nikkei",
     enlace: "../html/detalle_user.html"
   },
   {
+    id: 4,
     imagen: "../img/restaurante4.png",
     titulo: "El Capitalino",
     enlace: "../html/detalle_user.html"
   },
   {
+    id: 5,
     imagen: "../img/restaurante5.png",
     titulo: "Pajares Salinas",
     enlace: "../html/detalle_user.html"

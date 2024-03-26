@@ -7,14 +7,14 @@ const btn_anterior2 = document.querySelector('.button_anterior2');
 const btn_siguiente2 = document.querySelector('.button_siguiente2');
 const btn_anterior3 = document.querySelector('.button_anterior3');
 const btn_siguiente3 = document.querySelector('.button_siguiente3');
+let idTarjetaSeleccionadaGlobal;
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  function cntSliderTarjetas(datos,contenedor_slider,btnAnteior,btnSiguiente) {
-
+  function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente) {
 
     // Función para mostrar las tarjetas
-    function mostrarTarjeta(index,cardSlider) {
+    function mostrarTarjeta(index, cardSlider) {
       // Elimina todas las tarjetas existentes dentro del contenedor
       contenedor_slider.innerHTML = '';
       // Muestra las tarjetas desde el índice hasta el índice + 3
@@ -23,37 +23,37 @@ document.addEventListener('DOMContentLoaded', function () {
         contenedor_slider.appendChild(tarjeta);
       }
     }
-    
+
     // Función para el botón de slide anterior
     function slide_anterior() {
-      contador --;
+      contador--;
       if (contador < 0) {
         contador = Math.max(0, datos.length - cardSlider);
       }
-      mostrarTarjeta(contador,cardSlider);
-      
+      mostrarTarjeta(contador, cardSlider);
+
     }
 
     // Función para el botón de slide siguiente
     function slide_siguiente() {
-      contador ++;
+      contador++;
       if (contador > Math.max(0, datos.length - cardSlider)) {
         contador = 0;
       }
-      mostrarTarjeta(contador,cardSlider);
+      mostrarTarjeta(contador, cardSlider);
     }
 
     let cardSlider = 3;
     if (window.innerWidth < 1024) {
-      cardSlider = 2; 
+      cardSlider = 2;
     }
     // Índice inicial del conjunto de tarjetas que se muestra en el html
     let contador = 0;
 
     btnAnteior.addEventListener('click', slide_anterior);
     btnSiguiente.addEventListener('click', slide_siguiente);
-    mostrarTarjeta(contador,cardSlider);
-  
+    mostrarTarjeta(contador, cardSlider);
+
 
     // Función para crear una tarjeta
     function crearCarta(data) {
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
       h3.textContent = data.titulo;
 
       let a = document.createElement("a");
-      a.href = data.enlace;
+      a.href = `${data.enlace}?id=${data.id}`;
       a.textContent = "Ver detalles";
 
       frontImagenDiv.appendChild(img);
@@ -95,28 +95,39 @@ document.addEventListener('DOMContentLoaded', function () {
       cardBoxDiv.appendChild(cardDiv);
       tarjetasDiv.appendChild(cardBoxDiv);
 
+      tarjetasDiv.addEventListener('click', () => {
+        // Obtener el id de la tarjeta seleccionada
+        const idTarjetaSeleccionada = data.id;
+        console.log("selecciono el id " + idTarjetaSeleccionada);
+        idTarjetaSeleccionadaGlobal = idTarjetaSeleccionada; // Almacenar el ID en la variable global
+        const tituloTarjetaSeleccionada = data.titulo;
+        manejarSeleccion(idTarjetaSeleccionada, tituloTarjetaSeleccionada);
+      });
+
       return tarjetasDiv;
     }
   };
 
-  cntSliderTarjetas(datosTarjetas,sliderTarjetas,btn_anterior,btn_siguiente);
-  cntSliderTarjetas(datosEventos,sliderTarjetas2,btn_anterior2,btn_siguiente2);
-  cntSliderTarjetas(datosEmpredimientos,sliderTarjetas3,btn_anterior3,btn_siguiente3);
+  cntSliderTarjetas(datosTarjetas, sliderTarjetas, btn_anterior, btn_siguiente);
+  cntSliderTarjetas(datosEventos, sliderTarjetas2, btn_anterior2, btn_siguiente2);
+  cntSliderTarjetas(datosEmpredimientos, sliderTarjetas3, btn_anterior3, btn_siguiente3);
+
+  // Función que se ejecuta cuando se hace scroll
+  window.onscroll = function () {
+    scrollFunction();
+  };
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 380 || document.documentElement.scrollTop > 380) {
+      document.getElementById("cabeza").style.backgroundColor = "#213859"; // Cambia el color a azul
+    } else {
+      document.getElementById("cabeza").style.backgroundColor = "transparent"; // Vuelve a ser transparente
+    }
+  }
+
 });
 
 
 
-// Función que se ejecuta cuando se hace scroll
-window.onscroll = function () {
-  scrollFunction();
-};
-
-function scrollFunction() {
-  if (document.body.scrollTop > 380 || document.documentElement.scrollTop > 380) {
-    document.getElementById("cabeza").style.backgroundColor = "#213859"; // Cambia el color a azul
-  } else {
-    document.getElementById("cabeza").style.backgroundColor = "transparent"; // Vuelve a ser transparente
-  }
-}
 
 

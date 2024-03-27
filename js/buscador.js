@@ -1,7 +1,7 @@
-bars_search = document.getElementById("ctn-bars-search");
-cover_ctn_search = document.getElementById("cover-ctn-search");
-inputSearch = document.getElementById("inputSearch");
-box_search = document.getElementById("box-search");
+let bars_search = document.getElementById("ctn-bars-search");
+let cover_ctn_search = document.getElementById("cover-ctn-search");
+let inputSearch = document.getElementById("inputSearch");
+let box_search = document.getElementById("box-search");
 
 
 // Datos para la lista de busqueda
@@ -16,13 +16,13 @@ const listaDatos = [
 ];
 
 // Obtener el elemento ul
-var ulElement = document.getElementById("box-search");
+let ulElement = document.getElementById("box-search");
 
 // Iterar sobre los datos y crear elementos li y a
 listaDatos.forEach(function (item) {
     // Crear elementos li y a
-    var liElement = document.createElement("li");
-    var aElement = document.createElement("a");
+    let liElement = document.createElement("li");
+    let aElement = document.createElement("a");
 
     // Configurar el href del elemento a
     aElement.href = "#";
@@ -31,7 +31,7 @@ listaDatos.forEach(function (item) {
     aElement.textContent = item;
 
     // Agregar el icono
-    var icono = document.createElement("i");
+    let icono = document.createElement("i");
     icono.className = "fas fa-search";
     aElement.prepend(icono);
 

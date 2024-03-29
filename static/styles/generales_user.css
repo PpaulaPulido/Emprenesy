@@ -1,7 +1,19 @@
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,500;1,6..12,500&family=Poppins:wght@300;400&family=Roboto+Slab:wght@100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Nunito Sans', sans-serif;
+}
+h1,h2,h3{
+    font-family: 'Roboto Slab', serif;
+
+}
+p{
+    font-family: 'Poppins', sans-serif;
 }
 
 /*estilos de la barra de navegacion*/
@@ -9,8 +21,6 @@ ul,
 ol {
   list-style: none;
 }
-
-
 #cabeza {
   background-color: #213859;
   display: flex;

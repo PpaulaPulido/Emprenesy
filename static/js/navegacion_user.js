@@ -1,9 +1,9 @@
-export function user_sesion(){
+function user_sesion(){
     document.addEventListener('DOMContentLoaded', function () {
 
         const menuItems = [
-            { text: 'Sobre Nosotros', href: '/html/MVQ.html', class: 'link' },
-            { text: 'Inicio', href: '/html/index.html', class: 'link' },
+            { text: 'Sobre Nosotros', href: '/templates/MVQ.html', class: 'link' },
+            { text: 'Inicio', href: '/templates/index.html', class: 'link' },
             { text: 'Mis favoritos', href: '#', class: 'link' },
             { text: '<img src="../img/perfil_user.png" alt="perfil">', href: '#', class: 'link1', hasSubMenu: true }
         ];
@@ -84,3 +84,4 @@ export function user_sesion(){
     });
 
 }
+user_sesion();

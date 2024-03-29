@@ -63,29 +63,91 @@ window.datosTarjetas = [
 
 window.datosEventos = [
   {
+    id:1,
     imagen: "../img/evento1.png",
     titulo: "Festival Estéreo Picnic",
-    enlace: "../templates/detalle_user.html"
+    enlace: "../templates/detalle_event.html",
+    galeria: [
+      "https://cloudfront-us-east-1.images.arcpublishing.com/infobae/NIKXDRZ44JHG7IE565QGQW3CHQ.jpg",
+      "https://www.wradio.com.co/resizer/v2/PLIEYX3YOFENPNWVRYYSJYWKAA.jpg?auth=e65261ba137a895fe928ad30fd7f37c4f8373fac8ef89f75588a646801f6ea60&width=650&height=488&quality=70&smart=true",
+      "https://hotelregency.com.co/wp-content/uploads/2024/02/POST-1-700x700.jpg",
+      "https://caracoltv.brightspotcdn.com/dims4/default/21274f5/2147483647/strip/true/crop/960x639+0+0/resize/960x639!/quality/90/?url=http%3A%2F%2Fcaracol-brightspot.s3.amazonaws.com%2F86%2F16%2F5ef7ddf84621997182360d8da23b%2F17309594-1266329903414317-8636238782577348834-n.jpg"
+      
+    ],
+    fecha: "28 de abril 2024",
+    horario: "10 amm - 5pm",
+    pagina: "No aplica",
+    organizadores: "No aplica",
+    contacto: '3114506070'
   },
   {
+    id:2,
     imagen: "../img/evento2.png",
     titulo: "Juanpis Live Show",
-    enlace: "../templates/detalle_user.html"
+    enlace: "../templates/detalle_event.html",
+    galeria:[
+      "https://cdn.eticket.co/imagenes/artistas/240301184646211_performer_img_Estelar.jpg",
+      "https://artworks.thetvdb.com/banners/series/382886/posters/5ec93aecc27cd.jpg",
+      "https://i.ytimg.com/vi/LYd7MOo1ung/maxresdefault.jpg",
+      "https://www.elespectador.com/resizer/FSKCdVDY_Lps7CNrM_snp0fqheA=/631x420/filters:quality(60):format(jpeg)/cloudfront-us-east-1.images.arcpublishing.com/elespectador/IHG7TF2SYRAYVH3QJRPG2POFSU.jpg"
+    ],
+    fecha: "28 de abril 2024",
+    horario: "10 amm - 5pm",
+    pagina: "No aplica",
+    organizadores: "No aplica",
+    contacto: '3114506070'
+
   },
   {
+    id:3,
     imagen: "../img/evento3.png",
     titulo: "Una Idea Genial",
-    enlace: "../templates/detalle_user.html"
+    enlace: "../templates/detalle_event.html",
+    galeria:[
+      "https://cdn.eticket.co/imagenes/artistas/240117090949872_performer_img2_CAT2.jpg",
+      "https://redmas.com.co/__export/1706647081201/sites/redmas/img/2024/01/30/una_idea_genial.jpg_778525304.jpg",
+      "https://cdn.eticket.co/imagenes/imgeventos/240117090819361_poster_CARTEL.jpg",
+      "https://kioskoteatral.com/wp-content/uploads/2024/01/UNA-IDEA-GENIAL-ViveMikey.png"
+    ],
+    fecha: "28 de abril 2024",
+    horario: "10 amm - 5pm",
+    pagina: "No aplica",
+    organizadores: "No aplica",
+    contacto: '3114506070'
   },
   {
+    id:4,
     imagen: "../img/evento4.png",
     titulo: "Cantemos La telenovela",
-    enlace: "../templates/detalle_user.html"
+    enlace: "../templates/detalle_event.html",
+    galeria:[
+      "https://cdn.eticket.co/imagenes/imgeventos/240117164653651_poster_cartel.jpg",
+      "https://caracoltv.brightspotcdn.com/dims4/default/28c9bf9/2147483647/strip/false/crop/1300x1153+0+0/resize/1200x1064!/quality/90/?url=http%3A%2F%2Fcaracol-brightspot.s3.amazonaws.com%2F27%2F4b%2F038fd0d44f00b7d4a2d31538c762%2Fcantemos.jpg",
+      "https://soyteatro.com/wp-content/uploads/2024/01/cantemos.jpg",
+      "https://cloudfront-us-east-1.images.arcpublishing.com/elespectador/25X6UTACNZBZFMYFUHUE6DTTVM.png"
+    ],
+    fecha: "28 de abril 2024",
+    horario: "10 amm - 5pm",
+    pagina: "No aplica",
+    organizadores: "No aplica",
+    contacto: '3114506070'
   },
   {
+    id:5,
     imagen: "../img/evento5.png",
     titulo: "Burning Caravan",
-    enlace: "../templates/detalle_user.html"
+    enlace: "../templates/detalle_event.html",
+    galeria:[
+      "https://i1.sndcdn.com/artworks-000119314188-136snd-t500x500.jpg",
+      "https://colectivosonoro.com/wp-content/uploads/2022/05/Burning-Caravan-1.jpeg",
+      "https://www.teatromayor.org/sites/default/files/20210309/tm-_burning-caravan-lanzamiento_0.jpg",
+      "https://tuboleta.com/imagenes/64daa1155af42.webp"
+    ],
+    fecha: "28 de abril 2024",
+    horario: "10 amm - 5pm",
+    pagina: "No aplica",
+    organizadores: "No aplica",
+    contacto: '3114506070'
   },
 ];
 

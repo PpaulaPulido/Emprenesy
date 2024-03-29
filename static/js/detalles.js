@@ -65,40 +65,48 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    function generarBubles() {
-        // Obtener el contenedor de burbujas
-        const bubblesContainer = document.getElementById('bubblesContainer');
+   
+    generarDatos();
+    slider_tarjetas();
+})
 
-        // Números para los estilos
-        const numbers = [11, 12, 24, 10, 14, 23, 18, 16, 19, 20, 22, 25, 18, 21, 15, 13, 27, 17, 13, 28, 11, 12, 24, 10, 14, 23, 18, 16, 19, 20, 22, 25, 18, 21, 15, 13, 27, 17, 13, 28, 12, 24, 10, 14, 23, 18, 16, 19, 20, 22, 25, 18, 21, 15, 13, 27, 17, 13, 28];
+function slider_tarjetas() {
+    $('.carousel[data-type="multi"] .item').each(function () {
+        var next = $(this).next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
+        }
+        next.children(':first-child').clone().appendTo($(this));
 
-        // Generar los span dinámicamente
-        numbers.forEach(number => {
-            const span = document.createElement('span');
-            span.style.setProperty('--i', number);
-            bubblesContainer.appendChild(span);
-        });
-
-    }
-    function slider_tarjetas() {
-        $('.carousel[data-type="multi"] .item').each(function () {
-            var next = $(this).next();
+        for (var i = 0; i < 2; i++) {
+            next = next.next();
             if (!next.length) {
                 next = $(this).siblings(':first');
             }
+
             next.children(':first-child').clone().appendTo($(this));
+        }
+    });
+}
+function generarDatos() {
+    // Obtiene el ID del evento desde la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const restaId = parseInt(urlParams.get('id')); // Convierte el ID a un número entero
 
-            for (var i = 0; i < 2; i++) {
-                next = next.next();
-                if (!next.length) {
-                    next = $(this).siblings(':first');
-                }
+    // Busca el evento correspondiente en window.datosEventos por su ID
+    const type_resta= window.datosTarjetas.find(type_resta => type_resta.id === restaId );
 
-                next.children(':first-child').clone().appendTo($(this));
-            }
-        });
+
+    // Verifica si se encontró el evento correspondiente
+    if (type_resta) {
+       
+        document.querySelector('#horario').textContent = type_resta.horario;
+        document.querySelector('#web').textContent = type_resta.pagina;
+        document.querySelector('#contacto').textContent = type_resta.contacto;
+        document.querySelector('#comidas').textContent = type_resta.comida;
+        document.querySelector('#correo').textContent = type_resta.correo;
+    } else {
+        // Si no se encontró el evento correspondiente, muestra un mensaje de error
+        console.error('Evento no encontrado');
     }
-
-    generarBubles()
-    slider_tarjetas()
-})
+}

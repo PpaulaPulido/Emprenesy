@@ -5,55 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalle</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="icon" href="../img/Logo2.jpeg" type="image/icon type">
-    <link rel="stylesheet" href="../static/styles/generales_user.css">
+    <link rel="stylesheet" href="../static/styles/navegacion2.css">
     <link rel="stylesheet" href="../static/styles/detalles.css">
 
+    
 </head>
 
 <body>
-    <header>
+    <header id="cabecera">
         <div id="cabeza">
             <div class="logoedit">
                 <img class="logo" src="../img/logo_Emprenesy.png" alt="Emprenesy">
                 <span class="titulo">Emprenesy</span>
             </div>
-            <div id="Barra">
-                <nav class="barraedit">
-                    <ul class="nav_list">
-                        <li>
-                            <div class="container_input">
-                                <input type="text" id="input_buscar" placeholder="Buscar...">
-                                <div class="container_icon">
-                                    <img src="../img/lupa.png" alt="buscador">
-                                </div>
-                            </div>
-                        </li>
-                        <li><a class="link" href="/templates/MVQ.html">Sobre Nosotros</a></li>
-                        <li><a class="link" href="/templates/index.html">Inicio</a></li>
-                        <li><a class="link" href="#">Mis favoritos</a></li>
-                        <li><a class="link1" href="#"><img src="../img/perfil_user.png" alt="perfil"></a>
-                            <ul class="perfil_list">
-                                <li><a href="#">Ver perfil</a></li>
-                                <li><a href="#">Notificaciones</a></li>
-                                <li><a href="#">Configuración</a></li>
-                                <li><a href="#">Cerrar sesión</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
         </div>
     </header>
     <main>
-        <div class="container_efect">
-            <div class="bublles" id="bubblesContainer"></div>
-            <h2 class="info_title" id="title"></h2>
-        </div>
-        <div class="container_slider">
+        <div id="particles-js"></div>
+        <h2 class="title_res" id="title"></h2>
+        
+        <div class="container_slider slider_res">
             <div class="row">
                 <div class="col-xs-11 col-md-10 col-centered">
 
@@ -85,15 +58,17 @@
                     <div class="detalles info">
                         <h2>Detalles</h2>
                         <h3>Horario de atención</h3>
-                        <p>12 pm - 10 pm</p>
+                        <p id="horario"></p>
                         <h3>Sitio Web</h3>
-                        <p>No aplica</p>
-                        <h3>Contacto</h3>
-                        <p>3114506070</p>
+                        <p id="web"></p>
                         <h3>Comidas</h3>
-                        <p>Almuerzo,cena</p>
+                        <p id="comidas"></p>
+                        <h3>Contacto</h3>
+                        <p id="contacto"></p>
+                        <h3>Correo electrónico</h3>
+                        <p id="correo"></p>
                         <div class="contenedor_button">
-                            <button class="btn_info">Ver Características</button>
+                            <button class="btn_info">Ver características</button>
                         </div>
                     </div>
                     <div class="detalles__ubicacion info">
@@ -168,8 +143,11 @@
 
     <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js'></script>
     <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../static/js/navegacion_user.js"></script>
     <script src="../static/js/datos.js"></script>
     <script src="../static/js/detalles.js"></script>
+    <script src="../static/js/MVQ.js"></script>
 
 </body>
 

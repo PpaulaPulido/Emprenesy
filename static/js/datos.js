@@ -9,7 +9,12 @@ window.datosTarjetas = [
       "https://media-cdn.tripadvisor.com/media/photo-s/27/a2/c2/34/storia-d-amore-barranquilla.jpg",
       "https://co.restaurantestoriadamore.com/wp-content/uploads/2023/08/STORIA-DAMORE-CALLE-82.jpg",
       "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/21/21/5f/e3/piazza-italia-by-storia.jpg?w=800&h=600&s=1"
-    ]
+    ],
+    horario: "10 am - 5pm",
+    pagina: "No aplica",
+    comida: "No aplica",
+    correo: 'No aplica',
+    contacto: '3114506070'
   },
   {
     id: 2,

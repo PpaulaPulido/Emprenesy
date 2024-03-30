@@ -223,17 +223,19 @@ canvas {
 }
 /*estilos del container de información*/
 .info__detalles {
-    padding: 50px;
+    padding: 30px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
+    grid-template-columns: repeat(2,1fr);
+    gap: 3rem;
+    margin: 0 auto;
+    width: 95%;
 }
 
 .info {
     background-color: #f3f6fc;
     box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
-    width: 90%;
-    height: 970px;
+    width: 95%;
+    height: 580px;
     padding: 35px;
     border-radius: 20px;
     position: relative;
@@ -248,8 +250,8 @@ canvas {
     inset: 0;
     left: -5px;
     margin: auto;
-    width: 102%;
-    height: 990px;
+    width: 104%;
+    height: 590px;
     border-radius: 10px;
     background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100%);
     z-index: -10;
@@ -278,45 +280,79 @@ canvas {
 
 .info h2 {
     text-align: center;
-    margin-bottom: 40px;
-    font-size: 28px;
+    font-size: 22px;
+    margin-bottom: 20px;
 }
-
-.detalles {
-    margin-left: 50px;
-}
-
-.detalles h3 {
-    font-size: 20px;
+.info h3 {
+    font-size: 19px;
     margin-bottom: 15px;
     font-style: italic;
     color: #16243b;
 }
 
-.detalles p {
+.info p {
     font-size: 18px;
     margin: 20px 0;
 }
 
-.detalles__ubicacion .mapa {
-    background-color: aqua;
-    height: 650px;
-    margin-bottom: 50px;
+.container_ubicacion{
+    background-image: url(https://2182029.fs1.hubspotusercontent-na1.net/hubfs/2182029/Centro%20de%20la%20ciudad%20-%20El%20centro%20de%20Bogot%C3%A1-Bogot%C3%A1%20de%20noche.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 20px auto 40px auto;
+    width: 100%;
+    padding: 10px 40px;
+    color: #fff;
+}
+.detalles__ubicacion{
+    display: grid;
+    grid-template-columns: 800px 1fr;
+    margin-bottom: 40px;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+.ubicacion{
+    background-color: rgb(226, 239, 248);
+    color: #336baf;
+    box-shadow: 0 0 16px 3px rgba(255, 255, 255, 0.5);
+    min-height: 300px;
+    margin-top: 15px;
+    height: fit-content;
+}
+.ubicacion h3{
+    text-align: center;
+    font-size: 35;
+    margin-top: 20px;
+    margin-bottom: -10px;
+}
+.ubicacion ul{
+    padding: 40px;
+    list-style:circle;
+    font-size: 17px;
+}
+.ubicacion ul li{
+    margin: 6px 0 6px 0;
+}
+.container_ubicacion h2{
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 35px;
 }
 
-.detalles__ubicacion h3 {
-    font-size: 20px;
-    margin-bottom: 35px;
-    font-style: italic;
-    color: #16243b;
+.detalles__ubicacion .mapa {
+    background-color: aqua;
+    height: 500px;
+    margin-top: 20px;
 }
+
 .redes_sociales{
     display: flex;
     gap: 10px;
 }
 .redes_sociales a img{
     width: 40px;
-    margin: 10px 5px 15px 0;
+    margin: 10px 5px 25px 0;
 }
 .contenedor_button {
     display: flex;
@@ -328,9 +364,9 @@ canvas {
     background-color: #16243b;
     color: #fff;
     text-align: center;
-    width: 50%;
+    width: 70%;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
     border-radius: 10px;
     margin: 15px auto;
     border: none;

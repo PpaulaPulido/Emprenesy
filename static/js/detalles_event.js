@@ -3,22 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
 
-    let mensaje = '';
-    if (id === '1') {
-        mensaje = 'Festival Estéreo Picnic';
-    } else if (id === '2') {
-        mensaje = 'Juanpis Live Show';
-    } else if (id === '3'){
-        mensaje = 'Una Idea Genial';
-    }else if (id === '4'){
-        mensaje = 'Cantemos La telenovela';
-    }else if (id === '5'){
-        mensaje = 'Burning Caravan';
-    }
-
-    // Mostrar el mensaje en el h2
-    document.getElementById('title').textContent = mensaje;
-
     // Obtener el contenedor donde se agregarán las imágenes
     const carouselInner = document.querySelector('.carousel-inner');
 
@@ -81,11 +65,21 @@ function generarDatos() {
     // Verifica si se encontró el evento correspondiente
     if (evento) {
         // Si se encontró el evento, actualiza el contenido del elemento con id "fecha" con la fecha del evento
+
+        document.getElementById('title').textContent = evento.titulo;
         document.querySelector('#fecha').textContent = evento.fecha;
         document.querySelector('#horario').textContent = evento.horario;
         document.querySelector('#web').textContent = evento.pagina;
         document.querySelector('#nombres').textContent = evento.organizadores;
         document.querySelector('#contacto').textContent = evento.contacto;
+
+        enlace = document.querySelector('#red1');
+        enlace.href = evento.redes[0];
+        enlace.target = "_blank";
+
+        enlace2 = document.querySelector('#red2');
+        enlace2.href = evento.redes[1];
+        enlace.target = "_blank";
     } else {
         // Si no se encontró el evento correspondiente, muestra un mensaje de error
         console.error('Evento no encontrado');

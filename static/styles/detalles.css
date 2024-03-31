@@ -455,7 +455,15 @@ canvas {
 }
 
 /*estilos de detalles de empredimientos*/
-
+.contenedor_info{
+    margin-bottom: 70px;
+}
+.contenedor_info h2{
+    margin-bottom: 50px;
+}
+.contenedor_info h3{
+    margin: 30px 0;
+}
 .wrapper {
     position: relative;
     width: 100%;

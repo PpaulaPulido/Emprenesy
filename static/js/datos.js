@@ -18,7 +18,18 @@ window.datosTarjetas = [
      redes:[
       "https://www.instagram.com/storiadamoreco/",
       ""
-    ]
+    ],
+    ubicacion:[
+      "Carrera 13 #82 -36",
+      "Calle 93A #13A-21",
+      "Cl. 122 #15a-24"
+    ],
+    menu:[
+      "https://menupp.co/storiadamore/venue/dSk9VolxfbK4csFMgkh8?type=normal",
+      "https://app.menupp.co/restaurant/piazzaitaliacalle93",
+      "https://app.menupp.co/restaurant/piazzaitaliacalle122"
+    ],
+    nosotros:"Queremos invitarte a que ames el estilo de vida italiano desde nuestra perspectiva. En cada uno de nuestros restaurantes cuidamos cada detalle para que cada que nos visites puedas contagiarte de nuestra energía positiva."
   },
   {
     id: 2,
@@ -39,7 +50,14 @@ window.datosTarjetas = [
      redes:[
       "https://www.instagram.com/ushinjapanesegrill/?hl=es",
       ""
-    ]
+    ],
+    ubicacion:[
+      "Calle 24 A # 57-60"
+    ],
+    menu:[
+      "https://www.hyatt.com/content/dam/hotel/propertysites/assets/grand/boggh/documents/en_US/dining/ushin-japanese-and-grill/Men%C3%BA_Ushin_ABR_21.pdf"
+    ],
+    nosotros:"Ushin Japanese & Grill es conocido por su excelente menú que combina la cocina japonesa y las carnes a la parrilla. Disfruta de la mejor vista de la ciudad."
   },
   {
     id: 3,
@@ -60,7 +78,14 @@ window.datosTarjetas = [
     redes:[
       "https://www.instagram.com/osakanikkei/?hl=es",
       ""
-    ]
+    ],
+    ubicacion:[
+      "CARRERA 13 #85-25"
+    ],
+    menu:[
+      "https://static.osakanikkei.com/uploads/store/Carta_Osaka_Bogota%CC%81_Web_espan%CC%83ol.pdf"
+    ],
+    nosotros:"Es un ambiente vibrante capaz de contagiar a todos nuestros clientes una energía especial, la que nos ha permitido cruzar fronteras y posicionarnos como una marca exitosa no solo en el Perú sino en el mundo entero."
   },
   {
     id: 4,
@@ -81,7 +106,14 @@ window.datosTarjetas = [
     redes:[
       "https://www.instagram.com/p/BraZjYXhZze/?hl=es",
       ""
-    ]
+    ],
+    ubicacion:[
+      "Cl. 24a #57-60"
+    ],
+    menu:[
+      "https://www.hyatt.com/content/dam/hotel/propertysites/assets/grand/boggh/documents/en_US/dining/capitalino/Capitalino_menu_DICIEMBRE_22_2021.pdf"
+    ],
+    nosotros:"¿Desea algo más casual que la cena y el vino en Ushin? Visite el exclusivo Capitalino Restaurant de Grand Hyatt Bogotá, donde los sabores internacionales se mezclan con lo familiar. Deléitese con platos de exquisitas carnes y verduras perfectamente preparadas. Si aún no ha probado muchas especialidades colombianas, los platos de nuestro menú le ofrecerán un delicioso curso intensivo sobre la tradición culinaria local. Pase por el desayuno, el almuerzo o la cena y pida una mesa en la terraza al aire libre para sentir la refrescante brisa de la montaña."
   },
   {
     id: 5,
@@ -102,7 +134,14 @@ window.datosTarjetas = [
     redes:[
       "https://www.instagram.com/pajaressalinas/",
       ""
-    ]
+    ],
+    ubicacion:[
+      "Cra 10 # 96-08"
+    ],
+    menu:[
+      "https://linktr.ee/pajaressalinas"
+    ],
+    nosotros:"Nuestra carta ofrece lo mejor de la cocina española tradicional, una cocina franca que conserva el mismo sabor de siempre, teniendo como objetivo ser fieles al legado y la tradición; una enseñanza que cumple 63 años, que guarda secretos de Estado, recetas de cocina y un fogón como testigo de un lugar emblemático de la cocina en Colombia."
   },
 ];
 
@@ -127,12 +166,20 @@ window.datosEventos = [
     redes:[
       "https://www.instagram.com/festereopicnic/?hl=es",
       ""
-    ]
+    ],
+    ubicacion:[
+      "Parque Simón Bolívar"
+    ],
+    descripcion: "¡El presente nos invade! Vuelven los cuatro mejores días del año recargados con los mejores artistas nacionales e internacionales. Más de 50 horas de música en vivo, celebraciones de la libertad y formas para vivir el presente en la decimotercera edición del Festival Estéreo Picnic. Vuelve la oportunidad de reencontrarnos con nosotros mismos, de ver la vida con otros ojos, de gritar nuestras canciones favoritas. Vuelve la oportunidad de vivir el presente el próximo 21, 22, 23 y 24 de marzo.",
+    informacion_adicional:[
+      "Blicnk 182","Feid","Sza","Kings of Leon","Sam Smith","Arcade Fire","Placebo","Hozier"
+    ],
+    boletas: "https://www.festivalestereopicnic.com/#/entradas"
   },
   {
     id:2,
     imagen: "../img/evento2.png",
-    titulo: "Juanpis Live Show",
+    titulo: "Juanpis Live Show: Los noto asustados temporada 2",
     enlace: "../templates/detalle_event.html",
     galeria:[
       "https://cdn.eticket.co/imagenes/artistas/240301184646211_performer_img_Estelar.jpg",
@@ -148,7 +195,15 @@ window.datosEventos = [
     redes:[
       "https://www.instagram.com/eticketcol/",
       ""
-    ]
+    ],
+    ubicacion:[
+      "Autopista Norte # 183 Centro comercial Santa Fe"
+    ],
+    descripcion: "Después de hacer algo impensable, Juanpis González, el gomelo más petardo del país, decidió independizarse de su familia y apostarle a su propia empresa. Ahora está listo para emprender un nuevo capítulo en su vida, más grande y poderoso que nunca: el Teatro Juan Pablo González Pombo, en el centro comercial Santafé. Y lo mejor: inaugurará esta etapa de su carrera con una nueva temporada de su show más famoso: The Juanpis Live Show: los noto asustados.",
+    informacion_adicional:[
+      "Juan Pablo Gonzales Pombo"
+    ],
+    boletas: "https://www.eticket.co/paso1c.aspx?idevento=14582"
 
   },
   {
@@ -170,7 +225,15 @@ window.datosEventos = [
      redes:[
       "https://www.instagram.com/eticketcol/",
       ""
-    ]
+    ],
+    ubicacion:[
+      " Carrera 9 # 74 – 63"
+    ],
+    descripcion: "Temporada de Éxitos trae a escena la genial comedia francesa escrita por Sébastien Castro “Una idea Genial”. Todos tenemos un doble en el mundo. ¿Y si te encontraras con el tuyo? Desde que visitaron un apartamento para mudarse juntos, Armando tiene una pequeña duda: ¿María se ha enamorado del agente inmobiliario? Por pura casualidad, se encuentra con el doble de ese agente y le pide que se haga pasar por el verdadero. ¡Una idea genial! A menos que el falso agente se encuentre cara a cara con el verdadero... Y que aparezca un hermano gemelo de improviso.",
+    informacion_adicional:[
+      "Sébastian Castro","Johan Velandia","Santiago Alarcón","Marcela Benjumea","Ana María Cuellar"," Rafael Zea"
+    ],
+    boletas: ""
   },
   {
     id:4,
@@ -191,7 +254,15 @@ window.datosEventos = [
      redes:[
       "https://www.instagram.com/eticketcol/",
       ""
-    ]
+    ],
+    ubicacion:[
+      "Calle 67 # 11 - 58"
+    ],
+    descripcion: "Cantemos la telenovela es el homenaje a los 70 años de la televisión colombiana, a esas grandes historias que nos han hecho sufrir, reír, amar y llorar a través del tiempo. Ahora, el escenario se transforma y el teatro le abre las puertas a esas canciones que aprendimos en la pantalla de un televisor; Ana de Nadie, Pasión de Gavilanes, yo soy Betty la fea, Pedro el escamoso, Café con Aroma de mujer o La Reina del Flow, entre otras.",
+    informacion_adicional:[
+      "Jimmy Vásquez","Jhon Álex Toro","Paula Estrada"
+    ],
+    boletas: "https://www.eticket.co/paso1c.aspx?idevento=14338"
   },
   {
     id:5,
@@ -212,7 +283,15 @@ window.datosEventos = [
     redes:[
       "https://www.instagram.com/eticketcol/",
       ""
-    ]
+    ],
+    ubicacion:[
+      "Calle 60 #17-25"
+    ],
+    descripcion: "Un concierto divertido, educativo y lleno de energía para que cantemos, saltemos y bailemos en familia mientras experimentamos una inmersión total en el Universo musical y fantástico de la Burning Caravan. Podremos interactuar con la banda, aprenderemos de música, de sonidos, e incluso podremos ser sus directores de orquesta! Todo esto de la mano de los personajes de la banda, quienes guiarán de manera muy personal esta maravillosa celebración para familias tripulantes! Así que a bordo todo el mundo!",
+    informacion_adicional:[
+      "Francisco Martí","Diana Osorio","Oliver Lestriez","Pablo Muñoz"
+    ],
+    boletas: "https://www.eticket.co/paso1a.aspx?idevento=14504"
   },
 ];
 
@@ -236,7 +315,12 @@ window.datosEmpredimientos= [
     redes:[
       "https://www.instagram.com/ANANASSA_/",
       ""
-    ]
+    ],
+    ubicacion:[
+      "Bogotá-Domicilio"
+    ],
+    productos:"https://ananassa.co/tienda-de-fresas-con-chocolate/",
+    descripcion: "Déjate tentar por la combinación irresistible de frescas fresas bañadas en exquisito chocolate! Nuestras fresas con chocolate son el regalo perfecto para cualquier ocasión especial o simplemente para darte un capricho dulce. Cada mordisco es una explosión de sabor que deleitará tus sentidos y te dejará con ganas de más. Ya sea para sorprender a un ser querido o simplemente para satisfacer tu antojo, nuestras fresas con chocolate son una indulgencia que no puedes resistir",
   },
   {
     id: 2,
@@ -257,7 +341,12 @@ window.datosEmpredimientos= [
     redes:[
       "https://www.instagram.com/lacasadelaruana/?igshid=YmMyMTA2M2Y%3D",
       ""
-    ]
+    ],
+    ubicacion:[
+      "Bogotá-Domicilio"
+    ],
+    productos:"https://lacasadelaruana.com/tienda/",
+    descripcion: "Descubre el encanto y la elegancia atemporal de nuestras ruanas, la prenda perfecta para abrazar el estilo y la comodidad en cualquier ocasión. Confeccionadas con tejidos de alta calidad y diseñadas para brindar calidez sin sacrificar el estilo, nuestras ruanas son el complemento ideal para cualquier outfit. Ya sea que busques añadir un toque de sofisticación a tu atuendo de oficina o simplemente acurrucarte en casa con estilo, nuestras ruanas te envolverán en confort y te harán destacar con su diseño único. ",
     
   },
   {
@@ -273,13 +362,18 @@ window.datosEmpredimientos= [
     ],
     negocio: "Gastronomía",
     horario: "Lunes-Sábado 8am-8pm y Domingo 8am-7pm",
-    pagina: "https://www.srbunuelo.com/ubicaciones",
+    pagina: "https://www.srbunuelo.com/",
     correo: "no aplica",
     contacto: "3172850743",
     redes:[
       "https://www.instagram.com/srbunuelo/",
       "https://www.tiktok.com/@sr.bunuelo"
-    ]
+    ],
+    ubicacion:[
+      "Carrera 71d # 6-94 Sur","Carrera 78G # 37-04 sur","Carrera 100 # 19-02","Portal Dorado","Av. Carrera 86 # 55A - 75","Domicilio"
+    ],
+    productos:"https://www.srbunuelo.com/menu",
+    descripcion: "Sumérgete en el sabor auténtico de nuestra deliciosa tradición culinaria con nuestros irresistibles buñuelos. Crujientes por fuera y suaves por dentro, cada bocado es una explosión de sabor que te transportará a los recuerdos de hogar y felicidad. Nuestros buñuelos, elaborados con ingredientes frescos y cuidadosamente seleccionados, son el acompañamiento perfecto para cualquier ocasión.",
   },
   {
     id: 4,
@@ -300,7 +394,12 @@ window.datosEmpredimientos= [
     redes:[
       "https://www.instagram.com/la_taqueria_uio/",
       ""
-    ]
+    ],
+    ubicacion:[
+      "CALLE 93 # 11A-11","CRA 15 #124- 30 LOCAL 7","CALLE 116 # 15-44","AV CRA 30 #19",,"AVE. CALLE 82 # 12A-25/27","AV CRA 72 #80-94","Domicilio"
+    ],
+    productos:"http://www.lataqueria.com.co/carta-unicentro",
+    descripcion: "Prepárate para un festín de sabores con nuestros auténticos tacos! Desde la primera mordida, te transportarás a las calles de México con nuestra variedad de tacos frescos y deliciosos. Cada taco está cuidadosamente preparado con ingredientes de la más alta calidad, desde tiernos trozos de carne sazonada hasta salsas caseras y tortillas recién hechas a mano.",
   },
   {
     id: 5,
@@ -321,6 +420,11 @@ window.datosEmpredimientos= [
     redes:[
       "https://www.instagram.com/dorilocos_bogota/?hl=es",
       "https://www.tiktok.com/@dorilocos_bogota?_t=8iv7ZEI5pNm&_r=1"
-    ]
+    ],
+    ubicacion:[
+      "Cl. 8 #7941, Bogotá","Cra. 103b #151c-11, Bogotá","Cra. 6a, Bogotá"
+    ],
+    productos:"https://linkbio.co/DORILOCOSF",
+    descripcion: "Prepárate para una explosión de sabor con nuestros deliciosos dorilocos! Cada bocado es una experiencia única que combina la crujiente textura de los Doritos con una variedad de sabores y texturas deliciosas. Nuestros dorilocos están repletos de carne sazonada o pollo desmenuzado, fresco aguacate cremoso, un toque de jugo de limón fresco, generosas porciones de queso derretido y, por supuesto, la crujiente base de Doritos.",
   },
 ];

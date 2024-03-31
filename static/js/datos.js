@@ -283,7 +283,7 @@ window.datosEmpredimientos= [
   },
   {
     id: 4,
-    imagen: "https://lh3.googleusercontent.com/proxy/O603kyybrZADCauI78CgRL9SB2S_wTXM7Ruw9-rGyc7tH-TEsheBDgG3nCzF6AF-eqTSK279Lxh6FSaGCNpLFmZJapqD-_AW2rKygNvP3Lc",
+    imagen: "https://lh3.googleusercontent.com/proxy/VEwmvIEdT-X_nnJt4NJda1S9ih6ZIbIiMBv9KkL98OstVaWyBlkwu0G8e2r5aqmsZZfwu_9ilXbp85ipsRo674eN4lMwaGlP7Gdoiwtmyso",
     titulo: "La taqueria",
     enlace: "../templates/detalle_empren.html",
     galeria:[

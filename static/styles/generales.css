@@ -52,16 +52,15 @@
 }
 
 .link1 {
-
-  margin: 0 20px;
   text-decoration: none;
   color: #fff;
-  font-family: "Poppins", sans-serif;
-  border: solid #b4dbdc;
   overflow: hidden;
   font-size: 18px;
   font-weight: 700;
   padding: 7px;
+  padding: 13px;
+  border-radius: 20px;
+ 
 }
 
 .link:hover {

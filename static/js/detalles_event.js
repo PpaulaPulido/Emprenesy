@@ -80,6 +80,13 @@ function generarDatos() {
         enlace2 = document.querySelector('#red2');
         enlace2.href = evento.redes[1];
         enlace.target = "_blank";
+
+        const location_lista = document.getElementById("location");
+        evento.ubicacion.forEach(ubicacion => {
+            const nuevaLi = document.createElement("li");
+            nuevaLi.textContent = ubicacion;
+            location_lista.appendChild(nuevaLi);
+        });
     } else {
         // Si no se encontró el evento correspondiente, muestra un mensaje de error
         console.error('Evento no encontrado');

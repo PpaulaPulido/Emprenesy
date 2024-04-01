@@ -33,7 +33,7 @@ window.datosTarjetas = [
   },
   {
     id: 2,
-    imagen: "../img/restaurante2.png",
+    imagen: "https://media-cdn.tripadvisor.com/media/photo-m/1280/15/39/0a/b9/terraza-ushin.jpg",
     titulo: "Ushin Japanese and Grill",
     enlace: "../templates/detalle_res.html",
     galeria:[

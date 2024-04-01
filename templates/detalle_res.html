@@ -63,13 +63,13 @@
                     <h3>Correo electrónico</h3>
                     <p id="correo"></p>
                     <div class="contenedor_button">
-                        <button class="btn_info">Ver características</button>
+                        <button class="btn_info" onclick="popup_menu()">Conoce nuestro Menú</button>
                     </div>
                 </div>
                 <div class="info">
                     <h2>Información</h2>
                     <h3>Sitio Web</h3>
-                    <p id="web"></p>
+                    <a id="web">Clic aquí  para visitar el sitio web.</a>
                     <h3>Contacto</h3>
                     <p id="contacto"></p>
                     <h3>Redes Sociales</h3>
@@ -82,7 +82,7 @@
                         </a>
                     </div>
                     <div class="contenedor_button">
-                        <button class="btn_info">Acerca de Nosotros</button>
+                        <button class="btn_info" onclick="popup_nosotros()">Acerca de Nosotros</button>
                     </div>
                 </div>
             </div>
@@ -92,10 +92,7 @@
                     <div class="mapa ubicacion"></div>
                     <div class="ubicacion">
                         <h3>Encuentranos en: </h3>
-                        <ul id="location">
-                            <li>lugar 1</li>
-                            <li>lugar 2</li>
-                        </ul>
+                        <ul id="location"></ul>
                         <div class="contenedor_button">
                             <button class="btn_info">Ver Mapa</button>
                         </div>
@@ -160,6 +157,7 @@
 
 
     <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="../static/js/navegacion_user.js"></script>

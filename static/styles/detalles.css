@@ -414,9 +414,12 @@ canvas {
         background-position: 100% 100%;
     }
 }
-
+.contenedor_title{
+    width: 70%;
+    margin: 0 auto;
+}
 .info_title {
-    font-size: 65px;
+    font-size: 60px;
     text-align: center;
     color: #fff;
     letter-spacing: 2px;
@@ -737,4 +740,26 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm{
     border: none !important;
     font-size: 18px !important;
 }
-
+.div-swal .popup_list{
+    font-size: 17px;
+    margin-left: 50px;
+}
+.div-swal .popup_list .item_list{
+    list-style:square;
+}
+.div-swal .btn_boletas a{
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+}
+.div-swal .btn_boletas{
+    border: none;
+    background-color: #00886a;
+    padding: 10px;
+    border-radius: 10px;
+    width: 40%;
+    margin: 0 auto 30px auto;
+}
+.div-swal .btn_boletas:hover{
+    background-color: #20e2b8;
+}

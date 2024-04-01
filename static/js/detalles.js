@@ -92,16 +92,27 @@ function generarDatos() {
 
         sitio_web = document.querySelector('#web');
         sitio_web.href = type_resta.pagina;
-        sitio_web.target = 'blank'
+        sitio_web.target = '_blank';
 
 
         enlace = document.querySelector('#red1');
-        enlace.href = type_resta.redes[0];
-        enlace.target = "_blank";
+        
+        if (type_resta.redes[0] !== "") {
+            enlace.href = type_resta.redes[0];
+            enlace.target = "_blank";
+        } else {
+            enlace.style.display = 'none';
+        }
+
 
         enlace2 = document.querySelector('#red2');
-        enlace2.href = type_resta.redes[1];
-        enlace.target = "_blank";
+        
+        if (type_resta.redes[1] !== "") {
+            enlace2.href = type_resta.redes[1];
+            enlace2.target = "_blank";
+        } else {
+            enlace2.style.display = 'none';
+        }
 
         const location_lista = document.getElementById("location");
         type_resta.ubicacion.forEach(ubicacion => {
@@ -111,7 +122,7 @@ function generarDatos() {
 
         });
 
-    
+
     } else {
         // Si no se encontró el evento correspondiente, muestra un mensaje de error
         console.error('Evento no encontrado');
@@ -127,20 +138,19 @@ function popup_menu() {
     const type_resta = window.datosTarjetas.find(type_resta => type_resta.id === restaId);
 
     let menuHtml = '<h3>Nuestro Menú</h3>';
-    let i =1;
-    if(type_resta.menu.length >= 2){
+    let i = 1;
+    if (type_resta.menu.length >= 2) {
         type_resta.menu.forEach(menuItem => {
             menuHtml += `<h4>Conoce el menú ${i}</h4>`
             menuHtml += `<p class="screen"> 🍽️<a href="${menuItem}" target="_blank">Ver Menú</a></p>`;
             i++;
         });
-    }else{
+    } else {
         type_resta.menu.forEach(menuItem => {
             menuHtml += `<p class="screen"> 🍽️<a href="${menuItem}" target="_blank">Ver Menú</a></p>`;
-            i++;
         });
     }
-    
+
 
     Swal.fire({
         title: `<span class="custom-title">${type_resta.titulo}</span>`,
@@ -160,7 +170,7 @@ function popup_menu() {
     });
 }
 
-function popup_nosotros(){
+function popup_nosotros() {
 
     const urlParams = new URLSearchParams(window.location.search);
     const restaId = parseInt(urlParams.get('id'));
@@ -181,5 +191,5 @@ function popup_nosotros(){
             icon: 'icon-swal',
             container: 'custom-container'
         }
-      });
+    });
 }

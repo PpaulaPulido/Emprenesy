@@ -69,17 +69,30 @@ function generarDatos() {
         document.getElementById('title').textContent = evento.titulo;
         document.querySelector('#fecha').textContent = evento.fecha;
         document.querySelector('#horario').textContent = evento.horario;
-        document.querySelector('#web').textContent = evento.pagina;
         document.querySelector('#nombres').textContent = evento.organizadores;
         document.querySelector('#contacto').textContent = evento.contacto;
+        
+        sitio_web = document.querySelector('#web');
+        sitio_web.href = evento.pagina;
+        sitio_web.target = '_blank';
 
         enlace = document.querySelector('#red1');
-        enlace.href = evento.redes[0];
-        enlace.target = "_blank";
+        
+        if (evento.redes[0] !== "") {
+            enlace.href = evento.redes[0];
+            enlace.target = "_blank";
+        } else {
+            enlace.style.display = 'none';
+        }
 
         enlace2 = document.querySelector('#red2');
-        enlace2.href = evento.redes[1];
-        enlace.target = "_blank";
+        
+        if (evento.redes[1] !== "") {
+            enlace2.href = evento.redes[1];
+            enlace2.target = "_blank";
+        } else {
+            enlace2.style.display = 'none';
+        }
 
         const location_lista = document.getElementById("location");
         evento.ubicacion.forEach(ubicacion => {
@@ -122,6 +135,68 @@ function slider_tarjetas() {
             }
 
             next.children(':first-child').clone().appendTo($(this));
+        }
+    });
+}
+function popup_descripcion() {
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventId = parseInt(urlParams.get('id')); 
+    const evento = window.datosEventos.find(evento => evento.id === eventId);
+
+    Swal.fire({
+        title: `<span class="custom-title">${evento.titulo}</span>`,
+        html: `
+              <div class = "div-swal">
+              <img src="${evento.imagen}" alt="imagen restaurante" class=imagenRestaurante/>
+              <p class="text_swal">${evento.descripcion}</p>
+              </div>
+            `,
+        customClass: {
+            confirmButton: 'btn-red',
+            popup: 'border-blue',// Clase CSS para el borde del SweetAlert
+            titlle: 'title-swal',
+            icon: 'icon-swal',
+            container: 'custom-container'
+        }
+    });
+}
+
+function popup_information() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventId = parseInt(urlParams.get('id')); 
+    const evento = window.datosEventos.find(evento => evento.id === eventId);
+
+    let eventoHTML= '<h3>Artistas en Escena</h3>';
+    eventoHTML += '<ul class="popup_list">'; 
+
+    evento.informacion_adicional.forEach(information => {
+        eventoHTML+= `<li class = "item_list">${information}</li>`; // Llenar los elementos LI dentro del bucle
+    });
+
+    eventoHTML+= '</ul>'; // Cerrar la lista UL
+    eventoHTML += '<h3 class="popup_title">Consulta tus entradas</h3>'
+
+    if(evento.boletas.length >=1){
+        eventoHTML += `<button class = "btn_boletas" ><a href="${evento.boletas}" target = "_blank">Clic Aquí</a></button>`
+    }else{
+        eventoHTML += `<button class = "btn_boletasAG" ><a href="#">Agotados</a></button>`
+    }
+    
+
+    Swal.fire({
+        title: `<span class="custom-title">${evento.titulo}</span>`,
+        html: `
+            <div class="div-swal">${eventoHTML}</div>
+        `,
+        icon: 'info',
+        confirmButtonText: 'Cerrar',
+        customClass: {
+            confirmButton: 'btn-red',
+            popup: 'border-blue',
+            title: 'title-swal',
+            icon: 'icon-swal',
+            container: 'custom-container'
         }
     });
 }

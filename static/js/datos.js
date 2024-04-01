@@ -320,7 +320,7 @@ window.datosEmpredimientos= [
       "Bogotá-Domicilio"
     ],
     productos:"https://ananassa.co/tienda-de-fresas-con-chocolate/",
-    descripcion: "Déjate tentar por la combinación irresistible de frescas fresas bañadas en exquisito chocolate! Nuestras fresas con chocolate son el regalo perfecto para cualquier ocasión especial o simplemente para darte un capricho dulce. Cada mordisco es una explosión de sabor que deleitará tus sentidos y te dejará con ganas de más. Ya sea para sorprender a un ser querido o simplemente para satisfacer tu antojo, nuestras fresas con chocolate son una indulgencia que no puedes resistir",
+    descripcion: "Déjate tentar por la combinación irresistible de frescas fresas bañadas en exquisito chocolate! Nuestras fresas con chocolate son el regalo perfecto para cualquier ocasión especial o simplemente para darte un capricho dulce",
   },
   {
     id: 2,
@@ -346,7 +346,7 @@ window.datosEmpredimientos= [
       "Bogotá-Domicilio"
     ],
     productos:"https://lacasadelaruana.com/tienda/",
-    descripcion: "Descubre el encanto y la elegancia atemporal de nuestras ruanas, la prenda perfecta para abrazar el estilo y la comodidad en cualquier ocasión. Confeccionadas con tejidos de alta calidad y diseñadas para brindar calidez sin sacrificar el estilo, nuestras ruanas son el complemento ideal para cualquier outfit. Ya sea que busques añadir un toque de sofisticación a tu atuendo de oficina o simplemente acurrucarte en casa con estilo, nuestras ruanas te envolverán en confort y te harán destacar con su diseño único. ",
+    descripcion: "Descubre el encanto y la elegancia atemporal de nuestras ruanas, la prenda perfecta para abrazar el estilo y la comodidad en cualquier ocasión. Confeccionadas con tejidos de alta calidad y diseñadas para brindar calidez sin sacrificar el estilo, nuestras ruanas son el complemento ideal para cualquier outfit.",
     
   },
   {
@@ -373,11 +373,11 @@ window.datosEmpredimientos= [
       "Carrera 71d # 6-94 Sur","Carrera 78G # 37-04 sur","Carrera 100 # 19-02","Portal Dorado","Av. Carrera 86 # 55A - 75","Domicilio"
     ],
     productos:"https://www.srbunuelo.com/menu",
-    descripcion: "Sumérgete en el sabor auténtico de nuestra deliciosa tradición culinaria con nuestros irresistibles buñuelos. Crujientes por fuera y suaves por dentro, cada bocado es una explosión de sabor que te transportará a los recuerdos de hogar y felicidad. Nuestros buñuelos, elaborados con ingredientes frescos y cuidadosamente seleccionados, son el acompañamiento perfecto para cualquier ocasión.",
+    descripcion: "Sumérgete en el sabor auténtico de nuestra deliciosa tradición culinaria con nuestros irresistibles buñuelos. Crujientes por fuera y suaves por dentro, cada bocado es una explosión de sabor que te transportará a los recuerdos de hogar y felicidad",
   },
   {
     id: 4,
-    imagen: "https://lh3.googleusercontent.com/proxy/VEwmvIEdT-X_nnJt4NJda1S9ih6ZIbIiMBv9KkL98OstVaWyBlkwu0G8e2r5aqmsZZfwu_9ilXbp85ipsRo674eN4lMwaGlP7Gdoiwtmyso",
+    imagen: "../img/taqueria.jpg",
     titulo: "La taqueria",
     enlace: "../templates/detalle_empren.html",
     galeria:[
@@ -399,7 +399,7 @@ window.datosEmpredimientos= [
       "CALLE 93 # 11A-11","CRA 15 #124- 30 LOCAL 7","CALLE 116 # 15-44","AV CRA 30 #19",,"AVE. CALLE 82 # 12A-25/27","AV CRA 72 #80-94","Domicilio"
     ],
     productos:"http://www.lataqueria.com.co/carta-unicentro",
-    descripcion: "Prepárate para un festín de sabores con nuestros auténticos tacos! Desde la primera mordida, te transportarás a las calles de México con nuestra variedad de tacos frescos y deliciosos. Cada taco está cuidadosamente preparado con ingredientes de la más alta calidad, desde tiernos trozos de carne sazonada hasta salsas caseras y tortillas recién hechas a mano.",
+    descripcion: "Prepárate para un festín de sabores con nuestros auténticos tacos! Desde la primera mordida, te transportarás a las calles de México con nuestra variedad de tacos frescos y deliciosos",
   },
   {
     id: 5,
@@ -425,6 +425,6 @@ window.datosEmpredimientos= [
       "Cl. 8 #7941, Bogotá","Cra. 103b #151c-11, Bogotá","Cra. 6a, Bogotá"
     ],
     productos:"https://linkbio.co/DORILOCOSF",
-    descripcion: "Prepárate para una explosión de sabor con nuestros deliciosos dorilocos! Cada bocado es una experiencia única que combina la crujiente textura de los Doritos con una variedad de sabores y texturas deliciosas. Nuestros dorilocos están repletos de carne sazonada o pollo desmenuzado, fresco aguacate cremoso, un toque de jugo de limón fresco, generosas porciones de queso derretido y, por supuesto, la crujiente base de Doritos.",
+    descripcion: "Prepárate para una explosión de sabor con nuestros deliciosos dorilocos! Cada bocado es una experiencia única que combina la crujiente textura de los Doritos con una variedad de sabores y texturas deliciosas.",
   },
 ];

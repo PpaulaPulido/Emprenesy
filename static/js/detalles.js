@@ -180,7 +180,7 @@ function popup_nosotros() {
         title: `<span class="custom-title">${type_resta.titulo}</span>`,
         html: `
               <div class = "div-swal">
-              <img src="${type_resta.imagen}" alt="imagen restaurante" class=imagenRestaurante/>
+              <img src="${type_resta.imagen}" alt="imagen restaurante" class= "imagenRestaurante"/>
               <p class="text_swal">${type_resta.nosotros}</p>
               </div>
             `,

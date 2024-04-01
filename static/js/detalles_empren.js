@@ -86,10 +86,14 @@ function generarDatos() {
         document.getElementById('title').textContent = negocio.titulo;
         document.querySelector('#negocio').textContent = negocio.negocio;
         document.querySelector('#horario').textContent = negocio.horario;
-        document.querySelector('#web').textContent = negocio.pagina;
         document.querySelector('#contacto').textContent = negocio.contacto;
         document.querySelector('#correo').textContent = negocio.correo;
 
+    
+        sitio_web = document.querySelector('#web');
+        sitio_web.href = negocio.pagina;
+        sitio_web.target = '_blank';
+        
         enlace = document.querySelector('#red1');
 
         if (negocio.redes[0] !== "") {
@@ -120,4 +124,28 @@ function generarDatos() {
         console.error('Evento no encontrado');
     }
 
+}
+function popup_emprendimientos() {
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const restaId = parseInt(urlParams.get('id')); 
+    const negocio = window.datosEmpredimientos.find(negocio => negocio.id === restaId);
+
+    Swal.fire({
+        title: `<span class="custom-title">${negocio.titulo}</span>`,
+        html: `
+              <div class = "div-swal">
+              <img src="${negocio.imagen}" alt="imagen restaurante" class= "imagenEmprendimiento"/>
+              <p class="text_swal">${negocio.descripcion}</p>
+              <button class="btn_productos" ><a href="${negocio.productos}" target = "_blank">Ver Productos</a></button>
+              </div>
+            `,
+        customClass: {
+            confirmButton: 'btn-red',
+            popup: 'border-blue',// Clase CSS para el borde del SweetAlert
+            titlle: 'title-swal',
+            icon: 'icon-swal',
+            container: 'custom-container'
+        }
+    });
 }

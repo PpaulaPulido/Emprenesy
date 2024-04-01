@@ -148,7 +148,7 @@ function popup_descripcion() {
         title: `<span class="custom-title">${evento.titulo}</span>`,
         html: `
               <div class = "div-swal">
-              <img src="${evento.imagen}" alt="imagen restaurante" class=imagenRestaurante/>
+              <img src="${evento.imagen}" alt="imagen restaurante" class="imagenRestaurante"/>
               <p class="text_swal">${evento.descripcion}</p>
               </div>
             `,
@@ -180,7 +180,7 @@ function popup_information() {
     if(evento.boletas.length >=1){
         eventoHTML += `<button class = "btn_boletas" ><a href="${evento.boletas}" target = "_blank">Clic Aquí</a></button>`
     }else{
-        eventoHTML += `<button class = "btn_boletasAG" ><a href="#">Agotados</a></button>`
+        eventoHTML += `<button class = " btn_boletas btn_boletasAG" ><a href="#">Agotados</a></button>`
     }
     
 

@@ -428,3 +428,11 @@ window.datosEmpredimientos= [
     descripcion: "Prepárate para una explosión de sabor con nuestros deliciosos dorilocos! Cada bocado es una experiencia única que combina la crujiente textura de los Doritos con una variedad de sabores y texturas deliciosas.",
   },
 ];
+window.datosEmpredimientos2 = [
+  {
+    id:1,
+    imagen: "",
+    nombre: "",
+  }
+
+];

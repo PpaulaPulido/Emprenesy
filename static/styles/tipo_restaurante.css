@@ -50,7 +50,7 @@
 #input_buscar {
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #cccccc;
     border-radius: 5px;
     width: 470px;
     height: 40px;
@@ -75,53 +75,148 @@
 .tipos_restaurantes{
     display: flex;
     margin: 100px 200px;
-    background-color: gainsboro;
+    background-color: rgb(20, 140, 196);
 }
-
+.container_tarjeta{
+    background-color: red;
+    display: flex;
+    border-radius: 20px;
+}
+.container_tarjet{
+    background-color: rgb(0, 162, 255);
+    display: flex;
+    border-radius: 20px;
+}
+.container_tarje{
+    background-color: rgb(255, 0, 191);
+    display: flex;
+    border-radius: 20px;
+}
+.container_tarj{
+    background-color: red;
+    display: flex;
+    border-radius: 20px;
+}
+.container_tar{
+    background-color: red;
+    display: flex;
+    border-radius: 20px;
+}
 .tipo_imagen{
     margin-bottom: 10px;
+    
 }
 .tipo_imagen img{
     width: 700px;
     margin: 30px 30px;
+    box-shadow: 0 0 10px rgb(0, 26, 255); /* Sombra */
 }
 .tipo_image img{
     width: 700px;
     margin-bottom: 100px;
     margin: 30px 30px;
+    box-shadow: 0 0 10px rgb(0, 26, 255); /* Sombra */
 }
 .tipo_imag img{
     width: 700px;
     margin-bottom: 100px;
     margin: 30px 30px;
+    box-shadow: 0 0 10px rgb(0, 26, 255); /* Sombra */
 }
 .tipo_imagi img{
     width: 700px;
     margin-bottom: 100px;
     margin: 30px 30px;
+    box-shadow: 0 0 10px rgb(0, 26, 255); /* Sombra */
 }
+.container_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.btn {
+    width: 140px;
+    height: 50px;
+    background: linear-gradient(to top, #00154c, #12376e, #23487f);
+    color: #fff;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
 
-.btn_restaurante{
-    background-color: beige;
-    margin: 20px 300px;
-}
+    
+  }
+  
+  .btn span {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: top 0.5s;
+  }
+  
+  .btn-text-one {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  
+  .btn-text-two {
+    position: absolute;
+    width: 100%;
+    top: 150%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  
+  .btn:hover .btn-text-one {
+    top: -100%;
+  }
+  
+  .btn:hover .btn-text-two {
+    top: 50%;
+  }
+  
 .contenido_texto p{
     margin-top: 10%;
     font-family: 'Times New Roman', Times, serif;
-}
+    width: 700px; /* Ancho del contenedor */
+    padding: 5px; /* Espacio de relleno dentro del contenedor */
+    border: 1px solid #ccc; /* Borde del contenedor */
+    border-radius: -20px; /* Radio de borde para esquinas redondeadas */
+    background-color: #f9f9f9; /* Color de fondo del contenedor */
+    text-align: center;
+    
+  }
+
+  
+  /* Estilos para el texto dentro del contenedor */
+  .contenedor p {
+    color: #333; /* Color del texto */
+  }
+
 .contenido_textp{
-    margin-top: 20%;
+    margin-top: 30%;
     font-family: 'Times New Roman', Times, serif;
+    
 }
 .cont_textopi{
     margin-top: 25%;
     font-family: 'Times New Roman', Times, serif;
+    
 }
 .contenido_tiptex{
     margin-top: 20%;
     font-family: 'Times New Roman', Times, serif;
+    
 }
 .contenid_tex{
-    margin-top: 30%;
+    margin-top: 45%;
     font-family: 'Times New Roman', Times, serif;
+    
 }

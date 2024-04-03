@@ -16,10 +16,9 @@ var swiper = new Swiper(".mySwiper", {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    const datos = ["hola","como,estas?","que onda?","hii"]; 
     const swiper = document.getElementById('swiper');
 
-    datos.forEach(function(dato){
+    datosTarjetas.forEach(function(dato){
 
         const card_swiper = document.createElement("div");
         card_swiper.classList.add("swiper-slide","card");
@@ -27,6 +26,18 @@ document.addEventListener('DOMContentLoaded', function () {
         const card_content = document.createElement("div");
         card_content.classList.add("card-content");
 
+        const card_imagen = document.createElement("div");
+        card_imagen.classList.add("swiper_img");
+
+        const card_img = document.createElement("img");
+        card_img.classList.add("card_img");
+        card_img.src = dato.imagen;
+        card_img.alt = "imagen restaurante";
+
+        const card_title = document.createElement("h2");
+        card_title.classList.add("content_title");
+        card_title.textContent = dato.titulo;
+        
         const rating = document.createElement('div');
         rating.classList.add("rating");
 
@@ -35,7 +46,10 @@ document.addEventListener('DOMContentLoaded', function () {
             star.classList.add("bi", "bi-star-fill", "star");
             rating.appendChild(star);
         }
-
+        
+        card_imagen.appendChild(card_img);
+        card_content.appendChild(card_imagen);
+        card_content.appendChild(card_title);
         card_content.appendChild(rating);
         card_swiper.appendChild(card_content);
         swiper.appendChild(card_swiper);

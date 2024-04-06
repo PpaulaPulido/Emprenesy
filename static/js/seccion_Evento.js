@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let a = document.createElement("a");
         a.classList.add('swiper_button');
         a.href = `${dato.enlace}?id=${dato.id}`;
-        a.textContent = "Ver detalles";
+        a.textContent = "Ver más";
 
         for (let i = 0; i < 5; i++) {
             const star = document.createElement('i');

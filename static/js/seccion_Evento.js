@@ -4,55 +4,63 @@ var swiper = new Swiper(".mySwiper", {
     slidesPerGroup: 3,
     loop: true,
     loopFillGroupWithBlank: true,
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-    },
     navigation: {
-        nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
+        nextEl: ".swiper-button-next",
     },
 });
 
-document.addEventListener('DOMContentLoaded', function () {
 
+document.addEventListener('DOMContentLoaded', function () {
     const swiper = document.getElementById('swiper');
 
-    datosTarjetas.forEach(function(dato){
+    datosEventos.forEach(function (dato) {
 
         const card_swiper = document.createElement("div");
-        card_swiper.classList.add("swiper-slide","card");
+        card_swiper.classList.add("swiper-slide", "card");
 
         const card_content = document.createElement("div");
         card_content.classList.add("card-content");
+
+        const content_title = document.createElement('div');
+        content_title.classList.add('title_contenedor');
+
+        const card_title = document.createElement("h2");
+        card_title.classList.add("content_title");
+        card_title.textContent = dato.titulo;
 
         const card_imagen = document.createElement("div");
         card_imagen.classList.add("swiper_img");
 
         const card_img = document.createElement("img");
         card_img.classList.add("card_img");
-        card_img.src = dato.imagen;
+        card_img.src = dato.galeria[3];
         card_img.alt = "imagen restaurante";
 
-        const card_title = document.createElement("h2");
-        card_title.classList.add("content_title");
-        card_title.textContent = dato.titulo;
-        
         const rating = document.createElement('div');
         rating.classList.add("rating");
 
-        for(let i = 0; i < 5; i++){
-            const star =  document.createElement('i');
+        let a = document.createElement("a");
+        a.classList.add('swiper_button');
+        a.href = `${dato.enlace}?id=${dato.id}`;
+        a.textContent = "Ver detalles";
+
+        for (let i = 0; i < 5; i++) {
+            const star = document.createElement('i');
             star.classList.add("bi", "bi-star-fill", "star");
             rating.appendChild(star);
         }
-        
+
         card_imagen.appendChild(card_img);
         card_content.appendChild(card_imagen);
-        card_content.appendChild(card_title);
+        content_title.appendChild(card_title);
+        card_content.appendChild(content_title);
         card_content.appendChild(rating);
+        card_content.appendChild(a);
         card_swiper.appendChild(card_content);
         swiper.appendChild(card_swiper);
+
+
     });
 
 

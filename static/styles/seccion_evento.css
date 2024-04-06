@@ -328,6 +328,10 @@ ol {
   background-image: linear-gradient(225deg, #3f0186 56%, #da77f2 92%, #f989f1 100%);
   padding: 10px;
 }
+.section2{
+  background-image: linear-gradient(225deg, #012f46 1%, #147ed5 73%, #6cfce2 99%);
+  padding: 10px;
+}
 .section_title h2{
   color: #fff;
   margin: 30px 0 30px 50px;

@@ -1,57 +1,57 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Obtener el parámetro 'id' de la URL
     const urlParams = new URLSearchParams(window.location.search);
-    const id = urlParams.get('id');
+    const idParam = urlParams.get('id');
 
-    // Obtener el contenedor donde se agregarán las imágenes
-    const carouselInner = document.querySelector('.carousel-inner');
+    function empredeCategoria(typeEmprended, id) {
+        // Obtener el contenedor donde se agregarán las imágenes
+        const carouselInner = document.querySelector('.carousel-inner');
 
-    // Buscar los datos correspondientes al ID en window.datosTarjetas
-    const datosEmprende = window.datosEmpredimientos.find(tarjeta => tarjeta.id === parseInt(id));
+        // Buscar los datos correspondientes al ID en window.datosTarjetas
+        const datosEmprende = typeEmprended.find(tarjeta => tarjeta.id === parseInt(id));
 
-    // Verificar si se encontraron los datos
-    if (datosEmprende) {
-        // Limpiar el contenido actual del carrusel
-        carouselInner.innerHTML = '';
+        // Verificar si se encontraron los datos
+        if (datosEmprende) {
+            // Limpiar el contenido actual del carrusel
+            carouselInner.innerHTML = '';
 
-        // Iterar sobre la galería de imágenes y crear los elementos <img>
-        datosEmprende.galeria.forEach((imagenSrc, index) => {
-            // Crear el elemento <img>
-            const imagen = document.createElement('img');
-            imagen.src = imagenSrc;
-            imagen.alt = `Imagen ${index + 1} de ${datosEmprende.titulo}`;
+            // Iterar sobre la galería de imágenes y crear los elementos <img>
+            datosEmprende.galeria.forEach((imagenSrc, index) => {
+                // Crear el elemento <img>
+                const imagen = document.createElement('img');
+                imagen.src = imagenSrc;
+                imagen.alt = `Imagen ${index + 1} de ${datosEmprende.titulo}`;
 
-            //crear elemendo div con la clase blck
-            const block = document.createElement('div');
-            block.classList.add('block', 'img-responsive');
-            block.appendChild(imagen);
+                //crear elemendo div con la clase blck
+                const block = document.createElement('div');
+                block.classList.add('block', 'img-responsive');
+                block.appendChild(imagen);
 
-            // Crear el elemento <div class="carousel-col"> y agregar la imagen
-            const carouselCol = document.createElement('div');
-            carouselCol.classList.add('carousel-col');
-            carouselCol.appendChild(block);
+                // Crear el elemento <div class="carousel-col"> y agregar la imagen
+                const carouselCol = document.createElement('div');
+                carouselCol.classList.add('carousel-col');
+                carouselCol.appendChild(block);
 
-            // Crear el elemento <div class="item"> y agregar la columna del carrusel
-            const itemCarousel = document.createElement('div');
-            itemCarousel.classList.add('item');
-            if (index === 0) {
-                itemCarousel.classList.add('active'); // Marcar el primer elemento como activo
-            }
-            itemCarousel.appendChild(carouselCol);
+                // Crear el elemento <div class="item"> y agregar la columna del carrusel
+                const itemCarousel = document.createElement('div');
+                itemCarousel.classList.add('item');
+                if (index === 0) {
+                    itemCarousel.classList.add('active'); // Marcar el primer elemento como activo
+                }
+                itemCarousel.appendChild(carouselCol);
 
-            // Agregar el elemento <div class="item"> al contenedor principal del carrusel
-            carouselInner.appendChild(itemCarousel);
-        });
-    } else {
-        console.error(`No se encontraron datos para el ID ${id}`);
+                // Agregar el elemento <div class="item"> al contenedor principal del carrusel
+                carouselInner.appendChild(itemCarousel);
+            });
+        }
+
     }
-});
 
-document.addEventListener('DOMContentLoaded', function () {
-
-    generarDatos();
+    empredeCategoria(window.datosEmpredimientos, idParam);
+    empredeCategoria(window.empredimientosArtesania, idParam);
     slider_tarjetas();
-})
+    generarDatos();
+});
 
 function slider_tarjetas() {
     $('.carousel[data-type="multi"] .item').each(function () {
@@ -76,68 +76,86 @@ function generarDatos() {
     const urlParams = new URLSearchParams(window.location.search);
     const restaId = parseInt(urlParams.get('id')); // Convierte el ID a un número entero
 
-    // Busca el evento correspondiente en window.datosEventos por su ID
-    const negocio = window.datosEmpredimientos.find(negocio => negocio.id === restaId);
+    function obtenerDatos(typeEmprended, id) {
+
+        // Busca el evento correspondiente en window.datosEventos por su ID
+        const negocio = typeEmprended.find(negocio => negocio.id === id);
+
+        // Verifica si se encontró el evento correspondiente
+        if (negocio) {
+
+            document.getElementById('title').textContent = negocio.titulo;
+            document.querySelector('#negocio').textContent = negocio.negocio;
+            document.querySelector('#horario').textContent = negocio.horario;
+            document.querySelector('#contacto').textContent = negocio.contacto;
+            document.querySelector('#correo').textContent = negocio.correo;
 
 
-    // Verifica si se encontró el evento correspondiente
-    if (negocio) {
+            sitio_web = document.querySelector('#web');
+            sitio_web.href = negocio.pagina;
+            sitio_web.target = '_blank';
 
-        document.getElementById('title').textContent = negocio.titulo;
-        document.querySelector('#negocio').textContent = negocio.negocio;
-        document.querySelector('#horario').textContent = negocio.horario;
-        document.querySelector('#contacto').textContent = negocio.contacto;
-        document.querySelector('#correo').textContent = negocio.correo;
+            enlace = document.querySelector('#red1');
 
-    
-        sitio_web = document.querySelector('#web');
-        sitio_web.href = negocio.pagina;
-        sitio_web.target = '_blank';
-        
-        enlace = document.querySelector('#red1');
+            if (negocio.redes[0] !== "") {
+                enlace.href = negocio.redes[0];
+                enlace.target = "_blank";
+            } else {
+                enlace.style.display = 'none';
+            }
 
-        if (negocio.redes[0] !== "") {
-            enlace.href = negocio.redes[0];
-            enlace.target = "_blank";
-        } else {
-            enlace.style.display = 'none';
+            enlace2 = document.querySelector('#red2');
+
+            if (negocio.redes[1] !== "") {
+                enlace2.href = negocio.redes[1];
+                enlace2.target = "_blank";
+            } else {
+                enlace2.style.display = 'none';
+            }
+
+            const location_lista = document.getElementById("location");
+            negocio.ubicacion.forEach(ubicacion => {
+                const nuevaLi = document.createElement("li");
+                nuevaLi.textContent = ubicacion;
+                location_lista.appendChild(nuevaLi);
+            });
+
         }
-
-        enlace2 = document.querySelector('#red2');
-
-        if (negocio.redes[1] !== "") {
-            enlace2.href = negocio.redes[1];
-            enlace2.target = "_blank";
-        } else {
-            enlace2.style.display = 'none';
-        }
-
-        const location_lista = document.getElementById("location");
-        negocio.ubicacion.forEach(ubicacion => {
-            const nuevaLi = document.createElement("li");
-            nuevaLi.textContent = ubicacion;
-            location_lista.appendChild(nuevaLi);
-        });
-
-    } else {
-        // Si no se encontró el evento correspondiente, muestra un mensaje de error
-        console.error('Evento no encontrado');
     }
+    obtenerDatos(window.datosEmpredimientos, restaId);
+    obtenerDatos(window.empredimientosArtesania, restaId);
 
 }
+
 function popup_emprendimientos() {
 
     const urlParams = new URLSearchParams(window.location.search);
-    const restaId = parseInt(urlParams.get('id')); 
-    const negocio = window.datosEmpredimientos.find(negocio => negocio.id === restaId);
+    const restaId = parseInt(urlParams.get('id'));
 
+    popupEmprendimientos(restaId);
+}
+
+function popupEmprendimientos(idEmpren) {
+
+    let emprendimientos;
+
+    if (idEmpren >= 1 && idEmpren <= window.datosEmpredimientos.length){
+        emprendimientos = window.datosEmpredimientos.find(emprendimientos => emprendimientos.id === idEmpren);
+    } else if (idEmpren >= (window.datosEmpredimientos + 1) && idEmpren <= (window.datosEmpredimientos.length + window.empredimientosArtesania.length)) {
+
+        const emprenIindex = idEmpren - window.datosEmpredimientos.length;
+        emprendimientos = window.empredimientosArtesania[emprenIindex - 1];
+
+    } else {
+        console.error('id del evento no encontrado');
+    }
     Swal.fire({
-        title: `<span class="custom-title">${negocio.titulo}</span>`,
+        title: `<span class="custom-title">${emprendimientos.titulo}</span>`,
         html: `
               <div class = "div-swal">
-              <img src="${negocio.imagen}" alt="imagen restaurante" class= "imagenEmprendimiento"/>
-              <p class="text_swal">${negocio.descripcion}</p>
-              <button class="btn_productos" ><a href="${negocio.productos}" target = "_blank">Ver Productos</a></button>
+              <img src="${emprendimientos.imagen}" alt="imagen restaurante" class= "imagenEmprendimiento"/>
+              <p class="text_swal">${emprendimientos.descripcion}</p>
+              <button class="btn_productos" ><a href="${emprendimientos.productos}" target = "_blank">Ver Productos</a></button>
               </div>
             `,
         customClass: {

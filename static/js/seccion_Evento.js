@@ -1,9 +1,9 @@
 var swiper = new Swiper(".mySwiper", {
     slidesPerView: 3,
-    spaceBetween: 30,
-    slidesPerGroup: 3,
+    spaceBetween: 20,
+    slidesPerGroup: 1,
     loop: true,
-    loopFillGroupWithBlank: true,
+    loopFillGroupWithBlank: false,
     navigation: {
         prevEl: ".swiper-button-prev",
         nextEl: ".swiper-button-next",
@@ -66,5 +66,5 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
     tarjetas_swiper(datosEventos,swiper);
-    tarjetas_swiper(datosEventos,swiper2);
+    tarjetas_swiper(eventosTecnologicos,swiper2);
 }) 

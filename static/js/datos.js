@@ -428,11 +428,124 @@ window.datosEmpredimientos= [
     descripcion: "Prepárate para una explosión de sabor con nuestros deliciosos dorilocos! Cada bocado es una experiencia única que combina la crujiente textura de los Doritos con una variedad de sabores y texturas deliciosas.",
   },
 ];
-window.datosEmpredimientos2 = [
-  {
-    id:1,
-    imagen: "",
-    nombre: "",
-  }
 
+window.eventosTecnologicos = [
+  {
+    id:6,
+    imagen: "https://www.feriasinfo.es/logos/alimentec_logo_9102.png",
+    titulo: "Alimentec 2024",
+    enlace: "../templates/detalle_event.html",
+    galeria: [
+      "https://idep.gov.ar/webidep/wp-content/uploads/2024/03/alimentec-2024.jpg",
+      "https://feriaalimentec.com/img/spot-campana-eng-mb.jpg",
+      "https://feriaalimentec.com/img/galeria/alimentec-26.jpg",
+      "https://www.feriasinfo.es/logos/alimentec_logo_9102.png" 
+    ],
+    fecha: "18-21 de Junio 2024",
+    horario: "Según cronograma",
+    pagina: "https://feriaalimentec.com/es/alimentec-2024/",
+    organizadores: "Corferias",
+    contacto: 'No aplica',
+    redes:[
+      "https://www.instagram.com/feriaalimentec/?hl=es",
+      ""
+    ],
+    ubicacion:[
+      "Carrera 37 No 24 - 67"
+    ],
+    descripcion: "Alimentec es el punto de encuentro más representativo de la industria alimenticia colombiana y latinoamericana. Participan sectores diversos como bebidas, aditivos, tecnología, software, maquinaria, equipamiento, suministros, embalaje...",
+    informacion_adicional:[
+      "La feria Alimentec ofrece el marco propicio para negociar y establecer contactos comerciales, al mismo tiempo se pueden descubrir las últimas novedades y tendencias de sector.",
+    ],
+    boletas: "https://www.nferias.com/alimentec/"
+  },
+  {
+    id:7,
+    imagen: "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F719539019%2F2056575385003%2F1%2Foriginal.png?w=600&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C940%2C470&s=6c9721e99f412f64d61425cfe3dcd23f",
+    titulo: "HubSpot Sync Test",
+    enlace: "../templates/detalle_event.html",
+    galeria: [
+      "https://content.partnerpage.io/eyJidWNrZXQiOiJwYXJ0bmVycGFnZS5wcm9kIiwia2V5IjoibWVkaWEvY29udGFjdF9pbWFnZXMvYTExNTZlMjQtNTY0NC00N2M4LWE2NjUtYzVhN2IzMzE4NDRiL2E1YjY1ZWU1LTRlZTUtNDNlNi04NTlhLTAzZTJhNTg2ZTI3MS5qcGVnIiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJ3ZWJwIiwicmVzaXplIjp7ImZpdCI6ImNvbnRhaW4iLCJiYWNrZ3JvdW5kIjp7InIiOjI1NSwiZyI6MjU1LCJiIjoyNTUsImFscGhhIjowfX19fQ==",
+      "https://bloo.media/wp-content/uploads/2023/02/que-es-hubspot-3.jpeg",
+      "https://www.comparapps.com/wp-content/uploads/2019/09/Logo-Hubspot-CRM.jpg",
+      "https://www.hubspot.com/hubfs/Data-Sync-Illustration%20(1).svg" 
+    ],
+    fecha: "23 de Abril 2024",
+    horario: "10am -12pm",
+    pagina: "https://www.hubspot.es/",
+    organizadores: "No aplica",
+    contacto: 'No aplica',
+    redes:[
+      "https://www.instagram.com/hubspot/",
+      "https://www.tiktok.com/@hubspot?lang=es"
+    ],
+    ubicacion:[
+      "Av. Tv. De Suba, Bogotá"
+    ],
+    descripcion: "¿Estás listo para poner a prueba tus habilidades de sincronización de HubSpot? Este evento es perfecto para cualquiera que busque mejorar su conocimiento de HubSpot y aprender más sobre cómo sincronizar datos de manera efectiva. ¡No pierdas esta oportunidad de conectarte con otros entusiastas de HubSpot y llevar tus habilidades al siguiente nivel!",
+    informacion_adicional:[
+      "HubSpot es una plataforma CRM diseñada para crecer con tu empresa. Tanto si trabajas por cuenta propia como si diriges una empresa con más de 2000 empleados, la plataforma CRM de HubSpot tiene las funciones de marketing, ventas, servicio al cliente, operaciones y gestión de contenidos que necesitas para ofrecer la mejor experiencia a tus clientes.",
+    ],
+    boletas: "https://www.eventbrite.co/e/hubspot-sync-test-tickets-863052512297?aff=ebdssbcategorybrowse&keep_tld=1"
+  },
+  {
+    id:8,
+    imagen: "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F732856429%2F1800345161443%2F1%2Foriginal.20240401-171751?h=2000&w=720&auto=format%2Ccompress&q=75&sharp=10&s=4eebf71f9f8527d5eca3f760fa9f35d9",
+    titulo: "Cala Analytics Festival 2024",
+    enlace: "../templates/detalle_event.html",
+    galeria: [
+      "https://www.cala-analytics.com/wp-content/uploads/2023/11/proximos-eventos-de-analitica-1024x1024.webp",
+      "https://media.licdn.com/dms/image/D4D10AQHE1jb476YfAA/image-shrink_800/0/1711472425675?e=2147483647&v=beta&t=FP6IY2pqe_uy614BnasZxpY8vKegr4Bfpr0T_R1KYOs",
+      "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F732884189%2F1800345161443%2F1%2Foriginal.20240401-174617?h=2000&w=720&auto=format%2Ccompress&q=75&sharp=10&s=8d79e364c0416ab03b1143f48d63cfe4",
+      "https://static-uat.cambiocolombia.com/inline-images/microsoftteams-image_3.png" 
+    ],
+    fecha: "18 de Abril 2024",
+    horario: "08:30am -12:30pm",
+    pagina: "https://www.cala-analytics.com/",
+    organizadores: "No aplica",
+    contacto: 'No aplica',
+    redes:[
+      "https://www.instagram.com/cala.analytics/?hl=es-la",
+      "https://www.tiktok.com/@calaanalytics"
+    ],
+    ubicacion:[
+      "Carrera 4 # 22 - 61 Carrera 4 Bogotá"
+    ],
+    descripcion: "Un evento en el que el liderazgo empresarial y la analítica de datos se complementan para dar respuesta a incógnitas que se presentan en los entornos empresariales actuales.",
+    informacion_adicional:[
+      "Sergio Gutiérrez: CEO - CALA Analytics LATAM","Felipe Gómez: Reconocido conferencista especializado en el entorno corporativo.",
+      "Daniel Guzmán:Technical Leader Iberoamerica i2 Group."
+    ],
+    boletas: "https://recursosb2b.cala-analytics.com/caf-bogota-2024-bd"
+  },
+  {
+    id:9,
+    imagen: "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F724660719%2F872533708003%2F1%2Foriginal.20240321-003451?w=600&auto=format%2Ccompress&q=75&sharp=10&s=9aff7eeeb2a0cb2ad7daa05b6471eb25",
+    titulo: "EPAM TechTalk",
+    enlace: "../templates/detalle_event.html",
+    galeria: [
+      "https://pbs.twimg.com/profile_images/742503268480393216/0dTa5KEK_400x400.jpg",
+      "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F724660719%2F872533708003%2F1%2Foriginal.20240321-003451?w=600&auto=format%2Ccompress&q=75&sharp=10&s=9aff7eeeb2a0cb2ad7daa05b6471eb25",
+      "https://lanotaeconomica.com.co/wp-content/uploads/elementor/thumbs/tecnologia-qczshzne321qukemsnyypvk3zwo8vr7b57fe1nrvjw.jpg",
+      "https://media.licdn.com/dms/image/C4E1FAQGaWRTDNPKOVw/feedshare-document-cover-images_480/0/1679428187874?e=2147483647&v=beta&t=2nBUEgh72CFtVnopskBRqMjGhDvIUKR_pZC19mRXn9g" 
+    ],
+    fecha: "11 de Abril 2024",
+    horario: "18:00pm -20:00pm",
+    pagina: "https://www.epam.com/",
+    organizadores: "Sistemas EPAM",
+    contacto: 'No aplica',
+    redes:[
+      "https://www.instagram.com/epamsystems/",
+      ""
+    ],
+    ubicacion:[
+      "77a-99 Carrera 11 Bogotá"
+    ],
+    descripcion: "¡Únase a EPAM TechTalk en Bogotá! No pierda esta oportunidad de conectarse con expertos en tecnología mientras aprende sobre las tendencias e innovaciones de la industria.EPAM TechTalks consiste en charlas breves que giran en torno a una amplia gama de temas tecnológicos, en las que se comparte la experiencia y los desafíos de EPAM como líder tecnológico global.",
+    informacion_adicional:[
+      "En esta ocasión hablaremos sobre Datos. Además, aprovecha la oportunidad de enriquecer tu red a través del networking.","Exploremos los desafíos y oportunidades de ingeniería del panorama de IA generativa en rápida evolución. ",
+      "El evento es gratuito, en inglés y tiene plazas limitadas."
+    ],
+    boletas: "https://www.eventbrite.es/e/epam-techtalk-bogota-tickets-868037201637?aff=ebdssbcategorybrowse&keep_tld=1"
+  },
 ];

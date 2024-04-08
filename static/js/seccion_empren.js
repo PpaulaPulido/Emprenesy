@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const swiper = document.getElementById('swiper');
     const swiper2 = document.getElementById('swiper2');
-    const swiper3 = document.getElementById('swiper3');
+    
 
     function tarjetas_swiper(tarjeta,contenedor){
 
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const card_img = document.createElement("img");
             card_img.classList.add("card_img");
             card_img.src = dato.galeria[3];
-            card_img.alt = "imagen restaurante";
+            card_img.alt = "imagen emprendimiento";
     
             const rating = document.createElement('div');
             rating.classList.add("rating");
@@ -67,8 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
         });
     }
-    tarjetas_swiper(datosEventos,swiper);
-    tarjetas_swiper(eventosTecnologicos,swiper2);
-    tarjetas_swiper(datosEmpredimientos,swiper3);
+    tarjetas_swiper(datosEmpredimientos,swiper);
+    tarjetas_swiper(empredimientosArtesania,swiper2);
     
 }) 

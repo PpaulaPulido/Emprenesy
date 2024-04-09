@@ -14,8 +14,8 @@ var swiper = new Swiper(".mySwiper", {
 document.addEventListener('DOMContentLoaded', function () {
 
     const swiper = document.getElementById('swiper');
-    const swiper2 = document.getElementById('swiper2');
-    
+    //const swiper2 = document.getElementById('swiper2');
+
 
     function tarjetas_swiper(tarjeta,contenedor){
 
@@ -67,7 +67,8 @@ document.addEventListener('DOMContentLoaded', function () {
     
         });
     }
-    tarjetas_swiper(datosEventos,swiper);
-    tarjetas_swiper(eventosTecnologicos,swiper2);
+    tarjetas_swiper(datosTarjetas,swiper);
+    //tarjetas_swiper(eventosTecnologicos,swiper2);
+
     
 }) 

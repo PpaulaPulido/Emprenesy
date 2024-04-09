@@ -239,3 +239,150 @@ ol {
 .slider_btn3:hover{
   background-color: #00f1c9;
 }
+/******************estilos de container tarjetas***************************/
+.container_cards{
+  margin: 30px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 2rem;
+  text-align: center;
+}
+.container_cards .cards_contenido{
+  height: 250px;
+  width: 270px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+.card1{
+  background-image: url('https://estaticos-cdn.prensaiberica.es/clip/6b48ad30-aced-47c8-b0cd-c4c0cf3a6470_16-9-discover-aspect-ratio_default_0.jpg');
+}
+.card2{
+  background-image: url('https://oleico.com/wp-content/uploads/2021/03/oleico_oleico_image_777-1.jpeg');
+  background-position: center;
+}
+.card3{
+  background-image: url('https://media-cdn.tripadvisor.com/media/photo-s/1c/b7/ff/cc/photo0jpg.jpg');
+}
+.card4{
+  background-image: url('https://www.godinezgourmet.com/wp-content/uploads/2019/04/asaderos-grill-carne-ciudad-mexico-cdmx-godinez_0.jpg');
+}
+.contenido_title{
+  background-color: #3d77ba;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px 20px 0 0;
+}
+.contenido_title h3{
+  font-size: 22px;
+  color: #fff;
+}
+/***********************estilos de slider de tarjetas**************************/
+.section{
+  background-image: linear-gradient(135deg, #d162f3 0%, #ff9254 99%);
+  padding: 10px;
+}
+.section2{
+  background-image: linear-gradient(225deg, #012f46 1%, #147ed5 73%, #6cfce2 99%);
+  padding: 10px;
+}
+.section_title h2{
+  color: #fff;
+  margin: 30px 0 30px 50px;
+  font-size: 25px;
+}
+.swiper_card{
+  position: relative;  
+}
+.swiper{
+  width: 70%;
+}
+.card{
+  position: relative;
+  background: #fff;
+  border-radius: 20px;
+  height: 430px;
+  margin: 20px 0;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.card::before{
+  content: "";
+  position: absolute;
+  height: 40%;
+  width: 100%;
+  background: white;
+  border-radius: 20px 20px 0 0;
+}
+.card .rating{
+  margin: 10px 10px 0 10px;
+}
+.card .card-content{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  position: relative;
+  z-index: 100;
+}
+.card .rating i{
+  font-size: 18px;
+  margin: 0 2px;
+  color: gold;
+}
+.swiper-button-next{
+  color: #fff;
+  margin-right: 150px;
+}
+.swiper-button-prev{
+  color: #fff;
+  margin-left: 150px;
+}
+.swiper-pagination-bullet{
+  height: 7px;
+  width: 26px;
+  border-radius: 25px;
+  background: white;
+}
+.swiper-button-next, .swiper-button-prev{
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+.title_contenedor{
+  height: 50px;
+  margin-top: 20px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+.title_contenedor .content_title{
+  font-size: 22px;
+}
+.swiper_img{
+  width: 250px;
+  height: 200px;
+  margin: 20px auto 0 auto;
+  
+}
+.swiper_img .card_img{
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  
+}
+.swiper_button{
+  background-color: #051248;
+  color: #fff;
+  padding: 6px;
+  width: 50%;
+  border-radius: 12px;
+  font-size: 17px;
+  margin: 10px auto 0 auto;
+  text-align: center;
+}
+.swiper_button:hover{
+  background-color: #002b68;
+}

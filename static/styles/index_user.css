@@ -733,7 +733,7 @@ ol {
     color: #fff;
     width: 50%;
     padding: 10px;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
     border-radius: 15px;
@@ -741,7 +741,9 @@ ol {
     margin: auto;
     border: none;
 }
-
+.emprendimiento_btn a{
+    color: #fff;
+}
 .emprendimiento_btn:hover {
     background-color: #ff5ef7;
 }

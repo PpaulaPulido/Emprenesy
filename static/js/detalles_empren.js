@@ -128,40 +128,37 @@ function generarDatos() {
 }
 
 function popup_emprendimientos() {
-
     const urlParams = new URLSearchParams(window.location.search);
     const restaId = parseInt(urlParams.get('id'));
-
     popupEmprendimientos(restaId);
 }
 
 function popupEmprendimientos(idEmpren) {
-
     let emprendimientos;
 
-    if (idEmpren >= 1 && idEmpren <= window.datosEmpredimientos.length){
-        emprendimientos = window.datosEmpredimientos.find(emprendimientos => emprendimientos.id === idEmpren);
-    } else if (idEmpren >= (window.datosEmpredimientos + 1) && idEmpren <= (window.datosEmpredimientos.length + window.empredimientosArtesania.length)) {
-
-        const emprenIindex = idEmpren - window.datosEmpredimientos.length;
-        emprendimientos = window.empredimientosArtesania[emprenIindex - 1];
-
+    if (idEmpren >= 1 && idEmpren <= window.datosEmpredimientos.length) {
+        emprendimientos = window.datosEmpredimientos.find(emprendimiento => emprendimiento.id === idEmpren);
+    } else if (idEmpren > window.datosEmpredimientos.length && idEmpren <= window.datosEmpredimientos.length + window.empredimientosArtesania.length) {
+        const emprenIndex = idEmpren - window.datosEmpredimientos.length - 1;
+        emprendimientos = window.empredimientosArtesania[emprenIndex];
     } else {
-        console.error('id del evento no encontrado');
+        console.error('ID de emprendimiento no encontrado');
+        return; // Termina la ejecución si el ID de emprendimiento no es válido
     }
+
     Swal.fire({
         title: `<span class="custom-title">${emprendimientos.titulo}</span>`,
         html: `
-              <div class = "div-swal">
-              <img src="${emprendimientos.imagen}" alt="imagen restaurante" class= "imagenEmprendimiento"/>
+              <div class="div-swal">
+              <img src="${emprendimientos.imagen}" alt="imagen emprendimiento" class="imagenEmprendimiento"/>
               <p class="text_swal">${emprendimientos.descripcion}</p>
-              <button class="btn_productos" ><a href="${emprendimientos.productos}" target = "_blank">Ver Productos</a></button>
+              <button class="btn_productos"><a href="${emprendimientos.productos}" target="_blank">Ver Productos</a></button>
               </div>
             `,
         customClass: {
             confirmButton: 'btn-red',
-            popup: 'border-blue',// Clase CSS para el borde del SweetAlert
-            titlle: 'title-swal',
+            popup: 'border-blue', // Clase CSS para el borde del SweetAlert
+            title: 'title-swal',
             icon: 'icon-swal',
             container: 'custom-container'
         }

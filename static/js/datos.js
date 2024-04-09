@@ -769,3 +769,63 @@ window.restaurantesVista = [
     nosotros: "Un mágico restaurante con más de 42 años de historia, en un lugar único con la mejor vista de la ciudad. Menú internacional. Tramonti ha sido un lugar de referencia turística y el lugar ideal para celebraciones."
   },
 ];
+window.restaurantesTematicos = [
+  {
+    id: 20,
+    imagen: "https://media-cdn.tripadvisor.com/media/photo-s/17/41/45/c8/fachada.jpg",
+    titulo: "Imagine Restaurante",
+    enlace: "../templates/detalle_res.html",
+    galeria: [
+      "https://webbox.imgix.net/images/peapumdqqflgwzcz/6436d6e0-534f-4065-9e43-fc9a1b5f0bf7.jpeg?auto=format,compress&fit=crop&crop=entropy",
+      "https://menu.sluurpy.com/immagini/locali/thumbs/2228898.jpg",
+      "https://media-cdn.tripadvisor.com/media/photo-s/17/40/ae/0e/haz-tu-reserva.jpg",
+      "https://webbox.imgix.net/images/peapumdqqflgwzcz/fcb6f4bd-cec3-4efb-8212-5ba86c97d75d.jpg?auto=format,compress&fit=crop&crop=entropy"
+    ],
+    horario: "Lunes-Sábado 12:00pm-22:00pm",
+    pagina: "https://www.blacktowerhotel.com/es/imagine-restaurant.html",
+    comida: "Internacional, Parrilla, Colombiana",
+    correo: 'No aplica',
+    contacto: ' 318 8365751',
+    redes: [
+      "https://www.instagram.com/imaginerestaurante",
+      "https://www.tiktok.com/discover/imagine-restaurante-bogot%C3%A1"
+    ],
+    ubicacion: [
+      "Avenida Calle 24 # 43 a 21 Hotel Black Tower Premium"
+    ],
+    menu: [
+      "https://qr.precompro.com/?source=imagine.precompro.com",
+    
+    ],
+    nosotros: "Restaurante temático, inspirado en los Beatles y lo mejor de la época con una carta muy variada de comida internacional y una selección especial de los mejores platos colombianos que hacen honor a nuestra tierra y sus sabores. La decoración de restaurante IMAGINE es hecha en materiales reciclados que ambienta. Celebraciones de cumpleaños y demás eventos son siempre bienvenidos en IMAGINE."
+  },
+  {
+    id: 21,
+    imagen: "https://media-cdn.tripadvisor.com/media/photo-s/29/14/49/60/location-cuerdo.jpg",
+    titulo: "Cuerdo",
+    enlace: "../templates/detalle_res.html",
+    galeria: [
+      "https://i.revistapym.com.co/cms/2023/05/26161506/aper1.jpg?w=412&d=2.625",
+      "https://img.lalr.co/cms/2023/06/08181628/350432548_1066498140992792_5902575041105869765_n.jpg",
+      "https://img.lalr.co/cms/2023/05/24165330/WhatsApp-Image-2023-05-23-at-6.10.17-PM-3.jpeg",
+      "https://static.wixstatic.com/media/1a7e62_4ae687c14ac2494d90d08cf5b52e7fbf~mv2.jpg/v1/fill/w_543,h_330,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/1a7e62_4ae687c14ac2494d90d08cf5b52e7fbf~mv2.jpg"
+    ],
+    horario: "Lunes-Sábado 12:00pm-12:00am",
+    pagina: "https://www.cuerdorest.com/",
+    comida: "Bar, Contemporánea, Colombiana, Latina",
+    correo: 'No aplica',
+    contacto: '3227256479',
+    redes: [
+      "https://www.instagram.com/cuerdo.rest?igshid=YmMyMTA2M2Y%3D",
+      ""
+    ],
+    ubicacion: [
+      "Calle 81 #13-05 Cuarto Piso"
+    ],
+    menu: [
+      "https://www.cuerdorest.com/menu",
+    
+    ],
+    nosotros: "Las noches en Cuerdo vienen acompañadas de riesgos, emociones y experiencias memorables. Ven a disfrutar de una noche de Taller de cocteleria by monkey 47  ‘’Desde las alturas de nuestra malla ’’ en el lugar menos cuerdo y maridado con los mejores cocteles de ginebra, donde podrás disfrutar de un menú que desafiará tu mente , tus sentidos y tu paladar."
+  },
+];

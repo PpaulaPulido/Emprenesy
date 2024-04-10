@@ -828,4 +828,62 @@ window.restaurantesTematicos = [
     ],
     nosotros: "Las noches en Cuerdo vienen acompañadas de riesgos, emociones y experiencias memorables. Ven a disfrutar de una noche de Taller de cocteleria by monkey 47  ‘’Desde las alturas de nuestra malla ’’ en el lugar menos cuerdo y maridado con los mejores cocteles de ginebra, donde podrás disfrutar de un menú que desafiará tu mente , tus sentidos y tu paladar."
   },
+  {
+    id: 22,
+    imagen: "https://scontent.fbog3-3.fna.fbcdn.net/v/t39.30808-6/313076704_546656487464210_2114677031439971175_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEKm15DIWDPdWUjfF-Q837WxrkPgTUhZ4XGuQ-BNSFnhXqR7RNuA_YU_wuUG4LRBuWF00n78L_WIHBr4K26nIa4&_nc_ohc=uskV-g_pOXIAb7sjmOT&_nc_ht=scontent.fbog3-3.fna&oh=00_AfAFnVtuLWj1fld66WYrsWtAHKMLZdbQPUXNHzTC8mNCnQ&oe=661CA32A",
+    titulo: "La mesa de papel",
+    enlace: "../templates/detalle_res.html",
+    galeria: [
+      "https://scontent.fbog3-1.fna.fbcdn.net/v/t39.30808-6/313022853_1474890243030416_8797682355025939564_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHD7SqwwyuSb33MtnVSV8qV1pvhYpyoamLWm-FinKhqYkcUotfFna12CgMaflpy3-tVi8teC1qXIn4eptRfPJCK&_nc_ohc=OdASUTJ4D0EAb4bgQNV&_nc_ht=scontent.fbog3-1.fna&oh=00_AfDZMrcNkUD2issvJpo8VfU59cbHOPY5PGg3iF8iTWJA5g&oe=661CA9BD",
+      "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/314185335_553698640093328_3643057833380847431_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeECgi108zOhVVDi7mO3Co0n589vrnIAVGDnz2-ucgBUYLWhVRb7d5rONBo4HOHse59x9Csfz4G9RrLIhq0kTEFm&_nc_ohc=b5cxPjg_tCcAb7TM8aO&_nc_ht=scontent.fbog3-2.fna&oh=00_AfC1NfwB60X_IUbZ3dGAPixOce1mAja7UStsu_WQ4xzPig&oe=661C9F54",
+      "https://scontent.fbog3-1.fna.fbcdn.net/v/t39.30808-6/315207817_561544882642037_7076757292171784487_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHWSF0cA1dhixZF7PWFv9Grkz5rI9iCLwCTPmsj2IIvAKDK93NP7je3_lnk467D1g7ITdZtcVUvSNH380GYotK6&_nc_ohc=J4QsNZBdDPgAb7YNyx3&_nc_ht=scontent.fbog3-1.fna&oh=00_AfD8kmdKroxXP1S3d8x8VjK49NPLp-jfpDiMrnIGNMqAUQ&oe=661C87EF",
+      "https://scontent.fbog3-3.fna.fbcdn.net/v/t39.30808-6/313124809_546656490797543_8083046758171525847_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHutavQVRvJK80UqOKAIeFylh7nRr2h4bWWHudGvaHhtY-ptsc0rVYjfTLesNe2NUtFLdQTgAVhW4WgjzGdj92w&_nc_ohc=b3yl7eBGNHkAb6kc44I&_nc_oc=AdhbxgW4lT6qwWugiDlQd97i4pguGWEECwU_lCz_qD9oAsdT7pUhPo3b2RfYsd1kx6I&_nc_ht=scontent.fbog3-3.fna&oh=00_AfBz2z21xZ0EL8Tko0GWE1XymK0An_7D6Z7u7nUWuSZFww&oe=661C8CC4"
+    ],
+    horario: "Lunes-Sábado 13:30pm-22:00pm",
+    pagina: "https://www.facebook.com/Lamesadepapel/?locale=es_LA",
+    comida: "Cómida Rápida",
+    correo: 'No aplica',
+    contacto: '313 3924043',
+    redes: [
+      "https://www.instagram.com/lamesadepapel/?hl=es",
+      "https://www.tiktok.com/@lamesadepapel?lang=es"
+    ],
+    ubicacion: [
+      "Cl. 8 Sur #38B-35, Bogotá"
+    ],
+    menu: [
+      "https://www.facebook.com/Lamesadepapel/photos_by?locale=es_LA",
+    
+    ],
+    nosotros: '¡Bienvenidos a La Mesa de Papel, el destino gastronómico más emocionante inspirado en la famosa serie La Casa de Papel"! En nuestro restaurante, fusionamos la emoción y la intriga de la exitosa serie con la pasión por la comida excepcional.Sumérgete en un ambiente donde cada detalle, desde la decoración hasta la música ambiente, te transportará al emocionante mundo de los atracos y el ingenio. Nuestro equipo se esfuerza por brindarte una experiencia única y emocionante desde el momento en que cruzas nuestras puertas.'
+  },
+  {
+    id: 23,
+    imagen: "https://media-cdn.tripadvisor.com/media/photo-s/1c/a8/59/03/nuevo-espacio-de-show.jpg",
+    titulo: "Restaurante Temático Circo",
+    enlace: "../templates/detalle_res.html",
+    galeria: [
+      "https://media-cdn.tripadvisor.com/media/photo-s/1c/a8/59/05/salmon-freak-a-la-parrilla.jpg",
+      "https://verbienmagazin.com/wp-content/uploads/2021/06/DSC1028-1024x680.jpg",
+      "https://cdn0.matrimonio.com.co/vendor/5511/3_2/960/jpg/circo-bar-34-de-50_10_115511.webp",
+      "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2022/03/17/16475322046812.jpg"
+    ],
+    horario: "Lunes-Sábado 12:00pm-22:00pm",
+    pagina: "https://www.facebook.com/Restaurantecircocolombia/?locale=es_LA",
+    comida: "Colombiana",
+    correo: ' circo.colombia1@gmail.com',
+    contacto: '3194607053',
+    redes: [
+      "https://www.instagram.com/restaurantetematicocircocol/",
+      ""
+    ],
+    ubicacion: [
+      "Calle 67 #12-40"
+    ],
+    menu: [
+      "https://qr.precompro.com/?source=circo.precompro.com",
+    
+    ],
+    nosotros: "El Restaurante Circo Colombia es un restaurante temático, decorado con elementos circenses, especial para celebrar cumpleaños, reuniones, eventos de una forma diferente y divertida. Contamos con una cocina colombiana artesanal, carta de cocteles, show de Circo, música en vivo."
+  },
 ];

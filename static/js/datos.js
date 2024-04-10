@@ -771,7 +771,7 @@ window.restaurantesVista = [
 ];
 window.restaurantesTematicos = [
   {
-    id: 20,
+    id: 10,
     imagen: "https://media-cdn.tripadvisor.com/media/photo-s/17/41/45/c8/fachada.jpg",
     titulo: "Imagine Restaurante",
     enlace: "../templates/detalle_res.html",
@@ -800,7 +800,7 @@ window.restaurantesTematicos = [
     nosotros: "Restaurante temático, inspirado en los Beatles y lo mejor de la época con una carta muy variada de comida internacional y una selección especial de los mejores platos colombianos que hacen honor a nuestra tierra y sus sabores. La decoración de restaurante IMAGINE es hecha en materiales reciclados que ambienta. Celebraciones de cumpleaños y demás eventos son siempre bienvenidos en IMAGINE."
   },
   {
-    id: 21,
+    id: 11,
     imagen: "https://media-cdn.tripadvisor.com/media/photo-s/29/14/49/60/location-cuerdo.jpg",
     titulo: "Cuerdo",
     enlace: "../templates/detalle_res.html",
@@ -829,7 +829,7 @@ window.restaurantesTematicos = [
     nosotros: "Las noches en Cuerdo vienen acompañadas de riesgos, emociones y experiencias memorables. Ven a disfrutar de una noche de Taller de cocteleria by monkey 47  ‘’Desde las alturas de nuestra malla ’’ en el lugar menos cuerdo y maridado con los mejores cocteles de ginebra, donde podrás disfrutar de un menú que desafiará tu mente , tus sentidos y tu paladar."
   },
   {
-    id: 22,
+    id: 12,
     imagen: "https://scontent.fbog3-3.fna.fbcdn.net/v/t39.30808-6/313076704_546656487464210_2114677031439971175_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEKm15DIWDPdWUjfF-Q837WxrkPgTUhZ4XGuQ-BNSFnhXqR7RNuA_YU_wuUG4LRBuWF00n78L_WIHBr4K26nIa4&_nc_ohc=uskV-g_pOXIAb7sjmOT&_nc_ht=scontent.fbog3-3.fna&oh=00_AfAFnVtuLWj1fld66WYrsWtAHKMLZdbQPUXNHzTC8mNCnQ&oe=661CA32A",
     titulo: "La mesa de papel",
     enlace: "../templates/detalle_res.html",
@@ -858,7 +858,7 @@ window.restaurantesTematicos = [
     nosotros: '¡Bienvenidos a La Mesa de Papel, el destino gastronómico más emocionante inspirado en la famosa serie La Casa de Papel"! En nuestro restaurante, fusionamos la emoción y la intriga de la exitosa serie con la pasión por la comida excepcional.Sumérgete en un ambiente donde cada detalle, desde la decoración hasta la música ambiente, te transportará al emocionante mundo de los atracos y el ingenio. Nuestro equipo se esfuerza por brindarte una experiencia única y emocionante desde el momento en que cruzas nuestras puertas.'
   },
   {
-    id: 23,
+    id: 13,
     imagen: "https://media-cdn.tripadvisor.com/media/photo-s/1c/a8/59/03/nuevo-espacio-de-show.jpg",
     titulo: "Restaurante Temático Circo",
     enlace: "../templates/detalle_res.html",

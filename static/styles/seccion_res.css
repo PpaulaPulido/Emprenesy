@@ -288,9 +288,10 @@ ol {
   padding: 10px;
 }
 .section2{
-  background-image: linear-gradient(225deg, #012f46 1%, #147ed5 73%, #6cfce2 99%);
+  background-image: linear-gradient(135deg, #230181 41%, #fe1bbd 100%);
   padding: 10px;
 }
+
 .section_title h2{
   color: #fff;
   margin: 30px 0 30px 50px;
@@ -385,4 +386,124 @@ ol {
 }
 .swiper_button:hover{
   background-color: #002b68;
+}
+/************estilos empredimientos gastronomicos*************************/
+.container_poster {
+  background-color: #3d77ba;
+  width: 94%;
+  margin: 60px auto;
+  border-radius: 10px;
+  display: flex;
+  color: #fff;
+}
+
+.poster_img {
+  width: 90%;
+  height: 90%;
+}
+
+.poster_img img {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.contenido_poster {
+  padding: 40px;
+  text-align: center;
+}
+
+.contenido_poster h3 {
+  font-size: 30px;
+}
+
+.contenido_poster p {
+  margin: 30px auto 40px auto;
+  font-size: 20px;
+  line-height: 1.8;
+  text-align: left;
+  width: 80%;
+}
+
+.contenido_poster button {
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 18px;
+  text-align: center;
+  background-color: #3bdad4;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.contenido_poster button a {
+  color: #fff;
+}
+
+.contenido_poster button:hover {
+  background-color: #005f5e;
+}
+/*****************estilos de find evento******************************/
+.find_evento{
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+.evento_title{
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.evento_title h2{
+  margin-bottom: 30px;
+  color: #2c5d9d;
+}
+.evento_title p{
+  width: 70%;
+  text-align: center;
+  margin: 0 auto;
+}
+.find_evento .evento_contenido{
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 30px 10px;
+}
+.contenido_img{
+  width: 700px;
+  height: fit-content;
+}
+.contenido_img img{
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  border-radius: 13px;
+}
+.contenido_principal .contenido_info{
+  display: flex;
+  padding: 20px 20px;
+}
+.contenido_info .info_icono{
+  background-color: rgb(221, 218, 218);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  margin-left: 20px;
+}
+.info_icono i{
+  font-size: 30px;
+  color: #2c5d9d;
+  
+}
+.contenido_info .info_texto{
+  margin-left: 35px;
+}
+.info_texto h3{
+  color: #2c5d9d;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.info_texto p{
+  width: 80%;
 }

@@ -14,8 +14,8 @@ var swiper = new Swiper(".mySwiper", {
 document.addEventListener('DOMContentLoaded', function () {
 
     const swiper = document.getElementById('swiper');
-    //const swiper2 = document.getElementById('swiper2');
-
+    const swiper2 = document.getElementById('swiper2');
+    const swiper3 = document.getElementById('swiper3');
 
     function tarjetas_swiper(tarjeta,contenedor){
 
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
             const card_img = document.createElement("img");
             card_img.classList.add("card_img");
-            card_img.src = dato.galeria[3];
+            card_img.src = dato.imagen;
             card_img.alt = "imagen restaurante";
     
             const rating = document.createElement('div');
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
     tarjetas_swiper(datosTarjetas,swiper);
-    //tarjetas_swiper(eventosTecnologicos,swiper2);
-
+    tarjetas_swiper(restaurantesTematicos,swiper2);
+    tarjetas_swiper(restaurantesVista ,swiper3);
     
 }) 

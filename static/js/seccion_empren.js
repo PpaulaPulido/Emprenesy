@@ -41,7 +41,13 @@ document.addEventListener('DOMContentLoaded', function () {
             card_img.classList.add("card_img");
             card_img.src = dato.galeria[3];
             card_img.alt = "imagen emprendimiento";
-    
+
+            const container_div = document.createElement("div");
+            container_div.classList.add("swiper_conta_img");
+
+            const favorite = document.createElement('i');
+            favorite.classList.add("bi","bi-heart","favorite");
+
             const rating = document.createElement('div');
             rating.classList.add("rating");
     
@@ -57,7 +63,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
     
             card_imagen.appendChild(card_img);
-            card_content.appendChild(card_imagen);
+            container_div.appendChild(card_imagen);
+            container_div.appendChild(favorite);
+
+            card_content.appendChild(container_div);
             content_title.appendChild(card_title);
             card_content.appendChild(content_title);
             card_content.appendChild(rating);

@@ -299,7 +299,18 @@ canvas {
     color: #363636;
     margin: 15px 0;
 }
+/*estilos del mapa*/
+#geocode #map {
+    display: block;
+    width: 95%;
+    height: 500px;
+    margin-bottom: 3px;
+    margin-top: 20px;
+    background-color: rgb(226, 239, 248);
+    border: 7px solid #336baf;
+    border-radius: 5px;
 
+}
 .container_ubicacion{
     background-image: url(https://2182029.fs1.hubspotusercontent-na1.net/hubfs/2182029/Centro%20de%20la%20ciudad%20-%20El%20centro%20de%20Bogot%C3%A1-Bogot%C3%A1%20de%20noche.jpg);
     background-repeat: no-repeat;
@@ -344,13 +355,6 @@ canvas {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     font-size: 35px;
 }
-
-.detalles__ubicacion .mapa {
-    background-color: aqua;
-    height: 500px;
-    margin-top: 20px;
-}
-
 .redes_sociales{
     display: flex;
     gap: 10px;

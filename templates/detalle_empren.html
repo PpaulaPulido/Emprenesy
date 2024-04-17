@@ -9,6 +9,12 @@
     <link rel="icon" href="../img/Logo2.jpeg" type="image/icon type">
     <link rel="stylesheet" href="../static/styles/generales_user.css">
     <link rel="stylesheet" href="../static/styles/detalles.css">
+
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
 </head>
 
 <body>
@@ -99,7 +105,10 @@
             <div class="container_ubicacion">
                 <h2>Ubicación</h2>
                 <div class="detalles__ubicacion">
-                    <div class="mapa ubicacion"></div>
+                    <div class="mapa" id="geocode">
+                        <div id="map"></div>
+                        <div id="panel"></div>
+                    </div>
                     <div class="ubicacion">
                         <h3>Encuentranos en: </h3>
                         <ul id="location"></ul>
@@ -169,6 +178,7 @@
     <script src="../static/js/navegacion_user.js"></script>
     <script src="../static/js/datos.js"></script>
     <script src="../static/js/detalles_empren.js"></script>
+    <script type="text/javascript" src='../static/js/demo.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 

@@ -11,7 +11,7 @@ let idTarjetaSeleccionadaGlobal;
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente) {
+  function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente,tipo) {
 
     // Función para mostrar las tarjetas
     function mostrarTarjeta(index, cardSlider) {
@@ -83,7 +83,16 @@ document.addEventListener('DOMContentLoaded', function () {
       h3.textContent = data.titulo;
 
       let a = document.createElement("a");
-      a.href = `${data.enlace}?id=${data.id}`;
+
+      if(tipo == 'res'){
+        a.href = `${data.enlace}?id=${data.id}&tipo=res`;
+      }else if(tipo == 'evento'){
+        a.href = `${data.enlace}?id=${data.id}&tipo=evento`;
+      }else{
+        a.href = `${data.enlace}?id=${data.id}&tipo=emprende`;
+      }
+      
+      
       a.textContent = "Ver detalles";
 
       frontImagenDiv.appendChild(img);
@@ -108,9 +117,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   };
 
-  cntSliderTarjetas(datosTarjetas, sliderTarjetas, btn_anterior, btn_siguiente);
-  cntSliderTarjetas(datosEventos, sliderTarjetas2, btn_anterior2, btn_siguiente2);
-  cntSliderTarjetas(datosEmpredimientos, sliderTarjetas3, btn_anterior3, btn_siguiente3);
+  cntSliderTarjetas(datosTarjetas, sliderTarjetas, btn_anterior, btn_siguiente,'res');
+  cntSliderTarjetas(datosEventos, sliderTarjetas2, btn_anterior2, btn_siguiente2,'evento');
+  cntSliderTarjetas(datosEmpredimientos, sliderTarjetas3, btn_anterior3, btn_siguiente3,'emprende');
 
   // Función que se ejecuta cuando se hace scroll
   window.onscroll = function () {

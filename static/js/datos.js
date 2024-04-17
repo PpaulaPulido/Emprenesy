@@ -80,7 +80,7 @@ window.datosTarjetas = [
       ""
     ],
     ubicacion: [
-      "CARRERA 13 #85-25"
+      "Carrera 13 #85-25"
     ],
     menu: [
       "https://static.osakanikkei.com/uploads/store/Carta_Osaka_Bogota%CC%81_Web_espan%CC%83ol.pdf"
@@ -108,7 +108,7 @@ window.datosTarjetas = [
       ""
     ],
     ubicacion: [
-      "Cl. 24a #57-60"
+      "Calle 24 a #57-60"
     ],
     menu: [
       "https://www.hyatt.com/content/dam/hotel/propertysites/assets/grand/boggh/documents/en_US/dining/capitalino/Capitalino_menu_DICIEMBRE_22_2021.pdf"
@@ -136,7 +136,7 @@ window.datosTarjetas = [
       ""
     ],
     ubicacion: [
-      "Cra 10 # 96-08"
+      "Cra. 10 #96 08 Bogotá"
     ],
     menu: [
       "https://linktr.ee/pajaressalinas"
@@ -168,7 +168,7 @@ window.datosEventos = [
       ""
     ],
     ubicacion: [
-      "Parque Simón Bolívar"
+      "Parque Metropolitano Simón Bolívar Bogotá"
     ],
     descripcion: "¡El presente nos invade! Vuelven los cuatro mejores días del año recargados con los mejores artistas nacionales e internacionales. Más de 50 horas de música en vivo, celebraciones de la libertad y formas para vivir el presente en la decimotercera edición del Festival Estéreo Picnic. Vuelve la oportunidad de reencontrarnos con nosotros mismos, de ver la vida con otros ojos, de gritar nuestras canciones favoritas. Vuelve la oportunidad de vivir el presente el próximo 21, 22, 23 y 24 de marzo.",
     informacion_adicional: [
@@ -227,7 +227,7 @@ window.datosEventos = [
       ""
     ],
     ubicacion: [
-      " Carrera 9 # 74 – 63"
+      " Carrera 9 # 74–63 Bogotá"
     ],
     descripcion: "Temporada de Éxitos trae a escena la genial comedia francesa escrita por Sébastien Castro “Una idea Genial”. Todos tenemos un doble en el mundo. ¿Y si te encontraras con el tuyo? Desde que visitaron un apartamento para mudarse juntos, Armando tiene una pequeña duda: ¿María se ha enamorado del agente inmobiliario? Por pura casualidad, se encuentra con el doble de ese agente y le pide que se haga pasar por el verdadero. ¡Una idea genial! A menos que el falso agente se encuentre cara a cara con el verdadero... Y que aparezca un hermano gemelo de improviso.",
     informacion_adicional: [
@@ -256,7 +256,7 @@ window.datosEventos = [
       ""
     ],
     ubicacion: [
-      "Calle 67 # 11 - 58"
+      " Calle 67 # 11 -58 Bogotá"
     ],
     descripcion: "Cantemos la telenovela es el homenaje a los 70 años de la televisión colombiana, a esas grandes historias que nos han hecho sufrir, reír, amar y llorar a través del tiempo. Ahora, el escenario se transforma y el teatro le abre las puertas a esas canciones que aprendimos en la pantalla de un televisor; Ana de Nadie, Pasión de Gavilanes, yo soy Betty la fea, Pedro el escamoso, Café con Aroma de mujer o La Reina del Flow, entre otras.",
     informacion_adicional: [
@@ -489,7 +489,12 @@ window.datosEmpredimientos = [
       "https://www.tiktok.com/@sr.bunuelo"
     ],
     ubicacion: [
-      "Carrera 71d # 6-94 Sur", "Carrera 78G # 37-04 sur", "Carrera 100 # 19-02", "Portal Dorado", "Av. Carrera 86 # 55A - 75", "Domicilio"
+      "Carrera 71d # 6-94 Sur Bogotá",
+      "Carrera 78G # 37-04 sur Bogotá",
+      "Carrera 100 # 19-02 Bogotá",
+      "Portal Dorado Bogotá",
+      "Av. Carrera 86 # 55A - 75 Bogotá",
+      "Domicilio-Bogotá"
     ],
     productos: "https://www.srbunuelo.com/menu",
     descripcion: "Sumérgete en el sabor auténtico de nuestra deliciosa tradición culinaria con nuestros irresistibles buñuelos. Crujientes por fuera y suaves por dentro, cada bocado es una explosión de sabor que te transportará a los recuerdos de hogar y felicidad",
@@ -515,7 +520,13 @@ window.datosEmpredimientos = [
       ""
     ],
     ubicacion: [
-      "CALLE 93 # 11A-11", "CRA 15 #124- 30 LOCAL 7", "CALLE 116 # 15-44", "AV CRA 30 #19", , "AVE. CALLE 82 # 12A-25/27", "AV CRA 72 #80-94", "Domicilio"
+      "Calle 93 # 11A-11",
+      "Cra 15 #124- 30 LOCAL 7",
+      "Calle 116 # 15-44",
+      "Av Cra 30 #19",
+      "Ave. Calle 82 # 12A-25/27",
+      "Av Cra 72 #80-94",
+      "Domicilio"
     ],
     productos: "http://www.lataqueria.com.co/carta-unicentro",
     descripcion: "Prepárate para un festín de sabores con nuestros auténticos tacos! Desde la primera mordida, te transportarás a las calles de México con nuestra variedad de tacos frescos y deliciosos",
@@ -541,7 +552,9 @@ window.datosEmpredimientos = [
       "https://www.tiktok.com/@dorilocos_bogota?_t=8iv7ZEI5pNm&_r=1"
     ],
     ubicacion: [
-      "Cl. 8 #7941, Bogotá", "Cra. 103b #151c-11, Bogotá", "Cra. 6a, Bogotá"
+      "Cl. 8 #7941, Bogotá", 
+      "Cra. 103b #151c-11, Bogotá",
+      "Cra. 6a, Bogotá"
     ],
     productos: "https://linkbio.co/DORILOCOSF",
     descripcion: "Prepárate para una explosión de sabor con nuestros deliciosos dorilocos! Cada bocado es una experiencia única que combina la crujiente textura de los Doritos con una variedad de sabores y texturas deliciosas.",
@@ -577,14 +590,14 @@ window.empredimientosArtesania = [
   },
   {
     id: 7,
-    imagen: "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/406435604_746874817473812_6212048010240493676_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHyUrCI_ZGnMe6j5ur7xvH1wwjImcY5jUvDCMiZxjmNSzrz_ZHwrz2v1U_Yb1e8-6xPgld92Is8NxEXW6xivX0l&_nc_ohc=OC5oiOLGdXwAb6h9Hnw&_nc_ht=scontent.fbog3-2.fna&oh=00_AfBKEg7YZN0xsCM5GlKtoQX0nWs3thr2I-wns4Gws6DM2g&oe=6619D5D1",
+    imagen: "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/406435604_746874817473812_6212048010240493676_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHyUrCI_ZGnMe6j5ur7xvH1wwjImcY5jUvDCMiZxjmNSzrz_ZHwrz2v1U_Yb1e8-6xPgld92Is8NxEXW6xivX0l&_nc_ohc=6sg23Hbw7ccAb6zl6h5&_nc_ht=scontent.fbog3-2.fna&oh=00_AfDTfeOrcDaxKumc2P2Z4Qb-7yDlV8yGc2zGsfGnY8iu8A&oe=6625EB91",
     titulo: "Artesanos de Colombia",
     enlace: "../templates/detalle_empren.html",
     galeria: [
-      "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/406672778_746852254142735_3795278734247261445_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFMqATrDYMdeKhjfNBkDsKcjFFtmp7vHIqMUW2anu8ciqskL-3dxpRdpfmVPufY7Erl_OLP3phVjlusCFBZ3SZ1&_nc_ohc=8p4R8M5y9wkAb7B9pvj&_nc_ht=scontent.fbog3-2.fna&oh=00_AfDDK7vjV1M44zsq9OHjse9dI4MA_pyl91l7rH4Xvq2yAw&oe=6619E3D1",
-      "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/405722770_746605630834064_3830789619849686221_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGHX9guTJHAxdxPNo-F_tVuMGcwZ4fkbsEwZzBnh-RuwUV287oXSd6XERVBYKliadX5rFpcPWpVQgtF7FCqkZAB&_nc_ohc=9L3OT36w1m8Ab67zCwC&_nc_ht=scontent.fbog3-2.fna&oh=00_AfDcr5NnVmFxCIECYEF2AWGVvOeqTXgqtYinwZxWbx_mpg&oe=661A0AAA",
-      "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/384115256_710185297809431_435423934049689436_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeE1ySNqpsFocK5vpcLfYJgaf_qVxURL8ql_-pXFREvyqXWwGdb4vkUuO_VJFn0ZGV2GZ67H4jXPJoy2YvRsHkWZ&_nc_ohc=xpZlRgW4KY4Ab73E0sj&_nc_ht=scontent.fbog3-2.fna&oh=00_AfCIjYKJzoenRJ_-YGcUPOo9XmtWTX9vr3bJ95qvT5qVvA&oe=661A08AF",
-      "https://scontent.fbog3-1.fna.fbcdn.net/v/t39.30808-6/376859302_701178375376790_4829647886548359462_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHNCkNL8Dk6gOYhgOSYJWjPQ-jWBuCfcVhD6NYG4J9xWD4i7THYUeBZdKQTZZRGjHbdDZB0sLGSOntpzxwOutDr&_nc_ohc=BGzcCDekLlwAb5mwzW5&_nc_ht=scontent.fbog3-1.fna&oh=00_AfD4oT8cnLtaBZWIFh-MZNkq6ef_Z3XE33FR80b4pr31GQ&oe=6619FD9A"
+      "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/406435604_746874817473812_6212048010240493676_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHyUrCI_ZGnMe6j5ur7xvH1wwjImcY5jUvDCMiZxjmNSzrz_ZHwrz2v1U_Yb1e8-6xPgld92Is8NxEXW6xivX0l&_nc_ohc=6sg23Hbw7ccAb6zl6h5&_nc_ht=scontent.fbog3-2.fna&oh=00_AfDTfeOrcDaxKumc2P2Z4Qb-7yDlV8yGc2zGsfGnY8iu8A&oe=6625EB91",
+      "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/406672778_746852254142735_3795278734247261445_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFMqATrDYMdeKhjfNBkDsKcjFFtmp7vHIqMUW2anu8ciqskL-3dxpRdpfmVPufY7Erl_OLP3phVjlusCFBZ3SZ1&_nc_ohc=CX5YUeXjY0QAb5llbCQ&_nc_ht=scontent.fbog3-2.fna&oh=00_AfCkwo7kFxG8sP_bHrHdR-E9i53QM0sHY0ggy9ZiUeMO2Q&oe=6625C151",
+      "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/405722770_746605630834064_3830789619849686221_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGHX9guTJHAxdxPNo-F_tVuMGcwZ4fkbsEwZzBnh-RuwUV287oXSd6XERVBYKliadX5rFpcPWpVQgtF7FCqkZAB&_nc_ohc=n7gjcCfPTwgAb43-lpp&_nc_ht=scontent.fbog3-2.fna&oh=00_AfDKiCW_43EbnoHbjXIo2uYuS5V0I4xYCV2OtE7msGA6wg&oe=6625E82A",
+      "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/436340534_830564889104804_2819603429856217572_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeH6fWP8bX6MoFfvB_ZjtahsIA5uggBIF28gDm6CAEgXb4Nm9qGHifdsinR7yejOQauqLmwjs2tGW1LGcKkVl1_c&_nc_ohc=YVNny-gtLFkAb7W0IPZ&_nc_ht=scontent.fbog3-2.fna&oh=00_AfBN20rRs4A9Uw_D_PgDQYv-98nbIAzFd9ZbL58-l2oqAw&oe=6625E59A"
     ],
     negocio: "Artesanía",
     horario: "Lunes-Sábado 09:00 am-20:00 pm",
@@ -607,9 +620,9 @@ window.empredimientosArtesania = [
     enlace: "../templates/detalle_empren.html",
     galeria: [
       "https://centroartesanal140.com/wp-content/uploads/2023/07/10artesania-y-aroma-367x367.jpg",
-      "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/321209802_382877440715601_7866710916481948404_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEjsbnwiZnUWhuiklBHvkXk_Iq77TRqnB78irvtNGqcHrtGMTNMj6-aJvmV3zqWbTiePzC5PR9JrszNg2B4MDlk&_nc_ohc=15rUtlTXnjUAb6RV5ob&_nc_ht=scontent.fbog3-2.fna&oh=00_AfARB2jIs_16eAqjQE-9G57OnQC7aO1uAjc4dleX5k5Drw&oe=6619F85E",
-      "https://scontent.fbog3-1.fna.fbcdn.net/v/t39.30808-6/319812114_554655349442109_241623344553817218_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGzj0NQl_5wc_33m7ZzLjvkvzc_VM262AO_Nz9UzbrYA9zDpHeJ5zfeCqD_5R5N36_KyW1pdmdWF1-mmtQyrXhl&_nc_ohc=Fw0S3vyqU4wAb7v1JPx&_nc_ht=scontent.fbog3-1.fna&oh=00_AfD_7Syp_XvDxqi0_yvZRwfn5s8zhTdDqvuVzn1wzMAZRA&oe=6619EB93",
-      "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/301785830_122733510515501_1045384273510897490_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFIqbKQ6iAfGsK6xupEjcDb7ceQ9prFlD3tx5D2msWUPXI-EQR2ftIQsAPYdeaVvZBBt9FiTe_Nif6iact4wnCy&_nc_ohc=irGtcKMUA6sAb7DQOrt&_nc_ht=scontent.fbog3-2.fna&oh=00_AfA6EHE0ymA4RXS8uXaHgL4Xyt-Njr7UqfxWIMiCYYyH0g&oe=6619E3DE",
+      "https://1.bp.blogspot.com/-JW7u86SWwQ8/U6TN63nee-I/AAAAAAAAFAk/D5ctnp2LhJg/s1600/artesanias.jpg",
+      "https://centroartesanal140.com/wp-content/uploads/2023/07/1artesania-y-aroma-367x367.jpg",
+      "https://fastly.4sqi.net/img/general/600x600/33750806_8v2lMpJZMpmW3UZpRB1SvntVZvKlUSlBtaDmss3F2v8.jpg",
     ],
     negocio: "Artesanía",
     horario: "Lunes-Sábado 08:00 am-19:30 pm",
@@ -736,7 +749,7 @@ window.restaurantesVista = [
     ],
     menu: [
       "https://www.restaurantesmonserrate.com/restaurantes/santa_clara",
-    
+
     ],
     nosotros: "Santa Clara se convierte en la mejor vitrina de la cocina colombiana hacia el mundo. Ofrecemos una carta con una variedad de preparaciones que son reflejo de la diversidad de paisajes, culturas, alimentos y tradiciones culinarias que tenemos en el país, con propuestas que van desde el archipiélago de San Andrés y Santa Catalina, hasta la Amazonía, pasando por el cálido Caribe, la Región Andina, el Litoral Pacífico y los Llanos Orientales."
   },
@@ -746,8 +759,8 @@ window.restaurantesVista = [
     titulo: "Tramonti",
     enlace: "../templates/detalle_res.html",
     galeria: [
-      "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/432782720_821730219981069_869991629007905587_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeH4jXcSChr_Q4BLHVvpHuGmpi75n-TNIaimLvmf5M0hqO7THafZJLHP8kmVfOTozZqKlSyENpUWwcNRTIJMLBmI&_nc_ohc=K7GJKLdHARoAb4LTVmW&_nc_ht=scontent.fbog3-2.fna&oh=00_AfAHrzvFQUcV2HbVZs0F4tZo1B4GBLDW9Pw4UettESIF1Q&oe=661B51BD",
-      "https://scontent.fbog3-1.fna.fbcdn.net/v/t39.30808-6/414735513_766196148867810_5739604058750191156_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGSrX6Z27cwYpdT3jUtbA4q3GJaaCuYn63cYlpoK5ifrZinYit4nIkOp2OO3Jyu--jWUW04UPZqWpQawAj40hqB&_nc_ohc=BYJgdpX4bU8Ab7VBixO&_nc_ht=scontent.fbog3-1.fna&oh=00_AfCnC3Xy_HpgFlByaMVL5kmCjJjnJvJMKcNVC_buussp0A&oe=661B32EC",
+      "https://media-cdn.tripadvisor.com/media/photo-s/12/20/fe/58/tramonti-restaurante.jpg",
+      "https://img.carta.menu/storage/media/company_images/1127233/conversions/thumbnail.jpg",
       "https://blogs.portafolio.co/somosibaritas/wp-content/uploads/sites/149/2018/10/tramonti5.jpg",
       "https://pbs.twimg.com/media/B-pLbfIXEAAKK12.jpg:large"
     ],
@@ -764,7 +777,7 @@ window.restaurantesVista = [
     ],
     menu: [
       "https://qr.precompro.com/?source=tramonti.precompro.com",
-    
+
     ],
     nosotros: "Un mágico restaurante con más de 42 años de historia, en un lugar único con la mejor vista de la ciudad. Menú internacional. Tramonti ha sido un lugar de referencia turística y el lugar ideal para celebraciones."
   },
@@ -795,7 +808,7 @@ window.restaurantesTematicos = [
     ],
     menu: [
       "https://qr.precompro.com/?source=imagine.precompro.com",
-    
+
     ],
     nosotros: "Restaurante temático, inspirado en los Beatles y lo mejor de la época con una carta muy variada de comida internacional y una selección especial de los mejores platos colombianos que hacen honor a nuestra tierra y sus sabores. La decoración de restaurante IMAGINE es hecha en materiales reciclados que ambienta. Celebraciones de cumpleaños y demás eventos son siempre bienvenidos en IMAGINE."
   },
@@ -824,20 +837,20 @@ window.restaurantesTematicos = [
     ],
     menu: [
       "https://www.cuerdorest.com/menu",
-    
+
     ],
     nosotros: "Las noches en Cuerdo vienen acompañadas de riesgos, emociones y experiencias memorables. Ven a disfrutar de una noche de Taller de cocteleria by monkey 47  ‘’Desde las alturas de nuestra malla ’’ en el lugar menos cuerdo y maridado con los mejores cocteles de ginebra, donde podrás disfrutar de un menú que desafiará tu mente , tus sentidos y tu paladar."
   },
   {
     id: 12,
-    imagen: "https://scontent.fbog3-3.fna.fbcdn.net/v/t39.30808-6/313076704_546656487464210_2114677031439971175_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEKm15DIWDPdWUjfF-Q837WxrkPgTUhZ4XGuQ-BNSFnhXqR7RNuA_YU_wuUG4LRBuWF00n78L_WIHBr4K26nIa4&_nc_ohc=uskV-g_pOXIAb7sjmOT&_nc_ht=scontent.fbog3-3.fna&oh=00_AfAFnVtuLWj1fld66WYrsWtAHKMLZdbQPUXNHzTC8mNCnQ&oe=661CA32A",
+    imagen: "../img/mesa_de_papel.jpg",
     titulo: "La mesa de papel",
     enlace: "../templates/detalle_res.html",
     galeria: [
-      "https://scontent.fbog3-1.fna.fbcdn.net/v/t39.30808-6/313022853_1474890243030416_8797682355025939564_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHD7SqwwyuSb33MtnVSV8qV1pvhYpyoamLWm-FinKhqYkcUotfFna12CgMaflpy3-tVi8teC1qXIn4eptRfPJCK&_nc_ohc=OdASUTJ4D0EAb4bgQNV&_nc_ht=scontent.fbog3-1.fna&oh=00_AfDZMrcNkUD2issvJpo8VfU59cbHOPY5PGg3iF8iTWJA5g&oe=661CA9BD",
-      "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/314185335_553698640093328_3643057833380847431_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeECgi108zOhVVDi7mO3Co0n589vrnIAVGDnz2-ucgBUYLWhVRb7d5rONBo4HOHse59x9Csfz4G9RrLIhq0kTEFm&_nc_ohc=b5cxPjg_tCcAb7TM8aO&_nc_ht=scontent.fbog3-2.fna&oh=00_AfC1NfwB60X_IUbZ3dGAPixOce1mAja7UStsu_WQ4xzPig&oe=661C9F54",
-      "https://scontent.fbog3-1.fna.fbcdn.net/v/t39.30808-6/315207817_561544882642037_7076757292171784487_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHWSF0cA1dhixZF7PWFv9Grkz5rI9iCLwCTPmsj2IIvAKDK93NP7je3_lnk467D1g7ITdZtcVUvSNH380GYotK6&_nc_ohc=J4QsNZBdDPgAb7YNyx3&_nc_ht=scontent.fbog3-1.fna&oh=00_AfD8kmdKroxXP1S3d8x8VjK49NPLp-jfpDiMrnIGNMqAUQ&oe=661C87EF",
-      "https://scontent.fbog3-3.fna.fbcdn.net/v/t39.30808-6/313124809_546656490797543_8083046758171525847_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHutavQVRvJK80UqOKAIeFylh7nRr2h4bWWHudGvaHhtY-ptsc0rVYjfTLesNe2NUtFLdQTgAVhW4WgjzGdj92w&_nc_ohc=b3yl7eBGNHkAb6kc44I&_nc_oc=AdhbxgW4lT6qwWugiDlQd97i4pguGWEECwU_lCz_qD9oAsdT7pUhPo3b2RfYsd1kx6I&_nc_ht=scontent.fbog3-3.fna&oh=00_AfBz2z21xZ0EL8Tko0GWE1XymK0An_7D6Z7u7nUWuSZFww&oe=661C8CC4"
+      "https://pbs.twimg.com/media/EO_DkR3X4AAOOVC.jpg",
+      "https://10619-2.s.cdn12.com/rests/original/324_509622806.jpg",
+      "https://img.restaurantguru.com/r2a4-burger-La-mesa-de-papel.jpg",
+      "https://mir-s3-cdn-cf.behance.net/project_modules/hd/3c349b126952465.6137faac0624a.png"
     ],
     horario: "Lunes-Sábado 13:30pm-22:00pm",
     pagina: "https://www.facebook.com/Lamesadepapel/?locale=es_LA",
@@ -853,7 +866,7 @@ window.restaurantesTematicos = [
     ],
     menu: [
       "https://www.facebook.com/Lamesadepapel/photos_by?locale=es_LA",
-    
+
     ],
     nosotros: '¡Bienvenidos a La Mesa de Papel, el destino gastronómico más emocionante inspirado en la famosa serie La Casa de Papel"! En nuestro restaurante, fusionamos la emoción y la intriga de la exitosa serie con la pasión por la comida excepcional.Sumérgete en un ambiente donde cada detalle, desde la decoración hasta la música ambiente, te transportará al emocionante mundo de los atracos y el ingenio. Nuestro equipo se esfuerza por brindarte una experiencia única y emocionante desde el momento en que cruzas nuestras puertas.'
   },
@@ -882,7 +895,7 @@ window.restaurantesTematicos = [
     ],
     menu: [
       "https://qr.precompro.com/?source=circo.precompro.com",
-    
+
     ],
     nosotros: "El Restaurante Circo Colombia es un restaurante temático, decorado con elementos circenses, especial para celebrar cumpleaños, reuniones, eventos de una forma diferente y divertida. Contamos con una cocina colombiana artesanal, carta de cocteles, show de Circo, música en vivo."
   },

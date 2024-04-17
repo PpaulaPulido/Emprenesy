@@ -7,9 +7,15 @@
     <title>Detalle</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
     <link rel="icon" href="../img/Logo2.jpeg" type="image/icon type">
+    
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+
     <link rel="stylesheet" href="../static/styles/generales_user.css">
     <link rel="stylesheet" href="../static/styles/detalles.css">
-
 
 </head>
 
@@ -70,7 +76,7 @@
                 <div class="info">
                     <h2>Información</h2>
                     <h3>Sitio Web</h3>
-                    <a id="web">Clic aquí  para visitar el sitio web.</a>
+                    <a id="web">Clic aquí para visitar el sitio web.</a>
                     <h3>Contacto</h3>
                     <p id="contacto"></p>
                     <h3>Redes Sociales</h3>
@@ -90,7 +96,10 @@
             <div class="container_ubicacion">
                 <h2>Ubicación</h2>
                 <div class="detalles__ubicacion">
-                    <div class="mapa ubicacion"></div>
+                    <div class="mapa" id="geocode">
+                        <div id="map"></div>
+                        <div id="panel"></div>
+                    </div>
                     <div class="ubicacion">
                         <h3>Encuentranos en: </h3>
                         <ul id="location"></ul>
@@ -165,6 +174,7 @@
     <script src="../static/js/navegacion_user.js"></script>
     <script src="../static/js/datos.js"></script>
     <script src="../static/js/detalles.js"></script>
+    <script type="text/javascript" src='../static/js/demo.js'></script>
     <script src="../static/js/MVQ.js"></script>
 
 </body>

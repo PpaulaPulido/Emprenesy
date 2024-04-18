@@ -82,22 +82,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const hard_favorites = document.querySelectorAll('.bi-heart-fill');
     let listaFavoritos = [];
+
     hard_favorites.forEach(function (hard_favorite) {
         hard_favorite.addEventListener('click', function () {
             if (!hard_favorite.classList.contains('checked')) {
                 hard_favorite.classList.add('checked');
                 const eventId = hard_favorite.getAttribute('data-event-id');
-                //console.log(eventId);
                 listaFavoritos.push(eventId)
-                console.log(listaFavoritos);
-                //guardo la lista de favoritos en el local storage
                 localStorage.setItem('favoritos', JSON.stringify(listaFavoritos));
-
+                // Guardar el estado del corazón en localStorage
+                localStorage.setItem(`favorito_${eventId}`, 'checked');
             } else {
                 hard_favorite.classList.remove('checked');
+                const eventId = hard_favorite.getAttribute('data-event-id');
+                listaFavoritos = listaFavoritos.filter(id => id !== eventId);
+                localStorage.setItem('favoritos', JSON.stringify(listaFavoritos));
+                // Eliminar el estado del corazón del localStorage
+                localStorage.removeItem(`favorito_${eventId}`);
             }
         });
     });
-
-
 }) 

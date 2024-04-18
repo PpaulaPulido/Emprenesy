@@ -17,7 +17,6 @@ function parametros(){
   link_evento.setAttribute('href', url_evento);
 }
 
-
 document.addEventListener('DOMContentLoaded', function () {
 
   function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, tipo) {

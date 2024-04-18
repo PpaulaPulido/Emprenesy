@@ -1,22 +1,21 @@
-document.addEventListener('DOMContentLoaded',function(){
-
-    const hard_favorites = document.querySelectorAll('.bi-heart-fill');
-    let listaFavoritos = [];
-    hard_favorites.forEach(function (hard_favorite) {
-        hard_favorite.addEventListener('click', function () {
-            if (!hard_favorite.classList.contains('checked')) {
-                hard_favorite.classList.add('checked');
-                const eventId = hard_favorite.getAttribute('data-event-id');
-                //console.log(eventId);
-                listaFavoritos.push(eventId)
-                console.log(listaFavoritos);
-                //guardo la lista de favoritos en el local storage
-                localStorage.setItem('favoritos', JSON.stringify(listaFavoritos));
-
-            } else {
-                hard_favorite.classList.remove('checked');
-            }
-        });
+document.addEventListener('DOMContentLoaded', function () {
+    // Obtener los eventos favoritos del localStorage
+    const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+    console.log(favoritos);
+    // Iterar sobre los eventos favoritos y mostrarlos en la interfaz de usuario
+    favoritos.forEach(function (eventoId) {
+        // Buscar el evento correspondiente en window.datosEventos
+        const idNumero = parseInt(eventoId);
+        const evento = window.datosEventos.find(e => e.id === idNumero);
+        console.log(evento);
+        if (evento) {
+            // Crear elementos HTML para mostrar la información del evento
+            const container_fav = document.querySelector('#favoritos');
+            let card = document.createElement('div');
+            let titulo = document.createElement('h5');
+            titulo.textContent = evento.titulo;
+            card.appendChild(titulo);
+            container_fav.appendChild(card);
+        }
     });
-    
-})
+});

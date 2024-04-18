@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
             container_div.classList.add("swiper_conta_img");
 
             const favorite = document.createElement('i');
-            favorite.classList.add("bi","bi-heart","favorite");
+            favorite.classList.add("bi","bi-heart-fill","favorite");
             
             const rating = document.createElement('div');
             rating.classList.add("rating");
@@ -80,4 +80,15 @@ document.addEventListener('DOMContentLoaded', function () {
     tarjetas_swiper(restaurantesTematicos,swiper2);
     tarjetas_swiper(restaurantesVista ,swiper3);
     
+    const hard_favorites = document.querySelectorAll('.bi-heart-fill');
+
+    hard_favorites.forEach(function (hard_favorite) {
+        hard_favorite.addEventListener('click', function () {
+            if (!hard_favorite.classList.contains('checked')) {
+                hard_favorite.classList.add('checked');
+            } else {
+                hard_favorite.classList.remove('checked');
+            }
+        });
+    });
 }) 

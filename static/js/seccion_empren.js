@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const favorite = document.createElement('i');
             favorite.classList.add("bi","bi-heart-fill","favorite");
+            favorite.setAttribute('data-event-id', dato.id);
             
             const rating = document.createElement('div');
             rating.classList.add("rating");
@@ -80,12 +81,37 @@ document.addEventListener('DOMContentLoaded', function () {
     tarjetas_swiper(empredimientosArtesania,swiper2);
 
     const hard_favorites = document.querySelectorAll('.bi-heart-fill');
+    let listaFavoritosEm = [];
+
+    const getFavorites = localStorage.getItem('favoritosEm');
+    if (getFavorites) {
+        listaFavoritosEm = JSON.parse(getFavorites);
+    }
+
     hard_favorites.forEach(function (hard_favorite) {
+        const eventId = hard_favorite.getAttribute('data-event-id');
+
+        // Establecer el estado inicial de los elementos favoritos
+        if (listaFavoritosEm.includes(eventId)) {
+            hard_favorite.classList.add('checked');
+        }
+        
         hard_favorite.addEventListener('click', function () {
+
             if (!hard_favorite.classList.contains('checked')) {
                 hard_favorite.classList.add('checked');
+                const eventId = hard_favorite.getAttribute('data-event-id');
+                listaFavoritosEm.push(eventId)
+                localStorage.setItem('favoritosEm', JSON.stringify(listaFavoritosEm));
+                // Guardar el estado del corazón en localStorage
+                localStorage.setItem(`favoritoEm_${eventId}`, 'checked');
             } else {
                 hard_favorite.classList.remove('checked');
+                const eventId = hard_favorite.getAttribute('data-event-id');
+                listaFavoritosEm = listaFavoritosEm.filter(id => id !== eventId);
+                localStorage.setItem('favoritosEm', JSON.stringify(listaFavoritosEm));
+                // Eliminar el estado del corazón del localStorage
+                localStorage.removeItem(`favoritoEm_${eventId}`);
             }
         });
     });

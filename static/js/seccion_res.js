@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const favorite = document.createElement('i');
             favorite.classList.add("bi","bi-heart-fill","favorite");
+            favorite.setAttribute('data-event-id', dato.id);
             
             const rating = document.createElement('div');
             rating.classList.add("rating");
@@ -81,13 +82,37 @@ document.addEventListener('DOMContentLoaded', function () {
     tarjetas_swiper(restaurantesVista ,swiper3);
     
     const hard_favorites = document.querySelectorAll('.bi-heart-fill');
+    let listaFavoritosRes = [];
+
+    const getFavorites = localStorage.getItem('favoritosRes');
+    if (getFavorites) {
+        listaFavoritosRes = JSON.parse(getFavorites);
+    }
 
     hard_favorites.forEach(function (hard_favorite) {
+        const eventId = hard_favorite.getAttribute('data-event-id');
+
+        // Establecer el estado inicial de los elementos favoritos
+        if (listaFavoritosRes.includes(eventId)) {
+            hard_favorite.classList.add('checked');
+        }
+        
         hard_favorite.addEventListener('click', function () {
+
             if (!hard_favorite.classList.contains('checked')) {
                 hard_favorite.classList.add('checked');
+                const eventId = hard_favorite.getAttribute('data-event-id');
+                listaFavoritosRes.push(eventId)
+                localStorage.setItem('favoritosRes', JSON.stringify(listaFavoritosRes));
+                // Guardar el estado del corazón en localStorage
+                localStorage.setItem(`favoritoRes_${eventId}`, 'checked');
             } else {
                 hard_favorite.classList.remove('checked');
+                const eventId = hard_favorite.getAttribute('data-event-id');
+                listaFavoritosRes = listaFavoritosRes.filter(id => id !== eventId);
+                localStorage.setItem('favoritosRes', JSON.stringify(listaFavoritosRes));
+                // Eliminar el estado del corazón del localStorage
+                localStorage.removeItem(`favoritoRes_${eventId}`);
             }
         });
     });

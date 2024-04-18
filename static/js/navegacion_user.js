@@ -4,7 +4,7 @@ function user_sesion(){
         const menuItems = [
             { text: 'Sobre Nosotros', href: '/templates/MVQ.html', class: 'link' },
             { text: 'Inicio', href: '/templates/index.html', class: 'link' },
-            { text: 'Mis favoritos', href: '#', class: 'link' },
+            { text: 'Mis favoritos', href: '/templates/favoritos.html', class: 'link' },
             { text: '<img src="../img/perfil_user.png" alt="perfil">', href: '#', class: 'link1', hasSubMenu: true }
         ];
 

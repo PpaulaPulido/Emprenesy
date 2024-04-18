@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const favorite = document.createElement('i');
             favorite.classList.add("bi", "bi-heart-fill", "favorite");
-
+            favorite.setAttribute('data-event-id', dato.id);
 
             const rating = document.createElement('div');
             rating.classList.add("rating");
@@ -81,11 +81,18 @@ document.addEventListener('DOMContentLoaded', function () {
     tarjetas_swiper(eventosTecnologicos, swiper2);
 
     const hard_favorites = document.querySelectorAll('.bi-heart-fill');
+    let listaFavoritos = [];
     hard_favorites.forEach(function (hard_favorite) {
         hard_favorite.addEventListener('click', function () {
             if (!hard_favorite.classList.contains('checked')) {
                 hard_favorite.classList.add('checked');
-                
+                const eventId = hard_favorite.getAttribute('data-event-id');
+                //console.log(eventId);
+                listaFavoritos.push(eventId)
+                console.log(listaFavoritos);
+                //guardo la lista de favoritos en el local storage
+                localStorage.setItem('favoritos', JSON.stringify(listaFavoritos));
+
             } else {
                 hard_favorite.classList.remove('checked');
             }

@@ -9,9 +9,18 @@ const btn_anterior3 = document.querySelector('.button_anterior3');
 const btn_siguiente3 = document.querySelector('.button_siguiente3');
 let idTarjetaSeleccionadaGlobal;
 
+function parametros(){
+  console.log("hola parametro");
+  const link_evento = document.getElementById('evento_link');
+  const href = link_evento.getAttribute('href');
+  const url_evento = `${href}?tipo=evento`;
+  link_evento.setAttribute('href', url_evento);
+}
+
+
 document.addEventListener('DOMContentLoaded', function () {
 
-  function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente,tipo) {
+  function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, tipo) {
 
     // Función para mostrar las tarjetas
     function mostrarTarjeta(index, cardSlider) {
@@ -84,15 +93,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
       let a = document.createElement("a");
 
-      if(tipo == 'res'){
+      if (tipo == 'res') {
         a.href = `${data.enlace}?id=${data.id}&tipo=res`;
-      }else if(tipo == 'evento'){
+      } else if (tipo == 'evento') {
         a.href = `${data.enlace}?id=${data.id}&tipo=evento`;
-      }else{
+      } else {
         a.href = `${data.enlace}?id=${data.id}&tipo=emprende`;
       }
-      
-      
+
       a.textContent = "Ver detalles";
 
       frontImagenDiv.appendChild(img);
@@ -117,9 +125,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   };
 
-  cntSliderTarjetas(datosTarjetas, sliderTarjetas, btn_anterior, btn_siguiente,'res');
-  cntSliderTarjetas(datosEventos, sliderTarjetas2, btn_anterior2, btn_siguiente2,'evento');
-  cntSliderTarjetas(datosEmpredimientos, sliderTarjetas3, btn_anterior3, btn_siguiente3,'emprende');
+  cntSliderTarjetas(datosTarjetas, sliderTarjetas, btn_anterior, btn_siguiente, 'res');
+  cntSliderTarjetas(datosEventos, sliderTarjetas2, btn_anterior2, btn_siguiente2, 'evento');
+  cntSliderTarjetas(datosEmpredimientos, sliderTarjetas3, btn_anterior3, btn_siguiente3, 'emprende');
 
   // Función que se ejecuta cuando se hace scroll
   window.onscroll = function () {
@@ -135,7 +143,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 });
-
 
 
 

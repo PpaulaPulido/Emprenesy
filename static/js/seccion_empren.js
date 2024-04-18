@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const favorite = document.createElement('i');
             favorite.classList.add("bi","bi-heart-fill","favorite");
-
+            
             const rating = document.createElement('div');
             rating.classList.add("rating");
     

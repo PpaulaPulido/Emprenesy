@@ -24,9 +24,12 @@ listaDatos.forEach(function (item) {
     let liElement = document.createElement("li");
     let aElement = document.createElement("a");
 
-    // Configurar el href del elemento a
-    aElement.href = "#";
-
+    if (item === 'Restaurantes') {
+        aElement.href = "./seccion_res.html";
+    } else if (item === 'Eventos') {
+        aElement.href = "./seccion_Evento.html";
+    }
+    
     // Configurar el texto del elemento a con el dato actual
     aElement.textContent = item;
 

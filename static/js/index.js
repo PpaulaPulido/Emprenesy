@@ -9,12 +9,27 @@ const btn_anterior3 = document.querySelector('.button_anterior3');
 const btn_siguiente3 = document.querySelector('.button_siguiente3');
 let idTarjetaSeleccionadaGlobal;
 
-function parametros(){
-  console.log("hola parametro");
+function parametros() {
+
   const link_evento = document.getElementById('evento_link');
-  const href = link_evento.getAttribute('href');
+  let href = link_evento.getAttribute('href');
   const url_evento = `${href}?tipo=evento`;
   link_evento.setAttribute('href', url_evento);
+
+  const res_link = document.getElementById('res_link');
+  href = res_link.getAttribute('href');
+  const url_res = `${href}?tipo=res`;
+  res_link.setAttribute('href', url_res);
+
+  const emprende_link = document.getElementById('emprende_link');
+  href = emprende_link.getAttribute('href');
+  const url_emprende = `${href}?tipo=emprende`;
+  emprende_link.setAttribute('href', url_emprende);
+
+  const emprende_link2 = document.getElementById('emprende_link2');
+  const href_e = emprende_link2.getAttribute('href');
+  const url_emprende2 = `${href_e}?tipo=emprende`;
+  emprende_link2.setAttribute('href', url_emprende2);
 }
 
 document.addEventListener('DOMContentLoaded', function () {

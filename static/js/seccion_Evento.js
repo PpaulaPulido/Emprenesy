@@ -83,8 +83,21 @@ document.addEventListener('DOMContentLoaded', function () {
     const hard_favorites = document.querySelectorAll('.bi-heart-fill');
     let listaFavoritos = [];
 
+    const getFavorites = localStorage.getItem('favoritos');
+    if (getFavorites) {
+        listaFavoritos = JSON.parse(getFavorites);
+    }
+
     hard_favorites.forEach(function (hard_favorite) {
+        const eventId = hard_favorite.getAttribute('data-event-id');
+
+        // Establecer el estado inicial de los elementos favoritos
+        if (listaFavoritos.includes(eventId)) {
+            hard_favorite.classList.add('checked');
+        }
+        
         hard_favorite.addEventListener('click', function () {
+
             if (!hard_favorite.classList.contains('checked')) {
                 hard_favorite.classList.add('checked');
                 const eventId = hard_favorite.getAttribute('data-event-id');
@@ -102,4 +115,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+
 }) 

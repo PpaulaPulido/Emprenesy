@@ -109,11 +109,11 @@ ol {
     font-size: 20px;
     margin: 10px 0px 0 8px;
     cursor: pointer;
-    color: #cecbcb
+    color: red;
 }
 
 .favorite.checked {
-    color: red;
+    color: #cecbcb;
 }
 .rating{
     width: 50%;
@@ -141,4 +141,36 @@ ol {
 
 .enlaceFav:hover{
     background-color: #002b68;
+}
+/*estilos cuando no hay favoritos*/
+.container_fav{
+    display: block;
+    justify-content: center;
+    align-items: center
+}
+.container_noFav{
+    width: 60%;
+    padding: 10px;
+    margin: 40px auto;
+}
+.container_fav h2{
+    text-align: center;
+    margin: 30px 0;
+}
+.div_icon{
+    background-color: #051248;;
+    padding: 10px;
+    margin: 0 auto;
+    width: 70px;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.div_icon .bi-heart{
+    font-size: 30px;
+    text-align: center;
+    color:#fff;
 }

@@ -4,58 +4,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
     const idParam = urlParams.get('id');
 
-    function eventosGategoria(typeEvento, id) {
 
-        // Obtener el contenedor donde se agregarán las imágenes
-        const carouselInner = document.querySelector('.carousel-inner');
+    Categoria(window.datosEventos, idParam);
+    Categoria(window.eventosTecnologicos, idParam);
 
-
-        // Buscar los datos correspondientes al ID en window.datosEventos
-        const datosEventos = typeEvento.find(tarjeta => tarjeta.id === parseInt(id));
-
-        // Verificar si se encontraron los datos
-        if (datosEventos) {
-            // Limpiar el contenido actual del carrusel
-            carouselInner.innerHTML = '';
-
-            // Iterar sobre la galería de imágenes y crear los elementos <img>
-            datosEventos.galeria.forEach((imagenSrc, index) => {
-                // Crear el elemento <img>
-                const imagen = document.createElement('img');
-                imagen.src = imagenSrc;
-                imagen.alt = `Imagen ${index + 1} de ${datosEventos.titulo}`;
-
-                //crear elemendo div con la clase blck
-                const block = document.createElement('div');
-                block.classList.add('block', 'img-responsive');
-                block.appendChild(imagen);
-
-                // Crear el elemento <div class="carousel-col"> y agregar la imagen
-                const carouselCol = document.createElement('div');
-                carouselCol.classList.add('carousel-col');
-                carouselCol.appendChild(block);
-
-                // Crear el elemento <div class="item"> y agregar la columna del carrusel
-                const itemCarousel = document.createElement('div');
-                itemCarousel.classList.add('item');
-                if (index === 0) {
-                    itemCarousel.classList.add('active'); // Marcar el primer elemento como activo
-                }
-                itemCarousel.appendChild(carouselCol);
-
-                // Agregar el elemento <div class="item"> al contenedor principal del carrusel
-                carouselInner.appendChild(itemCarousel);
-            });
-        }
-    }
-
-    eventosGategoria(window.datosEventos, idParam);
-    eventosGategoria(window.eventosTecnologicos, idParam);
     generarBubles();
     slider_tarjetas();
     generarDatos();
 });
-
 
 function generarDatos() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -117,24 +73,7 @@ function generarBubles() {
     });
 
 }
-function slider_tarjetas() {
-    $('.carousel[data-type="multi"] .item').each(function () {
-        var next = $(this).next();
-        if (!next.length) {
-            next = $(this).siblings(':first');
-        }
-        next.children(':first-child').clone().appendTo($(this));
 
-        for (var i = 0; i < 2; i++) {
-            next = next.next();
-            if (!next.length) {
-                next = $(this).siblings(':first');
-            }
-
-            next.children(':first-child').clone().appendTo($(this));
-        }
-    });
-}
 function popup_descripcion() {
     const urlParams = new URLSearchParams(window.location.search);
     const eventId = parseInt(urlParams.get('id'));

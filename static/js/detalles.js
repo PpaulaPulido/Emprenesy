@@ -3,75 +3,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
     const idParam = urlParams.get('id');
 
-    function restauranteCategoria(typeRes, id) {
+    Categoria(window.datosTarjetas, idParam);
+    Categoria(window.restaurantesTematicos, idParam);
+    Categoria(window.restaurantesVista, idParam);
 
-        // Obtener el contenedor donde se agregarán las imágenes
-        const carouselInner = document.querySelector('.carousel-inner');
-
-        // Buscar los datos correspondientes al ID en window.datosTarjetas
-        const datosTarjeta = typeRes.find(tarjeta => tarjeta.id === parseInt(id));
-
-        // Verificar si se encontraron los datos
-        if (datosTarjeta) {
-            // Limpiar el contenido actual del carrusel
-            carouselInner.innerHTML = '';
-
-            // Iterar sobre la galería de imágenes y crear los elementos <img>
-            datosTarjeta.galeria.forEach((imagenSrc, index) => {
-                // Crear el elemento <img>
-                const imagen = document.createElement('img');
-                imagen.src = imagenSrc;
-                imagen.alt = `Imagen ${index + 1} de ${datosTarjeta.titulo}`;
-
-                //crear elemendo div con la clase blck
-                const block = document.createElement('div');
-                block.classList.add('block', 'img-responsive');
-                block.appendChild(imagen);
-
-                // Crear el elemento <div class="carousel-col"> y agregar la imagen
-                const carouselCol = document.createElement('div');
-                carouselCol.classList.add('carousel-col');
-                carouselCol.appendChild(block);
-
-                // Crear el elemento <div class="item"> y agregar la columna del carrusel
-                const itemCarousel = document.createElement('div');
-                itemCarousel.classList.add('item');
-                if (index === 0) {
-                    itemCarousel.classList.add('active'); // Marcar el primer elemento como activo
-                }
-                itemCarousel.appendChild(carouselCol);
-
-                // Agregar el elemento <div class="item"> al contenedor principal del carrusel
-                carouselInner.appendChild(itemCarousel);
-            });
-        }
-    }
-
-    restauranteCategoria(window.datosTarjetas, idParam);
-    restauranteCategoria(window.restaurantesTematicos, idParam);
-    restauranteCategoria(window.restaurantesVista, idParam);
     slider_tarjetas();
     generarDatos();
 });
 
-function slider_tarjetas() {
-    $('.carousel[data-type="multi"] .item').each(function () {
-        var next = $(this).next();
-        if (!next.length) {
-            next = $(this).siblings(':first');
-        }
-        next.children(':first-child').clone().appendTo($(this));
-
-        for (var i = 0; i < 2; i++) {
-            next = next.next();
-            if (!next.length) {
-                next = $(this).siblings(':first');
-            }
-
-            next.children(':first-child').clone().appendTo($(this));
-        }
-    });
-}
 
 function generarDatos() {
     // Obtiene el ID del evento desde la URL

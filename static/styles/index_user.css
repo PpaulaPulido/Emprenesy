@@ -246,7 +246,6 @@ ol {
     top: 272px;
     left: 50%;
     transform: translateX(-50%);
-    /*se centra*/
     width: 665px;
     background: #fff;
     overflow: hidden;

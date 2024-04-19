@@ -105,13 +105,12 @@
 }
 /*buscador box*/
 #box-search {
-  position: fixed;
-  top: 245px;
-  left: 54%;
+  position: absolute;
+  top: 60px;
+  left: 42%;
   transform: translateX(-50%);
-  /*se centra*/
-  width: 460px;
-  background: #fff;
+  width: 450px;
+  background: #ececec;
   overflow: hidden;
   display: none;
   border-radius: 10px;
@@ -119,14 +118,15 @@
 
 #box-search li {
   list-style: none;
+  cursor: pointer;
 }
 
 #box-search li a {
   display: block;
   text-decoration: none;
-  width: 1200px;
-  color: #777777;
-  padding: 12px 20px;
+  color: #254b7f;
+  padding: 10px 20px;
+  text-align: left;
 }
 
 #box-search li a:hover {
@@ -135,7 +135,7 @@
 
 #box-search li a i {
   margin-right: 10px;
-  color: #777777;
+  color: #254b7f;
 }
 
 

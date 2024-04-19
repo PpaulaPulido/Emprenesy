@@ -47,14 +47,22 @@ function no_user() {
     icon.setAttribute('id', 'icon-search');
     icon.setAttribute('class', 'fas fa-search');
 
+    const lista_ul = document.createElement('ul');
+    lista_ul.setAttribute('id', 'box-search');
+
+    const div_box = document.createElement('div');
+    div_box.setAttribute('id','cover-ctn-search');
+
     ctn_bars.appendChild(input);
     ctn_icon.appendChild(icon);
     container_input.appendChild(ctn_bars);
     container_input.appendChild(ctn_icon);
-
+    
     buscador.appendChild(container_input);
+    buscador.appendChild(lista_ul);
+    buscador.appendChild(div_box);
     header.appendChild(buscador);
 }
 
-// Llama a la función no_user cuando el DOM esté completamente cargado
-document.addEventListener('DOMContentLoaded', no_user);
+
+no_user();

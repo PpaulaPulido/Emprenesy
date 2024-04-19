@@ -171,13 +171,12 @@ ol {
 
 /*buscador box*/
 .header_buscador #box-search {
-  position: fixed;
-  top: 245px;
-  left: 54%;
+  position: absolute;
+  top: 60px;
+  left: 44%;
   transform: translateX(-50%);
-  /*se centra*/
   width: 460px;
-  background: #fff;
+  background: #ececec;
   overflow: hidden;
   display: none;
   border-radius: 10px;
@@ -185,14 +184,15 @@ ol {
 
 .header_buscador #box-search li {
   list-style: none;
+  cursor: pointer;
 }
-
-.header_buscador #box-search li a {
+.header_buscador #box-search li a{
   display: block;
   text-decoration: none;
-  width: 1200px;
-  color: #777777;
-  padding: 12px 20px;
+  color: #254b7f;
+  padding: 10px 20px;
+  text-align: left;
+
 }
 
 .header_buscador #box-search li a:hover {
@@ -201,7 +201,7 @@ ol {
 
 .header_buscador #box-search li a i {
   margin-right: 10px;
-  color: #777777;
+  color: #254b7f;
 }
 
 

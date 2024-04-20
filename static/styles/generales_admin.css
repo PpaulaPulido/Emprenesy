@@ -18,11 +18,9 @@
 #sidebar.active {
     left: 0px;
 }
-
 #publicaciones.active{
     margin-left: 250px;
     width: calc(100% - 300px);
-    
 }
 .toggle-info {
     padding: 10px;

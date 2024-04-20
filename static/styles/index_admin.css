@@ -110,3 +110,15 @@ body{
     font-size: 20px;
     color: #051248;
 }
+/********************Estilos del html publicaciones part 1************************/
+#publicaciones{
+    transition: all 800ms linear;
+    margin-left: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+#publicaciones.active{
+    margin-left: 250px;
+    width: calc(100% - 300px);
+}

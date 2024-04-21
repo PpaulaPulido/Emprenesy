@@ -44,6 +44,7 @@ body{
 }
 .publicaciones_contenido{
     padding: 20px 30px;
+    margin: 0 20px;
 }
 .publicaciones_contenido .btn_pu{
     border: none;
@@ -119,6 +120,29 @@ body{
 }
 
 #publicaciones.active{
-    margin-left: 250px;
-    width: calc(100% - 300px);
+    margin-left: 220px;
+    width: calc(100% - 250px);
+}
+.contenido__title{
+    color: #fff;
+}
+.contenido__title h2{
+    text-align: center;
+    margin: 20px 0;
+}
+.contenido__title h3{
+    font-size: 25px;
+    margin-left: 20px;
+}
+.info_detalles{
+    margin: 20px 15px;
+}
+.detalle__sitio{
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+}
+.detalle__sitio label{
+    display: block;
 }

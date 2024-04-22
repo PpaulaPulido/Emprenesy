@@ -47,51 +47,59 @@
                     <h2>Añadir un restaurante</h2>
                 </div>
                 <div class="contenido__detalles">
-                    <form class="info_detalles" action="/templates/publicacionRes1.html">
+                    <form class="info_detalles" action="">
                         <div class="detalle__sitio">
-                            <h3>Detalles del sitio</h3>
+                            <h3>Información de contacto</h3>
                         </div>
                         <div class="detalle__sitio">
-                            <label for="nombre">Nombre del sitio</label>
-                            <input type="text" name="nombre" id="nombre">
+                            <label for="correo">Correo electrónico (opcional)</label>
+                            <input type="email" name="correo" id="correo">
                         </div>
                         <div class="detalle__sitio">
-                            <label for="logo">Logo</label>
-                            <input type="file" id="file-upload-button" name="logo" style="display:none;">
-                            <label for="file-upload-button" class="file-upload-btn">Seleccionar archivo</label>
-                        </div>
-                        
-                        <div class="detalle__sitio">
-                            <label for="typeRes">Tipo de restaurante</label>
-                            <select name="restaurante" id="restaurante">
-                                <option value="">Seleccionar</option>
-                                <option value="internacional">Comida Internacional</option>
-                                <option value="tematicos">Temáticos</option>
-                                <option value="vista">Con vista</option>
-                                <option value="gourmet">Gourmet</option>
-                                <option value="comidaRapida">Comida Rápida</option>
-                                <option value="parillas">Parillas y Asaderos</option>
-                            </select>
+                            <label for="contacto">Número de contacto (opcional)</label>
+                            <input type="text" name="contacto" id="contacto">
                         </div>
                         <div class="detalle__sitio">
-                            <label for="descripcion">Descripción del sitio</label>
-                            <textarea name="descripcion" id="descripcion" cols="70" rows="8"
-                                placeholder="Tu descripción"></textarea>
+                            <label for="insta">Instagram del Restaurante (opcional)</label>
+                            <input type="url" name="insta" id="insta" placeholder="https://www.instagram.com/">
                         </div>
                         <div class="detalle__sitio">
-                            <label for="pagina">Página Oficial</label>
-                            <input type="url" name="pagina" id="pagina" placeholder="https://example.com">
+                            <label for="tiktok">Tiktok del Restaurante (opcional) </label>
+                            <input type="url" name="tiktok" id="tiktok" placeholder="https://tiktok.com/restaurante">
                         </div>
                         <div class="detalle__sitio">
-                            <label for="menu">Menú del restaurante</label>
-                            <input type="url" name="menu" id="menu" placeholder="https://example.com/menú">
+                            <h3>Imágenes del restaurante</h3>
                         </div>
-                        <div class="detalle__sitio">
-                            <label for="horario">Horario</label>
-                            <textarea name="horario" id="horario" cols="70" rows="2" placeholder="Lunes- viernes 12pm- 10pm"></textarea>
+                        <div class="detalle__sitioImg">
+
+                            <div class="sitio__img">
+                                <input type="file" id="file-upload-button" name="logo" style="display:none;">
+                                <label for="file-upload-button" class="file-upload-btn">Seleccionar archivo</label>
+                            </div>
+
+                            <div class="sitio__img">
+                                <input type="file" id="file-upload-button" name="logo" style="display:none;">
+                                <label for="file-upload-button" class="file-upload-btn">Seleccionar archivo</label>
+                            </div>
+
+                            <div class="sitio__img">
+                                <input type="file" id="file-upload-button" name="logo" style="display:none;">
+                                <label for="file-upload-button" class="file-upload-btn">Seleccionar archivo</label>
+                            </div>
+
+                            <div class="sitio__img">
+                                <input type="file" id="file-upload-button" name="logo" style="display:none;">
+                                <label for="file-upload-button" class="file-upload-btn">Seleccionar archivo</label>
+                            </div>
+
                         </div>
-                        <div class="detalle__sitio boton_form">
-                            <input type="submit" value="Siguiente" class="btn__form">
+                        <div class="detalles__btn">
+                            <div class="detalle__sitio boton_form">
+                                <button id="btn_regresar">Regresar</button> 
+                            </div>
+                            <div class="detalle__sitio boton_form">
+                                <input type="submit" value="Siguiente" class="btn__form">
+                            </div>
                         </div>
                     </form>
                 </div>

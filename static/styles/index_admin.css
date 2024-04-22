@@ -34,7 +34,6 @@ body{
     background-image: linear-gradient(135deg, #213859 0%, #2c5d9d 21%, #748ffc 57%, #a755f9 100%);
     background-repeat: no-repeat;
     background-size: cover;
-   
 }
 .container_publicaciones{
     height: fit-content;
@@ -76,6 +75,16 @@ body{
     margin: 15px 0;
 }
 /**********Estilos contenedores publicaciones************/
+#publicaciones__form{
+    transition: all 800ms linear;
+    margin-left: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+#publicaciones__form.active{
+    margin-left: 150px;
+    width: calc(100% - 100px);
+}
 .container_pub{
     background-color: #ffffffab;
     height: fit-content;
@@ -118,31 +127,118 @@ body{
     width: 100%;
     overflow-x: hidden;
 }
-
 #publicaciones.active{
     margin-left: 220px;
     width: calc(100% - 250px);
 }
-.contenido__title{
-    color: #fff;
+.contenido__detalles{
+    margin: 20px 0 100px 0;
+    border-radius: 8px;
+    height: fit-content;
+    padding: 10px 20px;
 }
 .contenido__title h2{
+    color: #fff;
     text-align: center;
     margin: 20px 0;
 }
-.contenido__title h3{
-    font-size: 25px;
-    margin-left: 20px;
-}
 .info_detalles{
-    margin: 20px 15px;
+    margin: 25px auto;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    width: 70%;
+    border-radius: 10px; 
+}
+.detalle__sitio h3{
+    color: #fff;
+    margin: 8px 4px -5px 0;
 }
 .detalle__sitio{
-    background-color: rgba(255, 255, 255, 0.5);
-    width: 70%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px; 
+    width: 80%;
 }
 .detalle__sitio label{
     display: block;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #fff;
+}
+.detalle__sitio input{
+    border: none;
+    border-radius: 6px;
+    width: 60%;
+    height: 30px;
+    padding: 6px;
+}
+.detalle__sitio input::placeholder{
+    color: #d4cfcf;
+}
+.detalle__sitio textarea::placeholder{
+    color: #d4cfcf;
+}
+.file-upload-btn {
+    background-color: #24ddd7;
+    border: none;
+    padding: 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    text-align: center;
+    width: 60%;
+    color: #fff;
+    font-size: 14px;
+}
+
+.detalle__sitio select[name = 'restaurante']{
+    border: none;
+    width: 60%;
+    padding: 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #051248;
+}
+.detalle__sitio textarea{
+    border: none;
+    border-radius: 6px;
+    padding: 6px;
+}
+.boton_form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.boton_form .btn__form,#btn_regresar{
+    margin-bottom: 20px;
+    width: 50%;
+    height: 40px;
+    color: #051248;
+    font-size: 18px;
+    background-color: #fff;
+    border: none;
+    border-radius: 6px;
+}
+.boton_form .btn__form:hover,
+#btn_regresar:hover{
+    background-color:#3d77ba;
+    color: #fff;
+}
+/************************** estilos de publicaciones res 1**********************************/
+.detalle__sitioImg{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+    padding: 10px;
+    margin: 15px auto 20px auto;
+    place-items: center;
+    width: 80%;
+
+}
+.sitio__img{
+    margin: 0 auto;
+    width: 80%;
+}
+.detalles__btn{
+    display: flex;
 }

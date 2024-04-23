@@ -1,9 +1,6 @@
 function user_sesion() {
 
     const menuItems = [
-        { text: 'Sobre Nosotros', href: '/templates/MVQ.html', class: 'link' },
-        { text: 'Inicio', href: '/templates/index.html', class: 'link' },
-        { text: 'Mis favoritos', href: '/templates/favoritos.html', class: 'link' },
         { text: '<img src="../img/perfil_user.png" alt="perfil">', href: '#', class: 'link1', hasSubMenu: true }
     ];
 
@@ -39,6 +36,16 @@ function user_sesion() {
         </div>`;
     nav_list.appendChild(buscador_li);
 
+    const icon_a = document.createElement('a');
+    icon_a.classList.add('enlace_icon');
+    icon_a.href = '#';
+
+    const icon = document.createElement('i');
+    icon.classList.add('bi', 'bi-bell-fill');
+
+    icon_a.appendChild(icon);
+    nav_list.appendChild(icon_a);
+
     // Crear elementos li y a para el menú principal
     menuItems.forEach(item => {
         const liElement = document.createElement('li');
@@ -70,7 +77,6 @@ function user_sesion() {
         nav_list.appendChild(liElement);
     });
 
-    // Agregar nav_list a nav_user
     nav_user.appendChild(nav_list);
 
     const header_barra = document.createElement('div');
@@ -80,7 +86,22 @@ function user_sesion() {
     const header = document.querySelector('#cabeza');
     header.appendChild(header_barra);
 
-
-
 }
-user_sesion();
+function menu_lateral() {
+    // sidebar toggle
+    const btnToggle = document.querySelector('.toggle-btn');
+
+    btnToggle.addEventListener('click', function () {
+        document.getElementById('sidebar').classList.toggle('active');
+        document.getElementById('publicaciones').classList.toggle('active');
+        console.log(document.getElementById('sidebar'))
+    });
+}
+function menu_form(){
+    const btnToggle = document.querySelector('.toggle-btn');
+    btnToggle.addEventListener('click', function () {
+        document.getElementById('sidebar').classList.toggle('active');
+        document.getElementById('publicaciones__form').classList.toggle('active');
+        console.log(document.getElementById('sidebar'))
+    });
+}

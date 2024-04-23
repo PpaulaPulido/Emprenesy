@@ -34,14 +34,13 @@
             <div id="cabeza">
                 <div class="logoedit">
                     <img class="logo" src="../img/logo_Emprenesy.png" alt="Emprenesy">
-                    <span class="titulo">Emprenesy</span>
                 </div>
                 <div id="Barra">
                     <nav class="barraedit">
                         <ul class="nav_list">
                             <li><a class="link" href="/templates/MVQ.html">Sobre Nosotros</a></li>
                             <li><a class="link" href="/templates/index.html">Inicio</a></li>
-                            <li><a class="link" href="#">Mis favoritos</a></li>
+                            <li><a class="link" href="/templates/favoritos.html">Mis favoritos</a></li>
                             <li><a class="link1" href="#"><img src="../img/perfil_user.png" alt="perfil"></a>
                                 <ul class="perfil_list">
                                     <li><a href="#">Ver perfil</a></li>
@@ -126,7 +125,7 @@
         <section class="contenedor_slider contenedor_restaurantes">
             <div class="contenedor_texto">
                 <h2>Los restaurantes más populares</h2>
-                <a href="#">Ver todo</a>
+                <a id="res_link" href="./seccion_res.html" onclick="parametros()">Ver todo</a>
             </div>
             <div class="container_slider">
                 <div class="slider_tarjetas">
@@ -148,7 +147,7 @@
         <section class="contenedor_slider contenedor_eventos">
             <div class="contenedor_texto">
                 <h2>Últimos eventos</h2>
-                <a href="#">Ver todo</a>
+                <a id="evento_link" href="/templates/seccion_evento.html" onclick="parametros()">Ver todo</a>
             </div>
             <div class="container_slider">
                 <div class="slider_tarjetas2">
@@ -170,7 +169,7 @@
         <section class="contenedor_slider contenedor_emprendimientos">
             <div class="contenedor_texto">
                 <h2>Conoce los emprendimientos más recientes</h2>
-                <a href="#">Ver todo</a>
+                <a id="emprende_link" href="./seccion_empren.html" onclick="parametros()">Ver todo</a>
             </div>
             <div class="container_slider">
                 <div class="slider_tarjetas3">
@@ -201,7 +200,7 @@
                         conecta con historias que inspiran, innovan y transforman la manera en que vemos el mundo
                         empresarial hoy.!
                     </p>
-                    <button class="emprendimiento_btn">Ver Más</button>
+                    <button class="emprendimiento_btn"><a id="emprende_link2" href="/templates/seccion_empren.html" onclick="parametros()">Ver Más</a></button>
                 </div>
             </div>
         </section>
@@ -279,6 +278,7 @@
     </footer>
     <script src="../static/js/datos.js"></script>
     <script src="../static/js/index.js"></script>
+    <script src="../static/js/buscador.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>

@@ -299,7 +299,18 @@ canvas {
     color: #363636;
     margin: 15px 0;
 }
+/*estilos del mapa*/
+#geocode #map {
+    display: block;
+    width: 95%;
+    height: 500px;
+    margin-bottom: 3px;
+    margin-top: 20px;
+    background-color: rgb(226, 239, 248);
+    border: 7px solid #336baf;
+    border-radius: 5px;
 
+}
 .container_ubicacion{
     background-image: url(https://2182029.fs1.hubspotusercontent-na1.net/hubfs/2182029/Centro%20de%20la%20ciudad%20-%20El%20centro%20de%20Bogot%C3%A1-Bogot%C3%A1%20de%20noche.jpg);
     background-repeat: no-repeat;
@@ -344,13 +355,6 @@ canvas {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     font-size: 35px;
 }
-
-.detalles__ubicacion .mapa {
-    background-color: aqua;
-    height: 500px;
-    margin-top: 20px;
-}
-
 .redes_sociales{
     display: flex;
     gap: 10px;
@@ -590,108 +594,6 @@ canvas {
     position: relative;
     top: 100px;
 }
-
-/*estilos del footer*/
-.principal_footer {
-    position: relative;
-    text-align: center;
-  }
-  
-  .olas {
-    position: relative;
-    width: 100%;
-    height: 25vh;
-    margin-bottom: -7px;
-    min-height: 100px;
-    max-height: 150px;
-  
-  }
-  
-  /* Animacion */
-  .efecto>use {
-    animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
-  }
-  
-  .efecto>use:nth-child(1) {
-    animation-delay: -2s;
-    animation-duration: 7s;
-  
-  }
-  
-  .efecto>use:nth-child(2) {
-    animation-delay: -3s;
-    animation-duration: 10s;
-  
-  }
-  
-  .efecto>use:nth-child(3) {
-    animation-delay: -4s;
-    animation-duration: 13s;
-  
-  }
-  
-  .efecto>use:nth-child(4) {
-    animation-delay: -5s;
-    animation-duration: 20s;
-  
-  }
-  
-  @keyframes move-forever {
-    0% {
-      transform: translate3d(-90px, 0, 0);
-    }
-  
-    100% {
-      transform: translate3d(85px, 0, 0);
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .olas {
-      height: 40px;
-      min-height: 40px;
-    }
-  }
-  
-  .contenedor_footer {
-    background-color: #213859;
-    color: #ffffff;
-    padding: 10px;
-  }
-  
-  .contenedor_content {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .contenedor_list3 {
-    margin-right: 50px;
-  }
-  
-  .footer_list {
-    margin: 20px 40px;
-    font-size: 16px;
-    text-align: center;
-  }
-  
-  .footer_list li {
-    list-style: none;
-    margin: 20px 0;
-    cursor: pointer;
-  }
-  
-  .iconos img {
-    width: 30px;
-    margin: 10px 5px;
-  }
-  
-  .copy {
-    text-align: center;
-    font-size: 15px;
-    margin: 10px 0;
-  }
-
-
 /* Personalizar SweetAlert */
 .border-blue {
     border: 2px solid #3d77ba !important;

@@ -16,13 +16,15 @@ p{
     font-family: 'Poppins', sans-serif;
 }
 
+
 /*estilos de la barra de navegacion*/
 ul,
 ol {
   list-style: none;
 }
+
 #cabeza {
-  background-color: #213859;
+  background-color: #254b7f;
   display: flex;
   position: fixed;
   justify-content: space-between;
@@ -43,22 +45,12 @@ ol {
 
 }
 
-.titulo {
-  color: #fff;
-  font-size: 30px;
-  font-weight: 700;
-  font-family: 'Nunito', sans-serif;
-  letter-spacing: 2px;
-  font-style: oblique;
-  margin-left: -40px;
-}
-
 .logo {
   width: 170px;
   height: auto;
 }
 
-.barraedit {
+.barra_nav {
 
   text-align: center;
   font-size: 18px;
@@ -89,14 +81,17 @@ ol {
   display: block;
   margin-top: -15px;
 }
+
 .link1 img {
   width: 50px;
   border-radius: 50%;
 
 }
+
 .link:hover {
   color: #6efadc;
 }
+
 .perfil_list {
   margin-top: 5px;
   display: none;
@@ -128,25 +123,88 @@ ol {
   display: block;
 }
 
-/*menu toggle*/
-@media only screen and (max-width: 991px) {
 
-  #Barra {
-    display: none;
-
-  }
-
-  .titulo {
-    top: 35px;
-    left: 50px;
-  }
-
-  .logo {
-    top: -15px;
-    left: 80%;
-    width: 180px;
-  }
+/*estilos del buscador*/
+.header_buscador {
+  padding: 2px;
+  border-radius: 15px;
+  display: flex;
+  margin-top: -15px;
+  z-index: 1;
 }
+
+.buscador_input {
+  text-align: center;
+  margin: 10px 15px;
+  position: relative;
+}
+
+
+.buscador_input #inputSearch {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  width: 450px;
+  height: 40px;
+}
+
+.buscador_input #icon-search {
+  color: #000;
+  position: absolute;
+  top: 9px;
+  right: 20px;
+  font-size: 23px;
+
+}
+
+/*buscador box*/
+.header_buscador #box-search {
+  position: absolute;
+  top: 60px;
+  left: 44%;
+  transform: translateX(-50%);
+  width: 460px;
+  background: #ececec;
+  overflow: hidden;
+  display: none;
+  border-radius: 10px;
+}
+
+.header_buscador #box-search li {
+  list-style: none;
+  cursor: pointer;
+}
+.header_buscador #box-search li a{
+  display: block;
+  text-decoration: none;
+  color: #254b7f;
+  padding: 10px 20px;
+  text-align: left;
+
+}
+
+.header_buscador #box-search li a:hover {
+  background: #f3f3f3;
+}
+
+.header_buscador #box-search li a i {
+  margin-right: 10px;
+  color: #254b7f;
+}
+
+
+.header_buscador #cover-ctn-search {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 7;
+  display: none;
+}
+
+
 
 /*estilos del footer*/
 .principal_footer {

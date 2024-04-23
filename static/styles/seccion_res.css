@@ -44,31 +44,29 @@ ol {
   width: 100%;
   height: 100%;
 }
-
 .carousel-inner {
   height: 560px;
 }
-
 .carousel-img {
   width: 100%;
   height: 560px;
   position: relative;
   overflow: hidden;
-  background-image: linear-gradient(225deg, #051248 33%, #121e92 58%);
+  background-image: linear-gradient(225deg, #076668 11%, #00a6a4 37%, #00cec7 72%);
 }
-
 .carousel-img::before {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 55%;
+  width: 50%;
   height: 100%;
-  background-image: url('https://www.bbva.com/wp-content/uploads/2020/05/festival2.jpg');
+  background-image: url('https://blogskystorage.s3.amazonaws.com/2022/05/restaurantes-de-bogota.jpeg');
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  -webkit-clip-path: polygon(0% 100%, 50% 100%, 100% 0, 0 0);
-  clip-path: polygon(0% 100%, 50% 100%, 100% 0, 0 0);
+  -webkit-clip-path: polygon(0% 100%, 100% 100%, 50% 0, 0 0);
+  clip-path: polygon(0% 100%, 100% 100%, 50% 0, 0 0);
   transform-origin: bottom left;
   transform: rotate(0deg) scaleY(1) scaleX(1.3);
 }
@@ -76,20 +74,26 @@ ol {
 .carousel_text {
   position: absolute;
   color: #fff;
-  bottom: 25%;
-  left: 65%;
+  bottom: 18%;
+  left: 55%;
+  width: 40%;
   padding: 0px 30px;
+  text-align: center;
 }
-
+.carousel_text h2{
+    margin-bottom: 40px;
+    font-size: 28px;
+}
 .carousel_text p {
-  font-size: 22px;
+  font-size: 19px;
   margin-bottom: 40px;
   line-height: 2.2;
+  text-align: left;
 }
 
 .btn {
   cursor: pointer;
-  width: 80%;
+  width: 50%;
   padding: 8px;
   border: none;
   color: #fff;
@@ -100,10 +104,10 @@ ol {
   color: #fff;
 }
 .slider_btn1 {
-  background-color: #16b1a7;
+  background-color: #0d0057;
 }
 .slider_btn1:hover{
-  background-color: #00fff2;
+  background-color: #220ca0;
 }
 .container_img {
   width: 60px;
@@ -125,9 +129,12 @@ ol {
   height: 560px;
   position: relative;
   overflow: hidden;
-  background-image: linear-gradient(135deg, #230181 41%, #fe1bbd 100%);
+  background-image: url('https://www.tureforma.org/wp-content/uploads/2019/07/web-Breathe-Marbella-47-copia.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  
 }
-
 .carousel-img2::before {
   content: '';
   position: absolute;
@@ -135,36 +142,15 @@ ol {
   left: 0;
   width: 55%;
   height: 100%;
-  background-color: #051248;
+  background-image: linear-gradient(135deg, #4333ff 0%, #3bdcff 83%, #85ffc8 100%);
   border-radius: 0 40% 10% 0;
 }
-
-.carousel_contenido {
-  bottom: 35%;
-  left: 15%;
-}
-
-.img1 {
-  width: 400px;
-  height: 300px;
-  position: absolute;
-  bottom: 10px;
-  left: 750px;
-}
-
-.img1 img {
-  margin: 0 auto;
-  width: 100%;
-  height: 100%;
-  border-radius: 50% 0 0 20%;
-}
-
 .img2 {
   width: 350px;
   height: 350px;
   position: relative;
-  left: 450px;
-  top: 500px;
+  left: -200px;
+  top: 430px;
 }
 
 .img2 img {
@@ -172,65 +158,38 @@ ol {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  border: 7px solid #2edbd6;
+  border: 7px solid #fff;
 }
 
 .carousel_contenido .contenido_text {
   position: relative;
-  top: 100px;
-  right: 200px;
-  padding: 10px;
+  top: 30px;
+  right: 720px;
   text-align: center;
+  width: 500px;
+
 }
 
 .contenido_text h2 {
-  font-size: 90px;
+  font-size: 38px;
   margin: 30px 0;
-  background: linear-gradient(180deg, #2edbd6 37%, #fe1bbd 92%);
-  background-clip: text;
-  color: transparent;
+  color: #0d0057;
 }
 
 .contenido_text p {
-  font-size: 25px;
-  width: 90%;
+  font-size: 18px;
   margin-left: 30px;
 }
 
 .slider_btn2 {
-  background-color: #0ba19c;
+  background-color: #0d0057;
   width: 40%;
   border-radius: 13px;
   font-size: 22px;
   cursor: pointer;
 }
 .slider_btn2:hover{
-  background-color: #00fff2;
-}
-.contenido_circle {
-  position: relative;
-}
-
-.contenido_circle .circle {
-  background-color: #fe1bbd;
-  border-radius: 50%;
-  filter: blur(10px);
-  box-shadow: 2px 2px 10px 10px rgba(186, 3, 223, 0.959);
-  position: absolute;
-}
-
-.circle1 {
-  bottom: 260px;
-  left: 200px;
-  height: 70px;
-  width: 70px;
-}
-
-.circle2 {
-  bottom: -200px;
-  left: -240px;
-  height: 50px;
-  width: 50px;
+  background-color: #2109a7;
 }
 /**************************************************************/
 .carousel-img3 {
@@ -238,7 +197,7 @@ ol {
   height: 560px;
   position: relative;
   overflow: hidden;
-  background-image: linear-gradient(225deg, #000000 1%, #010030 47%, #9775fa 85%, #ced4da 98%, hsl(0, 0%, 98%) 100%);
+  background-image: linear-gradient(45deg, #1c0079 0%, #e27fee 100%);
 }
 
 .carousel-img3::before {
@@ -248,7 +207,7 @@ ol {
   left: 45%;
   width: 55%;
   height: 100%;
-  background-image: url('https://d2w66jai70z7l8.cloudfront.net/media/2023/02/nominis.es-blog-75-obras-teatro-ninos-.jpeg.jpeg');
+  background-image: url('https://viajeros1.weebly.com/uploads/3/2/2/6/32269505/9914329_orig.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 40% 0 0 40%;
@@ -257,29 +216,30 @@ ol {
 .contenido_carousel {
   left: 30px;
   width: 40%;
-  bottom: 20%;
+  bottom: 15%;
   text-align: center;
 }
 .contenido_carousel h2{
   font-size: 40px;
   margin: 30px 0;
-  background: linear-gradient(180deg, #ecaef8 37%, #64f0d8 92%);
+  background: linear-gradient(180deg, #ffffff 37%, #00f1c9 92%);
   background-clip: text;
   color: transparent;
-  
+  font-size: 46px;
 }
 .contenido_carousel p{
   font-size: 20px;
+  margin-left: 15px;
 }
 .slider_btn3{
-  background-color: #010030;
+  background-color: #0ba19c;
   width: 50%;
   border-radius: 15px;
 }
 .slider_btn3:hover{
-  background-color: #040191;
+  background-color: #00f1c9;
 }
-/*estilosd e container tarjetas*/
+/******************estilos de container tarjetas***************************/
 .container_cards{
   margin: 30px;
   padding: 20px;
@@ -298,29 +258,17 @@ ol {
   cursor: pointer;
 }
 .card1{
-  background-image: url('https://i.blogs.es/1b540a/concierto/1366_2000.jpg');
+  background-image: url('https://estaticos-cdn.prensaiberica.es/clip/6b48ad30-aced-47c8-b0cd-c4c0cf3a6470_16-9-discover-aspect-ratio_default_0.jpg');
 }
 .card2{
-  background-image: url('https://humanidades.com/wp-content/uploads/2018/09/obra-de-teatro-5-e1578944452922.jpg');
+  background-image: url('https://oleico.com/wp-content/uploads/2021/03/oleico_oleico_image_777-1.jpeg');
   background-position: center;
 }
 .card3{
-  background-image: url('https://img.lalr.co/cms/2022/03/31124833/COLP_EXT_106936_553dc-1.jpg?size=xl');
+  background-image: url('https://media-cdn.tripadvisor.com/media/photo-s/1c/b7/ff/cc/photo0jpg.jpg');
 }
 .card4{
-  background-image: url('https://www.ulibertadores.edu.co/wp-content/uploads/Los-Libertadores-estuvo-presente-en-la-temporada-de-Ferias-del-Libro-que-arranco-en-FILBO.png');
-}
-.card5{
-  background-image: url('https://www.urosarioradio.co/images/contenidos/eventos/eventos-idartes-danza-octubre-foto-1_ed-min.jpg');
-}
-.card6{
-  background-image: url('https://media.viajando.travel/p/b63d200dab49bd7269670527362027d5/adjuntos/236/imagenes/000/674/0000674838/1200x0/smart/ferias-gastronomicaspng.png');
-}
-.card7{
-  background-image: url('https://i.blogs.es/d4b7fe/ces-/840_560.png');
-}
-.card8{
-  background-image: url('https://i.ibb.co/GR2PKfj/organizar-evento-deportivo.jpg');
+  background-image: url('https://www.godinezgourmet.com/wp-content/uploads/2019/04/asaderos-grill-carne-ciudad-mexico-cdmx-godinez_0.jpg');
 }
 .contenido_title{
   background-color: #3d77ba;
@@ -334,15 +282,16 @@ ol {
   font-size: 22px;
   color: #fff;
 }
-/*estilos de slider de tarjetas*/
+/***********************estilos de slider de tarjetas**************************/
 .section{
-  background-image: linear-gradient(225deg, #3f0186 56%, #da77f2 92%, #f989f1 100%);
+  background-image: linear-gradient(135deg, #d162f3 0%, #ff9254 99%);
   padding: 10px;
 }
 .section2{
-  background-image: linear-gradient(225deg, #012f46 1%, #147ed5 73%, #6cfce2 99%);
+  background-image: linear-gradient(135deg, #230181 41%, #fe1bbd 100%);
   padding: 10px;
 }
+
 .section_title h2{
   color: #fff;
   margin: 30px 0 30px 50px;
@@ -454,6 +403,62 @@ ol {
 }
 .swiper_button:hover{
   background-color: #002b68;
+}
+/************estilos empredimientos gastronomicos*************************/
+.container_poster {
+  background-color: #3d77ba;
+  width: 94%;
+  margin: 60px auto;
+  border-radius: 10px;
+  display: flex;
+  color: #fff;
+}
+
+.poster_img {
+  width: 90%;
+  height: 90%;
+}
+
+.poster_img img {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.contenido_poster {
+  padding: 40px;
+  text-align: center;
+}
+
+.contenido_poster h3 {
+  font-size: 30px;
+}
+
+.contenido_poster p {
+  margin: 30px auto 40px auto;
+  font-size: 20px;
+  line-height: 1.8;
+  text-align: left;
+  width: 80%;
+}
+
+.contenido_poster button {
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 18px;
+  text-align: center;
+  background-color: #3bdad4;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.contenido_poster button a {
+  color: #fff;
+}
+
+.contenido_poster button:hover {
+  background-color: #005f5e;
 }
 /*****************estilos de find evento******************************/
 .find_evento{

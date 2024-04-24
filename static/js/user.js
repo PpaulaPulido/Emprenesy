@@ -1,6 +1,6 @@
 import { user_sesion } from './navegacion_user.js';
 import { no_user} from './navegacion.js';
-
+//comentario
 // Función para mostrar la barra de navegación para usuarios registrados
 function mostrarBarraUsuarioRegistrado() {
     

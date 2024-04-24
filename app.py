@@ -29,6 +29,12 @@ def registrar_usuario():
         Email = request.form.get('correo')
         roles = request.form.get('rol')
         contrasena = request.form.get('contrasena')
+        confirmar_contrasena = request.form.get('confirmar_contrasena')
+        
+        if contrasena != confirmar_contrasena:
+            flash('Las contraseñas no coinciden', 'error')
+            print('Las contraseñas no coinciden')
+            return render_template('registro.html')
         
         # Encriptar la contraseña
         contrasenaEncriptada = generate_password_hash(contrasena)

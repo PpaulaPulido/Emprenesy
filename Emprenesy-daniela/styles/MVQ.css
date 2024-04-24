@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+#cabeza{
+    background-color: #213859;
+    display: flex;
+
+}
+.logoedit{
+    width: 120px;
+    height: 100px;
+    text-align: left;
+    padding: 20px;
+}
+
+.logo{
+    position: absolute;
+    top: -18px;
+    left: -3%;
+    width: 310px;
+    height: auto; 
+}
+
+.barraedit{
+    width: 1000px;
+    height: 20px;
+    text-align: center;
+    margin-left: 600px;
+    padding: 60px;
+}
+.barra{
+    text-align: center;
+ 
+}
+
+.link{
+    margin: 0 20px;
+    text-decoration: none;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+}
+.link1{
+    margin: 0 20px;
+    text-decoration: none;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    padding: 20px;
+    border: solid #b4dbdc;
+    overflow: hidden;
+}
+.link:hover{
+    color: #b4dbdc;
+}
+.link1:hover{
+    color: #b4dbdc;
+}
+
+.mision{
+    font-family: "Poppins", sans-serif;
+    font-size: 45px;
+    top: 0;
+    text-align: center;
+    border: solid;
+    padding: 50px;
+ 
+
+
+}
+.titulomision{
+    border: solid;
+    padding: 10px;
+}
+.vision{
+    font-family: "Poppins", sans-serif;
+    font-size: 45px;
+    text-align: center;
+}
+.nosotros{
+    font-family: "Poppins", sans-serif;
+    font-size: 45px;
+    text-align: center;
+}
+.mision_logo{
+    position: absolute;
+    top: 200px;
+    left: 10%;
+    width: 280px;
+    height: auto; 
+    border: solid;
+}

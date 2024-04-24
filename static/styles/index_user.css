@@ -490,14 +490,15 @@ ol {
     margin-right: 50px;
     font-weight: bold;
     text-decoration: none;
-    background-color: #213859;
+    background-color: #3d77ba;
     width: 150px;
     text-align: center;
     padding: 10px;
     border-radius: 10px;
 }
-.contenedor_texto a:hover{
-    background-color: #3d77ba;
+
+.contenedor_texto a:hover {
+    background-color: #003066;
 }
 .container_slider {
     width: 80%;
@@ -886,7 +887,7 @@ ol {
   }
   
   .contenedor_footer {
-    background-color: #213859;
+    background-color: #3d77ba;
     color: #ffffff;
     padding: 10px;
   }

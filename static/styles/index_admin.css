@@ -242,3 +242,25 @@ body{
 .detalles__btn{
     display: flex;
 }
+
+/*estilos del mapa*/
+#geocode #map {
+    display: block;
+    width: 95%;
+    height: 500px;
+    margin-bottom: 3px;
+    margin-top: 20px;
+    background-color: rgb(226, 239, 248);
+    border: 7px solid #336baf;
+    border-radius: 5px;
+
+}
+
+.detalles__ubicacion{
+    display: grid;
+    grid-template-columns: 800px 1fr;
+    margin-bottom: 40px;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}

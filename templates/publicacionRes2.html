@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="../static/styles/generales_admin.css">
     <link rel="stylesheet" href="../static/styles/index_admin.css">
 
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+
 </head>
 
 
@@ -49,49 +54,26 @@
                 <div class="contenido__detalles">
                     <form class="info_detalles" action="/templates/publicacionRes1.html">
                         <div class="detalle__sitio">
-                            <h3>Detalles del sitio</h3>
+                            <h3>Ubicaciones del sitio</h3>
                         </div>
                         <div class="detalle__sitio">
-                            <label for="nombre">Nombre del sitio</label>
-                            <input type="text" name="nombre" id="nombre">
+                            
                         </div>
                         <div class="detalle__sitio">
-                            <label for="logo">Logo</label>
-                            <input type="file" id="file-upload-button" name="logo" style="display:none;">
-                            <label for="file-upload-button" class="file-upload-btn">Seleccionar archivo</label>
+                            <div class="container_ubicacion">
+                                <div class="detalles__ubicacion">
+                                    <div class="mapa" id="geocode">
+                                        <div id="map"></div>
+                                        <div id="panel"></div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
                         </div>
                         
-                        <div class="detalle__sitio">
-                            <label for="typeRes">Tipo de restaurante</label>
-                            <select name="restaurante" id="restaurante">
-                                <option value="">Seleccionar</option>
-                                <option value="internacional">Comida Internacional</option>
-                                <option value="tematicos">Temáticos</option>
-                                <option value="vista">Con vista</option>
-                                <option value="gourmet">Gourmet</option>
-                                <option value="comidaRapida">Comida Rápida</option>
-                                <option value="parillas">Parillas y Asaderos</option>
-                            </select>
-                        </div>
-                        <div class="detalle__sitio">
-                            <label for="descripcion">Descripción del sitio</label>
-                            <textarea name="descripcion" id="descripcion" cols="70" rows="8"
-                                placeholder="Tu descripción"></textarea>
-                        </div>
-                        <div class="detalle__sitio">
-                            <label for="pagina">Página Oficial</label>
-                            <input type="url" name="pagina" id="pagina" placeholder="https://example.com">
-                        </div>
-                        <div class="detalle__sitio">
-                            <label for="menu">Menú del restaurante</label>
-                            <input type="url" name="menu" id="menu" placeholder="https://example.com/menú">
-                        </div>
-                        <div class="detalle__sitio">
-                            <label for="horario">Horario</label>
-                            <textarea name="horario" id="horario" cols="70" rows="2" placeholder="Lunes- viernes 12pm- 10pm"></textarea>
-                        </div>
+                        
                         <div class="detalle__sitio boton_form">
-                            <input type="submit" value="Siguiente" class="btn__form">
+                            <input type="submit" value="Enviar publicación" class="btn__form">
                         </div>
                     </form>
                 </div>

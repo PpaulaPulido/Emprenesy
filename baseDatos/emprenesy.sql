@@ -1,5 +1,5 @@
 create database emprenesy;
-
+drop database emprenesy;
 use emprenesy;
 
 create table usuario(
@@ -8,7 +8,9 @@ nombreusu varchar (50),
 apellidousu varchar(50),
 telusu varchar(20),
 fechanac_usu date,
-correousu varchar (50)
+correousu varchar (50),
+roles varchar(50),
+contrasena varchar(255)
 );
 
 create table administrador(

@@ -18,7 +18,6 @@ cursor = db.cursor()
 def index():
     return render_template('index.html')
 
-
 @app.route('/registrarUser', methods=['GET', 'POST'])
 def registrar_usuario():
     if request.method == 'POST':
@@ -58,3 +57,23 @@ def registrar_usuario():
 if __name__ == '__main__':
     app.add_url_rule('/', view_func=index)
     app.run(debug = True, port=3000)
+
+#conexion ingresar eventos-----------------------------------------------------------------------------------------
+@app.route('/publicareventos', methods=['get', 'post'])
+def eventos():
+    if request.method == 'post':
+        Nombre = request.form.get("nombreven")
+        Galeria = request.form.get('galeria')
+        Logo = request.form.get("logo")
+        Tipoevento = request.form.get("tipoevento")
+        Redes = request.form.get("redes")
+        Contacto = request.form.get("contacto")
+        Fecha = request.form.get("txtañodeimprenta")
+        Horario = request.form.get("horarioE")
+        Horario = request.form.get("horarioS")
+        Ubicacion = request.form.get("ubicacion")
+        Descripcion = request.form.get("descripcion")
+        Pagina = request.form.get("pagina")
+        Boleteria = request.form.get("boletos")
+        
+

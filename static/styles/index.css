@@ -448,7 +448,7 @@ a {
     margin-right: 50px;
     font-weight: bold;
     text-decoration: none;
-    background-color: #3d77ba;
+    background-color: #213859;
     width: 150px;
     text-align: center;
     padding: 10px;
@@ -456,7 +456,7 @@ a {
 }
 
 .contenedor_texto a:hover {
-    background-color: #003066;
+    background-color: #3d77ba;
 }
 
 .container_slider {
@@ -888,7 +888,7 @@ a {
   }
   
   .contenedor_footer {
-    background-color: #3d77ba;
+    background-color: #213859;
     color: #ffffff;
     padding: 10px;
   }

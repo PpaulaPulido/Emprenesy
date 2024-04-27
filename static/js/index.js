@@ -48,7 +48,7 @@ function parametros() {
 
 function scrollFunction() {
   if (document.body.scrollTop > 380 || document.documentElement.scrollTop > 380) {
-    document.getElementById("cabeza").style.backgroundColor = "#3d77ba"; // Cambia el color a azul
+    document.getElementById("cabeza").style.backgroundColor = "#213859"; // Cambia el color a azul
   } else {
     document.getElementById("cabeza").style.backgroundColor = "transparent"; // Vuelve a ser transparente
   }

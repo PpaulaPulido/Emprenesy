@@ -29,17 +29,13 @@ body {
     margin-bottom: 20px;
 }
 
-.campo_form label{
-    font-size: 20px;
-    
-}
+
 .controls {
     width: 100%;
     background-color: #ffffff;
     padding: 10px;
     border-radius: 4px;
     margin-bottom: 16px;
-    margin-top: 20px;
     border: 1px solid #ffffff;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 18px;
@@ -75,18 +71,4 @@ body {
     color: black;
     margin: 16px 0;
     font-size: 16px;
-}
-/*estilos del sweatalert*/
-
-.border-blue {
-    border: 3px solid #213859 !important;
-    box-shadow: 0 0 15px #fff;
-}
-.swal2-success-ring{
-
-    border: 3px solid #213859 !important;
-}
-.swal2-title{
-    color: #050047;
-    font-size: 25px;
 }

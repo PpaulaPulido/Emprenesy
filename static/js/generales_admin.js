@@ -6,7 +6,7 @@ function user_sesion() {
 
     // Elementos del submenu
     const subMenuItems = [
-        { text: 'Ver perfil', href: '#' },
+        { text: 'Ver perfil', href: './perfil_Admin.html' },
         { text: 'Notificaciones', href: '#' },
         { text: 'Configuración', href: '#' },
         { text: 'Cerrar sesión', href: '#' }

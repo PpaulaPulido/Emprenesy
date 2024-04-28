@@ -244,12 +244,28 @@ body{
 }
 
 /*estilos del mapa*/
+.detalle_btn{
+    margin-top: 30px;
+}
+#btn_dir{
+    color: #fff;
+    background-color: #24ddd7;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-left: 100px;
+}
+.error_message{
+    color: #Fff;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-right: 40px;
+}
+
 #geocode #map {
     display: block;
     width: 95%;
     height: 500px;
-    margin-bottom: 3px;
-    margin-top: 20px;
+    margin: 20px auto -20px 38px;
     background-color: rgb(226, 239, 248);
     border: 7px solid #336baf;
     border-radius: 5px;

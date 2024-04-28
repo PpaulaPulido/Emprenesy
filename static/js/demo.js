@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     var defaultLayers = platform.createDefaultLayers();
 
-    // Paso 2: inicializa un mapa - este mapa está centrado sobre California
+    
     var map = new H.Map(document.getElementById('map'),
         defaultLayers.vector.normal.map, {
         center: { lat: 37.376, lng: -122.034 },

@@ -1,22 +1,23 @@
 from flask import Flask, request, redirect, url_for, render_template, flash
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
-import mysql.connector
 import os
+from db import get_db, get_cursor
+
 
 app = Flask(__name__)
 app.secret_key = '123456789'
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
-# Configuración de la conexión a la base de datos
-db = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='',
-    database='emprenesy'
-)
-cursor = db.cursor()
+db = get_db()
+cursor = get_cursor(db)
+
+from modules.usuarios import usuarios
+app.register_blueprint(usuarios, url_prefix='/usuarios')
+
+
+
 ''' se utiliza para verificar si el nombre de un archivo tiene una extensión permitida según una lista de extensiones '''
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -80,40 +81,7 @@ def subir_portada():
         return redirect(url_for('perfil_admin'))
 
 
-@app.route('/registrarUser', methods=['GET', 'POST'])
-def registrar_usuario():
-    if request.method == 'POST':
-        nombres = request.form.get('nombres')
-        apellidos = request.form.get('apellidos')
-        telefono = request.form.get('tel')
-        fecha_nac = request.form.get('fechaNac')
-        email = request.form.get('correo')
-        roles = request.form.get('rol')
-        contrasena = request.form.get('contrasena')
-        confirmar_contrasena = request.form.get('confirmar_contrasena')
-        
-        if contrasena != confirmar_contrasena:
-            flash('Las contraseñas no coinciden', 'error')
-            return render_template('registro.html')
-        
-        # Encriptar la contraseña
-        contrasena_encriptada = generate_password_hash(contrasena)
-        cursor.execute('SELECT * FROM usuario WHERE correo_usuario = %s', (email,))
-        resultado = cursor.fetchall()
 
-        if resultado:
-            flash('El correo electrónico ya está registrado', 'error')
-            return render_template('registro.html')
-        else:
-            cursor.execute("""
-                INSERT INTO usuario (nombre_usuario, apellido_usuario, telefono_usuario, fecha_nac_usuario, correo_usuario, rol, contrasena)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
-            """, (nombres, apellidos, telefono, fecha_nac, email, roles, contrasena_encriptada))
-            db.commit()
-            flash('Usuario creado correctamente', 'success')
-            return redirect(url_for("registrar_usuario"))
-
-    return render_template('registro.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port=3000)

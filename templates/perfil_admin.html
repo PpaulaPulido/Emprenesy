@@ -45,7 +45,7 @@
             </ul>
         </div>
         <div class="container__perfil">
-            
+
             <div class="perfil__portada">
                 <div class="portada__foto">
                     <img src="/static/img/bogota-turismo.jpg" alt="portada de perfil">
@@ -53,8 +53,9 @@
                 </div>
                 <div class="portada__boton">
                     <form action="/subir_portada" method="POST" enctype="multipart/form-data">
-                        <input type="file" id="file-upload-button" name="fotoPortada" style="display:none;" onchange="this.form.submit()">
-                        <label for="file-upload-button" class="portada_btn"><i class="fa-solid fa-camera-retro"></i> Editar foto de portada</label>
+                        <input type="file" id="file-upload-button" name="fotoPortada" style="display:none; "onchange="this.form.submit()">
+                        <label for="file-upload-button" class="portada_btn"><i class="fa-solid fa-camera-retro"></i>
+                            Editar foto de portada</label>
                     </form>
                 </div>
             </div>
@@ -66,8 +67,11 @@
                             <img src="../img/perfil_user.png" alt="foto de perfil">
                         </div>
                         <div class="pefil__boton">
-                            <input type="file" id="perfil" name="fotoPerfil" style="display:none;">
-                            <label for="perfil" class="perfil_icon"><i class="fa-solid fa-camera-retro"></i></label>
+                            <form action="/subir_fotoPerfil" method="POST" enctype="multipart/form-data">
+                                <input type="file" id="perfil" name="fotoPerfil" style="display:none;"onchange="this.form.submit()">
+                                <label for="perfil" class="perfil_icon"><i class="fa-solid fa-camera-retro"></i></label>
+                            </form>
+
                         </div>
                         <h3>Paula Andrea Pulido</h3>
                     </div>
@@ -106,7 +110,7 @@
     <script src="../static/js/index_admin.js"></script>
     <script src="../static/js/buscador.js"></script>
 
-    
+
 
 </body>
 

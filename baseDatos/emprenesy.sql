@@ -12,7 +12,13 @@ correousu varchar (50),
 roles varchar(50),
 contrasena varchar(255)
 );
-
+CREATE TABLE fotos_usuario (
+    id_foto INT AUTO_INCREMENT PRIMARY KEY,
+    cod_usuario INT,
+    ruta_foto VARCHAR(255) NOT NULL,
+    tipo_foto ENUM('portada', 'general') DEFAULT 'general',
+    FOREIGN KEY (cod_usuario) REFERENCES usuario(cod_usuario)
+);
 create table administrador(
 codadmin int primary key auto_increment,
 nombreadmin varchar(50),

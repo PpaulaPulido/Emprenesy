@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory
+from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash
 from db import get_db, get_cursor
@@ -23,7 +23,6 @@ def index_admin():
 def perfil_admin():
     user_id = 1
     
-    
     cursor.execute("SELECT ruta_foto FROM fotos_usuario WHERE cod_usuario = %s AND tipo_foto = 'portada' ORDER BY id_foto DESC LIMIT 1", (user_id,))
     foto_portada = cursor.fetchone()
     if foto_portada:
@@ -43,6 +42,30 @@ def perfil_admin():
 
 
 
+@admin.route('/perfil_imagen')
+def perfil_imagen():
+    user_id = 1
+    cursor.execute("SELECT ruta_foto FROM fotos_usuario WHERE cod_usuario = %s AND tipo_foto = 'perfil' ORDER BY id_foto DESC LIMIT 1", (user_id,))
+    foto_perfil = cursor.fetchone()
+
+    if foto_perfil:
+        foto_perfil_path = foto_perfil[0]  
+        directory_path = os.path.join(current_app.root_path, 'static', 'uploads') 
+        file_name = os.path.basename(foto_perfil_path)  # Extrae el nombre del archivo
+    else:
+        # Manejar el caso en que no hay foto de perfil configurada
+        directory_path = os.path.join(current_app.root_path, 'static', 'uploads')  # Ruta al directorio de imágenes por defecto
+        file_name = 'perfil_user.png'  # Nombre de una imagen por defecto
+
+    # Verificar si el archivo realmente existe
+    full_file_path = os.path.join(directory_path, file_name)
+    if not os.path.isfile(full_file_path):
+        print(f"Archivo no encontrado: {full_file_path}")  # Log para depuración
+        abort(404)  # Si el archivo no existe, devuelve un error 404
+
+    return send_from_directory(directory_path, file_name)
+
+    
 @admin.route('/subir_fotoPerfil', methods=['POST'])
 def subir_fotoperfil():
     

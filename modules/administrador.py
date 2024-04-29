@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app
+from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash
 from db import get_db, get_cursor
@@ -14,15 +14,23 @@ cursor = get_cursor(db)
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+@admin.route('/index_admin')
+def index_admin():
+    return render_template('index_admin.html')
+
+
 @admin.route('/perfil_admin')
 def perfil_admin():
     user_id = 1
+    
+    
     cursor.execute("SELECT ruta_foto FROM fotos_usuario WHERE cod_usuario = %s AND tipo_foto = 'portada' ORDER BY id_foto DESC LIMIT 1", (user_id,))
     foto_portada = cursor.fetchone()
     if foto_portada:
         foto_portada = os.path.join('/', foto_portada[0])
     else:
         foto_portada = '/static/img/bogota-turismo.jpg'  # Foto de portada por default
+
 
     cursor.execute("SELECT ruta_foto FROM fotos_usuario WHERE cod_usuario = %s AND tipo_foto = 'perfil' ORDER BY id_foto DESC LIMIT 1", (user_id,))
     foto_perfil = cursor.fetchone()

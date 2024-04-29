@@ -1,5 +1,6 @@
 function user_sesion() {
 
+    const fotoPerfilURL = "{{ foto_perfil }}";
     const menuItems = [
         { text: '<img src="../img/perfil_user.png" alt="perfil">', href: '#', class: 'link1', hasSubMenu: true }
     ];

@@ -1,3 +1,4 @@
+
 function user_sesion() {
     fetch('/admin/perfil_imagen')
         .then(response => {
@@ -22,9 +23,10 @@ function crearNav(imagenURL) {
         { text: `<img src="${imagenURL}" alt="perfil">`, href: '#', class: 'link1', hasSubMenu: true }
     ];
 
+    const perfilAdminUrl = document.getElementById('data-container').getAttribute('data-perfil-url');
     // Elementos del submenu
     const subMenuItems = [
-        { text: 'Ver perfil', href: './perfil_Admin.html' },
+        { text: 'Ver perfil', href: perfilAdminUrl },
         { text: 'Notificaciones', href: '#' },
         { text: 'Configuración', href: '#' },
         { text: 'Cerrar sesión', href: '#' }
@@ -47,6 +49,8 @@ function crearNav(imagenURL) {
 
     const header = document.querySelector('#cabeza');
     header.appendChild(header_barra);
+
+   
 }
 
 function crearBuscadorNav(nav_list) {

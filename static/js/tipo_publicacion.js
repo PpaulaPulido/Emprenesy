@@ -1,3 +1,8 @@
+document.addEventListener('DOMContentLoaded',()=>{
+    user_sesion();
+    menu_lateral();
+})
+
 function publicacion(cardNumber) {
     switch(cardNumber) {
         case 1:

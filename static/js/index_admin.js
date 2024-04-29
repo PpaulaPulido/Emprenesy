@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     menu_lateral();
     estadoPublicaciones();
+    user_sesion();
+    
     
 });
 
-user_sesion();
 function estadoPublicaciones() {
 
     const pubEventos = document.getElementById('pub_eventos');

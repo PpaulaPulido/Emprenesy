@@ -1,9 +1,9 @@
 window.datosTarjetas = [
   {
     id: 1,
-    imagen: "../img/restaurante1.png",
+    imagen: "/static/img/restaurante1.png",
     titulo: "Storia D'Amore",
-    enlace: "../templates/detalle_res.html",
+    enlace: "./detalle_res.html",
     galeria: [
       "https://sobremesacom.co/wp-content/uploads/2023/06/storia-de-amore.jpg",
       "https://media-cdn.tripadvisor.com/media/photo-s/27/a2/c2/34/storia-d-amore-barranquilla.jpg",
@@ -35,7 +35,7 @@ window.datosTarjetas = [
     id: 2,
     imagen: "https://media-cdn.tripadvisor.com/media/photo-m/1280/15/39/0a/b9/terraza-ushin.jpg",
     titulo: "Ushin Japanese and Grill",
-    enlace: "../templates/detalle_res.html",
+    enlace: "./detalle_res.html",
     galeria: [
       "https://media-cdn.tripadvisor.com/media/photo-s/1a/5b/0e/8c/encuentro-de-detalles.jpg",
       "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2018/11/14/1057/Grand-Hyatt-Bogota-P211-Ushin-Japanese-and-Grill-Combinado-40-Piezas.jpg/Grand-Hyatt-Bogota-P211-Ushin-Japanese-and-Grill-Combinado-40-Piezas.16x9.jpg?imwidth=1920",
@@ -61,9 +61,9 @@ window.datosTarjetas = [
   },
   {
     id: 3,
-    imagen: "../img/restaurante3.png",
+    imagen: "/static/img/restaurante3.png",
     titulo: "Osaka–Cocina Nikkei",
-    enlace: "../templates/detalle_res.html",
+    enlace: "./detalle_res.html",
     galeria: [
       "https://media-cdn.tripadvisor.com/media/photo-s/27/c4/32/51/caption.jpg",
       "https://www.buenosbares.com/wp-content/uploads/2023/01/936c5841-e236-ab62-e24f-36e2d2db7098.jpeg",
@@ -89,9 +89,9 @@ window.datosTarjetas = [
   },
   {
     id: 4,
-    imagen: "../img/restaurante4.png",
+    imagen: "/static/img/restaurante4.png",
     titulo: "El Capitalino Restaurant",
-    enlace: "../templates/detalle_res.html",
+    enlace: "./detalle_res.html",
     galeria: [
       "https://media-cdn.tripadvisor.com/media/photo-s/15/5c/a7/f8/grand-hyatt-bogota-capitalino.jpg",
       "https://media-cdn.tripadvisor.com/media/photo-s/18/bc/23/a5/ambiente-del-restaurante.jpg",
@@ -117,9 +117,9 @@ window.datosTarjetas = [
   },
   {
     id: 5,
-    imagen: "../img/restaurante5.png",
+    imagen: "/static/img/restaurante5.png",
     titulo: "Pajares Salinas",
-    enlace: "../templates/detalle_res.html",
+    enlace: "./detalle_res.html",
     galeria: [
       "https://img.mesa247.pe/archivos/platos/pajares-salinas/arros-con-mariscos.webp",
       "https://pajaressalinas.com/wp-content/uploads/sites/3/2021/11/241A3605.jpeg",
@@ -148,9 +148,9 @@ window.datosTarjetas = [
 window.datosEventos = [
   {
     id: 1,
-    imagen: "../img/evento1.png",
+    imagen: "/static/img/evento1.png",
     titulo: "Festival Estéreo Picnic",
-    enlace: "../templates/detalle_event.html",
+    enlace: "./detalle_event.html",
     galeria: [
       "https://cloudfront-us-east-1.images.arcpublishing.com/infobae/NIKXDRZ44JHG7IE565QGQW3CHQ.jpg",
       "https://www.wradio.com.co/resizer/v2/PLIEYX3YOFENPNWVRYYSJYWKAA.jpg?auth=e65261ba137a895fe928ad30fd7f37c4f8373fac8ef89f75588a646801f6ea60&width=650&height=488&quality=70&smart=true",
@@ -178,9 +178,9 @@ window.datosEventos = [
   },
   {
     id: 2,
-    imagen: "../img/evento2.png",
+    imagen: "/static/img/evento2.png",
     titulo: "Juanpis Live Show: Los noto asustados temporada 2",
-    enlace: "../templates/detalle_event.html",
+    enlace: "./detalle_event.html",
     galeria: [
       "https://cdn.eticket.co/imagenes/artistas/240301184646211_performer_img_Estelar.jpg",
       "https://artworks.thetvdb.com/banners/series/382886/posters/5ec93aecc27cd.jpg",
@@ -208,9 +208,9 @@ window.datosEventos = [
   },
   {
     id: 3,
-    imagen: "../img/evento3.png",
+    imagen: "/static/img/evento3.png",
     titulo: "Una Idea Genial",
-    enlace: "../templates/detalle_event.html",
+    enlace: "./detalle_event.html",
     galeria: [
       "https://cdn.eticket.co/imagenes/artistas/240117090949872_performer_img2_CAT2.jpg",
       "https://redmas.com.co/__export/1706647081201/sites/redmas/img/2024/01/30/una_idea_genial.jpg_778525304.jpg",
@@ -237,9 +237,9 @@ window.datosEventos = [
   },
   {
     id: 4,
-    imagen: "../img/evento4.png",
+    imagen: "/static/img/evento4.png",
     titulo: "Cantemos La telenovela",
-    enlace: "../templates/detalle_event.html",
+    enlace: "./detalle_event.html",
     galeria: [
       "https://cdn.eticket.co/imagenes/imgeventos/240117164653651_poster_cartel.jpg",
       "https://caracoltv.brightspotcdn.com/dims4/default/28c9bf9/2147483647/strip/false/crop/1300x1153+0+0/resize/1200x1064!/quality/90/?url=http%3A%2F%2Fcaracol-brightspot.s3.amazonaws.com%2F27%2F4b%2F038fd0d44f00b7d4a2d31538c762%2Fcantemos.jpg",
@@ -266,9 +266,9 @@ window.datosEventos = [
   },
   {
     id: 5,
-    imagen: "../img/evento5.png",
+    imagen: "/static/img/evento5.png",
     titulo: "Burning Caravan",
-    enlace: "../templates/detalle_event.html",
+    enlace: "./detalle_event.html",
     galeria: [
       "https://i1.sndcdn.com/artworks-000119314188-136snd-t500x500.jpg",
       "https://colectivosonoro.com/wp-content/uploads/2022/05/Burning-Caravan-1.jpeg",
@@ -299,7 +299,7 @@ window.eventosTecnologicos = [
     id: 6,
     imagen: "https://www.feriasinfo.es/logos/alimentec_logo_9102.png",
     titulo: "Alimentec 2024",
-    enlace: "../templates/detalle_event.html",
+    enlace: "./detalle_event.html",
     galeria: [
       "https://idep.gov.ar/webidep/wp-content/uploads/2024/03/alimentec-2024.jpg",
       "https://feriaalimentec.com/img/spot-campana-eng-mb.jpg",
@@ -328,7 +328,7 @@ window.eventosTecnologicos = [
     id: 7,
     imagen: "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F719539019%2F2056575385003%2F1%2Foriginal.png?w=600&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C940%2C470&s=6c9721e99f412f64d61425cfe3dcd23f",
     titulo: "HubSpot Sync Test",
-    enlace: "../templates/detalle_event.html",
+    enlace: "./detalle_event.html",
     galeria: [
       "https://content.partnerpage.io/eyJidWNrZXQiOiJwYXJ0bmVycGFnZS5wcm9kIiwia2V5IjoibWVkaWEvY29udGFjdF9pbWFnZXMvYTExNTZlMjQtNTY0NC00N2M4LWE2NjUtYzVhN2IzMzE4NDRiL2E1YjY1ZWU1LTRlZTUtNDNlNi04NTlhLTAzZTJhNTg2ZTI3MS5qcGVnIiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJ3ZWJwIiwicmVzaXplIjp7ImZpdCI6ImNvbnRhaW4iLCJiYWNrZ3JvdW5kIjp7InIiOjI1NSwiZyI6MjU1LCJiIjoyNTUsImFscGhhIjowfX19fQ==",
       "https://bloo.media/wp-content/uploads/2023/02/que-es-hubspot-3.jpeg",
@@ -357,7 +357,7 @@ window.eventosTecnologicos = [
     id: 8,
     imagen: "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F732856429%2F1800345161443%2F1%2Foriginal.20240401-171751?h=2000&w=720&auto=format%2Ccompress&q=75&sharp=10&s=4eebf71f9f8527d5eca3f760fa9f35d9",
     titulo: "Cala Analytics Festival 2024",
-    enlace: "../templates/detalle_event.html",
+    enlace: "./detalle_event.html",
     galeria: [
       "https://www.cala-analytics.com/wp-content/uploads/2023/11/proximos-eventos-de-analitica-1024x1024.webp",
       "https://media.licdn.com/dms/image/D4D10AQHE1jb476YfAA/image-shrink_800/0/1711472425675?e=2147483647&v=beta&t=FP6IY2pqe_uy614BnasZxpY8vKegr4Bfpr0T_R1KYOs",
@@ -387,7 +387,7 @@ window.eventosTecnologicos = [
     id: 9,
     imagen: "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F724660719%2F872533708003%2F1%2Foriginal.20240321-003451?w=600&auto=format%2Ccompress&q=75&sharp=10&s=9aff7eeeb2a0cb2ad7daa05b6471eb25",
     titulo: "EPAM TechTalk",
-    enlace: "../templates/detalle_event.html",
+    enlace: "./detalle_event.html",
     galeria: [
       "https://pbs.twimg.com/profile_images/742503268480393216/0dTa5KEK_400x400.jpg",
       "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F724660719%2F872533708003%2F1%2Foriginal.20240321-003451?w=600&auto=format%2Ccompress&q=75&sharp=10&s=9aff7eeeb2a0cb2ad7daa05b6471eb25",
@@ -419,7 +419,7 @@ window.datosEmpredimientos = [
     id: 1,
     imagen: "https://ananassa.co/wp-content/uploads/2022/01/IMG_1149.jpg",
     titulo: "Ananassa",
-    enlace: "../templates/detalle_empren.html",
+    enlace: "./detalle_empren.html",
     galeria: [
       "https://ananassa.co/wp-content/uploads/2022/01/IMG_1132.jpg",
       "https://ananassa.co/wp-content/uploads/2022/01/IMG_8904-scaled-e1641143707987.jpeg",
@@ -445,7 +445,7 @@ window.datosEmpredimientos = [
     id: 2,
     imagen: "https://lacasadelaruana.com/wp-content/uploads/2023/11/R-LOGOTIPO-CASA-DE-LA-RUANA-1-1024x1015.jpg",
     titulo: "La casa de la Ruana",
-    enlace: "../templates/detalle_empren.html",
+    enlace: "./detalle_empren.html",
     galeria: [
       "https://http2.mlstatic.com/D_NQ_NP_821209-MCO72789928913_112023-O.webp",
       "https://http2.mlstatic.com/D_NQ_NP_845036-MCO70224675427_062023-O.webp",
@@ -472,7 +472,7 @@ window.datosEmpredimientos = [
     id: 3,
     imagen: "https://images.squarespace-cdn.com/content/v1/63d4441ac156df7781d7f94a/70bc5f6f-c184-4b4e-b14e-52876e0ddbcf/logo-srb-domicilios.jpg",
     titulo: "El señor buñuelo",
-    enlace: "../templates/detalle_empren.html",
+    enlace: "./detalle_empren.html",
     galeria: [
       "https://i.ytimg.com/vi/Jvi_GNMS_cY/maxresdefault.jpg",
       "https://images.squarespace-cdn.com/content/v1/63d4441ac156df7781d7f94a/dd9fd7ca-95c7-4b52-b4ec-99727521468c/sundae.jpg",
@@ -501,9 +501,9 @@ window.datosEmpredimientos = [
   },
   {
     id: 4,
-    imagen: "../img/taqueria.jpg",
+    imagen: "/static/img/taqueria.jpg",
     titulo: "La taqueria",
-    enlace: "../templates/detalle_empren.html",
+    enlace: "./detalle_empren.html",
     galeria: [
       "https://media-cdn.tripadvisor.com/media/photo-s/12/d4/b6/73/la-taqueria-calle-116.jpg",
       "https://media-cdn.tripadvisor.com/media/photo-s/1a/8e/98/0a/img-20200108-195507-largejpg.jpg",
@@ -533,9 +533,9 @@ window.datosEmpredimientos = [
   },
   {
     id: 5,
-    imagen: "../img/emprendimiento5.png",
+    imagen: "/static/img/emprendimiento5.png",
     titulo: "Dorilocos",
-    enlace: "../templates/detalle_empren.html",
+    enlace: "./detalle_empren.html",
     galeria: [
       "https://assets.bonappetit.com/photos/625bf3a83b01f608ce71f348/1:1/w_2436,h_2436,c_limit/0415-junk-food-dorilocos-lede.jpg",
       "https://i.pinimg.com/736x/de/ff/06/deff06e86613624c2158d7001d8a67df.jpg",
@@ -566,7 +566,7 @@ window.empredimientosArtesania = [
     id: 6,
     imagen: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/62/76/f4/visitanosiii.jpg?w=1100&h=-1&s=1",
     titulo: "Artesanos & café",
-    enlace: "../templates/detalle_empren.html",
+    enlace: "./detalle_empren.html",
     galeria: [
       "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/62/74/3d/artesanias-colombianas.jpg?w=1200&h=-1&s=1",
       "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/62/55/2c/que-tal-un-tinto-campesino.jpg?w=1100&h=-1&s=1",
@@ -592,7 +592,7 @@ window.empredimientosArtesania = [
     id: 7,
     imagen: "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/406435604_746874817473812_6212048010240493676_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHyUrCI_ZGnMe6j5ur7xvH1wwjImcY5jUvDCMiZxjmNSzrz_ZHwrz2v1U_Yb1e8-6xPgld92Is8NxEXW6xivX0l&_nc_ohc=6sg23Hbw7ccAb6zl6h5&_nc_ht=scontent.fbog3-2.fna&oh=00_AfDTfeOrcDaxKumc2P2Z4Qb-7yDlV8yGc2zGsfGnY8iu8A&oe=6625EB91",
     titulo: "Artesanos de Colombia",
-    enlace: "../templates/detalle_empren.html",
+    enlace: "./detalle_empren.html",
     galeria: [
       "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/406435604_746874817473812_6212048010240493676_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHyUrCI_ZGnMe6j5ur7xvH1wwjImcY5jUvDCMiZxjmNSzrz_ZHwrz2v1U_Yb1e8-6xPgld92Is8NxEXW6xivX0l&_nc_ohc=6sg23Hbw7ccAb6zl6h5&_nc_ht=scontent.fbog3-2.fna&oh=00_AfDTfeOrcDaxKumc2P2Z4Qb-7yDlV8yGc2zGsfGnY8iu8A&oe=6625EB91",
       "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/406672778_746852254142735_3795278734247261445_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFMqATrDYMdeKhjfNBkDsKcjFFtmp7vHIqMUW2anu8ciqskL-3dxpRdpfmVPufY7Erl_OLP3phVjlusCFBZ3SZ1&_nc_ohc=CX5YUeXjY0QAb5llbCQ&_nc_ht=scontent.fbog3-2.fna&oh=00_AfCkwo7kFxG8sP_bHrHdR-E9i53QM0sHY0ggy9ZiUeMO2Q&oe=6625C151",
@@ -617,7 +617,7 @@ window.empredimientosArtesania = [
     id: 8,
     imagen: "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/301785830_122733510515501_1045384273510897490_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFIqbKQ6iAfGsK6xupEjcDb7ceQ9prFlD3tx5D2msWUPXI-EQR2ftIQsAPYdeaVvZBBt9FiTe_Nif6iact4wnCy&_nc_ohc=irGtcKMUA6sAb7DQOrt&_nc_ht=scontent.fbog3-2.fna&oh=00_AfA6EHE0ymA4RXS8uXaHgL4Xyt-Njr7UqfxWIMiCYYyH0g&oe=6619E3DE",
     titulo: "Centro Artesanal 140",
-    enlace: "../templates/detalle_empren.html",
+    enlace: "./detalle_empren.html",
     galeria: [
       "https://centroartesanal140.com/wp-content/uploads/2023/07/10artesania-y-aroma-367x367.jpg",
       "https://1.bp.blogspot.com/-JW7u86SWwQ8/U6TN63nee-I/AAAAAAAAFAk/D5ctnp2LhJg/s1600/artesanias.jpg",
@@ -643,7 +643,7 @@ window.empredimientosArtesania = [
     id: 9,
     imagen: "https://latiendadelaempatia.com/wp-content/uploads/2022/09/cropped-logo-tienda-empatia.png",
     titulo: "La Tienda de la Empatia",
-    enlace: "../templates/detalle_empren.html",
+    enlace: "./detalle_empren.html",
     galeria: [
       "https://latiendadelaempatia.com/wp-content/uploads/2022/02/banner-5.jpg",
       "https://pbs.twimg.com/media/Flu3-eOWYAERMt5.jpg:large",
@@ -671,7 +671,7 @@ window.restaurantesVista = [
     id: 6,
     imagen: "https://www.culturarecreacionydeporte.gov.co/sites/default/files/2023-05/san_isidro_6_juan_simon_rodriguez.jpg",
     titulo: "Casa San Isidro",
-    enlace: "../templates/detalle_res.html",
+    enlace: "./detalle_res.html",
     galeria: [
       "https://media-cdn.tripadvisor.com/media/photo-s/11/cc/db/13/view-of-bogota-from-our.jpg",
       "https://media-cdn.tripadvisor.com/media/photo-s/28/de/2b/86/clasico-postre-crema.jpg",
@@ -701,7 +701,7 @@ window.restaurantesVista = [
     id: 7,
     imagen: "https://fastly.4sqi.net/img/general/200x200/338923060_3h_uUgvq6t3jGzNw4jtGJ5g2MgMtwM2rTlSFSJh-ioE.jpg",
     titulo: "La Paloma Mirador",
-    enlace: "../templates/detalle_res.html",
+    enlace: "./detalle_res.html",
     galeria: [
       "https://media-cdn.tripadvisor.com/media/photo-s/05/5f/6f/40/mirador-la-paloma.jpg",
       "https://media-cdn.tripadvisor.com/media/photo-s/1c/a0/c2/4c/conoceras-la-felicidad.jpg",
@@ -728,7 +728,7 @@ window.restaurantesVista = [
     id: 8,
     imagen: "https://bogotadc.travel/drpl/sites/default/files/2021-10/portada-grande%20%281%29.jpg",
     titulo: "Casa Santa Clara",
-    enlace: "../templates/detalle_res.html",
+    enlace: "./detalle_res.html",
     galeria: [
       "https://img.carta.menu/storage/media/company_gallery/3778058/conversions/contribution_gallery.jpg",
       "https://monserrate.co/wp-content/uploads/2020/03/casa-santaclara-restaurante-01.jpg",
@@ -757,7 +757,7 @@ window.restaurantesVista = [
     id: 9,
     imagen: "https://media-cdn.tripadvisor.com/media/photo-s/12/20/fe/58/tramonti-restaurante.jpg",
     titulo: "Tramonti",
-    enlace: "../templates/detalle_res.html",
+    enlace: "./detalle_res.html",
     galeria: [
       "https://media-cdn.tripadvisor.com/media/photo-s/12/20/fe/58/tramonti-restaurante.jpg",
       "https://img.carta.menu/storage/media/company_images/1127233/conversions/thumbnail.jpg",
@@ -787,7 +787,7 @@ window.restaurantesTematicos = [
     id: 10,
     imagen: "https://media-cdn.tripadvisor.com/media/photo-s/17/41/45/c8/fachada.jpg",
     titulo: "Imagine Restaurante",
-    enlace: "../templates/detalle_res.html",
+    enlace: "./detalle_res.html",
     galeria: [
       "https://webbox.imgix.net/images/peapumdqqflgwzcz/6436d6e0-534f-4065-9e43-fc9a1b5f0bf7.jpeg?auto=format,compress&fit=crop&crop=entropy",
       "https://menu.sluurpy.com/immagini/locali/thumbs/2228898.jpg",
@@ -816,7 +816,7 @@ window.restaurantesTematicos = [
     id: 11,
     imagen: "https://media-cdn.tripadvisor.com/media/photo-s/29/14/49/60/location-cuerdo.jpg",
     titulo: "Cuerdo",
-    enlace: "../templates/detalle_res.html",
+    enlace: "./detalle_res.html",
     galeria: [
       "https://i.revistapym.com.co/cms/2023/05/26161506/aper1.jpg?w=412&d=2.625",
       "https://img.lalr.co/cms/2023/06/08181628/350432548_1066498140992792_5902575041105869765_n.jpg",
@@ -845,7 +845,7 @@ window.restaurantesTematicos = [
     id: 12,
     imagen: "../img/mesa_de_papel.jpg",
     titulo: "La mesa de papel",
-    enlace: "../templates/detalle_res.html",
+    enlace: "./detalle_res.html",
     galeria: [
       "https://pbs.twimg.com/media/EO_DkR3X4AAOOVC.jpg",
       "https://10619-2.s.cdn12.com/rests/original/324_509622806.jpg",
@@ -874,7 +874,7 @@ window.restaurantesTematicos = [
     id: 13,
     imagen: "https://media-cdn.tripadvisor.com/media/photo-s/1c/a8/59/03/nuevo-espacio-de-show.jpg",
     titulo: "Restaurante Temático Circo",
-    enlace: "../templates/detalle_res.html",
+    enlace: "./detalle_res.html",
     galeria: [
       "https://media-cdn.tripadvisor.com/media/photo-s/1c/a8/59/05/salmon-freak-a-la-parrilla.jpg",
       "https://verbienmagazin.com/wp-content/uploads/2021/06/DSC1028-1024x680.jpg",

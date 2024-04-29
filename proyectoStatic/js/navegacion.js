@@ -3,10 +3,10 @@ function no_user() {
     const nav = document.querySelector('#cabeza');
 
     const links = [
-        { text: 'Sobre Nosotros', href: '/templates/MVQ.html', class: 'link' },
-        { text: 'Inicio', href: '/templates/index.html', class: 'link' },
-        { text: 'Iniciar Sesión', href: '/templates/iniciar_sesion.html', class: 'link' },
-        { text: 'Crear Cuenta', href: '/templates/registro.html', class: 'link1' }
+        { text: 'Sobre Nosotros', href: './MVQ.html', class: 'link' },
+        { text: 'Inicio', href: './index.html', class: 'link' },
+        { text: 'Iniciar Sesión', href: './iniciar_sesion.html', class: 'link' },
+        { text: 'Crear Cuenta', href: './registro.html', class: 'link1' }
     ];
 
     const menu = document.createElement('nav');

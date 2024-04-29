@@ -16,7 +16,7 @@ CREATE TABLE fotos_usuario (
     id_foto INT AUTO_INCREMENT PRIMARY KEY,
     cod_usuario INT,
     ruta_foto VARCHAR(255) NOT NULL,
-    tipo_foto ENUM('portada', 'general') DEFAULT 'general',
+    tipo_foto ENUM('portada', 'general','perfil') DEFAULT 'general',
     FOREIGN KEY (cod_usuario) REFERENCES usuario(cod_usuario)
 );
 create table administrador(

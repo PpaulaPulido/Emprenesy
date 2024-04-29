@@ -28,20 +28,59 @@ def index():
 
 @app.route('/perfil_admin')
 def perfil_admin():
-    user_id = 1 
+    user_id = 1
     cursor.execute("SELECT ruta_foto FROM fotos_usuario WHERE cod_usuario = %s AND tipo_foto = 'portada' ORDER BY id_foto DESC LIMIT 1", (user_id,))
     foto_portada = cursor.fetchone()
     if foto_portada:
-        foto_portada = os.path.join('/', foto_portada[0])  
+        foto_portada = os.path.join('/', foto_portada[0])
     else:
-        foto_portada = '/img/bogota-turismo.jpg' #foto por default
+        foto_portada = '/static/img/bogota-turismo.jpg'  # Foto de portada por default
 
-    return render_template('perfil_admin.html', foto_portada=foto_portada)
+    cursor.execute("SELECT ruta_foto FROM fotos_usuario WHERE cod_usuario = %s AND tipo_foto = 'perfil' ORDER BY id_foto DESC LIMIT 1", (user_id,))
+    foto_perfil = cursor.fetchone()
+    if foto_perfil:
+        foto_perfil = os.path.join('/', foto_perfil[0])
+    else:
+        foto_perfil = '/static/img/perfil_user.png'  # Foto de perfil por default
 
+    return render_template('perfil_admin.html', foto_portada=foto_portada, foto_perfil=foto_perfil)
+
+
+
+
+@app.route('/subir_fotoPerfil', methods=['POST'])
+def subir_fotoperfil():
+    
+    user_id = 1  #Obtener el user_id de la sesión o contexto de autenticación para identificar al usuario actual.
+    
+    file = request.files.get('fotoPerfil')
+    
+    if file and allowed_file(file.filename):
+        
+        filename = secure_filename(file.filename)
+        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file.save(file_path)
+        cursor.execute("""
+            INSERT INTO fotos_usuario (cod_usuario, ruta_foto, tipo_foto)
+            VALUES (%s, %s, 'perfil')
+            ON DUPLICATE KEY UPDATE ruta_foto = VALUES(ruta_foto)
+        """, (user_id, file_path))
+        
+        db.commit()
+
+        flash('Foto de portada actualizada con éxito.')
+
+        return redirect(url_for('perfil_admin'))
+    
+    else:
+        flash('No se seleccionó archivo o el tipo de archivo no está permitido.')
+        return redirect(url_for('perfil_admin'))
+    
+    
 @app.route('/subir_portada', methods=['POST'])
 def subir_portada():
     
-    user_id = 1  # Aquí deberías obtener el user_id de la sesión o contexto de autenticación para identificar al usuario actual.
+    user_id = 1  # Obtener el user_id de la sesión o contexto de autenticación para identificar al usuario actual.
     
     # Intenta obtener el archivo con el nombre 'fotoPortada' del formulario enviado. Si no hay archivo, 'file' será None.
     file = request.files.get('fotoPortada')

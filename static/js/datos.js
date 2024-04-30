@@ -1,7 +1,7 @@
 window.datosTarjetas = [
   {
     id: 1,
-    imagen: "../img/restaurante1.png",
+    imagen: "/static/img/restaurante1.png",
     titulo: "Storia D'Amore",
     enlace: "../templates/detalle_res.html",
     galeria: [
@@ -61,7 +61,7 @@ window.datosTarjetas = [
   },
   {
     id: 3,
-    imagen: "../img/restaurante3.png",
+    imagen: "/static/img/restaurante3.png",
     titulo: "Osaka–Cocina Nikkei",
     enlace: "../templates/detalle_res.html",
     galeria: [
@@ -89,7 +89,7 @@ window.datosTarjetas = [
   },
   {
     id: 4,
-    imagen: "../img/restaurante4.png",
+    imagen: "/static/img/restaurante4.png",
     titulo: "El Capitalino Restaurant",
     enlace: "../templates/detalle_res.html",
     galeria: [
@@ -117,7 +117,7 @@ window.datosTarjetas = [
   },
   {
     id: 5,
-    imagen: "../img/restaurante5.png",
+    imagen: "/static/img/restaurante5.png",
     titulo: "Pajares Salinas",
     enlace: "../templates/detalle_res.html",
     galeria: [
@@ -148,7 +148,7 @@ window.datosTarjetas = [
 window.datosEventos = [
   {
     id: 1,
-    imagen: "../img/evento1.png",
+    imagen: "/static/img/evento1.png",
     titulo: "Festival Estéreo Picnic",
     enlace: "../templates/detalle_event.html",
     galeria: [
@@ -178,7 +178,7 @@ window.datosEventos = [
   },
   {
     id: 2,
-    imagen: "../img/evento2.png",
+    imagen: "/static/img/evento2.png",
     titulo: "Juanpis Live Show: Los noto asustados temporada 2",
     enlace: "../templates/detalle_event.html",
     galeria: [
@@ -208,7 +208,7 @@ window.datosEventos = [
   },
   {
     id: 3,
-    imagen: "../img/evento3.png",
+    imagen: "/static/img/evento3.png",
     titulo: "Una Idea Genial",
     enlace: "../templates/detalle_event.html",
     galeria: [
@@ -237,7 +237,7 @@ window.datosEventos = [
   },
   {
     id: 4,
-    imagen: "../img/evento4.png",
+    imagen: "/static/img/evento4.png",
     titulo: "Cantemos La telenovela",
     enlace: "../templates/detalle_event.html",
     galeria: [
@@ -266,7 +266,7 @@ window.datosEventos = [
   },
   {
     id: 5,
-    imagen: "../img/evento5.png",
+    imagen: "/static/img/evento5.png",
     titulo: "Burning Caravan",
     enlace: "../templates/detalle_event.html",
     galeria: [
@@ -501,7 +501,7 @@ window.datosEmpredimientos = [
   },
   {
     id: 4,
-    imagen: "../img/taqueria.jpg",
+    imagen: "/static/img/taqueria.jpg",
     titulo: "La taqueria",
     enlace: "../templates/detalle_empren.html",
     galeria: [
@@ -533,7 +533,7 @@ window.datosEmpredimientos = [
   },
   {
     id: 5,
-    imagen: "../img/emprendimiento5.png",
+    imagen: "/static/img/emprendimiento5.png",
     titulo: "Dorilocos",
     enlace: "../templates/detalle_empren.html",
     galeria: [

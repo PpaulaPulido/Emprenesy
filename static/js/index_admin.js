@@ -1,8 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     menu_lateral();
     estadoPublicaciones();
-    user_sesion();
     
+    user_sesion().then(() => {
+        inicializarBuscador();
+    }).catch(error => console.error('Error al inicializar sesión de usuario:', error));
     
 });
 

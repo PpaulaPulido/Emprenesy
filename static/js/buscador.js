@@ -1,11 +1,10 @@
-document.addEventListener('DOMContentLoaded', function () {
+function inicializarBuscador() {
     let bars_search = document.getElementById("ctn-bars-search");
     let cover_ctn_search = document.getElementById("cover-ctn-search");
     let inputSearch = document.getElementById("inputSearch");
     let box_search = document.getElementById("box-search");
-    let ulElement = document.getElementById("box-search");
 
-    if (!ulElement) {
+    if (!box_search) {
         console.error('El elemento ul #box-search no existe en el DOM en el momento de la ejecución del script.');
         return;
     }
@@ -30,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
         icono.className = "fas fa-search";
         aElement.prepend(icono);
         liElement.appendChild(aElement);
-        ulElement.appendChild(liElement);
+        box_search.appendChild(liElement);
     });
 
     document.getElementById("icon-search").addEventListener("click", mostrar_buscador);
@@ -75,4 +74,4 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
-});
+}

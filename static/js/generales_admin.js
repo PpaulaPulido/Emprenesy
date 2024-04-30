@@ -1,6 +1,5 @@
-
 function user_sesion() {
-    fetch('/admin/perfil_imagen')
+    return fetch('/admin/perfil_imagen')
         .then(response => {
             if (!response.ok) {
                 //indica si la solicitud no fue existosa
@@ -14,6 +13,7 @@ function user_sesion() {
         })
         .catch(error => {
             console.error('Error al cargar la imagen del perfil:', error);
+            throw error;
         });
 }
 

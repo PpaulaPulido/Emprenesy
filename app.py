@@ -17,6 +17,9 @@ app.register_blueprint(usuarios, url_prefix='/usuarios')
 from modules.administrador import admin
 app.register_blueprint(admin, url_prefix='/admin')
 
+from modules.restaurantes  import res
+app.register_blueprint(res, url_prefix="/res")
+
 @app.route('/')
 def index():
     return render_template('index.html')

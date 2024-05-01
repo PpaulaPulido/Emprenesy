@@ -59,7 +59,10 @@
           <h2>Añadir un restaurante</h2>
         </div>
         <div class="contenido__detalles">
-          <form class="info_detalles" action="/templates/publicacionRes1.html">
+          
+          <div id="form_url" data-url="{{ url_for('admin.index_admin') }}" style="display: none;"></div>
+
+          <form class="info_detalles" id="formularioLocation" action="{{url_for('admin.index_admin')}}">
             <div class="detalle__sitio">
               <h3>Ubicaciones del sitio</h3>
             </div>
@@ -98,6 +101,7 @@
       </div>
     </div>
     <div id="data-container" data-perfil-url="{{ url_for('admin.perfil_admin') }}" style="display: none;"></div>
+    
   </main>
 
   <footer>
@@ -150,10 +154,12 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
   <script src="../static/js/generales_admin.js"></script>
   <script src="../static/js/publicacionesRes.js"></script>
   <script src="../static/js/buscador.js"></script>
+  <script src="../static/js/alertas.js"></script>
   <script src="../static/js/map_form.js"></script>
 </body>
 

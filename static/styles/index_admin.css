@@ -410,7 +410,9 @@ body {
     border-radius: 8px;
     margin-left: 100px;
 }
-
+#btn_dir:hover{
+    background-color: #036e6b;
+}
 .error_message {
     color: #Fff;
     text-align: center;
@@ -436,4 +438,19 @@ body {
     gap: 30px;
     justify-content: center;
     align-items: center;
+}
+
+/*estilos del sweatalert*/
+
+.border-blue {
+    border: 3px solid #213859 !important;
+    box-shadow: 0 0 15px #fff;
+}
+.swal2-success-ring{
+
+    border: 3px solid #213859 !important;
+}
+.swal2-title{
+    color: #050047;
+    font-size: 25px;
 }

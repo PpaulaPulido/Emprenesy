@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         console.log('Botón de regreso no encontrado.');
     }
+    
 
 })
 

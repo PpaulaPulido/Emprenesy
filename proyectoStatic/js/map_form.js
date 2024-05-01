@@ -1,10 +1,8 @@
 function inputDir(callback) {
-
     const btn_dir = document.getElementById("btn_dir");
     const container_ub = document.querySelector(".container_ubicacion");
     const message = document.querySelector('.message');
 
-    // Inicializa los listeners para los inputs existentes
     document.querySelectorAll('.address').forEach(input => {
         inputListener(input);
     });
@@ -20,7 +18,6 @@ function inputDir(callback) {
                 emptyInput = true;
             } else {
                 ubicaciones.push(direccion);
-                console.log(ubicaciones);
             }
         });
 
@@ -37,7 +34,6 @@ function inputDir(callback) {
             container_ub.appendChild(div_detalle);
             inputListener(input_detalle);
 
-            // Callback to handle updated locations
             callback(ubicaciones);
         } else {
             mostrarError(message);
@@ -84,27 +80,31 @@ document.addEventListener('DOMContentLoaded', function () {
  * 
  */
     function geocode(platform, ubicaciones) {
-    var geocoder = platform.getSearchService();
+        var geocoder = platform.getSearchService();
 
-    ubicaciones.forEach(function (address) {
-        var geocodingParameters = {
-            q: address
-        };
+        ubicaciones.forEach(function (address) {
+            var geocodingParameters = {
+                q: address
+            };
 
-        // Usar correctamente los callbacks onSuccess y onError
-        geocoder.geocode(
-            geocodingParameters,
-            function (result) {  // onSuccess
-                console.log("Success", result);
-                addLocationsToMap(result.items);  // Asegurarse de pasar los items correctos
-                addLocationsToPanel(result.items);
-            },
-            function (error) {  // onError
-                console.error("Error", error);
-            }
-        );
-    });
-}
+            geocoder.geocode(
+                geocodingParameters,
+                function (result) {  // onSuccess
+                    console.log("Success", result);
+                    if (result.items.length > 0) {
+                        addLocationsToMap(result.items);
+                        addLocationsToPanel(result.items);
+                    } else {
+                        console.error("No results found");
+                    }
+                },
+                function (error) {  // onError
+                    console.error("Geocoding error:", error);
+                }
+            );
+        });
+    }
+
 
 
     /**
@@ -124,7 +124,8 @@ document.addEventListener('DOMContentLoaded', function () {
      * @param  {Object} error  El mensaje de error recibido.
      */
     function onError(error) {
-        alert('No se puede alcanzar el servidor remoto' + error);
+        console.error("Geocoding error:", error);
+        alert('Error al geocodificar las direcciones. Ver la consola para más detalles.');
     }
 
     /**
@@ -218,6 +219,8 @@ document.addEventListener('DOMContentLoaded', function () {
         //locationsContainer.appendChild(nodeOL);
     }
 
+
+
     /**
      * Crea una serie de H.map.Markers para cada ubicación encontrada y los agrega al mapa.
      * @param {Object[]} locations Un array de ubicaciones tal como se recibe del
@@ -243,8 +246,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Ahora usa el mapa según sea necesario...
-    inputDir(function(ubicaciones){
-        geocode(platform,ubicaciones);
+    inputDir(function (ubicaciones) {
+        geocode(platform, ubicaciones);
     });
-    
+
 })

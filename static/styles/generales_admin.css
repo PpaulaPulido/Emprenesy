@@ -1,4 +1,6 @@
-
+ul, ol{
+    list-style: none;
+}
 /********************** Estilos de la barra lateral**************************************/
 #sidebar {
     position: fixed;

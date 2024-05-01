@@ -20,6 +20,9 @@ app.register_blueprint(admin, url_prefix='/admin')
 from modules.restaurantes  import res
 app.register_blueprint(res, url_prefix="/res")
 
+from modules.eventos  import evento
+app.register_blueprint(evento, url_prefix="/evento")
+
 @app.route('/')
 def index():
     return render_template('index.html')

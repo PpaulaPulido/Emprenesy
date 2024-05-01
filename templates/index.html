@@ -68,6 +68,12 @@
   </header>
 
   <main>
+
+    <div id="url" style="display: none;">
+      <a id="detalle-res-url" data-url="{{ url_for('res.restauranteDetalle') }}"></a>
+      <a id="detalle-evento-url" data-url="{{ url_for('evento.eventoDetalle') }}"></a>
+    </div>
+
     <section class="contenedor_tarjetas">
       <div class="contenedor_tarjeta">
         <img src="{{ url_for('static', filename='img/restaurante.png') }}" alt="logo restaurante" class="tarjeta_img">

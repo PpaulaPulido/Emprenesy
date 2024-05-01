@@ -3,7 +3,7 @@ window.datosTarjetas = [
     id: 1,
     imagen: "/static/img/restaurante1.png",
     titulo: "Storia D'Amore",
-    enlace: "../templates/detalle_res.html",
+    enlace: "",
     galeria: [
       "https://sobremesacom.co/wp-content/uploads/2023/06/storia-de-amore.jpg",
       "https://media-cdn.tripadvisor.com/media/photo-s/27/a2/c2/34/storia-d-amore-barranquilla.jpg",
@@ -552,7 +552,7 @@ window.datosEmpredimientos = [
       "https://www.tiktok.com/@dorilocos_bogota?_t=8iv7ZEI5pNm&_r=1"
     ],
     ubicacion: [
-      "Cl. 8 #7941, Bogotá", 
+      "Cl. 8 #7941, Bogotá",
       "Cra. 103b #151c-11, Bogotá",
       "Cra. 6a, Bogotá"
     ],

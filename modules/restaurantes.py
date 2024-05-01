@@ -18,3 +18,7 @@ def restauranteContacto():
 @res.route('/restauranteLocation')
 def restauranteLocation():
     return render_template('publicacionRes2.html')
+
+@res.route('/restauranteDetalle')
+def restauranteDetalle():
+    return render_template('detalle_res.html')

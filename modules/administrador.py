@@ -137,6 +137,12 @@ def subir_portada():
         # Redirecciona al usuario de vuelta a la página 'perfil_admin' para mantenerlo en la misma página en caso de error.
         return redirect(url_for('admin.perfil_admin'))
 
+
 @admin.route('/tipo_publicacion')
 def tipoPublicacion():
     return render_template('tipo_publicacion.html')
+
+
+@admin.route('/nosotros')
+def nosotrosEmprenesy():
+    return render_template('MVQ_admin.html')

@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function scrollFunction() {
     if (document.body.scrollTop > 380 || document.documentElement.scrollTop > 380) {
-        document.getElementById("cabeza").style.backgroundColor = "#213859";
+        document.getElementById("cabeza").style.backgroundColor = "#3d77ba";
     } else {
         document.getElementById("cabeza").style.backgroundColor = "#254b7f";
     }

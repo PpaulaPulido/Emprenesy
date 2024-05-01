@@ -27,6 +27,7 @@ function crearNav(imagenURL) {
     // Elementos del submenu
     const subMenuItems = [
         { text: 'Ver perfil', href: perfilAdminUrl },
+        { text: 'Ver dashboard', href: perfilAdminUrl },
         { text: 'Notificaciones', href: '#' },
         { text: 'Configuración', href: '#' },
         { text: 'Cerrar sesión', href: '#' }

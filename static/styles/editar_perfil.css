@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,500;1,6..12,500&family=Poppins:wght@300;400&family=Roboto+Slab:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Roboto Slab', serif;
+
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+}
+
+a {
+    font-family: "Open Sans", sans-serif;
+    text-decoration: none;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+/*******************************Estilos del container perfil*********************************************/
+
+.container_perfil{
+    background-color: red;
+    padding: 20px;
+    width:  85%;
+    margin: 0 auto;
+}

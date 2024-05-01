@@ -20,9 +20,9 @@ window.datosTarjetas = [
       ""
     ],
     ubicacion: [
-      "Carrera 13 #82 -36",
-      "Calle 93A #13A-21",
-      "Cl. 122 #15a-24"
+      "Carrera 13 #82 -36 Bogotá",
+      "Calle 93A #13A-21 Bogotá",
+      "Cl. 122 #15a-24 Bogotá"
     ],
     menu: [
       "https://menupp.co/storiadamore/venue/dSk9VolxfbK4csFMgkh8?type=normal",

@@ -50,7 +50,7 @@
                 </div>
                 <div class="contenido__detalles">
                     
-                    <form class="info_detalles" action="/templates/publicacionRes1.html">
+                    <form class="info_detalles" action="{{ url_for('res.restauranteContacto') }}">
                         <div class="detalle__sitio">
                             <h3>Detalles del sitio</h3>
                         </div>
@@ -59,14 +59,14 @@
                             <input type="text" name="nombre" id="nombre">
                         </div>
                         <div class="detalle__sitio">
-                            <label for="logo">Logo</label>
+                            <label for="file-upload-button">Logo</label>
                             <input type="file" id="file-upload-button" name="logo" style="display:none;">
                             <label for="file-upload-button" class="file-upload-btn">Seleccionar archivo</label>
                         </div>
                         
                         <div class="detalle__sitio">
                             <label for="typeRes">Tipo de restaurante</label>
-                            <select name="restaurante" id="restaurante">
+                            <select name="restaurante" id="typeRes">
                                 <option value="">Seleccionar</option>
                                 <option value="internacional">Comida Internacional</option>
                                 <option value="tematicos">Temáticos</option>
@@ -108,7 +108,7 @@
                 </div>
             </div>
         </div>
-
+        <div id="data-container" data-perfil-url="{{ url_for('admin.perfil_admin') }}" style="display: none;"></div>
     </main>
 
     <footer>

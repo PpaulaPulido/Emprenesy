@@ -10,3 +10,11 @@ cursor = get_cursor(db)
 @res.route('/publicacionRes')
 def publicacionRes():
     return render_template('publicacionRes.html')
+
+@res.route('/restauranteInfoContacto')
+def restauranteContacto():
+    return render_template('publicacionRes1.html')
+
+@res.route('/restauranteLocation')
+def restauranteLocation():
+    return render_template('publicacionRes2.html')

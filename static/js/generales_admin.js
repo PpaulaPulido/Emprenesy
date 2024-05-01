@@ -126,8 +126,11 @@ function menu_lateral() {
         console.log(document.getElementById('sidebar'))
     });
 }
-function menu_form() {
+
+function menu_form(){
+
     const btnToggle = document.querySelector('.toggle-btn');
+
     btnToggle.addEventListener('click', function () {
         document.getElementById('sidebar').classList.toggle('active');
         document.getElementById('publicaciones__form').classList.toggle('active');

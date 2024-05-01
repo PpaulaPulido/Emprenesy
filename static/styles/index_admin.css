@@ -91,10 +91,15 @@ body {
     width: 100%;
     overflow-x: hidden;
 }
-
+.detalle__sitio textarea {
+    border: none;
+    border-radius: 6px;
+    width: 100%;
+    transition: width 0.3s ease; 
+}
 #publicaciones__form.active {
-    margin-left: 150px;
-    width: calc(100% - 100px);
+    margin-left: 200px;
+    width: calc(100% - 100px );
 }
 
 .container_pub {
@@ -320,31 +325,40 @@ body {
     cursor: pointer;
     color: #051248;
 }
-
-.detalle__sitio textarea {
-    border: none;
-    border-radius: 6px;
-    padding: 6px;
-}
-
 .boton_form {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.boton_form .btn__form,
-#btn_regresar {
+.boton_form .btn__form{
     margin-bottom: 20px;
-    width: 50%;
+    width: 60%;
     height: 40px;
     color: #051248;
     font-size: 18px;
     background-color: #fff;
     border: none;
     border-radius: 6px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
+#btn_regresar, #btn_enviar{
+    margin-bottom: 20px;
+    width: 80%;
+    height: 40px;
+    color: #051248;
+    font-size: 18px;
+    background-color: #fff;
+    border: none;
+    border-radius: 6px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .boton_form .btn__form:hover,
 #btn_regresar:hover {
     background-color: #3d77ba;
@@ -371,7 +385,19 @@ body {
 .detalles__btn {
     display: flex;
 }
-
+.galeria {
+    background-color: #24ddd7;
+    border: none;
+    padding: 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    font-size: 18px;
+}
 /*estilos del mapa*/
 .detalle_btn {
     margin-top: 30px;

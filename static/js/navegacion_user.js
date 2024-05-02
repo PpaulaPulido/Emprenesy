@@ -1,10 +1,30 @@
 function user_sesion() {
+    return fetch('/admin/perfil_imagen')
+    .then(response => {
+        if (!response.ok) {
+            //indica si la solicitud no fue existosa
+            throw new Error('Network response was not ok');
+        }
+        return response.blob();
+    })
+    .then(imageBlob => {
+        const imagenURL = URL.createObjectURL(imageBlob);
+        crearNav(imagenURL)
+    })
+    .catch(error => {
+        console.error('Error al cargar la imagen del perfil:', error);
+        throw error;
+    });
+    
+}
+
+function crearNav(imagenURL){
 
     const menuItems = [
         { text: 'Sobre Nosotros', href: '/templates/MVQ.html', class: 'link' },
         { text: 'Inicio', href: '/templates/index.html', class: 'link' },
         { text: 'Mis favoritos', href: '/templates/favoritos.html', class: 'link' },
-        { text: '<img src="../img/perfil_user.png" alt="perfil">', href: '#', class: 'link1', hasSubMenu: true }
+        { text: `<img src="${imagenURL}" alt="perfil">`, href: '#', class: 'link1', hasSubMenu: true }
     ];
 
     // Elementos del submenu
@@ -15,13 +35,25 @@ function user_sesion() {
         { text: 'Cerrar sesión', href: '#' }
     ];
 
-
     const nav_user = document.createElement('nav');
     nav_user.className = 'barra_nav';
 
     const nav_list = document.createElement('ul');
     nav_list.className = 'nav_list';
 
+    crearBuscadorNav(nav_list);
+    crearMenuItem(nav_list,menuItems,subMenuItems);
+    // Agregar nav_list a nav_user
+    nav_user.appendChild(nav_list);
+
+    const header_barra = document.createElement('div');
+    header_barra.id = "header_barra";
+    header_barra.appendChild(nav_user);
+
+    const header = document.querySelector('#cabeza');
+    header.appendChild(header_barra);
+}
+function crearBuscadorNav(nav_list){
     // Crear elemento li para el buscador
     const buscador_li = document.createElement('li');
     buscador_li.innerHTML = `
@@ -38,7 +70,8 @@ function user_sesion() {
             <div id="cover-ctn-search"></div>
         </div>`;
     nav_list.appendChild(buscador_li);
-
+}
+function crearMenuItem(nav_list,menuItems,subMenuItems){
     // Crear elementos li y a para el menú principal
     menuItems.forEach(item => {
         const liElement = document.createElement('li');
@@ -69,18 +102,4 @@ function user_sesion() {
         }
         nav_list.appendChild(liElement);
     });
-
-    // Agregar nav_list a nav_user
-    nav_user.appendChild(nav_list);
-
-    const header_barra = document.createElement('div');
-    header_barra.id = "header_barra";
-    header_barra.appendChild(nav_user);
-
-    const header = document.querySelector('#cabeza');
-    header.appendChild(header_barra);
-
-
-
 }
-user_sesion();

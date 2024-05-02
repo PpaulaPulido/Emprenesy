@@ -1,15 +1,22 @@
-from flask import Blueprint, request, render_template, redirect, url_for, flash
+from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort
+from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash
 from db import get_db, get_cursor
-
+import os
 
 usuarios = Blueprint('usuarios', __name__)
+db = get_db()
+cursor = get_cursor(db)
+    
+
+@usuarios.route('/index_user')
+def index_user():
+    return render_template('index_user.html')
+
 
 @usuarios.route('/registrarUser', methods=['GET', 'POST'])
 def registrar_usuario():
-    db = get_db()
-    cursor = get_cursor(db)
-
+    
     if request.method == 'POST':
         nombres = request.form.get('nombres')
         apellidos = request.form.get('apellidos')

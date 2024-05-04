@@ -16,35 +16,48 @@ def index_user():
 
 @usuarios.route('/registrarUser', methods=['GET', 'POST'])
 def registrar_usuario():
-    
     if request.method == 'POST':
-        nombres = request.form.get('nombres')
-        apellidos = request.form.get('apellidos')
+        Nombres = request.form.get('nombres')
+        Apellidos = request.form.get('apellidos')
         telefono = request.form.get('tel')
-        fecha_nac = request.form.get('fechaNac')
-        email = request.form.get('correo')
+        fechaNac = request.form.get('fechaNac')
+        Email = request.form.get('correo')
         roles = request.form.get('rol')
         contrasena = request.form.get('contrasena')
         confirmar_contrasena = request.form.get('confirmar_contrasena')
         
         if contrasena != confirmar_contrasena:
             flash('Las contraseñas no coinciden', 'error')
+            print('Las contraseñas no coinciden')
             return render_template('registro.html')
         
-        contrasena_encriptada = generate_password_hash(contrasena)
-        cursor.execute('SELECT * FROM usuario WHERE correo_usuario = %s', (email,))
+        # Encriptar la contraseña
+        contrasenaEncriptada = generate_password_hash(contrasena)
+        cursor.execute('SELECT correousu FROM usuario WHERE correousu = %s', (Email,))
         resultado = cursor.fetchall()
-        if resultado:
+        cursor.execute('SELECT correoadmin from administrador where correoadmin=%s', (Email,))
+        resultado1= cursor.fetchall()
+
+        if len(resultado) > 0 or len(resultado1)>0:
             flash('El correo electrónico ya está registrado', 'error')
-            return render_template('registro.html')
-        else:
-            cursor.execute("""
-                INSERT INTO usuario (nombre_usuario, apellido_usuario, telefono_usuario, fecha_nac_usuario, correo_usuario, rol, contrasena)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
-            """, (nombres, apellidos, telefono, fecha_nac, email, roles, contrasena_encriptada))
+            print('El correo electrónico ya está registrado')
+        if (roles == 'usuario'):
+            cursor.execute(
+                "INSERT INTO usuario (nombreusu, apellidousu, telusu, fechanac_usu, correousu, contrasena) VALUES (%s, %s, %s, %s, %s, %s)",
+                (Nombres, Apellidos, telefono, fechaNac, Email, contrasenaEncriptada)
+            )
             db.commit()
             flash('Usuario creado correctamente', 'success')
             return redirect(url_for("usuarios.registrar_usuario"))
+        
+        elif ( roles == 'Administrador'):
+              cursor.execute(
+                "INSERT INTO administrador (nombreadmin, apellidoadmin, telfadmin, correoadmin, fechanac_admin, contrasena) VALUES (%s, %s, %s, %s, %s, %s)",
+                (Nombres, Apellidos, telefono, Email,fechaNac, contrasenaEncriptada)
+            )
+              db.commit() 
+              flash('Usuario creado correctamente', 'success')
+              return redirect(url_for("usuarios.registrar_usuario"))
 
-    db.close()
+
     return render_template('registro.html')

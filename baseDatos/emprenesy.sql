@@ -24,6 +24,14 @@ fechanac_admin date,
 contrasena varchar(255)
 );
 
+CREATE TABLE fotos_usuario (
+    id_foto INT AUTO_INCREMENT PRIMARY KEY,
+    cod_usuario INT,
+    ruta_foto VARCHAR(255) NOT NULL,
+    tipo_foto ENUM('portada', 'general','perfil') DEFAULT 'general',
+    FOREIGN KEY (cod_usuario) REFERENCES usuario(cod_usuario)
+);
+
 CREATE TABLE restaurantes (
     idresta INT PRIMARY KEY AUTO_INCREMENT,
     nombreresta VARCHAR(100),

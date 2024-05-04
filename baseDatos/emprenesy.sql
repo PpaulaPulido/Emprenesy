@@ -1,5 +1,5 @@
 create database emprenesy;
-drop database emprenesy;
+
 use emprenesy;
 
 create table usuario(

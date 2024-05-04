@@ -49,13 +49,13 @@
                     <h2>Añade tu evento </h2>
                 </div>
                 <div class="contenido__detalles">
-                    <form class="info_detalles" action="/templates/publicacionRes1.html">
+                    <form class="info_detalles" action="/publicareventos" method="POST">
                         <div class="detalle__sitio">
                             <h3>Detalles del evento</h3>
                         </div>
                         <div class="detalle__sitio">
                             <label for="nombre">Nombre del evento</label>
-                            <input type="text" name="nombre" id="nombre">
+                            <input type="text" name="nombreven" id="nombre">
                         </div>
                         <div class="detalle__sitio">
                             <label for="logo">Logo</label>
@@ -70,7 +70,7 @@
                         
                         <div class="detalle__sitio">
                             <label for="typeRes">Tipo de evento</label>
-                            <select name="restaurante" id="restaurante">
+                            <select name="tipoevento" id="tipoevento">
                                 <option value="">Seleccionar</option>
                                 <option value="internacional">Eventos de danza</option>
                                 <option value="tematicos">Ferias gastronomicas</option>
@@ -89,7 +89,7 @@
                         </div>
                         <div class="detalle__sitio">
                             <label for="menu">contacto</label>
-                            <input type="url" name="menu" id="menu" placeholder="https://example.com/menú">
+                            <input type="type" name="contacto" id="contacto" placeholder="ingresa tu numero de telefeno">
                         </div>
                         <div class="detalle__sitio">
                             <label for="menu">Fecha</label>
@@ -105,7 +105,7 @@
                         </div>
                         <div class="detalle__sitio">
                             <label for="menu">Ubicacion</label>
-                            <input type="url" name="menu" id="menu" placeholder="Direccion del evento">
+                            <input type="text" name="ubicacion" id="ubicacion" placeholder="Direccion del evento">
                         </div>
                         <div class="detalle__sitio">
                             <label for="descripcion">descripcion del evento</label>
@@ -121,7 +121,7 @@
                             <input type="url" name="boletos" id="boletos" placeholder="https://example.com">
                         </div>
                         <div class="detalle__sitio boton_form">
-                            <input type="submit" value="Siguiente" class="btn__form">
+                            <input type="submit" value="Enviar" class="btn__form">
                         </div>
                     </form>
                 </div>
@@ -184,7 +184,6 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
     <script src="../static/js/generales_admin.js"></script>
-    <script src="../static/js/publicacionesRes.js"></script>
     <script src="../static/js/buscador.js"></script>
 
 </body>

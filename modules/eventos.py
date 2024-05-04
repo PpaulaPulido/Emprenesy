@@ -45,3 +45,7 @@ def eventos():
         return redirect(url_for("eventos.eventos"))
 
     return render_template('formularioeventos.html')
+
+@evento.route('/SeccionEvento')
+def sectionEvento():
+    return render_template('seccion_evento.html')

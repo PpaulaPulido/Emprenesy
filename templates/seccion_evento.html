@@ -24,7 +24,7 @@
 
 
     <!-- Favicon -->
-    <link rel="icon" href="../img/Logo2.jpeg" type="image/icon type">
+    <link rel="icon" href="{{url_for ('static', filename='img/Logo2.jpeg')}}" type="image/icon type">
 
 
 </head>
@@ -33,7 +33,7 @@
     <header id="cabecera">
         <div id="cabeza">
             <div class="logoedit">
-                <img class="logo" src="../img/logo_Emprenesy.png" alt="Emprenesy">
+                <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
             </div>
         </div>
     </header>
@@ -250,9 +250,9 @@
                     <ul class="footer_list">
                         <li>Siguenos en</li>
                         <div class="iconos">
-                            <img src="../img/tik-tok.png" alt="tiktok">
-                            <img src="../img/facebook.png" alt="facebook">
-                            <img src="../img/instagram1.png" alt="instagram">
+                            <img src="{{ url_for('static', filename='img/tik-tok.png') }}" alt="tiktok">
+                            <img src="{{ url_for('static', filename='img/facebook.png') }}" alt="facebook">
+                            <img src="{{ url_for('static', filename='img/instagram1.png') }}" alt="instagram">
                         </div>
                     </ul>
                 </div>

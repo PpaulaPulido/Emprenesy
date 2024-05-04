@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalle</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-    <link rel="icon" href="../img/Logo2.jpeg" type="image/icon type">
+    <link rel="icon" href="{{url_for ('static', filename='img/Logo2.jpeg')}}" type="image/icon type">
     <link rel="stylesheet" href="../static/styles/generales_user.css">
     <link rel="stylesheet" href="../static/styles/detalles.css">
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/detalles.css')}}">
@@ -23,7 +23,7 @@
     <header id="cabecera">
         <div id="cabeza">
             <div class="logoedit">
-                <img class="logo" src="../img/logo_Emprenesy.png" alt="Emprenesy">
+                <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
             </div>
         </div>
     </header>
@@ -94,10 +94,10 @@
                         <h3>Redes Sociales</h3>
                         <div class="redes_sociales">
                             <a id="red1">
-                                <img src="../img/instagram1.png" alt="instagram">
+                                <img src="{{ url_for('static', filename='img/instagram1.png ') }}" alt="instagram">
                             </a>
                             <a id="red2">
-                                <img src="../img/tik-tok.png" alt="tik tok">
+                                <img src="{{ url_for('static', filename='img/tik-tok.png ') }}" alt="tik tok">
                             </a>
                         </div>
                     </div>
@@ -162,9 +162,9 @@
                     <ul class="footer_list">
                         <li>Siguenos en</li>
                         <div class="iconos">
-                            <img src="../img/tik-tok.png" alt="tiktok">
-                            <img src="../img/facebook.png" alt="facebook">
-                            <img src="../img/instagram1.png" alt="instagram">
+                            <img src="{{ url_for('static', filename='img/tik-tok.png') }}" alt="tiktok">
+                            <img src="{{ url_for('static', filename='img/facebook.png') }}" alt="facebook">
+                            <img src="{{ url_for('static', filename='img/instagram1.png') }}" alt="instagram">
                         </div>
                     </ul>
                 </div>

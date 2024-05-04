@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
     const idParam = urlParams.get('id');
 
+    user_sesion().then(() => {
+        inicializarBuscador();
+    }).catch(error => console.error('Error al inicializar sesión de usuario:', error));
+
+    
     Categoria(window.datosEmpredimientos, idParam);
     Categoria(window.empredimientosArtesania, idParam);
     slider_tarjetas();

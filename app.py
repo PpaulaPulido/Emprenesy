@@ -23,6 +23,9 @@ app.register_blueprint(res, url_prefix="/res")
 from modules.eventos  import evento
 app.register_blueprint(evento, url_prefix="/evento")
 
+from modules.emprendimientos  import emprende
+app.register_blueprint(emprende, url_prefix="/emprende")
+
 @app.route('/')
 def index():
     return render_template('index.html')

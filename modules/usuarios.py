@@ -14,6 +14,7 @@ def index_user():
     return render_template('index_user.html')
 
 
+
 @usuarios.route('/registrarUser', methods=['GET', 'POST'])
 def registrar_usuario():
     if request.method == 'POST':
@@ -62,6 +63,7 @@ def registrar_usuario():
 
     return render_template('registro.html')
 
+
 @usuarios.route('/perfiflImagen_user')
 def perfilImagen_usuario():
     
@@ -83,3 +85,4 @@ def perfilImagen_usuario():
         abort(404)  # Si el archivo no existe, devuelve un error 404
 
     return send_from_directory(directory_path, file_name)
+

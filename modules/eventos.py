@@ -12,7 +12,6 @@ def eventoDetalle():
     return render_template('detalle_event.html')
 
 
-
 # Conexión para ingresar eventos
 @evento.route('/publicareventos', methods=['GET', 'POST'])
 def eventos():

@@ -32,6 +32,14 @@ CREATE TABLE fotos_usuario (
     FOREIGN KEY (cod_usuario) REFERENCES usuario(cod_usuario)
 );
 
+CREATE TABLE fotos_admin (
+    id_foto INT AUTO_INCREMENT PRIMARY KEY,
+    cod_admin INT,
+    ruta_foto VARCHAR(255) NOT NULL,
+    tipo_foto ENUM('portada', 'general','perfil') DEFAULT 'general',
+    FOREIGN KEY (cod_admin) REFERENCES administrador(codadmin)
+);
+
 CREATE TABLE restaurantes (
     idresta INT PRIMARY KEY AUTO_INCREMENT,
     nombreresta VARCHAR(100),

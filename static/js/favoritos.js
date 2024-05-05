@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
- 
+
+
     container_fav();
     // Agregar event listener para capturar clics en favoritos
     document.addEventListener('click', function (event) {
@@ -8,6 +9,10 @@ document.addEventListener('DOMContentLoaded', function () {
             getFavorite(eventId);
         }
     });
+
+    user_sesion().then(() => {
+        inicializarBuscador();
+    }).catch(error => console.error('Error al inicializar sesión de usuario:', error));
 
 });
 function container_fav() {

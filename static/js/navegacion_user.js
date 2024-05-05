@@ -1,9 +1,9 @@
 function user_sesion() {
-    return fetch('/admin/perfil_imagen')
+    return fetch('/usuarios/perfiflImagen_user')
     .then(response => {
         if (!response.ok) {
             //indica si la solicitud no fue existosa
-            throw new Error('Network response was not ok');
+            throw new Error('Respuesta no fue correcta');
         }
         return response.blob();
     })
@@ -13,16 +13,20 @@ function user_sesion() {
     })
     .catch(error => {
         console.error('Error al cargar la imagen del perfil:', error);
-        throw error;
+        const imagenURL = '/static/img/perfil_user.png'; 
+        crearNav(imagenURL);
     });
     
 }
 
 function crearNav(imagenURL){
 
+    const urlNosotros = document.getElementById('url_nosotros').getAttribute('data-url');
+    const urlIndex = document.getElementById('url_index').getAttribute('data-url');
+
     const menuItems = [
-        { text: 'Sobre Nosotros', href: '/templates/MVQ.html', class: 'link' },
-        { text: 'Inicio', href: '/templates/index.html', class: 'link' },
+        { text: 'Sobre Nosotros', href: urlNosotros, class: 'link' },
+        { text: 'Inicio', href: urlIndex, class: 'link' },
         { text: 'Mis favoritos', href: '/templates/favoritos.html', class: 'link' },
         { text: `<img src="${imagenURL}" alt="perfil">`, href: '#', class: 'link1', hasSubMenu: true }
     ];

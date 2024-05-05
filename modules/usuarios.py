@@ -13,7 +13,6 @@ cursor = get_cursor(db)
 def index_user():
     return render_template('index_user.html')
 
-
 @usuarios.route('/registrarUser', methods=['GET', 'POST'])
 def registrar_usuario():
     if request.method == 'POST':
@@ -61,3 +60,34 @@ def registrar_usuario():
 
 
     return render_template('registro.html')
+
+
+@usuarios.route('/perfiflImagen_user')
+def perfilImagen_usuario():
+    
+    user_id = 1
+    cursor.execute("SELECT ruta_foto FROM fotos_usuario  WHERE cod_usuario= %s AND tipo_foto = 'perfil' ORDER BY id_foto DESC LIMIT 1", (user_id,))
+    fotoPerfil = cursor.fetchone()
+    
+    if fotoPerfil:
+        fotoPerfil_path = fotoPerfil[0]
+        directory_path = os.path.join(current_app.root_path, 'static', 'uploads') 
+        file_name = os.path.basename(fotoPerfil_path) 
+    else:
+        directory_path = os.path.join(current_app.root_path, 'static', 'uploads') 
+        file_name = 'perfil_user.png'
+    
+    full_file_path = os.path.join(directory_path, file_name)
+    if not os.path.isfile(full_file_path):
+        print(f"Archivo no encontrado: {full_file_path}")  
+        abort(404)  # Si el archivo no existe, devuelve un error 404
+
+    return send_from_directory(directory_path, file_name)
+
+@usuarios.route('/nosotros_user')
+def nosotros_user():
+    return render_template('MVQ_user.html')
+
+@usuarios.route('/favoritos_user')
+def favoritos_user():
+    return render_template('favoritos.html')

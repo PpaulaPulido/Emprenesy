@@ -22,3 +22,7 @@ def restauranteLocation():
 @res.route('/restauranteDetalle')
 def restauranteDetalle():
     return render_template('detalle_res.html')
+
+@res.route('/SeccionRestaurante')
+def sectionRes():
+    return render_template('seccion_res.html')

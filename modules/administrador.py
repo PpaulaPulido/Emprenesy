@@ -1,6 +1,6 @@
-from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort
+from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort,jsonify
 from werkzeug.utils import secure_filename
-from werkzeug.security import generate_password_hash
+#from werkzeug.security import generate_password_hashz
 from db import get_db, get_cursor
 import os
 
@@ -19,33 +19,97 @@ def index_admin():
     return render_template('index_admin.html')
 
 
+
 @admin.route('/perfil_admin')
 def perfil_admin():
+    
+    user_id = 1
+    db = get_db()  # Obtener la conexión a la base de datos
+    cursor = db.cursor()  # Crear un cursor
+
+    default_portada = '/static/img/bogota-turismo.jpg'
+    default_perfil = '/static/img/perfil_user.png'
+
+    try:
+        cursor.execute("SELECT nombreadmin,apellidoadmin,correoadmin FROM administrador WHERE codadmin = %s", (user_id,))
+        admin_datos= cursor.fetchone()
+        if admin_datos:
+            nombre_admin, apellido_admin, correo_admin = admin_datos
+        else:
+            nombre_admin = apellido_admin = correo_admin = "Información no disponible"
+        
+        def obtenerImagen(image_type, default_image):
+            cursor.execute("SELECT ruta_foto FROM fotos_admin WHERE cod_admin = %s AND tipo_foto = %s ORDER BY id_foto DESC LIMIT 1", (user_id, image_type))
+            image = cursor.fetchone()
+            if image:
+                return os.path.join('/', image[0])
+            else:
+                return default_image
+
+        fotoPortada = obtenerImagen('portada', default_portada)
+        fotoPerfil = obtenerImagen('perfil', default_perfil)
+
+    finally:
+        cursor.close()  
+        db.close()
+
+    return render_template('perfil_admin.html', nombre_admin = nombre_admin, apellido_admin = apellido_admin, correo_admin = correo_admin, foto_portada=fotoPortada, foto_perfil=fotoPerfil)
+
+@admin.route('/MisFotos')
+def photos():
+    
     user_id = 1
     
-    cursor.execute("SELECT ruta_foto FROM fotos_usuario WHERE cod_usuario = %s AND tipo_foto = 'portada' ORDER BY id_foto DESC LIMIT 1", (user_id,))
-    foto_portada = cursor.fetchone()
-    if foto_portada:
-        foto_portada = os.path.join('/', foto_portada[0])
-    else:
-        foto_portada = '/static/img/bogota-turismo.jpg'  # Foto de portada por default
+    db = get_db()
+    cursor = db.cursor()
+    
+    try:
+        cursor.execute("""
+            SELECT ruta_foto, tipo_foto FROM fotos_admin
+            WHERE tipo_foto IN ('perfil', 'portada')
+            ORDER BY id_foto DESC
+        """)
+        fotos = cursor.fetchall()
+        # Formatear los resultados como una lista de diccionarios
+        
+        fotos_list = [{'ruta_foto': normalize_path(foto[0]), 'tipo_foto': foto[1]} for foto in fotos]
+    finally:
+        cursor.close()
+        db.close()
+    
+    return jsonify(fotos_list)
 
 
-    cursor.execute("SELECT ruta_foto FROM fotos_usuario WHERE cod_usuario = %s AND tipo_foto = 'perfil' ORDER BY id_foto DESC LIMIT 1", (user_id,))
-    foto_perfil = cursor.fetchone()
-    if foto_perfil:
-        foto_perfil = os.path.join('/', foto_perfil[0])
-    else:
-        foto_perfil = '/static/img/perfil_user.png'  # Foto de perfil por default
-
-    return render_template('perfil_admin.html', foto_portada=foto_portada, foto_perfil=foto_perfil)
-
+@admin.route('/galeriaAdmin')
+def galeria_admin():
+    
+    user_id = 1
+    
+    db = get_db()
+    cursor = db.cursor()
+    
+    try:
+        cursor.execute("""
+            SELECT ruta_foto, tipo_foto FROM fotos_admin
+            WHERE tipo_foto IN ('perfil', 'portada')
+            ORDER BY id_foto DESC LIMIT 9
+        """)
+        fotos = cursor.fetchall()
+        # Formatear los resultados como una lista de diccionarios
+        
+        fotos_list = [{'ruta_foto': normalize_path(foto[0]), 'tipo_foto': foto[1]} for foto in fotos]
+    finally:
+        cursor.close()
+        db.close()
+    
+    return jsonify(fotos_list)
 
 
 @admin.route('/perfil_imagen')
 def perfil_imagen():
+    
     user_id = 1
-    cursor.execute("SELECT ruta_foto FROM fotos_usuario WHERE cod_usuario = %s AND tipo_foto = 'perfil' ORDER BY id_foto DESC LIMIT 1", (user_id,))
+    cursor.execute("SELECT ruta_foto FROM fotos_admin  WHERE cod_admin= %s AND tipo_foto = 'perfil' ORDER BY id_foto DESC LIMIT 1", (user_id,))
     foto_perfil = cursor.fetchone()
 
     if foto_perfil:
@@ -79,7 +143,7 @@ def subir_fotoperfil():
         file_path = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
         file.save(file_path)
         cursor.execute("""
-            INSERT INTO fotos_usuario (cod_usuario, ruta_foto, tipo_foto)
+            INSERT INTO fotos_admin (cod_admin, ruta_foto, tipo_foto)
             VALUES (%s, %s, 'perfil')
             ON DUPLICATE KEY UPDATE ruta_foto = VALUES(ruta_foto)
         """, (user_id, file_path))
@@ -116,7 +180,7 @@ def subir_portada():
 
         # Ejecuta una consulta SQL para insertar o actualizar la ruta de la foto de portada en la base de datos.
         cursor.execute("""
-            INSERT INTO fotos_usuario (cod_usuario, ruta_foto, tipo_foto)
+            INSERT INTO fotos_admin (cod_admin, ruta_foto, tipo_foto)
             VALUES (%s, %s, 'portada')
             ON DUPLICATE KEY UPDATE ruta_foto = VALUES(ruta_foto)
         """, (user_id, file_path))
@@ -146,3 +210,11 @@ def tipoPublicacion():
 @admin.route('/nosotros')
 def nosotrosEmprenesy():
     return render_template('MVQ_admin.html')
+
+#Formatear los slashes para las imagenes
+def normalize_path(path):
+    """Convierte backslashes a slashes en una ruta y asegura que empieza con '/'."""
+    normalized_path = path.replace('\\', '/')
+    if not normalized_path.startswith('/'):
+        normalized_path = '/' + normalized_path
+    return normalized_path

@@ -12,12 +12,14 @@ let idTarjetaSeleccionadaGlobal;
 // variables para conexion con el servidor
 const detalleResUrl = document.getElementById('detalle-res-url').getAttribute('data-url');
 const detalleEventoUrl = document.getElementById('detalle-evento-url').getAttribute('data-url');
+const detalleEmprendeUrl = document.getElementById('detalle-emprende-url').getAttribute('data-url');
+
 
 document.addEventListener('DOMContentLoaded', function () {
 
   cntSliderTarjetas(datosTarjetas, sliderTarjetas, btn_anterior, btn_siguiente, 'res',detalleResUrl);
   cntSliderTarjetas(datosEventos, sliderTarjetas2, btn_anterior2, btn_siguiente2, 'evento',detalleEventoUrl);
-  cntSliderTarjetas(datosEmpredimientos, sliderTarjetas3, btn_anterior3, btn_siguiente3, 'emprende',detalleResUrl);
+  cntSliderTarjetas(datosEmpredimientos, sliderTarjetas3, btn_anterior3, btn_siguiente3, 'emprende',detalleEmprendeUrl);
 
   // Función que se ejecuta cuando se hace scroll
   window.onscroll = function () {

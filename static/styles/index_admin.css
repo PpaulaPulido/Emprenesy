@@ -90,6 +90,9 @@ body {
     margin-left: 0;
     width: 100%;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .detalle__sitio textarea {
     border: none;
@@ -98,7 +101,7 @@ body {
     transition: width 0.3s ease; 
 }
 #publicaciones__form.active {
-    margin-left: 200px;
+    margin-left: 100px;
     width: calc(100% - 100px );
 }
 
@@ -249,7 +252,7 @@ body {
 }
 
 .contenido__detalles {
-    margin: 20px 0 100px 0;
+    margin: 20px auto 100px auto;
     border-radius: 8px;
     height: fit-content;
     padding: 10px 20px;
@@ -397,6 +400,10 @@ body {
     width: 100%;
     color: #fff;
     font-size: 18px;
+}
+/*******************************************Estilos de publicaciones eventos***************************************/
+#redTiktok{
+    margin-top: 30px;
 }
 /*estilos del mapa*/
 .detalle_btn {

@@ -3,7 +3,7 @@ function user_sesion() {
         .then(response => {
             if (!response.ok) {
                 //indica si la solicitud no fue existosa
-                throw new Error('Network response was not ok');
+                throw new Error('Respuesta no fue correcta');
             }
             return response.blob();
         })
@@ -12,8 +12,9 @@ function user_sesion() {
             crearNav(imagenURL)
         })
         .catch(error => {
-            console.error('Error al cargar la imagen del perfil:', error);
-            throw error;
+            //console.error('Error al cargar la imagen del perfil:', error);
+            const imagenURL = '/static/img/perfil_user.png'; 
+            crearNav(imagenURL);
         });
 }
 

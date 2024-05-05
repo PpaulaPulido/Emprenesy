@@ -590,14 +590,14 @@ window.empredimientosArtesania = [
   },
   {
     id: 7,
-    imagen: "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/406435604_746874817473812_6212048010240493676_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHyUrCI_ZGnMe6j5ur7xvH1wwjImcY5jUvDCMiZxjmNSzrz_ZHwrz2v1U_Yb1e8-6xPgld92Is8NxEXW6xivX0l&_nc_ohc=6sg23Hbw7ccAb6zl6h5&_nc_ht=scontent.fbog3-2.fna&oh=00_AfDTfeOrcDaxKumc2P2Z4Qb-7yDlV8yGc2zGsfGnY8iu8A&oe=6625EB91",
+    imagen: "/static/img/artesaniaColombiaLogo.PNG",
     titulo: "Artesanos de Colombia",
     enlace: "../templates/detalle_empren.html",
     galeria: [
-      "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/406435604_746874817473812_6212048010240493676_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHyUrCI_ZGnMe6j5ur7xvH1wwjImcY5jUvDCMiZxjmNSzrz_ZHwrz2v1U_Yb1e8-6xPgld92Is8NxEXW6xivX0l&_nc_ohc=6sg23Hbw7ccAb6zl6h5&_nc_ht=scontent.fbog3-2.fna&oh=00_AfDTfeOrcDaxKumc2P2Z4Qb-7yDlV8yGc2zGsfGnY8iu8A&oe=6625EB91",
-      "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/406672778_746852254142735_3795278734247261445_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFMqATrDYMdeKhjfNBkDsKcjFFtmp7vHIqMUW2anu8ciqskL-3dxpRdpfmVPufY7Erl_OLP3phVjlusCFBZ3SZ1&_nc_ohc=CX5YUeXjY0QAb5llbCQ&_nc_ht=scontent.fbog3-2.fna&oh=00_AfCkwo7kFxG8sP_bHrHdR-E9i53QM0sHY0ggy9ZiUeMO2Q&oe=6625C151",
-      "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/405722770_746605630834064_3830789619849686221_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGHX9guTJHAxdxPNo-F_tVuMGcwZ4fkbsEwZzBnh-RuwUV287oXSd6XERVBYKliadX5rFpcPWpVQgtF7FCqkZAB&_nc_ohc=n7gjcCfPTwgAb43-lpp&_nc_ht=scontent.fbog3-2.fna&oh=00_AfDKiCW_43EbnoHbjXIo2uYuS5V0I4xYCV2OtE7msGA6wg&oe=6625E82A",
-      "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/436340534_830564889104804_2819603429856217572_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeH6fWP8bX6MoFfvB_ZjtahsIA5uggBIF28gDm6CAEgXb4Nm9qGHifdsinR7yejOQauqLmwjs2tGW1LGcKkVl1_c&_nc_ohc=YVNny-gtLFkAb7W0IPZ&_nc_ht=scontent.fbog3-2.fna&oh=00_AfBN20rRs4A9Uw_D_PgDQYv-98nbIAzFd9ZbL58-l2oqAw&oe=6625E59A"
+      "/static/img/artesaniaColombia1.PNG",
+      "/static/img/artesaniaColombia2.PNG",
+      "/static/img/artesaniaColombia3.PNG",
+      "/static/img/artesaniaColombia4.PNG"
     ],
     negocio: "Artesanía",
     horario: "Lunes-Sábado 09:00 am-20:00 pm",

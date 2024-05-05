@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    user_sesion().then(() => {
+        inicializarBuscador();
+    }).catch(error => console.error('Error al inicializar sesión de usuario:', error));
+    
     // Función que se ejecuta cuando se hace scroll
     window.onscroll = function () {
         scrollFunction();
@@ -10,7 +15,7 @@ function scrollFunction() {
     if (document.body.scrollTop > 380 || document.documentElement.scrollTop > 380) {
         document.getElementById("cabeza").style.backgroundColor = "#3d77ba";
     } else {
-        document.getElementById("cabeza").style.backgroundColor = "#254b7f";
+        document.getElementById("cabeza").style.backgroundColor = "#3d77ba";
     }
 }
 function particulas() {

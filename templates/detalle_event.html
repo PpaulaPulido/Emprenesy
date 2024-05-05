@@ -30,6 +30,10 @@
         </div>
     </header>
     <main>
+        <div id="enlaces" style="display: none;">
+            <a id="url_nosotros" data-url="{{url_for('usuarios.nosotros_user')}}"></a>
+            <a id="url_index" data-url="{{url_for('usuarios.index_user')}}"></a>
+        </div>
         <div class="container_efect">
             <div class="bublles" id="bubblesContainer"></div>
             <div class="contenedor_title">
@@ -79,7 +83,7 @@
                 <div class="info">
                     <h2>Información</h2>
                     <h3>Sitio Web</h3>
-                    <a id="web">Clic aquí  para visitar el sitio web.</a>
+                    <a id="web">Clic aquí para visitar el sitio web.</a>
                     <h3>Contacto</h3>
                     <p id="contacto"></p>
                     <h3>Redes Sociales</h3>

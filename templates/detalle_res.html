@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalle Restaurante</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-    
+
     <link rel="icon" href="{{url_for ('static', filename='img/Logo2.jpeg')}}" type="image/icon type">
-    
+
     <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
@@ -32,6 +32,10 @@
         </div>
     </header>
     <main>
+        <div id="enlaces" style="display: none;">
+            <a id="url_nosotros" data-url="{{url_for('usuarios.nosotros_user')}}"></a>
+            <a id="url_index" data-url="{{url_for('usuarios.index_user')}}"></a>
+        </div>
         <div id="data-container" data-perfil-url="{{ url_for('admin.perfil_admin') }}" style="display: none;"></div>
         <div id="particles-js"></div>
         <div class="contenedor_title">

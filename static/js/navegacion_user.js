@@ -21,9 +21,12 @@ function user_sesion() {
 
 function crearNav(imagenURL){
 
+    const urlNosotros = document.getElementById('url_nosotros').getAttribute('data-url');
+    const urlIndex = document.getElementById('url_index').getAttribute('data-url');
+
     const menuItems = [
-        { text: 'Sobre Nosotros', href: '/templates/MVQ.html', class: 'link' },
-        { text: 'Inicio', href: '/templates/index.html', class: 'link' },
+        { text: 'Sobre Nosotros', href: urlNosotros, class: 'link' },
+        { text: 'Inicio', href: urlIndex, class: 'link' },
         { text: 'Mis favoritos', href: '/templates/favoritos.html', class: 'link' },
         { text: `<img src="${imagenURL}" alt="perfil">`, href: '#', class: 'link1', hasSubMenu: true }
     ];

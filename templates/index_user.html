@@ -44,8 +44,8 @@
                 <div id="Barra">
                     <nav class="barraedit">
                         <ul class="nav_list">
-                            <li><a class="link" href="/templates/MVQ.html">Sobre Nosotros</a></li>
-                            <li><a class="link" href="/templates/index.html">Inicio</a></li>
+                            <li><a class="link" href="{{url_for('usuarios.nosotros_user')}}">Sobre Nosotros</a></li>
+                            <li><a class="link" href="{{url_for('usuarios.index_user')}}">Inicio</a></li>
                             <li><a class="link" href="/templates/favoritos.html">Mis favoritos</a></li>
                             <li><a class="link1" href="#"><img src="{{ url_for('static', filename='img/perfil_user.png') }}" alt="perfil"></a>
                                 <ul class="perfil_list">

@@ -13,7 +13,9 @@ cursor = get_cursor(db)
 def index_user():
     return render_template('index_user.html')
 
-
+@usuarios.route('/nosotros_user')
+def nosotros_user():
+    return render_template('MVQ_user.html')
 
 @usuarios.route('/registrarUser', methods=['GET', 'POST'])
 def registrar_usuario():

@@ -1,4 +1,6 @@
 create database emprenesy;
+
+
 drop database emprenesy;
 use emprenesy;
 

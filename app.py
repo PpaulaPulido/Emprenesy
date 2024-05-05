@@ -8,6 +8,7 @@ from db import get_db, get_cursor
 app = Flask(__name__)
 app.secret_key = '123456789'
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
+app.config['FOLDER_EVENT'] = 'static/galeriaEventos'
 db = get_db()
 cursor = get_cursor(db)
 

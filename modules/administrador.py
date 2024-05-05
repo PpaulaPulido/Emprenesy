@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort,jsonify
 from werkzeug.utils import secure_filename
-from werkzeug.security import generate_password_hash
+#from werkzeug.security import generate_password_hashz
 from db import get_db, get_cursor
 import os
 

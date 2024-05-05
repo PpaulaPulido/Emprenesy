@@ -12,7 +12,6 @@ correousu varchar (50),
 contrasena varchar(255)
 );
 
-
 create table administrador(
 codadmin int primary key auto_increment,
 nombreadmin varchar(50),

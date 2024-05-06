@@ -38,9 +38,7 @@
     </header>
 
     <main>
-        <div id="form_url" data-url="{{ url_for('admin.index_admin') }}" style="display: none;"></div>
-        <div id="data-container" data-perfil-url="{{ url_for('admin.perfil_admin') }}" style="display: none;"></div>
-        
+      
         <div id="sidebar">
             <div class="toggle-btn">
                 <span><i class="bi bi-list"></i></span>
@@ -65,9 +63,12 @@
                     <h2>Añadir tu evento</h2>
                 </div>
                 <div class="contenido__detalles">
-
+                    <div id="form_url" data-url="{{ url_for('admin.index_admin') }}" style="display: none;"></div>
+                
                     <form class="info_detalles" id="formularioLocation" action="{{url_for('evento.formularioUbicacion',evento_id=evento_id)}}" method="POST">
+
                         <input type="hidden" name="evento_id" value="{{ evento_id }}">
+                        
                         <div class="detalle__sitio">
                             <h3>Ubicaciones del sitio</h3>
                         </div>
@@ -106,7 +107,8 @@
                 </div>
             </div>
         </div>
-
+        
+        <div id="data-container" data-perfil-url="{{ url_for('admin.perfil_admin') }}" style="display: none;"></div>
 
     </main>
 

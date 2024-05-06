@@ -80,14 +80,14 @@ def publicarEventos():
 
 @evento.route('/FormularioEventosUbicacion/<int:evento_id>',methods=['GET', 'POST'])
 def formularioUbicacion(evento_id):
-    if request.method == 'POST':
+    '''if request.method == 'POST':
         ubicaciones = request.form.getlist('direccioneven[]')
         for ubicacion in ubicaciones:
             if ubicacion:  # Comprobar que la ubicación no este vacía
                 cursor.execute("INSERT INTO ubicacioneven (ideven, ubicacion) VALUES (%s, %s)", (evento_id, ubicacion))
         db.commit()
-        flash('Ubicaciones guardadas correctamente')
-        return redirect(url_for('admin.index_admin'))
+        flash('Ubicaciones guardadas correctamente')'''
+
     return render_template('formularioEventos2.html',evento_id=evento_id)
 
 

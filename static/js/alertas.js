@@ -1,15 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    publicacion();
-})
-
-function publicacion() {
-
     const formulario = document.getElementById('formularioLocation');
     const redireccionar = document.getElementById('form_url').getAttribute('data-url');
 
     formulario.addEventListener('submit', (e) => {
         e.preventDefault();
-    
+
         Swal.fire({
             position: "center",
             icon: "success",
@@ -17,14 +12,12 @@ function publicacion() {
             showConfirmButton: false,
             timer: 3500,
             customClass: {
-                popup: 'border-blue',// Clase CSS para el borde del SweetAlert
+                popup: 'border-blue', // Clase CSS para el borde del SweetAlert
                 icon: 'success-icon',
-            },
-            willClose: () => {
-                window.location.href = redireccionar;
             }
+        }).then(() => {
+            // Después de que la alerta se cierre, redirigir a la página especificada
+            window.location.href = redireccionar;
         });
     });
-
-
-}
+});

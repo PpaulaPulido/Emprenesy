@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort
+from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort,session
 from werkzeug.utils import secure_filename
 from db import get_db, get_cursor
 import os
@@ -48,6 +48,9 @@ def publicarEventos():
         )
         
         evento_id = cursor.lastrowid
+        session['evento_id'] = evento_id
+        print("evento id almacenado",evento_id)
+        print("evento id recuperado", session.get('evento_id'))
         
         cursor.execute("INSERT INTO fechaseven(ideven,fechaseven,horarioEntrada,horarioSalida)VALUE(%s, %s, %s, %s)",(evento_id,Fecha,HorarioE,HorarioS))
         
@@ -74,21 +77,26 @@ def publicarEventos():
                 
         db.commit()
         flash('Evento registrado correctamente', 'success')
-        return redirect(url_for("evento.formularioUbicacion", evento_id = evento_id))
+        return redirect(url_for("evento.formularioUbicacion"))
 
     return render_template('formularioeventos.html')
 
-@evento.route('/FormularioEventosUbicacion/<int:evento_id>',methods=['GET', 'POST'])
-def formularioUbicacion(evento_id):
-    '''if request.method == 'POST':
+@evento.route('/FormularioEventosUbicacion',methods=['GET', 'POST'])
+def formularioUbicacion():
+
+    evento_id = session.get('evento_id')
+    print("evento del id",evento_id)
+    if request.method == 'POST':
         ubicaciones = request.form.getlist('direccioneven[]')
+        print("ubicacion de la variable ubicaciones ",ubicaciones)
         for ubicacion in ubicaciones:
+            print("ubicacion dentro del for ",ubicacion)
             if ubicacion:  # Comprobar que la ubicación no este vacía
                 cursor.execute("INSERT INTO ubicacioneven (ideven, ubicacion) VALUES (%s, %s)", (evento_id, ubicacion))
         db.commit()
-        flash('Ubicaciones guardadas correctamente')'''
-
-    return render_template('formularioEventos2.html',evento_id=evento_id)
+        flash('Ubicaciones guardadas correctamente')
+        return redirect(url_for('admin.index_admin'))
+    return render_template('formularioEventos2.html')
 
 
 @evento.route('/SeccionEvento')

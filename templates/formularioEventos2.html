@@ -38,7 +38,7 @@
     </header>
 
     <main>
-      
+
         <div id="sidebar">
             <div class="toggle-btn">
                 <span><i class="bi bi-list"></i></span>
@@ -64,15 +64,17 @@
                 </div>
                 <div class="contenido__detalles">
 
-                    <form class="info_detalles" id="formularioLocation" action="{{url_for('evento.formularioUbicacion')}}" method="POST" enctype="multipart/form-data">
-                        
+                    <form class="info_detalles" id="formularioLocation"
+                        action="{{url_for('evento.formularioUbicacion')}}" method="POST" enctype="multipart/form-data">
+
                         <div class="detalle__sitio">
                             <h3>Ubicaciones del sitio</h3>
                         </div>
 
                         <div class="container_ubicacion">
                             <div class="detalle__sitio">
-                                <input type="text" placeholder="Ingresar dirección" class="address" name="direccioneven[]" />
+                                <input type="text" placeholder="Ingresar dirección" class="address"
+                                    name="direccioneven[]" />
                             </div>
                         </div>
                         <div class="message"></div>
@@ -104,8 +106,9 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="data-container" data-perfil-url="{{ url_for('admin.perfil_admin') }}" style="display: none;"></div>
+        <div id="form_url" data-url="{{ url_for('admin.index_admin') }}" style="display: none;"></div>
 
     </main>
 

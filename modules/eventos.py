@@ -15,71 +15,111 @@ def allowed_file(filename):
 def eventoDetalle():
     return render_template('detalle_event.html')
 
+@evento.route('/resetEvento')
+def resetEvento():
+    session.pop('evento_id', None)
+    session.pop('form_data', None)
+    return redirect(url_for('evento.publicarEventos'))
 
 # Conexión para ingresar eventos
 @evento.route('/publicareventos', methods=['GET', 'POST'])
 def publicarEventos():
+    
+    if request.method == 'GET' and request.args.get('nuevo', '0') == '1':
+        # Si se especifica que es un nuevo evento, resetear la sesión
+        session.pop('evento_id', None)
+        session.pop('form_data', None)
+        
+    # Recuperar el ID del evento si existe en la sesión
+    evento_id = session.get('evento_id')
+    form_data = session.get('form_data', {})  # Almacena los datos del formulario en la sesión
+
     if request.method == 'POST':
+        # Captura los datos del formulario y los almacena en la sesión
+        galeria  = request.files.getlist('galeriaeven[]')
         
-        Nombre = request.form.get("nombreven")
-        Logo = request.form.get("logoeven")
-        tipo_evento = request.form.get("tipoevento")
-        Contacto = request.form.get("contactoeven")
-        correo = request.form.get("correoeven")
-        Fecha = request.form.get("fechaeven")
-        HorarioE = request.form.get("horarioE")
-        HorarioS = request.form.get("horarioS")  
-        Descripcion = request.form.get("descripcioneven")
-        Pagina = request.form.get("paginaeven")
-        Boleteria = request.form.get("boletoseven")
-        Galeria = request.files.getlist('galeriaeven[]')
-        redes_instagram = request.form.get("redInstagram")
-        redes_tiktok = request.form.get("redTiktok")
-        descripcion_adicional = request.form.get("descripcionA")
-        
-        # Obtener el código del administrador
-        cursor.execute("SELECT codadmin FROM administrador LIMIT 1")
-        codadmin = cursor.fetchone()[0]
+        logoeven = request.files.get("logoeven")
+        if logoeven and allowed_file(logoeven.filename):
+            filename = secure_filename(logoeven.filename)
+            path = os.path.join(current_app.config['FOLDER_EVENT'], filename)
+            logoeven.save(path)  # Guarda el archivo en el sistema de archivos
 
-        # Insertar el evento en la tabla 'eventos' con el código del administrador
-        cursor.execute(
-            "INSERT INTO eventos (nombreeven, logo,tipoevento,descripeven, paginaeven, boletaseven, infoAdicional,contacto, correoeven, codadmin) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s,%s)",
-            (Nombre, Logo,tipo_evento ,Descripcion,Pagina,Boleteria,descripcion_adicional,Contacto, correo, codadmin)
-        )
-        
-        evento_id = cursor.lastrowid
-        session['evento_id'] = evento_id
-        print("evento id almacenado",evento_id)
-        print("evento id recuperado", session.get('evento_id'))
-        
-        cursor.execute("INSERT INTO fechaseven(ideven,fechaseven,horarioEntrada,horarioSalida)VALUE(%s, %s, %s, %s)",(evento_id,Fecha,HorarioE,HorarioS))
-        
-        if redes_instagram:
-            cursor.execute("INSERT INTO redesSocialesEven (ideven, red, url) VALUES (%s, %s, %s)", (evento_id, 'instagram', redes_instagram))
-        
-        if redes_tiktok:
-            cursor.execute("INSERT INTO redesSocialesEven (ideven, red, url) VALUES (%s, %s, %s)", (evento_id, 'tik tok', redes_tiktok))
-        
-        
-        upload_folder = current_app.config['FOLDER_EVENT']
-        if not os.path.exists(upload_folder):
-            os.makedirs(upload_folder)
-        for imagen in Galeria:
-            if imagen and allowed_file(imagen.filename):
-                filename = secure_filename(imagen.filename)
-                print("arhcivo: ",filename)
-                path = os.path.join(upload_folder, filename)
-                imagen.save(path)
-                descripcion_default = "Imágen del evento"  
+            # Abrir el archivo guardado y leerlo como binario
+            with open(path, 'rb') as file:
+                binary_data = file.read()
 
-                # Guardar la URL en la base de datos
-                cursor.execute("INSERT INTO galeriaeven (ideven, urlImagen, descripcion) VALUES (%s, %s, %s)", (evento_id, path, descripcion_default))
-                
-        db.commit()
+        else:
+            binary_data = None
+            
+        form_data.update({
+            "nombreven": request.form.get("nombreven"),
+            "tipoevento": request.form.get("tipoevento"),
+            "contactoeven": request.form.get("contactoeven"),
+            "correoeven": request.form.get("correoeven"),
+            "fechaeven": request.form.get("fechaeven"),
+            "horarioE": request.form.get("horarioE"),
+            "horarioS": request.form.get("horarioS"),
+            "descripcioneven": request.form.get("descripcioneven"),
+            "paginaeven": request.form.get("paginaeven"),
+            "boletoseven": request.form.get("boletoseven"),
+            "redInstagram": request.form.get("redInstagram"),
+            "redTiktok": request.form.get("redTiktok"),
+            "descripcionA": request.form.get("descripcionA"),
+        })
+        session['form_data'] = form_data
+
+        codadmin = 1  # Código del administrador
+
+        if not evento_id:
+            cursor = db.cursor()
+            # Inserta un nuevo evento en la base de datos
+            cursor.execute( "INSERT INTO eventos (nombreeven, logo, tipoevento, descripeven, paginaeven, boletaseven, infoAdicional, contacto, correoeven, codadmin) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",(form_data["nombreven"], binary_data, form_data["tipoevento"], form_data["descripcioneven"], form_data["paginaeven"], form_data["boletoseven"], form_data["descripcionA"], form_data["contactoeven"], form_data["correoeven"], codadmin))
+            
+            evento_id = cursor.lastrowid
+            session['evento_id'] = evento_id
+            
+            # Inserta la galería de imágenes
+            upload_folder = current_app.config['FOLDER_EVENT']
+            if not os.path.exists(upload_folder):
+                os.makedirs(upload_folder)
+            for imagen in galeria:
+                if imagen and allowed_file(imagen.filename):
+                    filename = secure_filename(imagen.filename)
+                    path = os.path.join(upload_folder, filename)
+                    imagen.save(path)
+                    cursor.execute("INSERT INTO galeriaeven (ideven, urlImagen, descripcion) VALUES (%s, %s, %s)", (evento_id, path, "Descripción imagen"))
+            
+            # Insertar fechas y horarios
+            cursor.execute("INSERT INTO fechaseven (ideven, fechaseven, horarioEntrada, horarioSalida) VALUES (%s, %s, %s, %s)", (evento_id, form_data["fechaeven"], form_data["horarioE"], form_data["horarioS"]))
+
+            # Insertar redes sociales
+            if form_data["redInstagram"]:
+                cursor.execute("INSERT INTO redesSocialesEven (ideven, red, url) VALUES (%s, %s, %s)", (evento_id, 'instagram', form_data["redInstagram"]))
+            if form_data["redTiktok"]:
+                cursor.execute("INSERT INTO redesSocialesEven (ideven, red, url) VALUES (%s, %s, %s)", (evento_id, 'tik tok', form_data["redTiktok"]))
+
+            db.commit()
+            cursor.close()
+        else:
+            # Actualiza el evento existente
+            cursor = db.cursor()
+            cursor.execute(
+                "UPDATE eventos SET nombreeven=%s, tipoevento=%s, descripeven=%s, paginaeven=%s, boletaseven=%s, infoAdicional=%s, contacto=%s, correoeven=%s WHERE ideven=%s",
+                (form_data["nombreven"], form_data["tipoevento"], form_data["descripcioneven"], form_data["paginaeven"], form_data["boletoseven"], form_data["descripcionA"], form_data["contactoeven"], form_data["correoeven"], evento_id)
+            )
+            cursor.execute("UPDATE fechaseven SET fechaseven= %s, horarioEntrada = %s ,horarioSalida = %s WHERE ideven=%s",(form_data["fechaeven"],form_data["horarioE"], form_data["horarioS"],evento_id))
+            
+            if form_data["redInstagram"]:
+                cursor.execute("UPDATE redesSocialesEven SET url = %s WHERE ideven=%s",(form_data["redInstagram"],evento_id))
+            if form_data["redTiktok"]:
+                cursor.execute("UPDATE redesSocialesEven SET url = %s WHERE ideven=%s",(form_data["redTiktok"],evento_id))
+            db.commit()
+            cursor.close()
+
         flash('Evento registrado correctamente', 'success')
         return redirect(url_for("evento.formularioUbicacion"))
 
-    return render_template('formularioeventos.html')
+    return render_template('formularioeventos.html', datos=form_data, evento_id=evento_id)
 
 @evento.route('/FormularioEventosUbicacion',methods=['GET', 'POST'])
 def formularioUbicacion():

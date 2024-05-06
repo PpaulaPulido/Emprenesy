@@ -27,7 +27,7 @@ function inputDir(callback) {
 
             const input_detalle = document.createElement("input");
             input_detalle.classList.add("address");
-            input_detalle.name = "direccioneven"
+            input_detalle.name = "direccioneven[]"
             input_detalle.type = "text";
             input_detalle.placeholder = "Ingresar dirección";
 

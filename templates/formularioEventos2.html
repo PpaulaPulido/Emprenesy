@@ -66,8 +66,8 @@
                 </div>
                 <div class="contenido__detalles">
 
-                    <form class="info_detalles" id="formularioLocation" action="{{url_for('evento.formularioUbicacion',evento_id=evento_id)}}" method="POST">
-                        <input type="hidden" name="evento_id" value="{{ evento_id }}">
+                    <form class="info_detalles" id="formularioLocation" action="{{url_for('evento.formularioUbicacion')}}" method="POST" enctype="multipart/form-data">
+                        
                         <div class="detalle__sitio">
                             <h3>Ubicaciones del sitio</h3>
                         </div>

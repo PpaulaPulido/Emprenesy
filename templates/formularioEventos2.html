@@ -95,7 +95,7 @@
 
                         <div class="detalle__sitio boton_form">
                             <div class="detalle__sitio boton_form">
-                                <a href="{{url_for('evento.publicarEventos')}}" id="btn_regresar"
+                                <a  id="btn_regresar"
                                     class="btnRes2">Regresar</a>
                             </div>
                             <div class="detalle__sitio boton_form">
@@ -108,8 +108,10 @@
         </div>
 
         <div id="data-container" data-perfil-url="{{ url_for('admin.perfil_admin') }}" style="display: none;"></div>
-        <div id="form_url" data-url="{{ url_for('admin.index_admin') }}" style="display: none;"></div>
-
+        <div id="form_url">
+            <a id="index"  data-url="{{ url_for('admin.index_admin') }}" style="display: none;"></a>
+            <a id="form_evento" data-url="{{ url_for('evento.publicarEventos') }}" style="display: none;"></a>
+        </div>
     </main>
 
     <footer>

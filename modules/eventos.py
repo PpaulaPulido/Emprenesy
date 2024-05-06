@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort,session
+from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort,session,jsonify
 from werkzeug.utils import secure_filename
 from db import get_db, get_cursor
 import os
@@ -14,6 +14,14 @@ def allowed_file(filename):
 @evento.route('/eventoDetalle')
 def eventoDetalle():
     return render_template('detalle_event.html')
+
+@evento.route('/SeccionEvento')
+def sectionEvento():
+    return render_template('seccion_evento.html')
+
+@evento.route('/eventoLocation')
+def eventoLocation():
+    return render_template('formularioEventos2.html')
 
 @evento.route('/resetEvento')
 def resetEvento():
@@ -138,11 +146,32 @@ def formularioUbicacion():
         return redirect(url_for('admin.index_admin'))
     return render_template('formularioEventos2.html')
 
+#Formatear los slashes para las imagenes
+def normalize_path(path):
+    """Convierte backslashes a slashes en una ruta y asegura que empieza con '/'."""
+    normalized_path = path.replace('\\', '/')
+    if not normalized_path.startswith('/'):
+        normalized_path = '/' + normalized_path
+    return normalized_path
 
-@evento.route('/SeccionEvento')
-def sectionEvento():
-    return render_template('seccion_evento.html')
-
-@evento.route('/eventoLocation')
-def eventoLocation():
-    return render_template('formularioEventos2.html')
+@evento.route('/dashEvento' ,methods = ['GET'])
+def dashEvento():
+    
+    db = get_db()
+    cursor = db.cursor()
+    
+    codadmin = 1  # Código del administrador
+    cursor.execute("select nombreeven,logo,tipoevento from eventos WHERE codadmin = %s",(codadmin,))
+    publicacionesEven = cursor.fetchall()
+    
+    publicacionesEvenList = []
+    
+    for publicacion in publicacionesEven:
+        nombreeven,logo,tipoevento = publicacion
+        publicacionesEvenList.append({
+            'nombreeven': nombreeven,
+            'logo': logo,
+            'tipoevento': tipoevento
+        })
+    return jsonify(publicacionesEvenList)
+    

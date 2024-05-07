@@ -193,3 +193,7 @@ def tarjetaEvento():
             'tipoevento': tipoEvento
         })
     return jsonify(eventos_list)
+
+@evento.route('/tipoEvento')
+def tipo_evento():
+    return render_template('tipo_evento.html')

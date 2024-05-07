@@ -8,4 +8,42 @@
 <body>
     
 </body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="eventosContainer"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tipo = urlParams.get('tipo');  // Obtiene el tipo de la URL
+
+            if (tipo) {
+                fetch(`/evento/TarjetaEvento?tipo=${encodeURIComponent(tipo)}`)
+                .then(response => response.json())
+                .then(eventos => {
+                    const container = document.getElementById('eventosContainer');
+                    container.innerHTML = "";  // Limpiar los eventos anteriores
+                    eventos.forEach(evento => {
+                        const eventoDiv = document.createElement('div');
+                        eventoDiv.className = 'evento';
+                        eventoDiv.innerHTML = `
+                            <h4>${evento.nombreeven}</h4>
+                            <img src="${evento.logo}" alt="Logo">
+                            <p>${evento.tipoevento}</p>
+                        `;
+                        container.appendChild(eventoDiv);
+                    });
+                })
+                .catch(error => console.error('Error al cargar eventos:', error));
+            }
+        });
+    </script>
+</body>
 </html>

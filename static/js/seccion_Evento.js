@@ -27,3 +27,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 })
 
+function cargarEventos(tipo) {
+    // Redirige a la página de eventos con el tipo como parámetro
+    const url = document.getElementById('data-container').getAttribute('data-perfil-url');
+
+    window.location.href = `${url}?tipo=${encodeURIComponent(tipo)}`;
+}

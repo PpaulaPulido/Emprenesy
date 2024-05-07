@@ -1,12 +1,56 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort
 from werkzeug.utils import secure_filename
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash 
 from db import get_db, get_cursor
 import os
 
 usuarios = Blueprint('usuarios', __name__)
 db = get_db()
 cursor = get_cursor(db)
+
+@usuarios.route('/login', methods=['GET','POST'])
+def inicio_sesion():
+    if request.method =='POST':
+        username= request.form.get('txtusuario')
+        password= request.form.get('txtcontrasena')
+        roles = request.form.get ('rol')
+
+        sql = 'SELECT correousu,contrasena FROM usuario where correousu = %s'
+        cursor.execute(sql,(username,))
+        user = cursor.fetchone()
+        sql = 'SELECT correadmin, contrasena FROM administrador where correoadmin = %s'
+        cursor.execute(sql,(username,))
+        admin = cursor.fetchone()
+
+        if (roles == 'usuario'):
+            user and check_password_hash (user['contrasena'], password)
+            return redirect(url_for('usuarios.perfil_usuario'))
+        
+        elif (roles == 'Administrador'):
+            admin and check_password_hash (admin['contrasena'], password)
+            return redirect(url_for('usuarios.perfil_admin'))
+        
+        else:
+            error='Credenciales invalidas. por favor intentarlo de nuevo'
+        return render_template('iniciar_sesion.html', error=error)
+    return render_template('iniciar_sesion.html')
+           
+        
+@usuarios.route('/perfil_usuario')
+def perfil_usuario():
+    return render_template('perfil_usuario.html')
+
+@usuarios.route('/perfil_admin')
+def perfil_admin():
+    return render_template('perfil_admin.html')
+    
+
+
+       
+    
+    
+
+    
     
 
 @usuarios.route('/index_user')

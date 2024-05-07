@@ -167,10 +167,13 @@ def dashEvento():
     publicacionesEvenList = []
     
     for publicacion in publicacionesEven:
-        nombreeven,logo,tipoevento = publicacion
+        nombreeven,logo_filename,tipoevento = publicacion
+        # URL completa al archivo
+        logo_url = url_for('static', filename=f'galeriaEventos/{logo_filename}', _external=True) if logo_filename else None
+
         publicacionesEvenList.append({
             'nombreeven': nombreeven,
-            'logo': logo,
+            'logo': logo_url,
             'tipoevento': tipoevento
         })
     return jsonify(publicacionesEvenList)

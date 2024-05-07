@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort,jsonify
+from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort,jsonify,session
 from werkzeug.utils import secure_filename
 #from werkzeug.security import generate_password_hashz
 from db import get_db, get_cursor
@@ -23,7 +23,11 @@ def index_admin():
 @admin.route('/perfil_admin')
 def perfil_admin():
     
-    user_id = 1
+    user_id = session.get('user_id')
+    
+    if not user_id:
+        flash('No está autenticado.', 'error')
+        return redirect(url_for('usuarios.inicio_sesion')) 
     db = get_db()  # Obtener la conexión a la base de datos
     cursor = db.cursor()  # Crear un cursor
 
@@ -58,7 +62,11 @@ def perfil_admin():
 @admin.route('/MisFotos')
 def photos():
     
-    user_id = 1
+    user_id = session.get('user_id')
+    
+    if not user_id:
+        flash('No está autenticado.', 'error')
+        return redirect(url_for('usuarios.inicio_sesion')) 
     
     db = get_db()
     cursor = db.cursor()
@@ -83,7 +91,11 @@ def photos():
 @admin.route('/galeriaAdmin')
 def galeria_admin():
     
-    user_id = 1
+    user_id = session.get('user_id')
+    
+    if not user_id:
+        flash('No está autenticado.', 'error')
+        return redirect(url_for('usuarios.inicio_sesion')) 
     
     db = get_db()
     cursor = db.cursor()
@@ -108,7 +120,12 @@ def galeria_admin():
 @admin.route('/perfil_imagen')
 def perfil_imagen():
     
-    user_id = 1
+    user_id = session.get('user_id')
+    
+    if not user_id:
+        flash('No está autenticado.', 'error')
+        return redirect(url_for('usuarios.inicio_sesion')) 
+    
     cursor.execute("SELECT ruta_foto FROM fotos_admin  WHERE cod_admin= %s AND tipo_foto = 'perfil' ORDER BY id_foto DESC LIMIT 1", (user_id,))
     foto_perfil = cursor.fetchone()
 
@@ -133,7 +150,12 @@ def perfil_imagen():
 @admin.route('/subir_fotoPerfil', methods=['POST'])
 def subir_fotoperfil():
     
-    user_id = 1  #Obtener el user_id de la sesión o contexto de autenticación para identificar al usuario actual.
+    #user_id = 1  #Obtener el user_id de la sesión o contexto de autenticación para identificar al usuario actual.
+    user_id = session.get('user_id')
+    
+    if not user_id:
+        flash('No está autenticado.', 'error')
+        return redirect(url_for('usuarios.inicio_sesion')) 
     
     file = request.files.get('fotoPerfil')
     
@@ -162,7 +184,11 @@ def subir_fotoperfil():
 @admin.route('/subir_portada', methods=['POST'])
 def subir_portada():
     
-    user_id = 1  # Obtener el user_id de la sesión o contexto de autenticación para identificar al usuario actual.
+    user_id = session.get('user_id')
+    
+    if not user_id:
+        flash('No está autenticado.', 'error')
+        return redirect(url_for('usuarios.inicio_sesion')) 
     
     # Intenta obtener el archivo con el nombre 'fotoPortada' del formulario enviado. Si no hay archivo, 'file' será None.
     file = request.files.get('fotoPortada')

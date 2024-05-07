@@ -27,7 +27,7 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
         if (rol === 'usuario') {
             window.location.href = '{{ url_for("usuarios.perfil_usuario") }}';
         } else if (rol === 'Administrador') {
-            window.location.href = '{{ url_for("usuarios.perfil_admin") }}';
+            window.location.href = '{{ url_for("admin.perfil_admin") }}';
         }
     });
 });

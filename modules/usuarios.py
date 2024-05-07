@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort
+from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort,session
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash 
 from db import get_db, get_cursor
@@ -10,29 +10,33 @@ cursor = get_cursor(db)
 
 @usuarios.route('/login', methods=['GET','POST'])
 def inicio_sesion():
+    
+    cursor = get_db().cursor()
+    cursor = db.cursor(dictionary=True)
     if request.method =='POST':
         username= request.form.get('txtusuario')
         password= request.form.get('txtcontrasena')
         roles = request.form.get ('rol')
-
-        sql = 'SELECT correousu,contrasena FROM usuario where correousu = %s'
-        cursor.execute(sql,(username,))
-        user = cursor.fetchone()
-        sql = 'SELECT correadmin, contrasena FROM administrador where correoadmin = %s'
-        cursor.execute(sql,(username,))
-        admin = cursor.fetchone()
-
-        if (roles == 'usuario'):
-            user and check_password_hash (user['contrasena'], password)
-            return redirect(url_for('usuarios.perfil_usuario'))
         
-        elif (roles == 'Administrador'):
-            admin and check_password_hash (admin['contrasena'], password)
-            return redirect(url_for('usuarios.perfil_admin'))
-        
-        else:
-            error='Credenciales invalidas. por favor intentarlo de nuevo'
-        return render_template('iniciar_sesion.html', error=error)
+    
+        if roles == 'usuario':
+            
+            cursor.execute('SELECT codusuario,correousu, contrasena FROM usuario WHERE correousu = %s', (username,))
+            user = cursor.fetchone()
+            if user and check_password_hash(user['contrasena'], password):
+                session['email'] = user['correousu']
+                session['user_id'] = user['codusuario']  
+                return redirect(url_for('usuarios.index_user'))
+            
+        elif roles == 'Administrador':
+            cursor.execute('SELECT codadmin,correoadmin, contrasena FROM administrador WHERE correoadmin = %s', (username,))
+            admin = cursor.fetchone()
+            if admin and check_password_hash(admin['contrasena'], password):
+                session['email'] = admin['correoadmin']
+                session['user_id'] = admin['codadmin'] 
+                return redirect(url_for('admin.perfil_admin'))
+            
+        flash('Credenciales inválidas. Por favor intentarlo de nuevo.', 'error')
     return render_template('iniciar_sesion.html')
            
         
@@ -40,19 +44,7 @@ def inicio_sesion():
 def perfil_usuario():
     return render_template('perfil_usuario.html')
 
-@usuarios.route('/perfil_admin')
-def perfil_admin():
-    return render_template('perfil_admin.html')
     
-
-
-       
-    
-    
-
-    
-    
-
 @usuarios.route('/index_user')
 def index_user():
     return render_template('index_user.html')

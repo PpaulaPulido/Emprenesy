@@ -4,10 +4,12 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
     // Captura los datos del formulario
     var correo = document.getElementById("usuario").value;
     var contrasena = document.getElementById("contrasena").value;
+    var rol = document.querySelector('input[name="rol"]:checked').value;
 
     // Guarda los datos en el almacenamiento local
     localStorage.setItem("correo", correo);
     localStorage.setItem("contrasena", contrasena);
+    localStorage.setItem("rol", rol);
 
     // Muestra un mensaje de éxito
     Swal.fire({
@@ -22,6 +24,10 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
         }
     }).then(function () {
         localStorage.setItem('usuarioRegistrado', 'true');
-        //window.location.href = '../templates/index_user.html?usuario=registrado';
+        if (rol === 'usuario') {
+            window.location.href = '{{ url_for("usuarios.perfil_usuario") }}';
+        } else if (rol === 'Administrador') {
+            window.location.href = '{{ url_for("usuarios.perfil_admin") }}';
+        }
     });
 });

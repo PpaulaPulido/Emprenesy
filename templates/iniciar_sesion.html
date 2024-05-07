@@ -20,14 +20,23 @@
     <main>
         <div class="login-container">
             <h2> Iniciar Sesion</h2>
-            <form id="loginForm" action="/" method="post">
+            <form id="loginForm" action="{{ url_for('usuarios.inicio_sesion') }}" method="POST">
+                <div class="input-group">
+                    <label for="rol">Escoge tu rol</label>
+                    <select name="rol" id="rol" type="text" class="controls" >
+                        <option value="">Seleccionar</option>
+                        <option value="usuario">Usuario</option>
+                        <option value="Administrador">Administrador</option>
+                        
+                    </select>
+                </div>
                 <div class="input-group">
                     <label for="usuario">Usuario:</label>
-                    <input type="text" id="usuario" name="usuario" required>
+                    <input type="email" id="usuario" name="txtusuario" required>
                 </div>
                 <div class="input-group">
                     <label for="contraseña">Contraseña:</label>
-                    <input type="password" id="contrasena" name="contrasena" required>
+                    <input type="password" id="contrasena" name="txtcontrasena" required>
                     <a href="recuperar_contraseña.html" class="forgot-passaword">¿Olvidaste tu contraseña?</a>
                 </div>
                 <div class="input-group">

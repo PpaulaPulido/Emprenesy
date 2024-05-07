@@ -93,7 +93,7 @@ function slider_tarjetas() {
         }
     });
 }
-function tarjetas_swiper(tarjeta, contenedor) {
+function tarjetas_swiper(tarjeta, contenedor,enlace) {
 
     tarjeta.forEach(function (dato) {
 
@@ -130,7 +130,7 @@ function tarjetas_swiper(tarjeta, contenedor) {
 
         let a = document.createElement("a");
         a.classList.add('swiper_button');
-        a.href = `${dato.enlace}?id=${dato.id}`;
+        a.href = `${enlace}?id=${dato.id}`;
         a.textContent = "Ver más";
 
         for (let i = 0; i < 5; i++) {

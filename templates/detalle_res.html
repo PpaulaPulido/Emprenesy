@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle</title>
+    <title>Detalle Restaurante</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-    <link rel="icon" href="../img/Logo2.jpeg" type="image/icon type">
-    
+
+    <link rel="icon" href="{{url_for ('static', filename='img/Logo2.jpeg')}}" type="image/icon type">
+
     <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
@@ -16,6 +17,9 @@
 
     <link rel="stylesheet" href="../static/styles/generales_user.css">
     <link rel="stylesheet" href="../static/styles/detalles.css">
+    <link rel="stylesheet" href="{{url_for ('static', filename='styles/detalles.css')}}">
+    <link rel="stylesheet" href="{{url_for ('static', filename='styles/generales_user.css')}}">
+
 
 </head>
 
@@ -23,11 +27,16 @@
     <header id="cabecera">
         <div id="cabeza">
             <div class="logoedit">
-                <img class="logo" src="../img/logo_Emprenesy.png" alt="Emprenesy">
+                <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
             </div>
         </div>
     </header>
     <main>
+        <div id="enlaces" style="display: none;">
+            <a id="url_nosotros" data-url="{{url_for('usuarios.nosotros_user')}}"></a>
+            <a id="url_index" data-url="{{url_for('usuarios.index_user')}}"></a>
+        </div>
+        <div id="data-container" data-perfil-url="{{ url_for('admin.perfil_admin') }}" style="display: none;"></div>
         <div id="particles-js"></div>
         <div class="contenedor_title">
             <h2 class="title_res" id="title"></h2>
@@ -81,10 +90,10 @@
                     <h3>Redes Sociales</h3>
                     <div class="redes_sociales">
                         <a id="red1">
-                            <img src="../img/instagram1.png" alt="instagram">
+                            <img src="{{ url_for('static', filename='img/instagram1.png ') }}" alt="instagram">
                         </a>
                         <a id="red2">
-                            <img src="../img/tik-tok.png" alt="tik tok">
+                            <img src="{{ url_for('static', filename='img/tik-tok.png ') }}" alt="tik tok">
                         </a>
                     </div>
                     <div class="contenedor_button">
@@ -152,9 +161,9 @@
                     <ul class="footer_list">
                         <li>Siguenos en</li>
                         <div class="iconos">
-                            <img src="../img/tik-tok.png" alt="tiktok">
-                            <img src="../img/facebook.png" alt="facebook">
-                            <img src="../img/instagram1.png" alt="instagram">
+                            <img src="{{ url_for('static', filename='img/tik-tok.png') }}" alt="tiktok">
+                            <img src="{{ url_for('static', filename='img/facebook.png') }}" alt="facebook">
+                            <img src="{{ url_for('static', filename='img/instagram1.png') }}" alt="instagram">
                         </div>
                     </ul>
                 </div>

@@ -1,9 +1,9 @@
 window.datosTarjetas = [
   {
     id: 1,
-    imagen: "../img/restaurante1.png",
+    imagen: "/static/img/restaurante1.png",
     titulo: "Storia D'Amore",
-    enlace: "../templates/detalle_res.html",
+    enlace: "",
     galeria: [
       "https://sobremesacom.co/wp-content/uploads/2023/06/storia-de-amore.jpg",
       "https://media-cdn.tripadvisor.com/media/photo-s/27/a2/c2/34/storia-d-amore-barranquilla.jpg",
@@ -20,9 +20,9 @@ window.datosTarjetas = [
       ""
     ],
     ubicacion: [
-      "Carrera 13 #82 -36",
-      "Calle 93A #13A-21",
-      "Cl. 122 #15a-24"
+      "Carrera 13 #82 -36 Bogotá",
+      "Calle 93A #13A-21 Bogotá",
+      "Cl. 122 #15a-24 Bogotá"
     ],
     menu: [
       "https://menupp.co/storiadamore/venue/dSk9VolxfbK4csFMgkh8?type=normal",
@@ -61,7 +61,7 @@ window.datosTarjetas = [
   },
   {
     id: 3,
-    imagen: "../img/restaurante3.png",
+    imagen: "/static/img/restaurante3.png",
     titulo: "Osaka–Cocina Nikkei",
     enlace: "../templates/detalle_res.html",
     galeria: [
@@ -89,7 +89,7 @@ window.datosTarjetas = [
   },
   {
     id: 4,
-    imagen: "../img/restaurante4.png",
+    imagen: "/static/img/restaurante4.png",
     titulo: "El Capitalino Restaurant",
     enlace: "../templates/detalle_res.html",
     galeria: [
@@ -117,7 +117,7 @@ window.datosTarjetas = [
   },
   {
     id: 5,
-    imagen: "../img/restaurante5.png",
+    imagen: "/static/img/restaurante5.png",
     titulo: "Pajares Salinas",
     enlace: "../templates/detalle_res.html",
     galeria: [
@@ -148,7 +148,7 @@ window.datosTarjetas = [
 window.datosEventos = [
   {
     id: 1,
-    imagen: "../img/evento1.png",
+    imagen: "/static/img/evento1.png",
     titulo: "Festival Estéreo Picnic",
     enlace: "../templates/detalle_event.html",
     galeria: [
@@ -178,7 +178,7 @@ window.datosEventos = [
   },
   {
     id: 2,
-    imagen: "../img/evento2.png",
+    imagen: "/static/img/evento2.png",
     titulo: "Juanpis Live Show: Los noto asustados temporada 2",
     enlace: "../templates/detalle_event.html",
     galeria: [
@@ -208,7 +208,7 @@ window.datosEventos = [
   },
   {
     id: 3,
-    imagen: "../img/evento3.png",
+    imagen: "/static/img/evento3.png",
     titulo: "Una Idea Genial",
     enlace: "../templates/detalle_event.html",
     galeria: [
@@ -237,7 +237,7 @@ window.datosEventos = [
   },
   {
     id: 4,
-    imagen: "../img/evento4.png",
+    imagen: "/static/img/evento4.png",
     titulo: "Cantemos La telenovela",
     enlace: "../templates/detalle_event.html",
     galeria: [
@@ -266,7 +266,7 @@ window.datosEventos = [
   },
   {
     id: 5,
-    imagen: "../img/evento5.png",
+    imagen: "/static/img/evento5.png",
     titulo: "Burning Caravan",
     enlace: "../templates/detalle_event.html",
     galeria: [
@@ -501,7 +501,7 @@ window.datosEmpredimientos = [
   },
   {
     id: 4,
-    imagen: "../img/taqueria.jpg",
+    imagen: "/static/img/taqueria.jpg",
     titulo: "La taqueria",
     enlace: "../templates/detalle_empren.html",
     galeria: [
@@ -533,7 +533,7 @@ window.datosEmpredimientos = [
   },
   {
     id: 5,
-    imagen: "../img/emprendimiento5.png",
+    imagen: "/static/img/emprendimiento5.png",
     titulo: "Dorilocos",
     enlace: "../templates/detalle_empren.html",
     galeria: [
@@ -552,7 +552,7 @@ window.datosEmpredimientos = [
       "https://www.tiktok.com/@dorilocos_bogota?_t=8iv7ZEI5pNm&_r=1"
     ],
     ubicacion: [
-      "Cl. 8 #7941, Bogotá", 
+      "Cl. 8 #7941, Bogotá",
       "Cra. 103b #151c-11, Bogotá",
       "Cra. 6a, Bogotá"
     ],
@@ -590,14 +590,14 @@ window.empredimientosArtesania = [
   },
   {
     id: 7,
-    imagen: "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/406435604_746874817473812_6212048010240493676_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHyUrCI_ZGnMe6j5ur7xvH1wwjImcY5jUvDCMiZxjmNSzrz_ZHwrz2v1U_Yb1e8-6xPgld92Is8NxEXW6xivX0l&_nc_ohc=6sg23Hbw7ccAb6zl6h5&_nc_ht=scontent.fbog3-2.fna&oh=00_AfDTfeOrcDaxKumc2P2Z4Qb-7yDlV8yGc2zGsfGnY8iu8A&oe=6625EB91",
+    imagen: "/static/img/artesaniaColombiaLogo.PNG",
     titulo: "Artesanos de Colombia",
     enlace: "../templates/detalle_empren.html",
     galeria: [
-      "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/406435604_746874817473812_6212048010240493676_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHyUrCI_ZGnMe6j5ur7xvH1wwjImcY5jUvDCMiZxjmNSzrz_ZHwrz2v1U_Yb1e8-6xPgld92Is8NxEXW6xivX0l&_nc_ohc=6sg23Hbw7ccAb6zl6h5&_nc_ht=scontent.fbog3-2.fna&oh=00_AfDTfeOrcDaxKumc2P2Z4Qb-7yDlV8yGc2zGsfGnY8iu8A&oe=6625EB91",
-      "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/406672778_746852254142735_3795278734247261445_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFMqATrDYMdeKhjfNBkDsKcjFFtmp7vHIqMUW2anu8ciqskL-3dxpRdpfmVPufY7Erl_OLP3phVjlusCFBZ3SZ1&_nc_ohc=CX5YUeXjY0QAb5llbCQ&_nc_ht=scontent.fbog3-2.fna&oh=00_AfCkwo7kFxG8sP_bHrHdR-E9i53QM0sHY0ggy9ZiUeMO2Q&oe=6625C151",
-      "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/405722770_746605630834064_3830789619849686221_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGHX9guTJHAxdxPNo-F_tVuMGcwZ4fkbsEwZzBnh-RuwUV287oXSd6XERVBYKliadX5rFpcPWpVQgtF7FCqkZAB&_nc_ohc=n7gjcCfPTwgAb43-lpp&_nc_ht=scontent.fbog3-2.fna&oh=00_AfDKiCW_43EbnoHbjXIo2uYuS5V0I4xYCV2OtE7msGA6wg&oe=6625E82A",
-      "https://scontent.fbog3-2.fna.fbcdn.net/v/t39.30808-6/436340534_830564889104804_2819603429856217572_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeH6fWP8bX6MoFfvB_ZjtahsIA5uggBIF28gDm6CAEgXb4Nm9qGHifdsinR7yejOQauqLmwjs2tGW1LGcKkVl1_c&_nc_ohc=YVNny-gtLFkAb7W0IPZ&_nc_ht=scontent.fbog3-2.fna&oh=00_AfBN20rRs4A9Uw_D_PgDQYv-98nbIAzFd9ZbL58-l2oqAw&oe=6625E59A"
+      "/static/img/artesaniaColombia1.PNG",
+      "/static/img/artesaniaColombia2.PNG",
+      "/static/img/artesaniaColombia3.PNG",
+      "/static/img/artesaniaColombia4.PNG"
     ],
     negocio: "Artesanía",
     horario: "Lunes-Sábado 09:00 am-20:00 pm",

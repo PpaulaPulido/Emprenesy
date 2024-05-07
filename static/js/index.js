@@ -9,11 +9,17 @@ const btn_anterior3 = document.querySelector('.button_anterior3');
 const btn_siguiente3 = document.querySelector('.button_siguiente3');
 let idTarjetaSeleccionadaGlobal;
 
+// variables para conexion con el servidor
+const detalleResUrl = document.getElementById('detalle-res-url').getAttribute('data-url');
+const detalleEventoUrl = document.getElementById('detalle-evento-url').getAttribute('data-url');
+const detalleEmprendeUrl = document.getElementById('detalle-emprende-url').getAttribute('data-url');
+
+
 document.addEventListener('DOMContentLoaded', function () {
 
-  cntSliderTarjetas(datosTarjetas, sliderTarjetas, btn_anterior, btn_siguiente, 'res');
-  cntSliderTarjetas(datosEventos, sliderTarjetas2, btn_anterior2, btn_siguiente2, 'evento');
-  cntSliderTarjetas(datosEmpredimientos, sliderTarjetas3, btn_anterior3, btn_siguiente3, 'emprende');
+  cntSliderTarjetas(datosTarjetas, sliderTarjetas, btn_anterior, btn_siguiente, 'res',detalleResUrl);
+  cntSliderTarjetas(datosEventos, sliderTarjetas2, btn_anterior2, btn_siguiente2, 'evento',detalleEventoUrl);
+  cntSliderTarjetas(datosEmpredimientos, sliderTarjetas3, btn_anterior3, btn_siguiente3, 'emprende',detalleEmprendeUrl);
 
   // Función que se ejecuta cuando se hace scroll
   window.onscroll = function () {
@@ -54,7 +60,7 @@ function scrollFunction() {
   }
 }
 
-function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, tipo) {
+function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, tipo,enlace) {
 
   // Función para mostrar las tarjetas
   function mostrarTarjeta(index, cardSlider) {
@@ -128,11 +134,11 @@ function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, t
     let a = document.createElement("a");
 
     if (tipo == 'res') {
-      a.href = `${data.enlace}?id=${data.id}&tipo=res`;
+      a.href = `${enlace}?id=${data.id}&tipo=res`;
     } else if (tipo == 'evento') {
-      a.href = `${data.enlace}?id=${data.id}&tipo=evento`;
+      a.href = `${enlace}?id=${data.id}&tipo=evento`;
     } else {
-      a.href = `${data.enlace}?id=${data.id}&tipo=emprende`;
+      a.href = `${enlace}?id=${data.id}&tipo=emprende`;
     }
 
     a.textContent = "Ver detalles";

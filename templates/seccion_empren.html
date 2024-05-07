@@ -15,6 +15,8 @@
     <!-- Enlace a los estilos locales -->
     <link rel="stylesheet" href="../static/styles/generales_user.css">
     <link rel="stylesheet" href="../static/styles/seccion_empren.css">
+    <link rel="stylesheet" href="{{url_for ('static', filename='styles/seccion_empren.css')}}">
+    <link rel="stylesheet" href="{{url_for ('static', filename='styles/generales_user.css')}}">
 
     <!-- Enlace a la fuente de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
@@ -22,19 +24,24 @@
 
 
     <!-- Favicon -->
-    <link rel="icon" href="../img/Logo2.jpeg" type="image/icon type">
+    <link rel="icon" href="{{url_for ('static', filename='img/Logo2.jpeg')}}" type="image/icon type">
 </head>
 
 <body>
     <header id="cabecera">
         <div id="cabeza">
             <div class="logoedit">
-                <img class="logo" src="../img/logo_Emprenesy.png" alt="Emprenesy">
+                <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
             </div>
         </div>
     </header>
 
     <main>
+        <div id="url" style="display: none;">
+            <a id="detalle-emprende-url" data-url="{{ url_for('emprende.emprendeDetalle') }}"></a>
+            <a id="url_nosotros" data-url="{{url_for('usuarios.nosotros_user')}}"></a>
+            <a id="url_index" data-url="{{url_for('usuarios.index_user')}}"></a>
+        </div>
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-interval="2000">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -44,7 +51,8 @@
                         <p>¡Explora la innovación y la creatividad de los emprendimientos en la vibrante ciudad de
                             Bogotá! ¡Ven y sé parte del futuro de la capital colombiana!</p>
                         <div class="container-btn">
-                            <button class="btn slider_btn1"><a href="#section_novedades">Explorar Emprendimientos</a></button>
+                            <button class="btn slider_btn1"><a href="#section_novedades">Explorar
+                                    Emprendimientos</a></button>
                         </div>
                     </div>
                 </div>
@@ -122,11 +130,13 @@
 
         <div class="container_poster">
             <div class="poster_img">
-                <img src="https://anisacatemunicipio.gob.ar/wp-content/uploads/2022/09/emprendimientos-gastronomicos.jpg" alt="imagen gastronomica">
+                <img src="https://anisacatemunicipio.gob.ar/wp-content/uploads/2022/09/emprendimientos-gastronomicos.jpg"
+                    alt="imagen gastronomica">
             </div>
             <div class="contenido_poster">
                 <h3>Empredimientos Gastronómicos</h3>
-                <p>¡Sumérgete en una experiencia gastronómica única! Descubre los deliciosos emprendimientos culinarios que te esperan. ¡Déjate sorprender por sabores innovadores y exquisitos!</p>
+                <p>¡Sumérgete en una experiencia gastronómica única! Descubre los deliciosos emprendimientos culinarios
+                    que te esperan. ¡Déjate sorprender por sabores innovadores y exquisitos!</p>
                 <button><a href="#">Ver Emprendimientos</a></button>
             </div>
         </div>
@@ -185,9 +195,9 @@
                     <ul class="footer_list">
                         <li>Siguenos en</li>
                         <div class="iconos">
-                            <img src="../img/tik-tok.png" alt="tiktok">
-                            <img src="../img/facebook.png" alt="facebook">
-                            <img src="../img/instagram1.png" alt="instagram">
+                            <img src="{{ url_for('static', filename='img/tik-tok.png') }}" alt="tiktok">
+                            <img src="{{ url_for('static', filename='img/facebook.png') }}" alt="facebook">
+                            <img src="{{ url_for('static', filename='img/instagram1.png') }}" alt="instagram">
                         </div>
                     </ul>
                 </div>

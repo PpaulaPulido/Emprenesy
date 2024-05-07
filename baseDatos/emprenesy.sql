@@ -9,7 +9,6 @@ apellidousu varchar(50),
 telusu varchar(20),
 fechanac_usu date,
 correousu varchar (50),
-roles varchar(50),
 contrasena varchar(255)
 );
 
@@ -20,7 +19,24 @@ apellidoadmin varchar(50),
 telfadmin varchar(15),
 correoadmin varchar(50),
 codsitio  int,
-fechanac_admin date
+fechanac_admin date,
+contrasena varchar(255)
+);
+
+CREATE TABLE fotos_usuario (
+    id_foto INT AUTO_INCREMENT PRIMARY KEY,
+    cod_usuario INT,
+    ruta_foto VARCHAR(255) NOT NULL,
+    tipo_foto ENUM('portada', 'general','perfil') DEFAULT 'general',
+    FOREIGN KEY (cod_usuario) REFERENCES usuario(cod_usuario)
+);
+
+CREATE TABLE fotos_admin (
+    id_foto INT AUTO_INCREMENT PRIMARY KEY,
+    cod_admin INT,
+    ruta_foto VARCHAR(255) NOT NULL,
+    tipo_foto ENUM('portada', 'general','perfil') DEFAULT 'general',
+    FOREIGN KEY (cod_admin) REFERENCES administrador(codadmin)
 );
 
 CREATE TABLE restaurantes (

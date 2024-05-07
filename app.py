@@ -9,6 +9,10 @@ app = Flask(__name__)
 app.secret_key = '123456789'
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['FOLDER_EVENT'] = 'static/galeriaEventos'
+
+if not os.path.exists(app.config['UPLOAD_FOLDER']):
+    os.makedirs(app.config['UPLOAD_FOLDER'])
+
 db = get_db()
 cursor = get_cursor(db)
 

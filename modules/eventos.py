@@ -33,6 +33,8 @@ def resetEvento():
 @evento.route('/publicareventos', methods=['GET', 'POST'])
 def publicarEventos():
     
+    current_app.config['FOLDER_EVENT'] = os.path.join(current_app.root_path, 'static', 'galeriaEventos')
+    
     if request.method == 'GET' and request.args.get('nuevo', '0') == '1':
         # Si se especifica que es un nuevo evento, resetear la sesión
         session.pop('evento_id', None)
@@ -51,13 +53,7 @@ def publicarEventos():
             filename = secure_filename(logoeven.filename)
             path = os.path.join(current_app.config['FOLDER_EVENT'], filename)
             logoeven.save(path)  # Guarda el archivo en el sistema de archivos
-
-            # Abrir el archivo guardado y leerlo como binario
-            with open(path, 'rb') as file:
-                binary_data = file.read()
-
-        else:
-            binary_data = None
+            relativePath =  os.path.join('galeriaEventos',filename)
             
         form_data.update({
             "nombreven": request.form.get("nombreven"),
@@ -81,7 +77,7 @@ def publicarEventos():
         if not evento_id:
             cursor = db.cursor()
             # Inserta un nuevo evento en la base de datos
-            cursor.execute( "INSERT INTO eventos (nombreeven, logo, tipoevento, descripeven, paginaeven, boletaseven, infoAdicional, contacto, correoeven, codadmin) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",(form_data["nombreven"], binary_data, form_data["tipoevento"], form_data["descripcioneven"], form_data["paginaeven"], form_data["boletoseven"], form_data["descripcionA"], form_data["contactoeven"], form_data["correoeven"], codadmin))
+            cursor.execute( "INSERT INTO eventos (nombreeven, logo, tipoevento, descripeven, paginaeven, boletaseven, infoAdicional, contacto, correoeven, codadmin) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",(form_data["nombreven"], relativePath, form_data["tipoevento"], form_data["descripcioneven"], form_data["paginaeven"], form_data["boletoseven"], form_data["descripcionA"], form_data["contactoeven"], form_data["correoeven"], codadmin))
             
             evento_id = cursor.lastrowid
             session['evento_id'] = evento_id
@@ -146,13 +142,6 @@ def formularioUbicacion():
         return redirect(url_for('admin.index_admin'))
     return render_template('formularioEventos2.html')
 
-#Formatear los slashes para las imagenes
-def normalize_path(path):
-    """Convierte backslashes a slashes en una ruta y asegura que empieza con '/'."""
-    normalized_path = path.replace('\\', '/')
-    if not normalized_path.startswith('/'):
-        normalized_path = '/' + normalized_path
-    return normalized_path
 
 @evento.route('/dashEvento' ,methods = ['GET'])
 def dashEvento():
@@ -169,7 +158,13 @@ def dashEvento():
     for publicacion in publicacionesEven:
         nombreeven,logo_filename,tipoevento = publicacion
         # URL completa al archivo
-        logo_url = url_for('static', filename=f'galeriaEventos/{logo_filename}', _external=True) if logo_filename else None
+        #logo_url = url_for('static', filename=f'galeriaEventos/{logo_filename}', _external=True) if logo_filename else None
+        
+        if logo_filename:
+            normalized_logo_filename = logo_filename.replace('\\', '/')
+            logo_url = url_for('static', filename=normalized_logo_filename)
+        else:
+            logo_url = url_for('static', filename='img/notFound.png')
 
         publicacionesEvenList.append({
             'nombreeven': nombreeven,

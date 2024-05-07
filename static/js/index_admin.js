@@ -1,26 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
     menu_lateral();
-    estadoPublicaciones();
+    subirPublicacionEven();
     
     user_sesion().then(() => {
         inicializarBuscador();
-    }).catch(error => console.error('Error al inicializar sesión de usuario:', error));
+    }).catch(error => console.error('Error al inicializar sesión con administrador:', error));
     
 });
 function subirPublicacionEven(){
-    fetch('/dashEvento')
+    fetch('/evento/dashEvento')
     .then(response => response.json())  // Parsear la respuesta como JSON
     .then(datos => {
         const containerEven = document.getElementById('pub_eventos');
         containerEven.innerHTML = "";
 
 
-        if(datos.length === 0){
+        if(datos.length == 0){
             estadoVacio(containerEven,'eventos','bi','bi-calendar-check');
 
         }else{
             const divContainer = document.createElement("div");
             divContainer.classList.add('containerPubEven');
+
+            const tituloE = document.createElement("h2");
+            tituloE.textContent="Mis eventos";
+            tituloE.classList.add("tituloE");
 
             datos.forEach(publicacion =>{
 
@@ -31,24 +35,49 @@ function subirPublicacionEven(){
                 evenTitle.classList.add("evenTitle");
                 evenTitle.textContent = publicacion.nombreeven;
                 
-                const tipoEvent = document.createElement();
+                const tipoEvent = document.createElement("p");
+                tipoEvent.classList.add("tipoevento");
+                tipoEvent.textContent =  publicacion.tipoevento;
+
                 const divImg = document.createElement("div");
                 divImg.classList.add("divImgEvento");
 
                 const imgEvent = document.createElement("img");
                 imgEvent.alt = "logo del evento";
-                imgEvent.src = publicacion.logo || "static/img/notFound.png";
-                
+                imgEvent.src = publicacion.logo;
+        
+                const divBotones = document.createElement('div');
+                divBotones.classList.add("divBotonesPub");
+
+
+                const botonV = document.createElement('a');
+                botonV.classList.add("eventoEdit","botonesPub");
+                botonV.textContent = "Editar";
+
+                const botonE = document.createElement('a');
+                botonE.classList.add("eventoEli","botonesPub");
+                botonE.textContent = "Eliminar";
+
+                divBotones.appendChild(botonV);
+                divBotones.appendChild(botonE);
+
                 divImg.appendChild(imgEvent);
                 pubEvento.appendChild(evenTitle);
+                pubEvento.appendChild(tipoEvent);
                 pubEvento.appendChild(divImg);
 
+                divContainer.appendChild(pubEvento);
+                divContainer.appendChild(divBotones);
+                containerEven.appendChild(tituloE);
+                containerEven.appendChild(divContainer);
             })
         }
     })
     .catch(error =>{
         const containerEven = document.getElementById('pub_eventos');
         containerEven.innerHTML = "Error el cargar los registros de publicaciones eventos"
+        console.log(error);
+        
     })
 }
 function estadoPublicaciones() {

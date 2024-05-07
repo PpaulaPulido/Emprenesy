@@ -23,6 +23,7 @@ def sectionEvento():
 def eventoLocation():
     return render_template('formularioEventos2.html')
 
+
 @evento.route('/resetEvento')
 def resetEvento():
     session.pop('evento_id', None)
@@ -143,6 +144,7 @@ def formularioUbicacion():
     return render_template('formularioEventos2.html')
 
 
+#ruta para mostrar publicacion a los administradores
 @evento.route('/dashEvento' ,methods = ['GET'])
 def dashEvento():
     
@@ -157,9 +159,7 @@ def dashEvento():
     
     for publicacion in publicacionesEven:
         nombreeven,logo_filename,tipoevento = publicacion
-        # URL completa al archivo
-        #logo_url = url_for('static', filename=f'galeriaEventos/{logo_filename}', _external=True) if logo_filename else None
-        
+    
         if logo_filename:
             normalized_logo_filename = logo_filename.replace('\\', '/')
             logo_url = url_for('static', filename=normalized_logo_filename)
@@ -172,4 +172,24 @@ def dashEvento():
             'tipoevento': tipoevento
         })
     return jsonify(publicacionesEvenList)
+
+#ruta para mostrar publicacion a los usuarios
+@evento.route('/TarjetaEvento', methods=['GET'])
+def tarjetaEvento():
+    tipo_evento = request.args.get('tipo')  # Obtiene el tipo de evento desde la consulta
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("SELECT nombreeven, logo, tipoevento FROM eventos WHERE tipoevento = %s", (tipo_evento,))
+    eventos = cursor.fetchall()
     
+    eventos_list = []
+    for evento in eventos:
+        nombreeven, logo_filename, tipoEvento = evento
+        logo_url = url_for('static', filename=logo_filename.replace('\\', '/')) if logo_filename else url_for('static', filename='img/notFound.png')
+        
+        eventos_list.append({
+            'nombreeven': nombreeven,
+            'logo': logo_url,
+            'tipoevento': tipoEvento
+        })
+    return jsonify(eventos_list)

@@ -269,7 +269,7 @@ a {
     align-items: center;
     flex-wrap: wrap;
     padding: 20px 0;
-    background-image: url(/img/bogota.jpg);
+    background-image: url(/static/img/bogota.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     width: 95%;

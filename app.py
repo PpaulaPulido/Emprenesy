@@ -16,6 +16,9 @@ if not os.path.exists(app.config['UPLOAD_FOLDER']):
 db = get_db()
 cursor = get_cursor(db)
 
+from modules.index import inicio
+app.register_blueprint(inicio, url_prefix='/inicio')
+
 from modules.usuarios import usuarios
 app.register_blueprint(usuarios, url_prefix='/usuarios')
 

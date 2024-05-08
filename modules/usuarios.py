@@ -9,6 +9,7 @@ usuarios = Blueprint('usuarios', __name__)
 db = get_db()
 cursor = get_cursor(db)
 
+#*******************************************Ruta de iniciar sesion****************************************************************
 @usuarios.route('/login', methods=['GET','POST'])
 def inicio_sesion():
     cursor = get_db().cursor()
@@ -42,16 +43,7 @@ def inicio_sesion():
                 return render_template('iniciar_sesion.html', error=error)
     return render_template('iniciar_sesion.html')
            
-        
-@usuarios.route('/perfil_usuario')
-def perfil_usuario():
-    return render_template('perfil_usuario.html')
-
-    
-@usuarios.route('/index_user')
-def index_user():
-    return render_template('index_user.html')
-
+#*******************************************Ruta de registro de usuario****************************************************************
 @usuarios.route('/registrarUser', methods=['GET', 'POST'])
 def registrar_usuario():
     if request.method == 'POST':
@@ -100,7 +92,12 @@ def registrar_usuario():
 
     return render_template('registro.html')
 
+#*******************************************Ruta de perfil usuario****************************************************************        
+@usuarios.route('/perfil_usuario')
+def perfil_usuario():
+    return render_template('perfil_usuario.html')
 
+#*******************************************Ruta de subir imagen de perfil****************************************************************
 @usuarios.route('/perfiflImagen_user')
 def perfilImagen_usuario():
     
@@ -122,6 +119,10 @@ def perfilImagen_usuario():
         abort(404)  # Si el archivo no existe, devuelve un error 404
 
     return send_from_directory(directory_path, file_name)
+
+@usuarios.route('/index_user')
+def index_user():
+    return render_template('index_user.html')
 
 @usuarios.route('/nosotros_user')
 def nosotros_user():

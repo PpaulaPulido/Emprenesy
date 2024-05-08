@@ -1,6 +1,4 @@
 from flask import Flask, request, redirect, url_for, render_template, flash
-from werkzeug.utils import secure_filename
-from werkzeug.security import generate_password_hash, check_password_hash
 import os
 from db import get_db, get_cursor
 

@@ -10,6 +10,7 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 db = get_db()
 cursor = get_cursor(db)
 
+#*********************************Funcion para permitir tipo de extensiones para las img********************************
 ''' se utiliza para verificar si el nombre de un archivo tiene una extensión permitida según una lista de extensiones '''
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -19,11 +20,11 @@ def index_admin():
     return render_template('index_admin.html')
 
 
-
+#***********************************Ruta para perfil de administrador************************************
 @admin.route('/perfil_admin')
 def perfil_admin():
     
-    user_id = session.get('user_id')
+    user_id = session.get('admin_id')
     
     if not user_id:
         flash('No está autenticado.', 'error')
@@ -62,7 +63,7 @@ def perfil_admin():
 @admin.route('/MisFotos')
 def photos():
     
-    user_id = session.get('user_id')
+    user_id = session.get('admin_id')
     
     if not user_id:
         flash('No está autenticado.', 'error')
@@ -91,7 +92,7 @@ def photos():
 @admin.route('/galeriaAdmin')
 def galeria_admin():
     
-    user_id = session.get('user_id')
+    user_id = session.get('admin_id')
     
     if not user_id:
         flash('No está autenticado.', 'error')
@@ -116,11 +117,11 @@ def galeria_admin():
     
     return jsonify(fotos_list)
 
-
+#****************************Ruta para la imagen de perfil************************************************************
 @admin.route('/perfil_imagen')
 def perfil_imagen():
     
-    user_id = session.get('user_id')
+    user_id = session.get('admin_id')
     
     if not user_id:
         flash('No está autenticado.', 'error')
@@ -146,12 +147,11 @@ def perfil_imagen():
 
     return send_from_directory(directory_path, file_name)
 
-    
+#*******************************Ruta para subir la foto de perfil ********************************************************************************
 @admin.route('/subir_fotoPerfil', methods=['POST'])
 def subir_fotoperfil():
     
-    #user_id = 1  #Obtener el user_id de la sesión o contexto de autenticación para identificar al usuario actual.
-    user_id = session.get('user_id')
+    user_id = session.get('admin_id')
     
     if not user_id:
         flash('No está autenticado.', 'error')
@@ -180,11 +180,11 @@ def subir_fotoperfil():
         flash('No se seleccionó archivo o el tipo de archivo no está permitido.')
         return redirect(url_for('admin.perfil_admin'))
 
-
+#*******************************Ruta para subir la foto de Portada********************************************************************************
 @admin.route('/subir_portada', methods=['POST'])
 def subir_portada():
     
-    user_id = session.get('user_id')
+    user_id = session.get('admin_id')
     
     if not user_id:
         flash('No está autenticado.', 'error')
@@ -226,6 +226,7 @@ def subir_portada():
         
         # Redirecciona al usuario de vuelta a la página 'perfil_admin' para mantenerlo en la misma página en caso de error.
         return redirect(url_for('admin.perfil_admin'))
+
 
 
 @admin.route('/tipo_publicacion')

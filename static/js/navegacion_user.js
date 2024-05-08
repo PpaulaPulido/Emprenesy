@@ -1,5 +1,5 @@
 function user_sesion() {
-    return fetch('/usuarios/perfiflImagen_user')
+    return fetch('/usuarios/perfilImagen_user')
     .then(response => {
         if (!response.ok) {
             //indica si la solicitud no fue existosa

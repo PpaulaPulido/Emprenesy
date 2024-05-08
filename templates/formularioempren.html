@@ -49,76 +49,91 @@
                     <h2>Añade tu emprendimiento </h2>
                 </div>
                 <div class="contenido__detalles">
-                    <form class="info_detalles" action="/templates/publicacionRes1.html">
+                    <form class="info_detalles" action="{{ url_for('emprende.publicar_emprendimiento') }}" method="POST"
+                    enctype="multipart/form-data">
+
                         <div class="detalle__sitio">
                             <h3>Detalles del emprendimiento</h3>
                         </div>
+
                         <div class="detalle__sitio">
-                            <label for="nombre">Nombre del emprendimiento</label>
-                            <input type="text" name="nombre" id="nombre">
+                            <label for="nombreEmprende">Nombre del emprendimiento</label>
+                            <input type="text" name="nombreEmprende" id="nombreEmprende">
                         </div>
+
                         <div class="detalle__sitio">
-                            <label for="logo">Logo</label>
-                            <input type="file" id="file-upload-button" name="logo" style="display:none;">
-                            <label for="file-upload-button" class="file-upload-btn">Seleccionar archivo</label>
+                            <label for="logoEmprende">Logo</label>
+                            <input type="file" id="logoEmprende" name="logoEmprende">
                         </div>
+
+         
                         <div class="detalle__sitio">
-                            <label for="galeria">Galeria de emprendimiento</label>
-                            <input type="file" id="galeria" name="galeria" style="display:none;" multiple>
-                            <label for="file-upload-button" class="file-upload-btn">Seleccionar imagenes</label>
-                        </div>
-                        
-                        <div class="detalle__sitio">
-                            <label for="typeRes">Tipo de emprendimiento</label>
-                            <select name="restaurante" id="restaurante">
+                            <label for="typeEmprende">Tipo de emprendimiento</label>
+                            <select name="typeEmprende" id="Emprende">
                                 <option value="">Seleccionar</option>
                                 <option value="Ropa">Ropa</option>
                                 <option value="Artesanias">Artesanias</option>
                                 <option value="Manualidades">Manualidades</option>
-                                <option value="gourmet">comida</option>
+                                <option value="comida">comida</option>
                                 <option value="otra opcion">Otro</option>
-                                
                             </select>
                         </div>
                         
                         <div class="detalle__sitio">
-                            <label for="redes">Redes del emprendimiento</label>
-                            <input type="url" name="redes" id="redes" placeholder="https://example.com">
-                        </div>
-                        <div class="detalle__sitio">
-                            <label for="menu">Fecha</label>
-                            <input class="nav" type="date" name="txtañodeimprenta">
-                        </div>
-                        <div class="detalle__sitio">
-                            <label for="horarioE">Horario</label>
-                            <input type="time" name="horarioE" id="horarioE" >
-                        </div>
-                        <div class="detalle__sitio">
-                            <label for="menu">Ubicacion</label>
-                            <input type="url" name="menu" id="menu" placeholder="Direccion del evento">
-                        </div>
-                        <div class="detalle__sitio">
-                            <label for="descripcion">Descripcion del emprendimiento</label>
-                            <textarea name="descripcion" id="descripcion" cols="70" rows="8"
+                            <label for="descripcionEmprende">Descripcion del emprendimiento</label>
+                            <textarea name="descripcionEmprende" id="descripcionEmprende" cols="70" rows="8"
                                 placeholder="Tu descripción"></textarea>
                         </div>
+                        
+                        <div class="detalle__sitio">
+                            <label for="horarioEmprende">Horario</label>
+                            <textarea name="horarioEmprende" id="horarioEmprende" placeholder="Por ejemplo Lunes-Viernes" cols="30" rows="8"></textarea>
+                        </div>
+                    
+                        <div class="detalle__sitio">
+                            <label for="horarioE">Apertura</label>
+                            <input type="time" name="horarioE" id="horarioE" >
+                        </div>
+
+                        <div class="detalle__sitio">
+                            <label for="horarioS">Cierre</label>
+                            <input type="time" name="horarioS" id="horarioS" >
+                        </div>
+
+                        
                         <div class="detalle__sitio">
                             <label for="pagina">Pagina del emprendimiento (opcional)</label>
-                            <input type="url" name="pagina" id="pagina" placeholder="https://example.com">
+                            <input type="url" name="paginaEmprende" id="paginaEmprende" placeholder="https://example.com">
                         </div>
+
                         <div class="detalle__sitio">
                             <label for="producempre">Producto</label>
-                            <input type="text" name="producempre" id="producempre" >
+                            <input type="url" name="producempre" id="producempre" placeholder="https://example.com">
                         </div>
+
                         <div class="detalle__sitio">
                             <label for="
                             correoempre">Correo</label>
-                            <input type="text" name="correoempre" id="correoempre" >
+                            <input type="email" name="correoempre" id="correoempre">
                         </div>
+
                         <div class="detalle__sitio">
-                            <label for="telempre">Telefono</label>
-                            <input type="text" name="tleempre" id="telempre" >
+                            <label for="telempre">Telefono de Contacto</label>
+                            <input type="tel" name="tleempre" id="telempre" >
                         </div>
+
+                        <div class="detalle__sitio">
+                            <label for="galeriaEmprende[]">Galeria de evento</label>
+                            <input type="file" id="galeriaEmprende[]" name="galeriaEmprende[]"  multiple>
+                        </div>
+
+                        <div class="detalle__sitio">
+                            <label>Redes del evento</label>
+                            <input type="url" name="redInstagram" id="redInstagram"
+                                placeholder="https://www.instagram.com/" value="{{ datos['redInstagram'] if datos.get('redInstagram') else '' }}">
+                            <input type="url" name="redTiktok" id="redTiktok" placeholder="https://www.tiktok.com/" value="{{ datos['redTiktok'] if datos.get('redTiktok') else '' }}">
+                        </div>
+
                         <div class="detalle__sitio boton_form">
                             <input type="submit" value="Siguiente" class="btn__form">
                         </div>

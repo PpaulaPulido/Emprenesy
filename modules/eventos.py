@@ -99,9 +99,13 @@ def publicarEventos():
 
             # Insertar redes sociales
             if form_data["redInstagram"]:
-                cursor.execute("INSERT INTO redesSocialesEven (ideven, red, url) VALUES (%s, %s, %s)", (evento_id, 'instagram', form_data["redInstagram"]))
+                #cursor.execute("INSERT INTO redesSocialesEven (ideven, red, url) VALUES (%s, %s, %s)", (evento_id, 'instagram', form_data["redInstagram"]))
+                cursor.execute("INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) VALUES (%s, %s, %s, %s)", 
+                   (evento_id, 'evento', 'instagram', form_data["redInstagram"]))
             if form_data["redTiktok"]:
-                cursor.execute("INSERT INTO redesSocialesEven (ideven, red, url) VALUES (%s, %s, %s)", (evento_id, 'tik tok', form_data["redTiktok"]))
+                #cursor.execute("INSERT INTO redesSocialesEven (ideven, red, url) VALUES (%s, %s, %s)", (evento_id, 'tik tok', form_data["redTiktok"]))
+                cursor.execute("INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) VALUES (%s, %s, %s, %s)", 
+                   (evento_id, 'evento', 'tiktok', form_data["redTiktok"]))
 
             db.commit()
             cursor.close()
@@ -115,9 +119,11 @@ def publicarEventos():
             cursor.execute("UPDATE fechaseven SET fechaseven= %s, horarioEntrada = %s ,horarioSalida = %s WHERE ideven=%s",(form_data["fechaeven"],form_data["horarioE"], form_data["horarioS"],evento_id))
             
             if form_data["redInstagram"]:
-                cursor.execute("UPDATE redesSocialesEven SET url = %s WHERE ideven=%s",(form_data["redInstagram"],evento_id))
+                cursor.execute("UPDATE redes_sociales SET url = %s WHERE entidad_id = %s AND entidad_tipo = %s AND red = %s", 
+                   (form_data["redInstagram"], evento_id, 'evento', 'instagram'))
             if form_data["redTiktok"]:
-                cursor.execute("UPDATE redesSocialesEven SET url = %s WHERE ideven=%s",(form_data["redTiktok"],evento_id))
+                cursor.execute("UPDATE redes_sociales SET url = %s WHERE entidad_id = %s AND entidad_tipo = %s AND red = %s", 
+                   (form_data["redTiktok"], evento_id, 'evento', 'tiktok'))
             db.commit()
             cursor.close()
 

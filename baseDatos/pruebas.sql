@@ -1,4 +1,5 @@
 create database emprenesy;
+drop database emprenesy;
 use emprenesy;
 
 create table usuario(
@@ -38,7 +39,7 @@ CREATE TABLE fotos_admin (
     tipo_foto ENUM('portada', 'general','perfil') DEFAULT 'general',
     FOREIGN KEY (cod_admin) REFERENCES administrador(codadmin)
 );
-
+delete from fotos_Admin;
 select * from fotos_admin;
 
 CREATE TABLE fotos_usuario (
@@ -80,14 +81,15 @@ CREATE TABLE fechaseven(
 );
 SELECT * FROM fechaseven WHERE ideven = 1;
 
-CREATE TABLE redesSocialesEven(
-    ideven INT,
-    red VARCHAR(50) DEFAULT NULL,
-    url VARCHAR(250),
-    PRIMARY KEY (ideven, red),
-    FOREIGN KEY (ideven) REFERENCES eventos(ideven)
+CREATE TABLE redes_sociales (
+    id_red_social INT AUTO_INCREMENT PRIMARY KEY,
+    entidad_id INT,
+    entidad_tipo VARCHAR(50),  -- 'evento' o 'emprendimiento'
+    red VARCHAR(50),
+    url VARCHAR(250)
 );
-SELECT * FROM redesSocialesEven WHERE ideven = 4;
+
+
 CREATE TABLE galeriaeven(
     codgaleria INT PRIMARY KEY AUTO_INCREMENT,
     ideven INT,
@@ -106,30 +108,48 @@ foreign key (ideven) references eventos(ideven)
 );
 SELECT * FROM ubicacioneven WHERE ideven = 2;
 
-SELECT 
-    e.ideven,
-    e.nombreeven,
-    e.tipoevento,
-    e.descripeven,
-    e.paginaeven,
-    e.boletaseven,
-    e.infoAdicional,
-    e.contacto,
-    e.correoeven,
-    MAX(f.fechaseven) AS fecha_evento,
-    GROUP_CONCAT(DISTINCT u.ubicacion SEPARATOR '; ') AS ubicaciones,
-    GROUP_CONCAT(DISTINCT r.url SEPARATOR '; ') AS redes_sociales_urls,
-    GROUP_CONCAT(DISTINCT g.urlImagen SEPARATOR '; ') AS imagenes_urls
-FROM 
-    eventos e
-LEFT JOIN fechaseven f ON e.ideven = f.ideven
-LEFT JOIN redesSocialesEven r ON e.ideven = r.ideven
-LEFT JOIN galeriaeven g ON e.ideven = g.ideven
-LEFT JOIN ubicacioneven u ON e.ideven = u.ideven
-GROUP BY
-    e.ideven;
-    
-select logo from eventos;
+
+CREATE TABLE Favoritos (
+    idFavorito INT AUTO_INCREMENT PRIMARY KEY,
+    idUsuario INT,
+    idItem INT,
+    tipoItem VARCHAR(50),  -- 'evento', 'restaurante', 'emprendimiento'
+    fechaFavorito TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (idUsuario) REFERENCES Usuarios(idUsuario)
+);
+
+create table emprendimientos(
+idempre int primary key auto_increment,
+nombreempre varchar(100),
+logo varchar(255),
+tipoempre varchar(100),
+descripempre varchar(250),
+horarioempre varchar(100),
+horarioApertura TIME, 
+horarioCierre TIME,
+paginaempre varchar(250),
+producempre varchar(250),
+correoempre varchar(50),
+telempre varchar (20),
+codadmin int,
+foreign key (codadmin) references administrador (codadmin)
+);
+create table galeriaempre(
+codgaleria int primary key auto_increment,
+idempre int,
+imagenempre varchar(255),
+descripcion VARCHAR(255) DEFAULT NULL, 
+foreign key (idempre) references emprendimientos (idempre)
+);
+
+create table ubicacionempre(
+codubicacionE int primary key auto_increment,
+idempre int,
+ubicacion varchar(200),
+foreign key (idempre) references emprendimientos (idempre)
+);
+
+
 
 
 

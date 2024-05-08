@@ -15,6 +15,10 @@ def sectionEmprende():
 def emprendeDetalle():
     return render_template('detalle_empren.html')
 
-@emprende.route('/publicacionEmprende')
+@emprende.route('/publicacionEmprende',methods=['GET', 'POST'])
 def publicar_emprendimiento():
     return render_template('formularioempren.html')
+
+@emprende.route('/EmprendeLocation')
+def publicar_emprendimientoLocation():
+    return render_template('formularioEmprende2.html')

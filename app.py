@@ -9,6 +9,7 @@ app = Flask(__name__)
 app.secret_key = '123456789'
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['FOLDER_EVENT'] = 'static/galeriaEventos'
+app.config['FOLDER_EMPREN'] = 'static/galeriaEmprende'
 
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])

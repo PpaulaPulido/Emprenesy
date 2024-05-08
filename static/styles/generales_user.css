@@ -1,21 +1,122 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,500;1,6..12,500&family=Poppins:wght@300;400&family=Roboto+Slab:wght@100..900&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body{
-    font-family: 'Nunito Sans', sans-serif;
-}
-h1,h2,h3{
-    font-family: 'Roboto Slab', serif;
-
-}
-p{
-    font-family: 'Poppins', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Roboto Slab', serif;
+
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+}
+
+/*************************Estilos del menu toggle para pantallas medianas y pequeñas*************************************/
+#menuLateralToggle{
+  display: none;
+}
+.nav-list2 {
+  list-style: none;
+  position: fixed;
+  background-image: linear-gradient(135deg, #213859 0%, #2c5d9d 21%, #748ffc 57%, #a755f9 100%);
+  margin-top: 5px;
+  width: 250px;
+  height: 700px;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  left: -100%;
+  padding: 20px;
+  transition: left 0.4s ease;
+  z-index: 10;
+}
+.menu-opciones {
+  margin-top: 40px;
+}
+.menu-opciones #cerrar{
+  display: flex;
+  justify-content: flex-end;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 20px;
+
+} 
+.nav-list2.active {
+  left: 0;
+  transition: left 0.6s ease;
+  
+}
+.nav-list2 li:not(:first-child) {
+  padding: 10px;
+  border-bottom: 1px solid #fff;
+}
+
+.nav-list2 li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+.nav-list2 li a:hover{
+  color: #91ffed;
+}
+.nav-list2 li a:focus {
+  display: block;
+  color: #333;
+  background-color: #eee;
+  transition: all .5s;
+}
+.logoToggle{
+  width: 170px;
+  height: auto;
+}
+.menu-toggle {
+  position: fixed;
+  top: 4;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+}
+
+.bar {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+@media only screen and (min-width: 730px) and (max-width: 1220px) {
+  body {
+    background-color: #850202;
+  }
+
+  .link {
+    display: none;
+  }
+
+  .logo {
+    display: none;
+  }
+  #menuLateralToggle{
+    display: block;
+  }
+
+}
 
 /*estilos de la barra de navegacion*/
 ul,
@@ -29,7 +130,7 @@ ol {
   position: fixed;
   justify-content: space-between;
   top: 0;
-  z-index: 1000;
+  z-index: 1;
   height: 73px;
   width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -176,7 +277,8 @@ ol {
   list-style: none;
   cursor: pointer;
 }
-.header_buscador #box-search li a{
+
+.header_buscador #box-search li a {
   display: block;
   text-decoration: none;
   color: #254b7f;

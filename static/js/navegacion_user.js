@@ -29,7 +29,7 @@ function crearNav(imagenURL){
         { text: 'Sobre Nosotros', href: urlNosotros, class: 'link' },
         { text: 'Inicio', href: urlIndex, class: 'link' },
         { text: 'Mis favoritos', href: urlFavoritos, class: 'link' },
-        { text: `<img src="${imagenURL}" alt="perfil">`, href: '#', class: 'link1', hasSubMenu: true }
+        { text: `<img src="${imagenURL}" alt="perfil" id= "fotoPerfilNav">`, href: '#', class: 'link1', hasSubMenu: true }
     ];
 
     // Elementos del submenu
@@ -107,4 +107,31 @@ function crearMenuItem(nav_list,menuItems,subMenuItems){
         }
         nav_list.appendChild(liElement);
     });
+}
+
+function menuToggle(){
+    const mobileMenu = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list2');
+        const cerrar = document.getElementById('cerrar');
+
+        document.addEventListener('click', function (event) {
+            // Comprobar si el clic no fue dentro del menú o el botón de toggle
+            if (!navList.contains(event.target) && !mobileMenu.contains(event.target)) {
+                // Cerrar el menú
+                navList.classList.remove('active');
+                mobileMenu.classList.remove('is-active');
+            }
+        });
+
+        mobileMenu.addEventListener('click', () => {
+
+            navList.classList.toggle('active');
+            mobileMenu.classList.toggle('is-active');
+        });
+
+        cerrar.addEventListener('click', () => {
+            navList.style.transition = 'left 0.9s ease';
+            navList.classList.remove('active');
+            mobileMenu.classList.remove('is-active');
+        })
 }

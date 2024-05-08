@@ -14,3 +14,7 @@ def sectionEmprende():
 @emprende.route('/emprendeDetalle')
 def emprendeDetalle():
     return render_template('detalle_empren.html')
+
+@emprende.route('/publicacionEmprende')
+def publicar_emprendimiento():
+    return render_template('formularioempren.html')

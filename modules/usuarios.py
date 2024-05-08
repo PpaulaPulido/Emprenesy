@@ -11,6 +11,8 @@ cursor = get_cursor(db)
 
 @usuarios.route('/login', methods=['GET','POST'])
 def inicio_sesion():
+    cursor = get_db().cursor()
+    cursor = db.cursor(dictionary=True)
     if request.method =='POST':
         username= request.form.get('txtusuario')
         password= request.form.get('txtcontrasena')
@@ -18,20 +20,23 @@ def inicio_sesion():
         
 
         if (roles == 'usuario'):
-            sql = 'SELECT correousu,contrasena FROM usuario where correousu = %s'
+            sql = 'SELECT codusuario,correousu,contrasena FROM usuario where correousu = %s'
             cursor.execute(sql,(username,))
             user = cursor.fetchone() 
-            if (user and check_password_hash(user[1],password)):
-                
+            if user and check_password_hash(user['contrasena'], password):
+                session['email'] = user['correousu']
+                session['user_id'] = user['codusuario'] 
                 return redirect(url_for('usuarios.perfil_usuario'))
             else:
                 return render_template('iniciar_sesion.html')
         elif (roles == 'Administrador'):
-            sql = 'SELECT correoadmin, contrasena FROM administrador where correoadmin = %s'
+            sql = 'SELECT codadmin,correoadmin, contrasena FROM administrador where correoadmin = %s'
             cursor.execute(sql,(username,))
             admin = cursor.fetchone()
-            if (admin and check_password_hash(admin[1], password)):
-                return redirect(url_for('usuarios.perfil_admin'))
+            if admin and check_password_hash(admin['contrasena'], password):
+                session['email'] = admin['correoadmin']
+                session['user_id'] = admin['codadmin'] 
+                return redirect(url_for('admin.perfil_admin'))
             else:
                 error='Credenciales invalidas. por favor intentarlo de nuevo'
                 return render_template('iniciar_sesion.html', error=error)

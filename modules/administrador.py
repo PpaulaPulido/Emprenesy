@@ -32,7 +32,7 @@ def perfil_admin():
     db = get_db()  # Obtener la conexión a la base de datos
     cursor = db.cursor()  # Crear un cursor
 
-    default_portada = '/static/img/bogota-turismo.jpg'
+    default_portada = '/static/img/Portada-Bogota.jpg'
     default_perfil = '/static/img/perfil_user.png'
 
     try:

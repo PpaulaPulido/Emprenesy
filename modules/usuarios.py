@@ -109,7 +109,7 @@ def perfil_usuario():
     db = get_db() 
     cursor = db.cursor() 
     
-    default_portada = '/static/img/bogota-turismo.jpg'
+    default_portada = '/static/img/Portada-Bogota.jpg'
     default_perfil = '/static/img/perfil_user.png'
     
     try:

@@ -17,18 +17,41 @@ const detalleEmprendeUrl = document.getElementById('detalle-emprende-url').getAt
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  cntSliderTarjetas(datosTarjetas, sliderTarjetas, btn_anterior, btn_siguiente, 'res',detalleResUrl);
-  cntSliderTarjetas(datosEventos, sliderTarjetas2, btn_anterior2, btn_siguiente2, 'evento',detalleEventoUrl);
-  cntSliderTarjetas(datosEmpredimientos, sliderTarjetas3, btn_anterior3, btn_siguiente3, 'emprende',detalleEmprendeUrl);
+  cntSliderTarjetas(datosTarjetas, sliderTarjetas, btn_anterior, btn_siguiente, 'res', detalleResUrl);
+  cntSliderTarjetas(datosEventos, sliderTarjetas2, btn_anterior2, btn_siguiente2, 'evento', detalleEventoUrl);
+  cntSliderTarjetas(datosEmpredimientos, sliderTarjetas3, btn_anterior3, btn_siguiente3, 'emprende', detalleEmprendeUrl);
 
   // Función que se ejecuta cuando se hace scroll
   window.onscroll = function () {
     scrollFunction();
   };
+  user_sesion();
 
 });
 
-
+function user_sesion() {
+  return fetch('/usuarios/perfilImagen_user')
+    .then(response => {
+      if (!response.ok) {
+        //indica si la solicitud no fue existosa
+        throw new Error('Respuesta no fue correcta');
+      }
+      return response.blob();
+    })
+    .then(imageBlob => {
+      const imagenURL = URL.createObjectURL(imageBlob);
+      crearNav(imagenURL)
+    })
+    .catch(error => {
+      console.error('Error al cargar la imagen del perfil:', error);
+      const imagenURL = '/static/img/perfil_user.png';
+      crearNav(imagenURL);
+    });
+}
+function crearNav(imagenURL) {
+  const imagen = document.getElementById('imgPerfil');
+  imagen.src = `${imagenURL}`;
+}
 function parametros() {
 
   const link_evento = document.getElementById('evento_link');
@@ -60,7 +83,7 @@ function scrollFunction() {
   }
 }
 
-function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, tipo,enlace) {
+function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, tipo, enlace) {
 
   // Función para mostrar las tarjetas
   function mostrarTarjeta(index, cardSlider) {

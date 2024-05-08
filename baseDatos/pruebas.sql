@@ -1,7 +1,4 @@
 create database emprenesy;
-
-
-drop database emprenesy;
 use emprenesy;
 
 create table usuario(
@@ -13,13 +10,12 @@ fechanac_usu date,
 correousu varchar (50),
 contrasena varchar(255)
 );
-CREATE TABLE fotos_usuario (
-    id_foto INT AUTO_INCREMENT PRIMARY KEY,
-    cod_usuario INT,
-    ruta_foto VARCHAR(255) NOT NULL,
-    tipo_foto ENUM('portada', 'general','perfil') DEFAULT 'general',
-    FOREIGN KEY (cod_usuario) REFERENCES usuario(cod_usuario)
-);
+INSERT INTO usuario (nombreusu, apellidousu, telusu, fechanac_usu, correousu, contrasena) 
+VALUES ('Juan', 'Pérez', '1234567890', '1990-01-15', 'juan.perez@example.com', 'ContraseñaSegura123');
+
+select * from usuario;
+select * from administrador;
+
 create table administrador(
 codadmin int primary key auto_increment,
 nombreadmin varchar(50),
@@ -33,6 +29,8 @@ contrasena varchar(255)
 INSERT INTO administrador (nombreadmin, apellidoadmin, telfadmin, correoadmin, codsitio, fechanac_admin, contrasena) 
 VALUES ('Juan', 'Pérez', '123-456-7890', 'juan.perez@example.com', 1, '1980-05-15', 'password123');
 
+select * from administrador;
+
 CREATE TABLE fotos_admin (
     id_foto INT AUTO_INCREMENT PRIMARY KEY,
     cod_admin INT,
@@ -41,6 +39,21 @@ CREATE TABLE fotos_admin (
     FOREIGN KEY (cod_admin) REFERENCES administrador(codadmin)
 );
 
+select * from fotos_admin;
+
+CREATE TABLE fotos_usuario (
+    id_foto INT AUTO_INCREMENT PRIMARY KEY,
+    cod_usuario INT,
+    ruta_foto VARCHAR(255) NOT NULL,
+    tipo_foto ENUM('portada', 'general','perfil') DEFAULT 'general',
+    FOREIGN KEY (cod_usuario) REFERENCES usuario(codusuario)
+);
+
+select * from usuario;
+select * from fotos_usuario;
+
+
+delete from fotos_usuario;
 CREATE TABLE eventos(
     ideven INT PRIMARY KEY AUTO_INCREMENT,
     nombreeven VARCHAR(100),
@@ -55,7 +68,8 @@ CREATE TABLE eventos(
     codadmin INT,
     FOREIGN KEY (codadmin) REFERENCES administrador(codadmin)
 );
-
+select * from eventos;
+select nombreeven,logo,tipoevento from eventos where codadmin = 1;
 CREATE TABLE fechaseven(
     codfechas INT PRIMARY KEY AUTO_INCREMENT,
     ideven INT,
@@ -64,6 +78,7 @@ CREATE TABLE fechaseven(
     horarioSalida TIME,
     FOREIGN KEY (ideven) REFERENCES eventos(ideven)
 );
+SELECT * FROM fechaseven WHERE ideven = 1;
 
 CREATE TABLE redesSocialesEven(
     ideven INT,
@@ -72,7 +87,7 @@ CREATE TABLE redesSocialesEven(
     PRIMARY KEY (ideven, red),
     FOREIGN KEY (ideven) REFERENCES eventos(ideven)
 );
-
+SELECT * FROM redesSocialesEven WHERE ideven = 4;
 CREATE TABLE galeriaeven(
     codgaleria INT PRIMARY KEY AUTO_INCREMENT,
     ideven INT,
@@ -81,13 +96,15 @@ CREATE TABLE galeriaeven(
     FOREIGN KEY (ideven) REFERENCES eventos(ideven)
 );
 
+SELECT * FROM galeriaeven WHERE ideven = 5;
+
 create table ubicacioneven(
 codubicacion int primary key auto_increment,
 ideven int,
 ubicacion varchar (200),
 foreign key (ideven) references eventos(ideven)
 );
-
+SELECT * FROM ubicacioneven WHERE ideven = 2;
 
 SELECT 
     e.ideven,
@@ -112,3 +129,7 @@ LEFT JOIN ubicacioneven u ON e.ideven = u.ideven
 GROUP BY
     e.ideven;
     
+select logo from eventos;
+
+
+

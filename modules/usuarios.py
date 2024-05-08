@@ -3,12 +3,39 @@ from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash 
 from db import get_db, get_cursor
 import os
+import mysql.connector
 
 usuarios = Blueprint('usuarios', __name__)
 db = get_db()
 cursor = get_cursor(db)
 
+@usuarios.route('/login', methods=['GET','POST'])
+def inicio_sesion():
+    if request.method =='POST':
+        username= request.form.get('txtusuario')
+        password= request.form.get('txtcontrasena')
+        roles = request.form.get ('rol')
+        
 
+        if (roles == 'usuario'):
+            sql = 'SELECT correousu,contrasena FROM usuario where correousu = %s'
+            cursor.execute(sql,(username,))
+            user = cursor.fetchone() 
+            if (user and check_password_hash(user[1],password)):
+                
+                return redirect(url_for('usuarios.perfil_usuario'))
+            else:
+                return render_template('iniciar_sesion.html')
+        elif (roles == 'Administrador'):
+            sql = 'SELECT correoadmin, contrasena FROM administrador where correoadmin = %s'
+            cursor.execute(sql,(username,))
+            admin = cursor.fetchone()
+            if (admin and check_password_hash(admin[1], password)):
+                return redirect(url_for('usuarios.perfil_admin'))
+            else:
+                error='Credenciales invalidas. por favor intentarlo de nuevo'
+                return render_template('iniciar_sesion.html', error=error)
+    return render_template('iniciar_sesion.html')
            
         
 @usuarios.route('/perfil_usuario')

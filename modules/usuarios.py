@@ -8,36 +8,7 @@ usuarios = Blueprint('usuarios', __name__)
 db = get_db()
 cursor = get_cursor(db)
 
-@usuarios.route('/login', methods=['GET','POST'])
-def inicio_sesion():
-    
-    cursor = get_db().cursor()
-    cursor = db.cursor(dictionary=True)
-    if request.method =='POST':
-        username= request.form.get('txtusuario')
-        password= request.form.get('txtcontrasena')
-        roles = request.form.get ('rol')
-        
-    
-        if roles == 'usuario':
-            
-            cursor.execute('SELECT codusuario,correousu, contrasena FROM usuario WHERE correousu = %s', (username,))
-            user = cursor.fetchone()
-            if user and check_password_hash(user['contrasena'], password):
-                session['email'] = user['correousu']
-                session['user_id'] = user['codusuario']  
-                return redirect(url_for('usuarios.index_user'))
-            
-        elif roles == 'Administrador':
-            cursor.execute('SELECT codadmin,correoadmin, contrasena FROM administrador WHERE correoadmin = %s', (username,))
-            admin = cursor.fetchone()
-            if admin and check_password_hash(admin['contrasena'], password):
-                session['email'] = admin['correoadmin']
-                session['user_id'] = admin['codadmin'] 
-                return redirect(url_for('admin.perfil_admin'))
-            
-        flash('Credenciales inválidas. Por favor intentarlo de nuevo.', 'error')
-    return render_template('iniciar_sesion.html')
+
            
         
 @usuarios.route('/perfil_usuario')

@@ -1,5 +1,6 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort,session,jsonify
 from werkzeug.utils import secure_filename
+from datetime import datetime
 from db import get_db, get_cursor
 import os
 
@@ -23,14 +24,15 @@ def sectionEvento():
 def eventoLocation():
     return render_template('formularioEventos2.html')
 
-
+#********************************Resetear publicacion evento para registrar uno nuevo**************************************
 @evento.route('/resetEvento')
 def resetEvento():
     session.pop('evento_id', None)
     session.pop('form_data', None)
     return redirect(url_for('evento.publicarEventos'))
 
-# Conexión para ingresar eventos
+
+# Conexión para ingresar publicaciones de  eventos *******************************
 @evento.route('/publicareventos', methods=['GET', 'POST'])
 def publicarEventos():
     
@@ -73,12 +75,13 @@ def publicarEventos():
         })
         session['form_data'] = form_data
 
-        codadmin = 1  # Código del administrador
+        codadmin = session.get('admin_id')  # Código del administrador
 
         if not evento_id:
             cursor = db.cursor()
+            fechaPublicacion = datetime.now().date()
             # Inserta un nuevo evento en la base de datos
-            cursor.execute( "INSERT INTO eventos (nombreeven, logo, tipoevento, descripeven, paginaeven, boletaseven, infoAdicional, contacto, correoeven, codadmin) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",(form_data["nombreven"], relativePath, form_data["tipoevento"], form_data["descripcioneven"], form_data["paginaeven"], form_data["boletoseven"], form_data["descripcionA"], form_data["contactoeven"], form_data["correoeven"], codadmin))
+            cursor.execute( "INSERT INTO eventos (nombreeven, logo, tipoevento, descripeven, paginaeven, boletaseven, infoAdicional, contacto, correoeven,fecha_publicacion, codadmin) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s)",(form_data["nombreven"], relativePath, form_data["tipoevento"], form_data["descripcioneven"], form_data["paginaeven"], form_data["boletoseven"], form_data["descripcionA"], form_data["contactoeven"], form_data["correoeven"],fechaPublicacion ,codadmin))
             
             evento_id = cursor.lastrowid
             session['evento_id'] = evento_id
@@ -92,7 +95,7 @@ def publicarEventos():
                     filename = secure_filename(imagen.filename)
                     path = os.path.join(upload_folder, filename)
                     imagen.save(path)
-                    cursor.execute("INSERT INTO galeriaeven (ideven, urlImagen, descripcion) VALUES (%s, %s, %s)", (evento_id, path, "Descripción imagen"))
+                    cursor.execute("INSERT INTO galeriaeven (ideven, urlImagen, descripcion) VALUES (%s, %s, %s)", (evento_id, path, "Imagen del evento"))
             
             # Insertar fechas y horarios
             cursor.execute("INSERT INTO fechaseven (ideven, fechaseven, horarioEntrada, horarioSalida) VALUES (%s, %s, %s, %s)", (evento_id, form_data["fechaeven"], form_data["horarioE"], form_data["horarioS"]))
@@ -138,7 +141,7 @@ def formularioUbicacion():
     evento_id = session.get('evento_id')
     print("evento del id",evento_id)
     if request.method == 'POST':
-        ubicaciones = request.form.getlist('direccioneven[]')
+        ubicaciones = request.form.getlist('direcciones[]')
         print("ubicacion de la variable ubicaciones ",ubicaciones)
         for ubicacion in ubicaciones:
             print("ubicacion dentro del for ",ubicacion)
@@ -157,14 +160,15 @@ def dashEvento():
     db = get_db()
     cursor = db.cursor()
     
-    codadmin = 1  # Código del administrador
-    cursor.execute("select nombreeven,logo,tipoevento from eventos WHERE codadmin = %s",(codadmin,))
+    codadmin = session.get('admin_id')
+    
+    cursor.execute("select ideven,nombreeven,logo,tipoevento from eventos WHERE codadmin = %s",(codadmin,))
     publicacionesEven = cursor.fetchall()
     
     publicacionesEvenList = []
     
     for publicacion in publicacionesEven:
-        nombreeven,logo_filename,tipoevento = publicacion
+        idEven,nombreeven,logo_filename,tipoevento = publicacion
     
         if logo_filename:
             normalized_logo_filename = logo_filename.replace('\\', '/')
@@ -173,6 +177,7 @@ def dashEvento():
             logo_url = url_for('static', filename='img/notFound.png')
 
         publicacionesEvenList.append({
+            'idEven': idEven,
             'nombreeven': nombreeven,
             'logo': logo_url,
             'tipoevento': tipoevento

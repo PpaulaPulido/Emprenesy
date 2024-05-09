@@ -1,3 +1,10 @@
+window.onload = function () {
+    if (!sessionStorage.getItem('firstLoad')) {
+        sessionStorage.setItem('firstLoad', 'true');
+        window.location.reload();
+    }
+};
+
 function inputDir(callback) {
     const btn_dir = document.getElementById("btn_dir");
     const container_ub = document.querySelector(".container_ubicacion");
@@ -27,7 +34,7 @@ function inputDir(callback) {
 
             const input_detalle = document.createElement("input");
             input_detalle.classList.add("address");
-            input_detalle.name = "direccioneven[]"
+            input_detalle.name = "direcciones[]"
             input_detalle.type = "text";
             input_detalle.placeholder = "Ingresar dirección";
 
@@ -73,13 +80,15 @@ function removerErrorMessages() {
 
 
 document.addEventListener('DOMContentLoaded', function () {
+    
     /**
- * Calcula y muestra los detalles de la dirección para múltiples direcciones
- * basado en un texto de formato libre
- *
- * @param  {H.service.Platform} platform   Una clase simulada para acceder a los servicios de HERE
- * 
- */
+     * Calcula y muestra los detalles de la dirección para múltiples direcciones
+     * basado en un texto de formato libre
+     *
+     * @param  {H.service.Platform} platform   Una clase simulada para acceder a los servicios de HERE
+     * 
+     */
+
     function geocode(platform, ubicaciones) {
         var geocoder = platform.getSearchService();
 

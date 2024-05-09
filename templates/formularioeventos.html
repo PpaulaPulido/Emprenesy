@@ -71,21 +71,7 @@
                             <input type="file" id="file-upload-button" name="logoeven">
                         </div>
 
-                        <!--<div class="detalle__sitio">
-                            <label for="tipoevento">Tipo de evento</label>
-                            <select name="tipoevento" id="tipoevento">
-                                <option value="">Seleccionar</option>
-                                <option value="Evento de danza">Eventos de danza</option>
-                                <option value="Ferias gastronomicas">Ferias gastronomicas</option>
-                                <option value="Ferias tegnologicas">Ferias tegnologicas</option>
-                                <option value="Eventos deportivos">Eventos deportivos</option>
-                                <option value="Exposiciones de arte">Exposiciones de arte</option>
-                                <option value="Conciertos de musica">Conciertos de musica</option>
-                                <option value="Ferias de libros">Ferias de libros</option>.
-
-                            </select>
-                        </div>-->
-
+                    
                         <div class="detalle__sitio">
                             <label for="tipoevento">Tipo de evento</label>
                             <select name="tipoevento" id="tipoevento">
@@ -103,7 +89,7 @@
                         </div>
                         <div class="detalle__sitio">
                             <label for="fechaeven">Fecha del evento</label>
-                            <input class="nav" type="date" name="fechaeven" value="{{ datos['fechaeven'] if datos.get('fechaeven') else '' }}>
+                            <input class="nav" type="date" name="fechaeven" value="{{ datos['fechaeven'] if datos.get('fechaeven') else '' }}">
                         </div>
 
                         <div class="detalle__sitio">

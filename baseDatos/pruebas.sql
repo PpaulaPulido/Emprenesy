@@ -134,6 +134,7 @@ telempre varchar (20),
 codadmin int,
 foreign key (codadmin) references administrador (codadmin)
 );
+select * from emprendimientos;
 create table galeriaempre(
 codgaleria int primary key auto_increment,
 idempre int,
@@ -141,6 +142,7 @@ imagenempre varchar(255),
 descripcion VARCHAR(255) DEFAULT NULL, 
 foreign key (idempre) references emprendimientos (idempre)
 );
+select * from galeriaempre where idempre = 2;
 
 create table ubicacionempre(
 codubicacionE int primary key auto_increment,
@@ -148,8 +150,73 @@ idempre int,
 ubicacion varchar(200),
 foreign key (idempre) references emprendimientos (idempre)
 );
+select * from ubicacionempre where idempre = 2;
+
+SELECT
+    rs.entidad_id,
+    rs.red,
+    rs.url
+FROM
+    redes_sociales rs
+WHERE
+    rs.entidad_id = 1
+    AND rs.entidad_tipo = 'evento';
+
+
+SELECT 
+    e.ideven,
+    e.nombreeven,
+    e.logo,
+    e.tipoevento,
+    e.descripeven,
+    e.paginaeven,
+    e.boletaseven,
+    e.infoAdicional,
+    e.contacto,
+    e.correoeven,
+    f.fechaseven AS fecha_evento,
+    f.horarioEntrada,
+    f.horarioSalida,
+    GROUP_CONCAT(DISTINCT g.urlImagen SEPARATOR '; ') AS imagenes_urls,
+    GROUP_CONCAT(DISTINCT u.ubicacion SEPARATOR '; ') AS ubicaciones,
+    GROUP_CONCAT(DISTINCT rs.red SEPARATOR '; ') AS redes_sociales_red,
+    GROUP_CONCAT(DISTINCT rs.url SEPARATOR '; ') AS redes_sociales_url
+FROM 
+    eventos e
+LEFT JOIN fechaseven f ON e.ideven = f.ideven
+LEFT JOIN galeriaeven g ON e.ideven = g.ideven
+LEFT JOIN ubicacioneven u ON e.ideven = u.ideven
+LEFT JOIN redes_sociales rs ON e.ideven = rs.entidad_id AND rs.entidad_tipo = 'evento'
+GROUP BY
+    e.ideven;
 
 
 
+SELECT 
+    e.idempre,
+    e.nombreempre,
+    e.logo,
+    e.tipoempre,
+    e.descripempre,
+    e.horarioempre,
+    e.horarioApertura,
+    e.horarioCierre,
+    e.paginaempre,
+    e.producempre,
+    e.correoempre,
+    e.telempre,
+    GROUP_CONCAT(DISTINCT g.imagenempre SEPARATOR '; ') AS imagenes,
+    GROUP_CONCAT(DISTINCT g.descripcion SEPARATOR '; ') AS descripciones_imagenes,
+    GROUP_CONCAT(DISTINCT u.ubicacion SEPARATOR '; ') AS ubicaciones,
+    GROUP_CONCAT(DISTINCT CONCAT(rs.red, ': ', rs.url) SEPARATOR '; ') AS redes_sociales
+FROM 
+    emprendimientos e
+LEFT JOIN galeriaempre g ON e.idempre = g.idempre
+LEFT JOIN ubicacionempre u ON e.idempre = u.idempre
+LEFT JOIN redes_sociales rs ON e.idempre = rs.entidad_id AND rs.entidad_tipo = 'emprendimiento'
+GROUP BY
+    e.idempre
+ORDER BY
+    e.idempre;
 
 

@@ -64,8 +64,8 @@
                 </div>
                 <div class="contenido__detalles">
 
-                    <form class="info_detalles" id="formularioLocation"
-                        action="{{url_for('evento.formularioUbicacion')}}" method="POST" enctype="multipart/form-data">
+                    <form class="info_detalles" id="formularioLocationEm"
+                        action="{{url_for('emprende.publicar_emprendimientoLocation')}}" method="POST" enctype="multipart/form-data">
 
                         <div class="detalle__sitio">
                             <h3>Ubicaciones del sitio</h3>
@@ -74,7 +74,7 @@
                         <div class="container_ubicacion">
                             <div class="detalle__sitio">
                                 <input type="text" placeholder="Ingresar dirección" class="address"
-                                    name="direccioneven[]" />
+                                    name="direcciones[]" />
                             </div>
                         </div>
                         <div class="message"></div>
@@ -95,7 +95,7 @@
 
                         <div class="detalle__sitio boton_form">
                             <div class="detalle__sitio boton_form">
-                                <a  id="btn_regresar"
+                                <a  id="btn_regresarEm"
                                     class="btnRes2">Regresar</a>
                             </div>
                             <div class="detalle__sitio boton_form">
@@ -110,6 +110,7 @@
         <div id="data-container" data-perfil-url="{{ url_for('admin.perfil_admin') }}" style="display: none;"></div>
         <div id="form_url">
             <a id="index"  data-url="{{ url_for('admin.index_admin') }}" style="display: none;"></a>
+            <a id="form_emprendimiento" data-url="{{ url_for('emprende.publicar_emprendimiento') }}" style="display: none;"></a>
             <a id="form_evento" data-url="{{ url_for('evento.publicarEventos') }}" style="display: none;"></a>
         </div>
     </main>
@@ -169,8 +170,8 @@
 
     <script src="../static/js/generales_admin.js"></script>
     <script src="../static/js/publicacionEvento.js"></script>
+    <script src="../static/js/publicacionEmprende.js"></script>
     <script src="../static/js/buscador.js"></script>
-    <script src="../static/js/alertas.js"></script>
     <script src="../static/js/map_form.js"></script>
 </body>
 

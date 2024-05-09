@@ -1,5 +1,6 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort,session,jsonify
 from werkzeug.utils import secure_filename
+from datetime import datetime
 from db import get_db, get_cursor
 import os
 
@@ -78,8 +79,9 @@ def publicarEventos():
 
         if not evento_id:
             cursor = db.cursor()
+            fechaPublicacion = datetime.now().date()
             # Inserta un nuevo evento en la base de datos
-            cursor.execute( "INSERT INTO eventos (nombreeven, logo, tipoevento, descripeven, paginaeven, boletaseven, infoAdicional, contacto, correoeven, codadmin) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",(form_data["nombreven"], relativePath, form_data["tipoevento"], form_data["descripcioneven"], form_data["paginaeven"], form_data["boletoseven"], form_data["descripcionA"], form_data["contactoeven"], form_data["correoeven"], codadmin))
+            cursor.execute( "INSERT INTO eventos (nombreeven, logo, tipoevento, descripeven, paginaeven, boletaseven, infoAdicional, contacto, correoeven,fecha_publicacion, codadmin) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s)",(form_data["nombreven"], relativePath, form_data["tipoevento"], form_data["descripcioneven"], form_data["paginaeven"], form_data["boletoseven"], form_data["descripcionA"], form_data["contactoeven"], form_data["correoeven"],fechaPublicacion ,codadmin))
             
             evento_id = cursor.lastrowid
             session['evento_id'] = evento_id
@@ -160,13 +162,13 @@ def dashEvento():
     
     codadmin = session.get('admin_id')
     
-    cursor.execute("select nombreeven,logo,tipoevento from eventos WHERE codadmin = %s",(codadmin,))
+    cursor.execute("select ideven,nombreeven,logo,tipoevento from eventos WHERE codadmin = %s",(codadmin,))
     publicacionesEven = cursor.fetchall()
     
     publicacionesEvenList = []
     
     for publicacion in publicacionesEven:
-        nombreeven,logo_filename,tipoevento = publicacion
+        idEven,nombreeven,logo_filename,tipoevento = publicacion
     
         if logo_filename:
             normalized_logo_filename = logo_filename.replace('\\', '/')
@@ -175,6 +177,7 @@ def dashEvento():
             logo_url = url_for('static', filename='img/notFound.png')
 
         publicacionesEvenList.append({
+            'idEven': idEven,
             'nombreeven': nombreeven,
             'logo': logo_url,
             'tipoevento': tipoevento

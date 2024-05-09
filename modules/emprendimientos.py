@@ -1,5 +1,6 @@
-from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort,session
+from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort,session,jsonify
 from werkzeug.utils import secure_filename
+from datetime import datetime
 from db import get_db, get_cursor
 import os
 
@@ -12,12 +13,14 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
+#***************************************Restaurar formulario de emprendimiento*********************************************************
 @emprende.route('/resetEmprende')
 def resetEmprendimiento():
     session.pop('emprende_id', None)
     session.pop('form_data', None)
     return redirect(url_for('emprende.publicar_emprendimiento'))
 
+#************************************************Registro de publicacion de emprendimiento parte 1***************************************************************************
 @emprende.route('/publicacionEmprende',methods=['GET', 'POST'])
 def publicar_emprendimiento():
     
@@ -68,7 +71,8 @@ def publicar_emprendimiento():
         cursor = db.cursor()
         
         if not emprende_id:
-            cursor.execute("INSERT INTO emprendimientos (nombreempre,logo,tipoempre,descripempre,horarioempre,horarioApertura,horarioCierre,paginaempre,producempre,correoempre,telempre,codadmin) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(form_data["nombreEm"],form_data['logo'],form_data["tipoEm"],form_data["descripcionEm"],form_data["horarioEm"],form_data["horarioE"],form_data["horarioS"],form_data["paginaEm"],form_data["productosEm"],form_data["correoEm"],form_data["contactoEm"],codadmin))
+            fechaPublicacion = datetime.now().date()
+            cursor.execute("INSERT INTO emprendimientos (nombreempre,logo,tipoempre,descripempre,horarioempre,horarioApertura,horarioCierre,paginaempre,producempre,correoempre,telempre,fecha_publicacion,codadmin) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(form_data["nombreEm"],form_data['logo'],form_data["tipoEm"],form_data["descripcionEm"],form_data["horarioEm"],form_data["horarioE"],form_data["horarioS"],form_data["paginaEm"],form_data["productosEm"],form_data["correoEm"],form_data["contactoEm"],fechaPublicacion,codadmin))
             
             #recuperar el id del emprendimiento
             emprende_id = cursor.lastrowid
@@ -116,6 +120,7 @@ def publicar_emprendimiento():
     
     return render_template('formularioempren.html', datos = form_data, emprende_id = emprende_id)
 
+#************************************************Registro de publicacion de emprendimiento parte 2***********************************
 @emprende.route('/EmprendeLocation',methods=['GET', 'POST'])
 def publicar_emprendimientoLocation():
     
@@ -130,6 +135,39 @@ def publicar_emprendimientoLocation():
         flash('Ubicaciones guardadas correctamente')
         return redirect(url_for('admin.index_admin'))
     return render_template('formularioEmprende2.html')
+
+#************************************************Ruta para mostrar publicacion a los admin***********************************
+@emprende.route('/dashEmprende' ,methods = ['GET'])
+def dashEmprende():
+    
+    db = get_db()
+    cursor = db.cursor()
+    
+    codadmin = session.get('admin_id')
+    
+    cursor.execute("SELECT idempre,nombreempre,logo,tipoempre,fecha_publicacion FROM emprendimientos WHERE codadmin = %s ORDER BY fecha_publicacion DESC",(codadmin,))
+    publicacionesEm = cursor.fetchall()
+    
+    publicacionesEmprendeList = []
+    
+    for publicacion in publicacionesEm:
+        idEmpre,nombreEm,logo_filename,tipoEm,fecha_publicacion = publicacion
+    
+        if logo_filename:
+            normalized_logo_filename = logo_filename.replace('\\', '/')
+            logo_url = url_for('static', filename=normalized_logo_filename)
+        else:
+            logo_url = url_for('static', filename='img/notFound.png')
+
+        publicacionesEmprendeList.append({
+            'idEmpre': idEmpre,
+            'nombreEmpre': nombreEm,
+            'logo': logo_url,
+            'tipoEmpre': tipoEm,
+            'fecha_publicacion':fecha_publicacion
+        })
+    return jsonify(publicacionesEmprendeList)
+
 
 @emprende.route('/sectionEmprende')
 def sectionEmprende():

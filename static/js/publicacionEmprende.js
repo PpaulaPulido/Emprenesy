@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-    menu_form();
     
-    user_sesion().then(() => {
-        inicializarBuscador();
-    }).catch(error => console.error('Error al inicializar sesión de usuario:', error));
+    const formularioEm = document.getElementById('formularioLocationEm');
+    const btnRegresarEm = document.getElementById('btn_regresarEm');
+    const redireccionar = document.getElementById('index').getAttribute('data-url');
+    const redireccionarFormEm = document.getElementById('form_emprendimiento').getAttribute('data-url');
+
+    alertaPu(formularioEm,redireccionar)
+    regresarForm(btnRegresarEm,redireccionarFormEm)
 
 })
 

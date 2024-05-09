@@ -4,24 +4,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const redireccionar = document.getElementById('index').getAttribute('data-url');
     const redireccionarForm = document.getElementById('form_evento').getAttribute('data-url');
 
-    formulario.addEventListener('submit', (e) => {
-        //e.preventDefault();
-        Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Registro de publicación exitosa",
-            showConfirmButton: false,
-            timer: 4000,
-            customClass: {
-                popup: 'border-blue', // Clase CSS para el borde del SweetAlert
-                icon: 'success-icon',
-            }
-        }).then(() => {
-            // Después de que la alerta se cierre, redirigir a la página especificada
-            window.location.href = redireccionar;
-        });
-    });
+    const formularioEm = document.getElementById('formularioLocationEm');
+    const btnRegresarEm = document.getElementById('btn_regresarEm');
+    const redireccionarFormEm = document.getElementById('form_emprendimiento').getAttribute('data-url');
 
+
+    alertaPu(formulario,redireccionar)
+    alertaPu(formularioEm,redireccionar)
+
+    regresarForm(btnRegresar,redireccionarForm)
+    regresarForm(btnRegresarEm,redireccionarFormEm)
+        
+
+});
+
+function regresarForm(btnRegresar,redireccionarForm){
     btnRegresar.addEventListener('click', () => {
         Swal.fire({
             title: "¿Estás seguro de que deseas regresar?",
@@ -69,5 +66,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+}
+function alertaPu(formulario,redireccionar){
+    formulario.addEventListener('submit', (e) => {
+        //e.preventDefault();
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Registro de publicación exitosa",
+            showConfirmButton: false,
+            timer: 4000,
+            customClass: {
+                popup: 'border-blue', // Clase CSS para el borde del SweetAlert
+                icon: 'success-icon',
+            }
+        }).then(() => {
+            // Después de que la alerta se cierre, redirigir a la página especificada
+            window.location.href = redireccionar;
+        });
+    });
 
-});
+}

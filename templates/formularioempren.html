@@ -58,7 +58,7 @@
 
                         <div class="detalle__sitio">
                             <label for="nombreEmprende">Nombre del emprendimiento</label>
-                            <input type="text" name="nombreEmprende" id="nombreEmprende">
+                            <input type="text" name="nombreEmprende" id="nombreEmprende" value="{{ datos['nombreEm'] if datos.get('nombreEm') else '' }}">
                         </div>
 
                         <div class="detalle__sitio">
@@ -66,69 +66,66 @@
                             <input type="file" id="logoEmprende" name="logoEmprende">
                         </div>
 
-         
                         <div class="detalle__sitio">
                             <label for="typeEmprende">Tipo de emprendimiento</label>
-                            <select name="typeEmprende" id="Emprende">
+                            <select name="typeEmprende" id="typeEmprende">
                                 <option value="">Seleccionar</option>
-                                <option value="Ropa">Ropa</option>
-                                <option value="Artesanias">Artesanias</option>
-                                <option value="Manualidades">Manualidades</option>
-                                <option value="comida">comida</option>
-                                <option value="otra opcion">Otro</option>
+                                {% for type in ['Ropa', 'Artesanias', 'Manualidades', 'Comida'] %}
+                                    <option value="{{ type }}" {% if datos.get('tipoEm') == type %}selected{% endif %}>{{ type }}</option>
+                                {% endfor %}
                             </select>
                         </div>
-                        
+
                         <div class="detalle__sitio">
                             <label for="descripcionEmprende">Descripcion del emprendimiento</label>
                             <textarea name="descripcionEmprende" id="descripcionEmprende" cols="70" rows="8"
-                                placeholder="Tu descripción"></textarea>
+                                placeholder="Tu descripción">{{ datos['descripcionEm'] if datos.get('descripcionEm') else '' }}</textarea>
                         </div>
                         
                         <div class="detalle__sitio">
                             <label for="horarioEmprende">Horario</label>
-                            <textarea name="horarioEmprende" id="horarioEmprende" placeholder="Por ejemplo Lunes-Viernes" cols="30" rows="8"></textarea>
+                            <textarea name="horarioEmprende" id="horarioEmprende" placeholder="Por ejemplo Lunes-Viernes" cols="30" rows="8">{{ datos['horarioEm'] if datos.get('horarioEm') else '' }}</textarea>
                         </div>
                     
                         <div class="detalle__sitio">
                             <label for="horarioE">Apertura</label>
-                            <input type="time" name="horarioE" id="horarioE" >
+                            <input type="time" name="horarioE" id="horarioE" value="{{ datos['horarioE'] if datos.get('horarioE') else '' }}">
                         </div>
 
                         <div class="detalle__sitio">
                             <label for="horarioS">Cierre</label>
-                            <input type="time" name="horarioS" id="horarioS" >
+                            <input type="time" name="horarioS" id="horarioS" value="{{ datos['horarioS'] if datos.get('horarioS') else '' }}">
                         </div>
 
                         
                         <div class="detalle__sitio">
                             <label for="pagina">Pagina del emprendimiento (opcional)</label>
-                            <input type="url" name="paginaEmprende" id="paginaEmprende" placeholder="https://example.com">
+                            <input type="url" name="paginaEmprende" id="paginaEmprende" placeholder="https://example.com" value="{{ datos['paginaEm'] if datos.get('paginaEm') else '' }}">
                         </div>
 
                         <div class="detalle__sitio">
                             <label for="producempre">Producto</label>
-                            <input type="url" name="producempre" id="producempre" placeholder="https://example.com">
+                            <input type="url" name="producempre" id="producempre" placeholder="https://example.com" value="{{ datos['productosEm'] if datos.get('productosEm') else '' }}">
                         </div>
 
                         <div class="detalle__sitio">
                             <label for="
                             correoempre">Correo</label>
-                            <input type="email" name="correoempre" id="correoempre">
+                            <input type="email" name="correoempre" id="correoempre" value="{{ datos['correoEm'] if datos.get('correoEm') else '' }}">
                         </div>
 
                         <div class="detalle__sitio">
                             <label for="telempre">Telefono de Contacto</label>
-                            <input type="tel" name="tleempre" id="telempre" >
+                            <input type="tel" name="telempre" id="telempre" value="{{ datos['contactoEm'] if datos.get('contactoEm') else '' }}">
                         </div>
 
                         <div class="detalle__sitio">
-                            <label for="galeriaEmprende[]">Galeria de evento</label>
-                            <input type="file" id="galeriaEmprende[]" name="galeriaEmprende[]"  multiple>
+                            <label for="galeria[]">Galeria del emprendimiento</label>
+                            <input type="file" id="galeria[]" name="galeria[]"  multiple>
                         </div>
 
                         <div class="detalle__sitio">
-                            <label>Redes del evento</label>
+                            <label>Redes del emprendimiento</label>
                             <input type="url" name="redInstagram" id="redInstagram"
                                 placeholder="https://www.instagram.com/" value="{{ datos['redInstagram'] if datos.get('redInstagram') else '' }}">
                             <input type="url" name="redTiktok" id="redTiktok" placeholder="https://www.tiktok.com/" value="{{ datos['redTiktok'] if datos.get('redTiktok') else '' }}">
@@ -201,6 +198,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+
    
 
 </body>

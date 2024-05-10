@@ -7,12 +7,45 @@ res = Blueprint('res', __name__)
 db = get_db()
 cursor = get_cursor(db)
 
-@res.route('/publicacionRes')
+
+#conexion para ingreasar restaurantes 
+@res.route('/publicacionRes', methods=['GET', 'POST'])
 def publicacionRes():
-    return render_template('publicacionRes.html')
+    if request.method == 'POST':
+        nombre = request.form.get('nombreresta')
+        descripcion = request.form.get('descripresta')
+        tipo = request.form.get('typeRes')
+        pagina = request.form.get('paginaresta')
+        menu = request.form.get('menuresta')
+        horario = request.form.get('horario')
+        entrada = request.form.get('entrada')
+        salida = request.form.get('salida')
+        
+        cursor = db.cursor()
+        
+        sql = "INSERT INTO restaurantes (nombreresta, descripresta, tipo, paginaresta, menuresta, horario, entrada, salida) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+        val = (nombre, descripcion, tipo, pagina, menu, horario, entrada, salida)
+        cursor.execute(sql, val)
+        
+        db.commit()
+        cursor.close()
+        
+        flash('publicacion de restaurante exitosa')
+
+    return render_template('publicacionRes.html') 
+
+    
 
 @res.route('/restauranteInfoContacto')
 def restauranteContacto():
+    if request.method == 'POST':
+        Correo_electro = request.form.get('correo')
+        numero_contacto = request.form.get('correo')
+        instagramRes= request.form.get('correo')
+        numero_contacto = request.form.get('correo')
+        numero_contacto = request.form.get('correo')
+        numero_contacto = request.form.get('correo')
+
     return render_template('publicacionRes1.html')
 
 @res.route('/restauranteLocation')

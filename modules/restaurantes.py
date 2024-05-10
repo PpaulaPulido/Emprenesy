@@ -132,6 +132,7 @@ def restauranteLocation():
         return redirect(url_for('admin.index_admin'))
     return render_template('publicacionRes2.html')
 
+
 @res.route('/restauranteDetalle')
 def restauranteDetalle():
     return render_template('detalle_res.html')
@@ -139,3 +140,4 @@ def restauranteDetalle():
 @res.route('/SeccionRestaurante')
 def sectionRes():
     return render_template('seccion_res.html')
+

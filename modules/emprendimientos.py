@@ -137,38 +137,6 @@ def publicar_emprendimientoLocation():
         return redirect(url_for('admin.index_admin'))
     return render_template('formularioEmprende2.html')
 
-#************************************************Ruta para mostrar publicacion a los admin***********************************
-@emprende.route('/dashEmprende' ,methods = ['GET'])
-def dashEmprende():
-    
-    db = get_db()
-    cursor = db.cursor()
-    
-    codadmin = session.get('admin_id')
-    
-    cursor.execute("SELECT idempre,nombreempre,logo,tipoempre,fecha_publicacion FROM emprendimientos WHERE codadmin = %s ORDER BY fecha_publicacion DESC",(codadmin,))
-    publicacionesEm = cursor.fetchall()
-    
-    publicacionesEmprendeList = []
-    
-    for publicacion in publicacionesEm:
-        idEmpre,nombreEm,logo_filename,tipoEm,fecha_publicacion = publicacion
-    
-        if logo_filename:
-            normalized_logo_filename = logo_filename.replace('\\', '/')
-            logo_url = url_for('static', filename=normalized_logo_filename)
-        else:
-            logo_url = url_for('static', filename='img/notFound.png')
-
-        publicacionesEmprendeList.append({
-            'idEmpre': idEmpre,
-            'nombreEmpre': nombreEm,
-            'logo': logo_url,
-            'tipoEmpre': tipoEm,
-            'fecha_publicacion':fecha_publicacion
-        })
-    return jsonify(publicacionesEmprendeList)
-
 
 @emprende.route('/sectionEmprende')
 def sectionEmprende():

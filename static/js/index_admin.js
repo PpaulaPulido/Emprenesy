@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     menu_lateral();
     subirPublicacionEven();
     subirPublicacionEmprende();
+    subirPublicacionRes();
 
     user_sesion().then(() => {
         inicializarBuscador();
@@ -10,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function subirPublicacionEven() {
-    fetch('/evento/dashEvento')
+    fetch('/publicacion/dashboard/evento')
         .then(response => response.json())  // Parsear la respuesta como JSON
         .then(datos => {
             const containerEven = document.getElementById('pub_eventos');
@@ -22,9 +23,9 @@ function subirPublicacionEven() {
             } else {
                 estadoContenido(datos, containerEven, {
                     titulo: "Mis eventos",
-                    idEven : 'idEven',
-                    nombreCampo: 'nombreeven',
-                    tipoCampo: 'tipoevento',
+                    idCampo : 'id',
+                    nombreCampo: 'nombre',
+                    tipoCampo: 'tipo',
                     imgAlt: 'logo del evento',
                     logo: 'logo'
                 });
@@ -39,21 +40,21 @@ function subirPublicacionEven() {
 }
 
 function subirPublicacionEmprende() {
-    fetch('/emprende/dashEmprende')
+    fetch('/publicacion/dashboard/emprendimiento')
         .then(response => response.json())  // Parsear la respuesta como JSON
         .then(datosEm => {
             const containerEm = document.getElementById('pub_emprende');
             containerEm.innerHTML = "";
 
             if (datosEm.length == 0) {
-                estadoVacio(containerEm, 'emprendimientos', 'fa-solid', 'fa-building');
+                estadoVacio(containerEm, 'restaurantes', 'fa-solid', 'fa-utensils');
 
             } else {
                 estadoContenido(datosEm, containerEm, {
                     titulo: "Mis emprendimientos",
-                    idEmpre : 'idEmpre',
-                    nombreCampo: 'nombreEmpre',
-                    tipoCampo: 'tipoEmpre',
+                    idCampo : 'id',
+                    nombreCampo: 'nombre',
+                    tipoCampo: 'tipo',
                     imgAlt: 'logo del emprendimiento',
                     logo: 'logo'
                 });
@@ -66,6 +67,36 @@ function subirPublicacionEmprende() {
 
         })
 }
+
+function subirPublicacionRes() {
+    fetch('/publicacion/dashboard/restaurante')
+        .then(response => response.json())  // Parsear la respuesta como JSON
+        .then(datos => {
+            const containerRes = document.getElementById('pub_res');
+            containerRes.innerHTML = "";
+
+            if (datos.length == 0) {
+                estadoVacio(containerRes, 'eventos', 'bi', 'bi-calendar-check');
+
+            } else {
+                estadoContenido(datos, containerRes, {
+                    titulo: "Mis restaurantes",
+                    idCampo : 'id',
+                    nombreCampo: 'nombre',
+                    tipoCampo: 'tipo',
+                    imgAlt: 'logo del restaurante',
+                    logo: 'logo'
+                });
+            }
+        })
+        .catch(error => {
+            const containerEven = document.getElementById('pub_res');
+            containerEven.innerHTML = "Error el cargar los registros de publicaciones de restaurantes"
+            console.log(error);
+
+        })
+}
+
 
 function estadoContenido(datos, container, config) {
 
@@ -80,7 +111,7 @@ function estadoContenido(datos, container, config) {
 
         const publicacionIndex = document.createElement("div");
         publicacionIndex.classList.add("publicacionIndex");
-        publicacionIndex.setAttribute('data-id', publicacion[config.idEven]);
+        publicacionIndex.setAttribute('data-id', publicacion[config.idCampo]);
 
         const tituloPub = document.createElement("h3");
         tituloPub.classList.add("publicacionTitle");
@@ -121,17 +152,6 @@ function estadoContenido(datos, container, config) {
         container.appendChild(tituloE);
         container.appendChild(divContainer);
     })
-}
-
-function estadoPublicaciones() {
-
-    const pubEventos = document.getElementById('pub_eventos');
-    const pubRes = document.getElementById('pub_res');
-    const pubEmprende = document.getElementById('pub_emprende');
-
-    estadoVacio(pubEventos, 'eventos', 'bi', 'bi-calendar-check');
-    estadoVacio(pubRes, 'restaurantes', 'fa-solid', 'fa-utensils');
-    estadoVacio(pubEmprende, 'emprendimientos', 'fa-solid', 'fa-building');
 }
 
 function estadoVacio(contenedor, message, icon1, icon2) {

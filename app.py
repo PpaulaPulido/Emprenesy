@@ -37,6 +37,9 @@ app.register_blueprint(evento, url_prefix="/evento")
 from modules.emprendimientos  import emprende
 app.register_blueprint(emprende, url_prefix="/emprende")
 
+from modules.publicaciones import publicacionDash
+app.register_blueprint(publicacionDash, url_prefix="/publicacion")
+
 @app.route('/')
 def index():
     return render_template('index.html')

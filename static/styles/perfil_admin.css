@@ -176,11 +176,17 @@ body{
     padding: 10px 20px;
     border-radius: 8px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 .opciones a{
     color: #0c4ca0;
+    width: 160px;
+    padding: 5px 0;
     font-weight: bold;
+    text-align: center;
+}
+.opciones a:hover{
+    border-bottom: 2px solid #0196aa;
 }
 #opciones__resultado{
     background-color: #fff;

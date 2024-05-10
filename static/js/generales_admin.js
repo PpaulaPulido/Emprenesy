@@ -131,6 +131,16 @@ function menu_lateral() {
     });
 }
 
+function menu_lateral2() {
+    // sidebar toggle
+    const btnToggle = document.querySelector('.toggle-btn');
+
+    btnToggle.addEventListener('click', function () {
+        document.getElementById('sidebar').classList.toggle('active');
+        console.log(document.getElementById('sidebar'))
+    });
+}
+
 function menu_form(){
 
     const btnToggle = document.querySelector('.toggle-btn');

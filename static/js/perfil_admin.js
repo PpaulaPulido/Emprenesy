@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    menu_lateral();
+    menu_lateral2();
 
     user_sesion().then(() => {
         inicializarBuscador();

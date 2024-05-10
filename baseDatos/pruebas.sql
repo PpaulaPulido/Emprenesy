@@ -4,110 +4,94 @@ use emprenesy;
 
 create table usuario(
 codusuario int primary key auto_increment,
-nombreusu varchar (50),
-apellidousu varchar(50),
-telusu varchar(20),
-fechanac_usu date,
-correousu varchar (50),
-contrasena varchar(255)
+nombreusu varchar (50) DEFAULT NULL,
+apellidousu varchar(50) DEFAULT NULL,
+telusu varchar(20) DEFAULT NULL,
+fechanac_usu date DEFAULT NULL,
+correousu varchar (50) DEFAULT NULL,
+contrasena varchar(255) DEFAULT NULL
 );
+
 INSERT INTO usuario (nombreusu, apellidousu, telusu, fechanac_usu, correousu, contrasena) 
 VALUES ('Juan', 'Pérez', '1234567890', '1990-01-15', 'juan.perez@example.com', 'ContraseñaSegura123');
 
-select * from usuario;
-select * from administrador;
-
 create table administrador(
 codadmin int primary key auto_increment,
-nombreadmin varchar(50),
-apellidoadmin varchar(50),
-telfadmin varchar(15),
-correoadmin varchar(50),
-codsitio  int,
-fechanac_admin date,
-contrasena varchar(255)
+nombreadmin varchar(50) DEFAULT NULL,
+apellidoadmin varchar(50) DEFAULT NULL,
+telfadmin varchar(15) DEFAULT NULL,
+correoadmin varchar(50) DEFAULT NULL,
+codsitio  int DEFAULT NULL,
+fechanac_admin date DEFAULT NULL,
+contrasena varchar(255) DEFAULT NULL
 );
 INSERT INTO administrador (nombreadmin, apellidoadmin, telfadmin, correoadmin, codsitio, fechanac_admin, contrasena) 
-VALUES ('Juan', 'Pérez', '123-456-7890', 'juan.perez@example.com', 1, '1980-05-15', 'password123');
-
-select * from administrador;
+VALUES ('Juan', 'Pérez', '123-456-7890', 'juan.perez@example.com', 1, '1980-05-15', '12345');
 
 CREATE TABLE fotos_admin (
     id_foto INT AUTO_INCREMENT PRIMARY KEY,
-    cod_admin INT,
+    cod_admin INT NOT NULL,
     ruta_foto VARCHAR(255) NOT NULL,
     tipo_foto ENUM('portada', 'general','perfil') DEFAULT 'general',
     FOREIGN KEY (cod_admin) REFERENCES administrador(codadmin)
 );
-delete from fotos_Admin;
-select * from fotos_admin;
 
 CREATE TABLE fotos_usuario (
     id_foto INT AUTO_INCREMENT PRIMARY KEY,
-    cod_usuario INT,
+    cod_usuario INT NOT NULL,
     ruta_foto VARCHAR(255) NOT NULL,
     tipo_foto ENUM('portada', 'general','perfil') DEFAULT 'general',
     FOREIGN KEY (cod_usuario) REFERENCES usuario(codusuario)
 );
 
-select * from usuario;
-select * from fotos_usuario;
-
-
-delete from fotos_usuario;
 CREATE TABLE eventos(
     ideven INT PRIMARY KEY AUTO_INCREMENT,
-    nombreeven VARCHAR(100),
-    logo VARCHAR(255),
-    tipoevento VARCHAR(50),
-    descripeven VARCHAR(250),
-    paginaeven VARCHAR(250),
-    boletaseven VARCHAR(250),
-    infoAdicional VARCHAR(400),
-    contacto VARCHAR(50),
-    correoeven VARCHAR(100),
-    codadmin INT,
+    nombreeven VARCHAR(100) NOT NULL,
+    logo VARCHAR(255) DEFAULT NULL,
+    tipoevento VARCHAR(50) DEFAULT NULL,
+    descripeven VARCHAR(250) DEFAULT NULL,
+    paginaeven VARCHAR(250) DEFAULT NULL,
+    boletaseven VARCHAR(250) DEFAULT NULL,
+    infoAdicional VARCHAR(400)DEFAULT NULL,
+    contacto VARCHAR(50)DEFAULT NULL,
+    correoeven VARCHAR(100)DEFAULT NULL,
+    fecha_publicacion DATE DEFAULT NULL,
+    codadmin INT NOT NULL,
     FOREIGN KEY (codadmin) REFERENCES administrador(codadmin)
 );
-select * from eventos;
-select nombreeven,logo,tipoevento from eventos where codadmin = 1;
+
 CREATE TABLE fechaseven(
     codfechas INT PRIMARY KEY AUTO_INCREMENT,
-    ideven INT,
-    fechaseven DATE,
-    horarioEntrada TIME,
-    horarioSalida TIME,
+    ideven INT NOT NULL,
+    fechaseven DATE DEFAULT NULL,
+    horarioEntrada TIME DEFAULT NULL,
+    horarioSalida TIME DEFAULT NULL,
     FOREIGN KEY (ideven) REFERENCES eventos(ideven)
 );
-SELECT * FROM fechaseven WHERE ideven = 1;
 
 CREATE TABLE redes_sociales (
     id_red_social INT AUTO_INCREMENT PRIMARY KEY,
-    entidad_id INT,
-    entidad_tipo VARCHAR(50),  -- 'evento' o 'emprendimiento'
-    red VARCHAR(50),
-    url VARCHAR(250)
+    entidad_id INT DEFAULT NULL,
+    entidad_tipo VARCHAR(50) DEFAULT NULL,  -- 'evento' o 'emprendimiento'
+    red VARCHAR(50) DEFAULT NULL,
+    url VARCHAR(250) DEFAULT NULL
 );
 
 
 CREATE TABLE galeriaeven(
     codgaleria INT PRIMARY KEY AUTO_INCREMENT,
     ideven INT,
-    urlImagen VARCHAR(255),
+    urlImagen VARCHAR(255) DEFAULT NULL,
     descripcion VARCHAR(255) DEFAULT NULL, 
     FOREIGN KEY (ideven) REFERENCES eventos(ideven)
 );
 
-SELECT * FROM galeriaeven WHERE ideven = 5;
-
 create table ubicacioneven(
 codubicacion int primary key auto_increment,
 ideven int,
-ubicacion varchar (200),
+ubicacion varchar (200) DEFAULT NULL,
 foreign key (ideven) references eventos(ideven)
 );
-SELECT * FROM ubicacioneven WHERE ideven = 2;
-
 
 CREATE TABLE Favoritos (
     idFavorito INT AUTO_INCREMENT PRIMARY KEY,
@@ -120,103 +104,136 @@ CREATE TABLE Favoritos (
 
 create table emprendimientos(
 idempre int primary key auto_increment,
-nombreempre varchar(100),
-logo varchar(255),
-tipoempre varchar(100),
-descripempre varchar(250),
-horarioempre varchar(100),
-horarioApertura TIME, 
-horarioCierre TIME,
-paginaempre varchar(250),
-producempre varchar(250),
-correoempre varchar(50),
-telempre varchar (20),
+nombreempre varchar(100) NOT NULL,
+logo varchar(255) DEFAULT NULL,
+tipoempre varchar(100) DEFAULT NULL,
+descripempre varchar(250)DEFAULT NULL,
+horarioempre varchar(100)DEFAULT NULL,
+horarioApertura TIME DEFAULT NULL, 
+horarioCierre TIME DEFAULT NULL,
+paginaempre varchar(250)DEFAULT NULL,
+producempre varchar(250)DEFAULT NULL,
+correoempre varchar(50)DEFAULT NULL,
+telempre varchar (20)DEFAULT NULL,
+fecha_publicacion DATE DEFAULT NULL,
 codadmin int,
 foreign key (codadmin) references administrador (codadmin)
 );
-select * from emprendimientos;
+
 create table galeriaempre(
 codgaleria int primary key auto_increment,
-idempre int,
-imagenempre varchar(255),
+idempre int NOT NULL,
+imagenempre varchar(255) DEFAULT NULL,
 descripcion VARCHAR(255) DEFAULT NULL, 
 foreign key (idempre) references emprendimientos (idempre)
 );
-select * from galeriaempre where idempre = 2;
 
 create table ubicacionempre(
 codubicacionE int primary key auto_increment,
-idempre int,
-ubicacion varchar(200),
+idempre int NOT NULL,
+ubicacion varchar(200) DEFAULT NULL,
 foreign key (idempre) references emprendimientos (idempre)
 );
-select * from ubicacionempre where idempre = 2;
 
-SELECT
-    rs.entidad_id,
-    rs.red,
-    rs.url
-FROM
-    redes_sociales rs
-WHERE
-    rs.entidad_id = 1
-    AND rs.entidad_tipo = 'evento';
+CREATE TABLE restaurantes (
+    idresta INT PRIMARY KEY AUTO_INCREMENT,
+    nombreresta VARCHAR(100) NOT NULL,
+    logo VARCHAR(255) DEFAULT NULL,
+    tiporesta VARCHAR(250) DEFAULT NULL,
+    descripresta VARCHAR(250) DEFAULT NULL,
+    paginaresta VARCHAR(250) DEFAULT NULL,
+    menu VARCHAR(255) DEFAULT NULL,
+    horario VARCHAR(255) DEFAULT NULL,
+    horarioApertura TIME DEFAULT NULL,
+    horarioCierre TIME DEFAULT NULL,
+    correoresta VARCHAR(50) DEFAULT NULL,
+    telresta VARCHAR(20) DEFAULT NULL,
+    fecha_publicacion DATE DEFAULT NULL,
+    codadmin INT,
+    FOREIGN KEY (codadmin) REFERENCES administrador(codadmin)
+);
+drop table if exists restaurantes;
+drop table if exists galeriaresta;
+drop table if exists ubicacionresta;
 
+CREATE TABLE galeriaresta (
+    codgaleria INT PRIMARY KEY AUTO_INCREMENT,
+    idresta INT NOT NULL,
+    imagenresta VARCHAR(255) DEFAULT NULL,
+    descripcion VARCHAR(255) DEFAULT NULL,
+    FOREIGN KEY (idresta) REFERENCES restaurantes(idresta)
+);
+
+CREATE TABLE ubicacionresta (
+    codubicacion INT PRIMARY KEY AUTO_INCREMENT,
+    idresta INT NOT NULL,
+    ubicacion VARCHAR(200) DEFAULT NULL,
+    FOREIGN KEY (idresta) REFERENCES restaurantes(idresta)
+);
+
+
+select * from usuario;
+select * from administrador;
 
 SELECT 
-    e.ideven,
-    e.nombreeven,
-    e.logo,
-    e.tipoevento,
-    e.descripeven,
-    e.paginaeven,
-    e.boletaseven,
-    e.infoAdicional,
-    e.contacto,
-    e.correoeven,
-    f.fechaseven AS fecha_evento,
-    f.horarioEntrada,
-    f.horarioSalida,
-    GROUP_CONCAT(DISTINCT g.urlImagen SEPARATOR '; ') AS imagenes_urls,
-    GROUP_CONCAT(DISTINCT u.ubicacion SEPARATOR '; ') AS ubicaciones,
-    GROUP_CONCAT(DISTINCT rs.red SEPARATOR '; ') AS redes_sociales_red,
-    GROUP_CONCAT(DISTINCT rs.url SEPARATOR '; ') AS redes_sociales_url
-FROM 
-    eventos e
-LEFT JOIN fechaseven f ON e.ideven = f.ideven
-LEFT JOIN galeriaeven g ON e.ideven = g.ideven
-LEFT JOIN ubicacioneven u ON e.ideven = u.ideven
-LEFT JOIN redes_sociales rs ON e.ideven = rs.entidad_id AND rs.entidad_tipo = 'evento'
-GROUP BY
-    e.ideven;
-
-
-
-SELECT 
-    e.idempre,
-    e.nombreempre,
-    e.logo,
-    e.tipoempre,
-    e.descripempre,
-    e.horarioempre,
-    e.horarioApertura,
-    e.horarioCierre,
-    e.paginaempre,
-    e.producempre,
-    e.correoempre,
-    e.telempre,
-    GROUP_CONCAT(DISTINCT g.imagenempre SEPARATOR '; ') AS imagenes,
-    GROUP_CONCAT(DISTINCT g.descripcion SEPARATOR '; ') AS descripciones_imagenes,
-    GROUP_CONCAT(DISTINCT u.ubicacion SEPARATOR '; ') AS ubicaciones,
+    ev.ideven,
+    ev.nombreeven,
+    ev.logo,
+    ev.tipoevento,
+    ev.descripeven,
+    ev.paginaeven,
+    ev.boletaseven,
+    ev.infoAdicional,
+    ev.contacto,
+    ev.correoeven,
+    ev.fecha_publicacion,
+    adm.nombreadmin AS administrador,
+    GROUP_CONCAT(DISTINCT fev.fechaseven SEPARATOR '; ') AS fechas_evento,
+    GROUP_CONCAT(DISTINCT fev.horarioEntrada SEPARATOR '; ') AS horarios_entrada,
+    GROUP_CONCAT(DISTINCT fev.horarioSalida SEPARATOR '; ') AS horarios_salida,
+    GROUP_CONCAT(DISTINCT gal.urlImagen SEPARATOR '; ') AS imagenes_evento,
+    GROUP_CONCAT(DISTINCT gal.descripcion SEPARATOR '; ') AS descripcion_imagenes,
+    GROUP_CONCAT(DISTINCT ubi.ubicacion SEPARATOR '; ') AS ubicaciones_evento,
     GROUP_CONCAT(DISTINCT CONCAT(rs.red, ': ', rs.url) SEPARATOR '; ') AS redes_sociales
 FROM 
-    emprendimientos e
-LEFT JOIN galeriaempre g ON e.idempre = g.idempre
-LEFT JOIN ubicacionempre u ON e.idempre = u.idempre
-LEFT JOIN redes_sociales rs ON e.idempre = rs.entidad_id AND rs.entidad_tipo = 'emprendimiento'
+    eventos ev
+LEFT JOIN administrador adm ON ev.codadmin = adm.codadmin
+LEFT JOIN fechaseven fev ON ev.ideven = fev.ideven
+LEFT JOIN galeriaeven gal ON ev.ideven = gal.ideven
+LEFT JOIN ubicacioneven ubi ON ev.ideven = ubi.ideven
+LEFT JOIN redes_sociales rs ON ev.ideven = rs.entidad_id AND rs.entidad_tipo = 'evento'
 GROUP BY
-    e.idempre
+    ev.ideven
 ORDER BY
-    e.idempre;
+    ev.fecha_publicacion DESC;
 
+SELECT 
+    r.idresta,
+    r.nombreresta,
+    r.logo,
+    r.tiporesta,
+    r.descripresta,
+    r.paginaresta,
+    r.menu,
+    r.horario,
+    r.horarioApertura,
+    r.horarioCierre,
+    r.correoresta,
+    r.telresta,
+    r.fecha_publicacion,
+    adm.nombreadmin AS administrador,
+    GROUP_CONCAT(DISTINCT gr.imagenresta SEPARATOR '; ') AS imagenes_restaurante,
+    GROUP_CONCAT(DISTINCT gr.descripcion SEPARATOR '; ') AS descripcion_imagenes,
+    GROUP_CONCAT(DISTINCT ur.ubicacion SEPARATOR '; ') AS ubicaciones_restaurante,
+    GROUP_CONCAT(DISTINCT CONCAT(rs.red, ': ', rs.url) SEPARATOR '; ') AS redes_sociales
+FROM 
+    restaurantes r
+LEFT JOIN administrador adm ON r.codadmin = adm.codadmin
+LEFT JOIN galeriaresta gr ON r.idresta = gr.idresta
+LEFT JOIN ubicacionresta ur ON r.idresta = ur.idresta
+LEFT JOIN redes_sociales rs ON r.idresta = rs.entidad_id AND rs.entidad_tipo = 'restaurante'
+GROUP BY
+    r.idresta
+ORDER BY
+    r.fecha_publicacion DESC;
 

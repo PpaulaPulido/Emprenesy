@@ -60,11 +60,11 @@ def perfil_admin():
 
     return render_template('perfil_admin.html', nombre_admin = nombre_admin, apellido_admin = apellido_admin, correo_admin = correo_admin, foto_portada=fotoPortada, foto_perfil=fotoPerfil)
 
+#******************************************Ruta para mis fotos de perfil admin*****************************************************************
 @admin.route('/MisFotos')
 def photos():
     
     user_id = session.get('admin_id')
-    
     if not user_id:
         flash('No está autenticado.', 'error')
         return redirect(url_for('usuarios.inicio_sesion')) 
@@ -88,7 +88,7 @@ def photos():
     
     return jsonify(fotos_list)
 
-
+#******************************************Galeria de fotos del admin*******************************************************
 @admin.route('/galeriaAdmin')
 def galeria_admin():
     
@@ -117,6 +117,36 @@ def galeria_admin():
     
     return jsonify(fotos_list)
 
+#*********************************************Ruta para las reseñas del administrador******************************
+@admin.route('/reseñasAdmin')
+def resena_admin():
+    
+    user_id = session.get('admin_id')
+    
+    if not user_id:
+        flash('No está autenticado.', 'error')
+        return redirect(url_for('usuarios.inicio_sesion')) 
+    
+    db = get_db()
+    cursor = db.cursor(dictionary=True)
+    
+    try:
+        cursor.execute("SELECT R.calificacion, R.comentario, E.nombre AS nombre_entidad FROM Resenas AS R INNER JOIN Entidades AS E ON R.entidad_id = E.id WHERE R.autor_tipo = 'administrador' AND R.autor_id = %s ORDER BY R.id_resena DESC LIMIT 5", (user_id,))
+        resenas = cursor.fetchall()
+        
+        resenas_list = []
+        for resena in resenas:
+            resenas_list.append({
+                'calificacion': resena['calificacion'],
+                'comentario': resena['comentario'],
+                'nombre_entidad': resena['nombre_entidad']
+            })
+    finally:
+        cursor.close()
+        db.close()
+    
+    return jsonify(resenas_list)
+    
 #****************************Ruta para la imagen de perfil************************************************************
 @admin.route('/perfil_imagen')
 def perfil_imagen():

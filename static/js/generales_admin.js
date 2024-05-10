@@ -25,10 +25,12 @@ function crearNav(imagenURL) {
     ];
 
     const perfilAdminUrl = document.getElementById('data-container').getAttribute('data-perfil-url');
+    const indexUrl = document.getElementById('url_dash').getAttribute('data-url');
+
     // Elementos del submenu
     const subMenuItems = [
         { text: 'Ver perfil', href: perfilAdminUrl },
-        { text: 'Ver dashboard', href: perfilAdminUrl },
+        { text: 'Ver dashboard', href: indexUrl },
         { text: 'Notificaciones', href: '#' },
         { text: 'Configuración', href: '#' },
         { text: 'Cerrar sesión', href: '#' }

@@ -120,10 +120,9 @@ def galeria_admin():
 #*********************************************Ruta para las reseñas del administrador******************************
 @admin.route('/reseñasAdmin')
 def resena_admin():
+    admin_id = session.get('admin_id')
     
-    user_id = session.get('admin_id')
-    
-    if not user_id:
+    if not admin_id:
         flash('No está autenticado.', 'error')
         return redirect(url_for('usuarios.inicio_sesion')) 
     
@@ -131,21 +130,43 @@ def resena_admin():
     cursor = db.cursor(dictionary=True)
     
     try:
-        cursor.execute("SELECT R.calificacion, R.comentario, E.nombre AS nombre_entidad FROM Resenas AS R INNER JOIN Entidades AS E ON R.entidad_id = E.id WHERE R.autor_tipo = 'administrador' AND R.autor_id = %s ORDER BY R.id_resena DESC LIMIT 5", (user_id,))
+        cursor.execute("SELECT R.calificacion, R.comentario, R.entidad_tipo, R.entidad_id FROM Resenas AS R WHERE R.autor_tipo = 'administrador' AND R.autor_id = %s ORDER BY R.id_resena DESC LIMIT 5", (admin_id,))
         resenas = cursor.fetchall()
         
         resenas_list = []
+        
         for resena in resenas:
+            nombre_entidad = ""
+            
+            if resena['entidad_tipo'] == 'evento':
+                cursor.execute("SELECT nombreeven FROM eventos WHERE ideven = %s", (resena['entidad_id'],))
+                entidad = cursor.fetchone()
+                if entidad:
+                    nombre_entidad = entidad['nombreeven']
+                    
+            elif resena['entidad_tipo'] == 'emprendimiento':
+                cursor.execute("SELECT nombreempre FROM emprendimientos WHERE idempre = %s", (resena['entidad_id'],))
+                entidad = cursor.fetchone()
+                if entidad:
+                    nombre_entidad = entidad['nombreempre']
+                    
+            elif resena['entidad_tipo'] == 'restaurante':
+                cursor.execute("SELECT nombreresta FROM restaurantes WHERE idresta = %s", (resena['entidad_id'],))
+                entidad = cursor.fetchone()
+                if entidad:
+                    nombre_entidad = entidad['nombreresta']
+            
             resenas_list.append({
                 'calificacion': resena['calificacion'],
                 'comentario': resena['comentario'],
-                'nombre_entidad': resena['nombre_entidad']
+                'nombre_entidad': nombre_entidad
             })
     finally:
         cursor.close()
         db.close()
     
     return jsonify(resenas_list)
+
     
 #****************************Ruta para la imagen de perfil************************************************************
 @admin.route('/perfil_imagen')

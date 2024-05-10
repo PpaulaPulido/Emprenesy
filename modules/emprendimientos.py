@@ -34,6 +34,7 @@ def publicar_emprendimiento():
     
     emprende_id = session.get('emprende_id')
     form_data = session.get('form_data', {})
+    relativePath = None 
     
     if request.method == 'POST':
         
@@ -115,7 +116,7 @@ def publicar_emprendimiento():
             db.commit()
             cursor.close()
         
-        flash('Evento registrado correctamente', 'success')
+        flash('Emprendimiento registrado correctamente', 'success')
         return redirect(url_for("emprende.publicar_emprendimientoLocation"))
     
     return render_template('formularioempren.html', datos = form_data, emprende_id = emprende_id)

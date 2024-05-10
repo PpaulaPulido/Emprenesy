@@ -76,6 +76,7 @@ def registrar_usuario():
         if len(resultado) > 0 or len(resultado1)>0:
             flash('El correo electrónico ya está registrado', 'error')
             print('El correo electrónico ya está registrado')
+            
         if (roles == 'usuario'):
             cursor.execute(
                 "INSERT INTO usuario (nombreusu, apellidousu, telusu, fechanac_usu, correousu, contrasena) VALUES (%s, %s, %s, %s, %s, %s)",
@@ -83,7 +84,7 @@ def registrar_usuario():
             )
             db.commit()
             flash('Usuario creado correctamente', 'success')
-            return redirect(url_for("usuarios.registrar_usuario"))
+            return redirect(url_for("usuarios.inicio_sesion"))
         
         elif ( roles == 'Administrador'):
               cursor.execute(
@@ -92,9 +93,10 @@ def registrar_usuario():
             )
               db.commit() 
               flash('Usuario creado correctamente', 'success')
-              return redirect(url_for("usuarios.registrar_usuario"))
-
-
+              return redirect(url_for("usuarios.inicio_sesion"))
+        
+        else:
+            return redirect(url_for("usuarios.registrar_usuario"))
     return render_template('registro.html')
 
 #*******************************************Ruta de perfil usuario****************************************************************        

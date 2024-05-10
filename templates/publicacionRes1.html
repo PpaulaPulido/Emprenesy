@@ -55,36 +55,39 @@
                 </div>
                 <div class="contenido__detalles">
 
-                    <form class="info_detalles" action="{{ url_for('res.restauranteLocation') }}">
+                    <form class="info_detalles" action="{{ url_for('res.restauranteLocation') }}" method="POST"
+                    enctype="multipart/form-data">
+
                         <div class="detalle__sitio">
                             <h3>Información de contacto</h3>
                         </div>
+
                         <div class="detalle__sitio">
-                            <label for="correo">Correo electrónico (opcional)</label>
-                            <input type="email" name="correo" id="correo">
+                            <label for="correoRes">Correo electrónico (opcional)</label>
+                            <input type="email" name="correoRes" id="correoRes">
                         </div>
+
                         <div class="detalle__sitio">
-                            <label for="contacto">Número de contacto (opcional)</label>
-                            <input type="text" name="contacto" id="contacto">
+                            <label for="contactoRes">Número de contacto (opcional)</label>
+                            <input type="tel" name="contactoRes" id="contactoRes">
                         </div>
+
                         <div class="detalle__sitio">
-                            <label for="insta">Instagram del Restaurante (opcional)</label>
-                            <input type="url" name="insta" id="insta" placeholder="https://www.instagram.com/">
+                            <label>Redes sociales (Opcional)</label>
+                            <input type="url" name="redInstagram" id="redInstagram"
+                                placeholder="https://www.instagram.com/" value="{{ datos['redInstagram'] if datos.get('redInstagram') else '' }}">
+                            <input type="url" name="redTiktok" id="redTiktok" placeholder="https://www.tiktok.com/" value="{{ datos['redTiktok'] if datos.get('redTiktok') else '' }}">
                         </div>
-                        <div class="detalle__sitio">
-                            <label for="tiktok">Tiktok del Restaurante (opcional) </label>
-                            <input type="url" name="tiktok" id="tiktok" placeholder="https://tiktok.com/restaurante">
-                        </div>
+
                         <div class="detalle__sitio">
                             <h3>Imágenes del restaurante</h3>
                         </div>
-                        <div class="detalle__sitioImg">
 
-                            <div class="sitio__img">
-                                <input type="file" id="galeria" name="logo" style="display:none;" multiple>
-                                <label for="galeria" class="galeria">Seleccionar imágenes</label>
-                            </div>
+                        <div class="detalle__sitio">
+                            <label for="galeria[]">Galeria del restaurante</label>
+                            <input type="file" id="galeria[]" name="galeria[]"  multiple>
                         </div>
+
                         <div class="detalles__btn">
                             <div class="detalle__sitio boton_form">
                                 <a href="{{url_for('res.publicacionRes')}}" class="btn__form">Regresar</a>

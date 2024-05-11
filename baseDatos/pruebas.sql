@@ -25,8 +25,20 @@ codsitio  int DEFAULT NULL,
 fechanac_admin date DEFAULT NULL,
 contrasena varchar(255) DEFAULT NULL
 );
+
 INSERT INTO administrador (nombreadmin, apellidoadmin, telfadmin, correoadmin, codsitio, fechanac_admin, contrasena) 
 VALUES ('Juan', 'Pérez', '123-456-7890', 'juan.perez@example.com', 1, '1980-05-15', '12345');
+
+create table datosAdmin(
+	id_datosAdmin int primary key auto_increment,
+    cod_admin int not null,
+    direccion varchar(100) DEFAULT NULL,
+    ciudad varchar(50)  DEFAULT NULL,
+    descripcionAcerca text default NULL,
+    sitioWeb varchar(250) default null,
+    blog varchar(250) default null,
+    FOREIGN KEY (cod_admin) REFERENCES administrador(codadmin)
+);
 
 CREATE TABLE fotos_admin (
     id_foto INT AUTO_INCREMENT PRIMARY KEY,
@@ -152,9 +164,6 @@ CREATE TABLE restaurantes (
     codadmin INT,
     FOREIGN KEY (codadmin) REFERENCES administrador(codadmin)
 );
-drop table if exists restaurantes;
-drop table if exists galeriaresta;
-drop table if exists ubicacionresta;
 
 CREATE TABLE galeriaresta (
     codgaleria INT PRIMARY KEY AUTO_INCREMENT,
@@ -170,7 +179,21 @@ CREATE TABLE ubicacionresta (
     ubicacion VARCHAR(200) DEFAULT NULL,
     FOREIGN KEY (idresta) REFERENCES restaurantes(idresta)
 );
-
+CREATE TABLE Resenas (
+    id_resena INT AUTO_INCREMENT PRIMARY KEY,
+    autor_id INT NOT NULL,
+    autor_tipo ENUM('administrador', 'usuario') NOT NULL,
+    entidad_id INT NOT NULL,
+    entidad_tipo ENUM('evento', 'emprendimiento', 'restaurante') NOT NULL,
+    calificacion INT NOT NULL CHECK (calificacion >= 1 AND calificacion <= 5),
+    comentario TEXT,
+    fecha_resena DATE NOT NULL,
+    FOREIGN KEY (autor_id) REFERENCES usuario(codusuario),
+    FOREIGN KEY (autor_id) REFERENCES administrador(codadmin),
+    FOREIGN KEY (entidad_id) REFERENCES emprendimientos (idempre),
+    FOREIGN KEY (entidad_id) REFERENCES eventos(ideven),
+    FOREIGN KEY (entidad_id) REFERENCES restaurantes(idresta)
+);
 
 select * from usuario;
 select * from administrador;

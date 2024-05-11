@@ -278,6 +278,10 @@ def subir_portada():
         # Redirecciona al usuario de vuelta a la página 'perfil_admin' para mantenerlo en la misma página en caso de error.
         return redirect(url_for('admin.perfil_admin'))
 
+#***********************************************Ruta de editar perfil administrador**********************************************************
+@admin.route('/editarPerfilAdmin')
+def editarPerfilAdmin():
+    return render_template('editarPerfil_admin.html')
 
 
 @admin.route('/tipo_publicacion')

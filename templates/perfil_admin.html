@@ -76,7 +76,6 @@
                                     onchange="this.form.submit()">
                                 <label for="perfil" class="perfil_icon"><i class="fa-solid fa-camera-retro"></i></label>
                             </form>
-
                         </div>
                         <h3>{{nombre_admin}} {{apellido_admin}}</h3>
                     </div>
@@ -104,9 +103,10 @@
             </div>
         </div>
 
-        <div id="data-container" data-perfil-url="{{ url_for('admin.perfil_admin') }}" style="display: none;"></div>
+        <div id="data-container" data-perfil-url="{{ url_for('admin.perfil_admin') }}" data-admin-id="{{ admin_id }}"  style="display: none;"></div>
         <div id="url" style="display: none;">
             <a id="url_dash" data-url="{{ url_for('admin.index_admin') }}"></a>
+            <a id="url_editarPerfil" data-url="{{ url_for('admin.editarPerfilAdmin', id=admin_id) }}"></a>
         </div>
 
     </main>

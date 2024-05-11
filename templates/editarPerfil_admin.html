@@ -13,8 +13,7 @@
 
 
     <link rel="stylesheet" href="{{url_for ('static', filename='../static/styles/generales_admin.css')}}">
-    <link rel="stylesheet" href="../static/styles/editarAdmin.css">
-
+    <link rel="stylesheet" href="{{url_for ('static', filename='../static/styles/editarAdmin.css')}}">
 
 </head>
 
@@ -46,33 +45,34 @@
 
         <div class="containerPerfil" id="contenedorPerfil">
             <div class="formularioPerfil">
-                <form action="">
+                <form action="{{ url_for('admin.editarPerfilAdmin', id=admin_id) }}" method="post">
                     <h2>Información de contacto</h2>
                     <div class="perfilContacto">
                         <div class="contacto">
-                            <label for="nombre">Nombres</label>
-                            <input type="text" id="nombre" name="nombre">
+                            <label for="nombreAdmin">Nombres</label>
+                            <input type="text" id="nombreAdmin" name="nombreAdmin" value="{{admin[0]}}">
                         </div>
                         <div class="contacto">
                             <div class="perfil">
-                                <img src="../static/img/perfil_user.png" alt="Foto de perfil">
+                                <img src="{{foto_perfil}}" alt="Foto de perfil">
                             </div>
                         </div>
                         <div class="contacto">
-                            <label for="apellidos">Apellidos</label>
-                            <input type="text" id="apellidos" name="apellidos">
+                            <label for="apellidosAdmin">Apellidos</label>
+                            <input type="text" id="apellidosAdmin" name="apellidosAdmin" value="{{admin[1]}}">
                         </div>
                         <div class="contacto">
-                            <label for="correo">Correo electrónico</label>
-                            <input type="email" id="correo" name="correo">
+                            <label for="telefonoAdmin">Número de celular</label>
+                            <input type="tel" id="telefonoAdmin" name="telefonoAdmin" value="{{admin[2]}}">
                         </div>
                         <div class="contacto">
-                            <label for="telefono">Número de celular</label>
-                            <input type="tel" id="telefono" name="telefono">
+                            <label for="correoAdmin">Correo electrónico</label>
+                            <input type="email" id="correoAdmin" name="correoAdmin" value="{{admin[3]}}">
                         </div>
+                        
                         <div class="contacto">
-                            <label for="fechaNac">Fecha de Nacimiento</label>
-                            <input type="date" id="fechaNac" name="fechaNac">
+                            <label for="fechaNacAdmin">Fecha de Nacimiento</label>
+                            <input type="date" id="fechaNacAdmin" name="fechaNacAdmin" value="{{admin[4]}}">
                         </div>
                     </div>
                     <h2>Domicilio particular</h2>
@@ -107,16 +107,19 @@
                 </form>
             </div>
         </div>
-        <div id="data-container" data-perfil-url="{{ url_for('admin.perfil_admin') }}" style="display: none;"></div>
+        
+        <div id="data-container" data-perfil-url="{{ url_for('admin.perfil_admin') }}" data-admin-id="{{ admin_id }}"  style="display: none;"></div>
         <div id="url" style="display: none;">
             <a id="url_dash" data-url="{{ url_for('admin.index_admin') }}"></a>
+            <a id="url_editarPerfil" data-url="{{ url_for('admin.editarPerfilAdmin', id=admin_id) }}"></a>
         </div>
     </main>
 
 
-    <script src="../static/js/generales_admin.js"></script>
-    <script src="../static/js/buscador.js"></script>
-    <script src="../static/js/editarPerfilAdmin.js"></script>
+
+    <script src="{{url_for ('static', filename='../static/js/editarPerfilAdmin.js')}}" ></script>
+    <script src="{{url_for ('static', filename='../static/js/buscador.js')}}" ></script>
+    <script src="{{url_for ('static', filename='../static/js/generales_admin.js')}}" ></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

@@ -24,9 +24,9 @@ def index_admin():
 @admin.route('/perfil_admin')
 def perfil_admin():
     
-    user_id = session.get('admin_id')
+    admin_id = session.get('admin_id')
     
-    if not user_id:
+    if not admin_id:
         flash('No está autenticado.', 'error')
         return redirect(url_for('usuarios.inicio_sesion')) 
     db = get_db()  # Obtener la conexión a la base de datos
@@ -36,7 +36,7 @@ def perfil_admin():
     default_perfil = '/static/img/perfil_user.png'
 
     try:
-        cursor.execute("SELECT nombreadmin,apellidoadmin,correoadmin FROM administrador WHERE codadmin = %s", (user_id,))
+        cursor.execute("SELECT nombreadmin,apellidoadmin,correoadmin FROM administrador WHERE codadmin = %s", (admin_id,))
         admin_datos= cursor.fetchone()
         if admin_datos:
             nombre_admin, apellido_admin, correo_admin = admin_datos
@@ -44,7 +44,7 @@ def perfil_admin():
             nombre_admin = apellido_admin = correo_admin = "Información no disponible"
         
         def obtenerImagen(image_type, default_image):
-            cursor.execute("SELECT ruta_foto FROM fotos_admin WHERE cod_admin = %s AND tipo_foto = %s ORDER BY id_foto DESC LIMIT 1", (user_id, image_type))
+            cursor.execute("SELECT ruta_foto FROM fotos_admin WHERE cod_admin = %s AND tipo_foto = %s ORDER BY id_foto DESC LIMIT 1", (admin_id, image_type))
             image = cursor.fetchone()
             if image:
                 return os.path.join('/', image[0])
@@ -58,7 +58,7 @@ def perfil_admin():
         cursor.close()  
         db.close()
 
-    return render_template('perfil_admin.html', nombre_admin = nombre_admin, apellido_admin = apellido_admin, correo_admin = correo_admin, foto_portada=fotoPortada, foto_perfil=fotoPerfil)
+    return render_template('perfil_admin.html',admin_id = admin_id ,nombre_admin = nombre_admin, apellido_admin = apellido_admin, correo_admin = correo_admin, foto_portada=fotoPortada, foto_perfil=fotoPerfil)
 
 #******************************************Ruta para mis fotos de perfil admin*****************************************************************
 @admin.route('/MisFotos')
@@ -178,6 +178,9 @@ def perfil_imagen():
         flash('No está autenticado.', 'error')
         return redirect(url_for('usuarios.inicio_sesion')) 
     
+    db = get_db()
+    cursor = get_cursor(db)
+    
     cursor.execute("SELECT ruta_foto FROM fotos_admin  WHERE cod_admin= %s AND tipo_foto = 'perfil' ORDER BY id_foto DESC LIMIT 1", (user_id,))
     foto_perfil = cursor.fetchone()
 
@@ -195,7 +198,10 @@ def perfil_imagen():
     if not os.path.isfile(full_file_path):
         print(f"Archivo no encontrado: {full_file_path}")  # Log para depuración
         abort(404)  # Si el archivo no existe, devuelve un error 404
-
+    
+    cursor.close()
+    db.close()
+    
     return send_from_directory(directory_path, file_name)
 
 #*******************************Ruta para subir la foto de perfil ********************************************************************************
@@ -203,7 +209,8 @@ def perfil_imagen():
 def subir_fotoperfil():
     
     user_id = session.get('admin_id')
-    
+    cursor = db.cursor()
+
     if not user_id:
         flash('No está autenticado.', 'error')
         return redirect(url_for('usuarios.inicio_sesion')) 
@@ -224,7 +231,7 @@ def subir_fotoperfil():
         db.commit()
 
         flash('Foto de portada actualizada con éxito.')
-
+        cursor.close()
         return redirect(url_for('admin.perfil_admin'))
     
     else:
@@ -236,6 +243,7 @@ def subir_fotoperfil():
 def subir_portada():
     
     user_id = session.get('admin_id')
+    cursor = db.cursor()
     
     if not user_id:
         flash('No está autenticado.', 'error')
@@ -279,9 +287,38 @@ def subir_portada():
         return redirect(url_for('admin.perfil_admin'))
 
 #***********************************************Ruta de editar perfil administrador**********************************************************
-@admin.route('/editarPerfilAdmin')
-def editarPerfilAdmin():
-    return render_template('editarPerfil_admin.html')
+@admin.route('/editarPerfilAdmin/<int:id>', methods=['POST', 'GET'])
+def editarPerfilAdmin(id):
+    
+    db = get_db()
+    cursor = get_cursor(db)
+    cursor = db.cursor()
+
+    if request.method == 'POST':
+        nombreAdmin = request.form.get('nombreAdmin')
+        apellidosAdmin = request.form.get('apellidosAdmin')
+        correoAdmin = request.form.get('correoAdmin')
+        telefonoAdmin = request.form.get('telefonoAdmin')
+        fechaNacAdmin = request.form.get('fechaNacAdmin')
+
+        sql = "UPDATE administrador SET nombreadmin = %s, apellidoadmin = %s, telfadmin = %s, correoadmin = %s, fechanac_admin = %s WHERE codadmin = %s"
+        cursor.execute(sql, (nombreAdmin, apellidosAdmin, telefonoAdmin, correoAdmin, fechaNacAdmin, id))
+
+        db.commit()
+        flash('Datos actualizados correctamente', 'success') 
+        cursor.close()
+        return redirect(url_for('admin.perfil_admin'))
+    else:
+        
+        cursor.execute('SELECT nombreadmin, apellidoadmin, telfadmin, correoadmin, fechanac_admin FROM administrador WHERE codadmin = %s', (id,))
+        data = cursor.fetchone()
+        
+        # Obtener la ruta de la foto de perfil desde la base de datos
+        cursor.execute('SELECT ruta_foto FROM fotos_admin WHERE cod_admin = %s AND tipo_foto = "perfil" ORDER BY id_foto DESC LIMIT 1', (id,))
+        foto_perfil_data = cursor.fetchone()
+        print(foto_perfil_data)
+        foto_perfil = normalize_path(foto_perfil_data[0]) if foto_perfil_data else "../static/img/perfil_user.png"
+        return render_template('editarPerfil_admin.html',foto_perfil = foto_perfil, admin=data, admin_id=id)
 
 
 @admin.route('/tipo_publicacion')

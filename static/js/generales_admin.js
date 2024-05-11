@@ -25,14 +25,17 @@ function crearNav(imagenURL) {
     ];
 
     const perfilAdminUrl = document.getElementById('data-container').getAttribute('data-perfil-url');
+    const adminId = document.getElementById('data-container').getAttribute('data-admin-id');
     const indexUrl = document.getElementById('url_dash').getAttribute('data-url');
+    const urlAdminEdit = document.getElementById('url_editarPerfil').getAttribute('data-url');
+
 
     // Elementos del submenu
     const subMenuItems = [
         { text: 'Ver perfil', href: perfilAdminUrl },
         { text: 'Ver dashboard', href: indexUrl },
         { text: 'Notificaciones', href: '#' },
-        { text: 'Configuración', href: '#' },
+        { text: 'Configuración', href: urlAdminEdit },
         { text: 'Cerrar sesión', href: '#' }
     ];
 

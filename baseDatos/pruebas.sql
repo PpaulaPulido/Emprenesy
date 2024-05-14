@@ -40,6 +40,7 @@ create table datosAdmin(
     FOREIGN KEY (cod_admin) REFERENCES administrador(codadmin)
 );
 
+select * from datosAdmin where cod_admin = 1;
 CREATE TABLE fotos_admin (
     id_foto INT AUTO_INCREMENT PRIMARY KEY,
     cod_admin INT NOT NULL,

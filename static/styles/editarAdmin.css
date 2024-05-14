@@ -73,6 +73,7 @@ body{
 .perfil img{
     width: 100%;
     height: 100%;
+    border-radius: 50%;
 }
 .contacto{
     margin: 10px 0;

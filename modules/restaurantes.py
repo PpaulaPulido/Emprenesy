@@ -25,6 +25,7 @@ def resetRestaurante():
 def publicacionRes():
     
     current_app.config['FOLDER_RES'] = os.path.join(current_app.root_path, 'static', 'galeriaRes')
+    codadmin = session.get('admin_id') 
     
     if request.method == 'GET' and request.args.get('nuevo', '0') == '1':
         # Si se especifica que es un nuevo restaurante, resetear la sesión
@@ -115,13 +116,14 @@ def publicacionRes():
         flash('Restaurante registrado correctamente', 'success')
         return redirect(url_for("res.restauranteLocation"))
         
-    return render_template('publicacionRes.html',datos = form_data,res_id = res_id)
+    return render_template('publicacionRes.html',datos = form_data,res_id = res_id,admin_id = codadmin)
 
 #*************************************Ruta de registro de restaurante parte 2***********************************************
 @res.route('/restauranteLocation',methods=['GET', 'POST'])
 def restauranteLocation():
     
     res_id = session.get('res_id')
+    admin_id = session.get('admin_id')
     if request.method == 'POST':
         ubicaciones = request.form.getlist('direcciones[]')
         for ubicacion in ubicaciones:
@@ -130,7 +132,7 @@ def restauranteLocation():
         db.commit()
         flash('Ubicaciones guardadas correctamente')
         return redirect(url_for('admin.index_admin'))
-    return render_template('publicacionRes2.html')
+    return render_template('publicacionRes2.html',admin_id = admin_id)
 
 
 @res.route('/restauranteDetalle')

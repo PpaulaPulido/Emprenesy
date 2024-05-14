@@ -37,6 +37,7 @@ def resetEvento():
 def publicarEventos():
     
     current_app.config['FOLDER_EVENT'] = os.path.join(current_app.root_path, 'static', 'galeriaEventos')
+    codadmin = session.get('admin_id') 
     
     if request.method == 'GET' and request.args.get('nuevo', '0') == '1':
         # Si se especifica que es un nuevo evento, resetear la sesión
@@ -133,12 +134,14 @@ def publicarEventos():
         flash('Evento registrado correctamente', 'success')
         return redirect(url_for("evento.formularioUbicacion"))
 
-    return render_template('formularioeventos.html', datos=form_data, evento_id=evento_id)
+    return render_template('formularioeventos.html', datos=form_data, evento_id=evento_id, admin_id =codadmin)
 
 @evento.route('/FormularioEventosUbicacion',methods=['GET', 'POST'])
 def formularioUbicacion():
 
     evento_id = session.get('evento_id')
+    admin_id = session.get('admin_id')
+    
     print("evento del id",evento_id)
     if request.method == 'POST':
         ubicaciones = request.form.getlist('direcciones[]')
@@ -150,7 +153,7 @@ def formularioUbicacion():
         db.commit()
         flash('Ubicaciones guardadas correctamente')
         return redirect(url_for('admin.index_admin'))
-    return render_template('formularioEventos2.html')
+    return render_template('formularioEventos2.html',admin_id = admin_id)
 
 
 @evento.route('/tipoEvento')

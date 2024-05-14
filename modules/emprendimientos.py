@@ -25,6 +25,7 @@ def resetEmprendimiento():
 def publicar_emprendimiento():
     
     current_app.config['FOLDER_EMPREN'] = os.path.join(current_app.root_path, 'static', 'galeriaEmprende')
+    codadmin = session.get('admin_id')
     
     if request.method == 'GET' and request.args.get('nuevo', '0') == '1':
         # Si se especifica que es un nuevo emprendimiento, resetear la sesión
@@ -119,13 +120,14 @@ def publicar_emprendimiento():
         flash('Emprendimiento registrado correctamente', 'success')
         return redirect(url_for("emprende.publicar_emprendimientoLocation"))
     
-    return render_template('formularioempren.html', datos = form_data, emprende_id = emprende_id)
+    return render_template('formularioempren.html', datos = form_data, emprende_id = emprende_id, admin_id = codadmin)
 
 #************************************************Registro de publicacion de emprendimiento parte 2***********************************
 @emprende.route('/EmprendeLocation',methods=['GET', 'POST'])
 def publicar_emprendimientoLocation():
     
     emprende_id = session.get('emprende_id')
+    admin_id = session.get('admin_id')
     
     if request.method == 'POST':
         ubicaciones = request.form.getlist('direcciones[]')
@@ -135,7 +137,7 @@ def publicar_emprendimientoLocation():
         db.commit()
         flash('Ubicaciones guardadas correctamente')
         return redirect(url_for('admin.index_admin'))
-    return render_template('formularioEmprende2.html')
+    return render_template('formularioEmprende2.html',admin_id = admin_id)
 
 
 @emprende.route('/sectionEmprende')

@@ -17,7 +17,8 @@ def allowed_file(filename):
 
 @admin.route('/index_admin')
 def index_admin():
-    return render_template('index_admin.html')
+    admin_id = session.get('admin_id')
+    return render_template('index_admin.html',admin_id=admin_id)
 
 
 #***********************************Ruta para perfil de administrador************************************
@@ -357,7 +358,8 @@ def editarPerfilAdmin(id):
 
 @admin.route('/tipo_publicacion')
 def tipoPublicacion():
-    return render_template('tipo_publicacion.html')
+    admin_id = session.get('admin_id')
+    return render_template('tipo_publicacion.html',admin_id = admin_id)
 
 
 @admin.route('/nosotros')

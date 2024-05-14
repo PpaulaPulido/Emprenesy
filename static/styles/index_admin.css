@@ -198,14 +198,27 @@ body {
     width: 200px;
     text-align: center;
     font-weight: 700;
+    overflow-x: hidden;
+    transition: width 0.8s ease;
 }
 .divBotonesPub .btnEdit{
     background-color: #fff;
     color: #336baf;
 }
+.divBotonesPub .btnEdit:hover{
+    background-color: #017092;
+    color: #fff;
+}
 .divBotonesPub .btnEli{
     background-color: rgb(248, 66, 66);
     color: #fff;
+}
+.divBotonesPub .btnEli:hover{
+    background-color: rgb(255, 0, 0);
+}
+.botonesPub.active{
+    width: calc(100% - 7px);
+    transition: width 0.8s ease;
 }
 /*******************************Estilos de tipo publicaciones********************************/
 .tipo_publicacion {

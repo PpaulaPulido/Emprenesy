@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    menu_lateral();
+    menu_lateralIndex();
     subirPublicacionEven();
     subirPublicacionEmprende();
     subirPublicacionRes();
@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }).catch(error => console.error('Error al inicializar sesión con administrador:', error));
 
 });
+
 
 function subirPublicacionEven() {
     fetch('/publicacion/dashboard/evento')
@@ -133,6 +134,7 @@ function estadoContenido(datos, container, config) {
 
         const botonV = document.createElement('a');
         botonV.classList.add("btnEdit", "botonesPub");
+        botonV.id = `editar${publicacion[config.idCampo]}`;
         botonV.textContent = "Editar";
 
         const botonE = document.createElement('a');
@@ -173,4 +175,26 @@ function estadoVacio(contenedor, message, icon1, icon2) {
     div_vacío.appendChild(titulo);
     contenedor.appendChild(div_vacío);
 
+}
+function menu_lateralIndex() {
+    // sidebar toggle
+    const btnToggle = document.querySelector('.toggle-btn');
+
+    btnToggle.addEventListener('click', function () {
+        document.getElementById('sidebar').classList.toggle('active');
+        document.getElementById('publicaciones').classList.toggle('active');
+
+        const botonesA = document.querySelectorAll('.botonesPub');
+
+        botonesA.forEach(boton =>{
+
+            if(boton.classList.contains('active')){
+                boton.classList.remove('active')
+            }else{
+                boton.classList.add('active');
+            }
+            
+        })
+
+    });
 }

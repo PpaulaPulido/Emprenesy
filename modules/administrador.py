@@ -300,11 +300,28 @@ def editarPerfilAdmin(id):
         correoAdmin = request.form.get('correoAdmin')
         telefonoAdmin = request.form.get('telefonoAdmin')
         fechaNacAdmin = request.form.get('fechaNacAdmin')
+        
+        direccionAdmin = request.form.get('direccion')
+        ciudadAdmin = request.form.get('ciudad')
+        descripcionAcerca = request.form.get('acerca')
+        sitioWeb = request.form.get('sitioWeb')
+        blog = request.form.get('blog')
 
         sql = "UPDATE administrador SET nombreadmin = %s, apellidoadmin = %s, telfadmin = %s, correoadmin = %s, fechanac_admin = %s WHERE codadmin = %s"
         cursor.execute(sql, (nombreAdmin, apellidosAdmin, telefonoAdmin, correoAdmin, fechaNacAdmin, id))
-
         db.commit()
+        
+        consulta = "SELECT * FROM datosAdmin WHERE cod_admin = %s"
+        
+        if consulta:
+            sqlDatos = "INSERT INTO datosAdmin (direccion,ciudad,descripcionAcerca,sitioWeb,blog,cod_admin) VALUES (%s,%s,%s,%s,%s,%s)"
+            cursor.execute(sqlDatos,(direccionAdmin,ciudadAdmin,descripcionAcerca,sitioWeb,blog,id))
+            db.commit()
+        else:
+            sqlDatos = "UPDATE datosAdmin SET direccion = %s, ciudad = %s, descripcionAcerca = %s, sitioWeb = %s, blog = %s WHERE cod_admin = %s"
+            cursor.execute(sqlDatos,(direccionAdmin,ciudadAdmin,descripcionAcerca,sitioWeb,blog,id))
+            db.commit()
+        
         flash('Datos actualizados correctamente', 'success') 
         cursor.close()
         return redirect(url_for('admin.perfil_admin'))
@@ -316,9 +333,14 @@ def editarPerfilAdmin(id):
         # Obtener la ruta de la foto de perfil desde la base de datos
         cursor.execute('SELECT ruta_foto FROM fotos_admin WHERE cod_admin = %s AND tipo_foto = "perfil" ORDER BY id_foto DESC LIMIT 1', (id,))
         foto_perfil_data = cursor.fetchone()
-        print(foto_perfil_data)
+        
         foto_perfil = normalize_path(foto_perfil_data[0]) if foto_perfil_data else "../static/img/perfil_user.png"
-        return render_template('editarPerfil_admin.html',foto_perfil = foto_perfil, admin=data, admin_id=id)
+        
+        cursor.execute('SELECT direccion,ciudad,descripcionAcerca,sitioWeb,blog FROM datosAdmin WHERE cod_admin = %s',(id,))
+        datos = cursor.fetchone()
+        
+        
+        return render_template('editarPerfil_admin.html',foto_perfil = foto_perfil, admin=data, admin_id=id, datos = datos)
 
 
 @admin.route('/tipo_publicacion')

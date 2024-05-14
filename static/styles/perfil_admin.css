@@ -140,6 +140,22 @@ body{
 .detalles_btnPer:hover{
     background-color: #0c4ca0;
 }
+.datos__acerca{
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 80%;
+    border-radius: 8px;
+    padding-left: 40px;
+    margin: 50px 0 0 40px;
+    min-height: 200px;
+    height: fit-content;
+}
+.datos__acerca .textoAcerca{
+    margin-top: 20px;
+    font-size: 18px;
+    text-transform: capitalize;
+}
 .datos_fotos{
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);

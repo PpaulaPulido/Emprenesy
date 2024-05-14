@@ -82,9 +82,15 @@
 
                     <div class="datos__detalles">
                         <h3>Detalles</h3>
-                        <h4><i class="fa-solid fa-location-dot"></i>Vive en Bogotá</h4>
-                        <h4><i class="fa-solid fa-envelope"></i>Correo electronico</h4>
-                        <a href="#" class="detalles_btnPer">Editar detalles</a>
+                        <h4><i class="fa-solid fa-location-dot"></i>{{ciudad}}</h4>
+                        <h4><i class="fa-solid fa-envelope"></i>{{correo_admin}}</h4>
+                        <h4><i class="fa-solid fa-globe"></i>{{ sitioWeb if sitioWeb else 'No disponible' }}</h4>
+                        <h4><i class="fa-solid fa-blog"></i>{{ blog if blog else 'No disponible' }}</h4>
+                        <a href="{{url_for('admin.editarPerfilAdmin', id=admin_id)}}" class="detalles_btnPer">Editar detalles</a>
+                    </div>
+                    <div class="datos__acerca">
+                        <h3>Acerca de mi</h3>
+                        <p class="textoAcerca">{{descripcionAcerca if descripcionAcerca else 'Breve descripción sobre mí'}}</p>
                     </div>
                     <div class="datos_fotos">
                         <h3>Fotos</h3>
@@ -96,14 +102,15 @@
                         <a href="#opciones__resultado" onclick="resenasAdmin()">Mis reseñas</a>
                         <a href="#opciones__resultado" onclick="Myphotos()">Mis fotos</a>
                         <a href="#">Favoritos</a>
-                        
+
                     </div>
                     <div id="opciones__resultado" class="result"></div>
                 </div>
             </div>
         </div>
 
-        <div id="data-container" data-perfil-url="{{ url_for('admin.perfil_admin') }}" data-admin-id="{{ admin_id }}"  style="display: none;"></div>
+        <div id="data-container" data-perfil-url="{{ url_for('admin.perfil_admin') }}" data-admin-id="{{ admin_id }}"
+            style="display: none;"></div>
         <div id="url" style="display: none;">
             <a id="url_dash" data-url="{{ url_for('admin.index_admin') }}"></a>
             <a id="url_editarPerfil" data-url="{{ url_for('admin.editarPerfilAdmin', id=admin_id) }}"></a>

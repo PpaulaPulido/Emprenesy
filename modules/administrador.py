@@ -43,6 +43,14 @@ def perfil_admin():
         else:
             nombre_admin = apellido_admin = correo_admin = "Información no disponible"
         
+        cursor.execute("SELECT direccion,ciudad,descripcionAcerca,sitioWeb,blog FROM datosAdmin WHERE cod_admin = %s",(admin_id,))
+        admin_datosDetalles = cursor.fetchone()
+        
+        if admin_datosDetalles:
+            direccion, ciudad, descripcionAcerca, sitioWeb, blog = admin_datosDetalles
+        else:
+            direccion = ciudad = descripcionAcerca = sitioWeb = blog = "No disponible"
+        
         def obtenerImagen(image_type, default_image):
             cursor.execute("SELECT ruta_foto FROM fotos_admin WHERE cod_admin = %s AND tipo_foto = %s ORDER BY id_foto DESC LIMIT 1", (admin_id, image_type))
             image = cursor.fetchone()
@@ -58,7 +66,7 @@ def perfil_admin():
         cursor.close()  
         db.close()
 
-    return render_template('perfil_admin.html',admin_id = admin_id ,nombre_admin = nombre_admin, apellido_admin = apellido_admin, correo_admin = correo_admin, foto_portada=fotoPortada, foto_perfil=fotoPerfil)
+    return render_template('perfil_admin.html',admin_id = admin_id ,nombre_admin = nombre_admin, apellido_admin = apellido_admin, correo_admin = correo_admin, foto_portada=fotoPortada, foto_perfil=fotoPerfil,direccion = direccion, ciudad = ciudad,sitioWeb = sitioWeb,blog = blog,descripcionAcerca = descripcionAcerca)
 
 #******************************************Ruta para mis fotos de perfil admin*****************************************************************
 @admin.route('/MisFotos')
@@ -311,15 +319,16 @@ def editarPerfilAdmin(id):
         cursor.execute(sql, (nombreAdmin, apellidosAdmin, telefonoAdmin, correoAdmin, fechaNacAdmin, id))
         db.commit()
         
-        consulta = "SELECT * FROM datosAdmin WHERE cod_admin = %s"
+        cursor.execute("SELECT id_datosAdmin FROM datosAdmin WHERE cod_admin = %s", (id,))
+        datosConsulta = cursor.fetchone()
         
-        if consulta:
-            sqlDatos = "INSERT INTO datosAdmin (direccion,ciudad,descripcionAcerca,sitioWeb,blog,cod_admin) VALUES (%s,%s,%s,%s,%s,%s)"
-            cursor.execute(sqlDatos,(direccionAdmin,ciudadAdmin,descripcionAcerca,sitioWeb,blog,id))
+        if datosConsulta is None:
+            sqlDatos = "INSERT INTO datosAdmin (direccion, ciudad, descripcionAcerca, sitioWeb, blog, cod_admin) VALUES (%s, %s, %s, %s, %s, %s)"
+            cursor.execute(sqlDatos, (direccionAdmin, ciudadAdmin, descripcionAcerca, sitioWeb, blog, id))
             db.commit()
         else:
             sqlDatos = "UPDATE datosAdmin SET direccion = %s, ciudad = %s, descripcionAcerca = %s, sitioWeb = %s, blog = %s WHERE cod_admin = %s"
-            cursor.execute(sqlDatos,(direccionAdmin,ciudadAdmin,descripcionAcerca,sitioWeb,blog,id))
+            cursor.execute(sqlDatos, (direccionAdmin, ciudadAdmin, descripcionAcerca, sitioWeb, blog, id))
             db.commit()
         
         flash('Datos actualizados correctamente', 'success') 
@@ -339,7 +348,10 @@ def editarPerfilAdmin(id):
         cursor.execute('SELECT direccion,ciudad,descripcionAcerca,sitioWeb,blog FROM datosAdmin WHERE cod_admin = %s',(id,))
         datos = cursor.fetchone()
         
-        
+        if datos is None:
+            datos = {}
+       
+ 
         return render_template('editarPerfil_admin.html',foto_perfil = foto_perfil, admin=data, admin_id=id, datos = datos)
 
 

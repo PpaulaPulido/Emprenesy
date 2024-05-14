@@ -79,26 +79,26 @@
                     <div class="perfilDireccion">
                         <div class="contacto">
                             <label for="direccion">Dirección</label>
-                            <input type="text" id="direccion" name="direccion"> 
+                            <input type="text" id="direccion" name="direccion" value="{{ datos[0] | default('') }}"> 
                         </div>
                         <div class="contacto">
                             <label for="ciudad">Ciudad</label>
-                            <input type="text" id="ciudad" name="ciudad">
+                            <input type="text" id="ciudad" name="ciudad" value="{{ datos[1] | default('') }}">
                         </div>
                     </div>
                     <h2>Otros detalles</h2>
                     <div class="perfilDetalles">
                         <div class="contacto">
                             <label for="acerca">Acerca de tí</label>
-                            <textarea name="acerca" id="acerca" rows="4" cols="80" placeholder="Escribe aquí"></textarea>
+                            <textarea name="acerca" id="acerca" rows="4" cols="80" placeholder="Escribe aquí">{{ datos[2] | default('') }}</textarea>
                         </div>
                         <div class="contacto">
                             <label for="sitioWeb">Sitio web</label>
-                            <input type="url" name="sitioWeb" id="sitioWeb">
+                            <input type="url" name="sitioWeb" id="sitioWeb" value="{{ datos[3] | default('') }}">
                         </div>
                         <div class="contacto">
                             <label for="blog">Blog</label>
-                            <input type="url" name="blog" id="blog">
+                            <input type="url" name="blog" id="blog" value="{{ datos[4] | default('') }}">
                         </div>
                     </div>
                     <div class="btnEnviar">

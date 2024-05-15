@@ -32,11 +32,14 @@
         </div>
     </header>
     <main>
+        
         <div id="enlaces" style="display: none;">
             <a id="url_nosotros" data-url="{{url_for('usuarios.nosotros_user')}}"></a>
             <a id="url_index" data-url="{{url_for('usuarios.index_user')}}"></a>
             <a id="url_favoritos" data-url="{{url_for('usuarios.favoritos_user')}}"></a>
+            <a id="url_perfil" data-url="{{url_for('usuarios.perfil_usuario')}}"></a>
         </div>
+
         <div id="data-container" data-perfil-url="{{ url_for('admin.perfil_admin') }}" style="display: none;"></div>
         <div id="particles-js"></div>
         <div class="contenedor_title">

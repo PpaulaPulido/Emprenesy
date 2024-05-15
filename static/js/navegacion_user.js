@@ -24,6 +24,7 @@ function crearNav(imagenURL){
     const urlNosotros = document.getElementById('url_nosotros').getAttribute('data-url');
     const urlIndex = document.getElementById('url_index').getAttribute('data-url');
     const urlFavoritos = document.getElementById('url_favoritos').getAttribute('data-url');
+    const urlPerfil = document.getElementById('url_perfil').getAttribute('data-url');
 
     const menuItems = [
         { text: 'Sobre Nosotros', href: urlNosotros, class: 'link' },
@@ -34,7 +35,7 @@ function crearNav(imagenURL){
 
     // Elementos del submenu
     const subMenuItems = [
-        { text: 'Ver perfil', href: '#' },
+        { text: 'Ver perfil', href: urlPerfil },
         { text: 'Notificaciones', href: '#' },
         { text: 'Configuración', href: '#' },
         { text: 'Cerrar sesión', href: '#' }

@@ -28,7 +28,14 @@ ul,
 ol {
     list-style: none;
 }
-/******************************Estilos del container perfil***************************************/.container__perfil{
+/******************************Estilos del container perfil***************************************/
+body{
+    background-image: linear-gradient(135deg, #213859 0%, #2c5d9d 21%, #748ffc 57%, #a755f9 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+.container__perfil{
     padding: 10px;
 }
 .portada__foto{
@@ -101,6 +108,11 @@ ol {
     color: #2c5d9d;
     margin-left: 50px;
 }
+.perfil__name{
+    width: 300px;
+    line-height: 1.5;
+    margin-bottom: -20px;
+}
 .datos__detalles{
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
@@ -133,6 +145,22 @@ ol {
 .detalles_btnPer:hover{
     background-color: #0c4ca0;
 }
+.datos__acerca{
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 80%;
+    border-radius: 8px;
+    padding-left: 40px;
+    margin: 50px 0 0 40px;
+    min-height: 200px;
+    height: fit-content;
+}
+.datos__acerca .textoAcerca{
+    margin-top: 20px;
+    font-size: 18px;
+    text-transform: capitalize;
+}
 .datos_fotos{
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
@@ -161,6 +189,7 @@ ol {
 .perfil__opciones{
     padding: 10px;
     width: 90%;
+    margin-left: 50px;
 }
 .opciones{
     background-color: #fff;
@@ -168,11 +197,17 @@ ol {
     padding: 10px 20px;
     border-radius: 8px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 .opciones a{
     color: #0c4ca0;
+    width: 160px;
+    padding: 5px 0;
     font-weight: bold;
+    text-align: center;
+}
+.opciones a:hover{
+    border-bottom: 2px solid #0196aa;
 }
 #opciones__resultado{
     background-color: #fff;

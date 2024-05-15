@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort,session
+from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort,session,jsonify
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash 
 from db import get_db, get_cursor
@@ -104,6 +104,7 @@ def registrar_usuario():
 def perfil_usuario():
     
     user_id = session.get('user_id')
+    
     if not user_id:
         flash('No está autenticado.', 'error')
         return redirect(url_for('usuarios.inicio_sesion')) 
@@ -145,9 +146,14 @@ def perfil_usuario():
 def perfilImagen_usuario():
     
     user_id = session.get('user_id')
+    
     if not user_id:
         flash('No está autenticado.', 'error')
         return redirect(url_for('usuarios.inicio_sesion')) 
+    
+    
+    db = get_db()
+    cursor = get_cursor(db)
     
     cursor.execute("SELECT ruta_foto FROM fotos_usuario  WHERE cod_usuario= %s AND tipo_foto = 'perfil' ORDER BY id_foto DESC LIMIT 1", (user_id,))
     fotoPerfil = cursor.fetchone()
@@ -172,6 +178,8 @@ def perfilImagen_usuario():
 def subirFotoperfil_usu():
     
     user_id = session.get('user_id')
+    cursor = db.cursor()
+    
     if not user_id:
         flash('No está autenticado.', 'error')
         return redirect(url_for('usuarios.inicio_sesion')) 
@@ -204,6 +212,7 @@ def subirFotoperfil_usu():
 def subirportadaUsu():
     
     user_id = session.get('user_id')
+    
     if not user_id:
         flash('No está autenticado.', 'error')
         return redirect(url_for('usuarios.inicio_sesion')) 
@@ -231,6 +240,115 @@ def subirportadaUsu():
         flash('No se seleccionó archivo o el tipo de archivo no está permitido.')
         return redirect(url_for('usuarios.perfil_usuario'))
 
+#*********************************************Ruta para las reseñas del usuario******************************
+@usuarios.route('/reseñasUsuario')
+def resena_usuario():
+    
+    user_id = session.get('user_id')
+    
+    if not user_id:
+        flash('No está autenticado.', 'error')
+        return redirect(url_for('usuarios.inicio_sesion')) 
+    
+    db = get_db()
+    cursor = db.cursor(dictionary=True)
+    
+    try:
+        cursor.execute("SELECT R.calificacion, R.comentario, R.entidad_tipo, R.entidad_id FROM Resenas AS R WHERE R.autor_tipo = 'usuario' AND R.autor_id = %s ORDER BY R.id_resena DESC LIMIT 5", (user_id,))
+        resenas = cursor.fetchall()
+        
+        resenas_list = []
+        
+        for resena in resenas:
+            nombre_entidad = ""
+            
+            if resena['entidad_tipo'] == 'evento':
+                cursor.execute("SELECT nombreeven FROM eventos WHERE ideven = %s", (resena['entidad_id'],))
+                entidad = cursor.fetchone()
+                if entidad:
+                    nombre_entidad = entidad['nombreeven']
+                    
+            elif resena['entidad_tipo'] == 'emprendimiento':
+                cursor.execute("SELECT nombreempre FROM emprendimientos WHERE idempre = %s", (resena['entidad_id'],))
+                entidad = cursor.fetchone()
+                if entidad:
+                    nombre_entidad = entidad['nombreempre']
+                    
+            elif resena['entidad_tipo'] == 'restaurante':
+                cursor.execute("SELECT nombreresta FROM restaurantes WHERE idresta = %s", (resena['entidad_id'],))
+                entidad = cursor.fetchone()
+                if entidad:
+                    nombre_entidad = entidad['nombreresta']
+            
+            resenas_list.append({
+                'calificacion': resena['calificacion'],
+                'comentario': resena['comentario'],
+                'nombre_entidad': nombre_entidad
+            })
+    finally:
+        cursor.close()
+        db.close()
+    
+    return jsonify(resenas_list)
+
+#******************************************Galeria de fotos del usuario*******************************************************
+@usuarios.route('/galeriaUsuario')
+def galeria_usuario():
+    
+    user_id = session.get('user_id')
+    
+    if not user_id:
+        flash('No está autenticado.', 'error')
+        return redirect(url_for('usuarios.inicio_sesion')) 
+    
+    db = get_db()
+    cursor = db.cursor()
+    
+    try:
+        cursor.execute("""
+            SELECT ruta_foto, tipo_foto FROM fotos_usuario
+            WHERE tipo_foto IN ('perfil', 'portada')
+            ORDER BY id_foto DESC LIMIT 9
+        """)
+        fotos = cursor.fetchall()
+        # Formatear los resultados como una lista de diccionarios
+        
+        fotos_list = [{'ruta_foto': normalize_path(foto[0]), 'tipo_foto': foto[1]} for foto in fotos]
+    finally:
+        cursor.close()
+        db.close()
+    
+    return jsonify(fotos_list)
+
+#*****************************************Ruta de mis fotos de usuario **************************************************************
+@usuarios.route('/MisFotosUsuario')
+def photosUser():
+    
+    user_id = session.get('user_id')
+    
+    if not user_id:
+        flash('No está autenticado.', 'error')
+        return redirect(url_for('usuarios.inicio_sesion')) 
+    
+    db = get_db()
+    cursor = db.cursor()
+    
+    try:
+        cursor.execute("""
+            SELECT ruta_foto, tipo_foto FROM fotos_admin
+            WHERE tipo_foto IN ('perfil', 'portada')
+            ORDER BY id_foto DESC
+        """)
+        fotos = cursor.fetchall()
+        # Formatear los resultados como una lista de diccionarios
+        
+        fotos_list = [{'ruta_foto': normalize_path(foto[0]), 'tipo_foto': foto[1]} for foto in fotos]
+    finally:
+        cursor.close()
+        db.close()
+    
+    return jsonify(fotos_list)
+
 #*****************************************Ruta del index principal de usuario **************************************************************
 @usuarios.route('/index_user')
 def index_user():
@@ -243,3 +361,11 @@ def nosotros_user():
 @usuarios.route('/favoritos_user')
 def favoritos_user():
     return render_template('favoritos.html')
+
+#Formatear los slashes para las imagenes
+def normalize_path(path):
+    """Convierte backslashes a slashes en una ruta y asegura que empieza con '/'."""
+    normalized_path = path.replace('\\', '/')
+    if not normalized_path.startswith('/'):
+        normalized_path = '/' + normalized_path
+    return normalized_path

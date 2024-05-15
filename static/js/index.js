@@ -17,6 +17,8 @@ const detalleEmprendeUrl = document.getElementById('detalle-emprende-url').getAt
 
 document.addEventListener('DOMContentLoaded', function () {
 
+  user_sesion();
+  
   cntSliderTarjetas(datosTarjetas, sliderTarjetas, btn_anterior, btn_siguiente, 'res', detalleResUrl);
   cntSliderTarjetas(datosEventos, sliderTarjetas2, btn_anterior2, btn_siguiente2, 'evento', detalleEventoUrl);
   cntSliderTarjetas(datosEmpredimientos, sliderTarjetas3, btn_anterior3, btn_siguiente3, 'emprende', detalleEmprendeUrl);
@@ -25,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.onscroll = function () {
     scrollFunction();
   };
-  user_sesion();
+
 
 });
 

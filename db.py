@@ -1,7 +1,7 @@
 import mysql.connector
 from flask_sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy()
+'''db = SQLAlchemy()
 
 class Usuario(db.Model):
     __tablename__ = 'usuario'
@@ -22,9 +22,7 @@ class Administrador(db.Model):
     correoadmin = db.Column(db.String(50))
     codsitio = db.Column(db.Integer)
     fechanac_admin = db.Column(db.Date)
-    contrasena = db.Column(db.String(255))
-
-    
+    contrasena = db.Column(db.String(255))'''
 def get_db():
     return mysql.connector.connect(
         host='localhost',
@@ -32,6 +30,7 @@ def get_db():
         password='',
         database='emprenesy'
     )
+   
 
 def get_cursor(db):
     return db.cursor()

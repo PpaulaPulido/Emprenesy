@@ -78,6 +78,7 @@ def publicacionRes():
             res_id = cursor.lastrowid
             session['res_id'] = res_id
             
+            
             #galeria de imagenes
             upload_folder = current_app.config['FOLDER_RES']
             if not os.path.exists(upload_folder):
@@ -85,7 +86,8 @@ def publicacionRes():
             for imagen in galeria:
                 if imagen and allowed_file(imagen.filename):
                     filename = secure_filename(imagen.filename)
-                    path = os.path.join(upload_folder, filename)
+                    #path = os.path.join(upload_folder, filename)
+                    path = os.path.join(current_app.config['FOLDER_RES'], filename)
                     imagen.save(path)
                     cursor.execute("INSERT INTO galeriaresta(idresta, imagenresta, descripcion) VALUES (%s, %s, %s)", (res_id, path, "Imágen de restaurante"))
             

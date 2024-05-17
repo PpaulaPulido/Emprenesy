@@ -8,28 +8,40 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-  <link rel="icon" href="../img/Logo2.jpeg" type="image/icon type" />
-  <link rel="stylesheet" href="../static/styles/generales_user.css" />
-  <link rel="stylesheet" href="../static/styles/tipo_restaurante.css" />
-  <link rel="stylesheet" href="{{url_for ('static', filename='styles/tipo_restaurante.css')}}">
-  <link rel="stylesheet" href="{{url_for ('static', filename='styles/generales_user.css')}}">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
     integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+  <link rel="stylesheet" href="{{url_for ('static', filename='styles/tipo_restaurante.css')}}">
+  <link rel="stylesheet" href="{{url_for ('static', filename='styles/generales_user.css')}}">
+
+
+  <link rel="icon" href="{{url_for ('static', filename='img/Logo2.jpeg')}}" type="image/icon type">
 </head>
 
 <body>
+
   <header id="cabecera">
     <div id="cabeza">
       <div class="logoedit">
-        <img class="logo" src="../img/logo_Emprenesy.png" alt="Emprenesy" />
+        <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
       </div>
     </div>
   </header>
   <main>
 
-    <section class="container_restaurantes">
+    <div id="enlaces" style="display: none;">
+      <a id="url_nosotros" data-url="{{url_for('usuarios.nosotros_user')}}"></a>
+      <a id="url_index" data-url="{{url_for('usuarios.index_user')}}"></a>
+      <a id="url_favoritos" data-url="{{url_for('usuarios.favoritos_user')}}"></a>
+      <a id="url_perfil" data-url="{{url_for('usuarios.perfil_usuario')}}"></a>
+    </div>
 
+    <div id="resturanteContenedor"></div>
+    
+    <section class="container_restaurantes" id="containerRes">
       <div class="tipos_restaurantes">
 
         <div class="container_tarjeta">
@@ -198,9 +210,9 @@
           <ul class="footer_list">
             <li>Siguenos en</li>
             <div class="iconos">
-              <img src="../img/tik-tok.png" alt="tiktok" />
-              <img src="../img/facebook.png" alt="facebook" />
-              <img src="../img/instagram1.png" alt="instagram" />
+              <img src="{{ url_for('static', filename='img/tik-tok.png') }}" alt="tiktok">
+              <img src="{{ url_for('static', filename='img/facebook.png') }}" alt="facebook">
+              <img src="{{ url_for('static', filename='img/instagram1.png') }}" alt="instagram">
             </div>
           </ul>
         </div>
@@ -212,6 +224,8 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
   <script src="../static/js/navegacion_user.js"></script>
-  <script src="../static/js/buscador.js"></script
-  </body>
+  <script src="../static/js/buscador.js"></script>
+  <script src="../static/js/tipoPublicacion.js"></script>
+</body>
+
 </html>

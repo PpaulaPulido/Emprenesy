@@ -94,28 +94,37 @@
         </div>
 
         <div class="container_cards">
-            <div class="cards_contenido card1">
-                <div class="contenido_title">
-                    <h3>Comida Internacional</h3>
+            <a href="{{ url_for('publicacionDash.resTipo', tipo='Comida Internacional') }}" >
+                <div class="cards_contenido card1">
+                    <div class="contenido_title">
+                        <h3>Comida Internacional</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="cards_contenido card2">
-                <div class="contenido_title">
-                    <h3>Gourmet</h3>
+            </a>
+            
+            <a href="{{ url_for('publicacionDash.resTipo', tipo='Gourmet') }}" >
+                <div class="cards_contenido card2">
+                    <div class="contenido_title">
+                        <h3>Gourmet</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="cards_contenido card3">
-                <div class="contenido_title">
-                    <h3>Comida Rápida</h3>
+            </a>
+            
+            <a href="{{ url_for('publicacionDash.resTipo', tipo='Comida rápida') }}" >
+                <div class="cards_contenido card3">
+                    <div class="contenido_title">
+                        <h3>Comida Rápida</h3>
+                    </div>
                 </div>
-
-            </div>
-
-            <div class="cards_contenido card4">
-                <div class="contenido_title">
-                    <h3>Parrilas y Asaderos</h3>
+            </a>
+            
+            <a href="{{ url_for('publicacionDash.resTipo', tipo='Parillas y asaderos') }}" >
+                <div class="cards_contenido card4">
+                    <div class="contenido_title">
+                        <h3>Parrilas y Asaderos</h3> 
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
 
         <section class="section" id="section_novedades">

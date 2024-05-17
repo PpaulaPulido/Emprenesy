@@ -1,13 +1,13 @@
 from flask import Flask, request, redirect, url_for, render_template, flash
 import os
-from db import get_db, get_cursor,db
+from db import get_db, get_cursor
 
 
 app = Flask(__name__)
 app.secret_key = '123456789'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://paulaPulido:luna35@186.155.45.75/emprenesy'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://paulaPulido:luna35@186.155.45.75/emprenesy'
+#app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['FOLDER_EVENT'] = 'static/galeriaEventos'
@@ -15,7 +15,7 @@ app.config['FOLDER_EMPREN'] = 'static/galeriaEmprende'
 app.config['FOLDER_RES'] = 'static/galeriaRes'
 
 # Configuración de SQLAlchemy
-db.init_app(app)
+#db.init_app(app)
 
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
@@ -50,5 +50,5 @@ def index():
     return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0', port=3036)
+    app.run(debug=True,port=3036)
 

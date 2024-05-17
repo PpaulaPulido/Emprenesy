@@ -132,3 +132,4 @@ def restaurantesList():
 def resTipo():
     return render_template('tipo_restaurante.html')
 
+

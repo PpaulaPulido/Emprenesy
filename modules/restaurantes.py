@@ -136,6 +136,9 @@ def restauranteLocation():
         return redirect(url_for('admin.index_admin'))
     return render_template('publicacionRes2.html',admin_id = admin_id)
 
+#********************************************************Ruta para json de detalles******************************************************************
+
+
 
 @res.route('/restauranteDetalle')
 def restauranteDetalle():

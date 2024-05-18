@@ -113,6 +113,7 @@ def galeria_admin():
     try:
         cursor.execute("""
             SELECT ruta_foto, tipo_foto FROM fotos_admin
+    
             WHERE tipo_foto IN ('perfil', 'portada')
             ORDER BY id_foto DESC LIMIT 9
         """)

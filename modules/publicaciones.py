@@ -132,4 +132,49 @@ def restaurantesList():
 def resTipo():
     return render_template('tipo_restaurante.html')
 
+@publicacionDash.route('/galeriaImagenes/<int:id>')
+def galeriaImagenes(id):
+    db = get_db()
+    cursor = get_cursor(db)
+    
+    sql = "SELECT imagenresta FROM galeriaresta WHERE idresta = %s"
+    cursor.execute(sql, (id,))
+    imagenes = cursor.fetchall()
+    
+    cursor.close()
+    db.close()
+    
+    directory_path = os.path.join(current_app.root_path, 'static', 'galeriaRes')
+    
+    imagenes_encontradas = []
+    for imagen in imagenes:
+        file_name = imagen[0]  # El nombre del archivo de la imagen está en la primera columna
+        # Removemos el prefijo 'galeriaRes\' de file_name si está presente
+        file_name = file_name.split('galeriaRes\\')[-1]
+        full_file_path = os.path.join(directory_path, file_name)
+        
+        if os.path.isfile(full_file_path):
+            imagenes_encontradas.append(url_for('static', filename=f'galeriaRes/{file_name}'))
+        else:
+            print(f"Archivo no encontrado: {full_file_path}")  # Log para depuración
 
+    # Si no se encontraron imágenes válidas, se añade una imagen por defecto
+    if not imagenes_encontradas:
+        default_file_name = 'bogota.jpg'  # Nombre de la imagen por defecto
+        default_directory_path = os.path.join(current_app.root_path, 'static', 'img')
+        default_full_file_path = os.path.join(default_directory_path, default_file_name)
+        
+        if os.path.isfile(default_full_file_path):
+            imagenes_encontradas.append(url_for('static', filename=f'img/{default_file_name}'))  # Ajustar la ruta para devolver la imagen por defecto
+        else:
+            print(f"Imagen por defecto no encontrada: {default_full_file_path}")  # Log para depuración
+            # Manejar el caso en que ni siquiera la imagen por defecto existe
+            flash('No se encontraron imágenes para esta galería y la imagen por defecto no está disponible.', 'error')
+            return redirect(url_for('some_default_route'))  # Redirige a una ruta por defecto si no hay imágenes
+
+    return jsonify(imagenes=imagenes_encontradas)
+
+
+    
+    
+    

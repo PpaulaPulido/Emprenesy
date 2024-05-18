@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort,session,jsonify
 from werkzeug.utils import secure_filename
-from datetime import datetime
+from datetime import datetime,timedelta
 from db import get_db, get_cursor
 import os
 
@@ -86,10 +86,11 @@ def publicacionRes():
             for imagen in galeria:
                 if imagen and allowed_file(imagen.filename):
                     filename = secure_filename(imagen.filename)
-                    #path = os.path.join(upload_folder, filename)
                     path = os.path.join(current_app.config['FOLDER_RES'], filename)
                     imagen.save(path)
-                    cursor.execute("INSERT INTO galeriaresta(idresta, imagenresta, descripcion) VALUES (%s, %s, %s)", (res_id, path, "Imágen de restaurante"))
+                    relative_path = os.path.join('galeriaRes', filename)  # Ruta relativa de la imagen
+                    cursor.execute("INSERT INTO galeriaresta (idresta, imagenresta, descripcion) VALUES (%s, %s, %s)",
+                                   (res_id, relative_path, "Imagen de la galería del restaurante"))
             
             # Insertar redes sociales
             if form_data["redInstagram"]:
@@ -137,8 +138,70 @@ def restauranteLocation():
     return render_template('publicacionRes2.html',admin_id = admin_id)
 
 #********************************************************Ruta para json de detalles******************************************************************
+@res.route('/restauranteDetalleJson/<int:id>', methods=['GET'])
+def detallesResJson(id):
+    db = get_db()
+    cursor = db.cursor(dictionary=True)
+    
+    try:
+        if request.method == 'GET':
+            sql = '''
+                SELECT 
+                    r.idresta,
+                    r.nombreresta,
+                    r.logo,
+                    r.tiporesta,
+                    r.descripresta,
+                    r.paginaresta,
+                    r.menu,
+                    r.horario,
+                    r.horarioApertura,
+                    r.horarioCierre,
+                    r.correoresta,
+                    r.telresta,
+                    r.fecha_publicacion,
+                    adm.nombreadmin AS administrador,
+                    GROUP_CONCAT(DISTINCT  gr.imagenresta SEPARATOR '; ') AS imagenes_restaurante,
+                    GROUP_CONCAT(DISTINCT gr.descripcion SEPARATOR '; ') AS descripcion_imagenes,
+                    GROUP_CONCAT(DISTINCT ur.ubicacion SEPARATOR '; ') AS ubicaciones_restaurante,
+                    GROUP_CONCAT(DISTINCT CONCAT(rs.red, ': ', rs.url) SEPARATOR '; ') AS redes_sociales
+                FROM 
+                    restaurantes r
+                LEFT JOIN administrador adm ON r.codadmin = adm.codadmin
+                LEFT JOIN galeriaresta gr ON r.idresta = gr.idresta
+                LEFT JOIN ubicacionresta ur ON r.idresta = ur.idresta
+                LEFT JOIN redes_sociales rs ON r.idresta = rs.entidad_id AND rs.entidad_tipo = 'restaurante'
+                WHERE
+                    r.idresta = %s
+                GROUP BY
+                    r.idresta
+                ORDER BY
+                    r.fecha_publicacion DESC
+            '''
+            cursor.execute(sql, (id,))
+            restaurante = cursor.fetchone()
+            if restaurante:
+                # Convertir objetos timedelta a string si es necesario
+                for key, value in restaurante.items():
+                    if isinstance(value, timedelta):  # Revisar si el valor es de tipo timedelta
+                        # Convertir timedelta a string en formato HH:MM:SS
+                        restaurante[key] = str(value)
+                    elif isinstance(value, str):  # Revisar si el valor es una cadena
+                        # Corregir caracteres de escape en la cadena
+                        restaurante[key] = value.replace('\\', '/')
+                return jsonify(restaurante)
+            else:
+                # No se encontró ningún restaurante con el idresta dado
+                return jsonify({'error': 'Restaurante no encontrado'}), 404
+    except Exception as e:
+        return jsonify({'error': 'Error en el servidor: {}'.format(e)}), 500
+    finally:
+        cursor.close()
+        db.close()
 
-
+@res.route('/restauranteDetalleServidor')
+def restauranteDetalleServidor():
+    return render_template('detalleServidor.html')
 
 @res.route('/restauranteDetalle')
 def restauranteDetalle():
@@ -147,4 +210,6 @@ def restauranteDetalle():
 @res.route('/SeccionRestaurante')
 def sectionRes():
     return render_template('seccion_res.html')
+
+
 

@@ -71,6 +71,7 @@ function generarDatos() {
     obtenerDatos(window.restaurantesTematicos,restaId);
     obtenerDatos(window.restaurantesVista,restaId);
 }
+
 function popup_menu() {
     const urlParams = new URLSearchParams(window.location.search);
     const restaId = parseInt(urlParams.get('id')); // Convierte el ID a un número entero

@@ -19,9 +19,10 @@ function filterByType(tipo) {
         .then(response => response.json())
         .then(data => {
             const contenedorRes = document.getElementById('resturanteContenedor')
+            const nombreRes = 'restaurante'
             contenedorRes.innerHTML = '';
 
-            tarjetasRes(data,contenedorRes, {
+            tarjetasRes(data,contenedorRes,nombreRes, {
                 id: 'id',
                 nombre: 'nombre',
                 logo: 'logo',
@@ -33,7 +34,7 @@ function filterByType(tipo) {
         });
 }
 
-function tarjetasRes(data, contenedor,config) {
+function tarjetasRes(data, contenedor,nombreResTipo, config) {
     //const contenedorRes = document.querySelector('#containerRes');
 
     data.forEach(tarjeta => {
@@ -70,6 +71,9 @@ function tarjetasRes(data, contenedor,config) {
         const divBoton = document.createElement('div');
         divBoton.classList.add('container_btn');
 
+        const enlace = document.createElement('a');
+        enlace.href = `/res/restauranteDetalleServidor?id=${tarjeta[config.id]}`;
+        
         const boton = document.createElement('button');
         boton.classList.add('btn');
 
@@ -83,7 +87,8 @@ function tarjetasRes(data, contenedor,config) {
 
         boton.appendChild(span1);
         boton.appendChild(span2);
-        divBoton.appendChild(boton);
+        enlace.appendChild(boton); // Aquí añadimos el botón al enlace
+        divBoton.appendChild(enlace); // Aquí añadimos el enlace al contenedor del botón
 
         divContainer.appendChild(divRating);
 

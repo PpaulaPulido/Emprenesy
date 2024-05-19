@@ -72,7 +72,8 @@ function tarjetasRes(data, contenedor,nombreResTipo, config) {
         divBoton.classList.add('container_btn');
 
         const enlace = document.createElement('a');
-        enlace.href = `/res/restauranteDetalleServidor?id=${tarjeta[config.id]}`;
+        enlace.href = `/res/restauranteDetalleServidor?id=${tarjeta[config.id]}&tipo=${nombreResTipo}`;
+
         
         const boton = document.createElement('button');
         boton.classList.add('btn');

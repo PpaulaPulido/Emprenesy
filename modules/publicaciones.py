@@ -176,5 +176,49 @@ def galeriaImagenes(id):
 
 
     
+def ubicacionesPublicacion(entidad, id):
+    db = get_db()
+    cursor = db.cursor()
+   
+    # Seleccionamos los campos comunes y específicos según el tipo de entidad
+    if entidad == 'restaurante':
+        table_name = 'ubicacionresta'
+        entity_fields = 'idresta as id, ubicacion'
+        columna_id = 'idresta'
+        
+    elif entidad == 'emprendimiento':
+        table_name = 'ubicacionempre'
+        entity_fields = 'idempre as id, ubicacion'
+        columna_id = 'idempre'
     
+    elif entidad == 'evento':
+        table_name = 'ubicacioneven'
+        entity_fields = 'ideven as id, ubicacion'
+        columna_id = 'ideven'
     
+    else:
+        return jsonify({'error': 'Tipo de entidad no soportado'}), 400
+
+    querySelect = f"SELECT {entity_fields} FROM {table_name} WHERE {columna_id} = %s"
+    cursor.execute(querySelect, (id,))
+    publicaciones = cursor.fetchall()
+
+    cursor.close()  # Cerrar el cursor
+
+    publicaciones_list = [
+        {'id': id, 'ubicacion': ubicacion} for (id, ubicacion) in publicaciones
+    ]
+
+    return jsonify(publicaciones_list)
+
+@publicacionDash.route('/restaurante/ubicacion/<int:id>')
+def resUbicacion(id):
+    return ubicacionesPublicacion('restaurante', id)
+
+@publicacionDash.route('/emprendimiento/ubicacion/<int:id>')
+def empUbicacion(id):
+    return ubicacionesPublicacion('emprendimiento', id)
+
+@publicacionDash.route('/evento/ubicacion/<int:id>')
+def evenUbicacion(id):
+    return ubicacionesPublicacion('evento', id)

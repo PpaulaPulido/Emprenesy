@@ -5,6 +5,7 @@ from db import get_db, get_cursor
 import os
 
 evento = Blueprint('evento', __name__)
+
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 db = get_db()
 cursor = get_cursor(db)

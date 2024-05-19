@@ -149,7 +149,7 @@ def detallesResJson(id):
                 SELECT 
                     r.idresta,
                     r.nombreresta,
-                    r.logo,
+                    r.logo AS logo_filename,
                     r.tiporesta,
                     r.descripresta,
                     r.paginaresta,
@@ -181,6 +181,15 @@ def detallesResJson(id):
             cursor.execute(sql, (id,))
             restaurante = cursor.fetchone()
             if restaurante:
+                
+                if restaurante['logo_filename']:
+                    normalized_logo_filename = restaurante['logo_filename'].replace('\\', '/')
+                    logo_url = url_for('static', filename=normalized_logo_filename)
+                else:
+                    logo_url = url_for('static', filename='img/notFound.png')
+                    
+                restaurante['logo'] = logo_url
+                
                 # Convertir objetos timedelta a string si es necesario
                 for key, value in restaurante.items():
                     if isinstance(value, timedelta):  # Revisar si el valor es de tipo timedelta
@@ -201,7 +210,7 @@ def detallesResJson(id):
 
 @res.route('/restauranteDetalleServidor')
 def restauranteDetalleServidor():
-    return render_template('detalleServidor.html')
+    return render_template('detalleServidorRes.html')
 
 @res.route('/restauranteDetalle')
 def restauranteDetalle():

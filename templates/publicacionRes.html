@@ -75,7 +75,7 @@
                             <label for="typeRes">Tipo de restaurante</label>
                             <select name="typeRes" id="typeRes">
                                 <option value="">Seleccionar</option>
-                                {% for type in ['Comida Internacional', 'Restaurantes temáticos', 'Restaurantes con vista', 'Gourmet','Comida rápida','Comida de Mar','Parillas y asaderos'] %}
+                                {% for type in ['Comida Internacional', 'Restaurante temático', 'Restaurante con vista', 'Gourmet','Comida rápida','Comida de Mar','Parillas y asaderos'] %}
                                     <option value="{{ type }}" {% if datos.get('tipoRes') == type %}selected{% endif %}>{{ type }}</option>
                                 {% endfor %}
                             </select>

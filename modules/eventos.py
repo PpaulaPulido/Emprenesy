@@ -97,7 +97,8 @@ def publicarEventos():
                     filename = secure_filename(imagen.filename)
                     path = os.path.join(upload_folder, filename)
                     imagen.save(path)
-                    cursor.execute("INSERT INTO galeriaeven (ideven, urlImagen, descripcion) VALUES (%s, %s, %s)", (evento_id, path, "Imagen del evento"))
+                    relative_path = os.path.join('galeriaEventos',filename)
+                    cursor.execute("INSERT INTO galeriaeven (ideven, urlImagen, descripcion) VALUES (%s, %s, %s)", (evento_id, relative_path, "Imagen del evento"))
             
             # Insertar fechas y horarios
             cursor.execute("INSERT INTO fechaseven (ideven, fechaseven, horarioEntrada, horarioSalida) VALUES (%s, %s, %s, %s)", (evento_id, form_data["fechaeven"], form_data["horarioE"], form_data["horarioS"]))
@@ -157,6 +158,6 @@ def formularioUbicacion():
     return render_template('formularioEventos2.html',admin_id = admin_id)
 
 
-@evento.route('/tipoEvento')
-def tipo_evento():
-    return render_template('tipo_evento.html')
+@evento.route('/eventoDetalleServidor')
+def eventoDetalleServidor():
+    return render_template('detalleServidorEvento.html')

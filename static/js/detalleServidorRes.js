@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     generarDatos();
     calificacion();
 });
-function calificacion(){
+function calificacion() {
     const rating = document.getElementById('rating');
     for (let i = 0; i < 5; i++) {
         const star = document.createElement('i');
@@ -45,6 +45,9 @@ function mostrarDatos(data) {
     document.querySelector('#contacto').textContent = data.telresta;
     document.querySelector('#comidas').textContent = data.tiporesta;
     document.querySelector('#correo').textContent = data.correoresta || 'No aplica';
+    let datoAdminSelector = document.querySelector('#nombreAdmin');
+    let datosAdmin = (data.administrador) ? `Publicado por ${data.administrador}` : '';
+    datoAdminSelector.innerHTML = datosAdmin;
 
     const divhorario = document.createElement('div');
     divhorario.classList.add('horarioRes');
@@ -54,7 +57,7 @@ function mostrarDatos(data) {
     horaTexto.textContent = `Hora de apertura: ${data.horarioApertura} / Hora de cierre: ${data.horarioCierre}`;
     divhorario.appendChild(texto);
     divhorario.appendChild(horaTexto);
-    
+
 
     const horario = document.querySelector('#horario')
     horario.appendChild(divhorario);
@@ -157,7 +160,7 @@ function popupmenu(data) {
 
     let menuHtml = '<h3>Nuestro Menú</h3>';
     menuHtml += `<p class="screen"> 🍽️<a href="${data.menu}" target="_blank">Ver Nuestro Menú</a></p>`;
-  
+
     Swal.fire({
         title: `<span class="custom-title">${data.nombreresta}</span>`,
         html: `<div class="div-swal">${menuHtml}</div>`,

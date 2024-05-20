@@ -118,7 +118,7 @@ def publicacionesPublica(entidad, tipo):
 
     return jsonify(publicaciones_list)
 
-
+#************************Tipo de restaurantes************************************
 @publicacionDash.route('/tipoRestaurante')
 def restaurantesList():
     tipo = request.args.get('tipo')  # parámetro 'tipo' de la URL
@@ -127,11 +127,24 @@ def restaurantesList():
     
     return publicacionesPublica('restaurante', tipo)
 
-
 @publicacionDash.route('/restauranteTipo')
 def resTipo():
     return render_template('tipo_restaurante.html')
 
+#****************************tipo de eventos **************************
+@publicacionDash.route('/tipoEvento')
+def eventoList():
+    tipo = request.args.get('tipo')  # parámetro 'tipo' de la URL
+    if tipo is None:
+        return jsonify({'error': 'Falta el parámetro tipo en la URL'}), 400
+    
+    return publicacionesPublica('evento', tipo)
+
+@publicacionDash.route('/eventoTipo')
+def eventoTipo():
+    return render_template('tipo_evento.html')
+
+#***************************Galeria de imagenes ******************************
 @publicacionDash.route('/galeriaImagenes/<int:id>')
 def galeriaImagenes(id):
     db = get_db()

@@ -89,7 +89,8 @@ def publicar_emprendimiento():
                     filename = secure_filename(imagen.filename)
                     path = os.path.join(upload_folder, filename)
                     imagen.save(path)
-                    cursor.execute("INSERT INTO galeriaempre (idempre, imagenempre, descripcion) VALUES (%s, %s, %s)", (emprende_id, path, "Imágen de emprendimiento"))
+                    relative_path = os.path.join('galeriaEmprende',filename)
+                    cursor.execute("INSERT INTO galeriaempre (idempre, imagenempre, descripcion) VALUES (%s, %s, %s)", (emprende_id, relative_path, "Imágen de emprendimiento"))
             
             # Insertar redes sociales
             if form_data["redInstagram"]:

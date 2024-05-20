@@ -41,6 +41,12 @@ function tarjetasRes(data, contenedor,nombreResTipo, config) {
         const divTarjeta = document.createElement('div');
         divTarjeta.classList.add('container_tarjeta');
 
+        const  contenedorTipoImagen = document.createElement('div');
+        contenedorTipoImagen.classList.add('tipo_imagen_container');
+        
+        const iconHeart = document.createElement('i');
+        iconHeart.classList.add('bi', 'bi-heart-fill', 'favorite');
+
         const divImagen = document.createElement('div');
         divImagen.classList.add('tipo_imagen');
 
@@ -88,8 +94,8 @@ function tarjetasRes(data, contenedor,nombreResTipo, config) {
 
         boton.appendChild(span1);
         boton.appendChild(span2);
-        enlace.appendChild(boton); // Aquí añadimos el botón al enlace
-        divBoton.appendChild(enlace); // Aquí añadimos el enlace al contenedor del botón
+        enlace.appendChild(boton); 
+        divBoton.appendChild(enlace); 
 
         divContainer.appendChild(divRating);
 
@@ -98,7 +104,9 @@ function tarjetasRes(data, contenedor,nombreResTipo, config) {
         divContenido.appendChild(divBoton);
 
         divImagen.appendChild(imagen);
-        divTarjeta.appendChild(divImagen);
+        contenedorTipoImagen.appendChild(divImagen);
+        contenedorTipoImagen.appendChild(iconHeart);
+        divTarjeta.appendChild(contenedorTipoImagen);
         divTarjeta.appendChild(divContenido);
 
         contenedor.appendChild(divTarjeta);

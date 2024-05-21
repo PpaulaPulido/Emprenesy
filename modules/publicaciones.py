@@ -8,6 +8,7 @@ publicacionDash = Blueprint('publicacionDash', __name__)
 db = get_db()
 cursor = get_cursor(db)
 
+#******************************************Index del admin dashboard*****************************************************************
 def dashboardPublicacion(entidad):
     
     db = get_db()
@@ -70,6 +71,8 @@ def dashEmmprendimiento():
 def dashEventos():
     return dashboardPublicacion("evento")
 
+#****************************************funcion para traer datos de los formularios************************************************************
+
 def publicacionesPublica(entidad, tipo):
     db = get_db()
     cursor = db.cursor()
@@ -118,7 +121,7 @@ def publicacionesPublica(entidad, tipo):
 
     return jsonify(publicaciones_list)
 
-#************************Tipo de restaurantes************************************
+#************************Tipos de restaurantes************************************
 @publicacionDash.route('/tipoRestaurante')
 def restaurantesList():
     tipo = request.args.get('tipo')  # parámetro 'tipo' de la URL
@@ -131,7 +134,7 @@ def restaurantesList():
 def resTipo():
     return render_template('tipo_restaurante.html')
 
-#****************************tipo de eventos **************************
+#****************************tipos de eventos **************************
 @publicacionDash.route('/tipoEvento')
 def eventoList():
     tipo = request.args.get('tipo')  # parámetro 'tipo' de la URL
@@ -144,30 +147,50 @@ def eventoList():
 def eventoTipo():
     return render_template('tipo_evento.html')
 
-#***************************Galeria de imagenes ******************************
-@publicacionDash.route('/galeriaImagenes/<int:id>')
-def galeriaImagenes(id):
+#***************************Galeria de imagenes funcion******************************
+def galeriaImagenesPublicacion(id,entidad):
+    
     db = get_db()
     cursor = get_cursor(db)
     
-    sql = "SELECT imagenresta FROM galeriaresta WHERE idresta = %s"
-    cursor.execute(sql, (id,))
+    if entidad == 'restaurante':
+        table_name = 'galeriaresta'
+        fields = 'imagenresta as imagenGaleria'
+        id_table = 'idresta'
+        folder = 'galeriaRes'
+    
+    elif entidad == 'evento':
+        table_name = 'galeriaeven'
+        fields = ' urlImagen as imagenGaleria'
+        id_table = 'ideven'
+        folder = 'galeriaEventos'
+    
+    elif entidad == 'emprendimiento':
+        table_name = 'galeriaempre'
+        fields = 'imagenempre as imagenGaleria'
+        id_table = 'idempre'
+        folder = 'galeriaEmprende'
+    
+    else:
+        return jsonify({'error': 'Tipo de entidad no soportado'}), 400
+    
+    query = f"SELECT {fields} FROM {table_name} WHERE {id_table} = %s"
+    cursor.execute(query, (id,))
     imagenes = cursor.fetchall()
     
     cursor.close()
     db.close()
     
-    directory_path = os.path.join(current_app.root_path, 'static', 'galeriaRes')
+    directory_path = os.path.join(current_app.root_path, 'static', folder)
     
     imagenes_encontradas = []
     for imagen in imagenes:
-        file_name = imagen[0]  # El nombre del archivo de la imagen está en la primera columna
-        # Removemos el prefijo 'galeriaRes\' de file_name si está presente
-        file_name = file_name.split('galeriaRes\\')[-1]
+        file_name = imagen[0] 
+        file_name = file_name.split(f"{folder}\\")[-1]
         full_file_path = os.path.join(directory_path, file_name)
         
         if os.path.isfile(full_file_path):
-            imagenes_encontradas.append(url_for('static', filename=f'galeriaRes/{file_name}'))
+            imagenes_encontradas.append(url_for('static', filename=f'{folder}/{file_name}'))
         else:
             print(f"Archivo no encontrado: {full_file_path}")  # Log para depuración
 
@@ -187,7 +210,14 @@ def galeriaImagenes(id):
 
     return jsonify(imagenes=imagenes_encontradas)
 
+@publicacionDash.route('/galeriaImagenes/restaurante/<int:id>')
+def galeriaImagenesRes(id):
+    return galeriaImagenesPublicacion(id,'restaurante')
 
+@publicacionDash.route('/galeriaImagenes/evento/<int:id>')
+def galeriaImagenesEventos(id):
+    return galeriaImagenesPublicacion(id,'evento')
+#**********************************************funcion para traer ubicaciones de la base de datos*****************************************************************
     
 def ubicacionesPublicacion(entidad, id):
     db = get_db()

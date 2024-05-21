@@ -76,7 +76,7 @@
                             <label for="tipoevento">Tipo de evento</label>
                             <select name="tipoevento" id="tipoevento">
                                 <option value="">Seleccionar</option>
-                                {% for type in ['Evento de danza', 'Ferias gastronomicas', 'Ferias tecnologicas', 'Eventos deportivos', 'Exposiciones de arte', 'Conciertos de musica', 'Ferias de libros'] %}
+                                {% for type in ['Evento de danza', 'Ferias gastronomicas', 'Ferias tecnológicas', 'Eventos deportivos', 'Exposiciones de arte', 'Conciertos de música', 'Ferias de libros'] %}
                                     <option value="{{ type }}" {% if datos.get('tipoevento') == type %}selected{% endif %}>{{ type }}</option>
                                 {% endfor %}
                             </select>

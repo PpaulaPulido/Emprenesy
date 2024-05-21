@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort,session,jsonify
 from werkzeug.utils import secure_filename
-from datetime import datetime
+from datetime import datetime,timedelta
 from db import get_db, get_cursor
 import os
 
@@ -157,7 +157,73 @@ def formularioUbicacion():
         return redirect(url_for('admin.index_admin'))
     return render_template('formularioEventos2.html',admin_id = admin_id)
 
-
+#*******************************************************************************************Ruta para json de detalles de eventos***********************
+@evento.route('/eventoDetalleJson/<int:id>',methods=['GET'])
+def detalleEventoJson(id):
+    db = get_db()
+    cursor = db.cursor(dictionary=True)
+    
+    try:
+        if request.method == 'GET':
+            sql = '''
+                SELECT eve.ideven,
+                    eve.nombreeven,
+                    eve.logo AS logo_filename,
+                    eve.tipoevento,
+                    eve.descripeven,
+                    eve.paginaeven,
+                    eve.boletaseven,
+                    eve.infoAdicional,
+                    eve.contacto,
+                    eve.correoeven,
+                    eve.fecha_publicacion,
+                    adm.nombreadmin as administrador,
+                    GROUP_CONCAT(DISTINCT fe.fechaseven SEPARATOR '; ') AS fechas_eventos,
+                    GROUP_CONCAT(DISTINCT fe.horarioEntrada SEPARATOR '; ') AS hora_entrada,
+                    GROUP_CONCAT(DISTINCT fe.horarioSalida SEPARATOR '; ') AS hora_salida,
+                    GROUP_CONCAT(DISTINCT gr.urlImagen SEPARATOR '; ') AS imagenes_eventos,
+                    GROUP_CONCAT(DISTINCT gr.descripcion SEPARATOR '; ') AS descripcion_imagenes,
+                    GROUP_CONCAT(DISTINCT ub.ubicacion SEPARATOR '; ') AS ubicaciones_eventos,
+                    GROUP_CONCAT(DISTINCT CONCAT(rs.red, ': ', rs.url) SEPARATOR '; ') AS redes_sociales
+                FROM eventos eve 
+                LEFT JOIN administrador adm ON eve.codadmin = adm.codadmin
+                LEFT JOIN fechaseven fe ON eve.ideven = fe.ideven 
+                LEFT JOIN galeriaeven gr ON eve.ideven = gr.ideven
+                LEFT JOIN ubicacioneven ub ON eve.ideven = ub.ideven
+                LEFT JOIN redes_sociales rs ON eve.ideven = rs.entidad_id AND rs.entidad_tipo = 'evento'
+                WHERE eve.ideven = %s
+                GROUP BY eve.ideven
+                ORDER BY eve.fecha_publicacion DESC;
+            '''
+            cursor.execute(sql,(id,))
+            evento = cursor.fetchone()
+            
+            if evento:
+                if evento['logo_filename']:
+                    normalized_logo_filename = evento['logo_filename'].replace('\\', '/')
+                    logo_url = url_for('static', filename=normalized_logo_filename)
+                else:
+                    logo_url = url_for('static', filename='img/notFound.png')
+                
+                evento['logo'] = logo_url
+                
+                for key, value in evento.items():
+                    if isinstance(value, timedelta):  
+                      
+                        evento[key] = str(value)
+                    elif isinstance(value, str):  # Revisar si el valor es una cadena
+                        # Corregir caracteres de escape en la cadena
+                        evento[key] = value.replace('\\', '/')
+                return jsonify(evento)
+            
+            else:
+                return jsonify({'error': 'Evento no encontrado'}), 404       
+    except Exception as e:
+        return jsonify({'error': 'Error en el servidor: {}'.format(e)}), 500
+    finally:
+        cursor.close()
+        db.close()
+        
 @evento.route('/eventoDetalleServidor')
 def eventoDetalleServidor():
     return render_template('detalleServidorEvento.html')

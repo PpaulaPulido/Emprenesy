@@ -55,7 +55,8 @@ function mostrarDatos(data) {
     document.querySelector('#eventoTipo').textContent = data.tipoevento;
     document.querySelector('#correo').textContent = data.correoeven || 'No aplica';
     let datoAdminSelector = document.querySelector('#nombreAdmin');
-    let datosAdmin = (data.administrador) ? `Publicado por ${data.administrador}` : '';
+
+    let datosAdmin = (data.administrador) ? `Publicado por ${data.administrador + data.apellidoAdm}` : '';
     datoAdminSelector.innerHTML = datosAdmin;
 
     const divhorario = document.getElementById('horario');
@@ -69,9 +70,6 @@ function mostrarDatos(data) {
 
     divhorario.appendChild(horaEntradaTexto);
     divhorario.appendChild(horaSalidaTexto);
-
-
-
 
     const sitio_web = document.querySelector('#web');
     sitio_web.href = data.paginaeven;

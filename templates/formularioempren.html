@@ -70,7 +70,7 @@
                             <label for="typeEmprende">Tipo de emprendimiento</label>
                             <select name="typeEmprende" id="typeEmprende">
                                 <option value="">Seleccionar</option>
-                                {% for type in ['Ropa', 'Artesanias', 'Manualidades', 'Comida'] %}
+                                {% for type in ['Tienda de Ropa', 'Artesanias','Empredimientos de Arte', 'Emprendimiento de Mascotas', 'Emprendimiento Gastronómico'] %}
                                     <option value="{{ type }}" {% if datos.get('tipoEm') == type %}selected{% endif %}>{{ type }}</option>
                                 {% endfor %}
                             </select>

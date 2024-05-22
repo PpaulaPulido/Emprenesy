@@ -161,6 +161,7 @@ def detallesResJson(id):
                     r.telresta,
                     r.fecha_publicacion,
                     adm.nombreadmin AS administrador,
+                    adm.apellidoadmin AS apellidoAdm,
                     GROUP_CONCAT(DISTINCT  gr.imagenresta SEPARATOR '; ') AS imagenes_restaurante,
                     GROUP_CONCAT(DISTINCT gr.descripcion SEPARATOR '; ') AS descripcion_imagenes,
                     GROUP_CONCAT(DISTINCT ur.ubicacion SEPARATOR '; ') AS ubicaciones_restaurante,
@@ -212,6 +213,7 @@ def detallesResJson(id):
 def restauranteDetalleServidor():
     return render_template('detalleServidorRes.html')
 
+#********************************************Rutas para html estaticos*************************************
 @res.route('/restauranteDetalle')
 def restauranteDetalle():
     return render_template('detalle_res.html')

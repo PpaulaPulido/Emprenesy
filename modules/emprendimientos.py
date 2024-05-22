@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort,session,jsonify
 from werkzeug.utils import secure_filename
-from datetime import datetime
+from datetime import datetime,timedelta
 from db import get_db, get_cursor
 import os
 
@@ -140,7 +140,84 @@ def publicar_emprendimientoLocation():
         return redirect(url_for('admin.index_admin'))
     return render_template('formularioEmprende2.html',admin_id = admin_id)
 
+#********************************************************Ruta para json de detalles******************************************************************
+@emprende.route('/emprendimientoDetalleJson/<int:id>', methods=['GET'])
+def detallesEmprendeJson(id):
+    
+    db = get_db()
+    cursor = db.cursor(dictionary=True)
+    
+    try:
+        if request.method == 'GET':
+            sql = '''
+                SELECT em.idempre,
+                    em.nombreempre,
+                    em.logo AS logo_filename,
+                    em.tipoempre,
+                    em.descripempre,
+                    em.horarioempre,
+                    em.horarioApertura,
+                    em.horarioCierre,
+                    em.paginaempre,
+                    em.producempre,
+                    em.correoempre,
+                    em.telempre,
+                    em.fecha_publicacion,
+                    adm.nombreadmin AS administrador,
+                    adm.apellidoadmin AS apellidoAdm,
+                    GROUP_CONCAT(DISTINCT  ga.imagenempre SEPARATOR '; ') AS imagenes_emprende,
+                    GROUP_CONCAT(DISTINCT ga.descripcion SEPARATOR '; ') AS descripcion_imagenes,
+                    GROUP_CONCAT(DISTINCT ub.ubicacion SEPARATOR '; ') AS ubicaciones_emprende,
+                    GROUP_CONCAT(DISTINCT CONCAT(rs.red, ': ', rs.url) SEPARATOR '; ') AS redes_sociales
+                FROM 
+                    emprendimientos em
+                LEFT JOIN administrador adm ON em.codadmin = adm.codadmin
+                LEFT JOIN galeriaempre ga ON em.idempre = ga.idempre
+                LEFT JOIN ubicacionempre ub ON em.idempre = ub.idempre
+                LEFT JOIN redes_sociales rs ON em.idempre = rs.entidad_id AND rs.entidad_tipo = 'emprendimiento'
+                WHERE
+                    em.idempre = %s
+                GROUP BY
+                    em.idempre
+                ORDER BY
+                    em.fecha_publicacion DESC;
+       
+            '''
+            cursor.execute(sql, (id,))
+            emprendimiento = cursor.fetchone()
+            if emprendimiento:
+                
+                if emprendimiento['logo_filename']:
+                    normalized_logo_filename = emprendimiento['logo_filename'].replace('\\', '/')
+                    logo_url = url_for('static', filename=normalized_logo_filename)
+                else:
+                    logo_url = url_for('static', filename='img/notFound.png')
+                    
+                emprendimiento['logo'] = logo_url
+                
+                # Convertir objetos timedelta a string si es necesario
+                for key, value in emprendimiento.items():
+                    if isinstance(value, timedelta):  # Revisar si el valor es de tipo timedelta
+                        # Convertir timedelta a string en formato HH:MM:SS
+                        emprendimiento[key] = str(value)
+                    elif isinstance(value, str):  # Revisar si el valor es una cadena
+                        # Corregir caracteres de escape en la cadena
+                        emprendimiento[key] = value.replace('\\', '/')
+                return jsonify(emprendimiento)
+            else:
+                # No se encontró ningún restaurante con el idresta dado
+                return jsonify({'error': 'Restaurante no encontrado'}), 404
+    except Exception as e:
+        return jsonify({'error': 'Error en el servidor: {}'.format(e)}), 500
+    finally:
+        cursor.close()
+        db.close()
 
+@emprende.route('/EmprendeDetalleServidor')
+def EmprendeDetalleServidor():
+    return render_template('detalleServidorEmprende.html')
+
+#********************************************Rutas para html estaticos*************************************
 @emprende.route('/sectionEmprende')
 def sectionEmprende():
     return render_template('seccion_empren.html')

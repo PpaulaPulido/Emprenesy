@@ -178,6 +178,7 @@ def detalleEventoJson(id):
                     eve.correoeven,
                     eve.fecha_publicacion,
                     adm.nombreadmin as administrador,
+                    adm.apellidoadmin AS apellidoAdm,
                     GROUP_CONCAT(DISTINCT fe.fechaseven SEPARATOR '; ') AS fechas_eventos,
                     GROUP_CONCAT(DISTINCT fe.horarioEntrada SEPARATOR '; ') AS hora_entrada,
                     GROUP_CONCAT(DISTINCT fe.horarioSalida SEPARATOR '; ') AS hora_salida,

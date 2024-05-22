@@ -85,7 +85,7 @@ def publicacionesPublica(entidad, tipo):
     elif entidad == 'emprendimiento':
         tabla = 'emprendimientos'
         campos = 'idempre as id, nombreempre as nombre, logo, tipoempre as tipo, fecha_publicacion'
-        tipo_columna = 'tiporesta'
+        tipo_columna = 'tipoempre'
         
     elif entidad == 'evento':
         tabla = 'eventos'
@@ -146,6 +146,19 @@ def eventoList():
 @publicacionDash.route('/eventoTipo')
 def eventoTipo():
     return render_template('tipo_evento.html')
+
+#****************************tipos de emprendimientos **************************
+@publicacionDash.route('/tipoEmprendimiento')
+def emprendimientoList():
+    tipo = request.args.get('tipo')  # parámetro 'tipo' de la URL
+    if tipo is None:
+        return jsonify({'error': 'Falta el parámetro tipo en la URL'}), 400
+    
+    return publicacionesPublica('emprendimiento', tipo)
+
+@publicacionDash.route('/emprendimientoTipo')
+def emprendeTipo():
+    return render_template('tipo_emprendimiento.html')
 
 #***************************Galeria de imagenes funcion******************************
 def galeriaImagenesPublicacion(id,entidad):
@@ -217,6 +230,11 @@ def galeriaImagenesRes(id):
 @publicacionDash.route('/galeriaImagenes/evento/<int:id>')
 def galeriaImagenesEventos(id):
     return galeriaImagenesPublicacion(id,'evento')
+
+
+@publicacionDash.route('/galeriaImagenes/Emprendimiento/<int:id>')
+def galeriaImagenesEmprende(id):
+    return galeriaImagenesPublicacion(id,'emprendimiento')
 #**********************************************funcion para traer ubicaciones de la base de datos*****************************************************************
     
 def ubicacionesPublicacion(entidad, id):

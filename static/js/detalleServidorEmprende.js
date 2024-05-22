@@ -1,6 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    user_sesion().then(() => {
+        inicializarBuscador();
+    }).catch(error => console.error('Error al inicializar sesión de usuario:', error));
+
     generarDatos();
     calificacion();
+
 });
 function calificacion() {
     const rating = document.getElementById('rating');
@@ -14,7 +20,7 @@ function generarDatos(callback) {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
 
-    fetch(`/res/restauranteDetalleJson/${id}`)
+    fetch(`/emprende/emprendimientoDetalleJson/${id}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error en la solicitud');
@@ -28,7 +34,7 @@ function generarDatos(callback) {
             }
             console.log(data); // Ver los datos obtenidos en la consola
             mostrarDatos(data);
-            galeria('publicacion/galeriaImagenes/restaurante');
+            galeria('publicacion/galeriaImagenes/Emprendimiento');
 
             if (callback) {
                 callback(data);
@@ -40,30 +46,32 @@ function generarDatos(callback) {
 }
 
 function mostrarDatos(data) {
-    document.getElementById('title').textContent = data.nombreresta;
-    document.getElementById('nombreRes').textContent = data.nombreresta;
-    document.querySelector('#contacto').textContent = data.telresta;
-    document.querySelector('#comidas').textContent = data.tiporesta;
-    document.querySelector('#correo').textContent = data.correoresta || 'No aplica';
+    document.getElementById('title').textContent = data.nombreempre;
+    document.getElementById('negocio').textContent = data.tipoempre;
+    document.getElementById('nombreEmpre').textContent = data.nombreempre;
+    document.querySelector('#contacto').textContent = data.telempre;
+    document.querySelector('#correo').textContent = data.correoempre || 'No aplica';
+
     let datoAdminSelector = document.querySelector('#nombreAdmin');
     let datosAdmin = (data.administrador) ? `Publicado por ${data.administrador + data.apellidoAdm}` : '';
     datoAdminSelector.innerHTML = datosAdmin;
 
-    const divhorario = document.createElement('div');
-    divhorario.classList.add('horarioRes');
-    const texto = document.createElement('p');
-    texto.textContent = data.horario;
-    const horaTexto = document.createElement('p');
-    horaTexto.textContent = `Hora de apertura: ${data.horarioApertura} / Hora de cierre: ${data.horarioCierre}`;
-    divhorario.appendChild(texto);
-    divhorario.appendChild(horaTexto);
+    document.querySelector('#horarioText').textContent = data.horarioempre;
+    const divhorario = document.getElementById('horario');
+    divhorario.classList.add('horario');
 
 
-    const horario = document.querySelector('#horario')
-    horario.appendChild(divhorario);
+    const horaEntradaTexto = document.createElement('p');
+    horaEntradaTexto.textContent = `Hora de apertura: ${data.horarioApertura}`;
+
+    const horaSalidaTexto = document.createElement('p');
+    horaSalidaTexto.textContent = `Hora de cierre: ${data.horarioCierre}`;
+
+    divhorario.appendChild(horaEntradaTexto);
+    divhorario.appendChild(horaSalidaTexto);
 
     const sitio_web = document.querySelector('#web');
-    sitio_web.href = data.paginaresta;
+    sitio_web.href = data.paginaempre;
     sitio_web.target = '_blank';
 
     const redes = data.redes_sociales ? data.redes_sociales.split('; ') : [];
@@ -84,7 +92,7 @@ function mostrarDatos(data) {
     }
 
     const location_lista = document.getElementById("location");
-    const ubicaciones = data.ubicaciones_restaurante ? data.ubicaciones_restaurante.split('; ') : [];
+    const ubicaciones = data.ubicaciones_emprende ? data.ubicaciones_emprende.split('; ') : [];
     ubicaciones.forEach(ubicacion => {
         const nuevaLi = document.createElement("li");
         nuevaLi.textContent = ubicacion;
@@ -92,11 +100,13 @@ function mostrarDatos(data) {
     });
 }
 
-function popup_nosotros() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const id = urlParams.get('id');
 
-    fetch(`/res/restauranteDetalleJson/${id}`)
+
+function popup_emprendimientos() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = parseInt(urlParams.get('id'));
+
+    fetch(`/emprende/emprendimientoDetalleJson/${id}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error en la solicitud');
@@ -108,67 +118,30 @@ function popup_nosotros() {
                 console.error(data.error);
                 return;
             }
-            popupNosotros(data);
+            popupEmprendimientos(data)
+            if (callback) {
+                callback(data);
+            }
         })
         .catch(error => {
             console.error('Error:', error);
         });
 }
 
-function popupNosotros(data) {
+function popupEmprendimientos(data) {
+    
     Swal.fire({
-        title: `<span class="custom-title">${data.nombreresta}</span>`,
+        title: `<span class="custom-title">${data.nombreempre}</span>`,
         html: `
               <div class="div-swal">
-              <img src="${data.logo}" alt="imagen restaurante" class="imagenPublicacion"/>
-              <p class="text_swal">${data.descripresta}</p>
+              <img src="${data.logo}" alt="imagen emprendimiento" class="imagenEmprendimiento"/>
+              <p class="text_swal">${data.descripempre}</p>
+              <button class="btn_productos"><a href="${data.producempre}" target="_blank">Ver Productos</a></button>
               </div>
             `,
         customClass: {
             confirmButton: 'btn-red',
-            popup: 'border-blue',
-            title: 'title-swal',
-            icon: 'icon-swal',
-            container: 'custom-container'
-        }
-    });
-}
-function popup_menu() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const id = urlParams.get('id');
-
-    fetch(`/res/restauranteDetalleJson/${id}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Error en la solicitud');
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data.error) {
-                console.error(data.error);
-                return;
-            }
-            popupmenu(data);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-}
-
-function popupmenu(data) {
-
-    let menuHtml = '<h3>Nuestro Menú</h3>';
-    menuHtml += `<p class="screen"> 🍽️<a href="${data.menu}" target="_blank">Ver Nuestro Menú</a></p>`;
-
-    Swal.fire({
-        title: `<span class="custom-title">${data.nombreresta}</span>`,
-        html: `<div class="div-swal">${menuHtml}</div>`,
-        icon: 'info',
-        confirmButtonText: 'Cerrar',
-        customClass: {
-            confirmButton: 'btn-red',
-            popup: 'border-blue',
+            popup: 'border-blue', 
             title: 'title-swal',
             icon: 'icon-swal',
             container: 'custom-container'

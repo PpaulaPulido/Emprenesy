@@ -38,13 +38,15 @@
         </div>
     </header>
     <main>
-        
+
         <div id="url" style="display: none;">
             <a id="detalle-evento-url" data-url="{{ url_for('evento.eventoDetalle') }}"></a>
             <a id="url_nosotros" data-url="{{url_for('usuarios.nosotros_user')}}"></a>
             <a id="url_index" data-url="{{url_for('usuarios.index_user')}}"></a>
             <a id="url_favoritos" data-url="{{url_for('usuarios.favoritos_user')}}"></a>
             <a id="url_perfil" data-url="{{url_for('usuarios.perfil_usuario')}}"></a>
+            <a id="url_editarPerfil" data-url="{{ url_for('usuarios.editarPerfilUsuario', id=user_id) }}"></a>
+            <a id="url_cerrarSesion" data-url="{{url_for('usuarios.logout')}}"></a>
         </div>
 
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-interval="2000">
@@ -68,7 +70,9 @@
                         <h2>¡Descubre el Espectáculo de tu Vida!</h2>
                         <p>¡Emoción, música, diversión! Descubre nuestros shows y vive momentos únicos!</p>
                         <div class="container-btn">
-                            <button class="btn slider_btn3"><a href="{{ url_for('publicacionDash.eventoTipo', tipo='Obras de teatro') }}">Ver ahora</a></button>
+                            <button class="btn slider_btn3"><a
+                                    href="{{ url_for('publicacionDash.eventoTipo', tipo='Obras de teatro') }}">Ver
+                                    ahora</a></button>
                         </div>
                     </div>
                 </div>
@@ -88,7 +92,9 @@
                             <h2>2024</h2>
                             <p>¡No te pierdas los últimos conciertos de este mes!</p>
                             <div class="container-btn">
-                                <button class="btn slider_btn2"><a href="{{ url_for('publicacionDash.eventoTipo', tipo='Concierto de música') }}">Conocer Más</a></button>
+                                <button class="btn slider_btn2"><a
+                                        href="{{ url_for('publicacionDash.eventoTipo', tipo='Concierto de música') }}">Conocer
+                                        Más</a></button>
                             </div>
                         </div>
                         <div class="contenido_circle">
@@ -123,7 +129,7 @@
                     <div class="contenido_title">
                         <h3>Exposiciones de arte</h3>
                     </div>
-    
+
                 </div>
             </a>
 
@@ -134,7 +140,7 @@
                     </div>
                 </div>
             </a>
-            
+
         </div>
 
         <section class="section" id="section_novedades">
@@ -152,13 +158,13 @@
 
         <div class="container_cards">
             <a href="{{ url_for('publicacionDash.eventoTipo', tipo='Eventos de danza') }}">
-                <div class="cards_contenido card5" >
+                <div class="cards_contenido card5">
                     <div class="contenido_title">
                         <h3>Eventos de danza</h3>
                     </div>
                 </div>
             </a>
-            
+
             <a href="{{ url_for('publicacionDash.eventoTipo', tipo='Ferias gastronómicas') }}">
                 <div class="cards_contenido card6">
                     <div class="contenido_title">
@@ -166,13 +172,13 @@
                     </div>
                 </div>
             </a>
-            
+
             <a href="{{ url_for('publicacionDash.eventoTipo', tipo='Ferias tecnológicas') }}">
                 <div class="cards_contenido card7">
                     <div class="contenido_title">
                         <h3>Ferias tecnológicas</h3>
                     </div>
-    
+
                 </div>
             </a>
 
@@ -183,7 +189,7 @@
                     </div>
                 </div>
             </a>
-            
+
         </div>
 
         <section class="section2">

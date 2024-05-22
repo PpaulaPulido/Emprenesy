@@ -215,13 +215,19 @@ def detallesEmprendeJson(id):
 
 @emprende.route('/EmprendeDetalleServidor')
 def EmprendeDetalleServidor():
-    return render_template('detalleServidorEmprende.html')
+    user_id = session.get('user_id')
+    admin_id = session.get('admin_id')
+    return render_template('detalleServidorEmprende.html',user_id = user_id,admin_id = admin_id)
 
 #********************************************Rutas para html estaticos*************************************
 @emprende.route('/sectionEmprende')
 def sectionEmprende():
-    return render_template('seccion_empren.html')
+    user_id = session.get('user_id')
+    admin_id = session.get('admin_id')
+    return render_template('seccion_empren.html',user_id = user_id, admin_id = admin_id)
 
 @emprende.route('/emprendeDetalle')
 def emprendeDetalle():
-    return render_template('detalle_empren.html')
+    user_id = session.get('user_id')
+    admin_id = session.get('admin_id')
+    return render_template('detalle_empren.html',user_id = user_id,admin_id = admin_id)

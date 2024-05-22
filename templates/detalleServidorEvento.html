@@ -9,7 +9,7 @@
     <link rel="icon" href="{{url_for ('static', filename='img/Logo2.jpeg')}}" type="image/icon type">
     <link rel="stylesheet" href="../static/styles/detalles.css">
     <link rel="stylesheet" href="../static/styles/generales_user.css">
-    
+
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/detalles.css')}}">
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/generales_user.css')}}">
 
@@ -17,7 +17,7 @@
     <!-- Enlace a la fuente de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <script src="https://kit.fontawesome.com/ea06c7c0f7.js" crossorigin="anonymous"></script>
-    
+
     <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
@@ -45,7 +45,8 @@
                 </div>
                 <ul class="menu-opciones">
                     <li><i class="fa-solid fa-x" id="cerrar"></i></li>
-                    <li><img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logoToggle"></li>
+                    <li><img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
+                            class="logoToggle"></li>
                     <li><a href="#">Sobre Nosotros</a></li>
                     <li><a href="#">Inicio</a></li>
                     <li><a href="#">Mis Favoritos</a></li>
@@ -60,6 +61,8 @@
             <a id="url_index" data-url="{{url_for('usuarios.index_user')}}"></a>
             <a id="url_favoritos" data-url="{{url_for('usuarios.favoritos_user')}}"></a>
             <a id="url_perfil" data-url="{{url_for('usuarios.perfil_usuario')}}"></a>
+            <a id="url_editarPerfil" data-url="{{ url_for('usuarios.editarPerfilUsuario', id=user_id) }}"></a>
+            <a id="url_cerrarSesion" data-url="{{url_for('usuarios.logout')}}"></a>
         </div>
 
         <div class="container_efect">
@@ -153,8 +156,10 @@
                 <h2>Calificaciones y opiniones</h2>
                 <h3 id="nombreEvento"></h3>
                 <h5 id="nombreAdmin"></h5>
-                <div id="rating"></div><hr>
-                <p class="textoCalificacion">Todavía no hay suficientes calificaciones. Sé uno de los primeros en escribir una opinión</p>
+                <div id="rating"></div>
+                <hr>
+                <p class="textoCalificacion">Todavía no hay suficientes calificaciones. Sé uno de los primeros en
+                    escribir una opinión</p>
                 <a href="#" class="btn_opinion">Escribe una opinión</a>
             </div>
         </div>
@@ -218,7 +223,7 @@
     <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
-    
+
 
     <script src="../static/js/navegacion_user.js"></script>
     <script src="../static/js/buscador.js"></script>

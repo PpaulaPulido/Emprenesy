@@ -38,6 +38,8 @@
       <a id="url_index" data-url="{{url_for('usuarios.index_user')}}"></a>
       <a id="url_favoritos" data-url="{{url_for('usuarios.favoritos_user')}}"></a>
       <a id="url_perfil" data-url="{{url_for('usuarios.perfil_usuario')}}"></a>
+      <a id="url_editarPerfil" data-url="{{ url_for('usuarios.editarPerfilUsuario', id=user_id) }}"></a>
+      <a id="url_cerrarSesion" data-url="{{url_for('usuarios.logout')}}"></a>
     </div>
 
     <div id="emprendimientoContenedor"></div>

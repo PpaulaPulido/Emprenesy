@@ -155,7 +155,7 @@ def perfil_usuario():
         cursor.close()  
         db.close()
         
-    return render_template('perfil_usuario.html',nombreUsu = nombreUsu,apellidoUsu = apellidoUsu,correoUsu = correoUsu,fotoPortada = fotoPortada, fotoPerfil = fotoPerfil,direccionUsu = direccionUsu,ciudadUsu = ciudadUsu,descripcionAcercaUsu = descripcionAcercaUsu,sitioWebUsu = sitioWebUsu, blogUsu = blogUsu)
+    return render_template('perfil_usuario.html',nombreUsu = nombreUsu,apellidoUsu = apellidoUsu,correoUsu = correoUsu,fotoPortada = fotoPortada, fotoPerfil = fotoPerfil,direccionUsu = direccionUsu,ciudadUsu = ciudadUsu,descripcionAcercaUsu = descripcionAcercaUsu,sitioWebUsu = sitioWebUsu, blogUsu = blogUsu, user_id = user_id)
 
 #*******************************************Ruta de imagen de perfil****************************************************************
 @usuarios.route('/perfilImagen_user')
@@ -427,15 +427,18 @@ def editarPerfilUsuario(id):
 #*****************************************Ruta del index principal de usuario **************************************************************
 @usuarios.route('/index_user')
 def index_user():
-    return render_template('index_user.html')
+    user_id = session.get('user_id')
+    return render_template('index_user.html', user_id = user_id)
 
 @usuarios.route('/nosotros_user')
 def nosotros_user():
-    return render_template('MVQ_user.html')
+    user_id = session.get('user_id')
+    return render_template('MVQ_user.html',user_id = user_id)
 
 @usuarios.route('/favoritos_user')
 def favoritos_user():
-    return render_template('favoritos.html')
+    user_id = session.get('user_id')
+    return render_template('favoritos.html',user_id = user_id)
 
 #Formatear los slashes para las imagenes
 def normalize_path(path):

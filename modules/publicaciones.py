@@ -132,7 +132,9 @@ def restaurantesList():
 
 @publicacionDash.route('/restauranteTipo')
 def resTipo():
-    return render_template('tipo_restaurante.html')
+    user_id = session.get('user_id')
+    admin_id = session.get('admin_id')
+    return render_template('tipo_restaurante.html',user_id=user_id,admin_id = admin_id)
 
 #****************************tipos de eventos **************************
 @publicacionDash.route('/tipoEvento')
@@ -145,7 +147,9 @@ def eventoList():
 
 @publicacionDash.route('/eventoTipo')
 def eventoTipo():
-    return render_template('tipo_evento.html')
+    user_id = session.get('user_id')
+    admin_id = session.get('admin_id')
+    return render_template('tipo_evento.html',user_id = user_id,admin_id = admin_id)
 
 #****************************tipos de emprendimientos **************************
 @publicacionDash.route('/tipoEmprendimiento')
@@ -158,7 +162,9 @@ def emprendimientoList():
 
 @publicacionDash.route('/emprendimientoTipo')
 def emprendeTipo():
-    return render_template('tipo_emprendimiento.html')
+    user_id = session.get('user_id')
+    admin_id = session.get('admin_id')
+    return render_template('tipo_emprendimiento.html',user_id = user_id,admin_id = admin_id)
 
 #***************************Galeria de imagenes funcion******************************
 def galeriaImagenesPublicacion(id,entidad):

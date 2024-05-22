@@ -15,11 +15,15 @@ def allowed_file(filename):
 
 @evento.route('/eventoDetalle')
 def eventoDetalle():
-    return render_template('detalle_event.html')
+    user_id = session.get('user_id')
+    admin_id = session.get('admin_id')
+    return render_template('detalle_event.html',user_id = user_id,admin_id = admin_id)
 
 @evento.route('/SeccionEvento')
 def sectionEvento():
-    return render_template('seccion_evento.html')
+    user_id = session.get('user_id')
+    admin_id = session.get('admin_id')
+    return render_template('seccion_evento.html',user_id = user_id, admin_id = admin_id)
 
 @evento.route('/eventoLocation')
 def eventoLocation():
@@ -227,4 +231,6 @@ def detalleEventoJson(id):
         
 @evento.route('/eventoDetalleServidor')
 def eventoDetalleServidor():
-    return render_template('detalleServidorEvento.html')
+    user_id = session.get('user_id')
+    admin_id = session.get('admin_id')
+    return render_template('detalleServidorEvento.html',user_id = user_id,admin_id = admin_id)

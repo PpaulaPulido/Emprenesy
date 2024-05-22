@@ -40,6 +40,8 @@
             <a id="url_index" data-url="{{url_for('usuarios.index_user')}}"></a>
             <a id="url_favoritos" data-url="{{url_for('usuarios.favoritos_user')}}"></a>
             <a id="url_perfil" data-url="{{url_for('usuarios.perfil_usuario')}}"></a>
+            <a id="url_editarPerfil" data-url="{{ url_for('usuarios.editarPerfilUsuario', id=user_id) }}"></a>
+            <a id="url_cerrarSesion" data-url="{{url_for('usuarios.logout')}}"></a>
         </div>
 
         <div class="container__perfil">
@@ -65,7 +67,8 @@
                         </div>
 
                         <div class="pefil__boton">
-                            <form action="/usuarios/subirFotoPerfil_usuario" method="POST" enctype="multipart/form-data">
+                            <form action="/usuarios/subirFotoPerfil_usuario" method="POST"
+                                enctype="multipart/form-data">
                                 <input type="file" id="perfil" name="fotoPerfilUsu" style="display:none;"
                                     onchange="this.form.submit()">
                                 <label for="perfil" class="perfil_icon"><i class="fa-solid fa-camera-retro"></i></label>
@@ -80,23 +83,25 @@
                         <h4><i class="fa-solid fa-envelope"></i>{{correoUsu}}</h4>
                         <h4>
                             {% if sitioWebUsu %}
-                                <a href="{{ sitioWebUsu }}" target="_blank"><i class="fa-solid fa-globe"></i>Mi sitio web</a>
+                            <a href="{{ sitioWebUsu }}" target="_blank"><i class="fa-solid fa-globe"></i>Mi sitio
+                                web</a>
                             {% else %}
-                                <i class="fa-solid fa-globe"></i> No disponible
+                            <i class="fa-solid fa-globe"></i> No disponible
                             {% endif %}
                         </h4>
                         <h4>
                             {% if blogUsu %}
-                                <a href="{{ blogUsu }}" target="_blank"><i class="fa-solid fa-blog"></i>Mi blog</a>
+                            <a href="{{ blogUsu }}" target="_blank"><i class="fa-solid fa-blog"></i>Mi blog</a>
                             {% else %}
-                                <i class="fa-solid fa-globe"></i> No disponible
+                            <i class="fa-solid fa-globe"></i> No disponible
                             {% endif %}
                         </h4>
                         <a href="#" class="detalles_btnPer">Editar detalles</a>
                     </div>
                     <div class="datos__acerca">
                         <h3>Acerca de mi</h3>
-                        <p class="textoAcerca">{{descripcionAcercaUsu if descripcionAcercaUsu else 'Breve descripción sobre mí'}}</p>
+                        <p class="textoAcerca">{{descripcionAcercaUsu if descripcionAcercaUsu else 'Breve descripción
+                            sobre mí'}}</p>
                     </div>
                     <div class="datos_fotos">
                         <h3>Fotos</h3>

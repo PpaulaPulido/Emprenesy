@@ -211,16 +211,22 @@ def detallesResJson(id):
 
 @res.route('/restauranteDetalleServidor')
 def restauranteDetalleServidor():
-    return render_template('detalleServidorRes.html')
+    user_id = session.get('user_id')
+    admin_id = session.get('admin_id')
+    return render_template('detalleServidorRes.html',user_id = user_id,admin_id = admin_id)
 
 #********************************************Rutas para html estaticos*************************************
 @res.route('/restauranteDetalle')
 def restauranteDetalle():
-    return render_template('detalle_res.html')
+    user_id = session.get('user_id')
+    admin_id = session.get('admin_id')
+    return render_template('detalle_res.html',admin_id = admin_id,user_id = user_id)
 
 @res.route('/SeccionRestaurante')
 def sectionRes():
-    return render_template('seccion_res.html')
+    user_id = session.get('user_id')
+    admin_id = session.get('admin_id')
+    return render_template('seccion_res.html',user_id = user_id,admin_id = admin_id)
 
 
 

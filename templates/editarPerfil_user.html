@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/editarPerfilUsuario.css')}}">
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/generales_user.css')}}">
-   
+
 
 </head>
 
@@ -37,7 +37,8 @@
                 </div>
                 <ul class="menu-opciones">
                     <li><i class="fa-solid fa-x" id="cerrar"></i></li>
-                    <li><img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logoToggle"></li>
+                    <li><img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
+                            class="logoToggle"></li>
                     <li><a href="#">Sobre Nosotros</a></li>
                     <li><a href="#">Inicio</a></li>
                     <li><a href="#">Mis Favoritos</a></li>
@@ -53,6 +54,8 @@
             <a id="url_index" data-url="{{url_for('usuarios.index_user')}}"></a>
             <a id="url_favoritos" data-url="{{url_for('usuarios.favoritos_user')}}"></a>
             <a id="url_perfil" data-url="{{url_for('usuarios.perfil_usuario')}}"></a>
+            <a id="url_editarPerfil" data-url="{{ url_for('usuarios.editarPerfilUsuario', id=user_id) }}"></a>
+            <a id="url_cerrarSesion" data-url="{{url_for('usuarios.logout')}}"></a>
         </div>
 
         <div class="containerPerfil" id="contenedorPerfil">
@@ -83,7 +86,7 @@
                             <label for="correoUsu">Correo electrónico</label>
                             <input type="email" id="correoUsu" name="correoUsu" value="{{usuario[4]}}">
                         </div>
-                        
+
                         <div class="contacto">
                             <label for="fechaNacUsu">Fecha de Nacimiento</label>
                             <input type="date" id="fechaNacUsu" name="fechaNacUsu" value="{{usuario[3]}}">
@@ -93,7 +96,8 @@
                     <div class="perfilDireccion">
                         <div class="contacto">
                             <label for="direccionUsu">Dirección</label>
-                            <input type="text" id="direccionUsu" name="direccionUsu" value="{{ datos[0] | default('') }}"> 
+                            <input type="text" id="direccionUsu" name="direccionUsu"
+                                value="{{ datos[0] | default('') }}">
                         </div>
                         <div class="contacto">
                             <label for="ciudadUsu">Ciudad</label>
@@ -104,7 +108,8 @@
                     <div class="perfilDetalles">
                         <div class="contacto">
                             <label for="acercaUsu">Acerca de tí</label>
-                            <textarea name="acercaUsu" id="acercaUsu" rows="4" cols="80" placeholder="Escribe aquí">{{ datos[2] | default('') }}</textarea>
+                            <textarea name="acercaUsu" id="acercaUsu" rows="4" cols="80"
+                                placeholder="Escribe aquí">{{ datos[2] | default('') }}</textarea>
                         </div>
                         <div class="contacto">
                             <label for="sitioWebUsu">Sitio web</label>
@@ -121,13 +126,13 @@
                 </form>
             </div>
         </div>
-        
-        
+
+
     </main>
 
 
-    <script src="{{url_for ('static', filename='../static/js/navegacion_user.js')}}" ></script>
-    <script src="{{url_for ('static', filename='../static/js/buscador.js')}}" ></script>
+    <script src="{{url_for ('static', filename='../static/js/navegacion_user.js')}}"></script>
+    <script src="{{url_for ('static', filename='../static/js/buscador.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>

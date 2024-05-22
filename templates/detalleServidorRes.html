@@ -35,19 +35,21 @@
         </div>
     </header>
     <main>
-        
+
         <div id="enlaces" style="display: none;">
             <a id="url_nosotros" data-url="{{url_for('usuarios.nosotros_user')}}"></a>
             <a id="url_index" data-url="{{url_for('usuarios.index_user')}}"></a>
             <a id="url_favoritos" data-url="{{url_for('usuarios.favoritos_user')}}"></a>
             <a id="url_perfil" data-url="{{url_for('usuarios.perfil_usuario')}}"></a>
+            <a id="url_editarPerfil" data-url="{{ url_for('usuarios.editarPerfilUsuario', id=user_id) }}"></a>
+            <a id="url_cerrarSesion" data-url="{{url_for('usuarios.logout')}}"></a>
         </div>
 
         <div id="particles-js"></div>
         <div class="contenedor_title">
             <h2 class="title_res" id="title"></h2>
         </div>
-        
+
         <div class="container_slider slider_res">
             <div class="row">
                 <div class="col-xs-11 col-md-10 col-centered">
@@ -130,8 +132,10 @@
                 <h2>Calificaciones y opiniones</h2>
                 <h3 id="nombreRes"></h3>
                 <h5 id="nombreAdmin"></h5>
-                <div id="rating"></div><hr>
-                <p class="textoCalificacion">Todavía no hay suficientes calificaciones sobre comida, servicio, precio o ambiente. Sé uno de los primeros en escribir una opinión</p>
+                <div id="rating"></div>
+                <hr>
+                <p class="textoCalificacion">Todavía no hay suficientes calificaciones sobre comida, servicio, precio o
+                    ambiente. Sé uno de los primeros en escribir una opinión</p>
                 <a href="#" class="btn_opinion">Escribe una opinión</a>
             </div>
         </div>
@@ -196,7 +200,7 @@
     <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
-    
+
     <script src="../static/js/navegacion_user.js"></script>
     <script src="../static/js/buscador.js"></script>
     <script src="../static/js/servidor.js"></script>

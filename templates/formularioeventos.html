@@ -63,18 +63,18 @@
 
                         <div class="detalle__sitio">
                             <label for="nombreeven">Nombre del evento</label>
-                            <input type="text" name="nombreven" id="nombreven" value="{{ datos['nombreven'] if datos.get('nombreven') else '' }}">
+                            <input type="text" name="nombreven" id="nombreven" value="{{ datos['nombreven'] if datos.get('nombreven') else '' }}" required>
                         </div>
 
                         <div class="detalle__sitio">
                             <label for="logoeven">Logo</label>
-                            <input type="file" id="file-upload-button" name="logoeven">
+                            <input type="file" id="file-upload-button" name="logoeven" required>
                         </div>
 
                     
                         <div class="detalle__sitio">
                             <label for="tipoevento">Tipo de evento</label>
-                            <select name="tipoevento" id="tipoevento">
+                            <select name="tipoevento" id="tipoevento" required>
                                 <option value="">Seleccionar</option>
                                 {% for type in ['Evento de danza', 'Ferias gastronomicas', 'Ferias tecnológicas', 'Eventos deportivos', 'Exposiciones de arte', 'Conciertos de música', 'Ferias de libros'] %}
                                     <option value="{{ type }}" {% if datos.get('tipoevento') == type %}selected{% endif %}>{{ type }}</option>
@@ -85,24 +85,24 @@
                         <div class="detalle__sitio">
                             <label for="descripcioneven">Descripcion del evento</label>
                             <textarea name="descripcioneven" id="descripcioneven" cols="70" rows="8"
-                                placeholder="Tu descripción">{{ datos['descripcioneven'] if datos.get('descripcioneven') else '' }}</textarea>
+                                placeholder="Tu descripción" required>{{ datos['descripcioneven'] if datos.get('descripcioneven') else '' }}</textarea>
                         </div>
                         <div class="detalle__sitio">
                             <label for="fechaeven">Fecha del evento</label>
-                            <input class="nav" type="date" name="fechaeven" value="{{ datos['fechaeven'] if datos.get('fechaeven') else '' }}">
+                            <input class="nav" type="date" name="fechaeven" value="{{ datos['fechaeven'] if datos.get('fechaeven') else '' }}" required>
                         </div>
 
                         <div class="detalle__sitio">
                             <label for="horarioE">Horario Entrada</label>
-                            <input type="time" name="horarioE" id="horarioE" value="{{ datos['horarioE'] if datos.get('horarioE') else '' }}">
+                            <input type="time" name="horarioE" id="horarioE" value="{{ datos['horarioE'] if datos.get('horarioE') else '' }}" required>
                         </div>
                         <div class="detalle__sitio">
                             <label for="horarioS">Horario Salida</label>
-                            <input type="time" name="horarioS" id="horarioS" value="{{ datos['horarioS'] if datos.get('horarioS') else '' }}">
+                            <input type="time" name="horarioS" id="horarioS" value="{{ datos['horarioS'] if datos.get('horarioS') else '' }}" required>
                         </div>
                         <div class="detalle__sitio">
                             <label for="paginaeven">Pagina del evento</label>
-                            <input type="url" name="paginaeven" id="paginaeven" placeholder="https://example.com" value="{{ datos['paginaeven'] if datos.get('paginaeven') else '' }}">
+                            <input type="url" name="paginaeven" id="paginaeven" placeholder="https://example.com" value="{{ datos['paginaeven'] if datos.get('paginaeven') else '' }}" required>
                         </div>
 
                         <div class="detalle__sitio">
@@ -112,7 +112,7 @@
 
                         <div class="detalle__sitio">
                             <label for="galeriaeven[]">Galeria de evento</label>
-                            <input type="file" id="galeriaeven[]" name="galeriaeven[]"  multiple>
+                            <input type="file" id="galeriaeven[]" name="galeriaeven[]"  multiple required>
                             
                         </div>
                         <div class="detalle__sitio">
@@ -129,7 +129,7 @@
                         <div class="detalle__sitio">
                             <label for="contactoeven">contacto</label>
                             <input type="tel" name="contactoeven" id="contactoeven"
-                                placeholder="ingresa tu numero de telefeno" value="{{ datos['contactoeven'] if datos.get('contactoeven') else '' }}">
+                                placeholder="ingresa tu numero de telefeno" value="{{ datos['contactoeven'] if datos.get('contactoeven') else '' }}" required>
                         </div>
                         <div class="detalle__sitio">
                             <label for="corroeven">Correo de Contacto del evento</label>

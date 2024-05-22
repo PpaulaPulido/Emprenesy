@@ -62,18 +62,18 @@
 
                         <div class="detalle__sitio">
                             <label for="nombreRes">Nombre del sitio</label>
-                            <input type="text" name="nombreRes" id="nombreRes" value="{{ datos['nombreRes'] if datos.get('nombreRes') else '' }}">
+                            <input type="text" name="nombreRes" id="nombreRes" value="{{ datos['nombreRes'] if datos.get('nombreRes') else '' }}" required>
                         </div>
 
                         <div class="detalle__sitio">
                             <label for="logoRes">Logo</label>
-                            <input type="file" id="logoRes" name="logoRes">
+                            <input type="file" id="logoRes" name="logoRes" required>
             
                         </div>
                         
                         <div class="detalle__sitio">
                             <label for="typeRes">Tipo de restaurante</label>
-                            <select name="typeRes" id="typeRes">
+                            <select name="typeRes" id="typeRes" required>
                                 <option value="">Seleccionar</option>
                                 {% for type in ['Comida Internacional', 'Restaurante temático', 'Restaurante con vista', 'Gourmet','Comida rápida','Comida de Mar','Parillas y asaderos'] %}
                                     <option value="{{ type }}" {% if datos.get('tipoRes') == type %}selected{% endif %}>{{ type }}</option>
@@ -84,12 +84,12 @@
                         <div class="detalle__sitio">
                             <label for="descripcionRes">Descripción del sitio</label>
                             <textarea name="descripcionRes" id="descripcionRes" cols="70" rows="8"
-                                placeholder="Tu descripción">{{ datos['descripcionRes'] if datos.get('descripcionRes') else '' }}</textarea>
+                                placeholder="Tu descripción" required>{{ datos['descripcionRes'] if datos.get('descripcionRes') else '' }}</textarea>
                         </div>
 
                         <div class="detalle__sitio">
                             <label for="paginaRes">Página Oficial</label>
-                            <input type="url" name="paginaRes" id="paginaRes" placeholder="https://example.com" value="{{ datos['paginaRes'] if datos.get('paginaRes') else '' }}">
+                            <input type="url" name="paginaRes" id="paginaRes" placeholder="https://example.com" value="{{ datos['paginaRes'] if datos.get('paginaRes') else '' }}" required>
                         </div>
 
                         <div class="detalle__sitio">
@@ -99,17 +99,17 @@
 
                         <div class="detalle__sitio">
                             <label for="horarioRes">Horario</label>
-                            <textarea name="horarioRes" id="horarioRes" cols="70" rows="2" placeholder="Lunes- viernes">{{ datos['horarioRes'] if datos.get('horarioRes') else '' }}</textarea>
+                            <textarea name="horarioRes" id="horarioRes" cols="70" rows="2" placeholder="Lunes- viernes" required>{{ datos['horarioRes'] if datos.get('horarioRes') else '' }}</textarea>
                         </div>
 
                         <div class="detalle__sitio">
                             <label for="entrada">Hora de entrada</label>
-                            <input type="time" id="entrada" name="entrada" value="{{ datos['horarioE'] if datos.get('horarioE') else '' }}">
+                            <input type="time" id="entrada" name="entrada" value="{{ datos['horarioE'] if datos.get('horarioE') else '' }}" required>
                         </div>
 
                         <div class="detalle__sitio">
                             <label for="salida">Hora de cierre</label>
-                            <input type="time" id="salida" name="salida" value="{{ datos['horarioS'] if datos.get('horarioS') else '' }}">
+                            <input type="time" id="salida" name="salida" value="{{ datos['horarioS'] if datos.get('horarioS') else '' }}" required>
                         </div>
 
                         <div class="detalle__sitio">
@@ -122,8 +122,8 @@
                         </div>
 
                         <div class="detalle__sitio">
-                            <label for="contactoRes">Número de contacto (opcional)</label>
-                            <input type="tel" name="contactoRes" id="contactoRes" value="{{ datos['contactoRes'] if datos.get('contactoRes') else '' }}">
+                            <label for="contactoRes">Número de contacto</label>
+                            <input type="tel" name="contactoRes" id="contactoRes" value="{{ datos['contactoRes'] if datos.get('contactoRes') else '' }}" required>
                         </div>
 
                         <div class="detalle__sitio">
@@ -139,7 +139,7 @@
 
                         <div class="detalle__sitio">
                             <label for="galeria[]">Galeria del restaurante</label>
-                            <input type="file" id="galeria[]" name="galeria[]"  multiple>
+                            <input type="file" id="galeria[]" name="galeria[]"  multiple required>
                         </div>
 
                         <div class="detalle__sitio boton_form">

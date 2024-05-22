@@ -1,3 +1,9 @@
+document.addEventListener('DOMContentLoaded',()=>{
+    user_sesion().then(() => {
+        inicializarBuscador();
+    }).catch(error => console.error('Error al inicializar sesión de usuario:', error));
+})
+
 function user_sesion() {
     return fetch('/usuarios/perfilImagen_user')
     .then(response => {

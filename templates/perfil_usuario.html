@@ -76,15 +76,27 @@
 
                     <div class="datos__detalles">
                         <h3>Detalles</h3>
-                        <h4><i class="fa-solid fa-location-dot"></i>{{ciudad if ciudad else 'No disponible'}}</h4>
+                        <h4><i class="fa-solid fa-location-dot"></i>{{ciudadUsu if ciudadUsu else 'No disponible'}}</h4>
                         <h4><i class="fa-solid fa-envelope"></i>{{correoUsu}}</h4>
-                        <h4><i class="fa-solid fa-globe"></i>{{ sitioWeb if sitioWeb else 'No disponible' }}</h4>
-                        <h4><i class="fa-solid fa-blog"></i>{{ blog if blog else 'No disponible' }}</h4>
+                        <h4>
+                            {% if sitioWebUsu %}
+                                <a href="{{ sitioWebUsu }}" target="_blank"><i class="fa-solid fa-globe"></i>Mi sitio web</a>
+                            {% else %}
+                                <i class="fa-solid fa-globe"></i> No disponible
+                            {% endif %}
+                        </h4>
+                        <h4>
+                            {% if blogUsu %}
+                                <a href="{{ blogUsu }}" target="_blank"><i class="fa-solid fa-blog"></i>Mi blog</a>
+                            {% else %}
+                                <i class="fa-solid fa-globe"></i> No disponible
+                            {% endif %}
+                        </h4>
                         <a href="#" class="detalles_btnPer">Editar detalles</a>
                     </div>
                     <div class="datos__acerca">
                         <h3>Acerca de mi</h3>
-                        <p class="textoAcerca">{{descripcionAcerca if descripcionAcerca else 'Breve descripción sobre mí'}}</p>
+                        <p class="textoAcerca">{{descripcionAcercaUsu if descripcionAcercaUsu else 'Breve descripción sobre mí'}}</p>
                     </div>
                     <div class="datos_fotos">
                         <h3>Fotos</h3>

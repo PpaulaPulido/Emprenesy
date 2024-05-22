@@ -19,11 +19,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const detalleResUrl = document.getElementById('detalle-res-url').getAttribute('data-url');
 
-    user_sesion().then(() => {
-        inicializarBuscador();
-    }).catch(error => console.error('Error al inicializar sesión de usuario:', error));
-
-    
     tarjetas_swiper(datosTarjetas, swiper,detalleResUrl);
     tarjetas_swiper(restaurantesTematicos, swiper2,detalleResUrl);
     tarjetas_swiper(restaurantesVista, swiper3,detalleResUrl);

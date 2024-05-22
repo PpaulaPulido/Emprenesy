@@ -71,7 +71,7 @@
                             <h2>Saborea el Espíritu del Emprendedor</h2>
                             <p>¡Descubre nuevos sabores en los emprendimientos culinarios de la ciudad!</p>
                             <div class="container-btn">
-                                <button class="btn slider_btn2"><a href="#">Conocer Más</a></button>
+                                <button class="btn slider_btn2"><a href="{{ url_for('publicacionDash.emprendeTipo', tipo='Emprendimiento Gastronómico') }}">Conocer Más</a></button>
                             </div>
                         </div>
                         <div class="contenido_circle">
@@ -87,7 +87,7 @@
                         <h2>Bogotá Emprende: Descubre la Innovación</h2>
                         <p>¡Explora los emprendimientos artesanales de Bogotá y únete al cambio!</p>
                         <div class="container-btn">
-                            <button class="btn slider_btn3"><a href="#section_artesania">Ver ahora</a></button>
+                            <button class="btn slider_btn3"><a href="{{ url_for('publicacionDash.emprendeTipo', tipo='Artesanías') }}">Ver ahora</a></button>
                         </div>
                     </div>
                 </div>

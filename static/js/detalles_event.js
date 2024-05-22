@@ -8,10 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
     Categoria(window.datosEventos, idParam);
     Categoria(window.eventosTecnologicos, idParam);
 
-    user_sesion().then(() => {
-        inicializarBuscador();
-    }).catch(error => console.error('Error al inicializar sesión de administrador:', error));
-
     generarBubles();
     slider_tarjetas();
     generarDatos();

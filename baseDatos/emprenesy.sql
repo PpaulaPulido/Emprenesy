@@ -1,3 +1,7 @@
+CREATE USER 'paulaPulido'@'%' IDENTIFIED BY 'luna35';
+GRANT ALL PRIVILEGES ON *.* TO 'paulaPulido'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
 create database emprenesy;
 use emprenesy;
 
@@ -374,6 +378,42 @@ SELECT eve.ideven,
        GROUP BY eve.ideven
        ORDER BY eve.fecha_publicacion DESC;
        
+
+SELECT em.idempre,
+	   em.nombreempre,
+       em.logo AS logo_filename,
+       em.tipoempre,
+       em.descripempre,
+       em.horarioempre,
+       em.horarioApertura,
+       em.horarioCierre,
+       em.paginaempre,
+       em.producempre,
+       em.correoempre,
+       em.telempre,
+       em.fecha_publicacion,
+       adm.nombreadmin AS administrador,
+       adm.apellidoadmin AS apellidoAdm,
+       GROUP_CONCAT(DISTINCT  ga.imagenempre SEPARATOR '; ') AS imagenes_emprende,
+       GROUP_CONCAT(DISTINCT ga.descripcion SEPARATOR '; ') AS descripcion_imagenes,
+       GROUP_CONCAT(DISTINCT ub.ubicacion SEPARATOR '; ') AS ubicaciones_emprende,
+       GROUP_CONCAT(DISTINCT CONCAT(rs.red, ': ', rs.url) SEPARATOR '; ') AS redes_sociales
+       FROM 
+       emprendimientos em
+       LEFT JOIN administrador adm ON em.codadmin = adm.codadmin
+       LEFT JOIN galeriaempre ga ON em.idempre = ga.idempre
+       LEFT JOIN ubicacionempre ub ON em.idempre = ub.idempre
+       LEFT JOIN redes_sociales rs ON em.idempre = rs.entidad_id AND rs.entidad_tipo = 'emprendimiento'
+       WHERE
+         em.idempre = 2
+		GROUP BY
+			em.idempre
+		ORDER BY
+			em.fecha_publicacion DESC;
+       
+
+       
+
        
        
        

@@ -12,11 +12,6 @@ var swiper = new Swiper(".mySwiper", {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    user_sesion().then(() => {
-        inicializarBuscador();
-    }).catch(error => console.error('Error al inicializar sesión de usuario:', error));
-
-
     const swiper = document.getElementById('swiper');
     const swiper2 = document.getElementById('swiper2');
     const detalleEmprendeUrl = document.getElementById('detalle-emprende-url').getAttribute('data-url');

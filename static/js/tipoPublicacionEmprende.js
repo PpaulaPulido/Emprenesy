@@ -1,9 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    user_sesion().then(() => {
-        inicializarBuscador();
-    }).catch(error => console.error('Error al inicializar sesión de usuario:', error));
-
     const urlParams = new URLSearchParams(window.location.search);
     const tipo = urlParams.get('tipo');
     

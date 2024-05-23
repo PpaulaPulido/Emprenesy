@@ -50,21 +50,35 @@ body {
     margin: 0 20px;
 }
 
-.publicaciones_contenido .btn_pu {
+.publicaciones_contenido .button {
+    width: fit-content;
+    min-width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:8px;
+    gap: 0.4rem;
     border: none;
-    border-radius: 8px;
-    width: 20%;
-    margin: 15px 0;
-    font-size: 18px;
-    height: 35px;
-    background-color: rgba(255, 255, 255, 0.5);
-    transition: background-color 0.3s ease;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    text-shadow: 2px 2px 3px rgb(73, 34, 145);
+    background: linear-gradient(15deg, #04a8a8, #1fbfbf, #3cd6d6, #5bf0f0, #8bffff, #5bf0f0, #3cd6d6, #1fbfbf, #04a8a8) no-repeat;
+    background-size: 300%;
+    background-position: left center;
+    transition: 0.3s ease;
+    color: #fff;
 
 }
 
+.button:hover {
+    background-size: 320%;
+    background-position: right center;
+}
 
 .publicaciones_contenido .btn_pu a {
     color: #fff;
+    font-size: 18px;
 }
 
 .publicaciones_contenido .btn_pu:hover {

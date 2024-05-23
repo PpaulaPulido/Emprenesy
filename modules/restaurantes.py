@@ -229,4 +229,4 @@ def sectionRes():
     return render_template('seccion_res.html',user_id = user_id,admin_id = admin_id)
 
 
-
+    

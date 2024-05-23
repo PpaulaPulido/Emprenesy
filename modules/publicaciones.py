@@ -289,3 +289,58 @@ def empUbicacion(id):
 @publicacionDash.route('/evento/ubicacion/<int:id>')
 def evenUbicacion(id):
     return ubicacionesPublicacion('evento', id)
+
+#***********************Ruta del buscador****************************
+def buscador(entidad):
+    tipo = request.args.get('tipo')
+    db = get_db()
+    cursor = db.cursor(dictionary=True)
+    
+    if entidad == 'restaurante':
+        table_name = 'restaurantes'
+        entity_fields = 'idresta, nombreresta,tiporesta'
+        tipo_field = 'tiporesta'
+    
+    elif entidad == 'evento':
+        table_name = 'eventos'
+        entity_fields = 'ideven , nombreeven ,tipoevento'
+        tipo_field = 'tipoevento'
+        
+    elif entidad == 'emprendimiento':
+        table_name = 'emprendimientos'
+        entity_fields = 'idempre, nombreempre,tipoempre'
+        tipo_field = 'tipoempre'
+        
+    else:
+        return jsonify({'error': 'Tipo de entidad no soportado'}), 400
+    
+    
+    try:
+        if tipo:
+            sql = f"SELECT {entity_fields} FROM {table_name} WHERE {tipo_field}=%s"
+            
+            cursor.execute(sql,(tipo,))
+        else:
+            sql = f"SELECT {entity_fields} FROM {table_name}"
+            cursor.execute(sql)
+        
+        busqueda = cursor.fetchall()
+        cursor.close()
+        
+        return jsonify(busqueda)
+    except Exception as e:
+        # En caso de error, devolver un mensaje de error y el código de estado HTTP 500 
+        return jsonify({'error': 'Error en el servidor: {}'.format(e)}), 500
+
+@publicacionDash.route('/buscar_restaurante')
+def buscarRes():
+    return buscador('restaurante')
+
+@publicacionDash.route('/buscar_evento')
+def buscarEven():
+    return buscador('evento')
+
+@publicacionDash.route('/buscar_emprendimiento')
+def buscarEmprende():
+    return buscador('emprendimiento')
+

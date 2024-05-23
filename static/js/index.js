@@ -18,6 +18,7 @@ const detalleEmprendeUrl = document.getElementById('detalle-emprende-url').getAt
 document.addEventListener('DOMContentLoaded', function () {
 
   user_sesion();
+  inicializarBuscador()
   
   cntSliderTarjetas(datosTarjetas, sliderTarjetas, btn_anterior, btn_siguiente, 'res', detalleResUrl);
   cntSliderTarjetas(datosEventos, sliderTarjetas2, btn_anterior2, btn_siguiente2, 'evento', detalleEventoUrl);

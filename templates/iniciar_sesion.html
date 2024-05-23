@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="icon" href="{{ url_for('static', filename='img/Logo2.jpeg') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/iniciar_sesion.css') }}">
 </head>
+
 <body>
     <header>
         <h1>Bienvenido a Emprenesy</h1>
@@ -14,7 +16,7 @@
     <main>
         <div class="login-container">
             <h2>Iniciar Sesión</h2>
-            <form id="loginForm" action="{{ url_for('usuarios.inicio_sesion') }}" method="POST">
+            <form id="loginForm" action="{{ url_for('usuarios.inicio_sesion') }}" method="POST" onsubmit="return verificacionContrasenas(event)">
                 <div class="input-group">
                     <label for="rol">Escoge tu rol</label>
                     <select name="rol" id="rol" class="controls">
@@ -25,11 +27,11 @@
                 </div>
                 <div class="input-group">
                     <label for="usuario">Usuario:</label>
-                    <input type="email" id="usuario" name="txtusuario" required>
+                    <input type="email" id="usuario" name="txtusuario">
                 </div>
                 <div class="input-group">
                     <label for="contrasena">Contraseña:</label>
-                    <input type="password" id="contrasena" name="txtcontrasena" required>
+                    <input type="password" id="contrasena" name="txtcontrasena">
                     <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
                 </div>
                 <div class="input-group">
@@ -38,8 +40,9 @@
             </form>
         </div>
     </main>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../static/js/sesion.js"></script>
-    <script src="{{ url_for('static', filename='../static/js/sesion.js') }}"></script> -->
+    <script src="{{ url_for('static', filename='../static/js/sesion.js') }}"></script>
 </body>
+
 </html>

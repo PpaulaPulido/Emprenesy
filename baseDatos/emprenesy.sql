@@ -1,6 +1,7 @@
-CREATE USER 'paulaPulido'@'%' IDENTIFIED BY 'luna35';
-GRANT ALL PRIVILEGES ON *.* TO 'paulaPulido'@'%' WITH GRANT OPTION;
-FLUSH PRIVILEGES;
+
+
+
+
 
 create database emprenesy;
 use emprenesy;

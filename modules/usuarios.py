@@ -435,10 +435,84 @@ def nosotros_user():
     user_id = session.get('user_id')
     return render_template('MVQ_user.html',user_id = user_id)
 
+
+#***********************************************Rutas para el manejo de favoritos********************************************************************
 @usuarios.route('/favoritos_user')
 def favoritos_user():
     user_id = session.get('user_id')
     return render_template('favoritos.html',user_id = user_id)
+
+@usuarios.route('/agregar_favorito/usuario', methods=['POST'])
+def agregar_favorito():
+    user_id = session.get('user_id')
+    
+    if not user_id:
+        return jsonify({'success': False, 'message': 'Usuario no autenticado'})
+    
+    fav_id = request.form['id']
+    fav_type = request.form['tipo']
+
+    # Verificar si el favorito ya existe
+    sql_existente = 'SELECT idfavorito, entidad_id, entidad_tipo, fecha_agregado FROM favoritosUsuario WHERE codusuario = %s AND entidad_id = %s AND entidad_tipo = %s'
+    cursor.execute(sql_existente, (user_id, fav_id, fav_type))
+    favoritoExiste = cursor.fetchone()
+    
+    if favoritoExiste:
+        return jsonify({'success': False, 'message': 'El favorito ya existe'})
+    
+    # Agrega el favorito a la sesión
+    '''if 'favoritesUser' not in session:
+        session['favoritesUser'] = []
+    session['favoritesUser'].append({'id': fav_id, 'type': fav_type})
+    session.modified = True'''
+    
+    # Inserta el favorito en la base de datos
+    cursor.execute('INSERT INTO favoritosUsuario (codusuario, entidad_id, entidad_tipo) VALUES (%s, %s, %s)', (user_id, fav_id, fav_type))
+    db.commit()
+    
+    return jsonify({'success': True, 'message': 'Favorito agregado'})
+
+
+@usuarios.route('/remover_favorito/usuario', methods=['POST'])
+def remover_favorito():
+    user_id = session.get('user_id')
+    if not user_id:
+        return jsonify({'success': False, 'message': 'Usuario no autenticado'})
+    
+    fav_id = request.form['id']
+    fav_type = request.form['tipo']
+
+    # Elimina el favorito de la sesión
+    '''if 'favoritesUser' in session:
+        session['favoritesUser'] = [fav for fav in session['favoritesUser'] if not (fav['id'] == fav_id and fav['type'] == fav_type)]
+        session.modified = True'''
+
+    # Elimina el favorito de la base de datos
+    cursor.execute('DELETE FROM favoritosUsuario WHERE codusuario = %s AND entidad_id = %s AND entidad_tipo = %s', (user_id, fav_id, fav_type))
+    db.commit()
+
+    return jsonify({'success': True, 'message': 'Favorito eliminado'})
+
+@usuarios.route('/obtener_favoritos/usuario', methods=['GET'])
+def obtener_favoritos():
+    user_id = session.get('user_id')
+    if not user_id:
+        return jsonify({'success': False, 'message': 'Usuario no autenticado'})
+
+    cursor.execute('SELECT idfavorito, entidad_id, entidad_tipo FROM favoritosUsuario WHERE codusuario = %s', (user_id,))
+    favorito = cursor.fetchone()  # Obtener una fila de la base de datos
+
+    # Verificar si se encontró un favorito
+    if favorito:
+        # Convertir la fila en un diccionario para que se pueda jsonify
+        favorito_dict = {
+            'idfavorito': favorito[0],
+            'entidad_id': favorito[1],
+            'entidad_tipo': favorito[2]
+        }
+        return jsonify({'success': True, 'favorito': favorito_dict})
+    else:
+        return jsonify({'success': False, 'message': 'No se encontraron favoritos para este usuario'})
 
 #Formatear los slashes para las imagenes
 def normalize_path(path):
@@ -447,3 +521,4 @@ def normalize_path(path):
     if not normalized_path.startswith('/'):
         normalized_path = '/' + normalized_path
     return normalized_path
+

@@ -54,10 +54,6 @@ ol {
   margin-left: 10px;
   cursor: pointer;
   margin-top: 20px;
-  color:#cecbcb
-}
-.tipo_imagen_container .favorite:hover{
-  color: red;
 }
 .tipo_imagen {
   width: 90%;

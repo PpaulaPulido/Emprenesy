@@ -32,3 +32,4 @@ function filterByType(api, tipo, contenedor, nombrePublicacion) {
             console.error('Error al cargar los registros:', error);
         });
 }
+

@@ -16,7 +16,7 @@
     <main>
         <div class="login-container">
             <h2>Iniciar Sesión</h2>
-            <form id="loginForm" action="{{ url_for('usuarios.inicio_sesion') }}" method="POST" onsubmit="return verificacionContrasenas(event)">
+            <form id="loginForm" action="{{ url_for('usuarios.inicio_sesion') }}" method="POST" >
                 <div class="input-group">
                     <label for="rol">Escoge tu rol</label>
                     <select name="rol" id="rol" class="controls">
@@ -41,7 +41,6 @@
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../static/js/sesion.js"></script>
     <script src="{{ url_for('static', filename='../static/js/sesion.js') }}"></script>
 </body>
 

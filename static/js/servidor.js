@@ -1,3 +1,4 @@
+
 function slider_tarjetas() {
     $('.carousel[data-type="multi"] .item').each(function () {
         var next = $(this).next();
@@ -78,7 +79,11 @@ function tarjetasPublicacion(data, contenedor,nombreTipo,altImagen,urlHtml,confi
         
         const iconHeart = document.createElement('i');
         iconHeart.classList.add('bi', 'bi-heart-fill', 'favorite');
+        iconHeart.style.color = '#cecbcb';
+        iconHeart.dataset.id = tarjeta[config.id];
+        iconHeart.dataset.type = nombreTipo; 
 
+    
         const divImagen = document.createElement('div');
         divImagen.classList.add('tipo_imagen');
 
@@ -144,3 +149,5 @@ function tarjetasPublicacion(data, contenedor,nombreTipo,altImagen,urlHtml,confi
         contenedor.appendChild(divTarjeta);
     });
 }
+
+

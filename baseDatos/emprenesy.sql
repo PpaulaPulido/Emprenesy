@@ -53,6 +53,7 @@ create table datosUsuario(
     FOREIGN KEY (codusuario) REFERENCES usuario(codusuario)
 );
 
+select * from datosUsuario where codusuario = 2;
 
 CREATE TABLE fotos_admin (
     id_foto INT AUTO_INCREMENT PRIMARY KEY,
@@ -117,15 +118,6 @@ codubicacion int primary key auto_increment,
 ideven int,
 ubicacion varchar (200) DEFAULT NULL,
 foreign key (ideven) references eventos(ideven)
-);
-
-CREATE TABLE Favoritos (
-    idFavorito INT AUTO_INCREMENT PRIMARY KEY,
-    idUsuario INT,
-    idItem INT,
-    tipoItem VARCHAR(50),  -- 'evento', 'restaurante', 'emprendimiento'
-    fechaFavorito TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (idUsuario) REFERENCES Usuarios(idUsuario)
 );
 
 create table emprendimientos(
@@ -412,7 +404,42 @@ SELECT em.idempre,
 			em.fecha_publicacion DESC;
        
 
-       
+CREATE TABLE IF NOT EXISTS favoritosUsuario (
+    idfavorito INT PRIMARY KEY AUTO_INCREMENT,
+    codusuario INT NOT NULL,
+    entidad_id INT NOT NULL,
+    entidad_tipo ENUM('evento', 'emprendimiento', 'restaurante') NOT NULL,
+    fecha_agregado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (codusuario) REFERENCES usuario(codusuario)
+);
+select * from favoritosUsuario;
+
+SELECT 
+    fa.idfavorito, fa.codusuario, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
+    res.idresta, res.nombreresta,res.logo AS logo_res,res.tiporesta
+FROM favoritosUsuario fa
+LEFT JOIN restaurantes res ON fa.entidad_id = res.idresta
+WHERE fa.codusuario = 2  AND  fa.entidad_tipo = 'restaurante' ORDER BY fa.fecha_agregado DESC;
+
+SELECT 
+    fa.idfavorito, fa.codusuario, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
+    em.idempre,em.nombreempre, em.logo AS logo_empre,em.tipoempre
+FROM favoritosUsuario fa
+LEFT JOIN emprendimientos em ON fa.entidad_id = em.idempre
+WHERE fa.codusuario = 2  AND  fa.entidad_tipo = 'emprendimiento' ORDER BY fa.fecha_agregado DESC;
+
+SELECT 
+    fa.idfavorito, fa.codusuario, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
+    eve.ideven, eve.nombreeven, eve.logo AS logo_evento, eve.tipoevento 
+FROM favoritosUsuario fa
+LEFT JOIN eventos eve ON fa.entidad_id = eve.ideven
+WHERE fa.codusuario = 2 AND  fa.entidad_tipo = 'evento' ORDER BY fa.fecha_agregado DESC;
+
+
+
+
+
+
 
        
        

@@ -49,6 +49,18 @@ body {
     border-radius: 10px;
     display: grid;
     grid-template-columns: repeat(2,1fr);
+    @media only screen and (max-width: 900px) {
+    
+
+        width: max-content;
+
+       
+      }
+      @media only screen and (min-width: 900px) and (max-width: 1200px){
+ 
+        width: max-content;
+      }
+
 
 }
 .perfil{
@@ -69,12 +81,14 @@ body {
     font-size: 18px;
     color: #0415af;
     margin: 10px 0;
+   
 }
 .info__form input:not([type="submit"]){
     border: none;
     border-radius: 8px;
     padding: 5px;
     width: 300px;
+    
 }
 .info__form  input[type = "date"]{
     color: #3d77ba;
@@ -89,6 +103,7 @@ body {
     font-size: 18px;
     cursor: pointer;
     border-radius: 8px;
+    
 }
 .info__form  input[type = "submit"]:hover{
     background-color: #033774;

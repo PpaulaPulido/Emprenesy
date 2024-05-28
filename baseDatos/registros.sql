@@ -119,6 +119,8 @@ INSERT INTO ubicacionresta (idresta, ubicacion)
 VALUES (1, 'Kilómetro 1 vía a La Calera, Bogotá');
 
 #**********************************************************************************************************************
+#revisar imagenes y redes sociales
+
 INSERT INTO emprendimientos (nombreempre, logo, tipoempre, descripempre, horarioempre, horarioApertura, 
 horarioCierre, paginaempre, producempre, correoempre, telempre, fecha_publicacion, codadmin) 
 VALUES ('Artesanías de Colombia.', 'galeriaEmprende/artesaniasColombia1.png', 'Artesanias', 'Artesanías de Colombia es una sociedad anónima que se dedica al comercio al por menor de otros artículos domésticos en establecimientos especializados. Su objetivo es resaltar la riqueza, diversidad y calidad de las artesanías de cada región y etnia del país', 
@@ -126,7 +128,7 @@ VALUES ('Artesanías de Colombia.', 'galeriaEmprende/artesaniasColombia1.png', '
  'https://artesaniasdecolombia.com.co/PortalAC/Catalogo/CatalogoIndex.jsf', 'soytransparente@artesaniasdecolombia.com.co', '305 772 7539', '2024-05-15', 1);
 
 INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) 
-VALUES (1, 'emprendimiento', 'Instagram', null),
+VALUES (1, 'emprendimiento', 'Instagram', ''),
        (1, 'emprendimiento', 'TikTok', null);
        
 INSERT INTO galeriaempre (idempre, imagenempre, descripcion) 
@@ -136,44 +138,86 @@ VALUES (1, 'galeriaEmprende/artesaniasColombia2.jpg', 'Imagen del emprendimiento
        (1, 'galeriaEmprende/artesaniasColombia5.jpg', 'Imagen del emprendimiento');
 
 INSERT INTO ubicacionempre (idempre, ubicacion) 
-VALUES (1, 'Calle 74 No. 11-91, Bogotá'),(1, 'Carrera 11 No. 84 - 12, Bogotá');
+VALUES (1, 'Calle 74 No. 11-91 Bogotá'),(1, 'Carrera 11 No. 84 - 12 Bogotá');
 
 #**********************************************************************************************************************
 INSERT INTO emprendimientos (nombreempre, logo, tipoempre, descripempre, horarioempre, horarioApertura, 
 horarioCierre, paginaempre, producempre, correoempre, telempre, fecha_publicacion, codadmin) 
-VALUES ('Artesanías de Colombia.', 'galeriaEmprende/artesaniasColombia1.png', 'Artesanias', 'Artesanías de Colombia es una sociedad anónima que se dedica al comercio al por menor de otros artículos domésticos en establecimientos especializados. Su objetivo es resaltar la riqueza, diversidad y calidad de las artesanías de cada región y etnia del país', 
-'Miércoles a viernes: 09:00 - 19:00,Sábado: 09:00 - 19:00,Domingo: 12:00 - 19:00', '09:00:00', '19:00:00', 'https://artesaniasdecolombia.com.co/PortalAC/General/template_index.jsf',
- 'https://artesaniasdecolombia.com.co/PortalAC/Catalogo/CatalogoIndex.jsf', 'soytransparente@artesaniasdecolombia.com.co', '305 772 7539', '2024-05-15', 1);
+VALUES ('Amorella', 'galeriaEmprende/artesaniasColombia1.png', 'Tienda de Ropa', 'Amorella es una tienda multimarca colombiana que se destaca por ofrecer una variedad de marcas locales y diseños exclusivos en lencería y ropa interior femenina.', 
+'Lunes a Sábado: 10 am - 7 pm, Domingos y festivos: 11:30 am - 6 pm', '10:00:00', '19:00:00', 'https://www.amorellashop.com/',
+ 'https://www.threads.net/%40amorella.tmm', 'uncorreo@gmail.com', '321546684', '2024-05-15', 1);
 
 INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) 
-VALUES (1, 'emprendimiento', 'Instagram', null),
-       (1, 'emprendimiento', 'TikTok', null);
+VALUES (1, 'emprendimiento', 'Instagram', 'https://www.instagram.com/amorella.tmm/?hl=es'),
+       (1, 'emprendimiento', 'TikTok', '');
        
 INSERT INTO galeriaempre (idempre, imagenempre, descripcion) 
-VALUES (1, 'galeriaEmprende/artesaniasColombia2.jpg', 'Imagen del emprendimiento'),
-       (1, 'galeriaEmprende/artesaniasColombia3.jpg', 'Imagen del emprendimiento'),
-       (1, 'galeriaEmprende/artesaniasColombia4.jpg', 'Imagen del emprendimiento'),
-       (1, 'galeriaEmprende/artesaniasColombia5.jpg', 'Imagen del emprendimiento');
+VALUES (1, 'galeriaEmprende/', 'Imagen del emprendimiento'),
+       (1, 'galeriaEmprende/', 'Imagen del emprendimiento'),
+       (1, 'galeriaEmprende/', 'Imagen del emprendimiento'),
+       (1, 'galeriaEmprende/', 'Imagen del emprendimiento');
 
 INSERT INTO ubicacionempre (idempre, ubicacion) 
-VALUES (1, 'Calle 74 No. 11-91, Bogotá'),(1, 'Carrera 11 No. 84 - 12, Bogotá');
+VALUES (1, 'Carrera 14 # 79 - 62 Bogotá');
 
 #**********************************************************************************************************************
 INSERT INTO emprendimientos (nombreempre, logo, tipoempre, descripempre, horarioempre, horarioApertura, 
 horarioCierre, paginaempre, producempre, correoempre, telempre, fecha_publicacion, codadmin) 
-VALUES ('Wata', 'galeriaEmprende/artesaniasColombia1.png', 'Ropa', ' Wata es una empresa de Bogotá que se ha dedicado durante los últimos dos años a fabricar colecciones de ropa que no solo te hagan ver y sentir bien, sino que también ayudan al planeta. Su enfoque está en la moda sostenible y la producción ética, sin causar efectos secundarios o impactar negativamente la naturaleza', 
-'Lunes-Sábado', '09:00:00', '14:00:00', 'https://m.facebook.com/wata.col',
- 'https://artesaniasdecolombia.com.co/PortalAC/Catalogo/CatalogoIndex.jsf', 'soytransparente@artesaniasdecolombia.com.co', '312 5806209', '2024-05-15', 2);
+VALUES ('La galeria online', 'galeriaEmprende/', 'Empredimientos de Arte', 'Lagaleriaonline.co es una plataforma de difusión y venta de obras de arte de artistas modernos y contemporáneos, ya establecidos o emergentes, pensado para todos los presupuestos. Nuestro objetivo es intermediar en la conexión de artistas y compradores, a través de nuestra comunidad virtual abierta 24/7 y nuestra sala expositiva Artespacio. Encuentra fotografías, esculturas, dibujos, pinturas, obras gráficas y demás que abarcan todos los estilos y movimientos artísticos. ', 
+'Lunes a Sábado: 10 am - 7 pm', '10:00:00', '19:00:00', 'https://lagaleriaonline.co/collections/obras',
+ 'https://lagaleriaonline.co/collections', 'contacto@lagaleriaonline.co', '314 3371659', '2024-05-15', 1);
 
 INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) 
-VALUES (1, 'emprendimiento', 'Instagram', 'https://www.instagram.com/bywata/?hl=es-la'),
-       (1, 'emprendimiento', 'TikTok', null);
+VALUES (1, 'emprendimiento', 'Instagram', 'https://www.instagram.com/amorella.tmm/?hl=es'),
+       (1, 'emprendimiento', 'TikTok', '');
        
 INSERT INTO galeriaempre (idempre, imagenempre, descripcion) 
-VALUES (1, 'galeriaEmprende/artesaniasColombia2.jpg', 'Imagen del emprendimiento'),
-       (1, 'galeriaEmprende/artesaniasColombia3.jpg', 'Imagen del emprendimiento'),
-       (1, 'galeriaEmprende/artesaniasColombia4.jpg', 'Imagen del emprendimiento'),
-       (1, 'galeriaEmprende/artesaniasColombia5.jpg', 'Imagen del emprendimiento');
+VALUES (1, 'galeriaEmprende/', 'Imagen del emprendimiento'),
+       (1, 'galeriaEmprende/', 'Imagen del emprendimiento'),
+       (1, 'galeriaEmprende/', 'Imagen del emprendimiento'),
+       (1, 'galeriaEmprende/', 'Imagen del emprendimiento');
 
 INSERT INTO ubicacionempre (idempre, ubicacion) 
-VALUES (1, 'Cl. 70 # 27b - 07, Barrios Unidos, Bogotá');
+VALUES (1, 'Calle 75 # 5 - 88 Bogotá');
+
+#**********************************************************************************************************************
+INSERT INTO emprendimientos (nombreempre, logo, tipoempre, descripempre, horarioempre, horarioApertura, 
+horarioCierre, paginaempre, producempre, correoempre, telempre, fecha_publicacion, codadmin) 
+VALUES ('La Tienda Pet Col', 'galeriaEmprende/', 'Emprendimiento de Mascotas', 'La Tienda Pet Col es una tienda de mascotas ubicada en varias partes en Colombia, que se destaca por ofrecer una amplia variedad de productos y servicios para el cuidado y bienestar de mascotas. Con 32 años de experiencia, se enfocan en brindar acompañamiento continuo a los propietarios de mascotas, ofreciendo servicios de excelente calidad y una gran variedad de productos. Desde accesorios, alimentos y juguetes hasta servicios de peluquería y certificados de salud, La Tienda Pet Col se esfuerza por satisfacer las necesidades de las mascotas y sus dueños, entregando productos a domicilio y brindando opciones de pago seguras. ', 
+'Lunes a Sábado: 08 am - 6 pm y Domingos: 09 am - 6 pm', '08:00:00', '18:00:00', 'https://petcol.co/',
+ 'https://petcol.co/collections/all', null , '601 7439999', '2024-05-15', 1);
+
+INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) 
+VALUES (1, 'emprendimiento', 'Instagram', 'https://www.instagram.com/petcol/?hl=es-la'),
+       (1, 'emprendimiento', 'TikTok', '');
+       
+INSERT INTO galeriaempre (idempre, imagenempre, descripcion) 
+VALUES (1, 'galeriaEmprende/', 'Imagen del emprendimiento'),
+       (1, 'galeriaEmprende/', 'Imagen del emprendimiento'),
+       (1, 'galeriaEmprende/', 'Imagen del emprendimiento'),
+       (1, 'galeriaEmprende/', 'Imagen del emprendimiento');
+
+INSERT INTO ubicacionempre (idempre, ubicacion) 
+VALUES (1, 'Calle 140 # 13-18 Bogotá'),(2, 'Carrera 58 # 131A-26 Bogotá'),(3, 'Av Boyacá # 99-76 Bogotá'),(4, 'Cra 45A #124-5 Bogotá'),(5, 'Calle 70A #4-78 Bogotá');
+
+#**********************************************************************************************************************
+INSERT INTO emprendimientos (nombreempre, logo, tipoempre, descripempre, horarioempre, horarioApertura, 
+horarioCierre, paginaempre, producempre, correoempre, telempre, fecha_publicacion, codadmin) 
+VALUES ('Frutas y Fresas', 'galeriaEmprende/', 'Emprendimiento Gastronómico', 'Arreglos frutales en Bogotá y fresas con chocolate en Bogotá. Por qué regalar otra cosa cuando puedes regalar algo bonito, creativo y saludable? Nada mejor que expresar lo que sentimos con un saludable y delicioso arreglo frutal  o arreglos de frutas frescas combinadas con unas deliciosas fresas con chocolate. Para los arreglos frutales puedes elegir entre varias opciones de diseño y cantidad de frutas. Al igual que nuestros arreglos de fresas con chocolate. Nuestros arreglos de fruta o fresas cuentan con un delicado proceso de selección. Regalemos a los que más queremos obsequios saludables, arreglos frutales y fresas con chocolate. ', 
+'Lunes a Sábado: 08 am - 6 pm ', '08:00:00', '18:00:00', 'https://www.frutasyfresas.com/',
+ 'https://www.frutasyfresas.com/25-fresas-con-chocolate', 'ventas@frutasyfresas' , '3124479342 ', '2024-05-15', 1);
+
+INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) 
+VALUES (1, 'emprendimiento', 'Instagram', 'https://www.instagram.com/petcol/?hl=es-la'),
+       (1, 'emprendimiento', 'TikTok', '');
+       
+INSERT INTO galeriaempre (idempre, imagenempre, descripcion) 
+VALUES (1, 'galeriaEmprende/', 'Imagen del emprendimiento'),
+       (1, 'galeriaEmprende/', 'Imagen del emprendimiento'),
+       (1, 'galeriaEmprende/', 'Imagen del emprendimiento'),
+       (1, 'galeriaEmprende/', 'Imagen del emprendimiento');
+
+INSERT INTO ubicacionempre (idempre, ubicacion) 
+VALUES (1, 'Calle 140 # 13-18 Bogotá'),(2, 'Carrera 58 # 131A-26 Bogotá'),(3, 'Av Boyacá # 99-76 Bogotá'),(4, 'Cra 45A #124-5 Bogotá'),(5, 'Calle 70A #4-78 Bogotá');
+
+

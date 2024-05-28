@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-
     container_fav();
     // Agregar event listener para capturar clics en favoritos
     document.addEventListener('click', function (event) {
@@ -141,3 +140,6 @@ function getFavorite(eventId) {
     }
     location.reload();
 }
+
+
+

@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const urlParams = new URLSearchParams(window.location.search);
     const tipo = urlParams.get('tipo');
-    
+
     if (tipo) {
         filterByType("/publicacion/tipoEmprendimiento", tipo, 'emprendimientoContenedor', 'emprendimiento');
     }
@@ -27,6 +27,24 @@ function filterByType(api, tipo, contenedor, nombrePublicacion) {
                 logo: 'logo',
                 tipo: 'tipo',
             });
+
+            setTimeout(() => {
+                fetch('/usuarios/obtener_favoritos/usuario')
+                    .then(response => response.json())
+                    .then(data => {
+                        data.forEach(fav => {
+                            const favIcon = document.querySelector(`.favorite[data-id="${fav.entidad_id}"][data-type="${fav.entidad_tipo}"]`);
+                            if (favIcon) {
+                                favIcon.style.color = 'red';
+                                favIcon.classList.add('active');
+                            }
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error al obtener los favoritos:', error);
+                    });
+
+            }, 500);  // Ajustar el tiempo de espera según sea necesario
         })
         .catch(error => {
             console.error('Error al cargar los registros:', error);

@@ -453,7 +453,7 @@ def agregar_favorito():
     fav_type = request.form['tipo']
 
     # Verificar si el favorito ya existe
-    sql_existente = 'SELECT idfavorito, entidad_id, entidad_tipo, fecha_agregado FROM favoritosUsuario WHERE codusuario = %s AND entidad_id = %s AND entidad_tipo = %s'
+    sql_existente = 'SELECT idfavorito FROM favoritosUsuario WHERE codusuario = %s AND entidad_id = %s AND entidad_tipo = %s'
     cursor.execute(sql_existente, (user_id, fav_id, fav_type))
     favoritoExiste = cursor.fetchone()
     
@@ -461,11 +461,12 @@ def agregar_favorito():
         return jsonify({'success': False, 'message': 'El favorito ya existe'})
     
     # Agrega el favorito a la sesión
-    '''if 'favoritesUser' not in session:
+    if 'favoritesUser' not in session:
         session['favoritesUser'] = []
+        
     session['favoritesUser'].append({'id': fav_id, 'type': fav_type})
-    session.modified = True'''
-    
+    session.modified = True
+    print("sesionnnnnnnnnnnnnnnnnnnnn",session['favoritesUser'])
     # Inserta el favorito en la base de datos
     cursor.execute('INSERT INTO favoritosUsuario (codusuario, entidad_id, entidad_tipo) VALUES (%s, %s, %s)', (user_id, fav_id, fav_type))
     db.commit()
@@ -483,10 +484,10 @@ def remover_favorito():
     fav_type = request.form['tipo']
 
     # Elimina el favorito de la sesión
-    '''if 'favoritesUser' in session:
+    if 'favoritesUser' in session:
         session['favoritesUser'] = [fav for fav in session['favoritesUser'] if not (fav['id'] == fav_id and fav['type'] == fav_type)]
-        session.modified = True'''
-
+        session.modified = True
+    
     # Elimina el favorito de la base de datos
     cursor.execute('DELETE FROM favoritosUsuario WHERE codusuario = %s AND entidad_id = %s AND entidad_tipo = %s', (user_id, fav_id, fav_type))
     db.commit()
@@ -499,20 +500,70 @@ def obtener_favoritos():
     if not user_id:
         return jsonify({'success': False, 'message': 'Usuario no autenticado'})
 
-    cursor.execute('SELECT idfavorito, entidad_id, entidad_tipo FROM favoritosUsuario WHERE codusuario = %s', (user_id,))
-    favorito = cursor.fetchone()  # Obtener una fila de la base de datos
+    cursor.execute('SELECT entidad_id, entidad_tipo FROM favoritosUsuario WHERE codusuario = %s', (user_id,))
+    
+    favoritos = cursor.fetchall()
 
-    # Verificar si se encontró un favorito
-    if favorito:
-        # Convertir la fila en un diccionario para que se pueda jsonify
-        favorito_dict = {
-            'idfavorito': favorito[0],
-            'entidad_id': favorito[1],
-            'entidad_tipo': favorito[2]
+    # Convertir las filas en una lista de diccionarios
+    favoritos_list = [{'fa.entidad_id': fav[0], 'fa.entidad_tipo': fav[1]} for fav in favoritos]
+    
+    return jsonify(favoritos_list)
+
+
+@usuarios.route('/Listafavoritos_usuario', methods=['GET'])
+def obtener_lista_favoritos_usuario():
+    try:
+        # Consulta para obtener favoritos de tipo restaurante
+        sql_restaurantes = """
+        SELECT 
+            fa.idfavorito, fa.codusuario, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
+            res.idresta, res.nombreresta, res.logo AS logo_res, res.tiporesta
+        FROM favoritosUsuario fa
+        LEFT JOIN restaurantes res ON fa.entidad_id = res.idresta
+        WHERE fa.codusuario = 2 AND fa.entidad_tipo = 'restaurante'
+        ORDER BY fa.fecha_agregado DESC;
+        """
+        cursor.execute(sql_restaurantes)
+        favoritos_restaurantes = cursor.fetchall()
+
+        # Consulta para obtener favoritos de tipo emprendimiento
+        sql_emprendimientos = """
+        SELECT 
+            fa.idfavorito, fa.codusuario, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
+            em.idempre, em.nombreempre, em.logo AS logo_empre, em.tipoempre
+        FROM favoritosUsuario fa
+        LEFT JOIN emprendimientos em ON fa.entidad_id = em.idempre
+        WHERE fa.codusuario = 2 AND fa.entidad_tipo = 'emprendimiento'
+        ORDER BY fa.fecha_agregado DESC;
+        """
+        cursor.execute(sql_emprendimientos)
+        favoritos_emprendimientos = cursor.fetchall()
+
+        # Consulta para obtener favoritos de tipo evento
+        sql_eventos = """
+        SELECT 
+            fa.idfavorito, fa.codusuario, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
+            eve.ideven, eve.nombreeven, eve.logo AS logo_evento, eve.tipoevento 
+        FROM favoritosUsuario fa
+        LEFT JOIN eventos eve ON fa.entidad_id = eve.ideven
+        WHERE fa.codusuario = 2 AND fa.entidad_tipo = 'evento'
+        ORDER BY fa.fecha_agregado DESC;
+        """
+        cursor.execute(sql_eventos)
+        favoritos_eventos = cursor.fetchall()
+
+        # Formatear los resultados en un diccionario
+        resultado = {
+            "favoritos_restaurantes": favoritos_restaurantes,
+            "favoritos_emprendimientos": favoritos_emprendimientos,
+            "favoritos_eventos": favoritos_eventos
         }
-        return jsonify({'success': True, 'favorito': favorito_dict})
-    else:
-        return jsonify({'success': False, 'message': 'No se encontraron favoritos para este usuario'})
+
+        # Devuelve los resultados en formato JSON
+        return jsonify(resultado)
+
+    except Exception as e:
+        return jsonify({"error": str(e)})
 
 #Formatear los slashes para las imagenes
 def normalize_path(path):

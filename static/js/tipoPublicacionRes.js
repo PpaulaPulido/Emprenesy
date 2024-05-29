@@ -43,8 +43,7 @@ function filterByType(api, tipo, contenedor, nombrePublicacion) {
                     .catch(error => {
                         console.error('Error al obtener los favoritos:', error);
                     });
-
-            }, 500);  // Ajustar el tiempo de espera según sea necesario
+            }, 200); 
         })
         .catch(error => {
             console.error('Error al cargar los registros:', error);

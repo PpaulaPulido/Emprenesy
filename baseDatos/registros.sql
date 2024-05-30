@@ -221,3 +221,81 @@ INSERT INTO ubicacionempre (idempre, ubicacion)
 VALUES (1, 'Calle 140 # 13-18 Bogotá'),(2, 'Carrera 58 # 131A-26 Bogotá'),(3, 'Av Boyacá # 99-76 Bogotá'),(4, 'Cra 45A #124-5 Bogotá'),(5, 'Calle 70A #4-78 Bogotá');
 
 
+#**********************************************************************************************************************
+INSERT INTO eventos ( nombreeven, logo, tipoevento, descripeven, paginaeven, boletaseven , 
+infoAdicional, contacto , correoeven, fecha_publicacion,codadmin) 
+VALUES ('Fesbo','galeriaEventos/','Evento de danza','Fesbo nace a partir del sueño del maestro Jaime Otáora, director de Bogotá Capital Dance, de congregar y reunir a distintas escuelas de danza de Bogotá con el fin de visibilizar su trabajo en ballet, ballet contemporáneo y/o neoclásico para compartirlo en escena.Se trata de un momento de celebración donde diferentes escuelas de la ciudad: La Coartada, Bogotá Capital Dance y BCD Dance Company se reúnen a celebrar su oficio brindando un espectáculo de primer nivel.',
+'https://www.atrapalo.com.co/entradas/fesbo-uniendo-historias-festival-escuelas-bogota_e4909886/','https://www.atrapalo.com.co/entradas/fesbo-uniendo-historias-festival-escuelas-bogota_e4909886/',
+'Atrápalo S.A.S. actúa como operador oficial de boletería para este evento y como único canal de venta.
+ Atrápalo Colombia S.A.S. no garantizará ni responderá de ninguna forma, por entradas adquiridas en canales diferentes a atrapalo.com.co
+ Si compras varias entradas al mismo tiempo, llegarán todas al correo del comprador. Si asistes con otras personas y no van a llegar al mismo tiempo al sitio del evento, puedes imprimirlas, o deberás reenviarlas a sus correos electrónicos para que ellos las presenten al ingreso. Cada entrada tiene un número único de ticket, así que debes asegurarte de asignar una diferente para cada acompañante.',
+'312-228-8492','info@atrapalo.com.co','2024-05-15',1);
+
+INSERT INTO fechaseven (ideven,fechaseven,horarioEntrada,horarioSalida)
+VALUES (1,'2024-06-12','19:00:00','21:00:00');
+
+INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) 
+VALUES (1, 'evento', 'Instagram', 'https://www.instagram.com/petcol/?hl=es-la'),
+       (1, 'evento', 'TikTok', '');
+       
+INSERT INTO galeriaeven (ideven ,urlImagen, descripcion) 
+VALUES (1, 'galeriaEventos/', 'Imagen del evento'),
+       (1, 'galeriaEventos/', 'Imagen del evento'),
+       (1, 'galeriaEventos/', 'Imagen del evento'),
+       (1, 'galeriaEventos/', 'Imagen del  evento');
+
+INSERT INTO ubicacioneven (ideven, ubicacion) 
+VALUES (1, 'Cra. 11 #61-80 Bogotá ');
+
+
+#**********************************************************************************************************************
+INSERT INTO eventos ( nombreeven, logo, tipoevento, descripeven, paginaeven, boletaseven , 
+infoAdicional, contacto , correoeven, fecha_publicacion,codadmin) 
+VALUES ('Art','galeriaEventos/','Eventos de teatro','¡Regresa ART!, la aclamada comedia considerada la mejor de todos los tiempos, regresa tras el rotundo éxito de su primera temporada. Los espectadores disfrutaron de una puesta en escena impecable y divertida, con talentosos actores. Escrita por Yasmina Reza y adaptada en todo el mundo, la obra presenta la amistad de tres hombres desde una perspectiva única. Bajo la dirección de Manuel Orjuela y con las destacadas actuaciones de Diego Trujillo, Emmanuel Esparza y John Alex Toro, la producción de Mariano Bacaleinik llega a Casa E.',
+'https://www.atrapalo.com.co/entradas/art_e4909973/','https://www.atrapalo.com.co/entradas/art_e4909973/',
+'La trama gira en torno a un aparentemente trivial conflicto que desencadena una profunda crisis en los valores e intereses de los amigos, relacionados con el mercado, la vanguardia, la modernidad y el valor de las cosas según su precio. Las exageradas discusiones generan situaciones hilarantes y risas contagiosas. La pregunta es si esta amistad llegará a su fin o si será un nuevo comienzo.
+¡No te pierdas esta imperdible comedia que promete emociones y diversión!
+Artistas: Diego Trujillo, John Alex Toro, Emmanuel Esparza',
+'312-228-8492','info@atrapalo.com.co','2024-05-15',1);
+
+INSERT INTO fechaseven (ideven,fechaseven,horarioEntrada,horarioSalida)
+VALUES (1,'2024-06-01','18:00:00','19:00:00');
+
+INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) 
+VALUES (1, 'evento', 'Instagram', 'https://www.instagram.com/petcol/?hl=es-la'),
+       (1, 'evento', 'TikTok', '');
+       
+INSERT INTO galeriaeven (ideven ,urlImagen, descripcion) 
+VALUES (1, 'galeriaEventos/', 'Imagen del evento'),
+       (1, 'galeriaEventos/', 'Imagen del evento'),
+       (1, 'galeriaEventos/', 'Imagen del evento'),
+       (1, 'galeriaEventos/', 'Imagen del  evento');
+
+INSERT INTO ubicacioneven (ideven, ubicacion) 
+VALUES (1, 'Carrera 24 # 41-69 Bogotá ');
+
+#**********************************************************************************************************************
+INSERT INTO eventos ( nombreeven, logo, tipoevento, descripeven, paginaeven, boletaseven , 
+infoAdicional, contacto , correoeven, fecha_publicacion,codadmin) 
+VALUES ('Art','galeriaEventos/','Ferias gastronomicas','¡Regresa ART!, la aclamada comedia considerada la mejor de todos los tiempos, regresa tras el rotundo éxito de su primera temporada. Los espectadores disfrutaron de una puesta en escena impecable y divertida, con talentosos actores. Escrita por Yasmina Reza y adaptada en todo el mundo, la obra presenta la amistad de tres hombres desde una perspectiva única. Bajo la dirección de Manuel Orjuela y con las destacadas actuaciones de Diego Trujillo, Emmanuel Esparza y John Alex Toro, la producción de Mariano Bacaleinik llega a Casa E.',
+'https://www.atrapalo.com.co/entradas/art_e4909973/','https://www.atrapalo.com.co/entradas/art_e4909973/',
+'La trama gira en torno a un aparentemente trivial conflicto que desencadena una profunda crisis en los valores e intereses de los amigos, relacionados con el mercado, la vanguardia, la modernidad y el valor de las cosas según su precio. Las exageradas discusiones generan situaciones hilarantes y risas contagiosas. La pregunta es si esta amistad llegará a su fin o si será un nuevo comienzo.
+¡No te pierdas esta imperdible comedia que promete emociones y diversión!
+Artistas: Diego Trujillo, John Alex Toro, Emmanuel Esparza',
+'312-228-8492','info@atrapalo.com.co','2024-05-15',1);
+
+INSERT INTO fechaseven (ideven,fechaseven,horarioEntrada,horarioSalida)
+VALUES (1,'2024-06-01','18:00:00','19:00:00');
+
+INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) 
+VALUES (1, 'evento', 'Instagram', 'https://www.instagram.com/petcol/?hl=es-la'),
+       (1, 'evento', 'TikTok', '');
+       
+INSERT INTO galeriaeven (ideven ,urlImagen, descripcion) 
+VALUES (1, 'galeriaEventos/', 'Imagen del evento'),
+       (1, 'galeriaEventos/', 'Imagen del evento'),
+       (1, 'galeriaEventos/', 'Imagen del evento'),
+       (1, 'galeriaEventos/', 'Imagen del  evento');
+
+INSERT INTO ubicacioneven (ideven, ubicacion) 
+VALUES (1, 'Carrera 24 # 41-69 Bogotá ');

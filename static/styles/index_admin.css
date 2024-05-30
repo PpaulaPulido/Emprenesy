@@ -138,7 +138,7 @@ body {
 }
 
 .div_icon {
-    background-color: #051248;
+    background-color: #fff;
     ;
     padding: 10px;
     margin: 0 auto;
@@ -154,13 +154,13 @@ body {
 .div_icon .icon {
     font-size: 30px;
     text-align: center;
-    color: #fff;
+    color: #051248;
 }
 
 .container_vac h2 {
     margin-top: 20px;
     font-size: 20px;
-    color: #051248;
+    color: #fff;
 }
 
 /****************************Estilos de contenedor de publicaciones de eventos*****************************************/

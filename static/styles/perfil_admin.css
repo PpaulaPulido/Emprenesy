@@ -34,6 +34,7 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
+
 }
 .container__perfil{
     padding: 10px;
@@ -74,6 +75,7 @@ body{
     grid-template-columns: 450px 1fr;
     margin-top: -45px;
     padding: 20px;
+  
 }
 .perfil__foto{
     position: relative;
@@ -116,6 +118,7 @@ body{
     margin: -100px auto 0 auto;
     border-radius: 8px;
     padding-left: 40px;
+    
 }
 .datos__detalles i {
     margin-right: 10px;
@@ -136,6 +139,7 @@ body{
     width: 80%;
     font-size: 18px;
     margin: 40px auto 50px auto;
+    
 }
 .detalles_btnPer:hover{
     background-color: #0c4ca0;
@@ -176,6 +180,8 @@ body{
     border-radius: 8px;
     display: flex;
     justify-content: space-between;
+    border: solid;
+    
 }
 .opciones a{
     color: #0c4ca0;

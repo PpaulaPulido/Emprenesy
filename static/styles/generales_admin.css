@@ -201,6 +201,7 @@ ul, ol{
     overflow: hidden;
     display: none;
     border-radius: 10px;
+    
 }
 
 .header_buscador #box-search li {

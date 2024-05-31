@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort,jsonify
+from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort,jsonify,session
 from werkzeug.utils import secure_filename
 #from werkzeug.security import generate_password_hashz
 from db import get_db, get_cursor
@@ -10,36 +10,50 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 db = get_db()
 cursor = get_cursor(db)
 
+#*********************************Funcion para permitir tipo de extensiones para las img********************************
 ''' se utiliza para verificar si el nombre de un archivo tiene una extensión permitida según una lista de extensiones '''
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @admin.route('/index_admin')
 def index_admin():
-    return render_template('index_admin.html')
+    admin_id = session.get('admin_id')
+    return render_template('index_admin.html',admin_id=admin_id)
 
 
-
+#***********************************Ruta para perfil de administrador************************************
 @admin.route('/perfil_admin')
 def perfil_admin():
     
-    user_id = 1
+    admin_id = session.get('admin_id')
+    
+    if not admin_id:
+        flash('No está autenticado.', 'error')
+        return redirect(url_for('usuarios.inicio_sesion')) 
     db = get_db()  # Obtener la conexión a la base de datos
     cursor = db.cursor()  # Crear un cursor
 
-    default_portada = '/static/img/bogota-turismo.jpg'
+    default_portada = '/static/img/Portada-Bogota.jpg'
     default_perfil = '/static/img/perfil_user.png'
 
     try:
-        cursor.execute("SELECT nombreadmin,apellidoadmin,correoadmin FROM administrador WHERE codadmin = %s", (user_id,))
+        cursor.execute("SELECT nombreadmin,apellidoadmin,correoadmin FROM administrador WHERE codadmin = %s", (admin_id,))
         admin_datos= cursor.fetchone()
         if admin_datos:
             nombre_admin, apellido_admin, correo_admin = admin_datos
         else:
             nombre_admin = apellido_admin = correo_admin = "Información no disponible"
         
+        cursor.execute("SELECT direccion,ciudad,descripcionAcerca,sitioWeb,blog FROM datosAdmin WHERE cod_admin = %s",(admin_id,))
+        admin_datosDetalles = cursor.fetchone()
+        
+        if admin_datosDetalles:
+            direccion, ciudad, descripcionAcerca, sitioWeb, blog = admin_datosDetalles
+        else:
+            direccion = ciudad = descripcionAcerca = sitioWeb = blog = "No disponible"
+        
         def obtenerImagen(image_type, default_image):
-            cursor.execute("SELECT ruta_foto FROM fotos_admin WHERE cod_admin = %s AND tipo_foto = %s ORDER BY id_foto DESC LIMIT 1", (user_id, image_type))
+            cursor.execute("SELECT ruta_foto FROM fotos_admin WHERE cod_admin = %s AND tipo_foto = %s ORDER BY id_foto DESC LIMIT 1", (admin_id, image_type))
             image = cursor.fetchone()
             if image:
                 return os.path.join('/', image[0])
@@ -53,12 +67,16 @@ def perfil_admin():
         cursor.close()  
         db.close()
 
-    return render_template('perfil_admin.html', nombre_admin = nombre_admin, apellido_admin = apellido_admin, correo_admin = correo_admin, foto_portada=fotoPortada, foto_perfil=fotoPerfil)
+    return render_template('perfil_admin.html',admin_id = admin_id ,nombre_admin = nombre_admin, apellido_admin = apellido_admin, correo_admin = correo_admin, foto_portada=fotoPortada, foto_perfil=fotoPerfil,direccion = direccion, ciudad = ciudad,sitioWeb = sitioWeb,blog = blog,descripcionAcerca = descripcionAcerca)
 
+#******************************************Ruta para mis fotos de perfil admin*****************************************************************
 @admin.route('/MisFotos')
 def photos():
     
-    user_id = 1
+    user_id = session.get('admin_id')
+    if not user_id:
+        flash('No está autenticado.', 'error')
+        return redirect(url_for('usuarios.inicio_sesion')) 
     
     db = get_db()
     cursor = db.cursor()
@@ -79,11 +97,15 @@ def photos():
     
     return jsonify(fotos_list)
 
-
+#******************************************Galeria de fotos del admin*******************************************************
 @admin.route('/galeriaAdmin')
 def galeria_admin():
     
-    user_id = 1
+    user_id = session.get('admin_id')
+    
+    if not user_id:
+        flash('No está autenticado.', 'error')
+        return redirect(url_for('usuarios.inicio_sesion')) 
     
     db = get_db()
     cursor = db.cursor()
@@ -91,6 +113,7 @@ def galeria_admin():
     try:
         cursor.execute("""
             SELECT ruta_foto, tipo_foto FROM fotos_admin
+    
             WHERE tipo_foto IN ('perfil', 'portada')
             ORDER BY id_foto DESC LIMIT 9
         """)
@@ -104,11 +127,70 @@ def galeria_admin():
     
     return jsonify(fotos_list)
 
+#*********************************************Ruta para las reseñas del administrador******************************
+@admin.route('/reseñasAdmin')
+def resena_admin():
+    admin_id = session.get('admin_id')
+    
+    if not admin_id:
+        flash('No está autenticado.', 'error')
+        return redirect(url_for('usuarios.inicio_sesion')) 
+    
+    db = get_db()
+    cursor = db.cursor(dictionary=True)
+    
+    try:
+        cursor.execute("SELECT R.calificacion, R.comentario, R.entidad_tipo, R.entidad_id FROM Resenas AS R WHERE R.autor_tipo = 'administrador' AND R.autor_id = %s ORDER BY R.id_resena DESC LIMIT 5", (admin_id,))
+        resenas = cursor.fetchall()
+        
+        resenas_list = []
+        
+        for resena in resenas:
+            nombre_entidad = ""
+            
+            if resena['entidad_tipo'] == 'evento':
+                cursor.execute("SELECT nombreeven FROM eventos WHERE ideven = %s", (resena['entidad_id'],))
+                entidad = cursor.fetchone()
+                if entidad:
+                    nombre_entidad = entidad['nombreeven']
+                    
+            elif resena['entidad_tipo'] == 'emprendimiento':
+                cursor.execute("SELECT nombreempre FROM emprendimientos WHERE idempre = %s", (resena['entidad_id'],))
+                entidad = cursor.fetchone()
+                if entidad:
+                    nombre_entidad = entidad['nombreempre']
+                    
+            elif resena['entidad_tipo'] == 'restaurante':
+                cursor.execute("SELECT nombreresta FROM restaurantes WHERE idresta = %s", (resena['entidad_id'],))
+                entidad = cursor.fetchone()
+                if entidad:
+                    nombre_entidad = entidad['nombreresta']
+            
+            resenas_list.append({
+                'calificacion': resena['calificacion'],
+                'comentario': resena['comentario'],
+                'nombre_entidad': nombre_entidad
+            })
+    finally:
+        cursor.close()
+        db.close()
+    
+    return jsonify(resenas_list)
 
+    
+#****************************Ruta para la imagen de perfil************************************************************
 @admin.route('/perfil_imagen')
 def perfil_imagen():
     
-    user_id = 1
+    user_id = session.get('admin_id')
+    
+    if not user_id:
+        flash('No está autenticado.', 'error')
+        return redirect(url_for('usuarios.inicio_sesion')) 
+    
+    db = get_db()
+    cursor = get_cursor(db)
+    
     cursor.execute("SELECT ruta_foto FROM fotos_admin  WHERE cod_admin= %s AND tipo_foto = 'perfil' ORDER BY id_foto DESC LIMIT 1", (user_id,))
     foto_perfil = cursor.fetchone()
 
@@ -126,14 +208,22 @@ def perfil_imagen():
     if not os.path.isfile(full_file_path):
         print(f"Archivo no encontrado: {full_file_path}")  # Log para depuración
         abort(404)  # Si el archivo no existe, devuelve un error 404
-
+    
+    cursor.close()
+    db.close()
+    
     return send_from_directory(directory_path, file_name)
 
-    
+#*******************************Ruta para subir la foto de perfil ********************************************************************************
 @admin.route('/subir_fotoPerfil', methods=['POST'])
 def subir_fotoperfil():
     
-    user_id = 1  #Obtener el user_id de la sesión o contexto de autenticación para identificar al usuario actual.
+    user_id = session.get('admin_id')
+    cursor = db.cursor()
+
+    if not user_id:
+        flash('No está autenticado.', 'error')
+        return redirect(url_for('usuarios.inicio_sesion')) 
     
     file = request.files.get('fotoPerfil')
     
@@ -151,18 +241,23 @@ def subir_fotoperfil():
         db.commit()
 
         flash('Foto de portada actualizada con éxito.')
-
+        cursor.close()
         return redirect(url_for('admin.perfil_admin'))
     
     else:
         flash('No se seleccionó archivo o el tipo de archivo no está permitido.')
         return redirect(url_for('admin.perfil_admin'))
 
-
+#*******************************Ruta para subir la foto de Portada********************************************************************************
 @admin.route('/subir_portada', methods=['POST'])
 def subir_portada():
     
-    user_id = 1  # Obtener el user_id de la sesión o contexto de autenticación para identificar al usuario actual.
+    user_id = session.get('admin_id')
+    cursor = db.cursor()
+    
+    if not user_id:
+        flash('No está autenticado.', 'error')
+        return redirect(url_for('usuarios.inicio_sesion')) 
     
     # Intenta obtener el archivo con el nombre 'fotoPortada' del formulario enviado. Si no hay archivo, 'file' será None.
     file = request.files.get('fotoPortada')
@@ -201,10 +296,71 @@ def subir_portada():
         # Redirecciona al usuario de vuelta a la página 'perfil_admin' para mantenerlo en la misma página en caso de error.
         return redirect(url_for('admin.perfil_admin'))
 
+#***********************************************Ruta de editar perfil administrador**********************************************************
+@admin.route('/editarPerfilAdmin/<int:id>', methods=['POST', 'GET'])
+def editarPerfilAdmin(id):
+    
+    db = get_db()
+    cursor = get_cursor(db)
+    cursor = db.cursor()
+
+    if request.method == 'POST':
+        nombreAdmin = request.form.get('nombreAdmin')
+        apellidosAdmin = request.form.get('apellidosAdmin')
+        correoAdmin = request.form.get('correoAdmin')
+        telefonoAdmin = request.form.get('telefonoAdmin')
+        fechaNacAdmin = request.form.get('fechaNacAdmin')
+        
+        direccionAdmin = request.form.get('direccion')
+        ciudadAdmin = request.form.get('ciudad')
+        descripcionAcerca = request.form.get('acerca')
+        sitioWeb = request.form.get('sitioWeb')
+        blog = request.form.get('blog')
+
+        sql = "UPDATE administrador SET nombreadmin = %s, apellidoadmin = %s, telfadmin = %s, correoadmin = %s, fechanac_admin = %s WHERE codadmin = %s"
+        cursor.execute(sql, (nombreAdmin, apellidosAdmin, telefonoAdmin, correoAdmin, fechaNacAdmin, id))
+        db.commit()
+        
+        cursor.execute("SELECT id_datosAdmin FROM datosAdmin WHERE cod_admin = %s", (id,))
+        datosConsulta = cursor.fetchone()
+        
+        if datosConsulta is None:
+            sqlDatos = "INSERT INTO datosAdmin (direccion, ciudad, descripcionAcerca, sitioWeb, blog, cod_admin) VALUES (%s, %s, %s, %s, %s, %s)"
+            cursor.execute(sqlDatos, (direccionAdmin, ciudadAdmin, descripcionAcerca, sitioWeb, blog, id))
+            db.commit()
+        else:
+            sqlDatos = "UPDATE datosAdmin SET direccion = %s, ciudad = %s, descripcionAcerca = %s, sitioWeb = %s, blog = %s WHERE cod_admin = %s"
+            cursor.execute(sqlDatos, (direccionAdmin, ciudadAdmin, descripcionAcerca, sitioWeb, blog, id))
+            db.commit()
+        
+        flash('Datos actualizados correctamente', 'success') 
+        cursor.close()
+        return redirect(url_for('admin.perfil_admin'))
+    else:
+        
+        cursor.execute('SELECT nombreadmin, apellidoadmin, telfadmin, correoadmin, fechanac_admin FROM administrador WHERE codadmin = %s', (id,))
+        data = cursor.fetchone()
+        
+        # Obtener la ruta de la foto de perfil desde la base de datos
+        cursor.execute('SELECT ruta_foto FROM fotos_admin WHERE cod_admin = %s AND tipo_foto = "perfil" ORDER BY id_foto DESC LIMIT 1', (id,))
+        foto_perfil_data = cursor.fetchone()
+        
+        foto_perfil = normalize_path(foto_perfil_data[0]) if foto_perfil_data else "../static/img/perfil_user.png"
+        
+        cursor.execute('SELECT direccion,ciudad,descripcionAcerca,sitioWeb,blog FROM datosAdmin WHERE cod_admin = %s',(id,))
+        datos = cursor.fetchone()
+        
+        if datos is None:
+            datos = {}
+       
+ 
+        return render_template('editarPerfil_admin.html',foto_perfil = foto_perfil, admin=data, admin_id=id, datos = datos)
+
 
 @admin.route('/tipo_publicacion')
 def tipoPublicacion():
-    return render_template('tipo_publicacion.html')
+    admin_id = session.get('admin_id')
+    return render_template('tipo_publicacion.html',admin_id = admin_id)
 
 
 @admin.route('/nosotros')

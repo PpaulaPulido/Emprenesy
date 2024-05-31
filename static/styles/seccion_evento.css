@@ -378,7 +378,7 @@ ol {
   flex-direction: column;
   padding: 10px;
   position: relative;
-  z-index: 100;
+  z-index: 20;
 }
 .card .rating i{
   font-size: 18px;

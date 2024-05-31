@@ -17,13 +17,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const swiper2 = document.getElementById('swiper2');
     const detalleEventoUrl = document.getElementById('detalle-evento-url').getAttribute('data-url');
 
-    user_sesion().then(() => {
-        inicializarBuscador();
-    }).catch(error => console.error('Error al inicializar sesión de usuario:', error));
-    
     tarjetas_swiper(datosEventos, swiper,detalleEventoUrl);
     tarjetas_swiper(eventosTecnologicos, swiper2,detalleEventoUrl);
     manejarFavoritos('favoritos');
 
 })
 
+function cargarEventos(tipo) {
+    // Redirige a la página de eventos con el tipo como parámetro
+    const url = document.getElementById('data-container').getAttribute('data-perfil-url');
+
+    window.location.href = `${url}?tipo=${encodeURIComponent(tipo)}`;
+}

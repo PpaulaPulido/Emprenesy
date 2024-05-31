@@ -25,12 +25,17 @@ function crearNav(imagenURL) {
     ];
 
     const perfilAdminUrl = document.getElementById('data-container').getAttribute('data-perfil-url');
+    const adminId = document.getElementById('data-container').getAttribute('data-admin-id');
+    const indexUrl = document.getElementById('url_dash').getAttribute('data-url');
+    const urlAdminEdit = document.getElementById('url_editarPerfil').getAttribute('data-url');
+
+
     // Elementos del submenu
     const subMenuItems = [
         { text: 'Ver perfil', href: perfilAdminUrl },
-        { text: 'Ver dashboard', href: perfilAdminUrl },
+        { text: 'Ver dashboard', href: indexUrl },
         { text: 'Notificaciones', href: '#' },
-        { text: 'Configuración', href: '#' },
+        { text: 'Configuración', href: urlAdminEdit },
         { text: 'Cerrar sesión', href: '#' }
     ];
 
@@ -129,6 +134,16 @@ function menu_lateral() {
     });
 }
 
+function menu_lateral2() {
+    // sidebar toggle
+    const btnToggle = document.querySelector('.toggle-btn');
+
+    btnToggle.addEventListener('click', function () {
+        document.getElementById('sidebar').classList.toggle('active');
+        console.log(document.getElementById('sidebar'))
+    });
+}
+
 function menu_form(){
 
     const btnToggle = document.querySelector('.toggle-btn');
@@ -138,4 +153,75 @@ function menu_form(){
         document.getElementById('publicaciones__form').classList.toggle('active');
         console.log(document.getElementById('sidebar'))
     });
+}
+
+
+function regresarForm(btnRegresar,redireccionarForm){
+    btnRegresar.addEventListener('click', () => {
+        Swal.fire({
+            title: "¿Estás seguro de que deseas regresar?",
+            text: "Si regresas, podrías tener que reingresar algunos datos.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sí, deseo regresar!",
+            cancelButtonText: "Cancelar",
+            customClass: {
+                popup: 'border-blue',
+                icon: 'success-icon',
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Si el usuario confirma, redirigir a la página especificada
+                Swal.fire({
+                    title: "Volviste al formulario anterior",
+                    text: "Verifica los datos antes de continuar",
+                    icon: "info",
+                    timer: 4000,
+                    customClass: {
+                        popup: 'border-blue',
+                        icon: 'success-icon',
+                    }
+                }).then(() => {
+
+                    window.location.href = redireccionarForm;
+                });
+
+            } else {
+                // Si el usuario cancela, simplemente cerrar la alerta y permanecer en la página
+                Swal.fire({
+                    title: "Cancelado",
+                    text: "Continúa con el formulario actual.",
+                    icon: "info",
+                    timer: 2000,
+                    customClass: {
+                        popup: 'border-blue',
+                        icon: 'success-icon',
+                    }
+                });
+            }
+        });
+    });
+
+}
+function alertaPu(formulario,redireccionar){
+    formulario.addEventListener('submit', (e) => {
+        //e.preventDefault();
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Registro de publicación exitosa",
+            showConfirmButton: false,
+            timer: 4000,
+            customClass: {
+                popup: 'border-blue', // Clase CSS para el borde del SweetAlert
+                icon: 'success-icon',
+            }
+        }).then(() => {
+            // Después de que la alerta se cierre, redirigir a la página especificada
+            window.location.href = redireccionar;
+        });
+    });
+
 }

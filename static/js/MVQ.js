@@ -1,8 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-    user_sesion().then(() => {
-        inicializarBuscador();
-    }).catch(error => console.error('Error al inicializar sesión de usuario:', error));
     
     // Función que se ejecuta cuando se hace scroll
     window.onscroll = function () {

@@ -42,8 +42,13 @@
         <div id="url" style="display: none;">
             <a id="detalle-res-url" data-url="{{ url_for('res.restauranteDetalle') }}"></a>
             <a id="url_nosotros" data-url="{{url_for('usuarios.nosotros_user')}}"></a>
+            <a id="url_favoritos" data-url="{{url_for('usuarios.favoritos_user')}}"></a>
             <a id="url_index" data-url="{{url_for('usuarios.index_user')}}"></a>
+            <a id="url_perfil" data-url="{{url_for('usuarios.perfil_usuario')}}"></a>
+            <a id="url_editarPerfil" data-url="{{ url_for('usuarios.editarPerfilUsuario', id=user_id) }}"></a>
+            <a id="url_cerrarSesion" data-url="{{url_for('usuarios.logout')}}"></a>
         </div>
+
 
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-interval="2000">
             <div class="carousel-inner">
@@ -92,28 +97,37 @@
         </div>
 
         <div class="container_cards">
-            <div class="cards_contenido card1">
-                <div class="contenido_title">
-                    <h3>Comida Internacional</h3>
+            <a href="{{ url_for('publicacionDash.resTipo', tipo='Comida Internacional') }}">
+                <div class="cards_contenido card1">
+                    <div class="contenido_title">
+                        <h3>Comida Internacional</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="cards_contenido card2">
-                <div class="contenido_title">
-                    <h3>Gourmet</h3>
-                </div>
-            </div>
-            <div class="cards_contenido card3">
-                <div class="contenido_title">
-                    <h3>Comida Rápida</h3>
-                </div>
+            </a>
 
-            </div>
-
-            <div class="cards_contenido card4">
-                <div class="contenido_title">
-                    <h3>Parrilas y Asaderos</h3>
+            <a href="{{ url_for('publicacionDash.resTipo', tipo='Gourmet') }}">
+                <div class="cards_contenido card2">
+                    <div class="contenido_title">
+                        <h3>Gourmet</h3>
+                    </div>
                 </div>
-            </div>
+            </a>
+
+            <a href="{{ url_for('publicacionDash.resTipo', tipo='Comida rápida') }}">
+                <div class="cards_contenido card3">
+                    <div class="contenido_title">
+                        <h3>Comida Rápida</h3>
+                    </div>
+                </div>
+            </a>
+
+            <a href="{{ url_for('publicacionDash.resTipo', tipo='Parillas y asaderos') }}">
+                <div class="cards_contenido card4">
+                    <div class="contenido_title">
+                        <h3>Parrilas y Asaderos</h3>
+                    </div>
+                </div>
+            </a>
         </div>
 
         <section class="section" id="section_novedades">
@@ -138,13 +152,15 @@
                 <h3>Explora los Tesoros del Mar en la Ciudad</h3>
                 <p>¡Delicias marinas te esperan en nuestra ciudad. Descubre la frescura del océano en cada plato. ¡Ven y
                     disfruta de la auténtica experiencia de nuestros restaurantes de mariscos!</p>
-                <button><a href="#">Ver Más</a></button>
+                <button><a href="{{ url_for('publicacionDash.resTipo', tipo='Comida de Mar') }}">Ver Más</a></button>
             </div>
         </div>
 
         <section class="section2" id="section_tematico">
             <div class="section_title">
                 <h2>¡RESTAURANTES TEMÁTICOS!</h2>
+                <a href="{{ url_for('publicacionDash.resTipo', tipo='Restaurantes temáticos') }}"
+                    class="btn_verTodo">Ver todo</a>
             </div>
             <div class="swiper_card">
                 <div class="swiper mySwiper container">
@@ -203,6 +219,8 @@
         <section class="section" id="section_vista">
             <div class="section_title">
                 <h2>¡RESTAURANTES CON VISTA!</h2>
+                <a href="{{ url_for('publicacionDash.resTipo', tipo='Restaurantes con vista') }}"
+                    class="btn_verTodo">Ver todo</a>
             </div>
             <div class="swiper_card">
                 <div class="swiper mySwiper container">

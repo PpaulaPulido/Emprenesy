@@ -50,20 +50,35 @@ body {
     margin: 0 20px;
 }
 
-.publicaciones_contenido .btn_pu {
+.publicaciones_contenido .button {
+    width: fit-content;
+    min-width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:8px;
+    gap: 0.4rem;
     border: none;
-    border-radius: 8px;
-    width: 20%;
-    margin: 15px 0;
-    font-size: 18px;
-    height: 35px;
-    background-color: rgba(255, 255, 255, 0.5);
-    transition: background-color 0.3s ease;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    text-shadow: 2px 2px 3px rgb(73, 34, 145);
+    background: linear-gradient(15deg, #04a8a8, #1fbfbf, #3cd6d6, #5bf0f0, #8bffff, #5bf0f0, #3cd6d6, #1fbfbf, #04a8a8) no-repeat;
+    background-size: 300%;
+    background-position: left center;
+    transition: 0.3s ease;
+    color: #fff;
 
+}
+
+.button:hover {
+    background-size: 320%;
+    background-position: right center;
 }
 
 .publicaciones_contenido .btn_pu a {
     color: #fff;
+    font-size: 18px;
 }
 
 .publicaciones_contenido .btn_pu:hover {
@@ -78,7 +93,7 @@ body {
     padding: 10px 20px;
 }
 
-.contenido__info h2 {
+.contenido__info .info_title {
     color: #fff;
     text-align: center;
     margin: 15px 0;
@@ -94,19 +109,21 @@ body {
     flex-direction: column;
     justify-content: center;
 }
+
 .detalle__sitio textarea {
     border: none;
     border-radius: 6px;
     width: 100%;
-    transition: width 0.3s ease; 
+    transition: width 0.3s ease;
 }
+
 #publicaciones__form.active {
     margin-left: 100px;
-    width: calc(100% - 100px );
+    width: calc(100% - 100px);
 }
 
 .container_pub {
-    background-color: #ffffffab;
+    background: #07182E;
     height: fit-content;
     min-height: 250px;
     margin: 30px 15px;
@@ -121,7 +138,7 @@ body {
 }
 
 .div_icon {
-    background-color: #051248;
+    background-color: #fff;
     ;
     padding: 10px;
     margin: 0 auto;
@@ -137,13 +154,100 @@ body {
 .div_icon .icon {
     font-size: 30px;
     text-align: center;
-    color: #fff;
+    color: #051248;
 }
 
 .container_vac h2 {
     margin-top: 20px;
     font-size: 20px;
-    color: #051248;
+    color: #fff;
+}
+
+/****************************Estilos de contenedor de publicaciones de eventos*****************************************/
+.containerPub {
+    padding: 10px;
+
+}
+
+.tituloE {
+    color: #fff;
+    font-size: 24px;
+}
+
+.containerPub .publicacionIndex {
+    background-image: linear-gradient(135deg, #c2d6f3 0%, #9775fa 100%, #cbd3f3 100%, #c999f9 100%);
+    color: #480183;
+    border-radius: 10px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    margin: 15px 0;
+}
+
+.publicacionIndex .publicacionTitle {
+    margin: 0 20px;
+    font-size: 20px;
+}
+
+.publicacionIndex .publicacionTipoIndex {
+    font-size: 18px;
+    margin: 0 15px;
+}
+
+.publicacionIndex .divImgPub {
+    width: 150px;
+    height: auto;
+    margin-left: 20px;
+}
+
+.divImgPub img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.containerPub .divBotonesPub {
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.divBotonesPub .botonesPub {
+    padding: 10px 5px;
+    margin: 0 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 200px;
+    text-align: center;
+    font-weight: 700;
+    overflow-x: hidden;
+    transition: width 0.8s ease;
+}
+
+.divBotonesPub .btnEdit {
+    background-color: #fff;
+    color: #336baf;
+}
+
+.divBotonesPub .btnEdit:hover {
+    background-color: #017092;
+    color: #fff;
+}
+
+.divBotonesPub .btnEli {
+    background-color: rgb(248, 66, 66);
+    color: #fff;
+}
+
+.divBotonesPub .btnEli:hover {
+    background-color: rgb(255, 0, 0);
+}
+
+.botonesPub.active {
+    width: calc(100% - 7px);
+    transition: width 0.8s ease;
 }
 
 /*******************************Estilos de tipo publicaciones********************************/
@@ -174,24 +278,28 @@ body {
     margin: 0 auto;
     color: #fff;
 }
-.container_card:nth-of-type(1) .card{
+
+.container_card:nth-of-type(1) .card {
     background-image: url('https://blogskystorage.s3.amazonaws.com/2024/03/skyairline_skyairline_image_55-1536x1024.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
-    
+
 }
-.container_card:nth-of-type(2) .card{
+
+.container_card:nth-of-type(2) .card {
     background-image: url('https://www.canecas.com.co/images/Noticias_2022/emprendimientos-ecoamigables-sostenibles.webp');
     background-size: cover;
     background-repeat: no-repeat;
-    
+
 }
-.container_card:nth-of-type(3) .card{
+
+.container_card:nth-of-type(3) .card {
     background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQerpYDBB0-lt_3uU1SYI2LKP9PlNYf2sCjKRZEFzXQZA&s');
     background-size: cover;
     background-repeat: no-repeat;
-    
+
 }
+
 .card::before,
 .card::after {
     position: absolute;
@@ -230,9 +338,11 @@ body {
 .container_card:nth-of-type(1) .card:hover:after {
     content: "Publicar eventos";
 }
+
 .container_card:nth-of-type(2) .card:hover:after {
     content: "Publicar emprendimientos";
 }
+
 .container_card:nth-of-type(3) .card:hover:after {
     content: "Publicar restaurantes";
 }
@@ -328,13 +438,14 @@ body {
     cursor: pointer;
     color: #051248;
 }
+
 .boton_form {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.boton_form .btn__form{
+.boton_form .btn__form {
     margin-bottom: 20px;
     width: 60%;
     height: 40px;
@@ -348,7 +459,9 @@ body {
     justify-content: center;
     align-items: center;
 }
-#btn_regresar, #btn_enviar{
+
+#btn_regresar,
+#btn_enviar {
     margin-bottom: 20px;
     width: 80%;
     height: 40px;
@@ -362,6 +475,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 .boton_form .btn__form:hover,
 #btn_regresar:hover {
     background-color: #3d77ba;
@@ -388,6 +502,7 @@ body {
 .detalles__btn {
     display: flex;
 }
+
 .galeria {
     background-color: #24ddd7;
     border: none;
@@ -401,10 +516,12 @@ body {
     color: #fff;
     font-size: 18px;
 }
+
 /*******************************************Estilos de publicaciones eventos***************************************/
-#redTiktok{
+#redTiktok {
     margin-top: 30px;
 }
+
 /*estilos del mapa*/
 .detalle_btn {
     margin-top: 30px;
@@ -417,9 +534,11 @@ body {
     border-radius: 8px;
     margin-left: 100px;
 }
-#btn_dir:hover{
+
+#btn_dir:hover {
     background-color: #036e6b;
 }
+
 .error_message {
     color: #Fff;
     text-align: center;
@@ -453,11 +572,13 @@ body {
     border: 3px solid #213859 !important;
     box-shadow: 0 0 15px #fff;
 }
-.swal2-success-ring{
+
+.swal2-success-ring {
 
     border: 3px solid #213859 !important;
 }
-.swal2-title{
+
+.swal2-title {
     color: #050047;
     font-size: 25px;
 }

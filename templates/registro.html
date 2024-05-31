@@ -12,15 +12,15 @@
 
 <body>
     <section class="form-register">
-        <form action=""  method="post" onsubmit="return verificacionContrasenas()">
+        <form action=""  method="post" onsubmit="return verificacionContrasenas(event)" id="registroForm" >
             <h4>Registrate</h4>
             <div class="campo_form">
                 <label for="nombres">Nombres</label>
-                <input class="controls" type="text" name="nombres" id="nombres">
+                <input class="controls" type="text" name="nombres" id="nombres" required>
             </div>
             <div class="campo_form">
                 <label for="apellidos">Apellidos</label>
-                <input class="controls" type="text" name="apellidos" id="apellidos">
+                <input class="controls" type="text" name="apellidos" id="apellidos" required>
             </div>
             <div class="campo_form">
                 <label for="tel">Número telefónico </label>
@@ -28,15 +28,15 @@
             </div>
             <div class="campo_form">
                 <label for="fechaNac">Fecha de Nacimiento</label>
-                <input class="controls" type="date" name="fechaNac" id="fechaNac">
+                <input class="controls" type="date" name="fechaNac" id="fechaNac" required>
             </div>
             <div class="campo_form">
                 <label for="correo">Correo eletrónico</label>
-                <input class="controls" type="email" name="correo" id="correo">
+                <input class="controls" type="email" name="correo" id="correo" required>
             </div>
             <div class="campo_form">
                 <label for="rol">Escoge tu rol</label>
-                <select name="rol" id="rol" type="text" class="controls" >
+                <select name="rol" id="rol" type="text" class="controls" required>
                     <option value="">Seleccionar</option>
                     <option value="usuario">Usuario</option>
                     <option value="Administrador">Administrador</option>

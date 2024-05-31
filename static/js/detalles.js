@@ -10,9 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
     slider_tarjetas();
     generarDatos();
 
-    user_sesion().then(() => {
-        inicializarBuscador();
-    }).catch(error => console.error('Error al inicializar sesión de usuario:', error));
 
 });
 
@@ -74,6 +71,7 @@ function generarDatos() {
     obtenerDatos(window.restaurantesTematicos,restaId);
     obtenerDatos(window.restaurantesVista,restaId);
 }
+
 function popup_menu() {
     const urlParams = new URLSearchParams(window.location.search);
     const restaId = parseInt(urlParams.get('id')); // Convierte el ID a un número entero

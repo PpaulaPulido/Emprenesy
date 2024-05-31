@@ -1,33 +1,35 @@
-document.getElementById("loginForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // Evita el envío del formulario por defecto
+function verificacionContrasenas(event) {
+  event.preventDefault(); // Evita el envío del formulario inmediatamente
 
-    // Captura los datos del formulario
-    var correo = document.getElementById("usuario").value;
-    var contrasena = document.getElementById("contrasena").value;
-    var rol = document.querySelector('input[name="rol"]:checked').value;
+  const contrasena = document.getElementById('contrasena').value;
+  const email = document.getElementById('usuario').value;
+  const tipoRol = document.getElementById('rol').value;
 
-    // Guarda los datos en el almacenamiento local
-    localStorage.setItem("correo", correo);
-    localStorage.setItem("contrasena", contrasena);
-    localStorage.setItem("rol", rol);
-
-    // Muestra un mensaje de éxito
+  if (contrasena === '' || email === '' || tipoRol === '') {
     Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Has iniciado sesión correctamente",
-        showConfirmButton: false,
-        timer: 2000,
-        customClass: {
-            popup: 'border-blue',// Clase CSS para el borde del SweetAlert
-            icon: 'success-icon',
-        }
-    }).then(function () {
-        localStorage.setItem('usuarioRegistrado', 'true');
-        if (rol === 'usuario') {
-            window.location.href = '{{ url_for("usuarios.perfil_usuario") }}';
-        } else if (rol === 'Administrador') {
-            window.location.href = '{{ url_for("usuarios.perfil_admin") }}';
-        }
+      title: "Todos los campos son obligatorios",
+      showClass: {
+        popup: `
+                  animate__animated
+                  animate__fadeInUp
+                  animate__faster
+              `
+      },
+      hideClass: {
+        popup: `
+                  animate__animated
+                  animate__fadeOutDown
+                  animate__faster
+              `
+      },
+      customClass: {
+        popup: 'border-blue',
+        icon: 'success-icon',
+      }
     });
-});
+
+    return false; // Detiene el envío del formulario
+  }
+
+  return true;
+}

@@ -11,10 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
     generarBubles();
     slider_tarjetas();
     generarDatos();
+    menuToggle();
 
-    user_sesion().then(() => {
-        inicializarBuscador();
-    }).catch(error => console.error('Error al inicializar sesión de administrador:', error));
 });
 
 function generarDatos() {

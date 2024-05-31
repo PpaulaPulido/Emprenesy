@@ -61,17 +61,17 @@
           <h2>Añadir un restaurante</h2>
         </div>
         <div class="contenido__detalles">
-          
-          <div id="form_url" data-url="{{ url_for('admin.index_admin') }}" style="display: none;"></div>
 
-          <form class="info_detalles" id="formularioLocation" action="{{url_for('admin.index_admin')}}">
+          <form class="info_detalles" id="formularioLocationRes" action="{{url_for('res.restauranteLocation')}}"
+            method="POST" enctype="multipart/form-data">
+
             <div class="detalle__sitio">
               <h3>Ubicaciones del sitio</h3>
             </div>
 
             <div class="container_ubicacion">
               <div class="detalle__sitio">
-                <input type="text" placeholder="Ingresar dirección" class="address" />
+                <input type="text" placeholder="Ingresar dirección" class="address" name="direcciones[]" />
               </div>
             </div>
             <div class="message"></div>
@@ -92,18 +92,32 @@
 
             <div class="detalle__sitio boton_form">
               <div class="detalle__sitio boton_form">
-                <a href="{{url_for('res.restauranteContacto')}}" id="btn_regresar" class="btnRes2">Regresar</a>
+                <a id="btn_regresarRes" class="btnRes2">Regresar</a>
               </div>
               <div class="detalle__sitio boton_form">
                 <input type="submit" value="Enviar publicación" class="btn__form" id="btn_enviar" />
               </div>
             </div>
+
           </form>
         </div>
       </div>
     </div>
-    <div id="data-container" data-perfil-url="{{ url_for('admin.perfil_admin') }}" style="display: none;"></div>
-    
+
+    <div id="data-container" data-perfil-url="{{ url_for('admin.perfil_admin') }}" data-admin-id="{{ admin_id }}"
+      style="display: none;"></div>
+    <div id="url" style="display: none;">
+      <a id="url_dash" data-url="{{ url_for('admin.index_admin') }}"></a>
+      <a id="url_editarPerfil" data-url="{{ url_for('admin.editarPerfilAdmin', id=admin_id) }}"></a>
+    </div>
+    <div id="form_url">
+      <a id="index" data-url="{{ url_for('admin.index_admin') }}" style="display: none;"></a>
+      <a id="form_emprendimiento" data-url="{{ url_for('emprende.publicar_emprendimiento') }}"
+        style="display: none;"></a>
+      <a id="form_evento" data-url="{{ url_for('evento.publicarEventos') }}" style="display: none;"></a>
+      <a id="form_res" data-url="{{ url_for('res.publicacionRes') }}" style="display: none;"></a>
+    </div>
+
   </main>
 
   <footer>
@@ -157,11 +171,11 @@
     crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  
+
   <script src="../static/js/generales_admin.js"></script>
+  <script src="../static/js/publicacion.js"></script>
   <script src="../static/js/publicacionesRes.js"></script>
   <script src="../static/js/buscador.js"></script>
-  <script src="../static/js/alertas.js"></script>
   <script src="../static/js/map_form.js"></script>
 </body>
 

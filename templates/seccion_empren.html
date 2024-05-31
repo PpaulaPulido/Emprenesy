@@ -37,11 +37,17 @@
     </header>
 
     <main>
+
         <div id="url" style="display: none;">
             <a id="detalle-emprende-url" data-url="{{ url_for('emprende.emprendeDetalle') }}"></a>
             <a id="url_nosotros" data-url="{{url_for('usuarios.nosotros_user')}}"></a>
             <a id="url_index" data-url="{{url_for('usuarios.index_user')}}"></a>
+            <a id="url_favoritos" data-url="{{url_for('usuarios.favoritos_user')}}"></a>
+            <a id="url_perfil" data-url="{{url_for('usuarios.perfil_usuario')}}"></a>
+            <a id="url_editarPerfil" data-url="{{ url_for('usuarios.editarPerfilUsuario', id=user_id) }}"></a>
+            <a id="url_cerrarSesion" data-url="{{url_for('usuarios.logout')}}"></a>
         </div>
+
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-interval="2000">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -67,7 +73,9 @@
                             <h2>Saborea el Espíritu del Emprendedor</h2>
                             <p>¡Descubre nuevos sabores en los emprendimientos culinarios de la ciudad!</p>
                             <div class="container-btn">
-                                <button class="btn slider_btn2"><a href="#">Conocer Más</a></button>
+                                <button class="btn slider_btn2"><a
+                                        href="{{ url_for('publicacionDash.emprendeTipo', tipo='Emprendimiento Gastronómico') }}">Conocer
+                                        Más</a></button>
                             </div>
                         </div>
                         <div class="contenido_circle">
@@ -83,7 +91,9 @@
                         <h2>Bogotá Emprende: Descubre la Innovación</h2>
                         <p>¡Explora los emprendimientos artesanales de Bogotá y únete al cambio!</p>
                         <div class="container-btn">
-                            <button class="btn slider_btn3"><a href="#section_artesania">Ver ahora</a></button>
+                            <button class="btn slider_btn3"><a
+                                    href="{{ url_for('publicacionDash.emprendeTipo', tipo='Artesanías') }}">Ver
+                                    ahora</a></button>
                         </div>
                     </div>
                 </div>
@@ -91,28 +101,39 @@
         </div>
 
         <div class="container_cards">
-            <div class="cards_contenido card1">
-                <div class="contenido_title">
-                    <h3>Tiendas de Ropa</h3>
-                </div>
-            </div>
-            <div class="cards_contenido card2">
-                <div class="contenido_title">
-                    <h3>Empredimientos de Arte</h3>
-                </div>
-            </div>
-            <div class="cards_contenido card3">
-                <div class="contenido_title">
-                    <h3>Artesanías</h3>
-                </div>
 
-            </div>
-
-            <div class="cards_contenido card4">
-                <div class="contenido_title">
-                    <h3>Emprendimientos de Mascotas</h3>
+            <a href="{{ url_for('publicacionDash.emprendeTipo', tipo='Tienda de Ropa') }}">
+                <div class="cards_contenido card1">
+                    <div class="contenido_title">
+                        <h3>Tiendas de Ropa</h3>
+                    </div>
                 </div>
-            </div>
+            </a>
+
+            <a href="{{ url_for('publicacionDash.emprendeTipo', tipo='Empredimiento de Arte') }}">
+                <div class="cards_contenido card2">
+                    <div class="contenido_title">
+                        <h3>Empredimientos de Arte</h3>
+                    </div>
+                </div>
+            </a>
+
+            <a href="{{ url_for('publicacionDash.emprendeTipo', tipo='Artesanías') }}">
+                <div class="cards_contenido card3">
+                    <div class="contenido_title">
+                        <h3>Artesanías</h3>
+                    </div>
+                </div>
+            </a>
+
+            <a href="{{ url_for('publicacionDash.emprendeTipo', tipo='Emprendimiento de Mascotas') }}">
+                <div class="cards_contenido card4">
+                    <div class="contenido_title">
+                        <h3>Emprendimientos de Mascotas</h3>
+                    </div>
+                </div>
+            </a>
+
         </div>
 
         <section class="section" id="section_novedades">
@@ -137,7 +158,8 @@
                 <h3>Empredimientos Gastronómicos</h3>
                 <p>¡Sumérgete en una experiencia gastronómica única! Descubre los deliciosos emprendimientos culinarios
                     que te esperan. ¡Déjate sorprender por sabores innovadores y exquisitos!</p>
-                <button><a href="#">Ver Emprendimientos</a></button>
+                <button><a href="{{ url_for('publicacionDash.emprendeTipo', tipo='Emprendimiento Gastronómico') }}">Ver
+                        Emprendimientos</a></button>
             </div>
         </div>
 

@@ -140,6 +140,22 @@ body{
 .detalles_btnPer:hover{
     background-color: #0c4ca0;
 }
+.datos__acerca{
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 80%;
+    border-radius: 8px;
+    padding-left: 40px;
+    margin: 50px 0 0 40px;
+    min-height: 200px;
+    height: fit-content;
+}
+.datos__acerca .textoAcerca{
+    margin-top: 20px;
+    font-size: 18px;
+    text-transform: capitalize;
+}
 .datos_fotos{
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
@@ -168,6 +184,7 @@ body{
 .perfil__opciones{
     padding: 10px;
     width: 90%;
+    margin-left: 50px;
 }
 .opciones{
     background-color: #fff;
@@ -175,11 +192,17 @@ body{
     padding: 10px 20px;
     border-radius: 8px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 .opciones a{
     color: #0c4ca0;
+    width: 160px;
+    padding: 5px 0;
     font-weight: bold;
+    text-align: center;
+}
+.opciones a:hover{
+    border-bottom: 2px solid #0196aa;
 }
 #opciones__resultado{
     background-color: #fff;

@@ -1,8 +1,3 @@
-
-
-
-
-
 create database emprenesy;
 use emprenesy;
 

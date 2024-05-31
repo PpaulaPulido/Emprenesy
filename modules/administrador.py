@@ -362,11 +362,6 @@ def tipoPublicacion():
     admin_id = session.get('admin_id')
     return render_template('tipo_publicacion.html',admin_id = admin_id)
 
-
-@admin.route('/nosotros')
-def nosotrosEmprenesy():
-    return render_template('MVQ_admin.html')
-
 #Formatear los slashes para las imagenes
 def normalize_path(path):
     """Convierte backslashes a slashes en una ruta y asegura que empieza con '/'."""
@@ -374,3 +369,15 @@ def normalize_path(path):
     if not normalized_path.startswith('/'):
         normalized_path = '/' + normalized_path
     return normalized_path
+
+
+#************************************Rutas estaticas********************************************
+@admin.route('/indexAdmin')
+def indexPrincipal():
+    admin_id = session.get('admin_id')
+    return render_template('principal_admin.html',admin_id = admin_id)
+
+@admin.route('/nosotros/administrador')
+def nosotrosEmprenesy():
+    admin_id = session.get('admin_id')
+    return render_template('MVQ_admin.html',admin_id = admin_id)

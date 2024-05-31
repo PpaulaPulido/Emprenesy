@@ -28,6 +28,8 @@ function crearNav(imagenURL) {
     const adminId = document.getElementById('data-container').getAttribute('data-admin-id');
     const indexUrl = document.getElementById('url_dash').getAttribute('data-url');
     const urlAdminEdit = document.getElementById('url_editarPerfil').getAttribute('data-url');
+    const urlCerrarSesion = document.getElementById('url_cerrarSesion').getAttribute('data-url');
+
 
 
     // Elementos del submenu
@@ -36,7 +38,7 @@ function crearNav(imagenURL) {
         { text: 'Ver dashboard', href: indexUrl },
         { text: 'Notificaciones', href: '#' },
         { text: 'Configuración', href: urlAdminEdit },
-        { text: 'Cerrar sesión', href: '#' }
+        { text: 'Cerrar sesión', href: urlCerrarSesion }
     ];
 
     const nav_user = document.createElement('nav');

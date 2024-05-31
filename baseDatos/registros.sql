@@ -277,15 +277,13 @@ VALUES (1, 'Carrera 24 # 41-69 Bogotá ');
 #**********************************************************************************************************************
 INSERT INTO eventos ( nombreeven, logo, tipoevento, descripeven, paginaeven, boletaseven , 
 infoAdicional, contacto , correoeven, fecha_publicacion,codadmin) 
-VALUES ('Art','galeriaEventos/','Ferias gastronomicas','¡Regresa ART!, la aclamada comedia considerada la mejor de todos los tiempos, regresa tras el rotundo éxito de su primera temporada. Los espectadores disfrutaron de una puesta en escena impecable y divertida, con talentosos actores. Escrita por Yasmina Reza y adaptada en todo el mundo, la obra presenta la amistad de tres hombres desde una perspectiva única. Bajo la dirección de Manuel Orjuela y con las destacadas actuaciones de Diego Trujillo, Emmanuel Esparza y John Alex Toro, la producción de Mariano Bacaleinik llega a Casa E.',
-'https://www.atrapalo.com.co/entradas/art_e4909973/','https://www.atrapalo.com.co/entradas/art_e4909973/',
-'La trama gira en torno a un aparentemente trivial conflicto que desencadena una profunda crisis en los valores e intereses de los amigos, relacionados con el mercado, la vanguardia, la modernidad y el valor de las cosas según su precio. Las exageradas discusiones generan situaciones hilarantes y risas contagiosas. La pregunta es si esta amistad llegará a su fin o si será un nuevo comienzo.
-¡No te pierdas esta imperdible comedia que promete emociones y diversión!
-Artistas: Diego Trujillo, John Alex Toro, Emmanuel Esparza',
-'312-228-8492','info@atrapalo.com.co','2024-05-15',1);
+VALUES ('Alimentarte Food Festival','galeriaEventos/','Ferias gastronomicas','Es el evento gastronómico más destacado de la ciudad de Bogotá. Organizado por la Fundación Corazón Verde, una entidad sin ánimo de lucro reconocida por su compromiso social y por promover la diversidad gastronómica. Durante el festival, cerca de 200 restaurantes de la ciudad trasladan su oferta gastronómica al Parque El Country durante dos fines de semana',
+'https://fundacioncorazonverde.org/alimentarte/alimentarte-food-festival/','https://fundacioncorazonverde.org/alimentarte/alimentarte-food-festival/',
+'Durante los dos fines de semana del evento, también podrás disfrutar de una muestra de 40 emprendimientos locales en los sectores de moda, joyería, accesorios para mascotas, marroquinería, artesanías y alimentos preparados, gracias a la estrategia Hecho en Bogotá. Las entradas tienen un costo de $11.000 pesos y estarán disponibles en Atrapalo o en las taquillas que estarán disponibles en el parque',
+'317-667-0090',null,'2024-05-15',1);
 
 INSERT INTO fechaseven (ideven,fechaseven,horarioEntrada,horarioSalida)
-VALUES (1,'2024-06-01','18:00:00','19:00:00');
+VALUES (1,'2024-03-09','11:00:00','22:00:00');
 
 INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) 
 VALUES (1, 'evento', 'Instagram', 'https://www.instagram.com/petcol/?hl=es-la'),
@@ -298,4 +296,4 @@ VALUES (1, 'galeriaEventos/', 'Imagen del evento'),
        (1, 'galeriaEventos/', 'Imagen del  evento');
 
 INSERT INTO ubicacioneven (ideven, ubicacion) 
-VALUES (1, 'Carrera 24 # 41-69 Bogotá ');
+VALUES (1, 'Calle 127 #11D-90 Bogotá ');

@@ -15,8 +15,8 @@
     </header>
     <main>
         <div class="login-container">
-            <h2>Iniciar Sesión</h2>
             <form id="loginForm" action="{{ url_for('usuarios.inicio_sesion') }}" method="POST" >
+                <h2>Iniciar Sesión</h2>
                 <div class="input-group">
                     <label for="rol">Escoge tu rol</label>
                     <select name="rol" id="rol" class="controls">
@@ -38,6 +38,9 @@
                     <button type="submit">Iniciar Sesión</button>
                 </div>
             </form>
+            <div class="img">
+                <img src="https://img.freepik.com/fotos-premium/grupo-personas-reunidas-circulo-tomados-manos_99043-2870.jpg" alt="Emprenesy">
+            </div>
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

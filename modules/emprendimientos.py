@@ -226,6 +226,11 @@ def sectionEmprende():
     admin_id = session.get('admin_id')
     return render_template('seccion_empren.html',user_id = user_id, admin_id = admin_id)
 
+@emprende.route('/detalleEmprende/administrador')
+def detalleEmprendeAdmin():
+    admin_id = session.get('admin_id')
+    return render_template('detalle_emprende_admin.html',admin_id = admin_id)
+
 @emprende.route('/emprendeDetalle')
 def emprendeDetalle():
     user_id = session.get('user_id')

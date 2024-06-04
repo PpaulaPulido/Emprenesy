@@ -382,7 +382,4 @@ def nosotrosEmprenesy():
     admin_id = session.get('admin_id')
     return render_template('MVQ_admin.html',admin_id = admin_id)
 
-@admin.route('/detalleRestaurante/administrador')
-def detalleRestauranteAdmin():
-    admin_id = session.get('admin_id')
-    return render_template('detalle_res_admin.html',admin_id = admin_id)
+

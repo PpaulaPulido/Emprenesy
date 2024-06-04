@@ -19,6 +19,12 @@ def eventoDetalle():
     admin_id = session.get('admin_id')
     return render_template('detalle_event.html',user_id = user_id,admin_id = admin_id)
 
+@evento.route('/detalleEvento/administrador')
+def detalleEventoAdmin():
+    admin_id = session.get('admin_id')
+    return render_template('detalle_evento_admin.html',admin_id = admin_id)
+
+
 @evento.route('/SeccionEvento')
 def sectionEvento():
     user_id = session.get('user_id')

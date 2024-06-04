@@ -36,13 +36,14 @@
             <ul class="toggle-info">
                 <li>
                     <div class="tigle-img">
-                        <img style="height: 150px; width: 150px; margin-left: 50px;" src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+                        <img style="height: 150px; width: 150px; margin-left: 50px;" src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
+                            class="logo">
                     </div>
                 </li>
                 <li><a href="{{ url_for('admin.index_admin') }}">Dashboard</a></li>
                 <li><a href="{{url_for('admin.perfil_admin')}}">Perfil</a></li>
-                <li><a href="./index.html">Inicio</a></li>
-                <li><a href="./MVQ.html">Nosotros</a></li>
+                <li><a href="{{url_for('admin.indexPrincipal')}}">Inicio</a></li>
+                <li><a href="{{url_for('admin.nosotrosEmprenesy')}}">Nosotros</a></li>
             </ul>
         </div>
 
@@ -60,6 +61,7 @@
         <div id="url" style="display: none;">
             <a id="url_dash" data-url="{{ url_for('admin.index_admin') }}"></a>
             <a id="url_editarPerfil" data-url="{{ url_for('admin.editarPerfilAdmin', id=admin_id) }}"></a>
+            <a id="url_cerrarSesion" data-url="{{url_for('usuarios.logout')}}"></a>
         </div>
     </main>
 
@@ -120,7 +122,7 @@
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 
     <script src="../static/js/generales_admin.js"></script>
-    <script src="../static/js/perfil_admin.js"></script>
+    <script src="../static/js/tipoPublicacion.js"></script>
     <script src="../static/js/buscador.js"></script>
     
     

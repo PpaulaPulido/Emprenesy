@@ -38,8 +38,8 @@
                 </li>
                 <li><a href="{{ url_for('admin.index_admin') }}">Dashboard</a></li>
                 <li><a href="{{url_for('admin.perfil_admin')}}">Perfil</a></li>
-                <li><a href="./index.html">Inicio</a></li>
-                <li><a href="./MVQ.html">Nosotros</a></li>
+                <li><a href="{{url_for('admin.indexPrincipal')}}">Inicio</a></li>
+                <li><a href="{{url_for('admin.nosotrosEmprenesy')}}">Nosotros</a></li>
             </ul>
         </div>
 
@@ -143,6 +143,7 @@
         <div id="url" style="display: none;">
             <a id="url_dash" data-url="{{ url_for('admin.index_admin') }}"></a>
             <a id="url_editarPerfil" data-url="{{ url_for('admin.editarPerfilAdmin', id=admin_id) }}"></a>
+            <a id="url_cerrarSesion" data-url="{{url_for('usuarios.logout')}}"></a>
         </div>
     </main>
 

@@ -254,7 +254,7 @@ VALUES (@idempre, 'Calle 140 # 13-18 Bogotá'),
 #**********************************************************************************************************************
 INSERT INTO eventos ( nombreeven, logo, tipoevento, descripeven, paginaeven, boletaseven , 
 infoAdicional, contacto , correoeven, fecha_publicacion,codadmin) 
-VALUES ('Fesbo','galeriaEventos/','Evento de danza','Fesbo nace a partir del sueño del maestro Jaime Otáora, director de Bogotá Capital Dance, de congregar y reunir a distintas escuelas de danza de Bogotá con el fin de visibilizar su trabajo en ballet, ballet contemporáneo y/o neoclásico para compartirlo en escena.Se trata de un momento de celebración donde diferentes escuelas de la ciudad: La Coartada, Bogotá Capital Dance y BCD Dance Company se reúnen a celebrar su oficio brindando un espectáculo de primer nivel.',
+VALUES ('Fesbo','galeriaEventos/fesboLogo.jpg','Evento de danza','Fesbo nace a partir del sueño del maestro Jaime Otáora, director de Bogotá Capital Dance, de congregar y reunir a distintas escuelas de danza de Bogotá con el fin de visibilizar su trabajo en ballet, ballet contemporáneo y/o neoclásico para compartirlo en escena.Se trata de un momento de celebración donde diferentes escuelas de la ciudad: La Coartada, Bogotá Capital Dance y BCD Dance Company se reúnen a celebrar su oficio brindando un espectáculo de primer nivel.',
 'https://www.atrapalo.com.co/entradas/fesbo-uniendo-historias-festival-escuelas-bogota_e4909886/','https://www.atrapalo.com.co/entradas/fesbo-uniendo-historias-festival-escuelas-bogota_e4909886/',
 'Atrápalo S.A.S. actúa como operador oficial de boletería para este evento y como único canal de venta.
  Atrápalo Colombia S.A.S. no garantizará ni responderá de ninguna forma, por entradas adquiridas en canales diferentes a atrapalo.com.co
@@ -267,65 +267,123 @@ INSERT INTO fechaseven (ideven,fechaseven,horarioEntrada,horarioSalida)
 VALUES (@ideven,'2024-06-12','19:00:00','21:00:00');
 
 INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) 
-VALUES (@ideven, 'evento', 'Instagram', 'https://www.instagram.com/petcol/?hl=es-la'),
-       (@ideven, 'evento', 'TikTok', '');
+VALUES (@ideven, 'evento', 'Instagram', 'https://www.instagram.com/fesbo_idb/'),
+       (@ideven, 'evento', 'TikTok', null);
        
 INSERT INTO galeriaeven (ideven ,urlImagen, descripcion) 
-VALUES (1, 'galeriaEventos/', 'Imagen del evento'),
-       (1, 'galeriaEventos/', 'Imagen del evento'),
-       (1, 'galeriaEventos/', 'Imagen del evento'),
-       (1, 'galeriaEventos/', 'Imagen del  evento');
+VALUES (@ideven, 'galeriaEventos\\fesbo1.png', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\fesbo2.jpg', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\fesbo3.jpg', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\fesbo4.jpg', 'Imagen del  evento');
 
 INSERT INTO ubicacioneven (ideven, ubicacion) 
-VALUES (1, 'Cra. 11 #61-80 Bogotá ');
+VALUES (@ideven, 'Cra. 11 #61-80 Bogotá ');
 
 
 #**********************************************************************************************************************
 INSERT INTO eventos ( nombreeven, logo, tipoevento, descripeven, paginaeven, boletaseven , 
 infoAdicional, contacto , correoeven, fecha_publicacion,codadmin) 
-VALUES ('Art','galeriaEventos/','Eventos de teatro','¡Regresa ART!, la aclamada comedia considerada la mejor de todos los tiempos, regresa tras el rotundo éxito de su primera temporada. Los espectadores disfrutaron de una puesta en escena impecable y divertida, con talentosos actores. Escrita por Yasmina Reza y adaptada en todo el mundo, la obra presenta la amistad de tres hombres desde una perspectiva única. Bajo la dirección de Manuel Orjuela y con las destacadas actuaciones de Diego Trujillo, Emmanuel Esparza y John Alex Toro, la producción de Mariano Bacaleinik llega a Casa E.',
+VALUES ('Art','galeriaEventos/artLogo.jpg','Eventos de teatro','¡Regresa ART!, la aclamada comedia considerada la mejor de todos los tiempos, regresa tras el rotundo éxito de su primera temporada. Los espectadores disfrutaron de una puesta en escena impecable y divertida, con talentosos actores. Escrita por Yasmina Reza y adaptada en todo el mundo, la obra presenta la amistad de tres hombres desde una perspectiva única. Bajo la dirección de Manuel Orjuela y con las destacadas actuaciones de Diego Trujillo, Emmanuel Esparza y John Alex Toro, la producción de Mariano Bacaleinik llega a Casa E.',
 'https://www.atrapalo.com.co/entradas/art_e4909973/','https://www.atrapalo.com.co/entradas/art_e4909973/',
 'La trama gira en torno a un aparentemente trivial conflicto que desencadena una profunda crisis en los valores e intereses de los amigos, relacionados con el mercado, la vanguardia, la modernidad y el valor de las cosas según su precio. Las exageradas discusiones generan situaciones hilarantes y risas contagiosas. La pregunta es si esta amistad llegará a su fin o si será un nuevo comienzo.
 ¡No te pierdas esta imperdible comedia que promete emociones y diversión!
 Artistas: Diego Trujillo, John Alex Toro, Emmanuel Esparza',
-'312-228-8492','info@atrapalo.com.co','2024-05-15',1);
+'312-228-8492','info@atrapalo.com.co','2024-05-15',2);
+
+SELECT LAST_INSERT_ID() INTO @ideven;
 
 INSERT INTO fechaseven (ideven,fechaseven,horarioEntrada,horarioSalida)
 VALUES (1,'2024-06-01','18:00:00','19:00:00');
 
 INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) 
-VALUES (1, 'evento', 'Instagram', 'https://www.instagram.com/petcol/?hl=es-la'),
-       (1, 'evento', 'TikTok', '');
+VALUES (@ideven, 'evento', 'Instagram', 'https://www.instagram.com/casaeborrero/p/C6htb96N08x/'),
+       (@ideven, 'evento', 'TikTok', null);
        
 INSERT INTO galeriaeven (ideven ,urlImagen, descripcion) 
-VALUES (1, 'galeriaEventos/', 'Imagen del evento'),
-       (1, 'galeriaEventos/', 'Imagen del evento'),
-       (1, 'galeriaEventos/', 'Imagen del evento'),
-       (1, 'galeriaEventos/', 'Imagen del  evento');
+VALUES (@ideven, 'galeriaEventos\\Art1.png', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\Art2.png', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\Art3.png', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\Art4.jpg', 'Imagen del  evento');
 
 INSERT INTO ubicacioneven (ideven, ubicacion) 
-VALUES (1, 'Carrera 24 # 41-69 Bogotá ');
+VALUES (@ideven, 'Carrera 24 # 41-69 Bogotá ');
 
 #**********************************************************************************************************************
 INSERT INTO eventos ( nombreeven, logo, tipoevento, descripeven, paginaeven, boletaseven , 
 infoAdicional, contacto , correoeven, fecha_publicacion,codadmin) 
-VALUES ('Alimentarte Food Festival','galeriaEventos/','Ferias gastronomicas','Es el evento gastronómico más destacado de la ciudad de Bogotá. Organizado por la Fundación Corazón Verde, una entidad sin ánimo de lucro reconocida por su compromiso social y por promover la diversidad gastronómica. Durante el festival, cerca de 200 restaurantes de la ciudad trasladan su oferta gastronómica al Parque El Country durante dos fines de semana',
+VALUES ('Alimentarte Food Festival','galeriaEventos/alimentarteLogo.png','Ferias gastronomicas','Es el evento gastronómico más destacado de la ciudad de Bogotá. Organizado por la Fundación Corazón Verde, una entidad sin ánimo de lucro reconocida por su compromiso social y por promover la diversidad gastronómica. Durante el festival, cerca de 200 restaurantes de la ciudad trasladan su oferta gastronómica al Parque El Country durante dos fines de semana',
 'https://fundacioncorazonverde.org/alimentarte/alimentarte-food-festival/','https://fundacioncorazonverde.org/alimentarte/alimentarte-food-festival/',
 'Durante los dos fines de semana del evento, también podrás disfrutar de una muestra de 40 emprendimientos locales en los sectores de moda, joyería, accesorios para mascotas, marroquinería, artesanías y alimentos preparados, gracias a la estrategia Hecho en Bogotá. Las entradas tienen un costo de $11.000 pesos y estarán disponibles en Atrapalo o en las taquillas que estarán disponibles en el parque',
-'317-667-0090',null,'2024-05-15',1);
+'317-667-0090',null,'2024-05-15',2);
+
+ SELECT LAST_INSERT_ID() INTO @ideven;
 
 INSERT INTO fechaseven (ideven,fechaseven,horarioEntrada,horarioSalida)
-VALUES (1,'2024-03-09','11:00:00','22:00:00');
+VALUES (@ideven,'2024-03-09','11:00:00','22:00:00');
 
 INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) 
-VALUES (1, 'evento', 'Instagram', 'https://www.instagram.com/petcol/?hl=es-la'),
-       (1, 'evento', 'TikTok', '');
+VALUES (@ideven, 'evento', 'Instagram', 'https://www.instagram.com/alimentartefcv/?hl=es-la'),
+       (@ideven, 'evento', 'TikTok', 'https://www.tiktok.com/search?lang=es&q=alimentarte%20food%20festival%202024&t=1717589547969');
        
 INSERT INTO galeriaeven (ideven ,urlImagen, descripcion) 
-VALUES (1, 'galeriaEventos/', 'Imagen del evento'),
-       (1, 'galeriaEventos/', 'Imagen del evento'),
-       (1, 'galeriaEventos/', 'Imagen del evento'),
-       (1, 'galeriaEventos/', 'Imagen del  evento');
+VALUES (@ideven, 'galeriaEventos\\alimentarte1.png', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\alimentarte2.png', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\alimentarte3.png', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\alimentarte4.png', 'Imagen del  evento');
 
 INSERT INTO ubicacioneven (ideven, ubicacion) 
-VALUES (1, 'Calle 127 #11D-90 Bogotá ');
+VALUES (@ideven, 'Calle 127 #11D-90 Bogotá ');
+
+
+#**********************************************************************************************************************
+INSERT INTO eventos ( nombreeven, logo, tipoevento, descripeven, paginaeven, boletaseven , 
+infoAdicional, contacto , correoeven, fecha_publicacion,codadmin) 
+VALUES ('Feria Internacional del Libro Bogotá, FILBO','galeriaEventos/feriaLibroLogo.jpg','Ferias de libros','En la Feria Internacional del Libro de Bogotá se reúnen desde hace 35 años, todos los actores de la cadena del libro (autores, editores, correctores, traductores, distribuidores, agentes y libreros) quienes junto con sus lectores conforman este ecosistema del libro que cada año crece y se fortalece, gracias a estos espacios de formación y promoción del libro y la lectura.',
+'https://feriadellibro.com/','https://www.facebook.com/FILBogota/',
+'Colombia es un país que cuenta con una red de 23 ferias del libro en todo el territorio.  Desde el 2016, la Cámara Colombiana del Libro, con el reconocimiento del Ministerio de Cultura, ha concentrado esfuerzos para reunir a los líderes de las principales ferias del libro del país.',
+null,'serviciocliente@corferias.com','2024-05-15',2);
+
+ SELECT LAST_INSERT_ID() INTO @ideven;
+
+INSERT INTO fechaseven (ideven,fechaseven,horarioEntrada,horarioSalida)
+VALUES (@ideven,'2024-05-02','09:00:00','20:00:00');
+
+INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) 
+VALUES (@ideven, 'evento', 'Instagram', 'https://www.instagram.com/corferias/'),
+       (@ideven, 'evento', 'TikTok', 'https://www.tiktok.com/@corferias');
+       
+INSERT INTO galeriaeven (ideven ,urlImagen, descripcion) 
+VALUES (@ideven, 'galeriaEventos\\feriaLibro1.jpg', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\feriaLibro2.jpg', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\feriaLibro3.jpg', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\feriaLibro4.jpg', 'Imagen del  evento');
+
+INSERT INTO ubicacioneven (ideven, ubicacion) 
+VALUES (@ideven, 'Cra 37 # 24 - 67 Bogotá ');
+
+
+#**********************************************************************************************************************
+INSERT INTO eventos ( nombreeven, logo, tipoevento, descripeven, paginaeven, boletaseven , 
+infoAdicional, contacto , correoeven, fecha_publicacion,codadmin) 
+VALUES ('Nociones de lo Posible','galeriaEventos/arteLogo.jpg','Exposiciones de arte','En "Nociones de lo Posible", la fotografía toma estos rasgos para abordar los diferentes lenguajes que la atraviesan. A partir de una perspectiva documental, artística y experimental, esta exposición plantea un recorrido por diversas manifestaciones desde las cuales se da cuenta de procesos históricos, políticos, sociales y plásticos en Colombia y otros contextos.',
+'https://www.arteinformado.com/agenda/f/nociones-de-lo-posible-230768','Entrada gratuita',
+'Artistas: Jaime Ardila, Carlos Caicedo, Fernando Cano, Antonio Castles, Hernán Díaz, François Dolmetsch, Alfred Eisenstaedt, Abdu Elajiek, Ida Esbra, Fernell Franco, Umberto Giangrandi, Francisca Jiménez, Camilo Lleras, Danny Lyon, Óscar Monsalve, Helmut Newton, Andrés F. Orjuela, Jorge Ortiz, Federico Pardo, Fernando Pareja, Alejandra Parra, Man Ray, Andrés Sierra, Alfonso Suárez, Sergio Trujillo Dávila, Becky Mayer, Fernando Urbina, Leo Matíz y Manu Mojito.',
+null,null,'2024-05-15',2);
+
+ SELECT LAST_INSERT_ID() INTO @ideven;
+
+INSERT INTO fechaseven (ideven,fechaseven,horarioEntrada,horarioSalida)
+VALUES (@ideven,'2024-06-01','11:00:00','16:00:00');
+
+INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) 
+VALUES (@ideven, 'evento', 'Instagram', 'https://www.instagram.com/arteinformado/'),
+       (@ideven, 'evento', 'TikTok', null);
+       
+INSERT INTO galeriaeven (ideven ,urlImagen, descripcion) 
+VALUES (@ideven, 'galeriaEventos\\arte1.png', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\arte2.png', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\arte3.png', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\arteLogo.jpg', 'Imagen del  evento');
+
+INSERT INTO ubicacioneven (ideven, ubicacion) 
+VALUES (@ideven, ' Carrera 4A #26C-37 Bogotá ');

@@ -250,7 +250,6 @@ canvas {
     display: flex;
     flex-direction: column;
     justify-content: end;
-
 }
 
 .info::before {
@@ -322,19 +321,6 @@ canvas {
     background-color: rgb(226, 239, 248);
     border: 7px solid #336baf;
     border-radius: 5px;
-    @media only screen and (max-width: 900px) {
-        width: 50%;
-        margin-left: 25%;
-        
- 
-     
-       }
-       @media only screen and (min-width: 900px) and (max-width: 1200px){
-        width: 80%;
-        margin-left: 10%;
-
-    
-      }
 
 }
 .container_ubicacion{
@@ -345,7 +331,6 @@ canvas {
     width: 100%;
     padding: 10px 40px;
     color: #fff;
-    
 }
 .detalles__ubicacion{
     display: grid;
@@ -362,19 +347,6 @@ canvas {
     min-height: 300px;
     margin-top: 15px;
     height: fit-content;
-    @media only screen and (max-width: 900px) {
-
-        width: max-content;
-        margin-left: -80%;
-        padding: 20px;
-    
-      }
-      @media only screen and (min-width: 900px) and (max-width: 1200px){
-        width: max-content;
-        margin-left: -40%;
-        padding: 20px;
-      }
-
 }
 .ubicacion h3{
     text-align: center;
@@ -395,7 +367,6 @@ canvas {
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     font-size: 35px;
-
 }
 .redes_sociales{
     display: flex;

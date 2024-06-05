@@ -381,3 +381,5 @@ def indexPrincipal():
 def nosotrosEmprenesy():
     admin_id = session.get('admin_id')
     return render_template('MVQ_admin.html',admin_id = admin_id)
+
+

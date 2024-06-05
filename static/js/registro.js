@@ -1,11 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-function verificacionContrasenas() {
-=======
 function verificacionContrasenas(event) {
   event.preventDefault(); // Evita el envío del formulario inmediatamente
->>>>>>> natalia
 
   const contrasena = document.getElementById('contrasena').value;
   const confirmarContrasena = document.getElementById('confirmar_contrasena').value;
@@ -35,11 +29,6 @@ function verificacionContrasenas(event) {
 
     return false; // Detiene el envío del formulario
   }
-<<<<<<< HEAD
-  return true; // Permite el envío del formulario si todo está correcto
-}
->>>>>>> 02b80ffa1aa79af4752f2ebb51de06581313a599
-=======
 
   // Mostrar mensaje de éxito
   Swal.fire({
@@ -59,4 +48,3 @@ function verificacionContrasenas(event) {
 
   return true;
 }
->>>>>>> natalia

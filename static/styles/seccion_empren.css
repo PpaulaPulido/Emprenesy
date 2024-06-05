@@ -74,57 +74,7 @@ ol {
     transform-origin: bottom left;
     transform: rotate(0deg) scaleY(1) scaleX(1.3);
 }
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
-    #contenido1{
- 
-      margin-left: 10%;
-      margin-block-end: -90px;
-      width:450px;
-      height: 450px;
-      
-     
-    }
-    #contenido2{ 
-     margin-left: -12%;
-      margin-block-end: -90px;
-      width:450px;
-      height: 450px;
-    
-    }
-    #contenido3{
-       
-    margin-left: -12%;
-    bottom: 0.1%;
-     width:450px;
-     height: 450px;
-    
-    }   
-    
-    }
-    @media only screen and (max-width: 767px) {
-      #contenido1{
-     margin-block-end: -90px;
-        width:450px;
-        height: 450px;
-        margin-left: 10%;
-    
-      }
-      #contenido2{
- 
-        width:450px;
-        height: 450px;
-        margin-left: -25%;
-        margin-block-end: -90px;
-       
-      }
-      #contenido3{
-        width:450px;
-        height: 450px;
-        margin-left: -14%;
-        bottom: 0.1%;
-    
-      }
-}  
+
 .carousel_text {
     position: absolute;
     color: #fff;
@@ -336,25 +286,6 @@ ol {
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     text-align: center;
-    @media only screen and (max-width: 767px) {
-        margin-left: auto;
-        margin-right: auto;
-        width: max-content;
-        grid-template-columns: repeat(2,1fr);
-    
-    
-    }
-    
-    @media only screen and (min-width:768px) and (max-width:1023px) {
-    
-    margin-left: auto;
-    margin-right: auto;
-    grid-template-columns: repeat(2,1fr);
-    width: max-content;
-    gap: 3rem;
-    
-    
-    }
 }
 
 .container_cards .cards_contenido {
@@ -406,35 +337,11 @@ ol {
     border-radius: 10px;
     display: flex;
     color: #fff;
-    @media only screen and (max-width:767px) {
-        display: inline-block;
-       margin-left: 25%;
-      width: min-content;
-        }
-        @media only screen and (min-width:768px) and (max-width:1023px) {
-          height: 350px;
-        
-        }
-      
 }
 
 .poster_img {
     width: 90%;
     height: 90%;
-    @media only screen and (max-width:767px) {
-        margin-top: 15px;
- 
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-    
-      }
-      @media only screen and (min-width:768px) and (max-width:1023px) {
-        width: 100%;
-        height: 100%;
-        
-      
-      }
 }
 
 .poster_img img {
@@ -446,7 +353,6 @@ ol {
 .contenido_poster {
     padding: 40px;
     text-align: center;
- 
 }
 
 .contenido_poster h3 {
@@ -469,9 +375,6 @@ ol {
     background-color: #073a74;
     width: 40%;
     margin: 0 auto;
-    @media only screen and (max-width:767px) {
-        width: 80%;
-      }
 }
 
 .contenido_poster button a {
@@ -500,30 +403,13 @@ ol {
     font-size: 25px;
 }
 
-.swiper_card{
+.swiper_card {
     position: relative;
-  
-    
-    @media only screen and (max-width:767px) {
-    
-      width: 100%;
-      
-    
-    }
-  }
-  
-  .swiper{
+}
+
+.swiper {
     width: 70%;
-    @media only screen and (max-width:767px) {
-  
-      width:1200px;
-      margin-left: auto;
-  
-  
-    }
-  
-  
-  }
+}
 
 .card {
     position: relative;
@@ -590,7 +476,6 @@ ol {
     margin-left: 10px;
     display: flex;
     align-items: center;
-
 }
 
 .title_contenedor .content_title {

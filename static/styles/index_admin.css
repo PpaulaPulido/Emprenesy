@@ -59,17 +59,6 @@ body {
     padding:8px;
     gap: 0.4rem;
     border: none;
-<<<<<<< HEAD
-    border-radius: 8px;
-    width: 20%;
-    margin: 15px 0;
-    font-size: 18px;
-    height: 35px;
-    background-color: rgba(255, 255, 255, 0.5);
-    transition: background-color 0.3s ease;
-}
-
-=======
     font-weight: 700;
     border-radius: 10px;
     cursor: pointer;
@@ -87,7 +76,6 @@ body {
     background-position: right center;
 }
 
->>>>>>> natalia
 .publicaciones_contenido .btn_pu a {
     color: #fff;
     font-size: 18px;
@@ -150,12 +138,8 @@ body {
 }
 
 .div_icon {
-<<<<<<< HEAD
-    background-color: #051248;
-=======
     background-color: #fff;
     ;
->>>>>>> natalia
     padding: 10px;
     margin: 0 auto;
     width: 77px;
@@ -178,34 +162,20 @@ body {
     font-size: 20px;
     color: #fff;
 }
-<<<<<<< HEAD
-=======
 
 /****************************Estilos de contenedor de publicaciones de eventos*****************************************/
 .containerPub {
     padding: 10px;
->>>>>>> natalia
 
-/****************************Estilos de contenedor de publicaciones de eventos*****************************************/
-.containerPub {
-    padding: 10px;
 }
 
 .tituloE {
-<<<<<<< HEAD
-    color: #480183;
-=======
     color: #fff;
->>>>>>> natalia
     font-size: 24px;
 }
 
 .containerPub .publicacionIndex {
-<<<<<<< HEAD
-    background-color: #c8c8c8;
-=======
     background-image: linear-gradient(135deg, #c2d6f3 0%, #9775fa 100%, #cbd3f3 100%, #c999f9 100%);
->>>>>>> natalia
     color: #480183;
     border-radius: 10px;
     padding: 10px;
@@ -261,21 +231,16 @@ body {
     color: #336baf;
 }
 
-<<<<<<< HEAD
-=======
 .divBotonesPub .btnEdit:hover {
     background-color: #017092;
     color: #fff;
 }
 
->>>>>>> natalia
 .divBotonesPub .btnEli {
     background-color: rgb(248, 66, 66);
     color: #fff;
 }
 
-<<<<<<< HEAD
-=======
 .divBotonesPub .btnEli:hover {
     background-color: rgb(255, 0, 0);
 }
@@ -285,7 +250,6 @@ body {
     transition: width 0.8s ease;
 }
 
->>>>>>> natalia
 /*******************************Estilos de tipo publicaciones********************************/
 .tipo_publicacion {
     width: 90%;
@@ -319,30 +283,21 @@ body {
     background-image: url('https://blogskystorage.s3.amazonaws.com/2024/03/skyairline_skyairline_image_55-1536x1024.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
-<<<<<<< HEAD
-=======
 
->>>>>>> natalia
 }
 
 .container_card:nth-of-type(2) .card {
     background-image: url('https://www.canecas.com.co/images/Noticias_2022/emprendimientos-ecoamigables-sostenibles.webp');
     background-size: cover;
     background-repeat: no-repeat;
-<<<<<<< HEAD
-=======
 
->>>>>>> natalia
 }
 
 .container_card:nth-of-type(3) .card {
     background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQerpYDBB0-lt_3uU1SYI2LKP9PlNYf2sCjKRZEFzXQZA&s');
     background-size: cover;
     background-repeat: no-repeat;
-<<<<<<< HEAD
-=======
 
->>>>>>> natalia
 }
 
 .card::before,
@@ -391,6 +346,7 @@ body {
 .container_card:nth-of-type(3) .card:hover:after {
     content: "Publicar restaurantes";
 }
+
 
 /********************Estilos del html publicaciones part 1************************/
 #publicaciones {
@@ -487,7 +443,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
 .boton_form .btn__form {
@@ -505,12 +460,8 @@ body {
     align-items: center;
 }
 
-<<<<<<< HEAD
-#btn_regresar, #btn_enviar {
-=======
 #btn_regresar,
 #btn_enviar {
->>>>>>> natalia
     margin-bottom: 20px;
     width: 80%;
     height: 40px;
@@ -530,11 +481,7 @@ body {
     background-color: #3d77ba;
     color: #fff;
 }
-.boton_form .btn__form:hover,
-#btn_enviar:hover {
-    background-color: #3d77ba;
-    color: #fff;
-}
+
 /************************** estilos de publicaciones res 1**********************************/
 .detalle__sitioImg {
     display: grid;
@@ -544,6 +491,7 @@ body {
     margin: 15px auto 20px auto;
     place-items: center;
     width: 80%;
+
 }
 
 .sitio__img {
@@ -592,7 +540,7 @@ body {
 }
 
 .error_message {
-    color: #fff;
+    color: #Fff;
     text-align: center;
     margin-bottom: 30px;
     margin-right: 40px;
@@ -606,6 +554,7 @@ body {
     background-color: rgb(226, 239, 248);
     border: 7px solid #336baf;
     border-radius: 5px;
+
 }
 
 .detalles__ubicacion {
@@ -618,102 +567,18 @@ body {
 }
 
 /*estilos del sweatalert*/
+
 .border-blue {
     border: 3px solid #213859 !important;
     box-shadow: 0 0 15px #fff;
 }
-<<<<<<< HEAD
-=======
 
 .swal2-success-ring {
->>>>>>> natalia
 
-.swal2-success-ring {
     border: 3px solid #213859 !important;
 }
 
 .swal2-title {
     color: #050047;
     font-size: 25px;
-}
-
-@media only screen and (min-width:768px) and (max-width: 1023px) {
-    #formularioLocation{
-        text-align: center;
-    }
-    #formularioLocationEm{
-        text-align: center;
-    }
-    
-    #formularioLocationRes{
-
-        text-align: center;
-    }
-    #geocode{
-        width: 70%;
-        margin-left: auto; 
-        margin-right: auto;
-    
-    }
-    #btn_dir{
-        margin-left: auto;
- 
-
-
-    }
-    #direccion{
-        width: 100%;
-        text-align: center;
-        padding: 20px;
-    }
-    #btn_enviar{
-
-        width: max-content;
-    }
-    #btn_regresarRes{
-
-        width: max-content;
-        font-size: 20px;
-        margin-top: -15px; ;
-    }
-}
-
-@media only screen and (max-width:767px) {
-    #formularioLocation{
-        text-align: center;
-        
-    }
-    #formularioLocationEm{
-        text-align: center;
-    }
-    #formularioLocationRes{
-        text-align: center;
-      padding: 10px;
-    
-    }
-    #geocode{
-        width: 50%;
-        margin-left: 23%; 
-    
-    }
-    #btn_dir{
-        margin-left: auto;
-       
-    }
-    #direccion{
-        width: 100%;
-        text-align: center;
-        padding: 20px;
-    }
-    #btn_enviar{
-
-        width: max-content;
-    }
-    #btn_regresarRes{
-
-        width: max-content;
-        font-size: 20px;
-        margin-top: -15px; ;
-    }
-
 }

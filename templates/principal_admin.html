@@ -39,21 +39,21 @@
       <!--barra de navegacion-->
       <div id="cabeza">
         <div class="logoedit">
-          <img class="logo" src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="Emprenesy">
+          <img class="logo" style="height: 80px; width: 80px; margin-left: 35px;" src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="Emprenesy">
         </div>
         <div id="Barra">
           <nav class="barraedit">
             <ul class="nav_list">
               <li><a class="link" href="{{url_for('admin.nosotrosEmprenesy')}}">Sobre Nosotros</a></li>
               <li><a class="link" href="{{url_for('admin.indexPrincipal')}}">Inicio</a></li>
-              <li><a class="link" href="#">Mis favoritos</a></li>
+              <li><a class="link" href="{{url_for('admin.nosotrosEmprenesy')}}">Mis favoritos</a></li>
               <li><a class="link1" href="#"><img id="imgPerfil" alt="perfil"></a>
                 <ul class="perfil_list">
-                  <li><a href="#">Ver perfil</a></li>
-                  <li><a href="#">Dashboard</a></li>
+                  <li><a href="{{url_for('admin.perfil_admin')}}">Ver perfil</a></li>
+                  <li><a href="{{url_for('admin.index_admin')}}">Dashboard</a></li>
                   <li><a href="#">Notificaciones</a></li>
-                  <li><a href="#">Configuración</a></li>
-                  <li><a href="#">Cerrar sesión</a></li>
+                  <li><a href="{{url_for('admin.editarPerfilAdmin', id=admin_id)}}">Configuración</a></li>
+                  <li><a href="{{url_for('usuarios.logout')}}">Cerrar sesión</a></li>
                 </ul>
               </li>
             </ul>
@@ -82,9 +82,9 @@
   <main>
 
     <div id="url" style="display: none;">
-      <a id="detalle-res-url" data-url="{{ url_for('res.restauranteDetalle') }}"></a>
-      <a id="detalle-evento-url" data-url="{{ url_for('evento.eventoDetalle') }}"></a>
-      <a id="detalle-emprende-url" data-url="{{ url_for('emprende.emprendeDetalle') }}"></a>
+      <a id="detalle-res-url" data-url="{{ url_for('res.detalleRestauranteAdmin') }}"></a>
+      <a id="detalle-evento-url" data-url="{{ url_for('evento.detalleEventoAdmin') }}"></a>
+      <a id="detalle-emprende-url" data-url="{{ url_for('emprende.detalleEmprendeAdmin') }}"></a>
     </div>
 
     <section class="contenedor_tarjetas">

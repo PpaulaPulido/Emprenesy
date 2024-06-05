@@ -27,7 +27,6 @@ a {
 }
 
 /********************************************************estilos del header*********************************************/
-
 #cabeza {
     background-color: transparent;
     display: flex;
@@ -461,7 +460,7 @@ a {
     margin-right: 50px;
     font-weight: bold;
     text-decoration: none;
-    background-color: #213859;
+    background-color: #3d77ba;
     width: 150px;
     text-align: center;
     padding: 10px;
@@ -469,7 +468,7 @@ a {
 }
 
 .contenedor_texto a:hover {
-    background-color: #3d77ba;
+    background-color: #003066;
 }
 
 .container_slider {
@@ -912,17 +911,10 @@ a {
         height: 40px;
         min-height: 40px;
     }
-<<<<<<< HEAD
-  }
-  
-  .contenedor_footer {
-    background-color: #213859;
-=======
 }
 
 .contenedor_footer {
     background-color: #3d77ba;
->>>>>>> paula
     color: #ffffff;
     padding: 10px;
 }

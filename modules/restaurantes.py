@@ -219,8 +219,12 @@ def restauranteDetalleServidor():
 @res.route('/restauranteDetalle')
 def restauranteDetalle():
     user_id = session.get('user_id')
+    return render_template('detalle_res.html',user_id = user_id)
+
+@res.route('/detalleRestaurante/administrador')
+def detalleRestauranteAdmin():
     admin_id = session.get('admin_id')
-    return render_template('detalle_res.html',admin_id = admin_id,user_id = user_id)
+    return render_template('detalle_res_admin.html',admin_id = admin_id)
 
 @res.route('/SeccionRestaurante')
 def sectionRes():

@@ -49,37 +49,19 @@ app.register_blueprint(publicacionDash, url_prefix="/publicacion")
 def index():
     return render_template('index.html')
 
+#Ruta para cerrar sesión
+@app.route('/logout')
+def logout():
+    session.pop('logged_in', None)
+    return redirect(url_for('registro.html'))
 
-@app.route('/registrarUser', methods=['GET', 'POST'])
-def registrar_usuario():
-    if request.method == 'POST':
-        Nombres = request.form.get('nombres')
-        Apellidos = request.form.get('apellidos')
-        telefono = request.form.get('tel')
-        fechaNac = request.form.get('fechaNac')
-        Email = request.form.get('correo')
-        roles = request.form.get('rol')
-        contrasena = request.form.get('contrasena')
-        
-        # Encriptar la contraseña
-        contrasenaEncriptada = generate_password_hash(contrasena)
-        cursor.execute('SELECT * FROM usuario WHERE correousu = %s', (Email,))
-        resultado = cursor.fetchall()
-
-        if len(resultado) > 0:
-            flash('El correo electrónico ya está registrado', 'error')
-            print('El correo electrónico ya está registrado')
-        else:
-            cursor.execute(
-                "INSERT INTO usuario (nombreusu, apellidousu, telusu, fechanac_usu, correousu, roles, contrasena) VALUES (%s, %s, %s, %s, %s, %s, %s)",
-                (Nombres, Apellidos, telefono, fechaNac, Email, roles, contrasenaEncriptada)
-            )
-            db.commit()
-            flash('Usuario creado correctamente', 'success')
-            return redirect(url_for("registrar_usuario"))
-
-    return render_template('registro.html')
-
+#Ruta para el panel de control (requiere inicio de sesión)
+@app.route('/dashboard')
+def dashboard():
+    if 'logged_in' in session:
+        return 'Panel de control. <a href="/logout">Cerrar sesión</a>'
+    else:
+        return redirect(url_for('login'))
+    
 if __name__ == '__main__':
-    app.run(debug=True, port=3000)
-
+    app.run(debug=True,port=3036)

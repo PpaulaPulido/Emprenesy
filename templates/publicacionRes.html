@@ -41,8 +41,8 @@
                 </li>
                 <li><a href="{{ url_for('admin.index_admin') }}">Dashboard</a></li>
                 <li><a href="{{url_for('admin.perfil_admin')}}">Perfil</a></li>
-                <li><a href="./index.html">Inicio</a></li>
-                <li><a href="./MVQ.html">Nosotros</a></li>
+                <li><a href="{{url_for('admin.indexPrincipal')}}">Inicio</a></li>
+                <li><a href="{{url_for('admin.nosotrosEmprenesy')}}">Nosotros</a></li>
             </ul>
         </div>
 
@@ -52,18 +52,10 @@
                     <h2>Añadir un restaurante</h2>
                 </div>
                 <div class="contenido__detalles">
-<<<<<<< HEAD
-                    <form class="info_detalles" action="/templates/publicacionRes1.html">
-=======
                     
-<<<<<<< HEAD
                     <form class="info_detalles" action="{{ url_for('res.publicacionRes') }}" method="POST"
                     enctype="multipart/form-data">
 
-=======
-                    <form class="info_detalles" action="{{ url_for('res.restauranteContacto') }}">
->>>>>>> 02b80ffa1aa79af4752f2ebb51de06581313a599
->>>>>>> main
                         <div class="detalle__sitio">
                             <h3>Detalles del sitio</h3>
                         </div>
@@ -106,7 +98,6 @@
                         </div>
 
                         <div class="detalle__sitio">
-<<<<<<< HEAD
                             <label for="horarioRes">Horario</label>
                             <textarea name="horarioRes" id="horarioRes" cols="70" rows="2" placeholder="Lunes- viernes" required>{{ datos['horarioRes'] if datos.get('horarioRes') else '' }}</textarea>
                         </div>
@@ -118,15 +109,7 @@
 
                         <div class="detalle__sitio">
                             <label for="salida">Hora de cierre</label>
-<<<<<<< HEAD
-                            <input type="time" id="salida" name="salida" value="{{ datos['horarioS'] if datos.get('horarioS') else '' }}">
-=======
-                            <label for="horario">Horario</label>
-                            <textarea name="horario" id="horario" cols="70" rows="2" placeholder="Lunes- viernes 12pm- 10pm"></textarea>
->>>>>>> main
-=======
                             <input type="time" id="salida" name="salida" value="{{ datos['horarioS'] if datos.get('horarioS') else '' }}" required>
->>>>>>> natalia
                         </div>
 
                         <div class="detalle__sitio">
@@ -172,6 +155,7 @@
         <div id="url" style="display: none;">
             <a id="url_dash" data-url="{{ url_for('admin.index_admin') }}"></a>
             <a id="url_editarPerfil" data-url="{{ url_for('admin.editarPerfilAdmin', id=admin_id) }}"></a>
+            <a id="url_cerrarSesion" data-url="{{url_for('usuarios.logout')}}"></a>
         </div>
 
     </main>

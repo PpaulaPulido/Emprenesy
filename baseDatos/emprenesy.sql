@@ -2,8 +2,6 @@
 create database emprenesy;
 use emprenesy;
 
-
-
 create table usuario(
 codusuario int primary key auto_increment,
 nombreusu varchar (50) DEFAULT NULL,

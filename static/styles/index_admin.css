@@ -251,6 +251,8 @@ body{
 }
 .detalle__sitio textarea::placeholder{
     color: #d4cfcf;
+ 
+    
 }
 .file-upload-btn {
     background-color: #24ddd7;

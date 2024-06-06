@@ -9,3 +9,7 @@ cursor = get_cursor(db)
 @inicio.route('/index_user')
 def index():
     return render_template('index.html')
+
+@inicio.route('/nosotros')
+def nosotros():
+    return render_template('MVQ.html')

@@ -91,7 +91,8 @@ a {
 
 }
 
-.link:hover {
+.link:hover,
+.link1:hover {
     color: #6efadc;
     border-bottom: 1px solid #6efadc;
     padding-bottom: 3px;
@@ -459,12 +460,15 @@ a {
     font-size: 18px;
     margin-right: 50px;
     font-weight: bold;
-    text-decoration: none;
     background-color: #3d77ba;
     width: 150px;
     text-align: center;
     padding: 10px;
     border-radius: 10px;
+    cursor: pointer;
+}
+#res_link, #evento_link, #emprende_link{
+    color: #fff;
 }
 
 .contenedor_texto a:hover {
@@ -567,12 +571,13 @@ a {
 }
 
 .card .back a {
-    background: #213859;
+    background: #3d77ba;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
     font-size: 25px;
     padding: 5px 10px;
+    cursor: pointer;
 
 }
 
@@ -950,3 +955,22 @@ a {
     font-size: 15px;
     margin: 10px 0;
 }
+/*estilos del sweatalert*/
+
+.border-blue {
+    border: 3px solid #213859 !important;
+    box-shadow: 0 0 25px #fff;
+}
+.btn-blue{
+    background-color: #003066 !important;
+    width: 100px;
+}
+.swal2-success-ring{
+
+    border: 3px solid #213859 !important;
+}
+.swal2-title{
+    color: #050047;
+    font-size: 25px;
+}
+

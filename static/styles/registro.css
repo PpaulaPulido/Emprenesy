@@ -35,11 +35,15 @@ header {
 main {
     padding: 20px;
 }
-
+form{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin: 7px;
+}
 .login-container {
     background-color: #6194cf;
     border-radius: 5px;
-    width: 400px;
+    width: 780px;
     padding: 20px;
     margin: 50px auto;
     display: flex;
@@ -63,6 +67,9 @@ h2 {
 label, select {
     display: block;
     margin-bottom: 5px;
+    margin-right: 4px;
+    margin: 7px;
+    padding: 6px;
 }
 
 input[type="email"],
@@ -73,22 +80,28 @@ input[type="password"], select {
     border-radius: 3px;
     margin-bottom: 10px;
     width: 355px;
+    margin: 7px;
 }
 
 .botons {
     width: 100%;
     padding: 10px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #24ddd7;
+    color: rgb(0, 0, 0);
     border: none;
     border-radius: 2rem;
     cursor: pointer;
     font-size: 18px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
 }
 
 .forgot-password {
     color: #ffffff;
     text-decoration: none;
+    margin: 7px;
 }
 
 /*estilos del sweatalert*/
@@ -105,13 +118,6 @@ input[type="password"], select {
     color: #050047;
     font-size: 25px;
 }
-
-img{
-    border-radius: 1rem;
-    background-size: 83%;
-    margin: 30px;
-}
-
 .controls{
     width: calc(100% - 10px);
     padding: 10px;
@@ -119,4 +125,5 @@ img{
     border-radius: 3px;
     margin-bottom: 10px;
     width: 355px;
+    margin: 7px;
 }

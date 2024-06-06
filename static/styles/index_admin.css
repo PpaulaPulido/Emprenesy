@@ -123,7 +123,7 @@ body {
 }
 
 .container_pub {
-    background: #07182E;
+    background: #fff;
     height: fit-content;
     min-height: 250px;
     margin: 30px 15px;
@@ -138,8 +138,7 @@ body {
 }
 
 .div_icon {
-    background-color: #fff;
-    ;
+    background-color: #336baf;
     padding: 10px;
     margin: 0 auto;
     width: 77px;
@@ -154,13 +153,14 @@ body {
 .div_icon .icon {
     font-size: 30px;
     text-align: center;
-    color: #051248;
+    color: #fff;
 }
 
 .container_vac h2 {
     margin-top: 20px;
     font-size: 20px;
-    color: #fff;
+    color: #336baf;
+    text-align: center;
 }
 
 /****************************Estilos de contenedor de publicaciones de eventos*****************************************/
@@ -170,7 +170,7 @@ body {
 }
 
 .tituloE {
-    color: #fff;
+    color: #336baf;
     font-size: 24px;
 }
 

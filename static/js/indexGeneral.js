@@ -17,7 +17,6 @@ const detalleEmprendeUrl = document.getElementById('detalle-emprende-url').getAt
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  user_sesion();
   inicializarBuscador()
 
   cntSliderTarjetas(datosTarjetas, sliderTarjetas, btn_anterior, btn_siguiente, 'res', detalleResUrl);
@@ -32,25 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-function user_sesion() {
-  return fetch('/usuarios/perfilImagen_user')
-    .then(response => {
-      if (!response.ok) {
-        //indica si la solicitud no fue existosa
-        throw new Error('Respuesta no fue correcta');
-      }
-      return response.blob();
-    })
-    .then(imageBlob => {
-      const imagenURL = URL.createObjectURL(imageBlob);
-      crearNav(imagenURL)
-    })
-    .catch(error => {
-      console.error('Error al cargar la imagen del perfil:', error);
-      const imagenURL = '/static/img/perfil_user.png';
-      crearNav(imagenURL);
-    });
-}
 function crearNav(imagenURL) {
   const imagen = document.getElementById('imgPerfil');
   imagen.src = `${imagenURL}`;
@@ -160,15 +140,17 @@ function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, t
     let a = document.createElement("a");
     a.classList.add('verDetalles')
 
-    if (tipo == 'res') {
+    /*if (tipo == 'res') {
       a.href = `${enlace}?id=${data.id}&tipo=res`;
     } else if (tipo == 'evento') {
       a.href = `${enlace}?id=${data.id}&tipo=evento`;
     } else {
       a.href = `${enlace}?id=${data.id}&tipo=emprende`;
-    }
+    }*/
     a.textContent = "Ver detalles";
-    
+    a.addEventListener('click',()=>{
+      popupInfo();
+    });
 
     frontImagenDiv.appendChild(img);
     frontDiv.appendChild(frontImagenDiv);

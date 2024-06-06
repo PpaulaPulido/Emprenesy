@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -7,30 +7,56 @@
     <title>Detalle</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
     <link rel="icon" href="{{url_for ('static', filename='img/Logo2.jpeg')}}" type="image/icon type">
+    <link rel="stylesheet" href="/static/styles/detalles.css">
     <link rel="stylesheet" href="/static/styles/generalesPrincipal_admin.css">
-    <link rel="stylesheet" href="../static/styles/detalles.css">
-
+    
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/detalles.css')}}">
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/generalesPrincipal_admin.css')}}">
     
+
+
+    <!-- Enlace a la fuente de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <script src="https://kit.fontawesome.com/ea06c7c0f7.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+
+
+
 </head>
 
 <body>
     <header id="cabecera">
         <div id="cabeza">
             <div class="logoedit">
-                <img style="height: 80px; width: 80px; margin-left: 35px;"
-                    src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+                <img style="height: 80px; width: 80px; margin-left: 35px;" src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+            </div>
+
+        </div>
+        <div id="menuLateralToggle">
+            <div class="nav-list2" id="nav-list2">
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="menu-opciones">
+                    <li><i class="fa-solid fa-x" id="cerrar"></i></li>
+                    <li><img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
+                            class="logoToggle"></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Mis Favoritos</a></li>
+                </ul>
             </div>
         </div>
     </header>
     <main>
+
         <div id="enlaces" style="display: none;">
             <a id="url_nosotros" data-url="{{url_for('admin.nosotrosEmprenesy')}}"></a>
             <a id="url_index" data-url="{{url_for('admin.indexPrincipal')}}"></a>
@@ -40,20 +66,12 @@
             <a id="url_dashboard" data-url="{{ url_for('admin.index_admin') }}"></a>
             <a id="url_cerrarSesion" data-url="{{url_for('usuarios.logout')}}"></a>
         </div>
-        
-        <div class="wrapper">
-            <h2 class="title_empren" id="title"></h2>
-            <div class="box">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+
+
+        <div class="container_efect">
+            <div class="bublles" id="bubblesContainer"></div>
+            <div class="contenedor_title">
+                <h2 class="info_title" id="title"></h2>
             </div>
         </div>
 
@@ -87,32 +105,35 @@
             <div class="info__detalles">
                 <div class="detalles info">
                     <h2>Detalles</h2>
-                    <h3>Tipo de Negocio</h3>
-                    <p id="negocio"></p>
-                    <h3>Horario de atención</h3>
-                    <p id="horario"></p>
+                    <h3>Fecha</h3>
+                    <p id="fecha"></p>
+                    <h3>Horario</h3>
+                    <div id="horario"></div>
+                    <h3>Tipo de evento</h3>
+                    <p id="eventoTipo"></p>
                     <h3>Sitio Web</h3>
                     <a id="web">Clic aquí para visitar el sitio web.</a>
                     <div class="contenedor_button">
-                        <button class="btn_info" onclick="popup_emprendimientos()">Nuestros Productos</button>
+                        <button class="btn_info" onclick="popup_descripcion() ">Ver descripción</button>
                     </div>
                 </div>
                 <div class="info">
-                    <div class="contenedor_info">
-                        <h2>Información</h2>
-                        <h3>Correo electrónico</h3>
-                        <p id="correo"></p>
-                        <h3>Contacto</h3>
-                        <p id="contacto"></p>
-                        <h3>Redes Sociales</h3>
-                        <div class="redes_sociales">
-                            <a id="red1">
-                                <img src="{{ url_for('static', filename='img/instagram1.png ') }}" alt="instagram">
-                            </a>
-                            <a id="red2">
-                                <img src="{{ url_for('static', filename='img/tik-tok.png ') }}" alt="tik tok">
-                            </a>
-                        </div>
+                    <h2>Información</h2>
+                    <h3>Contacto</h3>
+                    <p id="contacto"></p>
+                    <h3>Correo electrónico</h3>
+                    <p id="correo"></p>
+                    <h3>Redes Sociales</h3>
+                    <div class="redes_sociales">
+                        <a id="red1">
+                            <img src="{{ url_for('static', filename='img/instagram1.png ') }}" alt="instagram">
+                        </a>
+                        <a id="red2">
+                            <img src="{{ url_for('static', filename='img/tik-tok.png ') }}" alt="tik tok">
+                        </a>
+                    </div>
+                    <div class="contenedor_button">
+                        <button class="btn_info" onclick="popup_information()">Más información</button>
                     </div>
                 </div>
             </div>
@@ -133,6 +154,18 @@
                 </div>
             </div>
         </section>
+        <div class="calificacionRes">
+            <div class="divCalificacion">
+                <h2>Calificaciones y opiniones</h2>
+                <h3 id="nombreEvento"></h3>
+                <h5 id="nombreAdmin"></h5>
+                <div id="rating"></div>
+                <hr>
+                <p class="textoCalificacion">Todavía no hay suficientes calificaciones. Sé uno de los primeros en
+                    escribir una opinión</p>
+                <a href="#" class="btn_opinion">Escribe una opinión</a>
+            </div>
+        </div>
     </main>
 
     <footer>
@@ -148,7 +181,7 @@
                         <use xlink:href="#vector-olas" x="48" y="0" fill="rgba(255,255,255,0.7" />
                         <use xlink:href="#vector-olas" x="48" y="3" fill="rgba(255,255,255,0.5)" />
                         <use xlink:href="#vector-olas" x="48" y="5" fill="rgba(255,255,255,0.3)" />
-                        <use xlink:href="#vector-olas" x="48" y="7" fill="#3d77ba" />
+                        <use xlink:href="#vector-olas" x="48" y="7" fill=" #3d77ba" />
                     </g>
                 </svg>
             </div>
@@ -187,15 +220,20 @@
         </div>
     </footer>
 
+
     <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js'></script>
-    <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
-    <script src="/static/js/navegacionPrincipal_admin.js"></script>
-    <script src="/static/js/buscador.js"></script>
-    <script src="/static/js/datos.js"></script>
-    <script src="/static/js/detalles_empren.js"></script>
-    <script src="/static/js/fav.js"></script>
-    <script type="text/javascript" src='/static/js/demo.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+
+
+    <script src="/static/js/navegacionPrincipal_admin.js"></script>
+    <script src="../static/js/buscador.js"></script>
+    <script src="../static/js/servidor.js"></script>
+    <script src="../static/js/detalleServidorEvento.js"></script>
+    <script src="../static/js/demoServidor.js"></script>
+
 </body>
 
 </html>

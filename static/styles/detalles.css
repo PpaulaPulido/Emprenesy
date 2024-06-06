@@ -16,9 +16,6 @@ h1,h2,h3{
 p{
     font-family: 'Poppins', sans-serif;
 }
-a{
-    text-decoration: none;
-}
 
 /*estilos de particulas*/
 canvas {
@@ -45,8 +42,7 @@ canvas {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     place-content: center;
     position: relative;
-    bottom: 250px;
-    text-transform: capitalize;
+    bottom: 280px;
 }
 /*estilos de imagenes slider*/
 .container_slider{
@@ -234,22 +230,20 @@ canvas {
     gap: 3rem;
     margin: 0 auto;
     width: 95%;
-    height: fit-content;
 }
-.info__detalles i{
-    margin-right: 15px;
-}
+
 .info {
     background-color: #f3f6fc;
     box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
     width: 95%;
-    height: fit-content;
+    height: 580px;
     padding: 35px;
     border-radius: 20px;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: end;
+
 }
 
 .info::before {
@@ -300,16 +294,12 @@ canvas {
 
 .info p {
     font-size: 18px;
-    margin: 15px 0;
+    margin: 20px 0;
 }
 .info #web{
     font-size: 18px;
     color: #363636;
     margin: 15px 0;
-}
-.horarioRes{
-    margin-top: -10px;
-    margin-bottom: -25px;
 }
 /*estilos del mapa*/
 #geocode #map {
@@ -321,6 +311,19 @@ canvas {
     background-color: rgb(226, 239, 248);
     border: 7px solid #336baf;
     border-radius: 5px;
+    @media only screen and (max-width: 900px) {
+        width: 50%;
+        margin-left: 25%;
+        
+ 
+     
+       }
+       @media only screen and (min-width: 900px) and (max-width: 1200px){
+        width: 80%;
+        margin-left: 10%;
+
+    
+      }
 
 }
 .container_ubicacion{
@@ -331,6 +334,7 @@ canvas {
     width: 100%;
     padding: 10px 40px;
     color: #fff;
+    
 }
 .detalles__ubicacion{
     display: grid;
@@ -347,6 +351,19 @@ canvas {
     min-height: 300px;
     margin-top: 15px;
     height: fit-content;
+    @media only screen and (max-width: 900px) {
+
+        width: max-content;
+        margin-left: -80%;
+        padding: 20px;
+    
+      }
+      @media only screen and (min-width: 900px) and (max-width: 1200px){
+        width: max-content;
+        margin-left: -40%;
+        padding: 20px;
+      }
+
 }
 .ubicacion h3{
     text-align: center;
@@ -361,12 +378,12 @@ canvas {
 }
 .ubicacion ul li{
     margin: 6px 0 6px 0;
-    text-transform: capitalize;
 }
 .container_ubicacion h2{
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     font-size: 35px;
+
 }
 .redes_sociales{
     display: flex;
@@ -400,71 +417,7 @@ canvas {
 .btn_info:hover {
     background-color: #254b7f; 
 }
-/*estilos de calificaciones y opiniones*/
-.calificacionRes{
-    margin: 30px auto 20px auto;
-    width: 90%;
-    background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100%);
-    height: fit-content;
-    padding: 5px;
-    border-radius: 20px 0 20px 0;
-    
-}
-.divCalificacion{
-    background-color: #f3f6fc;
-    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
-    width: 95%;
-    height: fit-content;
-    padding: 35px;
-    border-radius: 20px;
-    margin: 30px auto;
-}
-.divCalificacion h2{
-    font-size: 25px;
-    text-align: center;
-}
-#nombreRes{
-    font-size: 23px;
-}
-#rating{
-    margin-top: 10px;
-}
-hr{
-    border: 1px solid #ccc;
-}
-#rating i{
-    font-size: 18px;
-    margin: 0 2px;
-    color: gold;
-}
-.textoCalificacion{
-    font-size: 15px;
-}
-.btn_opinion{
-    background-color: #16243b;
-    color: #fff;
-    text-align: center;
-    width: 40%;
-    font-weight: 400;
-    font-size: 18px;
-    border-radius: 10px;
-    border: none;
-    padding: 10px;
-    box-shadow: 0px 0px 0px transparent;
-    margin: 30px auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.btn_opinion:hover{
-    text-decoration: none;
-    background-color: #254b7f;
-    color: #fff;
-}
-#nombreAdmin{
-    margin: 5px 0;
-    font-size: 16px;
-}
+
 /*estilos de detalles eventos*/
 
 /*estilos de bubles*/
@@ -694,7 +647,7 @@ hr{
     font-size: 25px;
     margin-bottom: 40px;
 }
-.div-swal .imagenPublicacion{
+.div-swal .imagenRestaurante{
     width: 100%;
     height: 100%;
     margin: 30px 0;

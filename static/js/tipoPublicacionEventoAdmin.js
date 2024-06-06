@@ -29,7 +29,7 @@ function filterByType(api, tipo, contenedor, nombrePublicacion) {
             });
 
             setTimeout(() => {
-                fetch('/usuarios/obtener_favoritos/usuario')
+                fetch('/admin/obtener_favoritosAdmin')
                     .then(response => response.json())
                     .then(data => {
                         data.forEach(fav => {

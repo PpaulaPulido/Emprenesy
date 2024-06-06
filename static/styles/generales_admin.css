@@ -74,12 +74,14 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
     z-index: 2;
+   
 }
 
 .barra_nav {
     text-align: center;
     font-size: 18px;
     padding: 20px;
+    
 }
 
 .nav_list {
@@ -98,6 +100,7 @@
     padding: 7px;
     display: block;
     margin-top: -15px;
+    
 }
 
 .link1 img {
@@ -158,6 +161,7 @@
     text-align: center;
     margin: 10px 15px;
     position: relative;
+  
 }
 
 
@@ -168,6 +172,13 @@
     border-radius: 15px;
     width: 600px;
     height: 40px;
+    @media only screen and (max-width:767px) {
+        width: 300px;
+ 
+    }
+    @media only screen  and (min-width:768px) and (max-width:1023px) {
+        width: 450px;
+    }
 }
 
 .buscador_input #icon-search {

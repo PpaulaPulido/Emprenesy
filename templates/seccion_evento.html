@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- medidas query david -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +15,8 @@
     <!-- Enlace a los estilos locales -->
     <link rel="stylesheet" href="../static/styles/generales_user.css">
     <link rel="stylesheet" href="../static/styles/seccion_evento.css">
+    <link rel="stylesheet" href="{{url_for ('static', filename='styles/seccion_evento.css')}}">
+    <link rel="stylesheet" href="{{url_for ('static', filename='styles/generales_user.css')}}">
 
     <!-- Enlace a la fuente de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
@@ -22,7 +24,7 @@
 
 
     <!-- Favicon -->
-    <link rel="icon" href="../img/Logo2.jpeg" type="image/icon type">
+    <link rel="icon" href="{{url_for ('static', filename='img/Logo2.jpeg')}}" type="image/icon type">
 
 
 </head>
@@ -31,30 +33,35 @@
     <header id="cabecera">
         <div id="cabeza">
             <div class="logoedit">
-                <img class="logo" src="../img/logo_Emprenesy.png" alt="Emprenesy">
+                <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
             </div>
         </div>
     </header>
     <main>
-
+        <div id="url" style="display: none;">
+            <a id="detalle-evento-url" data-url="{{ url_for('evento.eventoDetalle') }}"></a>
+            <a id="url_nosotros" data-url="{{url_for('usuarios.nosotros_user')}}"></a>
+            <a id="url_index" data-url="{{url_for('usuarios.index_user')}}"></a>
+            <a id="url_favoritos" data-url="{{url_for('usuarios.favoritos_user')}}"></a>
+        </div>
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-interval="2000">
             <div class="carousel-inner">
                 <div class="carousel-item ">
                     <div class="carousel-img with-text"></div>
-                    <div class="carousel_text">
+                    <div id="contenido1" class="carousel_text">
                         <p>¡Descubre emocionantes eventos para todos los gustos!</p>
                         <div class="container-btn">
                             <button class="btn slider_btn1"><a href="#section_novedades">Explorar Eventos</a></button>
                         </div>
                         <div class="container_img">
-                            <img src="../img/music.png" alt="imagen de musica">
+                            <!-- <img src="../img/music.png" alt="imagen de musica"> -->
                         </div>
                     </div>
                 </div>
 
                 <div class="carousel-item active">
                     <div class="carousel-img3 with-text"></div>
-                    <div class="carousel_text contenido_carousel">
+                    <div id="contenido2"  class="carousel_text contenido_carousel">
                         <h2>¡Descubre el Espectáculo de tu Vida!</h2>
                         <p>¡Emoción, música, diversión! Descubre nuestros shows y vive momentos únicos!</p>
                         <div class="container-btn">
@@ -74,7 +81,7 @@
                             <img src="https://images.ctfassets.net/3klebcd0t2ch/4tfFnVEL5lZ7e3UmcSxhrU/be7a432bfbb3a35838ebf32a62150344/Un_teatro_con_historia_5__1_.jpg"
                                 alt="imagen evento">
                         </div>
-                        <div class="contenido_text">
+                        <div id="contenido3"  class="contenido_text">
                             <h2>2024</h2>
                             <p>¡No te pierdas los últimos conciertos de este mes!</p>
                             <div class="container-btn">
@@ -129,12 +136,12 @@
         </section>
 
         <div class="container_cards">
-            <div class="cards_contenido card5">
+            <div class="cards_contenido card5" onclick="cargarEventos('Evento de danza')">
                 <div class="contenido_title">
                     <h3>Eventos de danza</h3>
                 </div>
             </div>
-            <div class="cards_contenido card6">
+            <div class="cards_contenido card6" onclick="cargarEventos('Ferias gastronomicas')">
                 <div class="contenido_title">
                     <h3>Ferias gastronómicas</h3>
                 </div>
@@ -165,15 +172,18 @@
             </div>
         </section>
 
-        
+
         <div class="find_evento">
             <div class="evento_title">
                 <h2>Encuentra el evento Perfecto para ti</h2>
-                <p>¡Bogotá está llena de eventos emocionantes esperando a ser descubiertos. Desde vibrantes conciertos hasta cautivadoras obras de teatro, hay algo para todos. ¡Descubre cómo encontrar el evento perfecto para ti y sumérgete en la diversión!</p>
+                <p>¡Bogotá está llena de eventos emocionantes esperando a ser descubiertos. Desde vibrantes conciertos
+                    hasta cautivadoras obras de teatro, hay algo para todos. ¡Descubre cómo encontrar el evento perfecto
+                    para ti y sumérgete en la diversión!</p>
             </div>
             <div class="evento_contenido">
                 <div class="contenido_img">
-                    <img src="https://www.wradio.com.co/resizer/v2/M3QEV5BLHVAHRO2CVVCYCEUZWQ.jpg?auth=1a19677aab5147edd0a2281e4051c7c0ec5f228ca14ac0b1b5f905e0401d6f3f&width=650&height=488&quality=70&smart=true" alt="imagen de eventos">
+                    <img src="https://www.wradio.com.co/resizer/v2/M3QEV5BLHVAHRO2CVVCYCEUZWQ.jpg?auth=1a19677aab5147edd0a2281e4051c7c0ec5f228ca14ac0b1b5f905e0401d6f3f&width=650&height=488&quality=70&smart=true"
+                        alt="imagen de eventos">
                 </div>
                 <div class="contenido_principal">
                     <div class="contenido_info">
@@ -182,7 +192,8 @@
                         </div>
                         <div class="info_texto">
                             <h3>Define tus intereses</h3>
-                            <p>Reflexiona sobre tus pasatiempos y gustos personales para encontrar eventos que te entusiasmen.</p>
+                            <p>Reflexiona sobre tus pasatiempos y gustos personales para encontrar eventos que te
+                                entusiasmen.</p>
                         </div>
                     </div>
                     <div class="contenido_info">
@@ -248,9 +259,9 @@
                     <ul class="footer_list">
                         <li>Siguenos en</li>
                         <div class="iconos">
-                            <img src="../img/tik-tok.png" alt="tiktok">
-                            <img src="../img/facebook.png" alt="facebook">
-                            <img src="../img/instagram1.png" alt="instagram">
+                            <img src="{{ url_for('static', filename='img/tik-tok.png') }}" alt="tiktok">
+                            <img src="{{ url_for('static', filename='img/facebook.png') }}" alt="facebook">
+                            <img src="{{ url_for('static', filename='img/instagram1.png') }}" alt="instagram">
                         </div>
                     </ul>
                 </div>
@@ -260,10 +271,12 @@
         </div>
     </footer>
 
+    <div id="data-container" data-perfil-url="{{ url_for('evento.tipo_evento') }}" style="display: none;"></div>
+
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     <script src="../static/js/navegacion_user.js"></script>
     <script src="../static/js/buscador.js"></script>
     <script src="../static/js/datos.js"></script>

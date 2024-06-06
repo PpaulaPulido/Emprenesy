@@ -79,9 +79,65 @@ ol {
   width: 40%;
   padding: 0px 30px;
   text-align: center;
+
 }
+
+/* Medidas query david  */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+#contenido1{
+
+  margin-left: 50%;
+  margin-block-end: -80px;
+  width:450px;
+  height: 450px;
+  
+ 
+}
+#contenido2{
+
+  margin-left: -5%;
+  bottom: 0.5%;
+  width:450px;
+  height: 450px;
+
+}
+#contenido3{
+margin-left: 20px;
+bottom: 0.1%;
+ width:450px;
+ height: 450px;
+
+}   
+
+}
+@media only screen and (max-width: 767px) {
+  #contenido1{
+
+    width:420px;
+    height: 420px;
+    margin-left: 130%;
+    margin-block-end: -60px;
+
+  }
+  #contenido2{
+    width:450px;
+    height: 450px;
+    margin-left: -15%;
+    bottom: 0.5%;
+  }
+  #contenido3{
+
+    width:450px;
+    height: 450px;
+    margin-left: 15px;
+    bottom: 0.1%;
+
+  }
+ 
+ 
+  }
 .carousel_text h2{
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     font-size: 28px;
 }
 .carousel_text p {
@@ -105,9 +161,11 @@ ol {
 }
 .slider_btn1 {
   background-color: #0d0057;
+
 }
 .slider_btn1:hover{
   background-color: #220ca0;
+
 }
 .container_img {
   width: 60px;
@@ -151,6 +209,19 @@ ol {
   position: relative;
   left: -200px;
   top: 430px;
+ 
+  @media only screen and (min-width: 768px) and (max-width: 1150px) {
+  margin-left: 200px;
+
+  }
+
+  @media only screen and (max-width: 767px){
+
+    margin-left: 200px;
+  
+
+  }
+
 }
 
 .img2 img {
@@ -247,7 +318,29 @@ ol {
   grid-template-columns: repeat(4,1fr);
   gap: 2rem;
   text-align: center;
+
+
+  @media only screen and (max-width: 767px) {
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
+    grid-template-columns: repeat(2,1fr);
+
+
 }
+
+@media only screen and (min-width:768px) and (max-width:1023px) {
+
+margin-left: auto;
+margin-right: auto;
+grid-template-columns: repeat(2,1fr);
+width: max-content;
+gap: 3rem;
+
+
+}
+}
+
 .container_cards .cards_contenido{
   height: 250px;
   width: 270px;
@@ -256,9 +349,14 @@ ol {
   background-repeat: no-repeat;
   background-size: cover;
   cursor: pointer;
+  
+
+
 }
-.card1{
+ard1{
   background-image: url('https://estaticos-cdn.prensaiberica.es/clip/6b48ad30-aced-47c8-b0cd-c4c0cf3a6470_16-9-discover-aspect-ratio_default_0.jpg');
+ 
+
 }
 .card2{
   background-image: url('https://oleico.com/wp-content/uploads/2021/03/oleico_oleico_image_777-1.jpeg');
@@ -266,6 +364,7 @@ ol {
 }
 .card3{
   background-image: url('https://media-cdn.tripadvisor.com/media/photo-s/1c/b7/ff/cc/photo0jpg.jpg');
+  
 }
 .card4{
   background-image: url('https://www.godinezgourmet.com/wp-content/uploads/2019/04/asaderos-grill-carne-ciudad-mexico-cdmx-godinez_0.jpg');
@@ -281,15 +380,18 @@ ol {
 .contenido_title h3{
   font-size: 22px;
   color: #fff;
+
 }
 /***********************estilos de slider de tarjetas**************************/
 .section{
   background-image: linear-gradient(135deg, #d162f3 0%, #ff9254 99%);
   padding: 10px;
+
 }
 .section2{
   background-image: linear-gradient(135deg, #230181 41%, #fe1bbd 100%);
   padding: 10px;
+
 }
 
 .section_title h2{
@@ -298,10 +400,28 @@ ol {
   font-size: 25px;
 }
 .swiper_card{
-  position: relative;  
+  position: relative;
+
+  
+  @media only screen and (max-width:767px) {
+  
+    width: 100%;
+    
+  
+  }
 }
+
 .swiper{
   width: 70%;
+  @media only screen and (max-width:767px) {
+
+    width:1200px;
+    margin-left: auto;
+
+
+  }
+
+
 }
 .card{
   position: relative;
@@ -310,6 +430,8 @@ ol {
   height: 430px;
   margin: 20px 0;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  
+
 }
 .card::before{
   content: "";
@@ -318,16 +440,18 @@ ol {
   width: 100%;
   background: white;
   border-radius: 20px 20px 0 0;
+  
 }
 .card .rating{
   margin: 10px 10px 0 10px;
 }
+
 .card .card-content{
   display: flex;
   flex-direction: column;
   padding: 10px;
   position: relative;
-  z-index: 100;
+  z-index: 20;
 }
 .card .rating i{
   font-size: 18px;
@@ -412,26 +536,69 @@ ol {
   border-radius: 10px;
   display: flex;
   color: #fff;
+  @media only screen and (max-width:767px) {
+  display: inline-block;
+ margin-left: 25%;
+width: min-content;
+  }
+  @media only screen and (min-width:768px) and (max-width:1023px) {
+    height: 350px;
+  
+  }
+
+
 }
 
 .poster_img {
   width: 90%;
   height: 90%;
+  @media only screen and (max-width:767px) {
+    margin-top: 15px;
+
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+  @media only screen and (min-width:768px) and (max-width:1023px) {
+    width: 100%;
+    height: 100%;
+  
+  }
+
+
 }
 
 .poster_img img {
   width: 100%;
   height: 100%;
   margin: 0 auto;
+
 }
 
 .contenido_poster {
   padding: 40px;
   text-align: center;
+  
+  @media only screen and (min-width:768px) and (max-width:1023px) {
+    margin-top: -35px;
+  }
+  @media only screen and (max-width:767px){
+
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+  
+
+
+
 }
 
 .contenido_poster h3 {
   font-size: 30px;
+
 }
 
 .contenido_poster p {
@@ -440,7 +607,13 @@ ol {
   line-height: 1.8;
   text-align: left;
   width: 80%;
+
+
+
+
 }
+
+
 
 .contenido_poster button {
   border: none;
@@ -451,6 +624,7 @@ ol {
   background-color: #3bdad4;
   width: 40%;
   margin: 0 auto;
+
 }
 
 .contenido_poster button a {
@@ -459,11 +633,15 @@ ol {
 
 .contenido_poster button:hover {
   background-color: #005f5e;
+
 }
 /*****************estilos de find evento******************************/
 .find_evento{
   background-color: #f5f5f5;
   padding: 20px;
+  @media only screen and (max-width:767px){
+   width: 100%;
+  }
 }
 .evento_title{
   padding: 20px;
@@ -479,6 +657,7 @@ ol {
   text-align: center;
   margin: 0 auto;
 }
+
 .find_evento .evento_contenido{
   display: flex;
   flex-direction: row-reverse;
@@ -493,10 +672,22 @@ ol {
   height: 100%;
   margin: 0 auto;
   border-radius: 13px;
+
+
+}
+@media only screen and (max-width:767px){
+ .contenido_principal{
+width: max-content;
+margin-inline-end: -40px;
+
+ }
 }
 .contenido_principal .contenido_info{
   display: flex;
   padding: 20px 20px;
+  
+
+ 
 }
 .contenido_info .info_icono{
   background-color: rgb(221, 218, 218);
@@ -515,6 +706,7 @@ ol {
 }
 .contenido_info .info_texto{
   margin-left: 35px;
+
 }
 .info_texto h3{
   color: #2c5d9d;

@@ -55,6 +55,7 @@ ol {
   position: relative;
   overflow: hidden;
   background-image: linear-gradient(225deg, #051248 33%, #121e92 58%);
+
 }
 
 .carousel-img::before {
@@ -72,7 +73,53 @@ ol {
   transform-origin: bottom left;
   transform: rotate(0deg) scaleY(1) scaleX(1.3);
 }
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
 
+  #contenido2{
+ margin-left: -5%;
+    bottom: 0.5%;
+    width:450px;
+    height: 450px;
+  
+  }
+  #contenido3{
+
+  margin-left: 20px;
+  margin-block-end: -80px;
+   width:450px;
+   height: 450px;
+  
+  }   
+  
+  }
+  @media only screen and (max-width: 767px) {
+    #contenido1{
+
+      width:420px;
+      height: 420px;
+      margin-left: -20%;
+      margin-block-end: -200px;
+  
+  
+    }
+    #contenido2{
+      width:450px;
+      height: 450px;
+      margin-left: -5%; ;
+      bottom: 0.5%;
+    }
+    #contenido3{
+      width:450px;
+      height: 450px;
+      margin-left: 28px;
+      margin-block-end: -80px;
+  
+    }
+    .img2 {
+      margin-left: -100px;
+
+    }
+  }
 .carousel_text {
   position: absolute;
   color: #fff;
@@ -118,6 +165,7 @@ ol {
   margin: 0 auto;
   width: 100%;
   height: 100%;
+
 }
 /***********************************************/
 .carousel-img2 {
@@ -126,6 +174,7 @@ ol {
   position: relative;
   overflow: hidden;
   background-image: linear-gradient(135deg, #230181 41%, #fe1bbd 100%);
+
 }
 
 .carousel-img2::before {
@@ -165,6 +214,7 @@ ol {
   position: relative;
   left: 450px;
   top: 500px;
+
 }
 
 .img2 img {
@@ -287,6 +337,25 @@ ol {
   grid-template-columns: repeat(4,1fr);
   gap: 2rem;
   text-align: center;
+  @media only screen and (max-width: 767px) {
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
+    grid-template-columns: repeat(2,1fr);
+
+
+}
+
+@media only screen and (min-width:768px) and (max-width:1023px) {
+
+margin-left: auto;
+margin-right: auto;
+grid-template-columns: repeat(2,1fr);
+gap: 3rem;
+
+width: max-content;
+
+}
 }
 .container_cards .cards_contenido{
   height: 250px;
@@ -349,10 +418,23 @@ ol {
   font-size: 25px;
 }
 .swiper_card{
-  position: relative;  
+  position: relative;
+    
+  @media only screen and (max-width:767px) {
+  
+    width: 100%;
+    
+  
+  }
 }
 .swiper{
   width: 70%;
+  @media only screen and (max-width:767px) {
+    width:1200px;
+    margin-left: auto;
+
+  }
+
 }
 .card{
   position: relative;
@@ -378,7 +460,7 @@ ol {
   flex-direction: column;
   padding: 10px;
   position: relative;
-  z-index: 100;
+  z-index: 20;
 }
 .card .rating i{
   font-size: 18px;
@@ -409,9 +491,18 @@ ol {
   margin-left: 10px;
   display: flex;
   align-items: center;
+
+
 }
 .title_contenedor .content_title{
   font-size: 22px;
+ @media only screen and (max-width:767px) {
+  font-size: 15px;
+  
+ }
+ @media only screen and (min-width:768px) and (max-width:1023px) {
+  font-size: 16px;
+ }
 }
 .swiper_conta_img{
     

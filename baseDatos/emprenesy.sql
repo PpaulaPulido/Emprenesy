@@ -1,6 +1,6 @@
-
 create database emprenesy;
 use emprenesy;
+
 
 create table usuario(
 codusuario int primary key auto_increment,
@@ -12,6 +12,7 @@ correousu varchar (50) DEFAULT NULL,
 contrasena varchar(255) DEFAULT NULL
 );
 select * from usuario;
+
 INSERT INTO usuario (nombreusu, apellidousu, telusu, fechanac_usu, correousu, contrasena) 
 VALUES ('Juan', 'Pérez', '1234567890', '1990-01-15', 'juan.perez@example.com', 'ContraseñaSegura123');
 
@@ -25,7 +26,9 @@ codsitio  int DEFAULT NULL,
 fechanac_admin date DEFAULT NULL,
 contrasena varchar(255) DEFAULT NULL
 );
+
 select * from administrador;
+
 INSERT INTO administrador (nombreadmin, apellidoadmin, telfadmin, correoadmin, codsitio, fechanac_admin, contrasena) 
 VALUES ('Juan', 'Pérez', '123-456-7890', 'juan.perez@example.com', 1, '1980-05-15', '12345');
 
@@ -83,6 +86,7 @@ CREATE TABLE eventos(
     codadmin INT NOT NULL,
     FOREIGN KEY (codadmin) REFERENCES administrador(codadmin)
 );
+
 select * from eventos where ideven = 1;
 CREATE TABLE fechaseven(
     codfechas INT PRIMARY KEY AUTO_INCREMENT,
@@ -265,6 +269,7 @@ LEFT JOIN administrador adm ON r.codadmin = adm.codadmin
 LEFT JOIN galeriaresta gr ON r.idresta = gr.idresta
 LEFT JOIN ubicacionresta ur ON r.idresta = ur.idresta
 LEFT JOIN redes_sociales rs ON r.idresta = rs.entidad_id AND rs.entidad_tipo = 'restaurante'
+ WHERE adm.codadmin = 4 
 GROUP BY
     r.idresta
 ORDER BY
@@ -330,12 +335,13 @@ LEFT JOIN administrador adm ON r.codadmin = adm.codadmin
 LEFT JOIN galeriaresta gr ON r.idresta = gr.idresta
 LEFT JOIN ubicacionresta ur ON r.idresta = ur.idresta
 LEFT JOIN redes_sociales rs ON r.idresta = rs.entidad_id AND rs.entidad_tipo = 'restaurante'
-WHERE
-    r.idresta = 3
+
 GROUP BY
     r.idresta
 ORDER BY
     r.fecha_publicacion DESC;
+    
+
 
 
 SELECT eve.ideven,
@@ -393,8 +399,7 @@ SELECT em.idempre,
        LEFT JOIN galeriaempre ga ON em.idempre = ga.idempre
        LEFT JOIN ubicacionempre ub ON em.idempre = ub.idempre
        LEFT JOIN redes_sociales rs ON em.idempre = rs.entidad_id AND rs.entidad_tipo = 'emprendimiento'
-       WHERE
-         em.idempre = 2
+       
 		GROUP BY
 			em.idempre
 		ORDER BY
@@ -409,7 +414,24 @@ CREATE TABLE IF NOT EXISTS favoritosUsuario (
     fecha_agregado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (codusuario) REFERENCES usuario(codusuario)
 );
+
+CREATE TABLE IF NOT EXISTS favoritosAdmin (
+    idfavorito INT PRIMARY KEY AUTO_INCREMENT,
+    codadmin INT NOT NULL,
+    entidad_id INT NOT NULL,
+    entidad_tipo ENUM('evento', 'emprendimiento', 'restaurante') NOT NULL,
+    fecha_agregado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (codadmin) REFERENCES administrador(codadmin)
+);
+
 select * from favoritosUsuario;
+
+SELECT 
+    fa.idfavorito, fa.codadmin, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
+    res.idresta, res.nombreresta,res.logo AS logo_res,res.tiporesta
+FROM favoritosAdmin fa
+LEFT JOIN restaurantes res ON fa.entidad_id = res.idresta
+WHERE fa.codadmin = 2  AND  fa.entidad_tipo = 'restaurante' ORDER BY fa.fecha_agregado DESC;
 
 SELECT 
     fa.idfavorito, fa.codusuario, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
@@ -417,6 +439,7 @@ SELECT
 FROM favoritosUsuario fa
 LEFT JOIN restaurantes res ON fa.entidad_id = res.idresta
 WHERE fa.codusuario = 2  AND  fa.entidad_tipo = 'restaurante' ORDER BY fa.fecha_agregado DESC;
+
 
 SELECT 
     fa.idfavorito, fa.codusuario, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
@@ -426,12 +449,26 @@ LEFT JOIN emprendimientos em ON fa.entidad_id = em.idempre
 WHERE fa.codusuario = 2  AND  fa.entidad_tipo = 'emprendimiento' ORDER BY fa.fecha_agregado DESC;
 
 SELECT 
+    fa.idfavorito, fa.codadmin, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
+    em.idempre,em.nombreempre, em.logo AS logo_empre,em.tipoempre
+FROM favoritosAdmin fa
+LEFT JOIN emprendimientos em ON fa.entidad_id = em.idempre
+WHERE fa.codadmin = 2  AND  fa.entidad_tipo = 'emprendimiento' ORDER BY fa.fecha_agregado DESC;
+
+
+SELECT 
     fa.idfavorito, fa.codusuario, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
     eve.ideven, eve.nombreeven, eve.logo AS logo_evento, eve.tipoevento 
 FROM favoritosUsuario fa
 LEFT JOIN eventos eve ON fa.entidad_id = eve.ideven
 WHERE fa.codusuario = 2 AND  fa.entidad_tipo = 'evento' ORDER BY fa.fecha_agregado DESC;
 
+SELECT 
+    fa.idfavorito, fa.codadmin, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
+    eve.ideven, eve.nombreeven, eve.logo AS logo_evento, eve.tipoevento 
+FROM favoritosAdmin fa
+LEFT JOIN eventos eve ON fa.entidad_id = eve.ideven
+WHERE fa.codadmin = 2 AND  fa.entidad_tipo = 'evento' ORDER BY fa.fecha_agregado DESC;
 
 
 

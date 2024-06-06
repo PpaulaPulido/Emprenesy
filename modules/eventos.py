@@ -13,27 +13,6 @@ cursor = get_cursor(db)
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@evento.route('/eventoDetalle')
-def eventoDetalle():
-    user_id = session.get('user_id')
-    admin_id = session.get('admin_id')
-    return render_template('detalle_event.html',user_id = user_id,admin_id = admin_id)
-
-@evento.route('/detalleEvento/administrador')
-def detalleEventoAdmin():
-    admin_id = session.get('admin_id')
-    return render_template('detalle_evento_admin.html',admin_id = admin_id)
-
-
-@evento.route('/SeccionEvento')
-def sectionEvento():
-    user_id = session.get('user_id')
-    admin_id = session.get('admin_id')
-    return render_template('seccion_evento.html',user_id = user_id, admin_id = admin_id)
-
-@evento.route('/eventoLocation')
-def eventoLocation():
-    return render_template('formularioEventos2.html')
 
 #********************************Resetear publicacion evento para registrar uno nuevo**************************************
 @evento.route('/resetEvento')
@@ -234,9 +213,43 @@ def detalleEventoJson(id):
     finally:
         cursor.close()
         db.close()
-        
+
+#**********************************Rutas estaticas********************************
+@evento.route('/eventoDetalle')
+def eventoDetalle():
+    user_id = session.get('user_id')
+    admin_id = session.get('admin_id')
+    return render_template('detalle_event.html',user_id = user_id,admin_id = admin_id)
+
+@evento.route('/detalleEvento/administrador')
+def detalleEventoAdmin():
+    admin_id = session.get('admin_id')
+    return render_template('detalle_evento_admin.html',admin_id = admin_id)
+
+
+@evento.route('/SeccionEvento')
+def sectionEvento():
+    user_id = session.get('user_id')
+    admin_id = session.get('admin_id')
+    return render_template('seccion_evento.html',user_id = user_id, admin_id = admin_id)
+
+@evento.route('/SeccionEventoAdmin')
+def sectionEventoAdmin():
+    admin_id = session.get('admin_id')
+    return render_template('seccion_evento_admin.html', admin_id = admin_id)
+
+@evento.route('/eventoLocation')
+def eventoLocation():
+    return render_template('formularioEventos2.html')
+
 @evento.route('/eventoDetalleServidor')
 def eventoDetalleServidor():
     user_id = session.get('user_id')
     admin_id = session.get('admin_id')
     return render_template('detalleServidorEvento.html',user_id = user_id,admin_id = admin_id)
+
+@evento.route('/eventoDetalleServidorAdmin')
+def eventoDetalleServidorAdmin():
+    admin_id = session.get('admin_id')
+    return render_template('detalleServidorEventoAdmin.html',admin_id = admin_id)
+

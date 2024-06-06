@@ -371,6 +371,12 @@ def normalize_path(path):
     return normalized_path
 
 
+#*********************************************ruta de favoritos********************************************************
+@admin.route('/favoritosAdmin')
+def favoritosAdmin():
+    admin_id = session.get('admin_id')
+    return render_template('favoritosAdmin.html',admin_id = admin_id)
+
 #************************************Rutas estaticas********************************************
 @admin.route('/indexAdmin')
 def indexPrincipal():

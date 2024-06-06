@@ -1,36 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle</title>
+    <title>Detalle Restaurante</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-    <link rel="icon" href="{{url_for ('static', filename='img/Logo2.jpeg')}}" type="image/icon type">
-    <link rel="stylesheet" href="/static/styles/generalesPrincipal_admin.css">
-    <link rel="stylesheet" href="../static/styles/detalles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <link rel="stylesheet" href="{{url_for ('static', filename='styles/detalles.css')}}">
-    <link rel="stylesheet" href="{{url_for ('static', filename='styles/generalesPrincipal_admin.css')}}">
-    
+    <link rel="icon" href="{{url_for ('static', filename='img/Logo2.jpeg')}}" type="image/icon type">
 
     <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+
+    <link rel="stylesheet" href="{{url_for ('static', filename='styles/detalles.css')}}">
+    <link rel="stylesheet" href="{{url_for ('static', filename='styles/generalesPrincipal_admin.css')}}">
+
+    <!-- Enlace a la fuente de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <script src="https://kit.fontawesome.com/ea06c7c0f7.js" crossorigin="anonymous"></script>
+
+
 </head>
 
 <body>
     <header id="cabecera">
         <div id="cabeza">
             <div class="logoedit">
-                <img style="height: 80px; width: 80px; margin-left: 35px;"
-                    src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+                <img style="height: 80px; width: 80px; margin-left: 35px;" src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
             </div>
         </div>
     </header>
     <main>
+
         <div id="enlaces" style="display: none;">
             <a id="url_nosotros" data-url="{{url_for('admin.nosotrosEmprenesy')}}"></a>
             <a id="url_index" data-url="{{url_for('admin.indexPrincipal')}}"></a>
@@ -40,24 +45,13 @@
             <a id="url_dashboard" data-url="{{ url_for('admin.index_admin') }}"></a>
             <a id="url_cerrarSesion" data-url="{{url_for('usuarios.logout')}}"></a>
         </div>
-        
-        <div class="wrapper">
-            <h2 class="title_empren" id="title"></h2>
-            <div class="box">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+
+        <div id="particles-js"></div>
+        <div class="contenedor_title">
+            <h2 class="title_res" id="title"></h2>
         </div>
 
-        <div class="container_slider">
+        <div class="container_slider slider_res">
             <div class="row">
                 <div class="col-xs-11 col-md-10 col-centered">
 
@@ -87,32 +81,33 @@
             <div class="info__detalles">
                 <div class="detalles info">
                     <h2>Detalles</h2>
-                    <h3>Tipo de Negocio</h3>
-                    <p id="negocio"></p>
-                    <h3>Horario de atención</h3>
+                    <h3><i class="fa-regular fa-calendar"></i>Horario de atención</h3>
                     <p id="horario"></p>
-                    <h3>Sitio Web</h3>
-                    <a id="web">Clic aquí para visitar el sitio web.</a>
+                    <h3><i class="fa-solid fa-utensils"></i>Comidas</h3>
+                    <p id="comidas"></p>
+                    <h3><i class="fa-solid fa-envelope"></i>Correo electrónico</h3>
+                    <p id="correo"></p>
                     <div class="contenedor_button">
-                        <button class="btn_info" onclick="popup_emprendimientos()">Nuestros Productos</button>
+                        <button class="btn_info" onclick="popup_menu()">Conoce nuestro Menú</button>
                     </div>
                 </div>
                 <div class="info">
-                    <div class="contenedor_info">
-                        <h2>Información</h2>
-                        <h3>Correo electrónico</h3>
-                        <p id="correo"></p>
-                        <h3>Contacto</h3>
-                        <p id="contacto"></p>
-                        <h3>Redes Sociales</h3>
-                        <div class="redes_sociales">
-                            <a id="red1">
-                                <img src="{{ url_for('static', filename='img/instagram1.png ') }}" alt="instagram">
-                            </a>
-                            <a id="red2">
-                                <img src="{{ url_for('static', filename='img/tik-tok.png ') }}" alt="tik tok">
-                            </a>
-                        </div>
+                    <h2>Información</h2>
+                    <h3><i class="fa-solid fa-globe"></i>Sitio Web</h3>
+                    <a id="web">Clic aquí para visitar el sitio web.</a>
+                    <h3><i class="fa-solid fa-phone"></i>Contacto</h3>
+                    <p id="contacto"></p>
+                    <h3><i class="fa-solid fa-comment"></i>Redes Sociales</h3>
+                    <div class="redes_sociales">
+                        <a id="red1">
+                            <img src="{{ url_for('static', filename='img/instagram1.png ') }}" alt="instagram">
+                        </a>
+                        <a id="red2">
+                            <img src="{{ url_for('static', filename='img/tik-tok.png ') }}" alt="tik tok">
+                        </a>
+                    </div>
+                    <div class="contenedor_button">
+                        <button class="btn_info" onclick="popup_nosotros()">Acerca de Nosotros</button>
                     </div>
                 </div>
             </div>
@@ -133,6 +128,19 @@
                 </div>
             </div>
         </section>
+        <div class="calificacionRes">
+            <div class="divCalificacion">
+                <h2>Calificaciones y opiniones</h2>
+                <h3 id="nombreRes"></h3>
+                <h5 id="nombreAdmin"></h5>
+                <div id="rating"></div>
+                <hr>
+                <p class="textoCalificacion">Todavía no hay suficientes calificaciones sobre comida, servicio, precio o
+                    ambiente. Sé uno de los primeros en escribir una opinión</p>
+                <a href="#" class="btn_opinion">Escribe una opinión</a>
+            </div>
+        </div>
+
     </main>
 
     <footer>
@@ -187,15 +195,20 @@
         </div>
     </footer>
 
+
     <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+
     <script src="/static/js/navegacionPrincipal_admin.js"></script>
     <script src="/static/js/buscador.js"></script>
-    <script src="/static/js/datos.js"></script>
-    <script src="/static/js/detalles_empren.js"></script>
-    <script src="/static/js/fav.js"></script>
-    <script type="text/javascript" src='/static/js/demo.js'></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/static/js/servidor.js"></script>
+    <script src="/static/js/detalleServidorRes.js"></script>
+    <script src="/static/js/MVQ.js"></script>
+    <script src="/static/js/demoServidor.js"></script>
+
 </body>
 
 </html>

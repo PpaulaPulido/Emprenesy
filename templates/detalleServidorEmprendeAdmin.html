@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/detalles.css')}}">
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/generalesPrincipal_admin.css')}}">
-    
+   
 
     <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
@@ -25,12 +25,12 @@
     <header id="cabecera">
         <div id="cabeza">
             <div class="logoedit">
-                <img style="height: 80px; width: 80px; margin-left: 35px;"
-                    src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+                <img style="height: 80px; width: 80px; margin-left: 35px;" src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
             </div>
         </div>
     </header>
     <main>
+
         <div id="enlaces" style="display: none;">
             <a id="url_nosotros" data-url="{{url_for('admin.nosotrosEmprenesy')}}"></a>
             <a id="url_index" data-url="{{url_for('admin.indexPrincipal')}}"></a>
@@ -90,9 +90,8 @@
                     <h3>Tipo de Negocio</h3>
                     <p id="negocio"></p>
                     <h3>Horario de atención</h3>
+                    <p id="horarioText"></p>
                     <p id="horario"></p>
-                    <h3>Sitio Web</h3>
-                    <a id="web">Clic aquí para visitar el sitio web.</a>
                     <div class="contenedor_button">
                         <button class="btn_info" onclick="popup_emprendimientos()">Nuestros Productos</button>
                     </div>
@@ -100,6 +99,8 @@
                 <div class="info">
                     <div class="contenedor_info">
                         <h2>Información</h2>
+                        <h3>Sitio Web</h3>
+                        <a id="web">Clic aquí para visitar el sitio web.</a>
                         <h3>Correo electrónico</h3>
                         <p id="correo"></p>
                         <h3>Contacto</h3>
@@ -133,6 +134,18 @@
                 </div>
             </div>
         </section>
+        <div class="calificacionRes">
+            <div class="divCalificacion">
+                <h2>Calificaciones y opiniones</h2>
+                <h3 id="nombreEmpre"></h3>
+                <h5 id="nombreAdmin"></h5>
+                <div id="rating"></div>
+                <hr>
+                <p class="textoCalificacion">Todavía no hay suficientes calificaciones. Sé uno de los primeros en
+                    escribir una opinión</p>
+                <a href="#" class="btn_opinion">Escribe una opinión</a>
+            </div>
+        </div>
     </main>
 
     <footer>
@@ -188,14 +201,18 @@
     </footer>
 
     <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+
+
     <script src="/static/js/navegacionPrincipal_admin.js"></script>
     <script src="/static/js/buscador.js"></script>
-    <script src="/static/js/datos.js"></script>
-    <script src="/static/js/detalles_empren.js"></script>
-    <script src="/static/js/fav.js"></script>
-    <script type="text/javascript" src='/static/js/demo.js'></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/static/js/servidor.js"></script>
+    <script src="/static/js/detalleServidorEmprende.js"></script>
+    <script src="/static/js/demoServidor.js"></script>
+
 </body>
 
 </html>

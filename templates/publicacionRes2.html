@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- medidas david -->
+
 <head>
 
   <meta charset="UTF-8" />
@@ -45,14 +45,13 @@
       <ul class="toggle-info">
         <li>
           <div class="tigle-img">
-            <img style="height: 150px; width: 150px; margin-left: 50px;"
-              src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+            <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
           </div>
         </li>
         <li><a href="{{ url_for('admin.index_admin') }}">Dashboard</a></li>
         <li><a href="{{url_for('admin.perfil_admin')}}">Perfil</a></li>
-        <li><a href="{{url_for('admin.indexPrincipal')}}">Inicio</a></li>
-        <li><a href="{{url_for('admin.nosotrosEmprenesy')}}">Nosotros</a></li>
+        <li><a href="./index.html">Inicio</a></li>
+        <li><a href="./MVQ.html">Nosotros</a></li>
       </ul>
     </div>
 
@@ -71,8 +70,8 @@
             </div>
 
             <div class="container_ubicacion">
-              <div class="detalle__sitio">
-                <input type="text" placeholder="Ingresar dirección" class="address" name="direcciones[]" />
+              <div class="detalle__sitio" >
+                <input type="text" id="ingresa_ubi" placeholder="Ingresar dirección"class="address" name="direcciones[]" />
               </div>
             </div>
             <div class="message"></div>
@@ -91,12 +90,12 @@
               </div>
             </div>
 
-            <div class="detalle__sitio boton_form">
+            <div class="detalle__sitio boton_form" id="botones">
               <div class="detalle__sitio boton_form">
-                <a id="btn_regresarRes" class="btnRes2">Regresar</a>
+                <button id="btn_regresarRes" class="btnRes2">Regresar</button>
               </div>
               <div class="detalle__sitio boton_form">
-                <input type="submit" value="Enviar publicación" class="btn__form" id="btn_enviar" />
+                <input type="submit" id="siguiente4" value="Enviar" class="btn__form" id="btn_enviar" />
               </div>
             </div>
 
@@ -110,7 +109,6 @@
     <div id="url" style="display: none;">
       <a id="url_dash" data-url="{{ url_for('admin.index_admin') }}"></a>
       <a id="url_editarPerfil" data-url="{{ url_for('admin.editarPerfilAdmin', id=admin_id) }}"></a>
-      <a id="url_cerrarSesion" data-url="{{url_for('usuarios.logout')}}"></a>
     </div>
     <div id="form_url">
       <a id="index" data-url="{{ url_for('admin.index_admin') }}" style="display: none;"></a>

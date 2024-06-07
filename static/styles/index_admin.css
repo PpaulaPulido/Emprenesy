@@ -185,6 +185,21 @@ body{
     #siguiente2{
         width: 60%;
     }
+    #geocode{
+        width: 50%;
+        margin-left: 12%;
+
+    }
+    #botones{
+
+        width: 100%;
+    }
+    #ingresa_ubi{
+        padding: 3%;
+        text-align: center;
+    }
+     
+
 
 }
 @media only screen  and (min-width:768px) and (max-width:1023px) {
@@ -205,6 +220,21 @@ body{
     #siguiente2{
        width: 60%;
     }
+    #geocode{
+        width: 60%;
+        margin-left: 5%;
+        
+    }
+    #ingresa_ubi{
+        padding: 3%;
+        text-align: center;
+    }
+    
+    #botones{
+  
+        width: 100%;
+    }
+
  
 }
 @media only screen  and (min-width:1024px) {
@@ -239,7 +269,28 @@ body{
         padding: 0px;
         width: 80%;
     }
-  
+   #ingresa_ubi{
+    width: 350px;
+    margin-top: 80px;
+   margin-left: -100px ;
+   padding: 8%;
+
+   }
+   #geocode{
+
+    margin-top: -130px;
+   }
+   #botones{
+
+    margin-left: -100px;
+   width: 500px;
+   height: fit-content;
+   margin-top: 322px;
+}
+   
+    #siguiente4{
+        padding: 0;
+    }
 
 }
 .detalle__sitio label{
@@ -321,7 +372,7 @@ body{
     justify-content: center;
     align-items: center;
 }
-.boton_form .btn__form,#btn_regresar{
+.boton_form .btn__form,#btn_regresar, #btn_regresarRes{
     margin-bottom: 20px;
     width: 50%;
     height: 40px;
@@ -330,9 +381,43 @@ body{
     background-color: #fff;
     border: none;
     border-radius: 6px;
+ 
 }
+
 .boton_form .btn__form:hover,
 #btn_regresar:hover{
+    background-color:#3d77ba;
+    color: #fff;
+}
+#btn_regresarRes:hover{
+    background-color:#3d77ba;
+    color: #fff;
+}
+#btn_dir{
+    width: 50%;
+    height: 40px;
+    padding: 10px;
+    color: #051248;
+    font-size: 18px;
+    background-color: #fff;
+    border: none;
+    border-radius: 6px;
+
+    @media only screen and (min-width: 1024px) {
+        margin-left: 145px;
+    }
+    @media only screen and (min-width:768px) and (max-width:1023px){
+
+       margin-left: 315px; 
+    }
+    @media only screen and (max-width:767px) {
+        margin-left: 245px ;
+        
+    }
+}
+
+
+#btn_dir:hover{
     background-color:#3d77ba;
     color: #fff;
 }
@@ -365,6 +450,7 @@ body{
     background-color: rgb(226, 239, 248);
     border: 7px solid #336baf;
     border-radius: 5px;
+ 
 
 }
 

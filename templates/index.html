@@ -11,10 +11,11 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
   <link rel="icon" href="{{url_for ('static', filename='img/Logo2.jpeg')}}" type="image/icon type">
-
-  <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+  <script src="https://kit.fontawesome.com/ea06c7c0f7.js" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="{{url_for ('static', filename='../static/styles/index.css')}}">
+  <link rel="stylesheet" href="/static/styles/whatssap.css">
 </head>
 
 <body>
@@ -37,7 +38,8 @@
       <!--barra de navegacion-->
       <div id="cabeza">
         <div class="logoedit">
-          <img class="logo" style="height: 80px; width: 80px; margin-left: 35px;" src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="Emprenesy">
+          <img class="logo" style="height: 80px; width: 80px; margin-left: 35px;"
+            src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="Emprenesy">
         </div>
 
         <div id="Barra">
@@ -66,6 +68,30 @@
         <div id="cover-ctn-search"></div>
       </div>
     </section>
+    <div id="menuLateralToggle">
+      <div id="toggle">
+        <div class="nav-list2" id="nav-list2">
+          <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <ul class="menu-opciones">
+            <li><i class="fa-solid fa-x" id="cerrar"></i></li>
+            <li><img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
+                class="logoToggle"></li>
+            <li><a href="{{url_for('inicio.nosotros')}}">Sobre Nosotros</a></li>
+            <li><a href="{{url_for('inicio.index')}}">Inicio</a></li>
+            <li><a href="{{url_for('usuarios.inicio_sesion')}}">Iniciar Sesión</a></li>
+            <li><a href="{{url_for('usuarios.registrar_usuario')}}">Crear Cuenta</a></li>
+          </ul>
+        </div>
+        <div class="container__img">
+          <img class="toggle_logo" style="height: 80px; width: 80px; margin-left: 35px;"
+              src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="Emprenesy">
+        </div>
+      </div>
+    </div>
   </header>
 
   <main>
@@ -223,6 +249,36 @@
         </form>
       </div>
     </div>
+
+    <!--WHATSAPP BUTTON-->
+    <div class="nav-bottom">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <div class="popup-whatsapp fadeIn">
+        <div class="content-whatsapp -top">
+          <button type="button" class="closePopup">
+            <i class="material-icons icon-font-color">close</i>
+          </button>
+          <p> <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" width="35" id="image-whatssap">
+            Hola, ¿cómo podemos ayudate? </p>
+        </div>
+
+        <div class="content-whatsapp -bottom">
+          <input class="whats-input" id="whats-in" type="text" Placeholder="Enviar mensaje..." />
+          <button class="send-msPopup" id="send-btn" type="button">
+            <i class="material-icons icon-font-color--black">send</i>
+          </button>
+        </div>
+
+      </div>
+
+      <button type="button" id="whats-openPopup" class="whatsapp-button">
+        <div class="float">
+          <i class="fa fa-whatsapp my-float"></i>
+        </div>
+      </button>
+
+      <div class="circle-anime"></div>
+    </div>
   </main>
 
   <footer>
@@ -265,7 +321,6 @@
             <li>Siguenos en</li>
             <div class="iconos">
               <img src="{{ url_for('static', filename='img/tik-tok.png') }}" alt="tiktok">
-              <img src="{{ url_for('static', filename='img/facebook.png') }}" alt="facebook">
               <img src="{{ url_for('static', filename='img/instagram1.png') }}" alt="instagram">
             </div>
           </ul>
@@ -279,6 +334,7 @@
 <script src="/static/js/datos.js"></script>
 <script src="/static/js/indexGeneral.js"></script>
 <script src="/static/js/buscador.js"></script>
+<script src="/static/js/whattssap.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

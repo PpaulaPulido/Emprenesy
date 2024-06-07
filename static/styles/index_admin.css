@@ -182,7 +182,9 @@ body{
     .info_detalles{
         width: 420px;
     }
-   
+    #siguiente2{
+        width: 60%;
+    }
 
 }
 @media only screen  and (min-width:768px) and (max-width:1023px) {
@@ -200,6 +202,10 @@ body{
     .info_detalles{
         width: 500px;
     }
+    #siguiente2{
+       width: 60%;
+    }
+ 
 }
 @media only screen  and (min-width:1024px) {
     .detalle__sitio{
@@ -221,6 +227,19 @@ body{
         display: grid;
         grid-template-columns: repeat(2,1fr);
     }
+    #siguiente2{
+        width: 80%;
+
+    }
+    #siguiente22{
+
+        padding: 0px;
+    }
+    #siguiente3{
+        padding: 0px;
+        width: 80%;
+    }
+  
 
 }
 .detalle__sitio label{
@@ -241,9 +260,8 @@ body{
     padding: 6px;
     @media only screen  and (min-width:1024px) {
         width: 108%;
-        text-align: center;
-        padding: 25px;
-
+        padding:20px;
+      
     }
 }
 .detalle__sitio input::placeholder{

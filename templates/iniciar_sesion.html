@@ -7,6 +7,7 @@
     <title>Iniciar Sesión</title>
     <link rel="icon" href="{{ url_for('static', filename='img/Logo2.jpeg') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/iniciar_sesion.css') }}">
+    <link rel="stylesheet" href="../static/styles/iniciar_sesion.css">
 </head>
 
 <body>
@@ -15,8 +16,8 @@
     </header>
     <main>
         <div class="login-container">
-            <h2>Iniciar Sesión</h2>
-            <form id="loginForm" action="{{ url_for('usuarios.inicio_sesion') }}" method="POST" >
+            <form id="loginForm" action="{{ url_for('usuarios.inicio_sesion') }}" method="POST">
+                <h2>Iniciar Sesión</h2>
                 <div class="input-group">
                     <label for="rol">Escoge tu rol</label>
                     <select name="rol" id="rol" class="controls">
@@ -38,6 +39,9 @@
                     <button type="submit">Iniciar Sesión</button>
                 </div>
             </form>
+            <div class="img">
+                <img src="https://img.freepik.com/fotos-premium/grupo-personas-reunidas-circulo-tomados-manos_99043-2870.jpg" alt="Emprenesy">
+            </div>
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

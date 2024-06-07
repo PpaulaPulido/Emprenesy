@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   user_sesion();
   inicializarBuscador()
-  
+
   cntSliderTarjetas(datosTarjetas, sliderTarjetas, btn_anterior, btn_siguiente, 'res', detalleResUrl);
   cntSliderTarjetas(datosEventos, sliderTarjetas2, btn_anterior2, btn_siguiente2, 'evento', detalleEventoUrl);
   cntSliderTarjetas(datosEmpredimientos, sliderTarjetas3, btn_anterior3, btn_siguiente3, 'emprende', detalleEmprendeUrl);
@@ -158,6 +158,7 @@ function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, t
     h3.textContent = data.titulo;
 
     let a = document.createElement("a");
+    a.classList.add('verDetalles')
 
     if (tipo == 'res') {
       a.href = `${enlace}?id=${data.id}&tipo=res`;
@@ -166,8 +167,8 @@ function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, t
     } else {
       a.href = `${enlace}?id=${data.id}&tipo=emprende`;
     }
-
     a.textContent = "Ver detalles";
+    
 
     frontImagenDiv.appendChild(img);
     frontDiv.appendChild(frontImagenDiv);
@@ -190,3 +191,18 @@ function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, t
     return tarjetasDiv;
   }
 };
+
+function popupInfo() {
+  Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: "Por favor Iniciar sesión!",
+    customClass: {
+      confirmButton: 'btn-blue',
+      popup: 'border-blue',
+      title: 'title-swal',
+      icon: 'icon-swal',
+      
+    }
+  });
+}

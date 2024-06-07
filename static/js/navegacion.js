@@ -2,11 +2,17 @@ function no_user() {
     const header = document.querySelector('#cabecera');
     const nav = document.querySelector('#cabeza');
 
+    const urlNosotros = document.getElementById('url_nosotros').getAttribute('data-url');
+    const urlIndex = document.getElementById('url_index').getAttribute('data-url');
+    const urlIniciarSesion= document.getElementById('url_iniciarSesion').getAttribute('data-url');
+    const urlRegistro= document.getElementById('url_registro').getAttribute('data-url');
+
+
     const links = [
-        { text: 'Sobre Nosotros', href: '/templates/MVQ.html', class: 'link' },
-        { text: 'Inicio', href: '/templates/index.html', class: 'link' },
-        { text: 'Iniciar Sesión', href: '/templates/iniciar_sesion.html', class: 'link' },
-        { text: 'Crear Cuenta', href: '/templates/registro.html', class: 'link1' }
+        { text: 'Sobre Nosotros', href: urlNosotros, class: 'link' },
+        { text: 'Inicio', href: urlIndex, class: 'link' },
+        { text: 'Iniciar Sesión', href: urlIniciarSesion, class: 'link' },
+        { text: 'Crear Cuenta', href: urlRegistro, class: 'link1' }
     ];
 
     const menu = document.createElement('nav');

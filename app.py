@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, url_for, render_template, flash
+from flask import Flask, request, redirect, url_for, render_template, flash, session
 import os
 from db import get_db, get_cursor
 
@@ -49,6 +49,19 @@ app.register_blueprint(publicacionDash, url_prefix="/publicacion")
 def index():
     return render_template('index.html')
 
+#Ruta para cerrar sesión
+@app.route('/logout')
+def logout():
+    session.pop('logged_in', None)
+    return redirect(url_for('registro.html'))
+
+#Ruta para el panel de control (requiere inicio de sesión)
+@app.route('/dashboard')
+def dashboard():
+    if 'logged_in' in session:
+        return 'Panel de control. <a href="/logout">Cerrar sesión</a>'
+    else:
+        return redirect(url_for('login'))
+    
 if __name__ == '__main__':
     app.run(debug=True,port=3036)
-

@@ -51,10 +51,10 @@ def inicio_sesion():
 @usuarios.route('/logout')
 def logout():
     if 'email' in session:
+        if 'user_id' in session:
+            session.pop('user_id',None)
         if 'admin_id' in session:
             session.pop('admin_id',None)
-        elif 'user_id' in session:
-            session.pop('user_id',None)
     return redirect(url_for('index'))
 #*******************************************Ruta de registro de usuario****************************************************************
 @usuarios.route('/registrarUser', methods=['GET', 'POST'])
@@ -351,7 +351,7 @@ def photosUser():
     
     try:
         cursor.execute("""
-            SELECT ruta_foto, tipo_foto FROM fotos_admin
+            SELECT ruta_foto, tipo_foto FROM fotos_usuario
             WHERE tipo_foto IN ('perfil', 'portada')
             ORDER BY id_foto DESC
         """)
@@ -414,7 +414,7 @@ def editarPerfilUsuario(id):
         cursor.execute('SELECT ruta_foto FROM fotos_usuario WHERE cod_usuario = %s AND tipo_foto = "perfil" ORDER BY id_foto DESC LIMIT 1', (id,))
         foto_perfil_data = cursor.fetchone()
         
-        foto_perfil = normalize_path(foto_perfil_data[0]) if foto_perfil_data else "../static/img/perfil_user.png"
+        foto_perfil = normalize_path(foto_perfil_data[0]) if foto_perfil_data else "/static/img/perfil_user.png"
         
         cursor.execute('SELECT direccionUsu,ciudadUsu,descripcionAcercaUsu,sitioWebUsu,blogUsu FROM datosUsuario WHERE codusuario = %s',(id,))
         datos = cursor.fetchone()

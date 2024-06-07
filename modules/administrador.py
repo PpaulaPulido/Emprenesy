@@ -362,11 +362,6 @@ def tipoPublicacion():
     admin_id = session.get('admin_id')
     return render_template('tipo_publicacion.html',admin_id = admin_id)
 
-
-@admin.route('/nosotros')
-def nosotrosEmprenesy():
-    return render_template('MVQ_admin.html')
-
 #Formatear los slashes para las imagenes
 def normalize_path(path):
     """Convierte backslashes a slashes en una ruta y asegura que empieza con '/'."""
@@ -374,3 +369,181 @@ def normalize_path(path):
     if not normalized_path.startswith('/'):
         normalized_path = '/' + normalized_path
     return normalized_path
+
+
+#*********************************************ruta de favoritos********************************************************
+@admin.route('/favoritosAdmin')
+def favoritosAdmin():
+    admin_id = session.get('admin_id')
+    return render_template('favoritosAdmin.html',admin_id = admin_id)
+
+@admin.route('/agregar_favorito/admin', methods=['POST'])
+def agregar_favorito_admin():
+    admin_id = session.get('admin_id')
+    
+    if not admin_id:
+        return jsonify({'success': False, 'message': 'Administrador no autenticado'})
+    
+    fav_id = request.form['id']
+    fav_type = request.form['tipo']
+
+    # Verificar si el favorito ya existe
+    sql_existente = 'SELECT idfavorito FROM favoritosAdmin WHERE codadmin = %s AND entidad_id = %s AND entidad_tipo = %s'
+    cursor.execute(sql_existente, (admin_id, fav_id, fav_type))
+    favoritoExiste = cursor.fetchone()
+    
+    if favoritoExiste:
+        return jsonify({'success': False, 'message': 'El favorito ya existe'})
+    
+    # Agrega el favorito a la sesión
+    if 'favoritesAdmin' not in session:
+        session['favoritesAdmin'] = []
+        
+    session['favoritesAdmin'].append({'id': fav_id, 'type': fav_type})
+    session.modified = True
+    print("sesion agregar: " , session['favoritesAdmin'])
+    
+    # Inserta el favorito en la base de datos
+    cursor.execute('INSERT INTO favoritosAdmin  (codadmin, entidad_id, entidad_tipo) VALUES (%s, %s, %s)', (admin_id, fav_id, fav_type))
+    db.commit()
+    
+    return jsonify({'success': True, 'message': 'Favorito agregado'})
+
+
+
+@admin.route('/remover_favorito/admin', methods=['POST'])
+def remover_favorito_admin():
+    
+    admin_id = session.get('admin_id')
+    if not admin_id:
+        return jsonify({'success': False, 'message': 'Administrador no autenticado'})
+    
+    fav_id = request.form['id']
+    fav_type = request.form['tipo']
+
+    # Elimina el favorito de la sesión
+    if 'favoritesAdmin' in session:
+        session['favoritesAdmin'] = [fav for fav in session['favoritesAdmin'] if not (fav['id'] == fav_id and fav['type'] == fav_type)]
+        session.modified = True
+    
+    print("sesion eliminar: " , session['favoritesUser'])
+    
+    # Elimina el favorito de la base de datos
+    cursor.execute('DELETE FROM favoritosAdmin WHERE codadmin = %s AND entidad_id = %s AND entidad_tipo = %s', (admin_id, fav_id, fav_type))
+    db.commit()
+
+    return jsonify({'success': True, 'message': 'Favorito eliminado'})
+
+
+@admin.route('/obtener_favoritosAdmin', methods=['GET'])
+def obtener_favoritos_admin():
+
+    admin_id = session.get('admin_id')
+
+    if not admin_id:
+        return jsonify({'success': False, 'message': 'Administrador no autenticado'})
+
+    cursor.execute('SELECT entidad_id, entidad_tipo FROM favoritosAdmin WHERE codadmin = %s', (admin_id,))
+    
+    favoritos = cursor.fetchall()
+
+    # Convertir las filas en una lista de diccionarios
+    favoritos_list = [{'entidad_id': fav[0], 'entidad_tipo': fav[1]} for fav in favoritos]
+    
+    return jsonify(favoritos_list)
+
+
+
+def favoritos_admin(entidad_tipo):
+    try:
+        db = get_db()
+        cursor = db.cursor()
+
+        if entidad_tipo == 'restaurante':
+            query = """
+            SELECT DISTINCT
+                fa.idfavorito, fa.codadmin, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
+                res.idresta, res.nombreresta, res.logo AS logo_res, res.tiporesta
+            FROM favoritosAdmin fa
+            LEFT JOIN restaurantes res ON fa.entidad_id = res.idresta
+            WHERE fa.codadmin = %s AND fa.entidad_tipo = %s
+            ORDER BY fa.fecha_agregado DESC;
+            """
+        elif entidad_tipo == 'emprendimiento':
+            query = """
+            SELECT DISTINCT
+                fa.idfavorito, fa.codadmin, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
+                em.idempre, em.nombreempre, em.logo AS logo_empre, em.tipoempre
+            FROM favoritosAdmin fa
+            LEFT JOIN emprendimientos em ON fa.entidad_id = em.idempre
+            WHERE fa.codadmin = %s AND fa.entidad_tipo = %s
+            ORDER BY fa.fecha_agregado DESC;
+            """
+        elif entidad_tipo == 'evento':
+            query = """
+            SELECT DISTINCT
+                fa.idfavorito, fa.codadmin, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
+                eve.ideven, eve.nombreeven, eve.logo AS logo_evento, eve.tipoevento 
+            FROM favoritosAdmin fa
+            LEFT JOIN eventos eve ON fa.entidad_id = eve.ideven
+            WHERE fa.codadmin = %s AND fa.entidad_tipo = %s
+            ORDER BY fa.fecha_agregado DESC;
+            """
+        else:
+            return jsonify({'error': 'Tipo de entidad no soportado'}), 400
+
+        
+        admin_id = session.get('admin_id')
+
+        if not admin_id:
+            return jsonify({'success': False, 'message': 'Administrador no autenticado'})
+        
+        cursor.execute(query, (admin_id, entidad_tipo))
+        favoritos = cursor.fetchall()
+
+        favoritos_list = []
+        for favorito in favoritos:
+            logo_path = f"/static/{favorito[7].replace('\\', '/')}"
+            favoritos_list.append({
+                'fecha_publicacion': favorito[4],
+                'idFav': favorito[0],
+                'id': favorito[5],
+                'logo': logo_path,
+                'nombre': favorito[6],
+                'tipo': favorito[3]
+            })
+
+        # Cerrar cursor y conexión
+        cursor.close()
+        db.close()
+
+        # Devuelve los resultados en formato JSON
+        return jsonify({"favoritos": favoritos_list})
+
+    except Exception as e:
+        return jsonify({"error": str(e)})
+
+@admin.route('/Listafavoritos_admin/restaurantes', methods=['GET'])
+def obtener_favoritos_restaurantes():
+    return favoritos_admin('restaurante')
+
+@admin.route('/Listafavoritos_admin/emprendimientos', methods=['GET'])
+def obtener_favoritos_emprendimientos():
+    return favoritos_admin('emprendimiento')
+
+@admin.route('/Listafavoritos_admin/eventos', methods=['GET'])
+def obtener_favoritos_eventos():
+    return favoritos_admin('evento')
+
+#************************************Rutas estaticas********************************************
+@admin.route('/indexAdmin')
+def indexPrincipal():
+    admin_id = session.get('admin_id')
+    return render_template('principal_admin.html',admin_id = admin_id)
+
+@admin.route('/nosotros/administrador')
+def nosotrosEmprenesy():
+    admin_id = session.get('admin_id')
+    return render_template('MVQ_admin.html',admin_id = admin_id)
+
+

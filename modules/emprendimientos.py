@@ -219,12 +219,26 @@ def EmprendeDetalleServidor():
     admin_id = session.get('admin_id')
     return render_template('detalleServidorEmprende.html',user_id = user_id,admin_id = admin_id)
 
+@emprende.route('/EmprendeDetalleServidorAdmin')
+def EmprendeDetalleServidorAdmin():
+    admin_id = session.get('admin_id')
+    return render_template('detalleServidorEmprendeAdmin.html',admin_id = admin_id)
 #********************************************Rutas para html estaticos*************************************
 @emprende.route('/sectionEmprende')
 def sectionEmprende():
     user_id = session.get('user_id')
     admin_id = session.get('admin_id')
     return render_template('seccion_empren.html',user_id = user_id, admin_id = admin_id)
+
+@emprende.route('/sectionEmprendeAdmin')
+def sectionEmprendeAdmin():
+    admin_id = session.get('admin_id')
+    return render_template('seccion_empren_admin.html',admin_id = admin_id)
+
+@emprende.route('/detalleEmprende/administrador')
+def detalleEmprendeAdmin():
+    admin_id = session.get('admin_id')
+    return render_template('detalle_emprende_admin.html',admin_id = admin_id)
 
 @emprende.route('/emprendeDetalle')
 def emprendeDetalle():

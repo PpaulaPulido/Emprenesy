@@ -59,11 +59,14 @@ function parametros() {
 }
 
 function scrollFunction() {
-  if (document.body.scrollTop > 380 || document.documentElement.scrollTop > 380) {
+  if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
     document.getElementById("cabeza").style.backgroundColor = "#3d77ba"; // Cambia el color a azul
+  }else if(document.body.scrollTop > 380 || document.documentElement.scrollTop > 380){
+    document.getElementById("cabeza").style.backgroundColor = "#3d77ba";
   } else {
     document.getElementById("cabeza").style.backgroundColor = "transparent"; // Vuelve a ser transparente
   }
+
 }
 
 function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, tipo, enlace) {

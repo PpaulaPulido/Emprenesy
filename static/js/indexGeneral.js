@@ -99,7 +99,9 @@ function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, t
   }
 
   let cardSlider = 3;
-  if (window.innerWidth < 1024) {
+  if (window.innerWidth < 920) {
+    cardSlider = 1;
+  }else if(window.innerWidth < 1024){
     cardSlider = 2;
   }
   // Índice inicial del conjunto de tarjetas que se muestra en el html

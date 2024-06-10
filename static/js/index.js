@@ -219,10 +219,6 @@ function menuToggle() {
   const navList = document.getElementById('nav-list2');
   const cerrar = document.getElementById('cerrar');
 
-  console.log(mobileMenu); // Verificar si mobileMenu se está seleccionando correctamente
-  console.log(navList);    // Verificar si navList se está seleccionando correctamente
-  console.log(cerrar);     // Verificar si cerrar se está seleccionando correctamente
-  
   document.addEventListener('click', function (event) {
     // Comprobar si el clic no fue dentro del menú o el botón de toggle
     if (!navList.contains(event.target) && !mobileMenu.contains(event.target)) {

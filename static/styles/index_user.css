@@ -192,7 +192,6 @@ ol {
     margin: 0 20px;
     text-decoration: none;
     color: #fff;
-    font-family: "Poppins", sans-serif;
     overflow: hidden;
     font-size: 18px;
     font-weight: 700;
@@ -389,8 +388,6 @@ ol {
       display: block;
     }
   
-  
-  
     .titulo {
       top: 35px;
       left: 50px;
@@ -414,6 +411,10 @@ ol {
   }
   
   @media only screen and (max-width: 920px) {
+
+    .link1{
+        margin-right: -10px;
+    }
     .container_buscador {
       width: 70%;
     }

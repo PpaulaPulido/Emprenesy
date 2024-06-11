@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- Medidas query david -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,28 +31,23 @@
     <header id="cabecera">
         <div id="cabeza">
             <div class="logoedit">
-                <img style="height: 80px; width: 80px; margin-left: 35px;" src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+                <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
             </div>
         </div>
     </header>
 
     <main>
-
         <div id="url" style="display: none;">
             <a id="detalle-emprende-url" data-url="{{ url_for('emprende.emprendeDetalle') }}"></a>
             <a id="url_nosotros" data-url="{{url_for('usuarios.nosotros_user')}}"></a>
             <a id="url_index" data-url="{{url_for('usuarios.index_user')}}"></a>
             <a id="url_favoritos" data-url="{{url_for('usuarios.favoritos_user')}}"></a>
-            <a id="url_perfil" data-url="{{url_for('usuarios.perfil_usuario')}}"></a>
-            <a id="url_editarPerfil" data-url="{{ url_for('usuarios.editarPerfilUsuario', id=user_id) }}"></a>
-            <a id="url_cerrarSesion" data-url="{{url_for('usuarios.logout')}}"></a>
         </div>
-
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-interval="2000">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="carousel-img with-text"></div>
-                    <div class="carousel_text">
+                    <div id="contenido1" class="carousel_text">
                         <h2>Descubre el Poder Emprendedor de Bogotá</h2>
                         <p>¡Explora la innovación y la creatividad de los emprendimientos en la vibrante ciudad de
                             Bogotá! ¡Ven y sé parte del futuro de la capital colombiana!</p>
@@ -69,7 +64,7 @@
                             <img src="https://www.sena.edu.co/es-co/Noticias/NoticiasImg/hernan_06132022.jpg"
                                 alt="imagen evento">
                         </div>
-                        <div class="contenido_text">
+                        <div id="contenido2" class="contenido_text">
                             <h2>Saborea el Espíritu del Emprendedor</h2>
                             <p>¡Descubre nuevos sabores en los emprendimientos culinarios de la ciudad!</p>
                             <div class="container-btn">
@@ -87,7 +82,7 @@
 
                 <div class="carousel-item">
                     <div class="carousel-img3 with-text"></div>
-                    <div class="carousel_text contenido_carousel">
+                    <div id="contenido3" class="carousel_text contenido_carousel">
                         <h2>Bogotá Emprende: Descubre la Innovación</h2>
                         <p>¡Explora los emprendimientos artesanales de Bogotá y únete al cambio!</p>
                         <div class="container-btn">
@@ -158,8 +153,7 @@
                 <h3>Empredimientos Gastronómicos</h3>
                 <p>¡Sumérgete en una experiencia gastronómica única! Descubre los deliciosos emprendimientos culinarios
                     que te esperan. ¡Déjate sorprender por sabores innovadores y exquisitos!</p>
-                <button><a href="{{ url_for('publicacionDash.emprendeTipo', tipo='Emprendimiento Gastronómico') }}">Ver
-                        Emprendimientos</a></button>
+                <button><a href="#">Ver Emprendimientos</a></button>
             </div>
         </div>
 

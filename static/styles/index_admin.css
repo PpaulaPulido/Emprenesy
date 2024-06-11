@@ -105,20 +105,10 @@ body {
     margin-left: 0;
     width: 100%;
     overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  
 }
-
-.detalle__sitio textarea {
-    border: none;
-    border-radius: 6px;
-    width: 100%;
-    transition: width 0.3s ease;
-}
-
-#publicaciones__form.active {
-    margin-left: 100px;
+#publicaciones__form.active{
+    margin-left: 150px;
     width: calc(100% - 100px);
 }
 
@@ -129,6 +119,7 @@ body {
     margin: 30px 15px;
     border-radius: 5px;
     padding: 40px;
+    
 }
 
 .container_vac {
@@ -379,25 +370,162 @@ body {
     background-color: rgba(255, 255, 255, 0.2);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
     width: 70%;
-    border-radius: 10px;
+    border-radius: 10px; 
+ 
 }
 
 .detalle__sitio h3 {
     color: #fff;
     margin: 8px 4px -5px 0;
+    font-size: 40px;
+    @media screen and (max-width: 767px) {
+        font-size: 32px;
+        
+    }
+    
 }
-
-.detalle__sitio {
+.detalle__sitio{
     margin: 0 auto;
     padding: 20px;
     width: 80%;
 }
+@media only screen and (max-width:767px) {
+    .detalle__sitio{
+        width: 680px;
 
-.detalle__sitio label {
+    }
+    textarea{
+       width: 380px;
+    }
+    #siguiente{
+       width: 30%;
+        margin-left: -250px;
+    }
+    .info_detalles{
+        width: 420px;
+    }
+    #siguiente2{
+        width: 60%;
+    }
+    #geocode{
+        width: 50%;
+        margin-left: 8%;
+
+    }
+    #botones{
+        display: flex ;
+        width: 100%;
+ 
+    }
+    #ingresa_ubi{
+        padding: 3%;
+        text-align: center;
+    }
+     
+
+
+}
+@media only screen  and (min-width:768px) and (max-width:1023px) {
+    .detalle__sitio{
+        width: 800px;
+
+    }
+    textarea{
+       width: 460px;
+    }
+    #siguiente{
+       width: 30%;
+        margin-left: -250px;
+    }
+    .info_detalles{
+        width: 500px;
+    }
+    #siguiente2{
+       width: 60%;
+    }
+    #geocode{
+        width: 60%;
+
+        
+    }
+    #ingresa_ubi{
+        padding: 3%;
+        text-align: center;
+    }
+    #botones{
+        display: flex ;
+        width: 100%;
+ 
+    }
+ 
+}
+@media only screen  and (min-width:1024px) {
+    .detalle__sitio{
+        width: 80%;
+
+    }
+    
+    textarea{
+       width: 110%;
+       height: 55px;
+    }
+    #siguiente{
+       width: 40%;
+       padding: 10px;
+        margin-left: -60%;
+    }
+    .info_detalles{
+
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+    #formularioLocationRes{
+        display: block;
+ 
+    }
+    #formularioLocationEm{
+        display: block;
+
+    }
+    #siguiente2{
+        width: 80%;
+
+    }
+    #siguiente22{
+
+        padding: 0px;
+    }
+    #siguiente3{
+        padding: 0px;
+        width: 80%;
+    }
+ 
+   #geocode{
+    margin-left: -10%;
+    width: 1000px;
+   }
+  
+   
+    #siguiente4{
+        padding: 0;
+    }
+    #botones{
+        display: flex ;
+        width: 70%;
+ 
+ 
+    }
+
+}
+.detalle__sitio label{
     display: block;
     margin-bottom: 15px;
     font-size: 18px;
     color: #fff;
+    @media only screen  and (min-width:1024px){
+        font-size: 22px;
+    }
+
 }
 
 .detalle__sitio input {
@@ -406,6 +534,11 @@ body {
     width: 60%;
     height: 30px;
     padding: 6px;
+    @media only screen  and (min-width:1024px) {
+        width: 95%;
+        padding:20px;
+      
+    }
 }
 
 .detalle__sitio input::placeholder {
@@ -414,6 +547,8 @@ body {
 
 .detalle__sitio textarea::placeholder {
     color: #d4cfcf;
+ 
+    
 }
 
 .file-upload-btn {
@@ -428,6 +563,19 @@ body {
     width: 60%;
     color: #fff;
     font-size: 14px;
+    @media only screen  and (min-width:1024px) {
+        width: max-content;
+        padding: 4.5%;
+
+    }
+    @media only screen and (min-width:768px) and (max-width:1023px) {
+        width: max-content;
+
+    }
+    @media only screen and (max-width: 767px) {
+        width: max-content;
+ 
+    }
 }
 
 .detalle__sitio select[name='restaurante'] {
@@ -437,21 +585,12 @@ body {
     border-radius: 6px;
     cursor: pointer;
     color: #051248;
+    @media only screen  and (min-width:1024px) {
+        width: 108%;
+        padding: 15px;
+    }
 }
-
-.boton_form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.boton_form .btn__form {
-    margin-bottom: 20px;
-    width: 60%;
-    height: 40px;
-    color: #051248;
-    font-size: 18px;
-    background-color: #fff;
+.detalle__sitio textarea{
     border: none;
     border-radius: 6px;
     text-align: center;
@@ -459,9 +598,7 @@ body {
     justify-content: center;
     align-items: center;
 }
-
-#btn_regresar,
-#btn_enviar {
+.boton_form .btn__form,#btn_regresar, #btn_regresarRes, #btn_regresarEm{
     margin-bottom: 20px;
     width: 80%;
     height: 40px;
@@ -470,18 +607,32 @@ body {
     background-color: #fff;
     border: none;
     border-radius: 6px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+ 
 }
 
 .boton_form .btn__form:hover,
-#btn_regresar:hover {
+#btn_regresar:hover, #btn_regresarEm:hover {
     background-color: #3d77ba;
     color: #fff;
 }
+#btn_regresarRes:hover{
+    background-color:#3d77ba;
+    color: #fff;
+}
 
+
+
+   
+   
+
+
+
+
+#btn_dir:hover{
+    background-color:#3d77ba;
+    color: #fff;
+}
 /************************** estilos de publicaciones res 1**********************************/
 .detalle__sitioImg {
     display: grid;
@@ -500,7 +651,7 @@ body {
 }
 
 .detalles__btn {
-    display: flex;
+border:solid;
 }
 
 .galeria {
@@ -533,6 +684,19 @@ body {
     padding: 10px 20px;
     border-radius: 8px;
     margin-left: 100px;
+    @media only screen and (min-width: 1024px){
+       
+        margin-left: 71%;
+     }
+     @media only screen and (min-width:768px) and (max-width:1023px){
+ 
+        margin-left: 315px; 
+     }
+     @media only screen and (max-width:767px){
+         margin-left: 245px ;
+         
+     }
+
 }
 
 #btn_dir:hover {
@@ -554,6 +718,7 @@ body {
     background-color: rgb(226, 239, 248);
     border: 7px solid #336baf;
     border-radius: 5px;
+ 
 
 }
 

@@ -16,9 +16,14 @@
     integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  <!-- Enlace a la fuente de Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+  <script src="https://kit.fontawesome.com/ea06c7c0f7.js" crossorigin="anonymous"></script>
+
 
   <link rel="stylesheet" href="{{url_for ('static', filename='styles/tipo_res_even_emprende.css')}}">
   <link rel="stylesheet" href="{{url_for ('static', filename='styles/generales_user.css')}}">
+  <link rel="stylesheet" href="/static/styles/whatssap.css">
 
 
   <link rel="icon" href="{{url_for ('static', filename='img/Logo2.jpeg')}}" type="image/icon type">
@@ -29,7 +34,27 @@
   <header id="cabecera">
     <div id="cabeza">
       <div class="logoedit">
-        <img style="height: 80px; width: 80px; margin-left: 35px;" src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+        <img style="height: 80px; width: 80px; margin-left: 35px;"
+          src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+      </div>
+    </div>
+    <div id="menuLateralToggle">
+      <div id="toggle">
+        <div class="nav-list2" id="nav-list2">
+          <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <ul class="menu-opciones">
+            <li><i class="fa-solid fa-x" id="cerrar"></i></li>
+            <li><img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
+                class="logoToggle"></li>
+            <li><a href="{{url_for('usuarios.nosotros_user')}}">Sobre Nosotros</a></li>
+            <li><a href="{{url_for('usuarios.index_user')}}">Inicio</a></li>
+            <li><a href="{{url_for('usuarios.favoritos_user')}}">Mis favoritos</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </header>
@@ -44,7 +69,7 @@
       <a id="url_cerrarSesion" data-url="{{url_for('usuarios.logout')}}"></a>
     </div>
 
-  
+
     <section class="container_restaurantes" id="containerRes">
       <div id="resturanteContenedor"></div>
       <div class="tipos_restaurantes">
@@ -135,7 +160,8 @@
         <div class="container_tarjeta">
           <div class="tipo_imagen_container">
             <div class="tipo_imagen">
-              <img src="https://cloudfront-us-east-1.images.arcpublishing.com/prisaradioco/PKE2RZZFGRLLTDMP3N2GCI4GZY.jpg"
+              <img
+                src="https://cloudfront-us-east-1.images.arcpublishing.com/prisaradioco/PKE2RZZFGRLLTDMP3N2GCI4GZY.jpg"
                 alt="" />
             </div>
             <i class="bi bi-heart-fill favorite"></i>
@@ -190,6 +216,37 @@
 
       </div>
     </section>
+
+
+    <!--WHATSAPP BUTTON-->
+    <div class="nav-bottom">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <div class="popup-whatsapp fadeIn">
+        <div class="content-whatsapp -top">
+          <button type="button" class="closePopup">
+            <i class="material-icons icon-font-color">close</i>
+          </button>
+          <p> <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" width="35" id="image-whatssap">
+            Hola, ¿cómo podemos ayudate? </p>
+        </div>
+
+        <div class="content-whatsapp -bottom">
+          <input class="whats-input" id="whats-in" type="text" Placeholder="Enviar mensaje..." />
+          <button class="send-msPopup" id="send-btn" type="button">
+            <i class="material-icons icon-font-color--black">send</i>
+          </button>
+        </div>
+
+      </div>
+
+      <button type="button" id="whats-openPopup" class="whatsapp-button">
+        <div class="float">
+          <i class="fa fa-whatsapp my-float"></i>
+        </div>
+      </button>
+
+      <div class="circle-anime"></div>
+    </div>
   </main>
   <footer>
     <div class="principal_footer">
@@ -230,7 +287,6 @@
             <li>Siguenos en</li>
             <div class="iconos">
               <img src="{{ url_for('static', filename='img/tik-tok.png') }}" alt="tiktok">
-              <img src="{{ url_for('static', filename='img/facebook.png') }}" alt="facebook">
               <img src="{{ url_for('static', filename='img/instagram1.png') }}" alt="instagram">
             </div>
           </ul>
@@ -247,6 +303,7 @@
   <script src="../static/js/servidor.js"></script>
   <script src="../static/js/tipoPublicacionRes.js"></script>
   <script src="../static/js/favoritosServidor.js"></script>
+  <script src="/static/js/whattssap.js"></script>
 </body>
 
 </html>

@@ -17,8 +17,7 @@ const detalleEmprendeUrl = document.getElementById('detalle-emprende-url').getAt
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  inicializarBuscador()
-
+  inicializarBuscador();
   cntSliderTarjetas(datosTarjetas, sliderTarjetas, btn_anterior, btn_siguiente, 'res', detalleResUrl);
   cntSliderTarjetas(datosEventos, sliderTarjetas2, btn_anterior2, btn_siguiente2, 'evento', detalleEventoUrl);
   cntSliderTarjetas(datosEmpredimientos, sliderTarjetas3, btn_anterior3, btn_siguiente3, 'emprende', detalleEmprendeUrl);
@@ -27,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.onscroll = function () {
     scrollFunction();
   };
+  menuToggle();
 
 
 });
@@ -59,11 +59,14 @@ function parametros() {
 }
 
 function scrollFunction() {
-  if (document.body.scrollTop > 380 || document.documentElement.scrollTop > 380) {
+  if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
     document.getElementById("cabeza").style.backgroundColor = "#3d77ba"; // Cambia el color a azul
+  }else if(document.body.scrollTop > 380 || document.documentElement.scrollTop > 380){
+    document.getElementById("cabeza").style.backgroundColor = "#3d77ba";
   } else {
     document.getElementById("cabeza").style.backgroundColor = "transparent"; // Vuelve a ser transparente
   }
+
 }
 
 function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, tipo, enlace) {
@@ -99,7 +102,9 @@ function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, t
   }
 
   let cardSlider = 3;
-  if (window.innerWidth < 1024) {
+  if (window.innerWidth < 920) {
+    cardSlider = 1;
+  }else if(window.innerWidth < 1024){
     cardSlider = 2;
   }
   // Índice inicial del conjunto de tarjetas que se muestra en el html
@@ -148,7 +153,7 @@ function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, t
       a.href = `${enlace}?id=${data.id}&tipo=emprende`;
     }*/
     a.textContent = "Ver detalles";
-    a.addEventListener('click',()=>{
+    a.addEventListener('click', () => {
       popupInfo();
     });
 
@@ -184,7 +189,38 @@ function popupInfo() {
       popup: 'border-blue',
       title: 'title-swal',
       icon: 'icon-swal',
-      
+
     }
   });
+}
+function menuToggle() {
+  
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navList = document.getElementById('nav-list2');
+  const cerrar = document.getElementById('cerrar');
+
+  console.log(mobileMenu); // Verificar si mobileMenu se está seleccionando correctamente
+  console.log(navList);    // Verificar si navList se está seleccionando correctamente
+  console.log(cerrar);     // Verificar si cerrar se está seleccionando correctamente
+  
+  document.addEventListener('click', function (event) {
+    // Comprobar si el clic no fue dentro del menú o el botón de toggle
+    if (!navList.contains(event.target) && !mobileMenu.contains(event.target)) {
+      // Cerrar el menú
+      navList.classList.remove('active');
+      mobileMenu.classList.remove('is-active');
+    }
+  });
+
+  mobileMenu.addEventListener('click', () => {
+    console.log("menuToggle() called");
+    navList.classList.toggle('active');
+    mobileMenu.classList.toggle('is-active');
+  });
+
+  cerrar.addEventListener('click', () => {
+    navList.style.transition = 'left 0.9s ease';
+    navList.classList.remove('active');
+    mobileMenu.classList.remove('is-active');
+  })
 }

@@ -62,7 +62,7 @@
         </div>
         <div class="contenido__detalles">
 
-          <form class="info_detalles" id="formularioLocationRes" action="{{url_for('res.restauranteLocation')}}"
+          <form class="info_detalles"  id="formularioLocationRes" action="{{url_for('res.restauranteLocation')}}"
             method="POST" enctype="multipart/form-data">
 
             <div class="detalle__sitio">
@@ -71,7 +71,7 @@
 
             <div class="container_ubicacion">
               <div class="detalle__sitio" >
-                <input type="text" id="ingresa_ubi" placeholder="Ingresar dirección"class="address" name="direcciones[]" />
+                <input type="text"  placeholder="Ingresar dirección"class="address" id="direccion" name="direcciones[]" />
               </div>
             </div>
             <div class="message"></div>

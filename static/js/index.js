@@ -82,7 +82,7 @@ function parametros() {
 function scrollFunction() {
   if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
     document.getElementById("cabeza").style.backgroundColor = "#3d77ba"; // Cambia el color a azul
-  }else if(document.body.scrollTop > 380 || document.documentElement.scrollTop > 380){
+  } else if (document.body.scrollTop > 380 || document.documentElement.scrollTop > 380) {
     document.getElementById("cabeza").style.backgroundColor = "#3d77ba";
   } else {
     document.getElementById("cabeza").style.backgroundColor = "transparent"; // Vuelve a ser transparente
@@ -125,7 +125,7 @@ function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, t
   let cardSlider = 3;
   if (window.innerWidth < 920) {
     cardSlider = 1;
-  }else if(window.innerWidth < 1024){
+  } else if (window.innerWidth < 1024) {
     cardSlider = 2;
   }
   // Índice inicial del conjunto de tarjetas que se muestra en el html
@@ -174,7 +174,7 @@ function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, t
       a.href = `${enlace}?id=${data.id}&tipo=emprende`;
     }
     a.textContent = "Ver detalles";
-    
+
 
     frontImagenDiv.appendChild(img);
     frontDiv.appendChild(frontImagenDiv);
@@ -208,13 +208,13 @@ function popupInfo() {
       popup: 'border-blue',
       title: 'title-swal',
       icon: 'icon-swal',
-      
+
     }
   });
 }
 
 function menuToggle() {
-  
+
   const mobileMenu = document.getElementById('mobile-menu');
   const navList = document.getElementById('nav-list2');
   const cerrar = document.getElementById('cerrar');

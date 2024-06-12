@@ -133,7 +133,8 @@ def restaurantesList():
 @publicacionDash.route('/restauranteTipo')
 def resTipo():
     user_id = session.get('user_id')
-    return render_template('tipo_restaurante.html',user_id=user_id)
+    admin_id = session.get('admin_id')
+    return render_template('tipo_restaurante.html',user_id=user_id,admin_id = admin_id)
 
 @publicacionDash.route('/restauranteTipoAdmin')
 def resTipoAdmin():

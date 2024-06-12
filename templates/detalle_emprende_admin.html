@@ -7,8 +7,12 @@
     <title>Detalle</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
     <link rel="icon" href="{{url_for ('static', filename='img/Logo2.jpeg')}}" type="image/icon type">
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+
+
     <link rel="stylesheet" href="/static/styles/generalesPrincipal_admin.css">
     <link rel="stylesheet" href="../static/styles/detalles.css">
+    <link rel="stylesheet" href="/static/styles/whatssap.css">
 
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/detalles.css')}}">
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/generalesPrincipal_admin.css')}}">
@@ -133,6 +137,36 @@
                 </div>
             </div>
         </section>
+
+        <!--WHATSAPP BUTTON-->
+    <div class="nav-bottom">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <div class="popup-whatsapp fadeIn">
+          <div class="content-whatsapp -top">
+            <button type="button" class="closePopup">
+              <i class="material-icons icon-font-color">close</i>
+            </button>
+            <p> <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" width="35" id="image-whatssap">
+              Hola, ¿cómo podemos ayudate? </p>
+          </div>
+  
+          <div class="content-whatsapp -bottom">
+            <input class="whats-input" id="whats-in" type="text" Placeholder="Enviar mensaje..." />
+            <button class="send-msPopup" id="send-btn" type="button">
+              <i class="material-icons icon-font-color--black">send</i>
+            </button>
+          </div>
+  
+        </div>
+  
+        <button type="button" id="whats-openPopup" class="whatsapp-button">
+          <div class="float">
+            <i class="fa fa-whatsapp my-float"></i>
+          </div>
+        </button>
+  
+        <div class="circle-anime"></div>
+      </div>
     </main>
 
     <footer>
@@ -176,7 +210,6 @@
                         <li>Siguenos en</li>
                         <div class="iconos">
                             <img src="{{ url_for('static', filename='img/tik-tok.png') }}" alt="tiktok">
-                            <img src="{{ url_for('static', filename='img/facebook.png') }}" alt="facebook">
                             <img src="{{ url_for('static', filename='img/instagram1.png') }}" alt="instagram">
                         </div>
                     </ul>
@@ -195,6 +228,7 @@
     <script src="/static/js/detalles_empren.js"></script>
     <script src="/static/js/fav.js"></script>
     <script type="text/javascript" src='/static/js/demo.js'></script>
+    <script src="/static/js/whattssap.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 

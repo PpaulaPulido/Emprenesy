@@ -485,14 +485,12 @@ body {
         display: grid;
         grid-template-columns: repeat(2,1fr);
     }
-    #formularioLocationRes{
+    #formularioLocationRes, #formularioLocation, #formularioLocationEm {
         display: block;
  
     }
-    #formularioLocationEm{
-        display: block;
-
-    }
+   
+    #formulario
     #siguiente2{
         width: 80%;
 

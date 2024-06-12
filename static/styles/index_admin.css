@@ -379,7 +379,11 @@ body {
     margin: 8px 4px -5px 0;
     font-size: 40px;
     @media screen and (max-width: 767px) {
-        font-size: 32px;
+        font-size: 28px;
+        
+    }
+    @media screen and (min-width: 768px) and (max-width:1023px) {
+        font-size: 35px;
         
     }
     
@@ -404,7 +408,7 @@ body {
     .info_detalles{
         width: 420px;
     }
-    #siguiente2{
+    #siguiente2, #siguiente22{
         width: 60%;
     }
     #geocode{
@@ -440,9 +444,11 @@ body {
     .info_detalles{
         width: 500px;
     }
-    #siguiente2{
+    #siguiente2, #siguiente22{
        width: 60%;
     }
+   
+
     #geocode{
         width: 60%;
 
@@ -466,7 +472,7 @@ body {
     }
     
     textarea{
-       width: 110%;
+       width: 95%;
        height: 55px;
     }
     #siguiente{
@@ -491,7 +497,7 @@ body {
         width: 80%;
 
     }
-    #siguiente22{
+    #siguiente22, #btn_enviar{
 
         padding: 0px;
     }
@@ -578,7 +584,7 @@ body {
     }
 }
 
-.detalle__sitio select[name='restaurante'] {
+.detalle__sitio select[name='typeRes'] {
     border: none;
     width: 60%;
     padding: 6px;
@@ -586,7 +592,31 @@ body {
     cursor: pointer;
     color: #051248;
     @media only screen  and (min-width:1024px) {
-        width: 108%;
+        width: 95%;
+        padding: 15px;
+    }
+}
+.detalle__sitio select[name = 'typeEmprende']{
+    border: none;
+    width: 60%;
+    padding: 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #051248;
+    @media only screen  and (min-width:1024px) {
+        width: 95%;
+        padding: 15px;
+    }
+}
+.detalle__sitio select[name = 'tipoevento']{
+    border: none;
+    width: 60%;
+    padding: 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #051248;
+    @media only screen  and (min-width:1024px) {
+        width: 95%;
         padding: 15px;
     }
 }

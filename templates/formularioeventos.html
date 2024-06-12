@@ -68,7 +68,8 @@
 
                         <div class="detalle__sitio">
                             <label for="logoeven">Logo</label>
-                            <input type="file" id="file-upload-button" name="logoeven" required>
+                            <input type="file" id="file-upload-button" name="logoeven" style="display: none;" required>
+                            <label for="file-upload-button" class="file-upload-btn">Seleccionar Imagen</label>
                         </div>
 
                     
@@ -112,7 +113,8 @@
 
                         <div class="detalle__sitio">
                             <label for="galeriaeven[]">Galeria de evento</label>
-                            <input type="file" id="galeriaeven[]" name="galeriaeven[]"  multiple required>
+                            <input type="file" id="galeriaeven[]" name="galeriaeven[]"  style="display: none;" multiple required>
+                            <label for="galeriaeven[]" class="file-upload-btn">Seleccionar Imagenes</label>
                             
                         </div>
                         <div class="detalle__sitio">
@@ -136,7 +138,7 @@
                             <input type="email" name="correoeven" id="correoeven" value="{{ datos['correoeven'] if datos.get('correoeven') else '' }}">
                         </div>
                         <div class="detalle__sitio boton_form">
-                            <input type="submit" value="Siguiente" class="btn__form" id="siguiente">
+                            <input type="submit" value="Siguiente" id="siguiente22" class="btn__form" id="siguiente">
                         </div>
                     </form>
                 </div>

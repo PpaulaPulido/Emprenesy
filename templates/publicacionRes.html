@@ -67,7 +67,8 @@
 
                         <div class="detalle__sitio">
                             <label for="logoRes">Logo</label>
-                            <input type="file" id="logoRes" name="logoRes" required>
+                            <input type="file" id="logoRes" name="logoRes" style="display: none;" required>
+                            <label for="logoRes" class="file-upload-btn">Selccionar Imagen</label>
             
                         </div>
                         
@@ -133,13 +134,11 @@
                             <input type="url" name="redTiktok" id="redTiktok" placeholder="https://www.tiktok.com/" value="{{ datos['redTiktok'] if datos.get('redTiktok') else '' }}">
                         </div>
 
-                        <div class="detalle__sitio">
-                            <h3>Imágenes del restaurante</h3>
-                        </div>
 
-                        <div class="detalle__sitio">
-                            <label for="galeria[]">Galeria del restaurante</label>
-                            <input type="file" id="galeria[]" name="galeria[]"  multiple required>
+                        <div class="detalle__sitio" style="margin-top: -50px;">
+                            <label for="galeria[]"><h3>Galeria del restaurante</h3></label>
+                            <input type="file" id="galeria[]" name="galeria[]" style="display:none;" required>
+                            <label for="galeria[]" class="file-upload-btn">Seleccionar Imagenes</label>
                         </div>
                         <div class="detalle__sitio boton_form" id="siguiente2">
                             <input type="submit" value="Siguiente" id="siguiente22" class="btn__form">

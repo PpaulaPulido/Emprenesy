@@ -8,23 +8,45 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="icon" href="/static/img/Logo2.jpeg" type="image/icon type">
 
+  <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+
   <link rel="stylesheet" href="/static/styles/generales_user.css">
   <link rel="stylesheet" href="/static/styles/MVQ.css" type="text/css">
-  
+  <link rel="stylesheet" href="/static/styles/whatssap.css">
 
   <title>¿Quienes Somos?</title>
-  <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-    <header id="cabecera">
-        <div id="cabeza">
-            <div class="logoedit">
-                <img class="logo" style="height: 80px; width: 80px; margin-left: 35px;" src="/static/img/logo_Emprenesy.png" alt="Emprenesy">
-            </div>
+  <header id="cabecera">
+    <div id="cabeza">
+      <div class="logoedit">
+        <img class="logo" style="height: 80px; width: 80px; margin-left: 35px;" src="/static/img/logo_Emprenesy.png"
+          alt="Emprenesy">
+      </div>
+    </div>
+
+    <div id="menuLateralToggle">
+      <div id="toggle">
+        <div class="nav-list2" id="nav-list2">
+          <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <ul class="menu-opciones">
+            <li><i class="fa-solid fa-x" id="cerrar"></i></li>
+            <li><img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
+                class="logoToggle"></li>
+            <li><a href="{{url_for('usuarios.nosotros_user')}}">Sobre Nosotros</a></li>
+            <li><a href="{{url_for('usuarios.index_user')}}">Inicio</a></li>
+            <li><a href="{{url_for('usuarios.favoritos_user')}}">Mis favoritos</a></li>
+          </ul>
         </div>
-    </header>
+      </div>
+    </div>
+  </header>
 
   <main>
 
@@ -66,7 +88,7 @@
             nuestros usuarios, brindando información útil y detallada para que puedan tomar decisiones informadas sobre
             sus experiencias en Colombia.</p>
         </div>
-        
+
         <div style="overflow: hidden;">
           <svg preserveAspectRatio="none" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg"
             style="fill: #fff; width: 118%; height: 180px; transform: rotate(180deg) scaleX(-1);">
@@ -146,6 +168,35 @@
       </div>
     </div>
 
+    <!--WHATSAPP BUTTON-->
+    <div class="nav-bottom">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <div class="popup-whatsapp fadeIn">
+        <div class="content-whatsapp -top">
+          <button type="button" class="closePopup">
+            <i class="material-icons icon-font-color">close</i>
+          </button>
+          <p> <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" width="35" id="image-whatssap">
+            Hola, ¿cómo podemos ayudate? </p>
+        </div>
+
+        <div class="content-whatsapp -bottom">
+          <input class="whats-input" id="whats-in" type="text" Placeholder="Enviar mensaje..." />
+          <button class="send-msPopup" id="send-btn" type="button">
+            <i class="material-icons icon-font-color--black">send</i>
+          </button>
+        </div>
+
+      </div>
+
+      <button type="button" id="whats-openPopup" class="whatsapp-button">
+        <div class="float">
+          <i class="fa fa-whatsapp my-float"></i>
+        </div>
+      </button>
+
+      <div class="circle-anime"></div>
+    </div>
   </main>
 
   <footer>
@@ -188,7 +239,6 @@
             <li>Siguenos en</li>
             <div class="iconos">
               <img src="/static/img/tik-tok.png" alt="tiktok">
-              <img src="/static/img/facebook.png" alt="facebook">
               <img src="/static/img/instagram1.png" alt="instagram">
             </div>
           </ul>
@@ -207,6 +257,7 @@
   <script src="/static/js/navegacion_user.js"></script>
   <script src="/static/js/buscador.js"></script>
   <script src="/static/js/MVQ.js"></script>
+  <script src="/static/js/whattssap.js"></script>
 
 </body>
 

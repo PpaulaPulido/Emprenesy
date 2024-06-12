@@ -12,11 +12,13 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
+
     <!-- Enlace a los estilos locales -->
     <link rel="stylesheet" href="../static/styles/generales_user.css">
     <link rel="stylesheet" href="../static/styles/seccion_res.css">
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/seccion_res.css')}}">
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/generales_user.css')}}">
+    <link rel="stylesheet" href="/static/styles/whatssap.css">
 
     <!-- Enlace a la fuente de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
@@ -33,7 +35,32 @@
     <header id="cabecera">
         <div id="cabeza">
             <div class="logoedit">
+<<<<<<< HEAD
                 <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+=======
+                <img style="height: 80px; width: 80px; margin-left: 35px;"
+                    src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+            </div>
+        </div>
+
+        <div id="menuLateralToggle">
+            <div id="toggle">
+                <div class="nav-list2" id="nav-list2">
+                    <div class="menu-toggle" id="mobile-menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                    <ul class="menu-opciones">
+                        <li><i class="fa-solid fa-x" id="cerrar"></i></li>
+                        <li><img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
+                                class="logoToggle"></li>
+                        <li><a href="{{url_for('usuarios.nosotros_user')}}">Sobre Nosotros</a></li>
+                        <li><a href="{{url_for('usuarios.index_user')}}">Inicio</a></li>
+                        <li><a href="{{url_for('usuarios.favoritos_user')}}">Mis favoritos</a></li>
+                    </ul>
+                </div>
+>>>>>>> paula
             </div>
         </div>
     </header>
@@ -55,7 +82,11 @@
                             <img src="https://img.lalr.co/cms/2022/02/25204548/Primitivo-en-Diverplaza-3-1.jpg?size=xl"
                                 alt="imagen evento">
                         </div>
+<<<<<<< HEAD
                         <div id="contenido1" class="contenido_text">
+=======
+                        <div class="contenido_text" id="contenido1" >
+>>>>>>> paula
                             <h2>Aromas y Sabores Temáticos</h2>
                             <p>Descubre la riqueza cultural de Bogotá a través de sus restaurantes temáticos, donde cada
                                 bocado es una aventura gastronómica que te transporta a lugares y épocas distintas.</p>
@@ -68,7 +99,11 @@
                 </div>
                 <div class="carousel-item">
                     <div class="carousel-img with-text"></div>
+<<<<<<< HEAD
                     <div id="contenido2"  class="carousel_text">
+=======
+                    <div class="carousel_text" d="contenido2">
+>>>>>>> paula
                         <h2>¡Explora el Sabor de la Innovación!</h2>
                         <p>Explora nuestros restaurantes para disfrutar de sabores sorprendentes y experiencias
                             culinarias inolvidables. ¡Ven y deleita tu paladar con lo mejor de nuestra cocina</p>
@@ -80,7 +115,11 @@
                 </div>
                 <div class="carousel-item">
                     <div class="carousel-img3 with-text"></div>
+<<<<<<< HEAD
                     <div id="contenido3" class="carousel_text contenido_carousel">
+=======
+                    <div class="carousel_text contenido_carousel" id="contenido3" >
+>>>>>>> paula
                         <h2>Cena con Vistas</h2>
                         <p>Saborea exquisitos platillos mientras disfrutas de impresionantes vistas. ¡Una experiencia
                             gastronómica única en un entorno incomparable!</p>
@@ -226,6 +265,37 @@
                 <div class="swiper-button-prev"></div>
             </div>
         </section>
+
+        <!--WHATSAPP BUTTON-->
+        <div class="nav-bottom">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <div class="popup-whatsapp fadeIn">
+                <div class="content-whatsapp -top">
+                    <button type="button" class="closePopup">
+                        <i class="material-icons icon-font-color">close</i>
+                    </button>
+                    <p> <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" width="35"
+                            id="image-whatssap">
+                        Hola, ¿cómo podemos ayudate? </p>
+                </div>
+
+                <div class="content-whatsapp -bottom">
+                    <input class="whats-input" id="whats-in" type="text" Placeholder="Enviar mensaje..." />
+                    <button class="send-msPopup" id="send-btn" type="button">
+                        <i class="material-icons icon-font-color--black">send</i>
+                    </button>
+                </div>
+
+            </div>
+
+            <button type="button" id="whats-openPopup" class="whatsapp-button">
+                <div class="float">
+                    <i class="fa fa-whatsapp my-float"></i>
+                </div>
+            </button>
+
+            <div class="circle-anime"></div>
+        </div>
     </main>
     <footer>
         <div class="principal_footer">
@@ -268,7 +338,6 @@
                         <li>Siguenos en</li>
                         <div class="iconos">
                             <img src="{{ url_for('static', filename='img/tik-tok.png') }}" alt="tiktok">
-                            <img src="{{ url_for('static', filename='img/facebook.png') }}" alt="facebook">
                             <img src="{{ url_for('static', filename='img/instagram1.png') }}" alt="instagram">
                         </div>
                     </ul>
@@ -287,6 +356,7 @@
     <script src="../static/js/datos.js"></script>
     <script src="../static/js/seccion_res.js"></script>
     <script src="../static/js/fav.js"></script>
+    <script src="/static/js/whattssap.js"></script>
 </body>
 
 </html>

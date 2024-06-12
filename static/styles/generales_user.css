@@ -22,14 +22,15 @@ p {
 }
 
 /*************************Estilos del menu toggle para pantallas medianas y pequeñas*************************************/
-#menuLateralToggle{
+#menuLateralToggle {
   display: none;
 }
+
 .nav-list2 {
   list-style: none;
   position: fixed;
   background-image: linear-gradient(135deg, #213859 0%, #2c5d9d 21%, #748ffc 57%, #a755f9 100%);
-  margin-top: 5px;
+  margin-top: 0;
   width: 250px;
   height: 700px;
   top: 0;
@@ -40,10 +41,12 @@ p {
   transition: left 0.4s ease;
   z-index: 50;
 }
+
 .menu-opciones {
   margin-top: 40px;
 }
-.menu-opciones #cerrar{
+
+.menu-opciones #cerrar {
   display: flex;
   justify-content: flex-end;
   font-size: 20px;
@@ -51,12 +54,14 @@ p {
   cursor: pointer;
   margin-right: 20px;
 
-} 
+}
+
 .nav-list2.active {
   left: 0;
   transition: left 0.6s ease;
-  
+
 }
+
 .nav-list2 li:not(:first-child) {
   padding: 10px;
   border-bottom: 1px solid #fff;
@@ -67,19 +72,23 @@ p {
   text-decoration: none;
   font-size: 18px;
 }
-.nav-list2 li a:hover{
+
+.nav-list2 li a:hover {
   color: #91ffed;
 }
+
 .nav-list2 li a:focus {
   display: block;
   color: #333;
   background-color: #eee;
   transition: all .5s;
 }
-.logoToggle{
+
+.logoToggle {
   width: 170px;
   height: auto;
 }
+
 .menu-toggle {
   position: fixed;
   top: 4;
@@ -100,21 +109,6 @@ p {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-@media only screen and (min-width: 730px) and (max-width: 1220px) {
-  
-
-  .link {
-    display: none;
-  }
-
-  .logo {
-    display: none;
-  }
-  #menuLateralToggle{
-    display: block;
-  }
-
-}
 
 /*estilos de la barra de navegacion*/
 ul,
@@ -407,4 +401,50 @@ ol {
   text-align: center;
   font-size: 15px;
   margin: 10px 0;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 1220px) {
+
+  .link,
+  .logo {
+    display: none;
+  }
+
+  #menuLateralToggle {
+    display: block;
+  }
+
+  .titulo {
+    top: 35px;
+    left: 50px;
+  }
+}
+
+@media only screen and (max-width: 920px) {
+  .header_buscador  {
+    margin-left: 40px;
+    margin-right: -10px;
+  }
+  .buscador_input #inputSearch {
+    width: 200px;
+  }
+  #icon-search{
+    display: none;
+  }
+  .contenedor_list3 {
+    margin: 0 auto;
+  }
+  .iconos {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contenedor_content {
+    display: block;
+    justify-content: center;
+    align-items: center;
+  }
+
 }

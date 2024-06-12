@@ -141,6 +141,7 @@ def resTipoAdmin():
     admin_id = session.get('admin_id')
     return render_template('tipo_restaurante_admin.html',admin_id = admin_id)
 
+
 #****************************tipos de eventos **************************
 @publicacionDash.route('/tipoEvento')
 def eventoList():

@@ -331,27 +331,6 @@ ol {
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   text-align: center;
-
-
-  @media only screen and (max-width: 767px) {
-    margin-left: auto;
-    margin-right: auto;
-    width: max-content;
-    grid-template-columns: repeat(2, 1fr);
-
-
-  }
-
-  @media only screen and (min-width:768px) and (max-width:1023px) {
-
-    margin-left: auto;
-    margin-right: auto;
-    grid-template-columns: repeat(2, 1fr);
-    width: max-content;
-    gap: 3rem;
-
-
-  }
 }
 
 .container_cards .cards_contenido {
@@ -363,11 +342,9 @@ ol {
   background-size: cover;
   cursor: pointer;
 
-
-
 }
 
-ard1 {
+.card1 {
   background-image: url('https://estaticos-cdn.prensaiberica.es/clip/6b48ad30-aced-47c8-b0cd-c4c0cf3a6470_16-9-discover-aspect-ratio_default_0.jpg');
 
 

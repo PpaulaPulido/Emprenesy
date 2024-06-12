@@ -19,13 +19,13 @@ function inicializarBuscador() {
         let aElement = document.createElement("a");
 
         if (item === 'Restaurantes') {
-            aElement.href = "/res/SeccionRestaurante?tipo=res";
+            aElement.href = "/res/SeccionRestauranteAdmin?tipo=res";
         } else if (item === 'Eventos') {
-            aElement.href = "/evento/SeccionEvento?tipo=evento";
+            aElement.href = "/evento/SeccionEventoAdmin?tipo=evento";
         }else if (item == 'Emprendimientos'){
-            aElement.href = "/emprende/sectionEmprende?tipo=emprende";
+            aElement.href = "/emprende/sectionEmprendeAdmin?tipo=emprende";
         }else if (item == 'Próximos eventos'){
-            aElement.href = "/evento/SeccionEvento?tipo=evento";
+            aElement.href = "/evento/SeccionEventoAdmin?tipo=evento";
         }else if (item == "Tiendas de ropa"){
             aElement.href = '/publicacion/emprendimientoTipo?tipo=Tienda%20de%20Ropa'
         }
@@ -185,7 +185,7 @@ function buscarRestaurantes(tipo) {
         .then(data => {
             // Manejar los datos de los restaurantes recibidos
             console.log(`Restaurantes de tipo  ${tipo}:`, data);
-            window.location.href = `/publicacion/restauranteTipo?tipo=${tipo}`
+            window.location.href = `/publicacion/restauranteTipoAdmin?tipo=${tipo}`
         })
         .catch(error => {
             console.error('Error al buscar restaurantes:', error);
@@ -202,7 +202,7 @@ function buscarEventos(tipo) {
         })
         .then(data => {
             console.log(`Eventos de tipo  ${tipo}:`, data);
-            window.location.href = `/publicacion/eventoTipo?tipo=${tipo}`
+            window.location.href = `/publicacion/eventoTipoAdmin?tipo=${tipo}`
         })
         .catch(error => {
             console.error('Error al buscar eventos:', error);
@@ -219,7 +219,7 @@ function buscarEmprendimientos(tipo) {
         })
         .then(data => {
             console.log(`Eventos de tipo  ${tipo}:`, data);
-            window.location.href = `/publicacion/emprendimientoTipo?tipo=${tipo}`
+            window.location.href = `/publicacion/emprendimientoTipoAdmin?tipo=${tipo}`
         })
         .catch(error => {
             console.error('Error al buscar emprendimientos:', error);

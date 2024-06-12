@@ -123,3 +123,14 @@ body{
 #btnGuardar:hover{
     background-color: #0047a3;
 }
+/* Medidas de consulta */
+@media only screen and (max-width: 920px) {
+    .formularioPerfil {
+        width: 95%;
+    }
+    
+    .contacto textarea {
+        max-width: 100%;
+    }
+    
+}

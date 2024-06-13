@@ -408,7 +408,7 @@ body {
     .info_detalles{
         width: 420px;
     }
-    #siguiente2, #siguiente22{
+    #siguiente2, #siguiente22, #siguiente20{
         width: 60%;
     }
     #geocode{
@@ -444,7 +444,7 @@ body {
     .info_detalles{
         width: 500px;
     }
-    #siguiente2, #siguiente22{
+    #siguiente2, #siguiente22, #siguiente20{
        width: 60%;
     }
    
@@ -503,6 +503,10 @@ body {
         padding: 0px;
         width: 80%;
     }
+    #siguiente20{
+        padding: 0px;
+        margin-left: 70%;
+    }
  
    #geocode{
     margin-left: -10%;
@@ -516,8 +520,10 @@ body {
     #botones{
         display: flex ;
         width: 70%;
- 
- 
+
+    }
+    #titulo_galeria{
+        margin-top: -50px;
     }
 
 }

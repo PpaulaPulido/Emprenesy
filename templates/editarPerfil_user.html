@@ -109,12 +109,11 @@
                     <div class="perfilDetalles">
                         <div class="contacto">
                             <label for="acercaUsu">Acerca de tí</label>
-                            <textarea name="acercaUsu" id="acercaUsu" rows="4" cols="80"
-                                placeholder="Escribe aquí">{{ datos[2] | default('') }}</textarea>
+                            <textarea name="acerca" id="acerca" placeholder="Escribe aquí"></textarea>
                         </div>
                         <div class="contacto">
                             <label for="sitioWebUsu">Sitio web</label>
-                            <input type="url" name="sitioWebUsu" id="sitioWebUsu" value="{{ datos[3] | default('') }}">
+                            <input type="url" name="sitioWebUsu" id="sitioWebUsu" value="{{ datos[2] | default('') }}">
                         </div>
                         <div class="contacto">
                             <label for="blogUsu">Blog</label>

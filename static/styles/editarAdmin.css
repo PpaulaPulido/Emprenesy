@@ -103,6 +103,13 @@ body {
     border-radius: 8px;
     border: 1px solid #ccc;
 }
+.contacto input[type="url"] {
+    padding: 5px 8px;
+    width: 100%;
+    max-width: 300px; /* Ancho máximo para pantallas más grandes */
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
 
 .perfilDireccion,
 .perfilDetalles {
@@ -138,16 +145,28 @@ body {
     background-color: #0047a3;
 }
 
-/* Medidas de consulta */
 @media only screen and (max-width: 920px) {
+    /* Estilos que se aplicarán en pantallas de 768px de ancho y menores */
+    /* Puedes colocar aquí los ajustes necesarios para hacer tu diseño responsive */
     .formularioPerfil {
-        width: 95%;
+        width: 90%; /* Ejemplo: ajuste del ancho del formulario */
     }
-    
-    .contacto textarea {
-        max-width: 100%;
+    .perfilContacto {
+        grid-template-columns: 1fr; /* Ejemplo: cambio a una sola columna */
     }
-    
+    .perfil {
+        width: 150px; /* Ejemplo: reducción del tamaño del perfil */
+        height: 150px;
+    }
+    .contacto label {
+        font-size: 16px; /* Ejemplo: reducción del tamaño del texto */
+    }
+    .contacto input {
+        width: 100%; /* Ejemplo: hacer que los inputs ocupen el ancho completo */
+    }
+    .contacto input[type="url"] {
+        max-width: none; /* Permitir que ocupe el ancho completo en pantallas más pequeñas */
+    }
 }
 
 

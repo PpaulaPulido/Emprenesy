@@ -14,7 +14,6 @@ h1,
 h2,
 h3 {
   font-family: 'Roboto Slab', serif;
-
 }
 
 p {
@@ -26,7 +25,6 @@ ol {
   list-style: none;
 }
 
-/*****************estilos del contenedor fav*********************/
 .container_fav {
   padding: 10px 50px;
 }
@@ -66,6 +64,7 @@ ol {
   padding: 50px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .contenidoFavoritos .cardFavorite {
@@ -151,13 +150,6 @@ ol {
   background-color: #002b68;
 }
 
-/*estilos cuando no hay favoritos*/
-.container_fav {
-  display: block;
-  justify-content: center;
-  align-items: center
-}
-
 .container_noFav {
   width: 60%;
   padding: 10px;
@@ -171,7 +163,6 @@ ol {
 
 .div_icon {
   background-color: #051248;
-  ;
   padding: 10px;
   margin: 0 auto;
   width: 70px;
@@ -180,16 +171,13 @@ ol {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .div_icon .bi-heart {
   font-size: 30px;
-  text-align: center;
   color: #fff;
 }
 
-/******************************************************/
 #favoritos2 {
   margin: 30px 0;
 }
@@ -204,10 +192,12 @@ ol {
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.container_tarjeta:hover{
-  transform: scale(1.1); 
+
+.container_tarjeta:hover {
+  transform: scale(1.1);
   box-shadow: 0 0 20px rgba(155, 155, 155, 0.5);
 }
+
 .tipo_imagen_container {
   display: flex;
 }
@@ -240,7 +230,6 @@ ol {
   margin: 0 auto;
   margin-top: 20px;
   color: #fff;
-
 }
 
 .btn {
@@ -333,4 +322,52 @@ ol {
 .rating2 input:checked~input::before,
 .rating2 input:checked::before {
   color: var(--c);
+}
+
+/* Media queries para pantallas más pequeñas */
+@media only screen and (max-width: 1200px) {
+  .container_fav {
+    padding: 10px 30px;
+  }
+
+  .favoritos {
+    padding: 15px 40px;
+    margin-top: 60px;
+  }
+
+  .favoritos button {
+    font-size: 16px;
+  }
+
+  .contenidoFavoritos {
+    padding: 40px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contenidoFavoritos .cardFavorite {
+    width: 100%;
+  }
+
+  .cardFavorite h3 {
+    font-size: 18px;
+  }
+
+  .enlaceFav {
+    width: 70%;
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container_fav {
+    padding: 10px 20px;
+  }
+
+  .favoritos {
+    padding: 10px 30px;
+    margin-top: 40px;
+    flex-direction: column;
+    align-items: center;
+  }
+
 }

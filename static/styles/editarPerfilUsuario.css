@@ -123,14 +123,26 @@ body{
 #btnGuardar:hover{
     background-color: #0047a3;
 }
-/* Medidas de consulta */
+/* Estilos base que ya tienes */
+
 @media only screen and (max-width: 920px) {
+    /* Estilos que se aplicarán en pantallas de 768px de ancho y menores */
+    /* Puedes colocar aquí los ajustes necesarios para hacer tu diseño responsive */
     .formularioPerfil {
-        width: 95%;
+        width: 90%; /* Ejemplo: ajuste del ancho del formulario */
     }
-    
-    .contacto textarea {
-        max-width: 100%;
+    .perfilContacto {
+        grid-template-columns: 1fr; /* Ejemplo: cambio a una sola columna */
     }
-    
+    .perfil {
+        width: 150px; /* Ejemplo: reducción del tamaño del perfil */
+        height: 150px;
+    }
+    .contacto label {
+        font-size: 16px; /* Ejemplo: reducción del tamaño del texto */
+    }
+    .contacto input {
+        width: 100%; /* Ejemplo: hacer que los inputs ocupen el ancho completo */
+    }
 }
+

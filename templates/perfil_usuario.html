@@ -34,7 +34,8 @@
     <header id="cabecera">
         <div id="cabeza">
             <div class="logoedit">
-                <img style="height: 80px; width: 80px; margin-left: 35px;" src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+                <img style="height: 80px; width: 80px; margin-left: 35px;"
+                    src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
             </div>
         </div>
         <div id="menuLateralToggle">
@@ -80,7 +81,7 @@
                         <input type="file" id="file-upload-button" name="fotoPortada" style="display:none; "
                             onchange="this.form.submit()">
                         <label for="file-upload-button" class="portada_btn"><i class="fa-solid fa-camera-retro"></i>
-                            Editar foto de portada</label>
+                            <span class="text">Editar portada</span></label>
                     </form>
                 </div>
             </div>
@@ -135,14 +136,14 @@
                 </div>
                 <div class="perfil__opciones">
                     <div class="opciones">
-                        <a href="#opciones__resultado" onclick="resenasAdmin()">Mis reseñas</a>
+                        <a href="#opciones__resultado" onclick="resenasUsu()">Mis reseñas</a>
                         <a href="#opciones__resultado" onclick="Myphotos()">Mis fotos</a>
                     </div>
                     <div id="opciones__resultado" class="result"></div>
                 </div>
             </div>
         </div>
-        
+
         <!--WHATSAPP BUTTON-->
         <div class="nav-bottom">
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

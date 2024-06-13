@@ -98,6 +98,7 @@ function resenasUsu() {
             console.error('Error al cargar las reseñas:', error);
         });
 }
+
 function sinDatos(container, icon1, icon2) {
 
     const containerPhoto = document.createElement('div');

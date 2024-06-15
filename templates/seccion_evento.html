@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- medidas query david -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +34,8 @@
     <header id="cabecera">
         <div id="cabeza">
             <div class="logoedit">
-                <img style="height: 80px; width: 80px; margin-left: 35px;" src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+                <img style="height: 80px; width: 80px; margin-left: 35px;"
+                    src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
             </div>
         </div>
 
@@ -59,30 +60,37 @@
         </div>
     </header>
     <main>
+
         <div id="url" style="display: none;">
             <a id="detalle-evento-url" data-url="{{ url_for('evento.eventoDetalle') }}"></a>
             <a id="url_nosotros" data-url="{{url_for('usuarios.nosotros_user')}}"></a>
             <a id="url_index" data-url="{{url_for('usuarios.index_user')}}"></a>
             <a id="url_favoritos" data-url="{{url_for('usuarios.favoritos_user')}}"></a>
+            <a id="url_perfil" data-url="{{url_for('usuarios.perfil_usuario')}}"></a>
+            <a id="url_editarPerfil" data-url="{{ url_for('usuarios.editarPerfilUsuario', id=user_id) }}"></a>
+            <a id="url_cerrarSesion" data-url="{{url_for('usuarios.logout')}}"></a>
         </div>
+
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-interval="2000">
+
             <div class="carousel-inner">
-                <div class="carousel-item ">
+
+                <div class="carousel-item">
                     <div class="carousel-img with-text"></div>
-                    <div class="carousel_text" id="contenido1">
+                    <div class="carousel_text carousel_text1">
                         <p>¡Descubre emocionantes eventos para todos los gustos!</p>
                         <div class="container-btn">
                             <button class="btn slider_btn1"><a href="#section_novedades">Explorar Eventos</a></button>
                         </div>
                         <div class="container_img">
-                            <!-- <img src="../img/music.png" alt="imagen de musica"> -->
+                            <img src="{{url_for('static',filename = 'img/music.png')}}" alt="imagen de musica">
                         </div>
                     </div>
                 </div>
 
                 <div class="carousel-item active">
                     <div class="carousel-img3 with-text"></div>
-                    <div id="contenido2"  class="carousel_text contenido_carousel">
+                    <div class="carousel_text contenido_carousel">
                         <h2>¡Descubre el Espectáculo de tu Vida!</h2>
                         <p>¡Emoción, música, diversión! Descubre nuestros shows y vive momentos únicos!</p>
                         <div class="container-btn">
@@ -93,9 +101,10 @@
                     </div>
                 </div>
 
+
                 <div class="carousel-item">
                     <div class="carousel-img2 with-text"></div>
-                    <div class="carousel_text carousel_contenido" id="contenido2">
+                    <div class="carousel_text carousel_contenido">
                         <div class="img1">
                             <img src="https://blogapi.uber.com/wp-content/uploads/2019/02/5-teatros-de-Bogot%C3%A1-que-logran-combinar-historia-y-modernidad-1024x512.png"
                                 alt="imagen evento">
@@ -104,7 +113,7 @@
                             <img src="https://images.ctfassets.net/3klebcd0t2ch/4tfFnVEL5lZ7e3UmcSxhrU/be7a432bfbb3a35838ebf32a62150344/Un_teatro_con_historia_5__1_.jpg"
                                 alt="imagen evento">
                         </div>
-                        <div class="contenido_text" id="contenido3"  >
+                        <div class="contenido_text carouselText2">
                             <h2>2024</h2>
                             <p>¡No te pierdas los últimos conciertos de este mes!</p>
                             <div class="container-btn">
@@ -119,6 +128,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -173,20 +183,27 @@
         </section>
 
         <div class="container_cards">
-            <div class="cards_contenido card5" onclick="cargarEventos('Evento de danza')">
-                <div class="contenido_title">
-                    <h3>Eventos de danza</h3>
+            <a href="{{ url_for('publicacionDash.eventoTipo', tipo='Eventos de danza') }}">
+                <div class="cards_contenido card5">
+                    <div class="contenido_title">
+                        <h3>Eventos de danza</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="cards_contenido card6" onclick="cargarEventos('Ferias gastronomicas')">
-                <div class="contenido_title">
-                    <h3>Ferias gastronómicas</h3>
+            </a>
+
+            <a href="{{ url_for('publicacionDash.eventoTipo', tipo='Ferias gastronómicas') }}">
+                <div class="cards_contenido card6">
+                    <div class="contenido_title">
+                        <h3>Ferias gastronómicas</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="cards_contenido card7">
-                <div class="contenido_title">
-                    <h3>Ferias tecnológicas</h3>
-                </div>
+            </a>
+
+            <a href="{{ url_for('publicacionDash.eventoTipo', tipo='Ferias tecnológicas') }}">
+                <div class="cards_contenido card7">
+                    <div class="contenido_title">
+                        <h3>Ferias tecnológicas</h3>
+                    </div>
 
                 </div>
             </a>
@@ -333,6 +350,7 @@
                         <li>Siguenos en</li>
                         <div class="iconos">
                             <img src="{{ url_for('static', filename='img/tik-tok.png') }}" alt="tiktok">
+                            <img src="{{ url_for('static', filename='img/facebook.png') }}" alt="facebook">
                             <img src="{{ url_for('static', filename='img/instagram1.png') }}" alt="instagram">
                         </div>
                     </ul>
@@ -343,7 +361,6 @@
         </div>
     </footer>
 
-    <div id="data-container" data-perfil-url="{{ url_for('evento.tipo_evento') }}" style="display: none;"></div>
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

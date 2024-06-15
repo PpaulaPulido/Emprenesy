@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: 'Nunito Sans', sans-serif;
   scroll-behavior: smooth;
@@ -73,53 +74,61 @@ ol {
   transform-origin: bottom left;
   transform: rotate(0deg) scaleY(1) scaleX(1.3);
 }
+
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
 
-  #contenido2{
- margin-left: -5%;
+  #contenido2 {
+    margin-left: -5%;
     bottom: 0.5%;
-    width:450px;
+    width: 450px;
     height: 450px;
-  
-  }
-  #contenido3{
 
-  margin-left: 20px;
-  margin-block-end: -80px;
-   width:450px;
-   height: 450px;
-  
-  }   
-  
   }
-  @media only screen and (max-width: 767px) {
-    #contenido1{
 
-      width:420px;
-      height: 420px;
-      margin-left: -20%;
-      margin-block-end: -200px;
-  
-  
-    }
-    #contenido2{
-      width:450px;
-      height: 450px;
-      margin-left: -5%; ;
-      bottom: 0.5%;
-    }
-    #contenido3{
-      width:450px;
-      height: 450px;
-      margin-left: 28px;
-      margin-block-end: -80px;
-  
-    }
-    .img2 {
-      margin-left: -100px;
+  #contenido3 {
 
-    }
+    margin-left: 20px;
+    margin-block-end: -80px;
+    width: 450px;
+    height: 450px;
+
   }
+
+}
+
+@media only screen and (max-width: 767px) {
+  #contenido1 {
+
+    width: 420px;
+    height: 420px;
+    margin-left: -20%;
+    margin-block-end: -200px;
+
+
+  }
+
+  #contenido2 {
+    width: 450px;
+    height: 450px;
+    margin-left: -5%;
+    ;
+    bottom: 0.5%;
+  }
+
+  #contenido3 {
+    width: 450px;
+    height: 450px;
+    margin-left: 28px;
+    margin-block-end: -80px;
+
+  }
+
+  .img2 {
+    margin-left: -100px;
+
+  }
+}
+
 .carousel_text {
   position: absolute;
   color: #fff;
@@ -143,15 +152,19 @@ ol {
   font-size: 18px;
   border-radius: 20px;
 }
-.btn a{
+
+.btn a {
   color: #fff;
 }
+
 .slider_btn1 {
   background-color: #16b1a7;
 }
-.slider_btn1:hover{
+
+.slider_btn1:hover {
   background-color: #00fff2;
 }
+
 .container_img {
   width: 60px;
   height: 60px;
@@ -167,6 +180,7 @@ ol {
   height: 100%;
 
 }
+
 /***********************************************/
 .carousel-img2 {
   width: 100%;
@@ -254,9 +268,11 @@ ol {
   font-size: 22px;
   cursor: pointer;
 }
-.slider_btn2:hover{
+
+.slider_btn2:hover {
   background-color: #00fff2;
 }
+
 .contenido_circle {
   position: relative;
 }
@@ -282,6 +298,7 @@ ol {
   height: 50px;
   width: 50px;
 }
+
 /**************************************************************/
 .carousel-img3 {
   width: 100%;
@@ -304,60 +321,48 @@ ol {
   border-radius: 40% 0 0 40%;
 
 }
+
 .contenido_carousel {
   left: 30px;
   width: 40%;
   bottom: 20%;
   text-align: center;
 }
-.contenido_carousel h2{
+
+.contenido_carousel h2 {
   font-size: 40px;
   margin: 30px 0;
   background: linear-gradient(180deg, #ecaef8 37%, #64f0d8 92%);
   background-clip: text;
   color: transparent;
-  
+
 }
-.contenido_carousel p{
+
+.contenido_carousel p {
   font-size: 20px;
 }
-.slider_btn3{
+
+.slider_btn3 {
   background-color: #010030;
   width: 50%;
   border-radius: 15px;
 }
-.slider_btn3:hover{
+
+.slider_btn3:hover {
   background-color: #040191;
 }
+
 /*estilosd e container tarjetas*/
-.container_cards{
+.container_cards {
   margin: 30px;
   padding: 20px;
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   text-align: center;
-  @media only screen and (max-width: 767px) {
-    margin-left: auto;
-    margin-right: auto;
-    width: max-content;
-    grid-template-columns: repeat(2,1fr);
-
-
 }
 
-@media only screen and (min-width:768px) and (max-width:1023px) {
-
-margin-left: auto;
-margin-right: auto;
-grid-template-columns: repeat(2,1fr);
-gap: 3rem;
-
-width: max-content;
-
-}
-}
-.container_cards .cards_contenido{
+.container_cards .cards_contenido {
   height: 250px;
   width: 270px;
   border-radius: 20px;
@@ -366,32 +371,41 @@ width: max-content;
   background-size: cover;
   cursor: pointer;
 }
-.card1{
+
+.card1 {
   background-image: url('https://i.blogs.es/1b540a/concierto/1366_2000.jpg');
 }
-.card2{
+
+.card2 {
   background-image: url('https://humanidades.com/wp-content/uploads/2018/09/obra-de-teatro-5-e1578944452922.jpg');
   background-position: center;
 }
-.card3{
+
+.card3 {
   background-image: url('https://img.lalr.co/cms/2022/03/31124833/COLP_EXT_106936_553dc-1.jpg?size=xl');
 }
-.card4{
-  background-image: url('https://www.ulibertadores.edu.co/wp-content/uploads/Los-Libertadores-estuvo-presente-en-la-temporada-de-Ferias-del-Libro-que-arranco-en-FILBO.png');
+
+.card4 {
+  background-image: url('https://www.capital21.cdmx.gob.mx/noticias/wp-content/uploads/2022/09/feriainternacionaldellibro.jpeg');
 }
-.card5{
+
+.card5 {
   background-image: url('https://www.urosarioradio.co/images/contenidos/eventos/eventos-idartes-danza-octubre-foto-1_ed-min.jpg');
 }
-.card6{
+
+.card6 {
   background-image: url('https://media.viajando.travel/p/b63d200dab49bd7269670527362027d5/adjuntos/236/imagenes/000/674/0000674838/1200x0/smart/ferias-gastronomicaspng.png');
 }
-.card7{
+
+.card7 {
   background-image: url('https://i.blogs.es/d4b7fe/ces-/840_560.png');
 }
-.card8{
+
+.card8 {
   background-image: url('https://i.ibb.co/GR2PKfj/organizar-evento-deportivo.jpg');
 }
-.contenido_title{
+
+.contenido_title {
   background-color: #3d77ba;
   height: 60px;
   display: flex;
@@ -399,44 +413,38 @@ width: max-content;
   align-items: center;
   border-radius: 20px 20px 0 0;
 }
-.contenido_title h3{
+
+.contenido_title h3 {
   font-size: 22px;
   color: #fff;
 }
+
 /*estilos de slider de tarjetas*/
-.section{
+.section {
   background-image: linear-gradient(225deg, #3f0186 56%, #da77f2 92%, #f989f1 100%);
   padding: 10px;
 }
-.section2{
+
+.section2 {
   background-image: linear-gradient(225deg, #012f46 1%, #147ed5 73%, #6cfce2 99%);
   padding: 10px;
 }
-.section_title h2{
+
+.section_title h2 {
   color: #fff;
   margin: 30px 0 30px 50px;
   font-size: 25px;
 }
-.swiper_card{
+
+.swiper_card {
   position: relative;
-    
-  @media only screen and (max-width:767px) {
-  
-    width: 100%;
-    
-  
-  }
 }
-.swiper{
+
+.swiper {
   width: 70%;
-  @media only screen and (max-width:767px) {
-    width:1200px;
-    margin-left: auto;
-
-  }
-
 }
-.card{
+
+.card {
   position: relative;
   background: #fff;
   border-radius: 20px;
@@ -444,7 +452,8 @@ width: max-content;
   margin: 20px 0;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
-.card::before{
+
+.card::before {
   content: "";
   position: absolute;
   height: 40%;
@@ -452,40 +461,49 @@ width: max-content;
   background: white;
   border-radius: 20px 20px 0 0;
 }
-.card .rating{
+
+.card .rating {
   margin: 10px 10px 0 10px;
 }
-.card .card-content{
+
+.card .card-content {
   display: flex;
   flex-direction: column;
   padding: 10px;
   position: relative;
   z-index: 20;
 }
-.card .rating i{
+
+.card .rating i {
   font-size: 18px;
   margin: 0 2px;
   color: gold;
 }
-.swiper-button-next{
+
+.swiper-button-next {
   color: #fff;
   margin-right: 150px;
 }
-.swiper-button-prev{
+
+.swiper-button-prev {
   color: #fff;
   margin-left: 150px;
 }
-.swiper-pagination-bullet{
+
+.swiper-pagination-bullet {
   height: 7px;
   width: 26px;
   border-radius: 25px;
   background: white;
 }
-.swiper-button-next, .swiper-button-prev{
+
+.swiper-button-next,
+.swiper-button-prev {
   opacity: 0.7;
   transition: all 0.3s ease;
 }
-.title_contenedor{
+
+.title_contenedor {
   height: 50px;
   margin-top: 20px;
   margin-left: 10px;
@@ -494,22 +512,18 @@ width: max-content;
 
 
 }
-.title_contenedor .content_title{
+
+.title_contenedor .content_title {
   font-size: 22px;
- @media only screen and (max-width:767px) {
-  font-size: 15px;
-  
- }
- @media only screen and (min-width:768px) and (max-width:1023px) {
-  font-size: 16px;
- }
 }
-.swiper_conta_img{
-    
+
+.swiper_conta_img {
+
   display: flex;
   justify-content: center;
-  
+
 }
+
 .swiper_conta_img .swiper_img {
   width: 250px;
   height: 200px;
@@ -523,17 +537,19 @@ width: max-content;
   margin: 0 auto;
 }
 
-.swiper_conta_img .favorite{
+.swiper_conta_img .favorite {
   font-size: 20px;
   margin-left: 7px;
   cursor: pointer;
   margin-top: 20px;
-  color:#cecbcb
-} 
-.favorite.checked{
+  color: #cecbcb
+}
+
+.favorite.checked {
   color: red;
 }
-.swiper_button{
+
+.swiper_button {
   background-color: #051248;
   color: #fff;
   padding: 6px;
@@ -543,48 +559,58 @@ width: max-content;
   margin: 10px auto 0 auto;
   text-align: center;
 }
-.swiper_button:hover{
+
+.swiper_button:hover {
   background-color: #002b68;
 }
+
 /*****************estilos de find evento******************************/
-.find_evento{
+.find_evento {
   background-color: #f5f5f5;
   padding: 20px;
 }
-.evento_title{
+
+.evento_title {
   padding: 20px;
   text-align: center;
   margin-bottom: 30px;
 }
-.evento_title h2{
+
+.evento_title h2 {
   margin-bottom: 30px;
   color: #2c5d9d;
 }
-.evento_title p{
+
+.evento_title p {
   width: 70%;
   text-align: center;
   margin: 0 auto;
 }
-.find_evento .evento_contenido{
+
+.find_evento .evento_contenido {
   display: flex;
   flex-direction: row-reverse;
   padding: 30px 10px;
 }
-.contenido_img{
+
+.contenido_img {
   width: 700px;
   height: fit-content;
 }
-.contenido_img img{
+
+.contenido_img img {
   width: 100%;
   height: 100%;
   margin: 0 auto;
   border-radius: 13px;
 }
-.contenido_principal .contenido_info{
+
+.contenido_principal .contenido_info {
   display: flex;
   padding: 20px 20px;
 }
-.contenido_info .info_icono{
+
+.contenido_info .info_icono {
   background-color: rgb(221, 218, 218);
   border-radius: 50%;
   display: flex;
@@ -594,19 +620,127 @@ width: max-content;
   height: 70px;
   margin-left: 20px;
 }
-.info_icono i{
+
+.info_icono i {
   font-size: 30px;
   color: #2c5d9d;
-  
+
 }
-.contenido_info .info_texto{
+
+.contenido_info .info_texto {
   margin-left: 35px;
 }
-.info_texto h3{
+
+.info_texto h3 {
   color: #2c5d9d;
   font-size: 20px;
   margin-bottom: 20px;
 }
-.info_texto p{
+
+.info_texto p {
   width: 80%;
+}
+
+@media only screen and (max-width: 920px) {
+  .carousel_text p {
+    font-size: 20px;
+  }
+
+  .carousel_text1 {
+    bottom: 15%;
+    left: 39%;
+    text-align: center;
+    margin-right: 10px;
+    width: 65%;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .container_img {
+    bottom: 300px;
+    left: 120px;
+  }
+
+  .slider_btn1 {
+    width: 200px;
+  }
+
+  .carousel-img3::before {
+    background-position: center;
+  }
+
+  .contenido_carousel {
+    bottom: 20%;
+    left: -10px;
+    width: 50%;
+    padding: 15px;
+  }
+
+  .contenido_carousel p {
+    display: none;
+  }
+
+  .contenido_carousel h2 {
+    font-size: 23px;
+    background: -webkit-linear-gradient(180deg, #ecaef8 37%, #64f0d8 92%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1.2;
+    letter-spacing: 2px;
+    word-spacing: 20px;
+  }
+  .carousel-img2::before {
+    width: 70%;
+  }
+  .contenido_text h2 {
+    font-size: 90px;
+    background: -webkit-linear-gradient(180deg, #2edbd6 37%, #fe1bbd 92%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .carouselText2{
+    left: -100px;
+  }
+  .slider_btn2{
+    width: 85%;
+  }
+  .img1{
+    display: none;
+  }
+  .img2{
+    top: 460px;
+    left: 270px;
+  }
+  .container_cards{
+    grid-template-columns: none;
+  }
+  .swiper-button-next {
+    margin-right: 10px;
+  }
+
+  .swiper-button-prev {
+    margin-left: 10px;
+  }
+  .title_contenedor .content_title{
+    font-size: 20px;
+    margin: 10px 0;
+  }
+  .find_evento .evento_contenido{
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .contenido_img {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .contenido_info .info_icono {
+    width: 280px;
+    height: 90px;
+  }
 }

@@ -143,7 +143,6 @@ ol {
 
   }
 
-
 }
 
 .carousel_text h2 {
@@ -299,7 +298,7 @@ ol {
   text-align: center;
 }
 
-.contenido_carousel h2 {
+.carousel_title3{
   font-size: 40px;
   margin: 30px 0;
   background: linear-gradient(180deg, #ffffff 37%, #00f1c9 92%);
@@ -544,30 +543,6 @@ ol {
   background-color: #002b68;
 }
 
-@media only screen and (max-width: 920px) {
-
-  .section_title{
-    display: block;
-    justify-content: center;
-    align-items: center;
-  }
-  .btn_verTodo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px auto;
-  }
-  .swiper-button-next {
-    margin-right: 10px;
-  }
-  .swiper-button-prev {
-    margin-left: 10px;
-  }
-  .card{
-    width: 100%;
-  }
-}
-
 /************estilos empredimientos gastronomicos*************************/
 .container_poster {
   background-color: #3d77ba;
@@ -576,41 +551,11 @@ ol {
   border-radius: 10px;
   display: flex;
   color: #fff;
-
-  @media only screen and (max-width:767px) {
-    display: inline-block;
-    margin-left: 25%;
-    width: min-content;
-  }
-
-  @media only screen and (min-width:768px) and (max-width:1023px) {
-    height: 350px;
-
-  }
-
-
 }
 
 .poster_img {
   width: 90%;
   height: 90%;
-
-  @media only screen and (max-width:767px) {
-    margin-top: 15px;
-
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-
-  }
-
-  @media only screen and (min-width:768px) and (max-width:1023px) {
-    width: 100%;
-    height: 100%;
-
-  }
-
-
 }
 
 .poster_img img {
@@ -623,22 +568,6 @@ ol {
 .contenido_poster {
   padding: 40px;
   text-align: center;
-
-  @media only screen and (min-width:768px) and (max-width:1023px) {
-    margin-top: -35px;
-  }
-
-  @media only screen and (max-width:767px) {
-
-    width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-
-  }
-
-
-
-
 }
 
 .contenido_poster h3 {
@@ -652,13 +581,7 @@ ol {
   line-height: 1.8;
   text-align: left;
   width: 80%;
-
-
-
-
 }
-
-
 
 .contenido_poster button {
   border: none;
@@ -681,14 +604,10 @@ ol {
 
 }
 
-/*****************estilos de find evento******************************/
+/*****************estilos de find restaurante******************************/
 .find_evento {
   background-color: #f5f5f5;
   padding: 20px;
-
-  @media only screen and (max-width:767px) {
-    width: 100%;
-  }
 }
 
 .evento_title {
@@ -725,23 +644,10 @@ ol {
   margin: 0 auto;
   border-radius: 13px;
 
-
 }
-
-@media only screen and (max-width:767px) {
-  .contenido_principal {
-    width: max-content;
-    margin-inline-end: -40px;
-
-  }
-}
-
 .contenido_principal .contenido_info {
   display: flex;
   padding: 20px 20px;
-
-
-
 }
 
 .contenido_info .info_icono {
@@ -774,4 +680,107 @@ ol {
 
 .info_texto p {
   width: 80%;
+}
+@media only screen and (max-width: 920px){
+  .contenido_text p{
+    display: none;
+  }
+  .img2{
+    top: 220px;
+    left: -320px;
+  }
+  .carousel_contenido .contenido_text{
+    right: 240px;
+    width: 200px;
+  }
+  .contenido_text h2{
+    font-size: 25px;
+  }
+  .img2 img {
+    width: 50%;
+    height: 50%;
+  }
+  .slider_btn2 {
+    width: 80%;
+    font-size: 20px;
+  }
+  .text-carousel{
+    display: none;
+  }
+  .title_carousel2{
+    font-size: 25px;
+    margin-top: -80px;
+    margin-right: 30px;
+    width: 80%;
+    line-height: 1.2;
+  }
+  .carousel_text2{
+    width: 60%;
+    bottom: 35%;
+    left: 45%;
+  }
+  .btn{
+    width: 90%;
+  }
+  .carousel-img3::before{
+    width: 500px;
+    left: 35%;
+  }
+  .carousel_title3{
+    background: none;
+    color: #fff;
+  }
+  .contenido_carousel{
+    bottom: 30%;
+    width: 80%;
+  }
+  .container_cards{
+    grid-template-columns: none;
+  }
+  .section_title {
+    display: block;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btn_verTodo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+  }
+
+  .swiper-button-next {
+    margin-right: 10px;
+  }
+
+  .swiper-button-prev {
+    margin-left: 10px;
+  }
+  .container_poster{
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+  }
+  .poster_img{
+    margin: 10px auto 0 auto;
+  }
+  .contenido_poster button{
+    width: 80%;
+  }
+  .find_evento .evento_contenido{
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .contenido_img{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .contenido_info .info_icono{
+    width: 280px;
+    height: 90px;
+  }
 }

@@ -165,7 +165,7 @@ ol {
 }
 
 /********************************Estilos de tipos de eventos**********************************/
-#eventoContenedor, #emprendimientoContenedor{
+#eventoContenedor, #emprendimientoContenedor, #resturanteContenedor{
   display: grid;
   grid-template-columns: repeat(3,1fr);
   padding: 30px;

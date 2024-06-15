@@ -122,7 +122,7 @@
                             <i class="fa-solid fa-globe"></i> No disponible
                             {% endif %}
                         </h4>
-                        <a href="#" class="detalles_btnPer">Editar detalles</a>
+                        <a href="{{ url_for('usuarios.editarPerfilUsuario', id=user_id) }}" class="detalles_btnPer">Editar detalles</a>
                     </div>
                     <div class="datos__acerca">
                         <h3>Acerca de mi</h3>

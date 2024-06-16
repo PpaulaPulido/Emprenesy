@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    
+
     container_fav()
 
     // Agregar event listener para capturar clics en favoritos
@@ -40,18 +42,22 @@ function container_fav() {
         div_vacío.appendChild(titulo);
         container_fav.appendChild(div_vacío);
     } else {
-        renderFavorite(favoritos, window.datosEventos);
-        renderFavorite(favoritos, window.eventosTecnologicos);
-        renderFavorite(favoritosRes, window.datosTarjetas);
-        renderFavorite(favoritosRes, window.restaurantesTematicos);
-        renderFavorite(favoritosRes, window.restaurantesVista);
-        renderFavorite(favoritosEm, window.datosEmpredimientos);
-        renderFavorite(favoritosEm, window.empredimientosArtesania);
+        renderFavorite(favoritos, window.datosEventos,'evento');
+        renderFavorite(favoritos, window.eventosTecnologicos,'evento');
+        renderFavorite(favoritosRes, window.datosTarjetas,'res');
+        renderFavorite(favoritosRes, window.restaurantesTematicos,'res');
+        renderFavorite(favoritosRes, window.restaurantesVista,'res');
+        renderFavorite(favoritosEm, window.datosEmpredimientos,'emprende');
+        renderFavorite(favoritosEm, window.empredimientosArtesania,'emprende');
     }
 
 
 }
-function renderFavorite(lista, type) {
+function renderFavorite(lista, type,tipo) {
+
+    const detalleResUrl = 'http://127.0.0.1:3036/res/restauranteDetalle';
+    const detalleEventoUrl = 'http://127.0.0.1:3036/evento/eventoDetalle';
+    const detalleEmprendeUrl = 'http://127.0.0.1:3036/emprende/emprendeDetalle';
     // Iterar sobre los eventos favoritos y mostrarlos en la interfaz de usuario
     lista.forEach(function (eventoId) {
 
@@ -93,7 +99,15 @@ function renderFavorite(lista, type) {
 
             let enlace = document.createElement('a');
             enlace.classList.add('enlaceFav');
-            enlace.href = `${evento.enlace}?id=${evento.id}`;
+
+            if (tipo === 'res') {
+                enlace.href = `${detalleResUrl}?id=${evento.id}&tipo=res`;
+            } else if (tipo === 'evento') {
+                enlace.href = `${detalleEventoUrl}?id=${evento.id}&tipo=evento`;
+            } else {
+                enlace.href = `${detalleEmprendeUrl}?id=${evento.id}&tipo=emprende`;
+            }
+            //enlace.href = `${evento.enlace}?id=${evento.id}`;
             enlace.textContent = 'Ver detalles';
 
             content_img.appendChild(imgFavorito);

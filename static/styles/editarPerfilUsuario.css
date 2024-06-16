@@ -128,9 +128,26 @@ body{
     .formularioPerfil {
         width: 95%;
     }
-    
+    .title__form{
+        text-align: center;
+    }
     .contacto textarea {
         max-width: 100%;
     }
-    
+    .perfilContacto{
+        grid-template-columns: none;
+    }
+    .contacto input{
+        width: 250px;
+    }
+    .perfilDireccion{
+        grid-template-columns: none;
+        padding: 0;
+    }
+    .perfilDetalles{
+        padding: 0;
+    }
+    #btnGuardar{
+        width: 60%;
+    }
 }

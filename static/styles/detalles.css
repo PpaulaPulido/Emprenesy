@@ -17,6 +17,9 @@ h3 {
 p {
   font-family: "Poppins", sans-serif;
 }
+a{
+  text-decoration: none;
+}
 
 /*estilos de particulas*/
 canvas {
@@ -390,6 +393,77 @@ canvas {
   background-color: #254b7f;
 }
 
+.calificacionRes{
+  background-color: #f3f6fc;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
+  width: 75%;
+  height: fit-content;
+  padding: 35px;
+  border-radius: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  margin: 40px auto;
+}
+.calificacionRes::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: -5px;
+  margin: auto;
+  width: 100%;
+  height: 340px;
+  border-radius: 10px;
+  background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100%);
+  z-index: -10;
+  pointer-events: none;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.calificacionRes::after{
+  content: "";
+  z-index: -1;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100%);
+  transform: translate3d(0, 0, 0) scale(0.95);
+  filter: blur(20px);
+}
+.calificacionRes:hover::after{
+  filter: blur(30px);
+}
+.calificacionRes:hover::before{
+  transform: rotate(-180deg) scaleX(1.24) scaleY(1);
+  width: 80%;
+}
+.divCalificacion hr{
+    border: none;
+    height: 2px;
+    background-color: #336baf;
+}
+.divCalificacion h2{
+  text-align: center;
+  margin: 20px 0;
+}
+.btn_opinion{
+  background-color: #3d77ba;
+  color: #fff;
+  padding: 10px 8px;
+  border-radius: 8px;
+  width: 50%;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+  margin: 25px auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn_opinion:hover{
+  color: #fff;
+  text-decoration: none;
+  background-color: #0a5ebe;
+}
 /*estilos de detalles eventos*/
 
 /*estilos de bubles*/
@@ -737,5 +811,15 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
   }
   .title_empren {
     font-size: 50px;
+  }
+  .divCalificacion h2{
+    font-size: 20px;
+  }
+  .divCalificacion h3{
+    font-size: 17px;
+    margin-top: 50px;
+  }
+  .btn_opinion{
+    width: 80%;
   }
 }

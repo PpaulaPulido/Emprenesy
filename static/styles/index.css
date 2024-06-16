@@ -1076,6 +1076,10 @@ ul,ol {
 }
 
 @media only screen and (max-width: 920px) {
+  #box-search {
+    top:75%;
+    width: 300px;
+  }
   .contenedor_tarjetas {
     margin-top: -180px;
   }

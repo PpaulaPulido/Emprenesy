@@ -334,3 +334,29 @@ ol {
 .rating2 input:checked::before {
   color: var(--c);
 }
+
+@media only screen and (max-width: 920px) {
+  .container_fav {
+    padding: 10px 0px;
+  }
+  .favoritos{
+    display: block;
+    padding: 10px 30px;
+  }
+  .favoritos button{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .contenidoFavoritos {
+    grid-template-columns: none;
+    padding: 10px 15px;
+  }
+  .contenidoFavoritos .cardFavorite{
+    margin: 20px auto;
+  }
+  .container_tarjeta{
+    width: 300px;
+  }
+}

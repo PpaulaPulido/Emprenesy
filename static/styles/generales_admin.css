@@ -166,8 +166,6 @@ ul, ol{
     position: relative;
   
 }
-
-
 .buscador_input #inputSearch {
     padding: 10px;
     font-size: 16px;
@@ -175,13 +173,6 @@ ul, ol{
     border-radius: 15px;
     width: 600px;
     height: 40px;
-    @media only screen and (max-width:767px) {
-        width: 300px;
- 
-    }
-    @media only screen  and (min-width:768px) and (max-width:1023px) {
-        width: 450px;
-    }
 }
 
 .buscador_input #icon-search {
@@ -338,4 +329,38 @@ ul, ol{
     text-align: center;
     font-size: 15px;
     margin: 10px 0;
+}
+@media only screen and (max-width: 920px) {
+    #sidebar .toggle-btn{
+        left: 210px;
+    }
+    .enlace_icon i{
+        display: none;
+    }
+    .buscador_input #inputSearch{
+        width: 200px;
+        margin-right: -15px;
+    }
+    .buscador_input #icon-search {
+        display: none;
+    }
+    .header_buscador #box-search {
+        width: 300px;
+        left: 50%;
+    }
+    .contenedor_list3 {
+        margin: 0 auto;
+      }
+      .iconos {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+      }
+    
+      .contenedor_content {
+        display: block;
+        justify-content: center;
+        align-items: center;
+      }
 }

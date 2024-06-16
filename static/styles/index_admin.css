@@ -48,6 +48,7 @@ body {
 .publicaciones_contenido {
     padding: 20px 30px;
     margin: 0 20px;
+    
 }
 
 .publicaciones_contenido .button {
@@ -174,11 +175,13 @@ body {
     grid-template-columns: repeat(4, 1fr);
     align-items: center;
     margin: 15px 0;
+
 }
 
 .publicacionIndex .publicacionTitle {
     margin: 0 20px;
     font-size: 20px;
+    text-transform: capitalize;
 }
 
 .publicacionIndex .publicacionTipoIndex {
@@ -620,15 +623,6 @@ body {
     background-color:#3d77ba;
     color: #fff;
 }
-
-
-
-   
-   
-
-
-
-
 #btn_dir:hover{
     background-color:#3d77ba;
     color: #fff;
@@ -684,19 +678,6 @@ border:solid;
     padding: 10px 20px;
     border-radius: 8px;
     margin-left: 100px;
-    @media only screen and (min-width: 1024px){
-       
-        margin-left: 71%;
-     }
-     @media only screen and (min-width:768px) and (max-width:1023px){
- 
-        margin-left: 315px; 
-     }
-     @media only screen and (max-width:767px){
-         margin-left: 245px ;
-         
-     }
-
 }
 
 #btn_dir:hover {
@@ -745,4 +726,58 @@ border:solid;
 .swal2-title {
     color: #050047;
     font-size: 25px;
+}
+@media only screen and (max-width: 920px) {
+    .publicaciones_contenido{
+        padding: 20px 5px;
+    }
+    #publicaciones {
+        transition: none;  
+        margin-left: 0;
+        width: 100%;  
+        overflow-x: hidden;
+    }
+    #publicaciones.active  {
+        margin-left: 0; 
+        width: 100%;
+    }
+    .container_pub{
+        padding: 5px;
+    }
+    .container_vac{
+        width: 80%;
+        margin-top: 10px;
+    }
+    .tituloE{
+        margin: 10px auto;
+        text-align: center;
+        width: 90%;
+    }
+    .containerPub .publicacionIndex{
+        grid-template-columns: none;
+        justify-content: center;
+    }
+    .publicacionIndex .publicacionTitle {
+        margin: 15px 5px;
+    }
+    .publicacionIndex .publicacionTipoIndex{
+        margin: 0 2px;
+    }
+    .publicacionIndex .divImgPub{
+        margin: 15px auto;
+    }
+    .containerPub .divBotonesPub{
+        display: block;
+        flex-direction: column;
+        margin: 15px auto;
+    }
+    .tipo_publicacion{
+        grid-template-columns: none;
+    }
+    .card{
+        margin-bottom: 30px;
+    }
+    .container_card:nth-of-type(3) .card{
+        margin-bottom: 80px;
+    }
 }

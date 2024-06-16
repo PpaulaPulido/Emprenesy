@@ -707,6 +707,10 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
   .info__detalles {
     grid-template-columns: none;
     grid-template-rows: repeat(2, 1fr);
+    margin-bottom: -40px;
+  }
+  .info{
+    height: fit-content;
   }
   .container_ubicacion {
     padding: 20px;
@@ -716,14 +720,13 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
     grid-template-rows: 700px 200px;
   }
   #geocode {
-    width: 100%;
+    width: 350px;
     margin: -50px auto 0 auto;
-  }
-  .mapa {
-    width: 100%;
   }
   .ubicacion {
     margin-bottom: 100px;
+    padding: 10px;
+    width: 350px;
   }
   .title_evento {
     width: 30%;

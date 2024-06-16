@@ -30,13 +30,6 @@ ol {
   padding: 30px;
   margin-top:70px;
 }
-.tipos_restaurantes {
-  padding: 50px;
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  margin-top: -40px;
-}
-
 .container_tarjeta {
   background: #fff;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -171,4 +164,16 @@ ol {
   padding: 30px;
   margin-top:70px;
   min-height: 300px;
+}
+@media only screen and (max-width: 920px){
+  #eventoContenedor, #emprendimientoContenedor, #resturanteContenedor{
+    min-height: 450px;
+    grid-template-columns: none;
+  }
+  .container_tarjeta{
+    width: 300px;
+  }
+  .contenido_texto p{
+    margin-bottom: 15px;
+  }
 }

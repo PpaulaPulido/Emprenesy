@@ -1090,8 +1090,11 @@ ol {
     font-size: 15px;
     margin: 10px 0;
 }
-
 @media only screen and (max-width: 920px) {
+    #box-search{
+        width: 350px;
+        top: 73%;
+    }
     .contenedor_tarjetas {
       margin-top: -180px;
     }

@@ -447,4 +447,9 @@ ol {
     align-items: center;
   }
 
+  .header_buscador #box-search{
+      width: 350px;
+      left: 48%;
+  }
+
 }

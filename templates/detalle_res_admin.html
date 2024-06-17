@@ -46,9 +46,9 @@
                         <li><i class="fa-solid fa-x" id="cerrar"></i></li>
                         <li><img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
                                 class="logoToggle"></li>
-                        <li><a href="{{url_for('usuarios.nosotros_user')}}">Sobre Nosotros</a></li>
-                        <li><a href="{{url_for('usuarios.index_user')}}">Inicio</a></li>
-                        <li><a href="{{url_for('usuarios.favoritos_user')}}">Mis favoritos</a></li>
+                        <li><a href="{{url_for('admin.nosotrosEmprenesy')}}">Sobre Nosotros</a></li>
+                        <li><a href="{{url_for('admin.indexPrincipal')}}">Inicio</a></li>
+                        <li><a href="{{url_for('admin.favoritosAdmin')}}">Mis favoritos</a></li>
                     </ul>
                 </div>
             </div>
@@ -61,10 +61,9 @@
             <a id="url_index" data-url="{{url_for('admin.indexPrincipal')}}"></a>
             <a id="url_favoritos" data-url="{{url_for('admin.favoritosAdmin')}}"></a>
             <a id="url_perfil" data-url="{{url_for('admin.perfil_admin')}}"></a>
-            <a id="url_editarPerfil" data-url="{{ url_for('admin.editarPerfilAdmin', id=admin_id) }}"></a>
+            <a id="url_editarPerfil" data-url="{{ url_for('admin.editarPerfilAdmin', id = admin_id) }}"></a>
             <a id="url_dashboard" data-url="{{ url_for('admin.index_admin') }}"></a>
             <a id="url_cerrarSesion" data-url="{{url_for('usuarios.logout')}}"></a>
-
         </div>
 
         <div id="particles-js"></div>

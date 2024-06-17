@@ -16,9 +16,13 @@
     integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  <!-- Enlace a la fuente de Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+  <script src="https://kit.fontawesome.com/ea06c7c0f7.js" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="{{url_for ('static', filename='styles/tipo_res_even_emprende.css')}}">
   <link rel="stylesheet" href="{{url_for ('static', filename='styles/generalesPrincipal_admin.css')}}">
+  <link rel="stylesheet" href="/static/styles/whatssap.css">
 
 
   <link rel="icon" href="{{url_for ('static', filename='img/Logo2.jpeg')}}" type="image/icon type">
@@ -31,6 +35,25 @@
       <div class="logoedit">
         <img style="height: 80px; width: 80px; margin-left: 35px;"
           src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+      </div>
+    </div>
+    <div id="menuLateralToggle">
+      <div id="toggle">
+        <div class="nav-list2" id="nav-list2">
+          <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <ul class="menu-opciones">
+            <li><i class="fa-solid fa-x" id="cerrar"></i></li>
+            <li><img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
+                class="logoToggle"></li>
+            <li><a href="{{url_for('admin.nosotrosEmprenesy')}}">Sobre Nosotros</a></li>
+            <li><a href="{{url_for('admin.indexPrincipal')}}">Inicio</a></li>
+            <li><a href="{{url_for('admin.favoritosAdmin')}}">Mis favoritos</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </header>

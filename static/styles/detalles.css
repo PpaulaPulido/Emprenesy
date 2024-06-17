@@ -785,6 +785,7 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
   }
   .info{
     height: fit-content;
+    margin-top: 20px;
   }
   .container_ubicacion {
     padding: 20px;
@@ -803,7 +804,7 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
     width: 350px;
   }
   .title_evento {
-    width: 30%;
+    width: 20%;
     padding: 15px;
   }
   .info_title {

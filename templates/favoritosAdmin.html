@@ -31,12 +31,31 @@
 <body>
     <header id="cabecera">
         <div id="cabeza">
-            <div class="logoedit">
-                <img style="height: 80px; width: 80px; margin-left: 35px;"
-                    src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
-            </div>
+          <div class="logoedit">
+            <img style="height: 80px; width: 80px; margin-left: 35px;"
+              src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+          </div>
         </div>
-    </header>
+        <div id="menuLateralToggle">
+          <div id="toggle">
+            <div class="nav-list2" id="nav-list2">
+              <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </div>
+              <ul class="menu-opciones">
+                <li><i class="fa-solid fa-x" id="cerrar"></i></li>
+                <li><img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
+                    class="logoToggle"></li>
+                <li><a href="{{url_for('admin.nosotrosEmprenesy')}}">Sobre Nosotros</a></li>
+                <li><a href="{{url_for('admin.indexPrincipal')}}">Inicio</a></li>
+                <li><a href="{{url_for('admin.favoritosAdmin')}}">Mis favoritos</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
     <main>
 
         <div id="enlaces" style="display: none;">

@@ -49,7 +49,7 @@ function crearNav(imagenURL){
         { text: 'Ver perfil', href: urlPerfil },
         { text: 'Ver dashboard', href: urlDasboard},
         { text: 'Notificaciones', href: '#' },
-        { text: 'Configuración', href: '#'},
+        { text: 'Configuración', href: urlEditarPerfil},
         { text: 'Cerrar sesión', href: urlcerrarSesion }
     ];
 

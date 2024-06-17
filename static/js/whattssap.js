@@ -1,6 +1,6 @@
 //Funcion para la animacion
 popupWhatsApp = () =>{
-    let btnClosePopup = document.querySelector('.closePopup');     //Var recibe los datos de un selector desde el HTML de la clase closePopup
+    let btnClosePopup = document.querySelector('.closePopup');   
 
     let btnOpenPopUp = document.querySelector('.whatsapp-button');      //Abre
 
@@ -30,9 +30,9 @@ popupWhatsApp = () =>{
         window.open('https://wa.me/+573114404010?text=' + msg, '_blank');       //Abre una nueva ventana
     });
 
-    setTimeout(() =>{
+    /*setTimeout(() =>{
         popup.classList.toggle('is-active-whatsapp-popup');
-    }, 3000);
+    }, 3000);*/
 }
 
 popupWhatsApp();

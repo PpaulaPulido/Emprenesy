@@ -12,11 +12,11 @@
     <link rel="stylesheet" href="../static/styles/detalles.css">
     <link rel="stylesheet" href="/static/styles/generalesPrincipal_admin.css">
     <link rel="stylesheet" href="/static/styles/whatssap.css">
-    
+
 
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/detalles.css')}}">
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/generalesPrincipal_admin.css')}}">
-    
+
 
 
     <!-- Enlace a la fuente de Font Awesome -->
@@ -53,9 +53,9 @@
                         <li><i class="fa-solid fa-x" id="cerrar"></i></li>
                         <li><img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
                                 class="logoToggle"></li>
-                        <li><a href="{{url_for('usuarios.nosotros_user')}}">Sobre Nosotros</a></li>
-                        <li><a href="{{url_for('usuarios.index_user')}}">Inicio</a></li>
-                        <li><a href="{{url_for('usuarios.favoritos_user')}}">Mis favoritos</a></li>
+                        <li><a href="{{url_for('admin.nosotrosEmprenesy')}}">Sobre Nosotros</a></li>
+                        <li><a href="{{url_for('admin.indexPrincipal')}}">Inicio</a></li>
+                        <li><a href="{{url_for('admin.favoritosAdmin')}}">Mis favoritos</a></li>
                     </ul>
                 </div>
             </div>
@@ -186,7 +186,6 @@
 
             <div class="circle-anime"></div>
         </div>
-    </main>
     </main>
 
     <footer>

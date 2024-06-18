@@ -247,7 +247,7 @@ body {
 /*******************************Estilos de tipo publicaciones********************************/
 .tipo_publicacion {
     width: 90%;
-    min-height: 500px;
+    min-height: 700px;
     margin: 20px auto;
     padding: 20px;
     display: grid;

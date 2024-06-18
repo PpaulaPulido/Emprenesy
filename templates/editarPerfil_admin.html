@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{url_for ('static', filename='../static/styles/editarAdmin.css')}}">
     <link rel="stylesheet" href="/static/styles/editarAdmin.css">
     <link rel="stylesheet" href="/static/styles/generales_admin.css">
+    <link rel="stylesheet" href="/static/styles/whatssap.css">
 
 </head>
 
@@ -49,17 +50,20 @@
         <div class="containerPerfil" id="contenedorPerfil">
             <div class="formularioPerfil">
                 <form action="{{ url_for('admin.editarPerfilAdmin', id=admin_id) }}" method="post">
-                    <h2>Información de contacto</h2>
+                    <h2 class="title__form">Información de contacto</h2>
                     <div class="perfilContacto">
-                        <div class="contacto">
-                            <label for="nombreAdmin">Nombres</label>
-                            <input type="text" id="nombreAdmin" name="nombreAdmin" value="{{admin[0]}}">
-                        </div>
+
                         <div class="contacto">
                             <div class="perfil">
                                 <img src="{{foto_perfil}}" alt="Foto de perfil">
                             </div>
                         </div>
+
+                        <div class="contacto">
+                            <label for="nombreAdmin">Nombres</label>
+                            <input type="text" id="nombreAdmin" name="nombreAdmin" value="{{admin[0]}}">
+                        </div>
+                        
                         <div class="contacto">
                             <label for="apellidosAdmin">Apellidos</label>
                             <input type="text" id="apellidosAdmin" name="apellidosAdmin" value="{{admin[1]}}">
@@ -162,6 +166,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 </body>

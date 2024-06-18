@@ -867,10 +867,7 @@ ul,ol {
 }
 
 @media only screen and (min-width: 890px) and (max-width: 1126px) {
-  body {
-    background-color: orange;
-  }
-
+  
   .container_buscador {
     left: 420px;
     top: 160px;

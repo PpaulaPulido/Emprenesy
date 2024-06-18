@@ -34,14 +34,15 @@
             <ul class="toggle-info">
                 <li>
                     <div class="tigle-img">
-                        <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
+                        <img style="height: 150px; width: 150px; margin-left: 50px;"
+                            src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
                             class="logo">
                     </div>
                 </li>
                 <li><a href="{{ url_for('admin.index_admin') }}">Dashboard</a></li>
                 <li><a href="{{url_for('admin.perfil_admin')}}">Perfil</a></li>
-                <li><a href="./index.html">Inicio</a></li>
-                <li><a href="./MVQ.html">Nosotros</a></li>
+                <li><a href="{{url_for('admin.indexPrincipal')}}">Inicio</a></li>
+                <li><a href="{{url_for('admin.nosotrosEmprenesy')}}">Nosotros</a></li>
             </ul>
         </div>
 
@@ -51,108 +52,139 @@
                     <h2>Añade Tu Emprendimiento</h2>
                 </div>
                 <div class="contenido__detalles">
-                    <form class="info_detalles" action="{{ url_for('emprende.publicar_emprendimiento') }}" method="POST"
+                    <form action="{{ url_for('emprende.publicar_emprendimiento') }}" method="POST"
                         enctype="multipart/form-data">
 
-                        <div>
-                            <div class="detalle__sitio">
-                                <h3>Detalles del emprendimiento</h3>
+                        <div class="form_detalles_container">
+
+                            <div class="form_detalles">
+
+                                <div class="info_detalles">
+                                    <div class="detalle__sitio">
+                                        <h3>Detalles del Emprendimiento</h3>
+                                    </div>
+            
+                                    <div class="detalle__sitio">
+                                        <label for="nombreEmprende">Nombre del emprendimiento</label>
+                                        <input type="text" name="nombreEmprende" id="nombreEmprende"
+                                            value="{{ datos['nombreEm'] if datos.get('nombreEm') else '' }}" required>
+                                    </div>
+            
+                                    <div class="detalle__sitio">
+                                        <label for="logoEmprende">Logo</label>
+                                        <input type="file" id="logoEmprende" name="logoEmprende" class="logo" required>
+                                    </div>
+
+                                    <div class="detalle__sitio">
+                                        <label for="typeEmprende">Tipo de emprendimiento</label>
+                                        <select name="typeEmprende" id="typeEmprende" required>
+                                            <option value="">Seleccionar</option>
+                                            {% for type in ['Tienda de Ropa', 'Artesanias','Empredimientos de Arte', 'Emprendimiento
+                                            de Mascotas', 'Emprendimiento Gastronómico'] %}
+                                            <option value="{{ type }}" {% if datos.get('tipoEm')==type %}selected{% endif %}>{{ type
+                                                }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="info_detalles">
+                                    <div class="detalle__sitio">
+                                        <h3>Información del Emprendimiento</h3>
+                                    </div>
+                                    <div class="detalle__sitio">
+                                        <label for="descripcionEmprende">Descripcion del emprendimiento</label>
+                                        <textarea name="descripcionEmprende" id="descripcionEmprende" cols="70" rows="8"
+                                            placeholder="Tu descripción"
+                                            required>{{ datos['descripcionEm'] if datos.get('descripcionEm') else '' }}</textarea>
+                                    </div>
+
+                                    <div class="detalle__sitio">
+                                        <label for="galeria[]">Galeria del emprendimiento</label>
+                                        <input type="file" id="galeria[]" name="galeria[]" class="logo" multiple required>
+                                    </div>
+                                </div>
+
+                                <div class="info_detalles">
+                                    <div class="detalle__sitio">
+                                        <h3>Enlaces del Emprendimiento</h3>
+                                    </div>
+                                    <div class="detalle__sitio">
+                                        <label for="pagina">Pagina del emprendimiento (opcional)</label>
+                                        <input type="url" name="paginaEmprende" id="paginaEmprende"
+                                            placeholder="https://example.com"
+                                            value="{{ datos['paginaEm'] if datos.get('paginaEm') else '' }}" required>
+                                    </div>
+            
+                                    <div class="detalle__sitio">
+                                        <label for="producempre">Producto</label>
+                                        <input type="url" name="producempre" id="producempre" placeholder="https://example.com"
+                                            value="{{ datos['productosEm'] if datos.get('productosEm') else '' }}">
+                                    </div>
+                                </div>
+
                             </div>
-    
-                            <div class="detalle__sitio">
-                                <label for="nombreEmprende">Nombre del emprendimiento</label>
-                                <input type="text" name="nombreEmprende" id="nombreEmprende"
-                                    value="{{ datos['nombreEm'] if datos.get('nombreEm') else '' }}" required>
+
+                            <div class="form_detalles">
+                
+                                <div class="info_detalles">
+                                    <div class="detalle__sitio">
+                                        <h3>Horario de Atención</h3>
+                                    </div>
+                                    <div class="detalle__sitio">
+                                        <label for="horarioEmprende">Horario</label>
+                                        <textarea name="horarioEmprende" id="horarioEmprende"
+                                            placeholder="Por ejemplo Lunes-Viernes" cols="30" rows="8"
+                                            required>{{ datos['horarioEm'] if datos.get('horarioEm') else '' }}</textarea>
+                                    </div>
+            
+                                    <div class="detalle__sitio">
+                                        <label for="horarioE">Apertura</label>
+                                        <input type="time" name="horarioE" id="horarioE"
+                                            value="{{ datos['horarioE'] if datos.get('horarioE') else '' }}" required>
+                                    </div>
+            
+                                    <div class="detalle__sitio">
+                                        <label for="horarioS">Cierre</label>
+                                        <input type="time" name="horarioS" id="horarioS"
+                                            value="{{ datos['horarioS'] if datos.get('horarioS') else '' }}" required>
+                                    </div>
+                                </div>
+
+                                <div class="info_detalles">
+                                    <div class="detalle__sitio">
+                                        <h3>Información de Contacto</h3>
+                                    </div>
+                                    <div class="detalle__sitio">
+                                        <label for="
+                                        correoempre">Correo</label>
+                                        <input type="email" name="correoempre" id="correoempre"
+                                            value="{{ datos['correoEm'] if datos.get('correoEm') else '' }}">
+                                    </div>
+            
+                                    <div class="detalle__sitio">
+                                        <label for="telempre">Telefono de Contacto</label>
+                                        <input type="tel" name="telempre" id="telempre"
+                                            value="{{ datos['contactoEm'] if datos.get('contactoEm') else '' }}" required>
+                                    </div>
+            
+                                
+                                    <div class="detalle__sitio">
+                                        <label>Redes del emprendimiento</label>
+                                        <input type="url" name="redInstagram" id="redInstagram"
+                                            placeholder="https://www.instagram.com/"
+                                            value="{{ datos['redInstagram'] if datos.get('redInstagram') else '' }}">
+                                        <input type="url" name="redTiktok" id="redTiktok" placeholder="https://www.tiktok.com/"
+                                            value="{{ datos['redTiktok'] if datos.get('redTiktok') else '' }}">
+                                    </div>
+            
+                                    <div class="detalle__sitio boton_form">
+                                        <input type="submit" id="siguiente2" value="Siguiente" class="btn__form">
+                                    </div>
+                                </div>
+
                             </div>
-    
-                            <div class="detalle__sitio">
-                                <label for="logoEmprende">Logo</label>
-                                <input type="file" id="logoEmprende" name="logoEmprende" required>
-                            </div>
-                        </div>
-                        
 
-                        <div class="detalle__sitio">
-                            <label for="typeEmprende">Tipo de emprendimiento</label>
-                            <select name="typeEmprende" id="typeEmprende" required>
-                                <option value="">Seleccionar</option>
-                                {% for type in ['Tienda de Ropa', 'Artesanias','Empredimientos de Arte', 'Emprendimiento
-                                de Mascotas', 'Emprendimiento Gastronómico'] %}
-                                <option value="{{ type }}" {% if datos.get('tipoEm')==type %}selected{% endif %}>{{ type
-                                    }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-
-                        <div class="detalle__sitio">
-                            <label for="descripcionEmprende">Descripcion del emprendimiento</label>
-                            <textarea name="descripcionEmprende" id="descripcionEmprende" cols="70" rows="8"
-                                placeholder="Tu descripción"
-                                required>{{ datos['descripcionEm'] if datos.get('descripcionEm') else '' }}</textarea>
-                        </div>
-
-                        <div class="detalle__sitio">
-                            <label for="horarioEmprende">Horario</label>
-                            <textarea name="horarioEmprende" id="horarioEmprende"
-                                placeholder="Por ejemplo Lunes-Viernes" cols="30" rows="8"
-                                required>{{ datos['horarioEm'] if datos.get('horarioEm') else '' }}</textarea>
-                        </div>
-
-                        <div class="detalle__sitio">
-                            <label for="horarioE">Apertura</label>
-                            <input type="time" name="horarioE" id="horarioE"
-                                value="{{ datos['horarioE'] if datos.get('horarioE') else '' }}" required>
-                        </div>
-
-                        <div class="detalle__sitio">
-                            <label for="horarioS">Cierre</label>
-                            <input type="time" name="horarioS" id="horarioS"
-                                value="{{ datos['horarioS'] if datos.get('horarioS') else '' }}" required>
-                        </div>
-
-
-                        <div class="detalle__sitio">
-                            <label for="pagina">Pagina del emprendimiento (opcional)</label>
-                            <input type="url" name="paginaEmprende" id="paginaEmprende"
-                                placeholder="https://example.com"
-                                value="{{ datos['paginaEm'] if datos.get('paginaEm') else '' }}" required>
-                        </div>
-
-                        <div class="detalle__sitio">
-                            <label for="producempre">Producto</label>
-                            <input type="url" name="producempre" id="producempre" placeholder="https://example.com"
-                                value="{{ datos['productosEm'] if datos.get('productosEm') else '' }}">
-                        </div>
-
-                        <div class="detalle__sitio">
-                            <label for="
-                            correoempre">Correo</label>
-                            <input type="email" name="correoempre" id="correoempre"
-                                value="{{ datos['correoEm'] if datos.get('correoEm') else '' }}">
-                        </div>
-
-                        <div class="detalle__sitio">
-                            <label for="telempre">Telefono de Contacto</label>
-                            <input type="tel" name="telempre" id="telempre"
-                                value="{{ datos['contactoEm'] if datos.get('contactoEm') else '' }}" required>
-                        </div>
-
-                        <div class="detalle__sitio">
-                            <label for="galeria[]">Galeria del emprendimiento</label>
-                            <input type="file" id="galeria[]" name="galeria[]" multiple required>
-                        </div>
-
-                        <div class="detalle__sitio">
-                            <label>Redes del emprendimiento</label>
-                            <input type="url" name="redInstagram" id="redInstagram"
-                                placeholder="https://www.instagram.com/"
-                                value="{{ datos['redInstagram'] if datos.get('redInstagram') else '' }}">
-                            <input type="url" name="redTiktok" id="redTiktok" placeholder="https://www.tiktok.com/"
-                                value="{{ datos['redTiktok'] if datos.get('redTiktok') else '' }}">
-                        </div>
-
-                        <div class="detalle__sitio boton_form">
-                            <input type="submit" id="siguiente2" value="Siguiente" class="btn__form">
                         </div>
                     </form>
                 </div>
@@ -195,6 +227,7 @@
         <div id="url" style="display: none;">
             <a id="url_dash" data-url="{{ url_for('admin.index_admin') }}"></a>
             <a id="url_editarPerfil" data-url="{{ url_for('admin.editarPerfilAdmin', id=admin_id) }}"></a>
+            <a id="url_cerrarSesion" data-url="{{url_for('usuarios.logout')}}"></a>
         </div>
     </main>
 

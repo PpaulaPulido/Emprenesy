@@ -37,15 +37,18 @@ ol {
   margin-top: -40px;
 }
 @media only screen and (max-width:767px) {
-  .tipos_restaurantes,#resturanteContenedor, #emprendimientoContenedor{
+  .tipos_restaurantes , #resturanteContenedor, #eventoContenedor, #emprendimientoContenedor{
     grid-template-columns: repeat(1,1fr);
   }
+ 
   
 }
 @media only screen and (min-width:768px) and (max-width:1023px) {
-  .tipos_restaurantes{
+  .tipos_restaurantes, #resturanteContenedor, #eventoContenedor, #emprendimientoContenedor{
+
     grid-template-columns: repeat(2,1fr);
   }
+
 }
 
 

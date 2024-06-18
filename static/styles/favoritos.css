@@ -67,6 +67,24 @@ ol {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
+@media only screen and (max-width:767px) {
+  .contenidoFavoritos{
+    grid-template-columns: repeat(1,1fr);
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  }
+ 
+  
+}
+@media only screen and (min-width:768px) and (max-width:1023px) {
+  .contenidoFavoritos{
+
+    grid-template-columns: repeat(2,1fr);
+  }
+
+}
+
 
 .contenidoFavoritos .cardFavorite {
   background: #fff;

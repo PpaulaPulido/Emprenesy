@@ -345,7 +345,7 @@ def editarPerfilAdmin(id):
         cursor.execute('SELECT ruta_foto FROM fotos_admin WHERE cod_admin = %s AND tipo_foto = "perfil" ORDER BY id_foto DESC LIMIT 1', (id,))
         foto_perfil_data = cursor.fetchone()
         
-        foto_perfil = normalize_path(foto_perfil_data[0]) if foto_perfil_data else "../static/img/perfil_user.png"
+        foto_perfil = normalize_path(foto_perfil_data[0]) if foto_perfil_data else "/static/img/perfil_user.png"
         
         cursor.execute('SELECT direccion,ciudad,descripcionAcerca,sitioWeb,blog FROM datosAdmin WHERE cod_admin = %s',(id,))
         datos = cursor.fetchone()

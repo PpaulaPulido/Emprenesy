@@ -79,7 +79,7 @@ function crearNav(imagenURL) {
             timer: 1000,
             customClass: {
                 confirmButton: 'btn-red',
-                popup: 'border-blue', // Clase CSS para el borde del SweetAlert
+                popup: 'border-blue swal2-popup-custom',
                 title: 'swal2-title',
                 icon: 'icon-swal',
                 container: 'custom-container'

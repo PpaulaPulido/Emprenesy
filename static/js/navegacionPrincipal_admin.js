@@ -79,20 +79,18 @@ function crearNav(imagenURL){
             icon: "success",
             title: "Cerrando sesión...",
             showConfirmButton: false,
-            timer: 1000,
+            timer: 2000,
             customClass: {
                 confirmButton: 'btn-red',
-                popup: 'border-blue', // Clase CSS para el borde del SweetAlert
+                popup: 'border-blue swal2-popup-custom',
                 title: 'swal2-title',
                 icon: 'icon-swal',
                 container: 'custom-container'
             }
         });
-
-        // Retrasar la redirección después de 3 segundos
         setTimeout(function() {
             window.location.href = 'http://127.0.0.1:3036/' // Redirigir a la página de inicio
-        }, 1000);
+        }, 2000);
         
     });
 }

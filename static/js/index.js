@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
   user_sesion();
   inicializarBuscador();
   menuToggle();
+  cerrarSesion();
 
   cntSliderTarjetas(datosTarjetas, sliderTarjetas, btn_anterior, btn_siguiente, 'res', detalleResUrl);
   cntSliderTarjetas(datosEventos, sliderTarjetas2, btn_anterior2, btn_siguiente2, 'evento', detalleEventoUrl);
@@ -239,4 +240,31 @@ function menuToggle() {
     navList.classList.remove('active');
     mobileMenu.classList.remove('is-active');
   })
+}
+function cerrarSesion() {
+
+  const cerrar = document.getElementById('cerrarSesion');
+
+  cerrar.addEventListener('click', function (event) {
+    event.preventDefault();
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Cerrando sesión...",
+      showConfirmButton: false,
+      timer: 2000,
+      customClass: {
+        confirmButton: 'btn-red',
+        popup: 'border-blue swal2-popup-custom',
+        title: 'swal2-title',
+        icon: 'icon-swal',
+        container: 'custom-container'
+      }
+    });
+    setTimeout(function () {
+      window.location.href = 'http://127.0.0.1:3036/' // Redirigir a la página de inicio
+    }, 2000);
+
+  });
+
 }

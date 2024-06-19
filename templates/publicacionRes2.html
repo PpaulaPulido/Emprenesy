@@ -92,7 +92,7 @@
 
             <div class="detalle__sitio boton_form" id="botones">
               <div class="detalle__sitio boton_form">
-                <button id="btn_regresarRes" class="btnRes2">Regresar</button>
+                <a id="btn_regresarRes" class="btnRes2">Regresar</a>
               </div>
               <div class="detalle__sitio boton_form">
                 <input type="submit" id="siguiente4" value="Enviar" class="btn__form" id="btn_enviar" />
@@ -106,16 +106,19 @@
 
     <div id="data-container" data-perfil-url="{{ url_for('admin.perfil_admin') }}" data-admin-id="{{ admin_id }}"
       style="display: none;"></div>
+
     <div id="url" style="display: none;">
       <a id="url_dash" data-url="{{ url_for('admin.index_admin') }}"></a>
       <a id="url_editarPerfil" data-url="{{ url_for('admin.editarPerfilAdmin', id=admin_id) }}"></a>
+      <a id="url_cerrarSesion" data-url="{{url_for('usuarios.logout')}}"></a>
     </div>
+
+
     <div id="form_url">
       <a id="index" data-url="{{ url_for('admin.index_admin') }}" style="display: none;"></a>
-      <a id="form_emprendimiento" data-url="{{ url_for('emprende.publicar_emprendimiento') }}"
-        style="display: none;"></a>
-      <a id="form_evento" data-url="{{ url_for('evento.publicarEventos') }}" style="display: none;"></a>
+
       <a id="form_res" data-url="{{ url_for('res.publicacionRes') }}" style="display: none;"></a>
+
     </div>
 
   </main>

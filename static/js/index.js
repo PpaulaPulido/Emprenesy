@@ -31,7 +31,13 @@ document.addEventListener('DOMContentLoaded', function () {
     scrollFunction();
   };
 
+});
 
+document.getElementById('form_contacto').addEventListener('submit', function(event) {
+  event.preventDefault(); // Evitar que el formulario se envíe por defecto
+
+  // Llamar a la función para mostrar el SweetAlert
+  enviarFormulario();
 });
 
 function user_sesion() {
@@ -267,4 +273,27 @@ function cerrarSesion() {
 
   });
 
+}
+
+function enviarFormulario() {
+  Swal.fire({
+    icon: 'success',
+    title: 'Envío exitoso',
+    showConfirmButton: false,
+    timer: 1500,
+    customClass: {
+      confirmButton: 'btn-red',
+      popup: 'border-blue swal2-popup-custom',
+      title: 'swal2-title',
+      icon: 'icon-swal',
+      container: 'custom-container'
+    }
+  }).then(() => {
+    document.getElementById('form_contacto').submit();
+  }).then((result) => {
+    // Resetear los campos del formulario después de cerrar el SweetAlert
+    if (result.dismiss === Swal.DismissReason.timer) {
+      document.getElementById('form_contacto').reset();
+    }
+  });
 }

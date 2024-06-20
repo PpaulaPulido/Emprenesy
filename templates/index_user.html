@@ -245,11 +245,11 @@
       </div>
       <div class="contacto_info">
         <h3>Envía tu Mensaje</h3>
-        <form class="info__form">
+        <form action="{{ url_for('usuarios.enviar') }}" method="POST" class="info__form" id="form_contacto">
           <input type="text" id="nombre" name="nombre" placeholder="Nombres" required>
           <input type="email" id="email" name="email" placeholder="Correo Electrónico" required>
           <input type="text" id="tema" name="tema" placeholder="Tema del mensaje" required>
-          <textarea name="mensaje" id="mensaje" cols="100" rows="8" placeholder="Mensaje"></textarea>
+          <textarea name="mensaje" id="mensaje" cols="100" rows="8" placeholder="Mensaje" required></textarea>
           <input type="submit" value="Enviar" id="btn_enviar">
         </form>
       </div>

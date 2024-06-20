@@ -27,8 +27,13 @@ document.addEventListener('DOMContentLoaded', function () {
     scrollFunction();
   };
   menuToggle();
+});
 
+document.getElementById('form_contacto').addEventListener('submit', function(event) {
+  event.preventDefault(); // Evitar que el formulario se envíe por defecto
 
+  // Llamar a la función para mostrar el SweetAlert
+  enviarFormulario();
 });
 
 function crearNav(imagenURL) {
@@ -61,7 +66,7 @@ function parametros() {
 function scrollFunction() {
   if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
     document.getElementById("cabeza").style.backgroundColor = "#3d77ba"; // Cambia el color a azul
-  }else if(document.body.scrollTop > 380 || document.documentElement.scrollTop > 380){
+  } else if (document.body.scrollTop > 380 || document.documentElement.scrollTop > 380) {
     document.getElementById("cabeza").style.backgroundColor = "#3d77ba";
   } else {
     document.getElementById("cabeza").style.backgroundColor = "transparent"; // Vuelve a ser transparente
@@ -104,7 +109,7 @@ function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, t
   let cardSlider = 3;
   if (window.innerWidth < 920) {
     cardSlider = 1;
-  }else if(window.innerWidth < 1024){
+  } else if (window.innerWidth < 1024) {
     cardSlider = 2;
   }
   // Índice inicial del conjunto de tarjetas que se muestra en el html
@@ -194,7 +199,7 @@ function popupInfo() {
   });
 }
 function menuToggle() {
-  
+
   const mobileMenu = document.getElementById('mobile-menu');
   const navList = document.getElementById('nav-list2');
   const cerrar = document.getElementById('cerrar');
@@ -202,7 +207,7 @@ function menuToggle() {
   console.log(mobileMenu); // Verificar si mobileMenu se está seleccionando correctamente
   console.log(navList);    // Verificar si navList se está seleccionando correctamente
   console.log(cerrar);     // Verificar si cerrar se está seleccionando correctamente
-  
+
   document.addEventListener('click', function (event) {
     // Comprobar si el clic no fue dentro del menú o el botón de toggle
     if (!navList.contains(event.target) && !mobileMenu.contains(event.target)) {
@@ -223,4 +228,27 @@ function menuToggle() {
     navList.classList.remove('active');
     mobileMenu.classList.remove('is-active');
   })
+}
+
+function enviarFormulario() {
+  Swal.fire({
+    icon: 'success',
+    title: 'Envío exitoso',
+    showConfirmButton: false,
+    timer: 1500,
+    customClass: {
+      confirmButton: 'btn-red',
+      popup: 'border-blue swal2-popup-custom',
+      title: 'swal2-title',
+      icon: 'icon-swal',
+      container: 'custom-container'
+    }
+  }).then(() => {
+    document.getElementById('form_contacto').submit();
+  }).then((result) => {
+    // Resetear los campos del formulario después de cerrar el SweetAlert
+    if (result.dismiss === Swal.DismissReason.timer) {
+      document.getElementById('form_contacto').reset();
+    }
+  });
 }

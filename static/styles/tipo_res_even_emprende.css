@@ -37,6 +37,7 @@ ol {
   border-radius: 20px;
   padding: 10px;
   margin: 30px auto 0 auto;
+  height: fit-content;
 }
 
 .tipo_imagen_container{
@@ -163,7 +164,8 @@ ol {
   grid-template-columns: repeat(3,1fr);
   padding: 30px;
   margin-top:70px;
-  min-height: 300px;
+  min-height: 900px;
+  height: fit-content;
 }
 @media only screen and (max-width: 920px){
   #eventoContenedor, #emprendimientoContenedor, #resturanteContenedor{

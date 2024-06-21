@@ -33,8 +33,3 @@ function verificacionContrasenas(event) {
 
   return true;
 }
-function cerrarSesion(){
-  document.addEventListener('click', ()=>{
-    
-  })
-}

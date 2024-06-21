@@ -68,7 +68,7 @@
         <div id="cover-ctn-search"></div>
       </div>
     </section>
-    
+
     <div id="menuLateralToggle">
       <div id="toggle">
         <div class="nav-list2" id="nav-list2">
@@ -89,7 +89,7 @@
         </div>
         <div class="container__img">
           <img class="toggle_logo" style="height: 80px; width: 80px; margin-left: 35px;"
-              src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="Emprenesy">
+            src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="Emprenesy">
         </div>
       </div>
     </div>
@@ -224,8 +224,7 @@
           <p>¡Dale vida a tu curiosidad! Haz clic y adéntrate en un universo de negocios diversos. Explora, conoce y
             conecta con historias que inspiran, innovan y transforman la manera en que vemos el mundo empresarial hoy.!
           </p>
-          <button class="emprendimiento_btn"><a id="emprende_link2" href="{{url_for('emprende.sectionEmprende')}}"
-              onclick="parametros()">Ver Más</a></button>
+          <button class="emprendimiento_btn"><a id="emprende_link2" href="#" onclick="popupInfo()">Ver Más</a></button>
         </div>
       </div>
     </section>
@@ -241,11 +240,11 @@
       </div>
       <div class="contacto_info">
         <h3>Envía tu Mensaje</h3>
-        <form class="info__form">
+        <form action="{{ url_for('inicio.enviar') }}" method="POST" class="info__form" id="form_contacto">
           <input type="text" id="nombre" name="nombre" placeholder="Nombres" required>
           <input type="email" id="email" name="email" placeholder="Correo Electrónico" required>
           <input type="text" id="tema" name="tema" placeholder="Tema del mensaje" required>
-          <textarea name="mensaje" id="mensaje" cols="100" rows="8" placeholder="Mensaje"></textarea>
+          <textarea name="mensaje" id="mensaje" cols="100" rows="8" placeholder="Mensaje" required></textarea>
           <input type="submit" value="Enviar" id="btn_enviar">
         </form>
       </div>

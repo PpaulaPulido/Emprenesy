@@ -216,6 +216,7 @@ ol {
 .link1:hover {
     color: #6efadc;
 }
+
 .perfil_list {
     display: none;
     position: absolute;
@@ -377,75 +378,78 @@ ol {
     z-index: 7;
     display: none;
 }
+
 @media only screen and (min-width: 300px) and (max-width: 1220px) {
 
     .logo,
     .link {
-      display: none;
+        display: none;
     }
-  
+
     #menuLateralToggle {
-      display: block;
+        display: block;
     }
-  
+
     .titulo {
-      top: 35px;
-      left: 50px;
+        top: 35px;
+        left: 50px;
     }
-  }
+}
+
 @media only screen and (max-width: 991px) {
     .container_buscador {
-      width: 80%;
-      top: 100px;
-      left: 50%;
-      transform: translateX(-50%);
+        width: 80%;
+        top: 100px;
+        left: 50%;
+        transform: translateX(-50%);
     }
-  
-    #input_buscar {
-      width: 100%;
-    }
-  
-    .container_icon {
-      left: calc(100% - 40px);
-    }
-  }
-  
-  @media only screen and (max-width: 920px) {
 
-    .link1{
+    #input_buscar {
+        width: 100%;
+    }
+
+    .container_icon {
+        left: calc(100% - 40px);
+    }
+}
+
+@media only screen and (max-width: 920px) {
+
+    .link1 {
         margin-right: -10px;
     }
-    .container_buscador {
-      width: 70%;
-    }
-  
-    #inputSearch {
-      width: 230px;
-      height: 40px;
-      text-align: center;
-    }
-  
-    .button_buscador button {
-      display: none;
-    }
-  
-    .container_buscador {
-      top: 30px;
-      margin: 50px auto 10px auto;
-  
-    }
-  
-    #icon-search {
-      color: #000;
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      font-size: 23px;
-    }
-  
-  }
 
-/*estilos de tarjetas*/
+    .container_buscador {
+        width: 70%;
+    }
+
+    #inputSearch {
+        width: 230px;
+        height: 40px;
+        text-align: center;
+    }
+
+    .button_buscador button {
+        display: none;
+    }
+
+    .container_buscador {
+        top: 30px;
+        margin: 50px auto 10px auto;
+
+    }
+
+    #icon-search {
+        color: #000;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 23px;
+    }
+
+}
+
+
 /*estilos de tarjetas*/
 .contenedor_tarjetas {
     display: flex;
@@ -1091,90 +1095,121 @@ ol {
     margin: 10px 0;
 }
 
+/* Personalizar SweetAlert */
+.border-blue {
+    border: 3px solid #213859 !important;
+    box-shadow: 0 0 15px #fff;
+}
+
+.swal2-title {
+    color: #050047;
+    font-size: 25px;
+}
+
+.swal2-popup-custom {
+    box-shadow: 0 0 15px #fff;
+    margin: 200px auto;
+    border: 3px solid #213859 !important;
+    /* Asegurarse de que el borde sea azul */
+    padding: 1.25em;
+    background: #fff;
+}
+
 @media only screen and (max-width: 920px) {
+    #box-search {
+        width: 350px;
+        top: 73%;
+    }
+
     .contenedor_tarjetas {
-      margin-top: -180px;
+        margin-top: -180px;
     }
-  
+
     .contenedor_tarjeta {
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
-  
+
     .contenedor_texto {
-      display: block;
-      text-align: center;
+        display: block;
+        text-align: center;
     }
+
     .contenedor_texto h2 {
-      margin-bottom: 30px;
+        margin-bottom: 30px;
     }
-  
+
     .contenedor_texto a {
-      width: 150px;
-      height: fit-content;
-      margin: 15px auto 0 auto;
+        width: 150px;
+        height: fit-content;
+        margin: 15px auto 0 auto;
     }
-  
+
     .button_anterior,
     .button_anterior2,
     .button_anterior3 {
-      right: 60px;
+        right: 60px;
     }
-  
+
     .button_siguiente,
     .button_siguiente2,
     .button_siguiente3 {
-      left: 50px;
+        left: 50px;
     }
-  
+
     .emprendimientos__contenedor {
-      display: block;
+        display: block;
     }
-  
+
     .empredimientos_content {
-      margin-top: 40px;
+        margin-top: 40px;
     }
-    .empredimientos_imagen{
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+
+    .empredimientos_imagen {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+
     .empredimientos_content p {
-      text-align: center;
+        text-align: center;
     }
-  
+
     .container_contacto {
-      grid-template-rows: 600px 1fr;
-      grid-template-columns: none;
-      margin-bottom: 50px;
+        grid-template-rows: 600px 1fr;
+        grid-template-columns: none;
+        margin-bottom: 50px;
     }
+
     .contacto_imagen .imagen {
-      width: 60%;
+        width: 60%;
     }
+
     .contenedor_list3 {
-      margin: 0 auto;
+        margin: 0 auto;
     }
+
     .info__form input:not([type="submit"]):not(#tema) {
-      width: 70%;
-      margin-bottom: 20px;
+        width: 70%;
+        margin-bottom: 20px;
     }
+
     .info__form #tema {
-      margin: 0 0 10px 40px;
+        margin: 0 0 10px 40px;
     }
-  
+
     .iconos {
-      display: flex;
-      text-align: center;
-      justify-content: center;
-      align-items: center;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
     }
-  
+
     .contenedor_content {
-      display: block;
-      justify-content: center;
-      align-items: center;
+        display: block;
+        justify-content: center;
+        align-items: center;
     }
-  }
-  
+}

@@ -5,7 +5,7 @@ window.datosTarjetas = [
     titulo: "Storia D'Amore",
     enlace: "",
     galeria: [
-      "https://sobremesacom.co/wp-content/uploads/2023/06/storia-de-amore.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzkQUc6JJKRHjnWJbQR9mC5gjy9HwonJKlSg&s",
       "https://media-cdn.tripadvisor.com/media/photo-s/27/a2/c2/34/storia-d-amore-barranquilla.jpg",
       "https://co.restaurantestoriadamore.com/wp-content/uploads/2023/08/STORIA-DAMORE-CALLE-82.jpg",
       "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/21/21/5f/e3/piazza-italia-by-storia.jpg?w=800&h=600&s=1"

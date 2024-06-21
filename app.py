@@ -1,4 +1,5 @@
 from flask import Flask, request, redirect, url_for, render_template, flash, session
+from flask_mail import Mail, Message
 import os
 from db import get_db, get_cursor
 
@@ -6,16 +7,19 @@ from db import get_db, get_cursor
 app = Flask(__name__)
 app.secret_key = '123456789'
 
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://paulaPulido:luna35@186.155.45.75/emprenesy'
-#app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['FOLDER_EVENT'] = 'static/galeriaEventos'
 app.config['FOLDER_EMPREN'] = 'static/galeriaEmprende'
 app.config['FOLDER_RES'] = 'static/galeriaRes'
 
-# Configuración de SQLAlchemy
-#db.init_app(app)
+# Configuración de Flask-Mail
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'emprenesy@gmail.com'
+app.config['MAIL_PASSWORD'] = 'emprenesy12345'
+app.config['MAIL_DEFAULT_SENDER'] = ('Emprenesy Soporte', 'emprenesy@gmail.com')
+mail = Mail(app)
 
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])

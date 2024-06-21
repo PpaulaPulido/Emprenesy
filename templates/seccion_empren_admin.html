@@ -15,6 +15,7 @@
     <!-- Enlace a los estilos locales -->
     <link rel="stylesheet" href="/static/styles/generalesPrincipal_admin.css">
     <link rel="stylesheet" href="/static/styles/seccion_empren.css">
+    <link rel="stylesheet" href="/static/styles/whatssap.css">
 
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/seccion_empren.css')}}">
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/generalesPrincipal_admin.css')}}">
@@ -32,7 +33,27 @@
     <header id="cabecera">
         <div id="cabeza">
             <div class="logoedit">
-                <img style="height: 80px; width: 80px; margin-left: 35px;" src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+                <img style="height: 80px; width: 80px; margin-left: 35px;"
+                    src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+            </div>
+        </div>
+        <div id="menuLateralToggle">
+            <div id="toggle">
+                <div class="nav-list2" id="nav-list2">
+                    <div class="menu-toggle" id="mobile-menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                    <ul class="menu-opciones">
+                        <li><i class="fa-solid fa-x" id="cerrar"></i></li>
+                        <li><img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
+                                class="logoToggle"></li>
+                        <li><a href="{{url_for('admin.nosotrosEmprenesy')}}">Sobre Nosotros</a></li>
+                        <li><a href="{{url_for('admin.indexPrincipal')}}">Inicio</a></li>
+                        <li><a href="{{url_for('admin.favoritosAdmin')}}">Mis favoritos</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </header>
@@ -57,7 +78,8 @@
                     <div class="carousel-img with-text"></div>
                     <div class="carousel_text">
                         <h2>Descubre el Poder Emprendedor de Bogotá</h2>
-                        <p>¡Explora la innovación y la creatividad de los emprendimientos en la vibrante ciudad de
+                        <p class="carousel_text1">¡Explora la innovación y la creatividad de los emprendimientos en la
+                            vibrante ciudad de
                             Bogotá! ¡Ven y sé parte del futuro de la capital colombiana!</p>
                         <div class="container-btn">
                             <button class="btn slider_btn1"><a href="#section_novedades">Explorar
@@ -74,10 +96,11 @@
                         </div>
                         <div class="contenido_text">
                             <h2>Saborea el Espíritu del Emprendedor</h2>
-                            <p>¡Descubre nuevos sabores en los emprendimientos culinarios de la ciudad!</p>
+                            <p class="carousel_text1">¡Descubre nuevos sabores en los emprendimientos culinarios de la
+                                ciudad!</p>
                             <div class="container-btn">
                                 <button class="btn slider_btn2"><a
-                                        href="{{ url_for('publicacionDash.emprendeTipoAdmin', tipo='Emprendimiento Gastronómico') }}">Conocer
+                                        href="{{ url_for('publicacionDash.emprendeTipo', tipo='Emprendimiento Gastronómico') }}">Conocer
                                         Más</a></button>
                             </div>
                         </div>
@@ -91,11 +114,11 @@
                 <div class="carousel-item">
                     <div class="carousel-img3 with-text"></div>
                     <div class="carousel_text contenido_carousel">
-                        <h2>Bogotá Emprende: Descubre la Innovación</h2>
+                        <h2 class="contenido_carousel_title">Bogotá Emprende: Descubre la Innovación</h2>
                         <p>¡Explora los emprendimientos artesanales de Bogotá y únete al cambio!</p>
                         <div class="container-btn">
                             <button class="btn slider_btn3"><a
-                                    href="{{ url_for('publicacionDash.emprendeTipoAdmin', tipo='Artesanías') }}">Ver
+                                    href="{{ url_for('publicacionDash.emprendeTipo', tipo='Artesanías') }}">Ver
                                     ahora</a></button>
                         </div>
                     </div>
@@ -179,6 +202,36 @@
             </div>
         </section>
 
+        <!--WHATSAPP BUTTON-->
+        <div class="nav-bottom">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <div class="popup-whatsapp fadeIn">
+                <div class="content-whatsapp -top">
+                    <button type="button" class="closePopup">
+                        <i class="material-icons icon-font-color">close</i>
+                    </button>
+                    <p> <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" width="35"
+                            id="image-whatssap">
+                        Hola, ¿cómo podemos ayudate? </p>
+                </div>
+
+                <div class="content-whatsapp -bottom">
+                    <input class="whats-input" id="whats-in" type="text" Placeholder="Enviar mensaje..." />
+                    <button class="send-msPopup" id="send-btn" type="button">
+                        <i class="material-icons icon-font-color--black">send</i>
+                    </button>
+                </div>
+
+            </div>
+
+            <button type="button" id="whats-openPopup" class="whatsapp-button">
+                <div class="float">
+                    <i class="fa fa-whatsapp my-float"></i>
+                </div>
+            </button>
+
+            <div class="circle-anime"></div>
+        </div>
     </main>
     <footer>
         <div class="principal_footer">
@@ -221,7 +274,6 @@
                         <li>Siguenos en</li>
                         <div class="iconos">
                             <img src="{{ url_for('static', filename='img/tik-tok.png') }}" alt="tiktok">
-                            <img src="{{ url_for('static', filename='img/facebook.png') }}" alt="facebook">
                             <img src="{{ url_for('static', filename='img/instagram1.png') }}" alt="instagram">
                         </div>
                     </ul>
@@ -232,14 +284,16 @@
         </div>
     </footer>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script src="/static/js/navegacionPrincipal_admin.js"></script>
-    <script src="/static/js/buscador.js"></script>
+    <script src="/static/js/buscadorAdmin.js"></script>
     <script src="/static/js/datos.js"></script>
     <script src="/static/js/seccion_empren.js"></script>
     <script src="/static/js/fav.js"></script>
+    <script src="/static/js/whattssap.js"></script>
 </body>
 
 </html>

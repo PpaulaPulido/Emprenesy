@@ -22,7 +22,30 @@ VALUES (@idresta, 'galeriaRes\\cantina1.jpg', 'Imágen de restaurante'),
 -- Insertar en ubicacionresta
 INSERT INTO ubicacionresta (idresta, ubicacion) 
 VALUES (@idresta, 'Carrera 13 #83-57 Bogotá');
+#**********************************************************************************************************************
+ INSERT INTO restaurantes (nombreresta, logo, tiporesta, descripresta, paginaresta, menu, horario, horarioApertura,
+ horarioCierre, correoresta, telresta, fecha_publicacion, codadmin)
+VALUES ('Burger King', 'galeriaRes/kingLogo.png', 'Comida rápida', ' Burger King es conocida por servir productos de alta calidad, con hamburguesas 100% hechas a la parrilla y a precios accesibles. Su lema es “The Home of The Whopper” (El hogar de la Whopper)',
+ 'https://www.burgerking.es/home','https://www.burgerking.es/carta', 'Abierto todos los días', ' 10:00:00 ', '23:00:00',
+ null, '300 702 20 00', '2024-05-15', 2);
+ 
+SELECT LAST_INSERT_ID() INTO @idresta;
 
+INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url)
+VALUES (@idresta, 'restaurante', 'Instagram', 'https://www.instagram.com/burgerkingcol/?hl=es'),
+       (@idresta, 'restaurante', 'TikTok', 'https://www.tiktok.com/@burgerking?lang=es');
+
+INSERT INTO galeriaresta (idresta, imagenresta, descripcion)
+VALUES (@idresta, 'galeriaRes\\king1.jpg', 'Imágen de restaurante'),
+       (@idresta, 'galeriaRes\\king2.jpg', 'Imágen de restaurante'),
+       (@idresta, 'galeriaRes\\king3.jpg', 'Imágen de restaurante'),
+       (@idresta, 'galeriaRes\\king4.jpg', 'Imágen de restaurante');
+
+INSERT INTO ubicacionresta (idresta, ubicacion)
+VALUES (@idresta, ' Av. Boyacá #19 Bogotá'),
+(@idresta, ' Cl. 8 Sur #7184 Bogotá, '),
+(@idresta, 'Av. Ferrocarril de Occidente #27-49 LC C 27 Bogotá'),
+(@idresta,' Calle 185 #45-03 Bogotá');
 #**********************************************************************************************************************
 INSERT INTO restaurantes (nombreresta, logo, tiporesta, descripresta, paginaresta, menu, horario, horarioApertura,
  horarioCierre, correoresta, telresta, fecha_publicacion, codadmin) 
@@ -100,22 +123,22 @@ VALUES ('Imagine Restaurante', 'galeriaRes/imagineLogo.png', 'Restaurante temát
  
   SELECT LAST_INSERT_ID() INTO @idresta;
 INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) 
-VALUES (5, 'restaurante', 'Instagram', 'https://www.instagram.com/imaginerestaurante/'),
-       (5, 'restaurante', 'TikTok', 'https://www.tiktok.com/discover/imagine-restaurante-bogot%C3%A1');
+VALUES (@idresta, 'restaurante', 'Instagram', 'https://www.instagram.com/imaginerestaurante/'),
+       (@idresta, 'restaurante', 'TikTok', 'https://www.tiktok.com/discover/imagine-restaurante-bogot%C3%A1');
 
 INSERT INTO galeriaresta (idresta, imagenresta, descripcion) 
-VALUES (5, 'galeriaRes\\imagine1.jpg', 'Imágen de restaurante'),
-       (5, 'galeriaRes\\imagine2.jpg', 'Imágen de restaurante'),
-       (5, 'galeriaRes\\imagine3.jpg', 'Imágen de restaurante'),
-       (5, 'galeriaRes\\imagine4.jpg', 'Imágen de restaurante');
+VALUES (@idresta, 'galeriaRes\\imagine1.jpg', 'Imágen de restaurante'),
+       (@idresta, 'galeriaRes\\imagine2.jpg', 'Imágen de restaurante'),
+       (@idresta, 'galeriaRes\\imagine3.jpg', 'Imágen de restaurante'),
+       (@idresta, 'galeriaRes\\imagine4.jpg', 'Imágen de restaurante');
        
 INSERT INTO ubicacionresta (idresta, ubicacion) 
-VALUES (5, 'Avenida Calle 24 # 43 a 21, Hotel Black Tower Premium Bogotá');
+VALUES (@idresta, 'Avenida Calle 24 # 43 a 21, Hotel Black Tower Premium Bogotá');
 
 #**********************************************************************************************************************
 INSERT INTO restaurantes (nombreresta, logo, tiporesta, descripresta, paginaresta, menu, horario, horarioApertura,
  horarioCierre, correoresta, telresta, fecha_publicacion, codadmin) 
-VALUES ('Mirador La Paloma', 'galeriaRes/palomaLogo.png', ' Este restaurante ofrece una vista espectacular de Bogotá y es conocido por su ambiente romántico. Además, cuenta con música en vivo para celebraciones especiales. Los platos son deliciosos y los cócteles están a la altura. Sin duda, un lugar para disfrutar de una experiencia gastronómica única',
+VALUES ('Mirador La Paloma', 'galeriaRes/palomaLogo.png','Restaurante con vista', ' Este restaurante ofrece una vista espectacular de Bogotá y es conocido por su ambiente romántico. Además, cuenta con música en vivo para celebraciones especiales. Los platos son deliciosos y los cócteles están a la altura. Sin duda, un lugar para disfrutar de una experiencia gastronómica única',
  'https://miradorlapaloma.com/', 'https://www.qrcarta.com/restaurant/bogota/mirador-la-paloma/2987/', 'Abierto todos los días', '12:00:00', '03:00:00',
  ' www.miradorlapaloma@hotmail.com', '3144444955', '2024-05-15', 2);
  
@@ -124,15 +147,37 @@ INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url)
 VALUES (@idresta, 'restaurante', 'Instagram', 'https://www.instagram.com/miradorlapaloma/?hl=es'),
        (@idresta, 'restaurante', 'TikTok', 'https://www.tiktok.com/discover/restaurante-mirador-la-paloma?lang=es');
 
-INSERT INTO galeriaresta (idresta, imagenresta, descripcion) 
+INSERT INTO galeriaresta (idresta, imagenresta, descripcion)  
 VALUES (@idresta, 'galeriaRes\\paloma1.jpg', 'Imágen de restaurante'),
        (@idresta, 'galeriaRes\\paloma2.jpg', 'Imágen de restaurante'),
        (@idresta, 'galeriaRes\\paloma3.jpg', 'Imágen de restaurante'),
        (@idresta, 'galeriaRes\\paloma4.jpg', 'Imágen de restaurante');
        
 INSERT INTO ubicacionresta (idresta, ubicacion) 
-VALUES (@idresta, 'Kilómetro 1 vía a La Calera, Bogotá');
+VALUES (@idresta, 'La Calera Bogotá');
 
+#*****************************************************************************************************************
+INSERT INTO restaurantes (nombreresta, logo, tiporesta, descripresta, paginaresta, menu, horario, horarioApertura,
+ horarioCierre, correoresta, telresta, fecha_publicacion, codadmin)
+VALUES ('La Mar', 'galeriaRes/laMarLogo.png', 'Comida de Mar', ' Un lugar donde celebran y comparten la vida, el mar, la cultura y la amistad a través de la cocina peruana. Juntando frutos del mar, historia y el sentimiento de todo un país, logran ofrecer una exquisita experiencia gastronómica',
+ 'https://lamarcebicheria.com/es/Bogota', 'https://lamarcebicheria.com/es/Bogota#', 'Abierto todos los días', ' 12:00:00', '24:00:00',
+ 'lamar@zonak.com.co', '+571 6292177', '2024-05-15', 2);
+ 
+SELECT LAST_INSERT_ID() INTO @idresta;
+
+INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url)
+VALUES (@idresta, 'restaurante', 'Instagram', 'https://www.instagram.com/lamarcebicherialima/?hl=es'),
+       (@idresta, 'restaurante', 'TikTok', 'https://www.tiktok.com/discover/la-mar-restaurante');
+
+INSERT INTO galeriaresta (idresta, imagenresta, descripcion)
+VALUES (@idresta, 'galeriaRes\\laMar1.jpg', 'Imágen de restaurante'),
+       (@idresta, 'galeriaRes\\laMar2.jpg', 'Imágen de restaurante'),
+       (@idresta, 'galeriaRes\\laMar3.jpg', 'Imágen de restaurante'),
+       (@idresta, 'galeriaRes\\laMar4.jpg', 'Imágen de restaurante');
+       
+INSERT INTO ubicacionresta (idresta, ubicacion)
+VALUES (@idresta, 'Calle 119b no.6-01, Usaquén Bogotá'),
+(@idresta, ' Cra. 15A No. 120-26 Bogotá');
 #**********************************************************************************************************************
 INSERT INTO emprendimientos (nombreempre, logo, tipoempre, descripempre, horarioempre, horarioApertura, 
 horarioCierre, paginaempre, producempre, correoempre, telempre, fecha_publicacion, codadmin) 

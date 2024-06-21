@@ -15,6 +15,7 @@
     <!-- Enlace a los estilos locales -->
     <link rel="stylesheet" href="../static/styles/generales_user.css">
     <link rel="stylesheet" href="../static/styles/seccion_evento.css">
+    <link rel="stylesheet" href="/static/styles/whatssap.css">
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/seccion_evento.css')}}">
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/generales_user.css')}}">
 
@@ -33,7 +34,28 @@
     <header id="cabecera">
         <div id="cabeza">
             <div class="logoedit">
-                <img style="height: 80px; width: 80px; margin-left: 35px;" src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+                <img style="height: 80px; width: 80px; margin-left: 35px;"
+                    src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+            </div>
+        </div>
+
+        <div id="menuLateralToggle">
+            <div id="toggle">
+                <div class="nav-list2" id="nav-list2">
+                    <div class="menu-toggle" id="mobile-menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                    <ul class="menu-opciones">
+                        <li><i class="fa-solid fa-x" id="cerrar"></i></li>
+                        <li><img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
+                                class="logoToggle"></li>
+                        <li><a href="{{url_for('usuarios.nosotros_user')}}">Sobre Nosotros</a></li>
+                        <li><a href="{{url_for('usuarios.index_user')}}">Inicio</a></li>
+                        <li><a href="{{url_for('usuarios.favoritos_user')}}">Mis favoritos</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </header>
@@ -50,10 +72,12 @@
         </div>
 
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-interval="2000">
+
             <div class="carousel-inner">
-                <div class="carousel-item ">
+
+                <div class="carousel-item">
                     <div class="carousel-img with-text"></div>
-                    <div class="carousel_text">
+                    <div class="carousel_text carousel_text1">
                         <p>¡Descubre emocionantes eventos para todos los gustos!</p>
                         <div class="container-btn">
                             <button class="btn slider_btn1"><a href="#section_novedades">Explorar Eventos</a></button>
@@ -77,6 +101,7 @@
                     </div>
                 </div>
 
+
                 <div class="carousel-item">
                     <div class="carousel-img2 with-text"></div>
                     <div class="carousel_text carousel_contenido">
@@ -88,7 +113,7 @@
                             <img src="https://images.ctfassets.net/3klebcd0t2ch/4tfFnVEL5lZ7e3UmcSxhrU/be7a432bfbb3a35838ebf32a62150344/Un_teatro_con_historia_5__1_.jpg"
                                 alt="imagen evento">
                         </div>
-                        <div class="contenido_text">
+                        <div class="contenido_text carouselText2">
                             <h2>2024</h2>
                             <p>¡No te pierdas los últimos conciertos de este mes!</p>
                             <div class="container-btn">
@@ -103,6 +128,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -250,6 +276,37 @@
                 </div>
             </div>
         </div>
+
+        <!--WHATSAPP BUTTON-->
+        <div class="nav-bottom">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <div class="popup-whatsapp fadeIn">
+                <div class="content-whatsapp -top">
+                    <button type="button" class="closePopup">
+                        <i class="material-icons icon-font-color">close</i>
+                    </button>
+                    <p> <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" width="35"
+                            id="image-whatssap">
+                        Hola, ¿cómo podemos ayudate? </p>
+                </div>
+
+                <div class="content-whatsapp -bottom">
+                    <input class="whats-input" id="whats-in" type="text" Placeholder="Enviar mensaje..." />
+                    <button class="send-msPopup" id="send-btn" type="button">
+                        <i class="material-icons icon-font-color--black">send</i>
+                    </button>
+                </div>
+
+            </div>
+
+            <button type="button" id="whats-openPopup" class="whatsapp-button">
+                <div class="float">
+                    <i class="fa fa-whatsapp my-float"></i>
+                </div>
+            </button>
+
+            <div class="circle-anime"></div>
+        </div>
     </main>
 
     <footer>
@@ -293,7 +350,6 @@
                         <li>Siguenos en</li>
                         <div class="iconos">
                             <img src="{{ url_for('static', filename='img/tik-tok.png') }}" alt="tiktok">
-                            <img src="{{ url_for('static', filename='img/facebook.png') }}" alt="facebook">
                             <img src="{{ url_for('static', filename='img/instagram1.png') }}" alt="instagram">
                         </div>
                     </ul>
@@ -306,6 +362,7 @@
 
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
@@ -314,6 +371,7 @@
     <script src="../static/js/datos.js"></script>
     <script src="../static/js/fav.js"></script>
     <script src="../static/js/seccion_Evento.js"></script>
+    <script src="/static/js/whattssap.js"></script>
 
 </body>
 

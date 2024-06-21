@@ -867,10 +867,7 @@ ul,ol {
 }
 
 @media only screen and (min-width: 890px) and (max-width: 1126px) {
-  body {
-    background-color: orange;
-  }
-
+  
   .container_buscador {
     left: 420px;
     top: 160px;
@@ -1076,6 +1073,10 @@ ul,ol {
 }
 
 @media only screen and (max-width: 920px) {
+  #box-search {
+    top:75%;
+    width: 300px;
+  }
   .contenedor_tarjetas {
     margin-top: -180px;
   }
@@ -1181,4 +1182,13 @@ ul,ol {
 .swal2-title {
   color: #050047;
   font-size: 25px;
+}
+
+.swal2-popup-custom {
+  box-shadow: 0 0 15px #fff;
+  margin: 200px auto;
+  border: 3px solid #213859 !important;
+  /* Asegurarse de que el borde sea azul */
+  padding: 1.25em;
+  background: #fff;
 }

@@ -13,6 +13,21 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+#*********************************************Ruta de formulario contacto*********************************************************
+@usuarios.route('/enviar', methods=['POST'])
+def enviar():
+    nombre = request.form.get('nombre')
+    email = request.form.get('email')
+    tema = request.form.get('tema')
+    mensaje = request.form.get('mensaje')
+    
+    # Almacenar en la base de datos
+    cursor.execute("""
+        INSERT INTO mensajes_contacto (nombre, email, tema, mensaje)
+        VALUES (%s, %s, %s, %s)
+    """, (nombre, email, tema, mensaje))
+    db.commit()
+    return redirect(url_for('usuarios.index_user'))
 #*******************************************Ruta de iniciar sesion****************************************************************
 @usuarios.route('/login', methods=['GET','POST'])
 def inicio_sesion():

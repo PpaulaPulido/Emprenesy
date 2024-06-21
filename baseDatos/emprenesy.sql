@@ -1,6 +1,16 @@
 create database emprenesy;
 use emprenesy;
 
+CREATE TABLE mensajes_contacto (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    tema VARCHAR(255) NOT NULL,
+    mensaje TEXT,
+    fecha_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+select * from mensajes_contacto;
 
 create table usuario(
 codusuario int primary key auto_increment,

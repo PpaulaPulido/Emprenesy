@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded',()=>{
+
+    menuToggle();
     user_sesion().then(() => {
         inicializarBuscador();
     }).catch(error => console.error('Error al inicializar sesión de usuario:', error));
@@ -47,7 +49,7 @@ function crearNav(imagenURL){
         { text: 'Ver perfil', href: urlPerfil },
         { text: 'Ver dashboard', href: urlDasboard},
         { text: 'Notificaciones', href: '#' },
-        { text: 'Configuración', href: '#'},
+        { text: 'Configuración', href: urlEditarPerfil},
         { text: 'Cerrar sesión', href: urlcerrarSesion }
     ];
 
@@ -68,6 +70,29 @@ function crearNav(imagenURL){
 
     const header = document.querySelector('#cabeza');
     header.appendChild(header_barra);
+
+    const cerrarSesionElement = nav_list.querySelector('a[href="' + urlcerrarSesion + '"]');
+    cerrarSesionElement.addEventListener('click', function(event) {
+        event.preventDefault(); 
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Cerrando sesión...",
+            showConfirmButton: false,
+            timer: 2000,
+            customClass: {
+                confirmButton: 'btn-red',
+                popup: 'border-blue swal2-popup-custom',
+                title: 'swal2-title',
+                icon: 'icon-swal',
+                container: 'custom-container'
+            }
+        });
+        setTimeout(function() {
+            window.location.href = 'http://127.0.0.1:3036/' // Redirigir a la página de inicio
+        }, 2000);
+        
+    });
 }
 function crearBuscadorNav(nav_list){
     // Crear elemento li para el buscador

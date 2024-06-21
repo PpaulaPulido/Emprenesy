@@ -198,7 +198,6 @@
       <div class="circle-anime"></div>
     </div>
   </main>
-
   <footer>
     <div class="principal_footer">
       <div>
@@ -229,7 +228,7 @@
 
         <div class="contenedor_list2">
           <ul class="footer_list">
-            <li>Contáctanos</li>
+            <li>Contáctenos</li>
             <li>Nosotros</li>
           </ul>
         </div>
@@ -238,14 +237,14 @@
           <ul class="footer_list">
             <li>Siguenos en</li>
             <div class="iconos">
-              <img src="/static/img/tik-tok.png" alt="tiktok">
-              <img src="/static/img/instagram1.png" alt="instagram">
+              <img src="{{ url_for('static', filename='img/tik-tok.png') }}" alt="tiktok">
+              <img src="{{ url_for('static', filename='img/instagram1.png') }}" alt="instagram">
             </div>
           </ul>
         </div>
 
       </div>
-      <p class="copy">&copy;2024-Emprensy.Todos los derechos reservados</p>
+      <p class="copy">&copy;2024-Emprenesy.Todos los derechos reservados</p>
     </div>
   </footer>
 
@@ -253,6 +252,7 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script src="/static/js/navegacion_user.js"></script>
   <script src="/static/js/buscador.js"></script>

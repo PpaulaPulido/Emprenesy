@@ -10,6 +10,31 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 db = get_db()
 cursor = get_cursor(db)
 
+#***********************************************Ruta de formulario contacto***********************************************
+@admin.route('/enviar', methods=['POST'])
+def enviar():
+    
+    db = get_db()  # Obtener la conexión a la base de datos
+    cursor = db.cursor()  # Crear un cursor
+    
+    nombre = request.form.get('nombreContacto')
+    email = request.form.get('emailContacto')
+    tema = request.form.get('tema')
+    mensaje = request.form.get('mensaje')
+    
+    # Almacenar en la base de datos
+    try:
+        cursor.execute("""
+            INSERT INTO mensajes_contacto (nombre, email, tema, mensaje)
+            VALUES (%s, %s, %s, %s)
+        """, (nombre, email, tema, mensaje))
+        db.commit()
+        return redirect(url_for('admin.indexPrincipal'))
+    except Exception as e:
+        print(f"Error al insertar en la base de datos: {e}")
+        db.rollback()  # En caso de error, hacer rollback para deshacer cambios
+        return "Error al enviar el mensaje"
+
 #*********************************Funcion para permitir tipo de extensiones para las img********************************
 ''' se utiliza para verificar si el nombre de un archivo tiene una extensión permitida según una lista de extensiones '''
 def allowed_file(filename):
@@ -345,7 +370,7 @@ def editarPerfilAdmin(id):
         cursor.execute('SELECT ruta_foto FROM fotos_admin WHERE cod_admin = %s AND tipo_foto = "perfil" ORDER BY id_foto DESC LIMIT 1', (id,))
         foto_perfil_data = cursor.fetchone()
         
-        foto_perfil = normalize_path(foto_perfil_data[0]) if foto_perfil_data else "../static/img/perfil_user.png"
+        foto_perfil = normalize_path(foto_perfil_data[0]) if foto_perfil_data else "/static/img/perfil_user.png"
         
         cursor.execute('SELECT direccion,ciudad,descripcionAcerca,sitioWeb,blog FROM datosAdmin WHERE cod_admin = %s',(id,))
         datos = cursor.fetchone()

@@ -394,6 +394,10 @@ ul,ol {
   margin: 10px 0;
 }
 @media only screen and (max-width: 920px) {
+  #box-search{
+    width: 350px;
+    top: 73%;
+}
   .container_buscador {
     margin-left: 70px;
   }

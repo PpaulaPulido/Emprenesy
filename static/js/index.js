@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
   user_sesion();
   inicializarBuscador();
   menuToggle();
+  cerrarSesion();
 
   cntSliderTarjetas(datosTarjetas, sliderTarjetas, btn_anterior, btn_siguiente, 'res', detalleResUrl);
   cntSliderTarjetas(datosEventos, sliderTarjetas2, btn_anterior2, btn_siguiente2, 'evento', detalleEventoUrl);
@@ -30,7 +31,13 @@ document.addEventListener('DOMContentLoaded', function () {
     scrollFunction();
   };
 
+});
 
+document.getElementById('form_contacto').addEventListener('submit', function(event) {
+  event.preventDefault(); // Evitar que el formulario se envíe por defecto
+
+  // Llamar a la función para mostrar el SweetAlert
+  enviarFormulario();
 });
 
 function user_sesion() {
@@ -239,4 +246,54 @@ function menuToggle() {
     navList.classList.remove('active');
     mobileMenu.classList.remove('is-active');
   })
+}
+function cerrarSesion() {
+
+  const cerrar = document.getElementById('cerrarSesion');
+
+  cerrar.addEventListener('click', function (event) {
+    event.preventDefault();
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Cerrando sesión...",
+      showConfirmButton: false,
+      timer: 2000,
+      customClass: {
+        confirmButton: 'btn-red',
+        popup: 'border-blue swal2-popup-custom',
+        title: 'swal2-title',
+        icon: 'icon-swal',
+        container: 'custom-container'
+      }
+    });
+    setTimeout(function () {
+      window.location.href = 'http://127.0.0.1:3036/' // Redirigir a la página de inicio
+    }, 2000);
+
+  });
+
+}
+
+function enviarFormulario() {
+  Swal.fire({
+    icon: 'success',
+    title: 'Envío exitoso',
+    showConfirmButton: false,
+    timer: 1500,
+    customClass: {
+      confirmButton: 'btn-red',
+      popup: 'border-blue swal2-popup-custom',
+      title: 'swal2-title',
+      icon: 'icon-swal',
+      container: 'custom-container'
+    }
+  }).then(() => {
+    document.getElementById('form_contacto').submit();
+  }).then((result) => {
+    // Resetear los campos del formulario después de cerrar el SweetAlert
+    if (result.dismiss === Swal.DismissReason.timer) {
+      document.getElementById('form_contacto').reset();
+    }
+  });
 }

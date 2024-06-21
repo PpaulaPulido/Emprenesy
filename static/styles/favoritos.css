@@ -324,6 +324,7 @@ ol {
   color: var(--c);
 }
 
+<<<<<<< HEAD
 /* Media queries para pantallas más pequeñas */
 @media only screen and (max-width: 1200px) {
   .container_fav {
@@ -370,4 +371,30 @@ ol {
     align-items: center;
   }
 
+=======
+@media only screen and (max-width: 920px) {
+  .container_fav {
+    padding: 10px 0px;
+  }
+  .favoritos{
+    display: block;
+    padding: 10px 30px;
+  }
+  .favoritos button{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .contenidoFavoritos {
+    grid-template-columns: none;
+    padding: 10px 15px;
+  }
+  .contenidoFavoritos .cardFavorite{
+    margin: 20px auto;
+  }
+  .container_tarjeta{
+    width: 300px;
+  }
+>>>>>>> 4f2b6b5d096f49b7c798a416aa5747cd78106feb
 }

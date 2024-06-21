@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
     generarBubles();
     slider_tarjetas();
     generarDatos();
-    menuToggle();
 
 });
 

@@ -14,9 +14,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Enlace a la fuente de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <script src="https://kit.fontawesome.com/ea06c7c0f7.js" crossorigin="anonymous"></script>
+
 
     <link rel="stylesheet" href="../static/styles/generales_user.css">
     <link rel="stylesheet" href="../static/styles/favoritos.css">
+    <link rel="stylesheet" href="/static/styles/whatssap.css">
 
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/favoritos.css')}}">
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/generales_user.css')}}">
@@ -30,6 +36,25 @@
         <div id="cabeza">
             <div class="logoedit">
                 <img style="height: 80px; width: 80px; margin-left: 35px;" src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+            </div>
+        </div>
+        <div id="menuLateralToggle">
+            <div id="toggle">
+                <div class="nav-list2" id="nav-list2">
+                    <div class="menu-toggle" id="mobile-menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                    <ul class="menu-opciones">
+                        <li><i class="fa-solid fa-x" id="cerrar"></i></li>
+                        <li><img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
+                                class="logoToggle"></li>
+                        <li><a href="{{url_for('usuarios.nosotros_user')}}">Sobre Nosotros</a></li>
+                        <li><a href="{{url_for('usuarios.index_user')}}">Inicio</a></li>
+                        <li><a href="{{url_for('usuarios.favoritos_user')}}">Mis favoritos</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </header>
@@ -52,6 +77,36 @@
             <div class="contenidoFavoritos" id="favoritos2"></div>
             <div class="contenidoFavoritos" id="favoritos"></div>
         </section>
+        <!--WHATSAPP BUTTON-->
+        <div class="nav-bottom">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <div class="popup-whatsapp fadeIn">
+                <div class="content-whatsapp -top">
+                    <button type="button" class="closePopup">
+                        <i class="material-icons icon-font-color">close</i>
+                    </button>
+                    <p> <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" width="35"
+                            id="image-whatssap">
+                        Hola, ¿cómo podemos ayudate? </p>
+                </div>
+
+                <div class="content-whatsapp -bottom">
+                    <input class="whats-input" id="whats-in" type="text" Placeholder="Enviar mensaje..." />
+                    <button class="send-msPopup" id="send-btn" type="button">
+                        <i class="material-icons icon-font-color--black">send</i>
+                    </button>
+                </div>
+
+            </div>
+
+            <button type="button" id="whats-openPopup" class="whatsapp-button">
+                <div class="float">
+                    <i class="fa fa-whatsapp my-float"></i>
+                </div>
+            </button>
+
+            <div class="circle-anime"></div>
+        </div>
     </main>
     <footer>
         <div class="principal_footer">
@@ -113,6 +168,8 @@
     <script src="../static/js/datos.js"></script>
     <script src="../static/js/favoritos.js"></script>
     <script src="../static/js/favoritosServidor.js"></script>
+    <script src="/static/js/whattssap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

@@ -16,6 +16,7 @@
 
     <link rel="stylesheet" href="../static/styles/seccion_res.css">
     <link rel="stylesheet" href="/static/styles/generalesPrincipal_admin.css">
+    <link rel="stylesheet" href="/static/styles/whatssap.css">
 
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/seccion_res.css')}}">
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/generalesPrincipal_admin.css')}}">
@@ -38,6 +39,25 @@
             <div class="logoedit">
                 <img style="height: 80px; width: 80px; margin-left: 35px;"
                     src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+            </div>
+        </div>
+        <div id="menuLateralToggle">
+            <div id="toggle">
+                <div class="nav-list2" id="nav-list2">
+                    <div class="menu-toggle" id="mobile-menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                    <ul class="menu-opciones">
+                        <li><i class="fa-solid fa-x" id="cerrar"></i></li>
+                        <li><img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
+                                class="logoToggle"></li>
+                        <li><a href="{{url_for('admin.nosotrosEmprenesy')}}">Sobre Nosotros</a></li>
+                        <li><a href="{{url_for('admin.indexPrincipal')}}">Inicio</a></li>
+                        <li><a href="{{url_for('admin.favoritosAdmin')}}">Mis favoritos</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </header>
@@ -77,9 +97,10 @@
                 </div>
                 <div class="carousel-item">
                     <div class="carousel-img with-text"></div>
-                    <div class="carousel_text">
-                        <h2>¡Explora el Sabor de la Innovación!</h2>
-                        <p>Explora nuestros restaurantes para disfrutar de sabores sorprendentes y experiencias
+                    <div class="carousel_text carousel_text2">
+                        <h2 class="title_carousel2">¡Explora el Sabor de la Innovación!</h2>
+                        <p class="text-carousel">Explora nuestros restaurantes para disfrutar de sabores sorprendentes y
+                            experiencias
                             culinarias inolvidables. ¡Ven y deleita tu paladar con lo mejor de nuestra cocina</p>
                         <div class="container-btn">
                             <button class="btn slider_btn1"><a href="#section_novedades">Explorar
@@ -90,8 +111,9 @@
                 <div class="carousel-item">
                     <div class="carousel-img3 with-text"></div>
                     <div class="carousel_text contenido_carousel">
-                        <h2>Cena con Vistas</h2>
-                        <p>Saborea exquisitos platillos mientras disfrutas de impresionantes vistas. ¡Una experiencia
+                        <h2 class="carousel_title3">Cena con Vistas</h2>
+                        <p class="text-carousel">Saborea exquisitos platillos mientras disfrutas de impresionantes
+                            vistas. ¡Una experiencia
                             gastronómica única en un entorno incomparable!</p>
                         <div class="container-btn">
                             <button class="btn slider_btn3"><a href="#section_vista">Ver ahora</a></button>
@@ -157,7 +179,8 @@
                 <h3>Explora los Tesoros del Mar en la Ciudad</h3>
                 <p>¡Delicias marinas te esperan en nuestra ciudad. Descubre la frescura del océano en cada plato. ¡Ven y
                     disfruta de la auténtica experiencia de nuestros restaurantes de mariscos!</p>
-                <button><a href="{{ url_for('publicacionDash.resTipoAdmin', tipo='Comida de Mar') }}">Ver Más</a></button>
+                <button><a href="{{ url_for('publicacionDash.resTipoAdmin', tipo='Comida de Mar') }}">Ver
+                        Más</a></button>
             </div>
         </div>
 
@@ -235,6 +258,37 @@
                 <div class="swiper-button-prev"></div>
             </div>
         </section>
+
+        <!--WHATSAPP BUTTON-->
+        <div class="nav-bottom">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <div class="popup-whatsapp fadeIn">
+                <div class="content-whatsapp -top">
+                    <button type="button" class="closePopup">
+                        <i class="material-icons icon-font-color">close</i>
+                    </button>
+                    <p> <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" width="35"
+                            id="image-whatssap">
+                        Hola, ¿cómo podemos ayudate? </p>
+                </div>
+
+                <div class="content-whatsapp -bottom">
+                    <input class="whats-input" id="whats-in" type="text" Placeholder="Enviar mensaje..." />
+                    <button class="send-msPopup" id="send-btn" type="button">
+                        <i class="material-icons icon-font-color--black">send</i>
+                    </button>
+                </div>
+
+            </div>
+
+            <button type="button" id="whats-openPopup" class="whatsapp-button">
+                <div class="float">
+                    <i class="fa fa-whatsapp my-float"></i>
+                </div>
+            </button>
+
+            <div class="circle-anime"></div>
+        </div>
     </main>
     <footer>
         <div class="principal_footer">
@@ -277,7 +331,6 @@
                         <li>Siguenos en</li>
                         <div class="iconos">
                             <img src="{{ url_for('static', filename='img/tik-tok.png') }}" alt="tiktok">
-                            <img src="{{ url_for('static', filename='img/facebook.png') }}" alt="facebook">
                             <img src="{{ url_for('static', filename='img/instagram1.png') }}" alt="instagram">
                         </div>
                     </ul>
@@ -291,12 +344,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="/static/js/navegacionPrincipal_admin.js"></script>
-    <script src="/static/js/buscador.js"></script>
+    <script src="/static/js/buscadorAdmin.js"></script>
     <script src="/static/js/datos.js"></script>
     <script src="/static/js/seccion_res.js"></script>
     <script src="/static/js/fav.js"></script>
+    <script src="/static/js/whattssap.js"></script>
 </body>
 
 </html>

@@ -25,7 +25,8 @@ a {
   text-decoration: none;
 }
 
-ul,ol {
+ul,
+ol {
   list-style: none;
 }
 
@@ -40,7 +41,6 @@ ul,ol {
   z-index: 30;
   transform: translateY(-50%);
   right: 10px;
-  /* Ajusta este valor según sea necesario */
 }
 
 .nav-list2 {
@@ -141,6 +141,7 @@ ul,ol {
   z-index: 0;
   margin-top: -4px;
 }
+
 .logoedit {
   text-align: center;
   display: flex;
@@ -148,16 +149,19 @@ ul,ol {
   padding: 10px;
   margin-left: -40px;
 }
+
 .logo {
   width: 170px;
   height: auto;
 }
+
 .barraedit {
   padding: 20px;
   height: 73px;
   font-size: 19px;
   text-align: center;
 }
+
 .link {
   margin: 0 20px;
   text-decoration: none;
@@ -165,6 +169,7 @@ ul,ol {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
 }
+
 .link1 {
   margin: 0 20px;
   text-decoration: none;
@@ -174,14 +179,17 @@ ul,ol {
   font-weight: 700;
   padding: 7px;
 }
+
 .link:hover {
   color: #6efadc;
   border-bottom: 1px solid #6efadc;
   padding-bottom: 3px;
 }
+
 .link1:hover {
   color: #6efadc;
 }
+
 .titulo {
   color: #fff;
   font-size: 30px;
@@ -207,6 +215,7 @@ ul,ol {
   #Barra {
     display: none;
   }
+
 
   .titulo {
     top: 35px;
@@ -247,8 +256,9 @@ ul,ol {
   top: 9px;
   right: 20px;
   font-size: 23px;
-  
+
 }
+
 /*buscador box*/
 #box-search {
   position: absolute;
@@ -294,6 +304,7 @@ ul,ol {
   z-index: 7;
   display: none;
 }
+
 /*estilos del footer*/
 .principal_footer {
   position: relative;
@@ -393,23 +404,30 @@ ul,ol {
   font-size: 15px;
   margin: 10px 0;
 }
+
 @media only screen and (max-width: 920px) {
-  #box-search{
+  
+  #box-search {
     width: 350px;
     top: 73%;
-}
+  }
+
   .container_buscador {
     margin-left: 70px;
   }
+
   #inputSearch {
     width: 180px;
   }
-  #icon-search{
+
+  #icon-search {
     display: none;
   }
+
   .contenedor_list3 {
     margin: 0 auto;
   }
+
   .iconos {
     display: flex;
     text-align: center;

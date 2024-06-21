@@ -53,7 +53,7 @@ header {
     justify-content: center;
     align-items: center;
     position: absolute;
-    bottom: 100px;
+    bottom: 500px;
     margin: 0 150px;
     z-index: 1;
 }
@@ -214,6 +214,7 @@ header {
     text-align: center;
     background-color: #eee8e8;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+   
 }
 
 .tarjeta h5 {
@@ -225,10 +226,18 @@ header {
 
 .tarjeta img {
     width: 100%;
+
     border-radius: 50%;
     margin-bottom: 10px;
 }
-
+.fotonatalia1{
+    height: 80%;
+    width: 80%;
+}
+.fotonatalia1 img{
+    height: 70%;
+    width: 85%;
+}
 @media only screen and (max-width: 920px) {
     #particles-js {
         height: 550px;

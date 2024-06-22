@@ -790,7 +790,7 @@ ul,ol {
 
 /*estilos emprendimientos*/
 .emprendimientos {
-  background-color: #213859;
+  background-color: #3d77ba;
   padding: 20rem 0;
   position: relative;
   overflow: hidden;
@@ -845,8 +845,8 @@ ul,ol {
 }
 
 .emprendimiento_btn {
-  background-color: #f27a93;
-  color: #fff;
+  background-color: #fff;
+  color: #3d77ba;
   width: 50%;
   padding: 10px;
   font-size: 20px;
@@ -859,12 +859,11 @@ ul,ol {
 }
 
 .emprendimiento_btn a {
-  color: #fff;
-  text-decoration: none;
+  color: #3d77ba;
 }
 
 .emprendimiento_btn:hover {
-  background-color: #ff5ef7;
+  box-shadow: 0 0 15px #fff;
 }
 
 @media only screen and (min-width: 890px) and (max-width: 1126px) {

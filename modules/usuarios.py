@@ -31,47 +31,127 @@ def enviar():
 #*******************************************Ruta de iniciar sesion****************************************************************
 @usuarios.route('/login', methods=['GET','POST'])
 def inicio_sesion():
-    cursor = get_db().cursor()
-    cursor = db.cursor(dictionary=True)
-    if request.method =='POST':
-        username= request.form.get('txtusuario')
-        password= request.form.get('txtcontrasena')
-        roles = request.form.get ('rol')
+    if request.method == 'POST':
+        username = request.form.get('txtusuario')
+        password = request.form.get('txtcontrasena')
+        roles = request.form.get('rol')
         
-
-        if (roles == 'usuario'):
-            sql = 'SELECT codusuario,correousu,contrasena FROM usuario where correousu = %s'
-            cursor.execute(sql,(username,))
-            user = cursor.fetchone() 
-            if user and check_password_hash(user['contrasena'], password):
-                session['email'] = user['correousu']
-                session['user_id'] = user['codusuario'] 
-                return redirect(url_for('usuarios.perfil_usuario'))
-            else:
-                return render_template('iniciar_sesion.html')
+        try:
+            db = get_db()
+            cursor = db.cursor(dictionary=True)  # Inicializar el cursor con dictionary=True
             
-        elif (roles == 'Administrador'):
-            sql = 'SELECT codadmin,correoadmin, contrasena FROM administrador where correoadmin = %s'
-            cursor.execute(sql,(username,))
-            admin = cursor.fetchone()
-            if admin and check_password_hash(admin['contrasena'], password):
-                session['email'] = admin['correoadmin']
-                session['admin_id'] = admin['codadmin'] 
-                return redirect(url_for('admin.perfil_admin'))
-            else:
-                error='Credenciales invalidas. por favor intentarlo de nuevo'
-                return render_template('iniciar_sesion.html', error=error)
+            if roles == 'usuario':
+                sql = 'SELECT codusuario, correousu, contrasena FROM usuario WHERE correousu = %s'
+                cursor.execute(sql, (username,))
+                user = cursor.fetchone()
+                if user and check_password_hash(user['contrasena'], password):
+                    session['email'] = user['correousu']
+                    session['user_id'] = user['codusuario']
+                    cursor.close()
+                    return redirect(url_for('usuarios.perfil_usuario'))
+                else:
+                    error = 'Credenciales inválidas. Por favor, inténtalo de nuevo.'
+                    return render_template('iniciar_sesion.html', error=error)
+            
+            elif roles == 'Administrador':
+                sql = 'SELECT codadmin, correoadmin, contrasena FROM administrador WHERE correoadmin = %s'
+                cursor.execute(sql, (username,))
+                admin = cursor.fetchone()
+                if admin and check_password_hash(admin['contrasena'], password):
+                    session['email'] = admin['correoadmin']
+                    session['admin_id'] = admin['codadmin']
+                    cursor.close()
+                    return redirect(url_for('admin.perfil_admin'))
+                else:
+                    error = 'Credenciales inválidas. Por favor, inténtalo de nuevo.'
+                    return render_template('iniciar_sesion.html', error=error)
+            
+        except Exception as e:
+            flash(f'Error en la base de datos: {str(e)}', 'error')
+            return render_template('iniciar_sesion.html', error="Ocurrió un error durante el inicio de sesión.")
+        finally:
+            cursor.close() 
+        
     return render_template('iniciar_sesion.html')
            
-#****************************************Ruat para cerrar la sesion***************************************************************
+#****************************************Ruta para cerrar la sesion***************************************************************
 @usuarios.route('/logout')
 def logout():
     if 'email' in session:
         if 'user_id' in session:
             session.pop('user_id',None)
+            
         if 'admin_id' in session:
             session.pop('admin_id',None)
+        
+        session.pop('email', None)
     return redirect(url_for('index'))
+
+#********************************************Ruta para recuperar contraseña***********************************************************************
+@usuarios.route('/recuperarContrasena',methods=['GET','POST'])
+def recuperarContrasena():
+    if request.method == 'POST':
+        roles = request.form.get('rolRe')
+        Email = request.form.get('correoRe')
+        contrasenaActual = request.form.get('txtcontrasenaActual')
+        contrasenaNueva = request.form.get('txtcontrasenaNueva')
+        confirmarContrasena = request.form.get('txtcontrasenaConfirmar')
+    
+        # Verificar si el correo está registrado como usuario
+        correo_registrado_usuario = False
+        correo_registrado_administrador = False
+        
+        # Conexión a la base de datos y cursor
+        db = get_db()
+        cursor = db.cursor()
+        
+        # Verificar si el correo está registrado como usuario
+        cursor.execute('SELECT correousu FROM usuario WHERE correousu = %s', (Email,))
+        resultado_usuario = cursor.fetchall()
+        if len(resultado_usuario) > 0:
+            correo_registrado_usuario  = True
+        
+        # Verificar si el correo está registrado como administrador
+        cursor.execute('SELECT correoadmin FROM administrador WHERE correoadmin = %s', (Email,))
+        resultado_administrador = cursor.fetchall()
+        if len(resultado_administrador) > 0:
+            correo_registrado_administrador = True
+            
+        if (roles == 'usuario' and correo_registrado_usuario == False):
+            return jsonify({'success': False, 'registrado':False,'message': 'El correo electrónico no está registrado'})
+        
+        if( roles == 'Administrador' and correo_registrado_administrador == False):
+            return jsonify({'success': False, 'registrado':False,'message': 'El correo electrónico no está registrado'})
+        
+        # Verificar si las contraseñas coinciden
+        if (contrasenaActual == ''):
+            return jsonify({'success': False, 'message': 'Por favor ingresa la última contraseña'})
+        
+        if (contrasenaNueva == ''):
+            return jsonify({'success': False, 'message': 'Por favor ingresa la nueva contraseña'})
+        
+        if contrasenaNueva != confirmarContrasena:
+            return jsonify({'success': False, 'message': 'Las contraseñas no coinciden'})
+        
+        # Encriptar la contraseña
+        contrasenaEncriptada = generate_password_hash(confirmarContrasena)
+        
+        if roles == 'usuario':
+            cursor.execute("UPDATE usuario SET contrasena = %s WHERE correousu = %s",
+                (contrasenaEncriptada, Email))
+            db.commit()
+            return jsonify({'success': True, 'registrado': True, 'message': 'Contraseña actualizada correctamente'})
+        
+        elif roles == 'Administrador':
+            cursor.execute("UPDATE administrador SET contrasena = %s WHERE correoadmin = %s",(contrasenaEncriptada, Email))
+            db.commit()
+            return jsonify({'success': True, 'registrado': True, 'message': 'Contraseña actualizada correctamente'})
+        
+        else:
+            return jsonify({'success': False, 'message': 'Rol no válido'})
+    
+    return render_template('formulario_contrasena.html')
+                
 #*******************************************Ruta de registro de usuario****************************************************************
 @usuarios.route('/registrarUser', methods=['GET', 'POST'])
 def registrar_usuario():

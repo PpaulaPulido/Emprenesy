@@ -33,7 +33,6 @@ header {
 main {
     padding: 20px;
 }
-
 .login-container {
     background-color: #6194cf;
     border-radius: 5px;
@@ -41,6 +40,8 @@ main {
     padding: 20px;
     margin: 20px auto;
     display: flex;
+    justify-content: center;
+    align-items: center;
     box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.3);
 }
 h1{
@@ -87,11 +88,55 @@ input[type="password"], select {
     color: #ffffff;
     text-decoration: none;
 }
-
+/*estilos de recuperar contrasena*/
+.fields{
+    display: flex;
+    margin-top: 40px;
+    margin-bottom: -15px;
+}
+.recuperar-container{
+    background-color: #6194cf;
+    border-radius: 5px;
+    width: 1100px;
+    padding: 20px;
+    margin: 20px auto;
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.3); 
+    display: grid;
+    grid-template-columns: 450px 300px;
+    align-items: center;
+}
+.recuperar-container .containerImg{
+    width: 550px;
+    height: 400px;
+    margin-left: 50px;
+}
+.containerImg img{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+.btn_recuperar{
+    width: 80%;
+    padding: 10px;
+    background-color: #fff;
+    color: #3d77ba;
+    font-weight: bold;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn_recuperar:hover{
+    box-shadow: 0 0 15px #fff;
+}
 /*estilos del sweatalert*/
 
 .border-blue {
-    border: 3px solid #213859 !important;
+    border: 3px solid #3d77ba !important;
     box-shadow: 0 0 15px #fff;
 }
 .swal2-success-ring{

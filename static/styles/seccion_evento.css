@@ -55,7 +55,7 @@ ol {
   height: 560px;
   position: relative;
   overflow: hidden;
-  background-image: linear-gradient(225deg, #051248 33%, #121e92 58%);
+  background-image: linear-gradient(135deg, rgba(0, 139, 212, 0.8) 0%, rgba(44, 197, 255, 0.8) 59%, #2cc5ff 100%);
 
 }
 
@@ -158,11 +158,11 @@ ol {
 }
 
 .slider_btn1 {
-  background-color: #16b1a7;
+  background-color: #000149;
 }
 
 .slider_btn1:hover {
-  background-color: #00fff2;
+  background-color: #0000af;
 }
 
 .container_img {
@@ -198,7 +198,7 @@ ol {
   left: 0;
   width: 55%;
   height: 100%;
-  background-color: #051248;
+  background-image: linear-gradient(135deg, #230181 41%, #fe1bbd 100%);
   border-radius: 0 40% 10% 0;
 }
 
@@ -261,17 +261,6 @@ ol {
   margin-left: 30px;
 }
 
-.slider_btn2 {
-  background-color: #0ba19c;
-  width: 40%;
-  border-radius: 13px;
-  font-size: 22px;
-  cursor: pointer;
-}
-
-.slider_btn2:hover {
-  background-color: #00fff2;
-}
 
 .contenido_circle {
   position: relative;
@@ -332,7 +321,7 @@ ol {
 .contenido_carousel h2 {
   font-size: 40px;
   margin: 30px 0;
-  background: linear-gradient(180deg, #ecaef8 37%, #64f0d8 92%);
+  background-image: linear-gradient(135deg, #fefefe 0%, #fefefe 100%);
   background-clip: text;
   color: transparent;
 
@@ -343,13 +332,23 @@ ol {
 }
 
 .slider_btn3 {
-  background-color: #010030;
+  background-color: #fff;
   width: 50%;
   border-radius: 15px;
+  cursor: pointer;
+  width: 60%;
+  padding: 8px;
+  border: none;
+  font-size: 18px;
+  border-radius: 20px;
+}
+.slider_btn3 a{
+  color: #010030;
 }
 
 .slider_btn3:hover {
-  background-color: #040191;
+  color: #010030;
+  box-shadow: 0 0 15px #fff;
 }
 
 /*estilosd e container tarjetas*/
@@ -421,7 +420,7 @@ ol {
 
 /*estilos de slider de tarjetas*/
 .section {
-  background-image: linear-gradient(225deg, #3f0186 56%, #da77f2 92%, #f989f1 100%);
+  background-image: linear-gradient(225deg, #012f46 1%, #147ed5 73%, #6cfce2 99%);
   padding: 10px;
 }
 

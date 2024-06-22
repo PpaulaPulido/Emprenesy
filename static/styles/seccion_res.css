@@ -55,7 +55,7 @@ ol {
   height: 560px;
   position: relative;
   overflow: hidden;
-  background-image: linear-gradient(225deg, #076668 11%, #00a6a4 37%, #00cec7 72%);
+  background-image: linear-gradient(135deg, rgba(0, 139, 212, 0.8) 0%, rgba(44, 197, 255, 0.8) 59%, #2cc5ff 100%);
 }
 
 .carousel-img::before {
@@ -274,7 +274,7 @@ ol {
   height: 560px;
   position: relative;
   overflow: hidden;
-  background-image: linear-gradient(45deg, #1c0079 0%, #e27fee 100%);
+  background-image: linear-gradient(135deg, #f4f4f4 0%, #00d4ff 35%, #2cbad7 91%);
 }
 
 .carousel-img3::before {
@@ -301,7 +301,7 @@ ol {
 .carousel_title3{
   font-size: 40px;
   margin: 30px 0;
-  background: linear-gradient(180deg, #ffffff 37%, #00f1c9 92%);
+  background-image: linear-gradient(135deg, #002368 0%, #031c53 99%);
   background-clip: text;
   color: transparent;
   font-size: 46px;
@@ -313,13 +313,13 @@ ol {
 }
 
 .slider_btn3 {
-  background-color: #0ba19c;
+  background-color: #002368;
   width: 50%;
   border-radius: 15px;
 }
 
 .slider_btn3:hover {
-  background-color: #00f1c9;
+  background-color: #00143b;
 }
 
 /******************estilos de container tarjetas***************************/
@@ -380,12 +380,12 @@ ol {
 
 /***********************estilos de slider de tarjetas**************************/
 .section {
-  background-image: linear-gradient(135deg, #d162f3 0%, #ff9254 99%);
+  background-image: linear-gradient(135deg, rgba(0, 139, 212, 0.8) 0%, rgba(44, 197, 255, 0.8) 59%, #2cc5ff 100%);
   padding: 10px;
 }
 
 .section2 {
-  background-image: linear-gradient(135deg, #230181 41%, #fe1bbd 100%);
+  background-image: linear-gradient(135deg, #f4f4f4 0%, #00d4ff 35%, #2cbad7 91%);
   padding: 10px;
 }
 
@@ -415,8 +415,8 @@ ol {
 }
 
 .btn_verTodo:hover {
-  background-color: #d58eff;
-  color: #fff;
+  box-shadow: 0 0 15px #fff;
+  color: #002b68;
 }
 
 .swiper_card {

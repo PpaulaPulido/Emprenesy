@@ -54,7 +54,7 @@ ol {
   height: 560px;
   position: relative;
   overflow: hidden;
-  background-image: linear-gradient(45deg, #f26ef4 0%, #ec8a2f 76%);
+  background-image: linear-gradient(135deg, #fc8afe 0%, #fcc99a 99%);
 }
 
 .carousel-img::before {
@@ -175,10 +175,7 @@ ol {
   height: 560px;
   position: relative;
   overflow: hidden;
-  background-image: linear-gradient(225deg,
-      #16243b 0%,
-      #254b7f 70%,
-      #3d77ba 100%);
+  background-image: linear-gradient(135deg, #0088df 0%, #00aaff 48%, #00aaff 89%, #fefefe 100%);
 }
 
 .carousel-img2::before {
@@ -188,7 +185,7 @@ ol {
   left: 0;
   width: 45%;
   height: 100%;
-  background-color: #17b5ca;
+  background-color: #0088df;
   border-radius: 40% 50% 40% 0;
 }
 
@@ -223,7 +220,7 @@ ol {
 
 .contenido_text h2 {
   font-size: 40px;
-  background: linear-gradient(180deg, #66faf5 37%, #ee83d0 92%);
+  background-image: linear-gradient(135deg, #fefefe 0%, #fefefe 100%);
   background-clip: text;
   color: transparent;
   margin-bottom: -20px;
@@ -236,7 +233,7 @@ ol {
 }
 
 .slider_btn2 {
-  background-color: #1c9e9a;
+  background-color: #000149;
   width: 40%;
   border-radius: 13px;
   font-size: 22px;
@@ -244,7 +241,7 @@ ol {
 }
 
 .slider_btn2:hover {
-  background-color: #00fff2;
+  background-color: #0000af;
 }
 
 .contenido_circle {
@@ -252,7 +249,7 @@ ol {
 }
 
 .contenido_circle .circle {
-  background-color: #2c5d9d;
+  background-color: #0088df;
   border-radius: 50%;
   position: absolute;
 }
@@ -277,10 +274,7 @@ ol {
   height: 560px;
   position: relative;
   overflow: hidden;
-  background-image: linear-gradient(225deg,
-      #000149 0%,
-      #5056a3 57%,
-      #3b6ddb 100%);
+  background-image: linear-gradient(135deg, #c3c4ff 0%, #3675ff 68%, #3bc9db 100%);
 }
 
 .carousel-img3::before {
@@ -307,7 +301,7 @@ ol {
 .contenido_carousel h2 {
   font-size: 40px;
   margin: 30px 0;
-  background: linear-gradient(180deg, #dc80ee 37%, #51f5d9 92%);
+  background-image: linear-gradient(135deg, #fefefe 0%, #fefefe 100%);
   background-clip: text;
   color: transparent;
 }
@@ -317,13 +311,13 @@ ol {
 }
 
 .slider_btn3 {
-  background-color: #13a2bb;
+  background-color: #000149;
   width: 50%;
   border-radius: 15px;
 }
 
 .slider_btn3:hover {
-  background-color: #0dd2f5;
+  background-color: #0000af;
 }
 
 /********************estilos de container tarjetas***********************/
@@ -379,7 +373,7 @@ ol {
 
 /************estilos empredimientos gastronomicos*************************/
 .container_poster {
-  background-color: rgb(13, 172, 150);
+  background-image: linear-gradient(135deg, rgba(0, 139, 212, 0.8) 0%, rgba(44, 197, 255, 0.8) 59%, #2cc5ff 100%);
   width: 94%;
   margin: 30px auto;
   border-radius: 10px;
@@ -447,7 +441,10 @@ ol {
 }
 
 .section2 {
-  background-image: linear-gradient(315deg, #ff6cac 0%, #f12828 100%);
+  background-image: linear-gradient(225deg,
+      #012f46 1%,
+      #147ed5 73%,
+      #6cfce2 99%);
   padding: 10px;
 }
 
@@ -602,16 +599,19 @@ ol {
   .btn {
     width: 100%;
   }
+
   .slider_btn1 {
     width: 500px;
     margin: 20px 0 0 30px;
   }
-  .contenido_text{
+
+  .contenido_text {
     width: 380px;
     margin-bottom: 320px;
     padding: 10px;
     margin-right: 100px;
   }
+
   .contenido_text h2 {
     font-size: 30px;
     background: -webkit-linear-gradient(180deg, #66faf5 37%, #ee83d0 92%);
@@ -620,28 +620,35 @@ ol {
     color: transparent;
     margin-bottom: 40px;
   }
-  .carousel_contenido{
+
+  .carousel_contenido {
     left: -110px;
     bottom: 40px;
   }
+
   .carousel-img2::before {
     display: none;
   }
-  .img2{
+
+  .img2 {
     left: 110px;
     width: 320px;
     height: 300px;
     top: 600px;
   }
+
   .img2 img {
     border-radius: 50%;
   }
-  .slider_btn2{
+
+  .slider_btn2 {
     width: 80%;
   }
-  .contenido_carousel_title{
+
+  .contenido_carousel_title {
     display: none;
   }
+
   .contenido_carousel {
     left: 40%;
     width: 55%;
@@ -650,18 +657,22 @@ ol {
     padding: 10px;
     margin-right: 10px;
   }
+
   .contenido_carousel p {
     font-size: 18px;
     text-align: center;
     line-height: 1.8;
   }
-  .slider_btn3{
+
+  .slider_btn3 {
     width: 70%;
     margin-left: 80px;
   }
-  .container_cards{
+
+  .container_cards {
     grid-template-columns: none;
   }
+
   .swiper-button-next {
     margin-right: 10px;
   }
@@ -669,18 +680,21 @@ ol {
   .swiper-button-prev {
     margin-left: 10px;
   }
+
   .container_poster {
     display: block;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .poster_img{
+
+  .poster_img {
     width: 100%;
     height: 100%;
     margin-top: 30px;
   }
-  .contenido_poster p{
+
+  .contenido_poster p {
     text-align: center;
   }
 }

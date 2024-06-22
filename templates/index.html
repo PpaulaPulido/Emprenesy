@@ -14,7 +14,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
   <script src="https://kit.fontawesome.com/ea06c7c0f7.js" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="{{url_for ('static', filename='../static/styles/index.css')}}">
+  <link rel="stylesheet" href="/static/styles/index.css">
+  <link rel="stylesheet" href="{{url_for ('static', filename='/static/styles/index.css')}}">
   <link rel="stylesheet" href="/static/styles/whatssap.css">
 </head>
 
@@ -60,7 +61,7 @@
           <div id="ctn-icon-search container_icon">
             <i class="fas fa-search" id="icon-search"></i>
           </div>
-          <div class="button_buscador">
+          <div class="button_buscador"  id="ctn-icon-search">
             <button>Search</button>
           </div>
         </div>

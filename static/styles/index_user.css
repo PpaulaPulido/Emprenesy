@@ -457,7 +457,8 @@ ol {
     align-items: center;
     flex-wrap: wrap;
     padding: 20px 0;
-    background-image: url(/static/img/bogota.jpg);
+    background-image: url('https://pbs.twimg.com/media/Ebdk7r6XsAEFyl8.jpg:large');
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 95%;

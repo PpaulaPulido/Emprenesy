@@ -1,9 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    
-
-    container_fav()
-
+    listaFavoritosServidor();
     // Agregar event listener para capturar clics en favoritos
     document.addEventListener('click', function (event) {
         if (event.target.classList.contains('favorite')) {
@@ -14,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 });
+
 function container_fav() {
 
     // Obtener los eventos favoritos del localStorage
@@ -22,38 +20,22 @@ function container_fav() {
     const favoritosEm = JSON.parse(localStorage.getItem('favoritosEm')) || [];
 
     if (favoritos.length === 0 && favoritosRes.length === 0 && favoritosEm.length === 0) {
-        const container_fav = document.querySelector('#favoritos');
-        container_fav.classList.add('container_fav');
+        let camposVacios = true;
+        return camposVacios;
 
-        const div_vacío = document.createElement('div');
-        div_vacío.classList.add('container_noFav');
-
-        const div_icon = document.createElement('div');
-        div_icon.classList.add('div_icon');
-
-        const icon = document.createElement('i');
-        icon.classList.add('bi', 'bi-heart');
-
-        const titulo = document.createElement('h2');
-        titulo.textContent = 'Aún no tienes listas de favoritos';
-
-        div_icon.appendChild(icon);
-        div_vacío.appendChild(div_icon);
-        div_vacío.appendChild(titulo);
-        container_fav.appendChild(div_vacío);
     } else {
-        renderFavorite(favoritos, window.datosEventos,'evento');
-        renderFavorite(favoritos, window.eventosTecnologicos,'evento');
-        renderFavorite(favoritosRes, window.datosTarjetas,'res');
-        renderFavorite(favoritosRes, window.restaurantesTematicos,'res');
-        renderFavorite(favoritosRes, window.restaurantesVista,'res');
-        renderFavorite(favoritosEm, window.datosEmpredimientos,'emprende');
-        renderFavorite(favoritosEm, window.empredimientosArtesania,'emprende');
+        renderFavorite(favoritos, window.datosEventos, 'evento');
+        renderFavorite(favoritos, window.eventosTecnologicos, 'evento');
+        renderFavorite(favoritosRes, window.datosTarjetas, 'res');
+        renderFavorite(favoritosRes, window.restaurantesTematicos, 'res');
+        renderFavorite(favoritosRes, window.restaurantesVista, 'res');
+        renderFavorite(favoritosEm, window.datosEmpredimientos, 'emprende');
+        renderFavorite(favoritosEm, window.empredimientosArtesania, 'emprende');
+        return false;
     }
-
-
 }
-function renderFavorite(lista, type,tipo) {
+
+function renderFavorite(lista, type, tipo) {
 
     const detalleResUrl = 'http://127.0.0.1:3036/res/detalleRestaurante/administrador';
     const detalleEventoUrl = 'http://127.0.0.1:3036/evento/detalleEvento/administrador';
@@ -63,43 +45,53 @@ function renderFavorite(lista, type,tipo) {
 
         const idNumero = parseInt(eventoId);
         const evento = type.find(e => e.id === idNumero);
-        console.log(evento);
+
         if (evento) {
             // Crear elementos HTML para mostrar la información del evento
             const container_fav = document.querySelector('#favoritos');
-
-            let cardFavorite = document.createElement('div');
-            cardFavorite.classList.add('cardFavorite');
-
-            let content_img = document.createElement('div');
-            content_img.classList.add('content-img');
-
-            let imgFavorito = document.createElement('img');
-            imgFavorito.src = evento.galeria[3];
-            imgFavorito.alt = `Imagen de ${evento.titulo}`;
-
-            const content_favorite = document.createElement('div');
-            content_favorite.classList.add('content-favorite');
-
+        
+            const divTarjeta = document.createElement('div');
+            divTarjeta.classList.add('container_tarjeta');
+        
             const favorite = document.createElement('i');
             favorite.classList.add("bi", "bi-heart-fill", "favorite");
             favorite.setAttribute('data-event-id', evento.id);
-
-            let titulo = document.createElement('h3');
+        
+            const cardFavorite = document.createElement('div');
+            cardFavorite.classList.add('tipo_imagen_container');
+        
+            const content_img = document.createElement('div');
+            content_img.classList.add('tipo_imagen');
+        
+            const imgFavorito = document.createElement('img');
+            imgFavorito.src = evento.galeria[3];
+            imgFavorito.alt = `Imagen de ${evento.titulo}`;
+        
+            const divContenido = document.createElement('div');
+            divContenido.classList.add('contenido_texto');
+        
+            const titulo = document.createElement('p');
             titulo.textContent = evento.titulo;
-
+        
+            const divContainer = document.createElement('div');
+            divContainer.classList.add('container');
+        
             const rating = document.createElement('div');
-            rating.classList.add("rating");
-
+            rating.classList.add("rating2");
+        
             for (let i = 0; i < 5; i++) {
-                const star = document.createElement('i');
-                star.classList.add("bi", "bi-star-fill", "star");
-                rating.appendChild(star);
+                const estrella = document.createElement('input');
+                estrella.type = 'radio';
+                estrella.name = `rating${evento.id}`;
+                estrella.setAttribute('style', '--c: #ff9933');
+                rating.appendChild(estrella);
             }
-
-            let enlace = document.createElement('a');
-            enlace.classList.add('enlaceFav');
-
+        
+            const divBoton = document.createElement('div');
+            divBoton.classList.add('container_btn');
+        
+            const enlace = document.createElement('a');
+        
             if (tipo === 'res') {
                 enlace.href = `${detalleResUrl}?id=${evento.id}&tipo=res`;
             } else if (tipo === 'evento') {
@@ -107,19 +99,37 @@ function renderFavorite(lista, type,tipo) {
             } else {
                 enlace.href = `${detalleEmprendeUrl}?id=${evento.id}&tipo=emprende`;
             }
-            //enlace.href = `${evento.enlace}?id=${evento.id}`;
-            enlace.textContent = 'Ver detalles';
-
+        
+            const boton = document.createElement('button');
+            boton.classList.add('btn');
+        
+            const span1 = document.createElement('span');
+            span1.classList.add('btn-text-one');
+            span1.textContent = "te interesa";
+        
+            const span2 = document.createElement('span');
+            span2.classList.add('btn-text-two');
+            span2.textContent = "mira más!";
+        
+            boton.appendChild(span1);
+            boton.appendChild(span2);
+            enlace.appendChild(boton);
+            divBoton.appendChild(enlace);
+        
+            divContainer.appendChild(rating);
+        
+            divContenido.appendChild(titulo);
+            divContenido.appendChild(divContainer);
+            divContenido.appendChild(divBoton);
+        
             content_img.appendChild(imgFavorito);
-            content_favorite.appendChild(favorite);
-            content_img.appendChild(content_favorite);
             cardFavorite.appendChild(content_img);
-            cardFavorite.appendChild(titulo);
-            cardFavorite.appendChild(rating);
-            cardFavorite.appendChild(enlace);
-            container_fav.appendChild(cardFavorite);
-
+            cardFavorite.appendChild(favorite);
+            divTarjeta.appendChild(cardFavorite);
+            divTarjeta.appendChild(divContenido);
+            container_fav.appendChild(divTarjeta);
         }
+        
     });
 }
 
@@ -157,8 +167,7 @@ function getFavorite(eventId) {
 }
 
 function listaFavoritosServidor() {
-    const contenedorFavoritos = document.getElementById('favoritos2');
-    contenedorFavoritos.innerHTML = ''; // Limpiar el contenedor de favoritos
+    const contenedorFavoritos = document.getElementById('favoritos');
 
     // Realizar las tres llamadas para obtener favoritos de diferentes tipos
     const urls = [
@@ -166,6 +175,7 @@ function listaFavoritosServidor() {
         '/admin/Listafavoritos_admin/emprendimientos',
         '/admin/Listafavoritos_admin/eventos'
     ];
+    const camposVacios = container_fav();
 
     Promise.all(urls.map(url => fetch(url).then(response => response.json())))
         .then(data => {
@@ -174,10 +184,8 @@ function listaFavoritosServidor() {
             // Combinar los resultados de las tres llamadas en un solo array
             const favoritos = [...new Set([...restaurantes.favoritos, ...emprendimientos.favoritos, ...eventos.favoritos])];
 
-            console.log(favoritos);
-
-            if (favoritos.length === 0) {
-                sinFavoritos('favoritos2');
+            if (favoritos.length === 0 && camposVacios) {
+                sinFavoritos('favoritos');
             } else {
                 tarjetasFavoritos(favoritos, contenedorFavoritos);
             }
@@ -290,9 +298,6 @@ function tarjetasFavoritos(data, contenedor) {
         contenedor.appendChild(divTarjeta);
     });
 }
-
-// Llamar a la función para cargar los favoritos cuando la página esté lista
-document.addEventListener('DOMContentLoaded', listaFavoritosServidor);
 
 function sinFavoritos(containerFav) {
     const container_fav = document.getElementById(containerFav);

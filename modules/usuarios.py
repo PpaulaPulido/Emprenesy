@@ -49,6 +49,7 @@ def inicio_sesion():
                 return redirect(url_for('usuarios.perfil_usuario'))
             else:
                 return render_template('iniciar_sesion.html')
+            
         elif (roles == 'Administrador'):
             sql = 'SELECT codadmin,correoadmin, contrasena FROM administrador where correoadmin = %s'
             cursor.execute(sql,(username,))

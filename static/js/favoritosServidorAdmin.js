@@ -65,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
                 .catch(error => {
                     console.error('Error en la solicitud fetch:', error);
-                    alert('Error al intentar agregar el favorito.');
                 });
             }
         }

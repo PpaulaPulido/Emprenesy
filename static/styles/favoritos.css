@@ -109,7 +109,7 @@ ol {
   font-size: 20px;
 }
 
-.content-favorite .favorite {
+.favorite {
   font-size: 20px;
   margin: 10px 0px 0 8px;
   cursor: pointer;
@@ -151,9 +151,10 @@ ol {
 }
 
 .container_noFav {
-  width: 60%;
+  width: 100%;
   padding: 10px;
   margin: 40px auto;
+
 }
 
 .container_fav h2 {
@@ -323,55 +324,13 @@ ol {
 .rating2 input:checked::before {
   color: var(--c);
 }
-
-<<<<<<< HEAD
-/* Media queries para pantallas más pequeñas */
-@media only screen and (max-width: 1200px) {
-  .container_fav {
-    padding: 10px 30px;
-  }
-
-  .favoritos {
-    padding: 15px 40px;
-    margin-top: 60px;
-  }
-
-  .favoritos button {
-    font-size: 16px;
-  }
-
+@media only screen and (min-width: 950px) and (max-width: 1920px){
   .contenidoFavoritos {
-    padding: 40px;
-    grid-template-columns: repeat(2, 1fr);
-  }
+    grid-template-columns: none;
+    padding: 10px 15px;
 
-  .contenidoFavoritos .cardFavorite {
-    width: 100%;
-  }
-
-  .cardFavorite h3 {
-    font-size: 18px;
-  }
-
-  .enlaceFav {
-    width: 70%;
-    font-size: 16px;
   }
 }
-
-@media only screen and (max-width: 768px) {
-  .container_fav {
-    padding: 10px 20px;
-  }
-
-  .favoritos {
-    padding: 10px 30px;
-    margin-top: 40px;
-    flex-direction: column;
-    align-items: center;
-  }
-
-=======
 @media only screen and (max-width: 920px) {
   .container_fav {
     padding: 10px 0px;
@@ -396,5 +355,5 @@ ol {
   .container_tarjeta{
     width: 300px;
   }
->>>>>>> 4f2b6b5d096f49b7c798a416aa5747cd78106feb
+
 }

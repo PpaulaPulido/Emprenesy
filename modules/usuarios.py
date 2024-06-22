@@ -29,13 +29,13 @@ def enviar():
     db.commit()
     return redirect(url_for('usuarios.index_user'))
 #*******************************************Ruta de iniciar sesion****************************************************************
-@usuarios.route('/login', methods=['GET','POST'])
+@usuarios.route('/login', methods=['GET', 'POST'])
 def inicio_sesion():
     if request.method == 'POST':
         username = request.form.get('txtusuario')
         password = request.form.get('txtcontrasena')
         roles = request.form.get('rol')
-        
+
         try:
             db = get_db()
             cursor = db.cursor(dictionary=True)  # Inicializar el cursor con dictionary=True
@@ -58,20 +58,23 @@ def inicio_sesion():
                 cursor.execute(sql, (username,))
                 admin = cursor.fetchone()
                 if admin and check_password_hash(admin['contrasena'], password):
-                    session['email'] = admin['correoadmin']
+                    session['emailAdmin'] = admin['correoadmin']
                     session['admin_id'] = admin['codadmin']
                     cursor.close()
                     return redirect(url_for('admin.perfil_admin'))
                 else:
+                    cursor.close()
                     error = 'Credenciales inválidas. Por favor, inténtalo de nuevo.'
                     return render_template('iniciar_sesion.html', error=error)
-            
+        
         except Exception as e:
             flash(f'Error en la base de datos: {str(e)}', 'error')
             return render_template('iniciar_sesion.html', error="Ocurrió un error durante el inicio de sesión.")
-        finally:
-            cursor.close() 
         
+        finally:
+            if 'cursor' in locals() and cursor:
+                cursor.close()  # Cerrar el cursor solo si está definido y no es None
+    
     return render_template('iniciar_sesion.html')
            
 #****************************************Ruta para cerrar la sesion***************************************************************
@@ -80,11 +83,12 @@ def logout():
     if 'email' in session:
         if 'user_id' in session:
             session.pop('user_id',None)
+            session.pop('email', None)
             
         if 'admin_id' in session:
             session.pop('admin_id',None)
+            session.pop('emailAdmin', None)
         
-        session.pop('email', None)
     return redirect(url_for('index'))
 
 #********************************************Ruta para recuperar contraseña***********************************************************************
@@ -134,7 +138,7 @@ def recuperarContrasena():
             return jsonify({'success': False, 'message': 'Las contraseñas no coinciden'})
         
         # Encriptar la contraseña
-        contrasenaEncriptada = generate_password_hash(confirmarContrasena)
+        contrasenaEncriptada = generate_password_hash(contrasenaNueva)
         
         if roles == 'usuario':
             cursor.execute("UPDATE usuario SET contrasena = %s WHERE correousu = %s",

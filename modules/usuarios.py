@@ -209,11 +209,16 @@ def perfilImagen_usuario():
     
     if fotoPerfil:
         fotoPerfil_path = fotoPerfil[0]
-        directory_path = os.path.join(current_app.root_path, 'static', 'uploads') 
-        file_name = os.path.basename(fotoPerfil_path) 
     else:
-        directory_path = os.path.join(current_app.root_path, 'static', 'uploads') 
-        file_name = 'perfil_user.png'
+        fotoPerfil_path = None
+        
+
+    if fotoPerfil_path:
+        directory_path = os.path.join(current_app.root_path, 'static', 'uploads')
+        file_name = os.path.basename(fotoPerfil_path)
+    else:
+        directory_path = os.path.join(current_app.root_path, 'static', 'img')
+        file_name = 'perfil_user.png'  # Nombre de la imagen por defecto
     
     full_file_path = os.path.join(directory_path, file_name)
     if not os.path.isfile(full_file_path):

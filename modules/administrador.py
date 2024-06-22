@@ -218,14 +218,18 @@ def perfil_imagen():
     
     cursor.execute("SELECT ruta_foto FROM fotos_admin  WHERE cod_admin= %s AND tipo_foto = 'perfil' ORDER BY id_foto DESC LIMIT 1", (user_id,))
     foto_perfil = cursor.fetchone()
-
+    
     if foto_perfil:
-        foto_perfil_path = foto_perfil[0]  
+        foto_perfil_path = foto_perfil[0] 
+    else:
+        foto_perfil_path = None
+    
+    if foto_perfil_path:
         directory_path = os.path.join(current_app.root_path, 'static', 'uploads') 
         file_name = os.path.basename(foto_perfil_path)  # Extrae el nombre del archivo
     else:
         # Manejar el caso en que no hay foto de perfil configurada
-        directory_path = os.path.join(current_app.root_path, 'static', 'uploads')  # Ruta al directorio de imágenes por defecto
+        directory_path = os.path.join(current_app.root_path, 'static', 'img')  # Ruta al directorio de imágenes por defecto
         file_name = 'perfil_user.png'  # Nombre de una imagen por defecto
 
     # Verificar si el archivo realmente existe

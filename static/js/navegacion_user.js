@@ -24,7 +24,6 @@ function user_sesion() {
             const imagenURL = '/static/img/perfil_user.png';
             crearNav(imagenURL);
         });
-
 }
 
 function crearNav(imagenURL) {

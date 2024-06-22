@@ -75,6 +75,7 @@ def logout():
 @usuarios.route('/registrarUser', methods=['GET', 'POST'])
 def registrar_usuario():
     if request.method == 'POST':
+        # Obtener datos del formulario
         Nombres = request.form.get('nombres')
         Apellidos = request.form.get('apellidos')
         telefono = request.form.get('tel')
@@ -84,42 +85,58 @@ def registrar_usuario():
         contrasena = request.form.get('contrasena')
         confirmar_contrasena = request.form.get('confirmar_contrasena')
         
+        # Verificar si las contraseñas coinciden
         if contrasena != confirmar_contrasena:
-            flash('Las contraseñas no coinciden', 'error')
-            print('Las contraseñas no coinciden')
-            return render_template('registro.html')
+            return jsonify({'success': False, 'message': 'Las contraseñas no coinciden'})
         
+        if (contrasena == ''):
+            return jsonify({'success': False, 'message': 'Por favor ingresa la contraseña'})
+
         # Encriptar la contraseña
         contrasenaEncriptada = generate_password_hash(contrasena)
+        
+        correo_registrado_usuario = False
+        correo_registrado_administrador = False
+        
+        # Verificar si el correo está registrado como usuario
         cursor.execute('SELECT correousu FROM usuario WHERE correousu = %s', (Email,))
-        resultado = cursor.fetchall()
-        cursor.execute('SELECT correoadmin from administrador where correoadmin=%s', (Email,))
-        resultado1= cursor.fetchall()
-
-        if len(resultado) > 0 or len(resultado1)>0:
-            flash('El correo electrónico ya está registrado', 'error')
-            print('El correo electrónico ya está registrado')
+        resultado_usuario = cursor.fetchall()
+        if len(resultado_usuario) > 0:
+            correo_registrado_usuario = True
+        
+        # Verificar si el correo está registrado como administrador
+        cursor.execute('SELECT correoadmin FROM administrador WHERE correoadmin = %s', (Email,))
+        resultado_administrador = cursor.fetchall()
+        if len(resultado_administrador) > 0:
+            correo_registrado_administrador = True
+        
+        # Verificar si el correo está registrado 
+        if (roles == 'usuario' and correo_registrado_usuario):
+            return jsonify({'success': True, 'registrado':True,'message': 'El correo electrónico ya está registrado'})
+        
+        if( roles == 'Administrador' and correo_registrado_administrador):
+            return jsonify({'success': True, 'registrado':True,'message': 'El correo electrónico ya registrado'})
+        
             
-        if (roles == 'usuario'):
+        if roles == 'usuario':
             cursor.execute(
                 "INSERT INTO usuario (nombreusu, apellidousu, telusu, fechanac_usu, correousu, contrasena) VALUES (%s, %s, %s, %s, %s, %s)",
                 (Nombres, Apellidos, telefono, fechaNac, Email, contrasenaEncriptada)
             )
             db.commit()
-            flash('Usuario creado correctamente', 'success')
-            return redirect(url_for("usuarios.inicio_sesion"))
+            return jsonify({'success': True,'registrado':False, 'message': 'Usuario creado correctamente'})
         
-        elif ( roles == 'Administrador'):
-              cursor.execute(
+        elif roles == 'Administrador':
+            cursor.execute(
                 "INSERT INTO administrador (nombreadmin, apellidoadmin, telfadmin, correoadmin, fechanac_admin, contrasena) VALUES (%s, %s, %s, %s, %s, %s)",
-                (Nombres, Apellidos, telefono, Email,fechaNac, contrasenaEncriptada)
+                (Nombres, Apellidos, telefono, Email, fechaNac, contrasenaEncriptada)
             )
-              db.commit() 
-              flash('Usuario creado correctamente', 'success')
-              return redirect(url_for("usuarios.inicio_sesion"))
+            db.commit() 
+            return jsonify({'success': True,'registrado':False, 'message': 'Administrador creado correctamente'})
         
         else:
-            return redirect(url_for("usuarios.registrar_usuario"))
+            return jsonify({'success': False, 'message': 'Rol no válido'})
+    
     return render_template('registro.html')
 
 #*******************************************Ruta de perfil usuario****************************************************************        

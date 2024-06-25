@@ -141,31 +141,28 @@ def restauranteLocation():
 #**************************************************Editar restaurante**************************************************************
 @res.route('/editarRestaurante/<int:id>', methods=['GET', 'POST'])
 def editarRes(id):
-    
     db = get_db()
     cursor = db.cursor()
     
-    current_app.config['FOLDER_RES'] = os.path.join(current_app.root_path, 'static', 'galeriaRes')
-    codadmin = session.get('admin_id') 
+    codadmin = session.get('admin_id')
     
     if request.method == 'POST':
-        
+        # Manejo de logo_Res
         logoRes = request.files.get("logo_Res")
         relativePath = None
-        
-        galeria = request.files.getlist('galeriaRes[]')
         
         if logoRes and allowed_file(logoRes.filename):
             filename = secure_filename(logoRes.filename)
             path = os.path.join(current_app.config['FOLDER_RES'], filename)
-            logoRes.save(path) 
-            relativePath =  os.path.join('galeriaRes',filename)
-        
+            logoRes.save(path)
+            relativePath = os.path.join('galeriaRes', filename)
+
+        # Resto de los datos del formulario
         nombre_Res = request.form.get('nombre_Res')
         type_Res = request.form.get('type_Res')
         horario_Res = request.form.get('horario_Res')
-        horarioEntrada = request.form.get('horarioEntrada')
-        horarioSalida = request.form.get('horarioSalida')
+        horarioEntradaRes = request.form.get('horarioEntradaRes')
+        horarioSalidaRes = request.form.get('horarioSalidaRes')
         pagina_Res = request.form.get('pagina_Res')
         menu_Res = request.form.get('menu_Res')
         descripcion_Res = request.form.get('descripcion_Res')
@@ -174,46 +171,44 @@ def editarRes(id):
         correo_Res = request.form.get('correo_Res')
         contacto_Res = request.form.get('contacto_Res')
         fechaPublicacion = datetime.now().date()
-        
+
+        # Actualización de la tabla restaurantes
         sql_res = """
             UPDATE restaurantes SET 
             nombreresta = %s, logo = %s, tiporesta = %s, descripresta = %s, paginaresta = %s, menu = %s, horario = %s, 
             horarioApertura = %s, horarioCierre = %s, correoresta = %s, telresta = %s, fecha_publicacion = %s 
             WHERE idresta = %s AND codadmin = %s
         """
-        
-        cursor.execute(sql_res, (nombre_Res, relativePath, type_Res, descripcion_Res, pagina_Res, menu_Res, horario_Res, horarioEntrada, horarioSalida, correo_Res, contacto_Res, fechaPublicacion, id, codadmin))
-         
-        # Actualizar la tabla de redes_sociales
+        cursor.execute(sql_res, (nombre_Res, relativePath, type_Res, descripcion_Res, pagina_Res, menu_Res, horario_Res,
+                                 horarioEntradaRes, horarioSalidaRes, correo_Res, contacto_Res, fechaPublicacion, id, codadmin))
+
+        # Actualización de redes sociales (Instagram y Tiktok)
         sql_redes = """
-                UPDATE redes_sociales SET 
-                url = %s 
-                WHERE entidad_id = %s AND entidad_tipo = %s AND red = %s
-            """
-        
+            UPDATE redes_sociales SET 
+            url = %s 
+            WHERE entidad_id = %s AND entidad_tipo = %s AND red = %s
+        """
         # Actualizar Instagram
         entidad_tipo = 'restaurante'
         cursor.execute(sql_redes, (red_Instagram, id, entidad_tipo, 'Instagram'))
         
         # Actualizar Tiktok
         cursor.execute(sql_redes, (red_Tiktok, id, entidad_tipo, 'Tiktok'))
-        
-        # galeria de imagenes
-        cursor.execute("DELETE FROM galeriaresta WHERE idresta = %s", (id,)) 
-        
-        upload_folder = current_app.config['FOLDER_RES']
-        if not os.path.exists(upload_folder):
-            os.makedirs(upload_folder)
+
+        # Eliminar galería existente y subir nueva galería
+        cursor.execute("DELETE FROM galeriaresta WHERE idresta = %s", (id,))
+        galeria = request.files.getlist('galeriaRes[]')
         for imagen in galeria:
             if imagen and allowed_file(imagen.filename):
                 filename = secure_filename(imagen.filename)
                 path = os.path.join(current_app.config['FOLDER_RES'], filename)
                 imagen.save(path)
-                relative_path = os.path.join('galeriaRes', filename)  # Ruta relativa de la imagen
+                relative_path = os.path.join('galeriaRes', filename)
                 cursor.execute("INSERT INTO galeriaresta (idresta, imagenresta, descripcion) VALUES (%s, %s, %s)",
-                                (id, relative_path, "Imagen de la galería del restaurante"))
-        
+                               (id, relative_path, "Imagen de la galería del restaurante"))
+
         db.commit()
+        cursor.close()
         return redirect(url_for('res.editarResUbicacion', id=id))
     
     else:
@@ -221,15 +216,14 @@ def editarRes(id):
         sql_select_restaurante = "SELECT * FROM restaurantes WHERE idresta = %s"
         cursor.execute(sql_select_restaurante, (id,))
         restaurante = cursor.fetchone()
- 
+
         sql_select_redes = "SELECT red, url FROM redes_sociales WHERE entidad_id = %s AND entidad_tipo = 'restaurante'"
-        
         cursor.execute(sql_select_redes, (id,))
         redes = cursor.fetchall()
         redes_sociales = {red.lower(): url for red, url in redes}
 
         cursor.close()
-        
+
         # Preparar datos para enviar al template
         datos_res = {
             'nombre_res': restaurante[1],
@@ -239,8 +233,8 @@ def editarRes(id):
             'descripcion_res': restaurante[4],
             'pagina_res': restaurante[5],
             'horario_res': restaurante[7],
-            'horarioEntrada': restaurante[8],
-            'horarioSalida': restaurante[9],
+            'horarioEntradaRes': restaurante[8],
+            'horarioSalidaRes': restaurante[9],
             'menu_res': restaurante[6],
             'red_Instagram': redes_sociales.get('instagram', ''),
             'red_Tiktok': redes_sociales.get('tiktok', ''),

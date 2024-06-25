@@ -34,6 +34,24 @@
                 <img style="height: 80px; width: 80px; margin-left: 35px;" src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
             </div>
         </div>
+
+        <div id="menuLateralToggle">
+            <div class="nav-list2" id="nav-list2">
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="menu-opciones">
+                    <li><i class="fa-solid fa-x" id="cerrar"></i></li>
+                    <li><img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
+                            class="logoToggle"></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Mis Favoritos</a></li>
+                </ul>
+            </div>
+        </div>
     </header>
     <main>
 
@@ -84,7 +102,7 @@
                     <h2>Detalles</h2>
                     <h3><i class="fa-regular fa-calendar"></i>Horario de atención</h3>
                     <p id="horario"></p>
-                    <h3><i class="fa-solid fa-utensils"></i>Comidas</h3>
+                    <h3><i class="fa-solid fa-utensils"></i> Comidas</h3>
                     <p id="comidas"></p>
                     <h3><i class="fa-solid fa-envelope"></i>Correo electrónico</h3>
                     <p id="correo"></p>
@@ -122,9 +140,6 @@
                     <div class="ubicacion">
                         <h3>Encuéntranos en: </h3>
                         <ul id="location"></ul>
-                        <div class="contenedor_button">
-                            <button class="btn_info">Ver Mapa</button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -215,7 +230,6 @@
                         <li>Siguenos en</li>
                         <div class="iconos">
                             <img src="{{ url_for('static', filename='img/tik-tok.png') }}" alt="tiktok">
-                            <img src="{{ url_for('static', filename='img/facebook.png') }}" alt="facebook">
                             <img src="{{ url_for('static', filename='img/instagram1.png') }}" alt="instagram">
                         </div>
                     </ul>

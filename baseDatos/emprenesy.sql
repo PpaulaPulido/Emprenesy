@@ -1,3 +1,4 @@
+
 create database emprenesy;
 use emprenesy;
 
@@ -9,8 +10,6 @@ CREATE TABLE mensajes_contacto (
     mensaje TEXT,
     fecha_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
-select * from mensajes_contacto;
 
 create table usuario(
 codusuario int primary key auto_increment,
@@ -110,7 +109,7 @@ CREATE TABLE fechaseven(
 CREATE TABLE redes_sociales (
     id_red_social INT AUTO_INCREMENT PRIMARY KEY,
     entidad_id INT DEFAULT NULL,
-    entidad_tipo VARCHAR(50) DEFAULT NULL,  -- 'evento' o 'emprendimiento'
+    entidad_tipo VARCHAR(50) DEFAULT NULL,  -- 'evento' o 'emprendimiento' o 'restaurante'
     red VARCHAR(50) DEFAULT NULL,
     url VARCHAR(250) DEFAULT NULL
 );
@@ -435,21 +434,13 @@ CREATE TABLE IF NOT EXISTS favoritosAdmin (
 );
 
 select * from favoritosUsuario;
-
-SELECT 
-    fa.idfavorito, fa.codadmin, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
-    res.idresta, res.nombreresta,res.logo AS logo_res,res.tiporesta
-FROM favoritosAdmin fa
-LEFT JOIN restaurantes res ON fa.entidad_id = res.idresta
-WHERE fa.codadmin = 2  AND  fa.entidad_tipo = 'restaurante' ORDER BY fa.fecha_agregado DESC;
-
+delete from favoritosUsuario;
 SELECT 
     fa.idfavorito, fa.codusuario, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
     res.idresta, res.nombreresta,res.logo AS logo_res,res.tiporesta
 FROM favoritosUsuario fa
 LEFT JOIN restaurantes res ON fa.entidad_id = res.idresta
 WHERE fa.codusuario = 2  AND  fa.entidad_tipo = 'restaurante' ORDER BY fa.fecha_agregado DESC;
-
 
 SELECT 
     fa.idfavorito, fa.codusuario, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
@@ -459,26 +450,12 @@ LEFT JOIN emprendimientos em ON fa.entidad_id = em.idempre
 WHERE fa.codusuario = 2  AND  fa.entidad_tipo = 'emprendimiento' ORDER BY fa.fecha_agregado DESC;
 
 SELECT 
-    fa.idfavorito, fa.codadmin, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
-    em.idempre,em.nombreempre, em.logo AS logo_empre,em.tipoempre
-FROM favoritosAdmin fa
-LEFT JOIN emprendimientos em ON fa.entidad_id = em.idempre
-WHERE fa.codadmin = 2  AND  fa.entidad_tipo = 'emprendimiento' ORDER BY fa.fecha_agregado DESC;
-
-
-SELECT 
     fa.idfavorito, fa.codusuario, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
     eve.ideven, eve.nombreeven, eve.logo AS logo_evento, eve.tipoevento 
 FROM favoritosUsuario fa
 LEFT JOIN eventos eve ON fa.entidad_id = eve.ideven
 WHERE fa.codusuario = 2 AND  fa.entidad_tipo = 'evento' ORDER BY fa.fecha_agregado DESC;
 
-SELECT 
-    fa.idfavorito, fa.codadmin, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
-    eve.ideven, eve.nombreeven, eve.logo AS logo_evento, eve.tipoevento 
-FROM favoritosAdmin fa
-LEFT JOIN eventos eve ON fa.entidad_id = eve.ideven
-WHERE fa.codadmin = 2 AND  fa.entidad_tipo = 'evento' ORDER BY fa.fecha_agregado DESC;
 
 
 

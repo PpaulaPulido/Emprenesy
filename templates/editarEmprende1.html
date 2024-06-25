@@ -53,7 +53,7 @@
                     <h2>Añade Tu Emprendimiento</h2>
                 </div>
                 <div class="contenido__detalles">
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url_for('emprende.editarEmprende', id=emprende_id) }}" method="POST" enctype="multipart/form-data">
 
                         <div class="form_detalles_container">
 
@@ -172,10 +172,14 @@
 
 
                                     <div class="detalle__sitio">
-                                        <label>Redes Sociales</label>
+                                        <label>Instagram</label>
                                         <input type="url" name="red_Instagram" id="red_Instagram"
                                             placeholder="https://www.instagram.com/"
                                             value="{{ emprende['red_Instagram'] }}">
+                                    </div>
+
+                                    <div class="detalle__sitio">
+                                        <label>Tiktok (opcional)</label>
                                         <input type="url" name="red_Tiktok" id="red_Tiktok"
                                             placeholder="https://www.tiktok.com/" value="{{ emprende['red_Tiktok'] }}">
                                     </div>

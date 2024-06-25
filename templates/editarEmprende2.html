@@ -16,8 +16,9 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
-    <link rel="stylesheet" href="../static/styles/generales_admin.css" />
-    <link rel="stylesheet" href="../static/styles/index_admin.css" />
+    <link rel="stylesheet" href="/static/styles/generales_admin.css" />
+    <link rel="stylesheet" href="/static/styles/index_admin.css" />
+    <link rel="stylesheet" href="/static/styles/whatssap.css">
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/index_admin.css')}}">
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/generales_admin.css')}}">
 
@@ -60,7 +61,7 @@
         <div class="container_publicaciones" id="publicaciones__form">
             <div class="publicaciones_contenido">
                 <div class="contenido__title">
-                    <h2>Añadir tu evento</h2>
+                    <h2>Añadir tu Emprendimiento</h2>
                 </div>
                 <div class="contenido__detalles">
 
@@ -95,7 +96,7 @@
 
                         <div class="detalle__sitio boton_form">
                             <div class="detalle__sitio boton_form">
-                                <a id="btn_regresarEm">Regresar</a>
+                                <a id="btn_regresar">Regresar</a>
                             </div>
                             <div class="detalle__sitio boton_form">
                                 <input type="submit" value="Enviar" class="btn__form" id="btn_enviar" />
@@ -106,16 +107,46 @@
             </div>
         </div>
 
+        <!--WHATSAPP BUTTON-->
+        <div class="nav-bottom">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <div class="popup-whatsapp fadeIn">
+                <div class="content-whatsapp -top">
+                    <button type="button" class="closePopup">
+                        <i class="material-icons icon-font-color">close</i>
+                    </button>
+                    <p> <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" width="35"
+                            id="image-whatssap">
+                        Hola, ¿cómo podemos ayudate? </p>
+                </div>
+
+                <div class="content-whatsapp -bottom">
+                    <input class="whats-input" id="whats-in" type="text" Placeholder="Enviar mensaje..." />
+                    <button class="send-msPopup" id="send-btn" type="button">
+                        <i class="material-icons icon-font-color--black">send</i>
+                    </button>
+                </div>
+
+            </div>
+
+            <button type="button" id="whats-openPopup" class="whatsapp-button">
+                <div class="float">
+                    <i class="fa fa-whatsapp my-float"></i>
+                </div>
+            </button>
+
+            <div class="circle-anime"></div>
+        </div>
+
+
         <div id="form_url">
             <a id="index" data-url="{{ url_for('admin.index_admin') }}" style="display: none;"></a>
-            <a id="form_evento" data-url="{{ url_for('emprende.editarEmprendeUbicacion', id= emprende_id) }}" style="display: none;"></a>
-
+            <a id="form_evento" data-url="{{ url_for('emprende.editarEmprende', id= emprende_id) }}" style="display: none;"></a>
 
         </div>
         
         <div id="data-container" data-perfil-url="{{ url_for('admin.perfil_admin') }}" data-admin-id="{{ admin_id }}"
             style="display: none;"></div>
-
         <div id="url" style="display: none;">
             <a id="url_dash" data-url="{{ url_for('admin.index_admin') }}"></a>
             <a id="url_editarPerfil" data-url="{{ url_for('admin.editarPerfilAdmin', id=admin_id) }}"></a>
@@ -160,7 +191,6 @@
                         <li>Siguenos en</li>
                         <div class="iconos">
                             <img src="{{ url_for('static', filename='img/tik-tok.png') }}" alt="tiktok">
-                            <img src="{{ url_for('static', filename='img/facebook.png') }}" alt="facebook">
                             <img src="{{ url_for('static', filename='img/instagram1.png') }}" alt="instagram">
                         </div>
                     </ul>
@@ -180,6 +210,7 @@
     <script src="/static/js/buscadorAdmin.js"></script>
     <script src="/static/js/editarEmprende.js"></script>
     <script src="/static/js/editarFormUbicacion.js"></script>
+    <script src="/static/js/whattssap.js"></script>
 </body>
 
 </html>

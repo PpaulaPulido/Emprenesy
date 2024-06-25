@@ -242,7 +242,7 @@ function alertaPu(formulario, redireccionar,message) {
             icon: "success",
             title: message,
             showConfirmButton: false,
-            timer: 4000,
+            timer: 2000,
             customClass: {
                 popup: 'border-blue', // Clase CSS para el borde del SweetAlert
                 icon: 'success-icon',

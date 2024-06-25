@@ -18,6 +18,7 @@
 
     <link rel="stylesheet" href="../static/styles/generales_admin.css" />
     <link rel="stylesheet" href="../static/styles/index_admin.css" />
+    <link rel="stylesheet" href="/static/styles/whatssap.css">
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/index_admin.css')}}">
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/generales_admin.css')}}">
 
@@ -65,7 +66,8 @@
                 <div class="contenido__detalles">
 
                     <form class="info_detalles" id="formularioLocation"
-                        action= "{{ url_for('evento.editarEventoUbicacion', id=evento_id) }}" method="POST" enctype="multipart/form-data">
+                        action="{{ url_for('evento.editarEventoUbicacion', id=evento_id) }}" method="POST"
+                        enctype="multipart/form-data">
 
                         <div class="detalle__sitio">
                             <h3>Ubicaciones del sitio</h3>
@@ -106,13 +108,45 @@
             </div>
         </div>
 
+
+        <!--WHATSAPP BUTTON-->
+        <div class="nav-bottom">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <div class="popup-whatsapp fadeIn">
+                <div class="content-whatsapp -top">
+                    <button type="button" class="closePopup">
+                        <i class="material-icons icon-font-color">close</i>
+                    </button>
+                    <p> <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" width="35"
+                            id="image-whatssap">
+                        Hola, ¿cómo podemos ayudate? </p>
+                </div>
+
+                <div class="content-whatsapp -bottom">
+                    <input class="whats-input" id="whats-in" type="text" Placeholder="Enviar mensaje..." />
+                    <button class="send-msPopup" id="send-btn" type="button">
+                        <i class="material-icons icon-font-color--black">send</i>
+                    </button>
+                </div>
+
+            </div>
+
+            <button type="button" id="whats-openPopup" class="whatsapp-button">
+                <div class="float">
+                    <i class="fa fa-whatsapp my-float"></i>
+                </div>
+            </button>
+
+            <div class="circle-anime"></div>
+        </div>
         <div id="form_url">
             <a id="index" data-url="{{ url_for('admin.index_admin') }}" style="display: none;"></a>
-            <a id="form_evento" data-url="{{ url_for('evento.editarEvento', id=evento_id) }}" style="display: none;"></a>
+            <a id="form_evento" data-url="{{ url_for('evento.editarEvento', id=evento_id) }}"
+                style="display: none;"></a>
 
 
         </div>
-        
+
         <div id="data-container" data-perfil-url="{{ url_for('admin.perfil_admin') }}" data-admin-id="{{ admin_id }}"
             style="display: none;"></div>
 
@@ -180,6 +214,7 @@
     <script src="/static/js/buscadorAdmin.js"></script>
     <script src="/static/js/editarEvento.js"></script>
     <script src="/static/js/editarFormUbicacion.js"></script>
+    <script src="/static/js/whattssap.js"></script>
 </body>
 
 </html>

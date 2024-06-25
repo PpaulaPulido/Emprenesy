@@ -149,12 +149,17 @@ ol {
 .enlaceFav:hover {
   background-color: #002b68;
 }
-
+.contenidoFavoritos.vacio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: none; 
+}
 .container_noFav {
+  display: block;
   width: 100%;
   padding: 10px;
   margin: 40px auto;
-
 }
 
 .container_fav h2 {
@@ -324,13 +329,7 @@ ol {
 .rating2 input:checked::before {
   color: var(--c);
 }
-@media only screen and (min-width: 950px) and (max-width: 1920px){
-  .contenidoFavoritos {
-    grid-template-columns: none;
-    padding: 10px 15px;
 
-  }
-}
 @media only screen and (max-width: 920px) {
   .container_fav {
     padding: 10px 0px;

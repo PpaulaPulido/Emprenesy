@@ -488,12 +488,11 @@ def photosUser():
     return jsonify(fotos_list)
 
 #*****************************************Ruta para editar perfil usuarios**********************************************
+
 @usuarios.route('/editarPerfilUsuario/<int:id>', methods=['POST', 'GET'])
 def editarPerfilUsuario(id):
-    
     db = get_db()
     cursor = get_cursor(db)
-    cursor = db.cursor()
     
     if request.method == 'POST':
         nombreUsu = request.form.get('nombreUsu')
@@ -501,51 +500,47 @@ def editarPerfilUsuario(id):
         correoUsu = request.form.get('correoUsu')
         telefonoUsu = request.form.get('telefonoUsu')
         fechaNacUsu = request.form.get('fechaNacUsu')
-        
         direccionUsu = request.form.get('direccionUsu')
         ciudadUsu = request.form.get('ciudadUsu')
         descripcionAcerca = request.form.get('acercaUsu')
         sitioWeb = request.form.get('sitioWebUsu')
         blog = request.form.get('blogUsu')
 
-        sql = "UPDATE usuario SET nombreusu = %s, apellidousu = %s, telusu = %s, fechanac_usu  = %s , correousu = %s WHERE codusuario = %s"
-        cursor.execute(sql,(nombreUsu,apellidosUsu,telefonoUsu,fechaNacUsu,correoUsu,id))
+        sql = "UPDATE usuario SET nombreusu = %s, apellidousu = %s, telusu = %s, fechanac_usu = %s, correousu = %s WHERE codusuario = %s"
+        cursor.execute(sql, (nombreUsu, apellidosUsu, telefonoUsu, fechaNacUsu, correoUsu, id))
         db.commit()
         
         cursor.execute("SELECT id_datosUsu FROM datosUsuario WHERE codusuario = %s", (id,))
         datosConsulta = cursor.fetchone()
         
         if datosConsulta is None:
-            sqlDatos = "INSERT INTO datosUsuario (direccionUsu, ciudadUsu, descripcionAcercaUsu, sitioWebUsu, blogUsu,codusuario) VALUES (%s, %s, %s, %s, %s, %s)"
+            sqlDatos = "INSERT INTO datosUsuario (direccionUsu, ciudadUsu, descripcionAcercaUsu, sitioWebUsu, blogUsu, codusuario) VALUES (%s, %s, %s, %s, %s, %s)"
             cursor.execute(sqlDatos, (direccionUsu, ciudadUsu, descripcionAcerca, sitioWeb, blog, id))
             db.commit()
         else:
-            sqlDatos = "UPDATE datosUsuario SET direccionUsu = %s, ciudadUsu = %s, descripcionAcercaUsu = %s, sitioWebUsu = %s, blogUsu = %s WHERE codusuario= %s"
+            sqlDatos = "UPDATE datosUsuario SET direccionUsu = %s, ciudadUsu = %s, descripcionAcercaUsu = %s, sitioWebUsu = %s, blogUsu = %s WHERE codusuario = %s"
             cursor.execute(sqlDatos, (direccionUsu, ciudadUsu, descripcionAcerca, sitioWeb, blog, id))
             db.commit()
         
-        flash('Datos actualizados correctamente', 'success') 
+        flash('Datos actualizados correctamente', 'success')
         cursor.close()
         return redirect(url_for('usuarios.perfil_usuario'))
     else:
-        
         cursor.execute('SELECT nombreusu, apellidousu, telusu, fechanac_usu, correousu FROM usuario WHERE codusuario = %s', (id,))
         data = cursor.fetchone()
         
-        # Obtener la ruta de la foto de perfil desde la base de datos
         cursor.execute('SELECT ruta_foto FROM fotos_usuario WHERE cod_usuario = %s AND tipo_foto = "perfil" ORDER BY id_foto DESC LIMIT 1', (id,))
         foto_perfil_data = cursor.fetchone()
         
         foto_perfil = normalize_path(foto_perfil_data[0]) if foto_perfil_data else "/static/img/perfil_user.png"
         
-        cursor.execute('SELECT direccionUsu,ciudadUsu,descripcionAcercaUsu,sitioWebUsu,blogUsu FROM datosUsuario WHERE codusuario = %s',(id,))
+        cursor.execute('SELECT direccionUsu, ciudadUsu, descripcionAcercaUsu, sitioWebUsu, blogUsu FROM datosUsuario WHERE codusuario = %s', (id,))
         datos = cursor.fetchone()
-    
+        
         if datos is None:
             datos = {}
-      
-     
-    return render_template('editarPerfil_user.html',foto_perfil = foto_perfil, usuario=data, user_id=id, datos = datos)
+    
+    return render_template('editarPerfil_user.html', foto_perfil=foto_perfil, usuario=data, user_id=id, datos=datos)
 #*****************************************Ruta del index principal de usuario **************************************************************
 @usuarios.route('/index_user')
 def index_user():

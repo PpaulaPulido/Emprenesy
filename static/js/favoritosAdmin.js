@@ -301,7 +301,7 @@ function tarjetasFavoritos(data, contenedor) {
 
 function sinFavoritos(containerFav) {
     const container_fav = document.getElementById(containerFav);
-    container_fav.classList.add('container_fav');
+    container_fav.classList.add('container_fav', 'vacio');
 
     const div_vacío = document.createElement('div');
     div_vacío.classList.add('container_noFav');

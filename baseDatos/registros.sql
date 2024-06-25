@@ -227,7 +227,7 @@ VALUES (@idempre, 'Carrera 14 # 79 - 62 Bogotá');
 #**********************************************************************************************************************
 INSERT INTO emprendimientos (nombreempre, logo, tipoempre, descripempre, horarioempre, horarioApertura, 
 horarioCierre, paginaempre, producempre, correoempre, telempre, fecha_publicacion, codadmin) 
-VALUES ('La galeria online', 'galeriaEmprende/galeriaLogo.png', 'Empredimientos de Arte', 'Lagaleriaonline.co es una plataforma de difusión y venta de obras de arte de artistas modernos y contemporáneos, ya establecidos o emergentes, pensado para todos los presupuestos. Nuestro objetivo es intermediar en la conexión de artistas y compradores, a través de nuestra comunidad virtual abierta 24/7 y nuestra sala expositiva Artespacio. Encuentra fotografías, esculturas, dibujos, pinturas, obras gráficas y demás que abarcan todos los estilos y movimientos artísticos. ', 
+VALUES ('La galeria online', 'galeriaEmprende/galeriaLogo.png', 'Emprendimientos de Arte', 'Lagaleriaonline.co es una plataforma de difusión y venta de obras de arte de artistas modernos y contemporáneos, ya establecidos o emergentes, pensado para todos los presupuestos. Nuestro objetivo es intermediar en la conexión de artistas y compradores, a través de nuestra comunidad virtual abierta 24/7 y nuestra sala expositiva Artespacio. Encuentra fotografías, esculturas, dibujos, pinturas, obras gráficas y demás que abarcan todos los estilos y movimientos artísticos. ', 
 'Lunes a Sábado: 10 am - 7 pm', '10:00:00', '19:00:00', 'https://lagaleriaonline.co/collections/obras',
  'https://lagaleriaonline.co/collections', 'contacto@lagaleriaonline.co', '314 3371659', '2024-05-15', 2);
 

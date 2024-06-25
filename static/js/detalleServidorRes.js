@@ -132,6 +132,7 @@ function popupNosotros(data) {
             icon: 'icon-swal',
             container: 'custom-container'
         }
+        
     });
 }
 function popup_menu() {

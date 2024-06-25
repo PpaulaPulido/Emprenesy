@@ -28,6 +28,8 @@ function crearNav(imagenURL) {
     const adminId = document.getElementById('data-container').getAttribute('data-admin-id');
     const indexUrl = document.getElementById('url_dash').getAttribute('data-url');
     const urlAdminEdit = document.getElementById('url_editarPerfil').getAttribute('data-url');
+    const urlCerrarSesion = document.getElementById('url_cerrarSesion').getAttribute('data-url');
+
 
 
     // Elementos del submenu
@@ -36,7 +38,7 @@ function crearNav(imagenURL) {
         { text: 'Ver dashboard', href: indexUrl },
         { text: 'Notificaciones', href: '#' },
         { text: 'Configuración', href: urlAdminEdit },
-        { text: 'Cerrar sesión', href: '#' }
+        { text: 'Cerrar sesión', href: urlCerrarSesion }
     ];
 
     const nav_user = document.createElement('nav');
@@ -57,7 +59,28 @@ function crearNav(imagenURL) {
     const header = document.querySelector('#cabeza');
     header.appendChild(header_barra);
 
-   
+    const cerrarSesionElement = nav_list.querySelector('a[href="' + urlCerrarSesion + '"]');
+    cerrarSesionElement.addEventListener('click', function(event) {
+        event.preventDefault(); 
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Cerrando sesión...",
+            showConfirmButton: false,
+            timer: 2000,
+            customClass: {
+                confirmButton: 'btn-red',
+                popup: 'border-blue swal2-popup-custom',
+                title: 'swal2-title',
+                icon: 'icon-swal',
+                container: 'custom-container'
+            }
+        });
+        setTimeout(function() {
+            window.location.href = 'http://127.0.0.1:3036/' // Redirigir a la página de inicio
+        }, 2000);
+        
+    });
 }
 
 function crearBuscadorNav(nav_list) {

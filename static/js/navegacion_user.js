@@ -1,31 +1,32 @@
-document.addEventListener('DOMContentLoaded',()=>{
+document.addEventListener('DOMContentLoaded', () => {
     user_sesion().then(() => {
         inicializarBuscador();
     }).catch(error => console.error('Error al inicializar sesión de usuario:', error));
+
+    menuToggle();
 })
 
 function user_sesion() {
     return fetch('/usuarios/perfilImagen_user')
-    .then(response => {
-        if (!response.ok) {
-            //indica si la solicitud no fue existosa
-            throw new Error('Respuesta no fue correcta');
-        }
-        return response.blob();
-    })
-    .then(imageBlob => {
-        const imagenURL = URL.createObjectURL(imageBlob);
-        crearNav(imagenURL)
-    })
-    .catch(error => {
-        console.error('Error al cargar la imagen del perfil:', error);
-        const imagenURL = '/static/img/perfil_user.png'; 
-        crearNav(imagenURL);
-    });
-    
+        .then(response => {
+            if (!response.ok) {
+                //indica si la solicitud no fue existosa
+                throw new Error('Respuesta no fue correcta');
+            }
+            return response.blob();
+        })
+        .then(imageBlob => {
+            const imagenURL = URL.createObjectURL(imageBlob);
+            crearNav(imagenURL)
+        })
+        .catch(error => {
+            console.error('Error al cargar la imagen del perfil:', error);
+            const imagenURL = '/static/img/perfil_user.png';
+            crearNav(imagenURL);
+        });
 }
 
-function crearNav(imagenURL){
+function crearNav(imagenURL) {
 
     const urlNosotros = document.getElementById('url_nosotros').getAttribute('data-url');
     const urlIndex = document.getElementById('url_index').getAttribute('data-url');
@@ -44,8 +45,7 @@ function crearNav(imagenURL){
     // Elementos del submenu
     const subMenuItems = [
         { text: 'Ver perfil', href: urlPerfil },
-        { text: 'Notificaciones', href: '#' },
-        { text: 'Configuración', href: urlEditarPerfil},
+        { text: 'Configuración', href: urlEditarPerfil },
         { text: 'Cerrar sesión', href: urlcerrarSesion }
     ];
 
@@ -56,7 +56,7 @@ function crearNav(imagenURL){
     nav_list.className = 'nav_list';
 
     crearBuscadorNav(nav_list);
-    crearMenuItem(nav_list,menuItems,subMenuItems);
+    crearMenuItem(nav_list, menuItems, subMenuItems);
     // Agregar nav_list a nav_user
     nav_user.appendChild(nav_list);
 
@@ -66,8 +66,33 @@ function crearNav(imagenURL){
 
     const header = document.querySelector('#cabeza');
     header.appendChild(header_barra);
+
+    const cerrarSesionElement = nav_list.querySelector('a[href="' + urlcerrarSesion + '"]');
+    cerrarSesionElement.addEventListener('click', function(event) {
+        event.preventDefault(); 
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Cerrando sesión...",
+            showConfirmButton: false,
+            timer: 1000,
+            customClass: {
+                confirmButton: 'btn-red',
+                popup: 'border-blue swal2-popup-custom',
+                title: 'swal2-title',
+                icon: 'icon-swal',
+                container: 'custom-container'
+            }
+        });
+
+        // Retrasar la redirección después de 3 segundos
+        setTimeout(function() {
+            window.location.href = 'http://127.0.0.1:3036/' // Redirigir a la página de inicio
+        }, 1000);
+        
+    });
 }
-function crearBuscadorNav(nav_list){
+function crearBuscadorNav(nav_list) {
     // Crear elemento li para el buscador
     const buscador_li = document.createElement('li');
     buscador_li.innerHTML = `
@@ -85,7 +110,7 @@ function crearBuscadorNav(nav_list){
         </div>`;
     nav_list.appendChild(buscador_li);
 }
-function crearMenuItem(nav_list,menuItems,subMenuItems){
+function crearMenuItem(nav_list, menuItems, subMenuItems) {
     // Crear elementos li y a para el menú principal
     menuItems.forEach(item => {
         const liElement = document.createElement('li');
@@ -118,29 +143,29 @@ function crearMenuItem(nav_list,menuItems,subMenuItems){
     });
 }
 
-function menuToggle(){
+function menuToggle() {
     const mobileMenu = document.getElementById('mobile-menu');
-        const navList = document.getElementById('nav-list2');
-        const cerrar = document.getElementById('cerrar');
+    const navList = document.getElementById('nav-list2');
+    const cerrar = document.getElementById('cerrar');
 
-        document.addEventListener('click', function (event) {
-            // Comprobar si el clic no fue dentro del menú o el botón de toggle
-            if (!navList.contains(event.target) && !mobileMenu.contains(event.target)) {
-                // Cerrar el menú
-                navList.classList.remove('active');
-                mobileMenu.classList.remove('is-active');
-            }
-        });
-
-        mobileMenu.addEventListener('click', () => {
-
-            navList.classList.toggle('active');
-            mobileMenu.classList.toggle('is-active');
-        });
-
-        cerrar.addEventListener('click', () => {
-            navList.style.transition = 'left 0.9s ease';
+    document.addEventListener('click', function (event) {
+        // Comprobar si el clic no fue dentro del menú o el botón de toggle
+        if (!navList.contains(event.target) && !mobileMenu.contains(event.target)) {
+            // Cerrar el menú
             navList.classList.remove('active');
             mobileMenu.classList.remove('is-active');
-        })
+        }
+    });
+
+    mobileMenu.addEventListener('click', () => {
+
+        navList.classList.toggle('active');
+        mobileMenu.classList.toggle('is-active');
+    });
+
+    cerrar.addEventListener('click', () => {
+        navList.style.transition = 'left 0.9s ease';
+        navList.classList.remove('active');
+        mobileMenu.classList.remove('is-active');
+    })
 }

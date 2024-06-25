@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emprenesy</title>
+    <title>Emprennesy</title>
     <link rel="icon" href="/static/img/Logo2.jpeg" type="image/icon type">
 
     <!-- Enlace a la fuente de Font Awesome -->
@@ -18,6 +18,8 @@
 
     <link rel="stylesheet" href="../static/styles/generales_user.css">
     <link rel="stylesheet" href="../static/styles/perfilusu.css">
+    <link rel="stylesheet" href="/static/styles/whatssap.css">
+    <link rel="stylesheet" href="/static/styles/carga.css">
 
 
 </head>
@@ -25,10 +27,34 @@
 
 <body>
 
+    <div id="loader-container1" class="loader-container">
+        <img src="/static/carga/stylesheet (2).gif">
+    </div>
+
     <header id="cabecera">
         <div id="cabeza">
             <div class="logoedit">
-                <img style="height: 80px; width: 80px; margin-left: 35px;" src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+                <img style="height: 80px; width: 80px; margin-left: 35px;"
+                    src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+            </div>
+        </div>
+        <div id="menuLateralToggle">
+            <div id="toggle">
+                <div class="nav-list2" id="nav-list2">
+                    <div class="menu-toggle" id="mobile-menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                    <ul class="menu-opciones">
+                        <li><i class="fa-solid fa-x" id="cerrar"></i></li>
+                        <li><img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
+                                class="logoToggle"></li>
+                        <li><a href="{{url_for('usuarios.nosotros_user')}}">Sobre Nosotros</a></li>
+                        <li><a href="{{url_for('usuarios.index_user')}}">Inicio</a></li>
+                        <li><a href="{{url_for('usuarios.favoritos_user')}}">Mis favoritos</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </header>
@@ -55,7 +81,7 @@
                         <input type="file" id="file-upload-button" name="fotoPortada" style="display:none; "
                             onchange="this.form.submit()">
                         <label for="file-upload-button" class="portada_btn"><i class="fa-solid fa-camera-retro"></i>
-                            Editar foto de portada</label>
+                            <span class="text">Editar portada</span></label>
                     </form>
                 </div>
             </div>
@@ -96,7 +122,8 @@
                             <i class="fa-solid fa-globe"></i> No disponible
                             {% endif %}
                         </h4>
-                        <a href="#" class="detalles_btnPer">Editar detalles</a>
+                        <a href="{{ url_for('usuarios.editarPerfilUsuario', id=user_id) }}"
+                            class="detalles_btnPer">Editar detalles</a>
                     </div>
                     <div class="datos__acerca">
                         <h3>Acerca de mi</h3>
@@ -110,7 +137,7 @@
                 </div>
                 <div class="perfil__opciones">
                     <div class="opciones">
-                        <a href="#opciones__resultado" onclick="resenasAdmin()">Mis reseñas</a>
+                        <a href="#opciones__resultado" onclick="resenasUsu()">Mis reseñas</a>
                         <a href="#opciones__resultado" onclick="Myphotos()">Mis fotos</a>
                     </div>
                     <div id="opciones__resultado" class="result"></div>
@@ -118,16 +145,48 @@
             </div>
         </div>
 
+        <!--WHATSAPP BUTTON-->
+        <div class="nav-bottom">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <div class="popup-whatsapp fadeIn">
+                <div class="content-whatsapp -top">
+                    <button type="button" class="closePopup">
+                        <i class="material-icons icon-font-color">close</i>
+                    </button>
+                    <p> <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" width="35"
+                            id="image-whatssap">
+                        Hola, ¿cómo podemos ayudate? </p>
+                </div>
+
+                <div class="content-whatsapp -bottom">
+                    <input class="whats-input" id="whats-in" type="text" Placeholder="Enviar mensaje..." />
+                    <button class="send-msPopup" id="send-btn" type="button">
+                        <i class="material-icons icon-font-color--black">send</i>
+                    </button>
+                </div>
+
+            </div>
+
+            <button type="button" id="whats-openPopup" class="whatsapp-button">
+                <div class="float">
+                    <i class="fa fa-whatsapp my-float"></i>
+                </div>
+            </button>
+
+            <div class="circle-anime"></div>
+        </div>
     </main>
 
     <script src="../static/js/navegacion_user.js"></script>
     <script src="../static/js/buscador.js"></script>
     <script src="../static/js/perfil_usuario.js"></script>
+    <script src="/static/js/whattssap.js"></script>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 
 </body>

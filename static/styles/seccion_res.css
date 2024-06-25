@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: 'Nunito Sans', sans-serif;
   scroll-behavior: smooth;
@@ -44,16 +45,19 @@ ol {
   width: 100%;
   height: 100%;
 }
+
 .carousel-inner {
   height: 560px;
 }
+
 .carousel-img {
   width: 100%;
   height: 560px;
   position: relative;
   overflow: hidden;
-  background-image: linear-gradient(225deg, #076668 11%, #00a6a4 37%, #00cec7 72%);
+  background-image: linear-gradient(135deg, rgba(0, 139, 212, 0.8) 0%, rgba(44, 197, 255, 0.8) 59%, #2cc5ff 100%);
 }
+
 .carousel-img::before {
   content: '';
   position: absolute;
@@ -79,11 +83,73 @@ ol {
   width: 40%;
   padding: 0px 30px;
   text-align: center;
+
 }
-.carousel_text h2{
-    margin-bottom: 40px;
-    font-size: 28px;
+
+/* Medidas query david  */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  #contenido1 {
+
+    margin-left: 50%;
+    margin-block-end: -80px;
+    width: 450px;
+    height: 450px;
+
+
+  }
+
+  #contenido2 {
+
+    margin-left: -5%;
+    bottom: 0.5%;
+    width: 450px;
+    height: 450px;
+
+  }
+
+  #contenido3 {
+    margin-left: 20px;
+    bottom: 0.1%;
+    width: 450px;
+    height: 450px;
+
+  }
+
 }
+
+@media only screen and (max-width: 767px) {
+  #contenido1 {
+
+    width: 420px;
+    height: 420px;
+    margin-left: 130%;
+    margin-block-end: -60px;
+
+  }
+
+  #contenido2 {
+    width: 450px;
+    height: 450px;
+    margin-left: -15%;
+    bottom: 0.5%;
+  }
+
+  #contenido3 {
+
+    width: 450px;
+    height: 450px;
+    margin-left: 15px;
+    bottom: 0.1%;
+
+  }
+
+}
+
+.carousel_text h2 {
+  margin-bottom: 50px;
+  font-size: 28px;
+}
+
 .carousel_text p {
   font-size: 19px;
   margin-bottom: 40px;
@@ -100,15 +166,21 @@ ol {
   font-size: 18px;
   border-radius: 20px;
 }
-.btn a{
+
+.btn a {
   color: #fff;
 }
+
 .slider_btn1 {
   background-color: #0d0057;
+
 }
-.slider_btn1:hover{
+
+.slider_btn1:hover {
   background-color: #220ca0;
+
 }
+
 .container_img {
   width: 60px;
   height: 60px;
@@ -123,6 +195,7 @@ ol {
   width: 100%;
   height: 100%;
 }
+
 /***********************************************/
 .carousel-img2 {
   width: 100%;
@@ -133,8 +206,9 @@ ol {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  
+
 }
+
 .carousel-img2::before {
   content: '';
   position: absolute;
@@ -145,6 +219,7 @@ ol {
   background-image: linear-gradient(135deg, #4333ff 0%, #3bdcff 83%, #85ffc8 100%);
   border-radius: 0 40% 10% 0;
 }
+
 .img2 {
   width: 350px;
   height: 350px;
@@ -188,16 +263,18 @@ ol {
   font-size: 22px;
   cursor: pointer;
 }
-.slider_btn2:hover{
+
+.slider_btn2:hover {
   background-color: #2109a7;
 }
+
 /**************************************************************/
 .carousel-img3 {
   width: 100%;
   height: 560px;
   position: relative;
   overflow: hidden;
-  background-image: linear-gradient(45deg, #1c0079 0%, #e27fee 100%);
+  background-image: linear-gradient(135deg, #f4f4f4 0%, #00d4ff 35%, #2cbad7 91%);
 }
 
 .carousel-img3::before {
@@ -213,42 +290,49 @@ ol {
   border-radius: 40% 0 0 40%;
 
 }
+
 .contenido_carousel {
   left: 30px;
   width: 40%;
   bottom: 15%;
   text-align: center;
 }
-.contenido_carousel h2{
+
+.carousel_title3{
   font-size: 40px;
   margin: 30px 0;
-  background: linear-gradient(180deg, #ffffff 37%, #00f1c9 92%);
+  background-image: linear-gradient(135deg, #002368 0%, #031c53 99%);
   background-clip: text;
   color: transparent;
   font-size: 46px;
 }
-.contenido_carousel p{
+
+.contenido_carousel p {
   font-size: 20px;
   margin-left: 15px;
 }
-.slider_btn3{
-  background-color: #0ba19c;
+
+.slider_btn3 {
+  background-color: #002368;
   width: 50%;
   border-radius: 15px;
 }
-.slider_btn3:hover{
-  background-color: #00f1c9;
+
+.slider_btn3:hover {
+  background-color: #00143b;
 }
+
 /******************estilos de container tarjetas***************************/
-.container_cards{
+.container_cards {
   margin: 30px;
   padding: 20px;
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   text-align: center;
 }
-.container_cards .cards_contenido{
+
+.container_cards .cards_contenido {
   height: 250px;
   width: 270px;
   border-radius: 20px;
@@ -256,21 +340,30 @@ ol {
   background-repeat: no-repeat;
   background-size: cover;
   cursor: pointer;
+
 }
-.card1{
+
+.card1 {
   background-image: url('https://estaticos-cdn.prensaiberica.es/clip/6b48ad30-aced-47c8-b0cd-c4c0cf3a6470_16-9-discover-aspect-ratio_default_0.jpg');
+
+
 }
-.card2{
+
+.card2 {
   background-image: url('https://oleico.com/wp-content/uploads/2021/03/oleico_oleico_image_777-1.jpeg');
   background-position: center;
 }
-.card3{
+
+.card3 {
   background-image: url('https://media-cdn.tripadvisor.com/media/photo-s/1c/b7/ff/cc/photo0jpg.jpg');
+
 }
-.card4{
+
+.card4 {
   background-image: url('https://www.godinezgourmet.com/wp-content/uploads/2019/04/asaderos-grill-carne-ciudad-mexico-cdmx-godinez_0.jpg');
 }
-.contenido_title{
+
+.contenido_title {
   background-color: #3d77ba;
   height: 60px;
   display: flex;
@@ -278,55 +371,63 @@ ol {
   align-items: center;
   border-radius: 20px 20px 0 0;
 }
-.contenido_title h3{
+
+.contenido_title h3 {
   font-size: 22px;
   color: #fff;
+
 }
+
 /***********************estilos de slider de tarjetas**************************/
-.section{
-  background-image: linear-gradient(135deg, #d162f3 0%, #ff9254 99%);
+.section {
+  background-image: linear-gradient(135deg, rgba(0, 139, 212, 0.8) 0%, rgba(44, 197, 255, 0.8) 59%, #2cc5ff 100%);
   padding: 10px;
 }
-.section2{
-  background-image: linear-gradient(135deg, #230181 41%, #fe1bbd 100%);
+
+.section2 {
+  background-image: linear-gradient(135deg, #f4f4f4 0%, #00d4ff 35%, #2cbad7 91%);
   padding: 10px;
 }
-.section_title{
+
+.section_title {
   display: flex;
   justify-content: space-between;
-}
-.section_title .btn_verTodo{
-  display: flex;
-  justify-content: center;
   align-items: center;
-  background-color: #fff;
-  color: #051248;
-  width: 200px;
-  height: 40px;
-  padding: 10px 5px;
-  margin: 30px 40px 30px;
-  border: none;
-  border-radius: 10px;
-  text-align: center;
-  font-weight: 700;
-  font-size: 18px;
 }
-.btn_verTodo:hover{
-  background-color: #059be0;
-  color: #fff;
-}
-.section_title h2{
+
+.section_title h2 {
   color: #fff;
   margin: 30px 0 30px 50px;
   font-size: 25px;
 }
-.swiper_card{
-  position: relative;  
+
+.btn_verTodo {
+  background-color: #fff;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #002b68;
+  font-weight: bold;
+  margin-right: 50px;
+  width: 150px;
+  height: fit-content;
+  text-align: center;
 }
-.swiper{
+
+.btn_verTodo:hover {
+  box-shadow: 0 0 15px #fff;
+  color: #002b68;
+}
+
+.swiper_card {
+  position: relative;
+}
+
+.swiper {
   width: 70%;
 }
-.card{
+
+.card {
   position: relative;
   background: #fff;
   border-radius: 20px;
@@ -334,7 +435,8 @@ ol {
   margin: 20px 0;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
-.card::before{
+
+.card::before {
   content: "";
   position: absolute;
   height: 40%;
@@ -342,55 +444,65 @@ ol {
   background: white;
   border-radius: 20px 20px 0 0;
 }
-.card .rating{
+
+.card .rating {
   margin: 10px 10px 0 10px;
 }
-.card .card-content{
+
+.card .card-content {
   display: flex;
   flex-direction: column;
   padding: 10px;
   position: relative;
   z-index: 20;
 }
-.card .rating i{
+
+.card .rating i {
   font-size: 18px;
   margin: 0 2px;
   color: gold;
 }
-.swiper-button-next{
+
+.swiper-button-next {
   color: #fff;
   margin-right: 150px;
 }
-.swiper-button-prev{
+
+.swiper-button-prev {
   color: #fff;
   margin-left: 150px;
 }
-.swiper-pagination-bullet{
+
+.swiper-pagination-bullet {
   height: 7px;
   width: 26px;
   border-radius: 25px;
   background: white;
 }
-.swiper-button-next, .swiper-button-prev{
+
+.swiper-button-next,
+.swiper-button-prev {
   opacity: 0.7;
   transition: all 0.3s ease;
 }
-.title_contenedor{
+
+.title_contenedor {
   height: 50px;
   margin-top: 20px;
   margin-left: 10px;
   display: flex;
   align-items: center;
 }
-.title_contenedor .content_title{
+
+.title_contenedor .content_title {
   font-size: 22px;
 }
-.swiper_conta_img{
-    
+
+.swiper_conta_img {
   display: flex;
   justify-content: center;
-  
 }
+
 .swiper_conta_img .swiper_img {
   width: 250px;
   height: 200px;
@@ -404,17 +516,19 @@ ol {
   margin: 0 auto;
 }
 
-.swiper_conta_img .favorite{
+.swiper_conta_img .favorite {
   font-size: 20px;
   margin-left: 7px;
   cursor: pointer;
   margin-top: 20px;
-  color:#cecbcb
-} 
-.favorite.checked{
+  color: #cecbcb;
+}
+
+.favorite.checked {
   color: red;
 }
-.swiper_button{
+
+.swiper_button {
   background-color: #051248;
   color: #fff;
   padding: 6px;
@@ -424,9 +538,11 @@ ol {
   margin: 10px auto 0 auto;
   text-align: center;
 }
-.swiper_button:hover{
+
+.swiper_button:hover {
   background-color: #002b68;
 }
+
 /************estilos empredimientos gastronomicos*************************/
 .container_poster {
   background-color: #3d77ba;
@@ -446,6 +562,7 @@ ol {
   width: 100%;
   height: 100%;
   margin: 0 auto;
+
 }
 
 .contenido_poster {
@@ -455,6 +572,7 @@ ol {
 
 .contenido_poster h3 {
   font-size: 30px;
+
 }
 
 .contenido_poster p {
@@ -474,6 +592,7 @@ ol {
   background-color: #3bdad4;
   width: 40%;
   margin: 0 auto;
+
 }
 
 .contenido_poster button a {
@@ -482,46 +601,56 @@ ol {
 
 .contenido_poster button:hover {
   background-color: #005f5e;
+
 }
-/*****************estilos de find evento******************************/
-.find_evento{
+
+/*****************estilos de find restaurante******************************/
+.find_evento {
   background-color: #f5f5f5;
   padding: 20px;
 }
-.evento_title{
+
+.evento_title {
   padding: 20px;
   text-align: center;
   margin-bottom: 30px;
 }
-.evento_title h2{
+
+.evento_title h2 {
   margin-bottom: 30px;
   color: #2c5d9d;
 }
-.evento_title p{
+
+.evento_title p {
   width: 70%;
   text-align: center;
   margin: 0 auto;
 }
-.find_evento .evento_contenido{
+
+.find_evento .evento_contenido {
   display: flex;
   flex-direction: row-reverse;
   padding: 30px 10px;
 }
-.contenido_img{
+
+.contenido_img {
   width: 700px;
   height: fit-content;
 }
-.contenido_img img{
+
+.contenido_img img {
   width: 100%;
   height: 100%;
   margin: 0 auto;
   border-radius: 13px;
+
 }
-.contenido_principal .contenido_info{
+.contenido_principal .contenido_info {
   display: flex;
   padding: 20px 20px;
 }
-.contenido_info .info_icono{
+
+.contenido_info .info_icono {
   background-color: rgb(221, 218, 218);
   border-radius: 50%;
   display: flex;
@@ -531,19 +660,127 @@ ol {
   height: 70px;
   margin-left: 20px;
 }
-.info_icono i{
+
+.info_icono i {
   font-size: 30px;
   color: #2c5d9d;
-  
+
 }
-.contenido_info .info_texto{
+
+.contenido_info .info_texto {
   margin-left: 35px;
+
 }
-.info_texto h3{
+
+.info_texto h3 {
   color: #2c5d9d;
   font-size: 20px;
   margin-bottom: 20px;
 }
-.info_texto p{
+
+.info_texto p {
   width: 80%;
+}
+@media only screen and (max-width: 920px){
+  .contenido_text p{
+    display: none;
+  }
+  .img2{
+    top: 220px;
+    left: -320px;
+  }
+  .carousel_contenido .contenido_text{
+    right: 240px;
+    width: 200px;
+  }
+  .contenido_text h2{
+    font-size: 25px;
+  }
+  .img2 img {
+    width: 50%;
+    height: 50%;
+  }
+  .slider_btn2 {
+    width: 80%;
+    font-size: 20px;
+  }
+  .text-carousel{
+    display: none;
+  }
+  .title_carousel2{
+    font-size: 25px;
+    margin-top: -80px;
+    margin-right: 30px;
+    width: 80%;
+    line-height: 1.2;
+  }
+  .carousel_text2{
+    width: 60%;
+    bottom: 35%;
+    left: 45%;
+  }
+  .btn{
+    width: 90%;
+  }
+  .carousel-img3::before{
+    width: 500px;
+    left: 35%;
+  }
+  .carousel_title3{
+    background: none;
+    color: #fff;
+  }
+  .contenido_carousel{
+    bottom: 30%;
+    width: 80%;
+  }
+  .container_cards{
+    grid-template-columns: none;
+  }
+  .section_title {
+    display: block;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btn_verTodo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+  }
+
+  .swiper-button-next {
+    margin-right: 10px;
+  }
+
+  .swiper-button-prev {
+    margin-left: 10px;
+  }
+  .container_poster{
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+  }
+  .poster_img{
+    margin: 10px auto 0 auto;
+  }
+  .contenido_poster button{
+    width: 80%;
+  }
+  .find_evento .evento_contenido{
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .contenido_img{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .contenido_info .info_icono{
+    width: 280px;
+    height: 90px;
+  }
 }

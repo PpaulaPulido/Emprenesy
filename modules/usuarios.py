@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort,session,jsonify
+from flask import Blueprint, request, render_template, redirect, url_for, flash,current_app,send_from_directory,abort,session,jsonify,json
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash 
 from db import get_db, get_cursor
@@ -13,53 +13,154 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+#*********************************************Ruta de formulario contacto*********************************************************
+@usuarios.route('/enviar', methods=['POST'])
+def enviar():
+    nombre = request.form.get('nombre')
+    email = request.form.get('email')
+    tema = request.form.get('tema')
+    mensaje = request.form.get('mensaje')
+    
+    # Almacenar en la base de datos
+    cursor.execute("""
+        INSERT INTO mensajes_contacto (nombre, email, tema, mensaje)
+        VALUES (%s, %s, %s, %s)
+    """, (nombre, email, tema, mensaje))
+    db.commit()
+    return redirect(url_for('usuarios.index_user'))
 #*******************************************Ruta de iniciar sesion****************************************************************
-@usuarios.route('/login', methods=['GET','POST'])
+@usuarios.route('/login', methods=['GET', 'POST'])
 def inicio_sesion():
-    cursor = get_db().cursor()
-    cursor = db.cursor(dictionary=True)
-    if request.method =='POST':
-        username= request.form.get('txtusuario')
-        password= request.form.get('txtcontrasena')
-        roles = request.form.get ('rol')
-        
+    if request.method == 'POST':
+        username = request.form.get('txtusuario')
+        password = request.form.get('txtcontrasena')
+        roles = request.form.get('rol')
 
-        if (roles == 'usuario'):
-            sql = 'SELECT codusuario,correousu,contrasena FROM usuario where correousu = %s'
-            cursor.execute(sql,(username,))
-            user = cursor.fetchone() 
-            if user and check_password_hash(user['contrasena'], password):
-                session['email'] = user['correousu']
-                session['user_id'] = user['codusuario'] 
-                return redirect(url_for('usuarios.perfil_usuario'))
-            else:
-                return render_template('iniciar_sesion.html')
-        elif (roles == 'Administrador'):
-            sql = 'SELECT codadmin,correoadmin, contrasena FROM administrador where correoadmin = %s'
-            cursor.execute(sql,(username,))
-            admin = cursor.fetchone()
-            if admin and check_password_hash(admin['contrasena'], password):
-                session['email'] = admin['correoadmin']
-                session['admin_id'] = admin['codadmin'] 
-                return redirect(url_for('admin.perfil_admin'))
-            else:
-                error='Credenciales invalidas. por favor intentarlo de nuevo'
-                return render_template('iniciar_sesion.html', error=error)
+        try:
+            db = get_db()
+            cursor = db.cursor(dictionary=True)  # Inicializar el cursor con dictionary=True
+            
+            if roles == 'usuario':
+                sql = 'SELECT codusuario, correousu, contrasena FROM usuario WHERE correousu = %s'
+                cursor.execute(sql, (username,))
+                user = cursor.fetchone()
+                if user and check_password_hash(user['contrasena'], password):
+                    session['email'] = user['correousu']
+                    session['user_id'] = user['codusuario']
+                    cursor.close()
+                    return redirect(url_for('usuarios.perfil_usuario'))
+                else:
+                    error = 'Credenciales inválidas. Por favor, inténtalo de nuevo.'
+                    return render_template('iniciar_sesion.html', error=error)
+            
+            elif roles == 'Administrador':
+                sql = 'SELECT codadmin, correoadmin, contrasena FROM administrador WHERE correoadmin = %s'
+                cursor.execute(sql, (username,))
+                admin = cursor.fetchone()
+                if admin and check_password_hash(admin['contrasena'], password):
+                    session['emailAdmin'] = admin['correoadmin']
+                    session['admin_id'] = admin['codadmin']
+                    cursor.close()
+                    return redirect(url_for('admin.perfil_admin'))
+                else:
+                    cursor.close()
+                    error = 'Credenciales inválidas. Por favor, inténtalo de nuevo.'
+                    return render_template('iniciar_sesion.html', error=error)
+        
+        except Exception as e:
+            flash(f'Error en la base de datos: {str(e)}', 'error')
+            return render_template('iniciar_sesion.html', error="Ocurrió un error durante el inicio de sesión.")
+        
+        finally:
+            if 'cursor' in locals() and cursor:
+                cursor.close()  # Cerrar el cursor solo si está definido y no es None
+    
     return render_template('iniciar_sesion.html')
            
-#****************************************Ruat para cerrar la sesion***************************************************************
+#****************************************Ruta para cerrar la sesion***************************************************************
 @usuarios.route('/logout')
 def logout():
     if 'email' in session:
+        if 'user_id' in session:
+            session.pop('user_id',None)
+            session.pop('email', None)
+            
         if 'admin_id' in session:
             session.pop('admin_id',None)
-        elif 'user_id' in session:
-            session.pop('user_id',None)
+            session.pop('emailAdmin', None)
+        
     return redirect(url_for('index'))
+
+#********************************************Ruta para recuperar contraseña***********************************************************************
+@usuarios.route('/recuperarContrasena',methods=['GET','POST'])
+def recuperarContrasena():
+    if request.method == 'POST':
+        roles = request.form.get('rolRe')
+        Email = request.form.get('correoRe')
+        contrasenaActual = request.form.get('txtcontrasenaActual')
+        contrasenaNueva = request.form.get('txtcontrasenaNueva')
+        confirmarContrasena = request.form.get('txtcontrasenaConfirmar')
+    
+        # Verificar si el correo está registrado como usuario
+        correo_registrado_usuario = False
+        correo_registrado_administrador = False
+        
+        # Conexión a la base de datos y cursor
+        db = get_db()
+        cursor = db.cursor()
+        
+        # Verificar si el correo está registrado como usuario
+        cursor.execute('SELECT correousu FROM usuario WHERE correousu = %s', (Email,))
+        resultado_usuario = cursor.fetchall()
+        if len(resultado_usuario) > 0:
+            correo_registrado_usuario  = True
+        
+        # Verificar si el correo está registrado como administrador
+        cursor.execute('SELECT correoadmin FROM administrador WHERE correoadmin = %s', (Email,))
+        resultado_administrador = cursor.fetchall()
+        if len(resultado_administrador) > 0:
+            correo_registrado_administrador = True
+            
+        if (roles == 'usuario' and correo_registrado_usuario == False):
+            return jsonify({'success': False, 'registrado':False,'message': 'El correo electrónico no está registrado'})
+        
+        if( roles == 'Administrador' and correo_registrado_administrador == False):
+            return jsonify({'success': False, 'registrado':False,'message': 'El correo electrónico no está registrado'})
+        
+        # Verificar si las contraseñas coinciden
+        if (contrasenaActual == ''):
+            return jsonify({'success': False, 'message': 'Por favor ingresa la última contraseña'})
+        
+        if (contrasenaNueva == ''):
+            return jsonify({'success': False, 'message': 'Por favor ingresa la nueva contraseña'})
+        
+        if contrasenaNueva != confirmarContrasena:
+            return jsonify({'success': False, 'message': 'Las contraseñas no coinciden'})
+        
+        # Encriptar la contraseña
+        contrasenaEncriptada = generate_password_hash(contrasenaNueva)
+        
+        if roles == 'usuario':
+            cursor.execute("UPDATE usuario SET contrasena = %s WHERE correousu = %s",
+                (contrasenaEncriptada, Email))
+            db.commit()
+            return jsonify({'success': True, 'registrado': True, 'message': 'Contraseña actualizada correctamente'})
+        
+        elif roles == 'Administrador':
+            cursor.execute("UPDATE administrador SET contrasena = %s WHERE correoadmin = %s",(contrasenaEncriptada, Email))
+            db.commit()
+            return jsonify({'success': True, 'registrado': True, 'message': 'Contraseña actualizada correctamente'})
+        
+        else:
+            return jsonify({'success': False, 'message': 'Rol no válido'})
+    
+    return render_template('formulario_contrasena.html')
+                
 #*******************************************Ruta de registro de usuario****************************************************************
 @usuarios.route('/registrarUser', methods=['GET', 'POST'])
 def registrar_usuario():
     if request.method == 'POST':
+        # Obtener datos del formulario
         Nombres = request.form.get('nombres')
         Apellidos = request.form.get('apellidos')
         telefono = request.form.get('tel')
@@ -69,42 +170,58 @@ def registrar_usuario():
         contrasena = request.form.get('contrasena')
         confirmar_contrasena = request.form.get('confirmar_contrasena')
         
+        # Verificar si las contraseñas coinciden
         if contrasena != confirmar_contrasena:
-            flash('Las contraseñas no coinciden', 'error')
-            print('Las contraseñas no coinciden')
-            return render_template('registro.html')
+            return jsonify({'success': False, 'message': 'Las contraseñas no coinciden'})
         
+        if (contrasena == ''):
+            return jsonify({'success': False, 'message': 'Por favor ingresa la contraseña'})
+
         # Encriptar la contraseña
         contrasenaEncriptada = generate_password_hash(contrasena)
+        
+        correo_registrado_usuario = False
+        correo_registrado_administrador = False
+        
+        # Verificar si el correo está registrado como usuario
         cursor.execute('SELECT correousu FROM usuario WHERE correousu = %s', (Email,))
-        resultado = cursor.fetchall()
-        cursor.execute('SELECT correoadmin from administrador where correoadmin=%s', (Email,))
-        resultado1= cursor.fetchall()
-
-        if len(resultado) > 0 or len(resultado1)>0:
-            flash('El correo electrónico ya está registrado', 'error')
-            print('El correo electrónico ya está registrado')
+        resultado_usuario = cursor.fetchall()
+        if len(resultado_usuario) > 0:
+            correo_registrado_usuario = True
+        
+        # Verificar si el correo está registrado como administrador
+        cursor.execute('SELECT correoadmin FROM administrador WHERE correoadmin = %s', (Email,))
+        resultado_administrador = cursor.fetchall()
+        if len(resultado_administrador) > 0:
+            correo_registrado_administrador = True
+        
+        # Verificar si el correo está registrado 
+        if (roles == 'usuario' and correo_registrado_usuario):
+            return jsonify({'success': True, 'registrado':True,'message': 'El correo electrónico ya está registrado'})
+        
+        if( roles == 'Administrador' and correo_registrado_administrador):
+            return jsonify({'success': True, 'registrado':True,'message': 'El correo electrónico ya registrado'})
+        
             
-        if (roles == 'usuario'):
+        if roles == 'usuario':
             cursor.execute(
                 "INSERT INTO usuario (nombreusu, apellidousu, telusu, fechanac_usu, correousu, contrasena) VALUES (%s, %s, %s, %s, %s, %s)",
                 (Nombres, Apellidos, telefono, fechaNac, Email, contrasenaEncriptada)
             )
             db.commit()
-            flash('Usuario creado correctamente', 'success')
-            return redirect(url_for("usuarios.inicio_sesion"))
+            return jsonify({'success': True,'registrado':False, 'message': 'Usuario creado correctamente'})
         
-        elif ( roles == 'Administrador'):
-              cursor.execute(
+        elif roles == 'Administrador':
+            cursor.execute(
                 "INSERT INTO administrador (nombreadmin, apellidoadmin, telfadmin, correoadmin, fechanac_admin, contrasena) VALUES (%s, %s, %s, %s, %s, %s)",
-                (Nombres, Apellidos, telefono, Email,fechaNac, contrasenaEncriptada)
+                (Nombres, Apellidos, telefono, Email, fechaNac, contrasenaEncriptada)
             )
-              db.commit() 
-              flash('Usuario creado correctamente', 'success')
-              return redirect(url_for("usuarios.inicio_sesion"))
+            db.commit() 
+            return jsonify({'success': True,'registrado':False, 'message': 'Administrador creado correctamente'})
         
         else:
-            return redirect(url_for("usuarios.registrar_usuario"))
+            return jsonify({'success': False, 'message': 'Rol no válido'})
+    
     return render_template('registro.html')
 
 #*******************************************Ruta de perfil usuario****************************************************************        
@@ -176,11 +293,16 @@ def perfilImagen_usuario():
     
     if fotoPerfil:
         fotoPerfil_path = fotoPerfil[0]
-        directory_path = os.path.join(current_app.root_path, 'static', 'uploads') 
-        file_name = os.path.basename(fotoPerfil_path) 
     else:
-        directory_path = os.path.join(current_app.root_path, 'static', 'uploads') 
-        file_name = 'perfil_user.png'
+        fotoPerfil_path = None
+        
+
+    if fotoPerfil_path:
+        directory_path = os.path.join(current_app.root_path, 'static', 'uploads')
+        file_name = os.path.basename(fotoPerfil_path)
+    else:
+        directory_path = os.path.join(current_app.root_path, 'static', 'img')
+        file_name = 'perfil_user.png'  # Nombre de la imagen por defecto
     
     full_file_path = os.path.join(directory_path, file_name)
     if not os.path.isfile(full_file_path):
@@ -351,7 +473,7 @@ def photosUser():
     
     try:
         cursor.execute("""
-            SELECT ruta_foto, tipo_foto FROM fotos_admin
+            SELECT ruta_foto, tipo_foto FROM fotos_usuario
             WHERE tipo_foto IN ('perfil', 'portada')
             ORDER BY id_foto DESC
         """)
@@ -414,7 +536,7 @@ def editarPerfilUsuario(id):
         cursor.execute('SELECT ruta_foto FROM fotos_usuario WHERE cod_usuario = %s AND tipo_foto = "perfil" ORDER BY id_foto DESC LIMIT 1', (id,))
         foto_perfil_data = cursor.fetchone()
         
-        foto_perfil = normalize_path(foto_perfil_data[0]) if foto_perfil_data else "../static/img/perfil_user.png"
+        foto_perfil = normalize_path(foto_perfil_data[0]) if foto_perfil_data else "/static/img/perfil_user.png"
         
         cursor.execute('SELECT direccionUsu,ciudadUsu,descripcionAcercaUsu,sitioWebUsu,blogUsu FROM datosUsuario WHERE codusuario = %s',(id,))
         datos = cursor.fetchone()
@@ -435,10 +557,167 @@ def nosotros_user():
     user_id = session.get('user_id')
     return render_template('MVQ_user.html',user_id = user_id)
 
+
+#***********************************************Rutas para el manejo de favoritos********************************************************************
 @usuarios.route('/favoritos_user')
 def favoritos_user():
     user_id = session.get('user_id')
     return render_template('favoritos.html',user_id = user_id)
+
+@usuarios.route('/agregar_favorito/usuario', methods=['POST'])
+def agregar_favorito():
+    user_id = session.get('user_id')
+    
+    if not user_id:
+        return jsonify({'success': False, 'message': 'Usuario no autenticado'})
+    
+    fav_id = request.form['id']
+    fav_type = request.form['tipo']
+
+    # Verificar si el favorito ya existe
+    sql_existente = 'SELECT idfavorito FROM favoritosUsuario WHERE codusuario = %s AND entidad_id = %s AND entidad_tipo = %s'
+    cursor.execute(sql_existente, (user_id, fav_id, fav_type))
+    favoritoExiste = cursor.fetchone()
+    
+    if favoritoExiste:
+        return jsonify({'success': False, 'message': 'El favorito ya existe'})
+    
+    # Agrega el favorito a la sesión
+    if 'favoritesUser' not in session:
+        session['favoritesUser'] = []
+        
+    session['favoritesUser'].append({'id': fav_id, 'type': fav_type})
+    session.modified = True
+    print("sesion agregar: " , session['favoritesUser'])
+    
+    # Inserta el favorito en la base de datos
+    cursor.execute('INSERT INTO favoritosUsuario (codusuario, entidad_id, entidad_tipo) VALUES (%s, %s, %s)', (user_id, fav_id, fav_type))
+    db.commit()
+    
+    return jsonify({'success': True, 'message': 'Favorito agregado'})
+
+
+
+@usuarios.route('/remover_favorito/usuario', methods=['POST'])
+def remover_favorito():
+    user_id = session.get('user_id')
+    if not user_id:
+        return jsonify({'success': False, 'message': 'Usuario no autenticado'})
+    
+    fav_id = request.form['id']
+    fav_type = request.form['tipo']
+
+    # Elimina el favorito de la sesión
+    if 'favoritesUser' in session:
+        session['favoritesUser'] = [fav for fav in session['favoritesUser'] if not (fav['id'] == fav_id and fav['type'] == fav_type)]
+        session.modified = True
+    
+    print("sesion eliminar: " , session['favoritesUser'])
+    
+    # Elimina el favorito de la base de datos
+    cursor.execute('DELETE FROM favoritosUsuario WHERE codusuario = %s AND entidad_id = %s AND entidad_tipo = %s', (user_id, fav_id, fav_type))
+    db.commit()
+
+    return jsonify({'success': True, 'message': 'Favorito eliminado'})
+
+
+@usuarios.route('/obtener_favoritos/usuario', methods=['GET'])
+def obtener_favoritos():
+    user_id = session.get('user_id')
+    if not user_id:
+        return jsonify({'success': False, 'message': 'Usuario no autenticado'})
+
+    cursor.execute('SELECT entidad_id, entidad_tipo FROM favoritosUsuario WHERE codusuario = %s', (user_id,))
+    
+    favoritos = cursor.fetchall()
+
+    # Convertir las filas en una lista de diccionarios
+    favoritos_list = [{'entidad_id': fav[0], 'entidad_tipo': fav[1]} for fav in favoritos]
+    
+    return jsonify(favoritos_list)
+
+def obtener_favoritos_usuario(entidad_tipo):
+    try:
+        db = get_db()
+        cursor = db.cursor()
+
+        if entidad_tipo == 'restaurante':
+            query = """
+            SELECT DISTINCT
+                fa.idfavorito, fa.codusuario, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
+                res.idresta, res.nombreresta, res.logo AS logo_res, res.tiporesta
+            FROM favoritosUsuario fa
+            LEFT JOIN restaurantes res ON fa.entidad_id = res.idresta
+            WHERE fa.codusuario = %s AND fa.entidad_tipo = %s
+            ORDER BY fa.fecha_agregado DESC;
+            """
+        elif entidad_tipo == 'emprendimiento':
+            query = """
+            SELECT DISTINCT
+                fa.idfavorito, fa.codusuario, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
+                em.idempre, em.nombreempre, em.logo AS logo_empre, em.tipoempre
+            FROM favoritosUsuario fa
+            LEFT JOIN emprendimientos em ON fa.entidad_id = em.idempre
+            WHERE fa.codusuario = %s AND fa.entidad_tipo = %s
+            ORDER BY fa.fecha_agregado DESC;
+            """
+        elif entidad_tipo == 'evento':
+            query = """
+            SELECT DISTINCT
+                fa.idfavorito, fa.codusuario, fa.entidad_id, fa.entidad_tipo, fa.fecha_agregado, 
+                eve.ideven, eve.nombreeven, eve.logo AS logo_evento, eve.tipoevento 
+            FROM favoritosUsuario fa
+            LEFT JOIN eventos eve ON fa.entidad_id = eve.ideven
+            WHERE fa.codusuario = %s AND fa.entidad_tipo = %s
+            ORDER BY fa.fecha_agregado DESC;
+            """
+        else:
+            return jsonify({'error': 'Tipo de entidad no soportado'}), 400
+
+        user_id = session.get('user_id')  # Asumiendo que user_id está en la sesión
+        cursor.execute(query, (user_id, entidad_tipo))
+        favoritos = cursor.fetchall()
+
+        favoritos_list = []
+        for favorito in favoritos:
+            logo_path = f"/static/{favorito[7].replace('\\', '/')}"
+            favoritos_list.append({
+                'fecha_publicacion': favorito[4],
+                'idFav': favorito[0],
+                'id': favorito[5],
+                'logo': logo_path,
+                'nombre': favorito[6],
+                'tipo': favorito[3]
+            })
+
+        # Cerrar cursor y conexión
+        cursor.close()
+        db.close()
+
+        # Devuelve los resultados en formato JSON
+        return jsonify({"favoritos": favoritos_list})
+
+    except Exception as e:
+        return jsonify({"error": str(e)})
+
+@usuarios.route('/Listafavoritos_usuario/restaurantes', methods=['GET'])
+def obtener_favoritos_restaurantes():
+    return obtener_favoritos_usuario('restaurante')
+
+@usuarios.route('/Listafavoritos_usuario/emprendimientos', methods=['GET'])
+def obtener_favoritos_emprendimientos():
+    return obtener_favoritos_usuario('emprendimiento')
+
+@usuarios.route('/Listafavoritos_usuario/eventos', methods=['GET'])
+def obtener_favoritos_eventos():
+    return obtener_favoritos_usuario('evento')
+
+
+@usuarios.route('/limpiar_sesion_favoritos', methods=['POST'])
+def limpiar_sesion_favoritos():
+    # Limpia la sesión de favoritos
+    session.pop('favoritesUser', None)
+    return jsonify({'success': True, 'message': 'Sesión de favoritos limpiada'})
 
 #Formatear los slashes para las imagenes
 def normalize_path(path):
@@ -447,3 +726,4 @@ def normalize_path(path):
     if not normalized_path.startswith('/'):
         normalized_path = '/' + normalized_path
     return normalized_path
+

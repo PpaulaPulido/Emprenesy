@@ -30,13 +30,6 @@ ol {
   padding: 30px;
   margin-top:70px;
 }
-.tipos_restaurantes {
-  padding: 50px;
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  margin-top: -40px;
-}
-
 .container_tarjeta {
   background: #fff;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -44,6 +37,7 @@ ol {
   border-radius: 20px;
   padding: 10px;
   margin: 30px auto 0 auto;
+  height: fit-content;
 }
 
 .tipo_imagen_container{
@@ -54,10 +48,7 @@ ol {
   margin-left: 10px;
   cursor: pointer;
   margin-top: 20px;
-  color:#cecbcb
-}
-.tipo_imagen_container .favorite:hover{
-  color: red;
+  color: #ccc;
 }
 .tipo_imagen {
   width: 90%;
@@ -168,10 +159,23 @@ ol {
 }
 
 /********************************Estilos de tipos de eventos**********************************/
-#eventoContenedor, #emprendimientoContenedor{
+#eventoContenedor, #emprendimientoContenedor, #resturanteContenedor{
   display: grid;
   grid-template-columns: repeat(3,1fr);
   padding: 30px;
   margin-top:70px;
-  min-height: 300px;
+  min-height: 900px;
+  height: fit-content;
+}
+@media only screen and (max-width: 920px){
+  #eventoContenedor, #emprendimientoContenedor, #resturanteContenedor{
+    min-height: 450px;
+    grid-template-columns: none;
+  }
+  .container_tarjeta{
+    width: 300px;
+  }
+  .contenido_texto p{
+    margin-bottom: 15px;
+  }
 }

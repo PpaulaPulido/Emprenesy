@@ -123,3 +123,54 @@ body{
 #btnGuardar:hover{
     background-color: #0047a3;
 }
+<<<<<<< HEAD
+/* Estilos base que ya tienes */
+=======
+>>>>>>> 4f2b6b5d096f49b7c798a416aa5747cd78106feb
+
+@media only screen and (max-width: 920px) {
+    /* Estilos que se aplicarán en pantallas de 768px de ancho y menores */
+    /* Puedes colocar aquí los ajustes necesarios para hacer tu diseño responsive */
+    .formularioPerfil {
+        width: 90%; /* Ejemplo: ajuste del ancho del formulario */
+    }
+<<<<<<< HEAD
+    .perfilContacto {
+        grid-template-columns: 1fr; /* Ejemplo: cambio a una sola columna */
+    }
+    .perfil {
+        width: 150px; /* Ejemplo: reducción del tamaño del perfil */
+        height: 150px;
+    }
+    .contacto label {
+        font-size: 16px; /* Ejemplo: reducción del tamaño del texto */
+    }
+    .contacto input {
+        width: 100%; /* Ejemplo: hacer que los inputs ocupen el ancho completo */
+    }
+=======
+    .title__form{
+        text-align: center;
+    }
+    .contacto textarea {
+        max-width: 100%;
+    }
+    .perfilContacto{
+        grid-template-columns: none;
+    }
+    .contacto input{
+        width: 250px;
+    }
+    .perfilDireccion{
+        grid-template-columns: none;
+        padding: 0;
+    }
+    .perfilDetalles{
+        padding: 0;
+    }
+    #btnGuardar{
+        width: 60%;
+    }
+>>>>>>> 4f2b6b5d096f49b7c798a416aa5747cd78106feb
+}
+

@@ -1,51 +1,71 @@
-function verificacionContrasenas(event) {
-    event.preventDefault(); // Evita el envío del formulario inmediatamente
+$(document).ready(function () {
+    $('form').on('submit', function (event) {
+      event.preventDefault();
+
+      var formData = $(this).serialize();
   
-    const contrasena = document.getElementById('contrasena').value;
-    const email = document.getElementById('usuario').value;
-    const tipoRol = document.getElementById('rol').value;
-  
-    if (contrasena === '' || email === '' || tipoRol === '') {
-      Swal.fire({
-        title: "Todos los campos son obligatorios",
-        showClass: {
-          popup: `
-                    animate__animated
-                    animate__fadeInUp
-                    animate__faster
-                `
+      $.ajax({
+        type: 'POST',
+        url: '/usuarios/recuperarContrasena',
+        data: formData,
+        dataType: 'json',
+        success: function (response) {
+          if (response.success) {
+            if (response.registrado) {
+                popRegistroExitoso("Contraseña Actualizada", true);// True indica redirigir
+            } 
+          } else {
+            popupRegistro("Error", response.message, false); // False indica no redirigir
+          }
         },
-        hideClass: {
-          popup: `
-                    animate__animated
-                    animate__fadeOutDown
-                    animate__faster
-                `
-        },
-        customClass: {
-          popup: 'border-blue',
-          icon: 'success-icon',
+        error: function (error) {
+          console.error('Error en la solicitud AJAX:', error);
+          popupRegistro("Error", "Hubo un problema al procesar la solicitud.", false); // False indica no redirigir
         }
       });
+    });
+  });
   
-      return false; // Detiene el envío del formulario
-    }
-  
-    // Mostrar mensaje de éxito
+function popupRegistro(titulo, mensaje, redirigir) {
     Swal.fire({
-      position: "center",
+      icon: "error",
+      title: titulo,
+      text: mensaje,
+      showClass: {
+        popup: 'animate__animated animate__fadeInUp animate__faster'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutDown animate__faster'
+      },
+      customClass: {
+        confirmButton: 'btn-blue',
+        popup: 'border-blue',
+        title: 'title-swal',
+        icon: 'icon-swal',
+      }
+    }).then(() => {
+      if (redirigir) {
+        window.location.href = "http://127.0.0.1:3036/usuarios/login";
+      }
+    });
+  }
+  
+  function popRegistroExitoso(titulo, redirigir) {
+    Swal.fire({
       icon: "success",
-      title: "Bienvenido a Emprenesy",
+      title: titulo,
       showConfirmButton: false,
       timer: 1500,
       customClass: {
-        popup: 'border-blue', 
-        icon: 'success-icon',
+        confirmButton: 'btn-red',
+        popup: 'border-blue',
+        title: 'title-swal',
+        icon: 'icon-swal',
+        container: 'custom-container'
       }
     }).then(() => {
-      // Enviar el formulario después de mostrar el mensaje de éxito
-      document.getElementById('loginForm').submit();
+      if (redirigir) {
+        window.location.href = "http://127.0.0.1:3036/usuarios/login";
+      }
     });
-  
-    return true;
   }

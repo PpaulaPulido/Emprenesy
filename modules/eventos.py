@@ -326,6 +326,37 @@ def editarEventoUbicacion(id):
         
     return render_template('editarEvento2.html', admin_id=codadmin, evento_id=id)
 
+#*********************************************Ruta para eliminar evento***************************************************************
+@evento.route('/eliminarEvento/<int:id>', methods=['GET', 'POST'])
+def eliminarEvento(id):
+    db = get_db()
+    cursor = db.cursor()
+
+    try:
+        # Eliminar entradas de la tabla galeriaeven
+        cursor.execute("DELETE FROM galeriaeven WHERE ideven = %s", (id,))
+        
+        # Eliminar entradas de la tabla ubicacioneven
+        cursor.execute("DELETE FROM ubicacioneven WHERE ideven = %s", (id,))
+        
+        # Eliminar entradas de la tabla fechaseven
+        cursor.execute("DELETE FROM fechaseven WHERE ideven = %s", (id,))
+        
+        # Eliminar entradas de la tabla redes_sociales
+        cursor.execute("DELETE FROM redes_sociales WHERE entidad_id = %s AND entidad_tipo = 'evento'", (id,))
+        
+        # Eliminar el evento
+        cursor.execute("DELETE FROM eventos WHERE ideven = %s", (id,))
+        
+        db.commit()
+        flash('Evento eliminado con éxito', 'success')
+    except Exception as e:
+        db.rollback()
+        flash(f'Error al eliminar el evento: {str(e)}', 'error')
+    finally:
+        cursor.close()
+
+    return redirect(url_for('admin.index_admin'))
 #*******************************************************************************************Ruta para json de detalles de eventos***********************
 @evento.route('/eventoDetalleJson/<int:id>',methods=['GET'])
 def detalleEventoJson(id):

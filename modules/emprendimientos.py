@@ -297,7 +297,35 @@ def editarEmprendeUbicacion(id):
 
     return render_template('editarEmprende2.html', admin_id=codadmin, emprende_id = id)
         
+#*****************************************************************************ruta para eliminar un emprendimiento******************
+@emprende.route('/eliminarEmprendimiento/<int:id>', methods=['GET', 'POST'])
+def eliminarEmprendimiento(id):
+    db = get_db()
+    cursor = db.cursor()
+
+    try:
+        # Eliminar entradas de la tabla galeriaempre
+        cursor.execute("DELETE FROM galeriaempre WHERE idempre = %s", (id,))
         
+        # Eliminar entradas de la tabla ubicacionempre
+        cursor.execute("DELETE FROM ubicacionempre WHERE idempre = %s", (id,))
+        
+        # Eliminar entradas de la tabla redes_sociales
+        cursor.execute("DELETE FROM redes_sociales WHERE entidad_id = %s AND entidad_tipo = 'emprendimiento'", (id,))
+        
+        # Eliminar el emprendimiento
+        cursor.execute("DELETE FROM emprendimientos WHERE idempre = %s", (id,))
+        
+        db.commit()
+        flash('Emprendimiento eliminado con éxito', 'success')
+    except Exception as e:
+        db.rollback()
+        flash(f'Error al eliminar el emprendimiento: {str(e)}', 'error')
+    finally:
+        cursor.close()
+
+    return redirect(url_for('admin.index_admin'))
+
 #********************************************************Ruta para json de detalles******************************************************************
 @emprende.route('/emprendimientoDetalleJson/<int:id>', methods=['GET'])
 def detallesEmprendeJson(id):

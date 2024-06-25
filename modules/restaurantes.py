@@ -292,6 +292,34 @@ def editarResUbicacion(id):
         
     return render_template('editarRestaurante2.html', admin_id=codadmin, res_id=id)
 
+#*************************************Ruta apra eliminar restaurante*****************************************************
+@res.route('/eliminarRestaurante/<int:id>', methods=['GET', 'POST'])
+def eliminarRestaurante(id):
+    db = get_db()
+    cursor = db.cursor()
+
+    try:
+        # Eliminar entradas de la tabla galeriaresta
+        cursor.execute("DELETE FROM galeriaresta WHERE idresta = %s", (id,))
+        
+        # Eliminar entradas de la tabla ubicacionresta
+        cursor.execute("DELETE FROM ubicacionresta WHERE idresta = %s", (id,))
+        
+        # Eliminar entradas de la tabla redes_sociales
+        cursor.execute("DELETE FROM redes_sociales WHERE entidad_id = %s AND entidad_tipo = 'restaurante'", (id,))
+        
+        # Eliminar el restaurante
+        cursor.execute("DELETE FROM restaurantes WHERE idresta = %s", (id,))
+        
+        db.commit()
+        flash('Restaurante eliminado con éxito', 'success')
+    except Exception as e:
+        db.rollback()
+        flash(f'Error al eliminar el restaurante: {str(e)}', 'error')
+    finally:
+        cursor.close()
+
+    return redirect(url_for('admin.index_admin'))
 #********************************************************Ruta para json de detalles******************************************************************
 @res.route('/restauranteDetalleJson/<int:id>', methods=['GET'])
 def detallesResJson(id):

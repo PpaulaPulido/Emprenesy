@@ -330,7 +330,6 @@ def subir_portada():
 def editarPerfilAdmin(id):
     
     db = get_db()
-    cursor = get_cursor(db)
     cursor = db.cursor()
 
     if request.method == 'POST':

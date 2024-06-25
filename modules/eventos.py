@@ -94,11 +94,9 @@ def publicarEventos():
 
             # Insertar redes sociales
             if form_data["redInstagram"]:
-                #cursor.execute("INSERT INTO redesSocialesEven (ideven, red, url) VALUES (%s, %s, %s)", (evento_id, 'instagram', form_data["redInstagram"]))
                 cursor.execute("INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) VALUES (%s, %s, %s, %s)", 
                    (evento_id, 'evento', 'instagram', form_data["redInstagram"]))
             if form_data["redTiktok"]:
-                #cursor.execute("INSERT INTO redesSocialesEven (ideven, red, url) VALUES (%s, %s, %s)", (evento_id, 'tik tok', form_data["redTiktok"]))
                 cursor.execute("INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) VALUES (%s, %s, %s, %s)", 
                    (evento_id, 'evento', 'tiktok', form_data["redTiktok"]))
 
@@ -133,7 +131,6 @@ def formularioUbicacion():
     evento_id = session.get('evento_id')
     admin_id = session.get('admin_id')
     
-    print("evento del id",evento_id)
     if request.method == 'POST':
         ubicaciones = request.form.getlist('direcciones[]')
         print("ubicacion de la variable ubicaciones ",ubicaciones)
@@ -145,6 +142,189 @@ def formularioUbicacion():
         flash('Ubicaciones guardadas correctamente')
         return redirect(url_for('admin.index_admin'))
     return render_template('formularioEventos2.html',admin_id = admin_id)
+
+#***************************Editar formulario ************************************************************
+@evento.route('/editarEvento/<int:id>', methods=['GET', 'POST'])
+def editarEvento(id):
+    db = get_db()
+    cursor = db.cursor()
+    
+    current_app.config['FOLDER_EVENT'] = os.path.join(current_app.root_path, 'static', 'galeriaEventos')
+    
+    codadmin = session.get('admin_id') 
+    
+    if request.method == 'POST':
+        
+        evento_id = cursor.lastrowid
+        session['evento_id'] = evento_id
+        # Obtener datos del formulario
+        
+        logoeven = request.files.get("logo_evento")
+        relativePath = None
+        
+        if logoeven and allowed_file(logoeven.filename):
+            filename = secure_filename(logoeven.filename)
+            path = os.path.join(current_app.config['FOLDER_EVENT'], filename)
+            logoeven.save(path)  # Guarda el archivo en el sistema de archivos
+            relativePath =  os.path.join('galeriaEventos',filename)
+            
+        nombre_evento = request.form.get('nombre_evento')
+        tipo_evento = request.form.get('tipo_evento')
+        contacto_evento = request.form.get('contacto_evento')
+        correo_evento = request.form.get('correo_evento')
+        fecha_evento = request.form.get('fecha_evento')
+        horarioEntrada = request.form.get('horarioEntrada')
+        horarioSalida = request.form.get('horarioSalida')
+        descripcion_evento = request.form.get('descripcion_evento')
+        pagina_evento = request.form.get('pagina_evento')
+        boletos_evento = request.form.get('boletos_evento')
+        red_Instagram = request.form.get('red_Instagram')
+        red_Tiktok = request.form.get('red_Tiktok')
+        descripcionAdicional = request.form.get('descripcionAdicional')
+        fechaPublicacion = datetime.now().date()
+        
+        # Actualizar la tabla de eventos
+        sql_evento = """
+            UPDATE eventos SET 
+            nombreeven = %s,logo = %s, tipoevento = %s,descripeven = %s,paginaeven  = %s, boletaseven = %s,infoAdicional = %s, contacto = %s, correoeven = %s, 
+            fecha_publicacion = %s 
+            WHERE ideven = %s
+        """
+        cursor.execute(sql_evento, (nombre_evento,relativePath, tipo_evento, descripcion_evento,pagina_evento,boletos_evento,descripcionAdicional, contacto_evento, correo_evento, fechaPublicacion, id))
+        db.commit()
+
+        # Actualizar la tabla de fechaseven
+        sql_fechas = """
+            UPDATE fechaseven SET 
+            fechaseven = %s, horarioEntrada = %s, horarioSalida = %s 
+            WHERE ideven = %s
+        """
+        cursor.execute(sql_fechas, (fecha_evento, horarioEntrada, horarioSalida, id))
+        db.commit()
+
+        # Actualizar la tabla de redes_sociales
+        sql_redes = """
+                UPDATE redes_sociales SET 
+                url = %s 
+                WHERE entidad_id = %s AND entidad_tipo = %s AND red = %s
+            """
+        
+        # Actualizar Instagram
+        entidad_tipo = 'evento'
+        cursor.execute(sql_redes, (red_Instagram, id, entidad_tipo, 'Instagram'))
+        db.commit()
+
+        # Actualizar Tiktok
+        cursor.execute(sql_redes, (red_Tiktok, id, entidad_tipo, 'Tiktok'))
+        db.commit()
+
+        # Actualizar galería
+        galeria  = request.files.getlist('galeria_evento[]')
+        cursor.execute("DELETE FROM galeriaeven WHERE ideven= %s", (id,))
+        
+        upload_folder = current_app.config['FOLDER_EVENT']
+        if not os.path.exists(upload_folder):
+            os.makedirs(upload_folder)
+        
+        for imagen in galeria:
+                if imagen and allowed_file(imagen.filename):
+                    filename = secure_filename(imagen.filename)
+                    path = os.path.join(upload_folder, filename)
+                    imagen.save(path)
+                    relative_path = os.path.join('galeriaEventos',filename)
+                    cursor.execute("INSERT INTO galeriaeven (ideven, urlImagen, descripcion) VALUES (%s, %s, %s)", (id, relative_path, "Imagen del evento"))
+            
+        db.commit()
+        return redirect(url_for('evento.editarEventoUbicacion',id = id))
+
+    else:
+        # Obtener los datos actuales del evento para prellenar el formulario
+        sql_select_evento = "SELECT * FROM eventos WHERE ideven = %s"
+        cursor.execute(sql_select_evento, (id,))
+        evento = cursor.fetchone()
+ 
+        sql_select_fechas = "SELECT fechaseven, horarioEntrada, horarioSalida FROM fechaseven WHERE ideven = %s"
+        cursor.execute(sql_select_fechas, (id,))
+        fechas = cursor.fetchone()
+
+
+        sql_select_redes = "SELECT red, url FROM redes_sociales WHERE entidad_id = %s AND entidad_tipo = 'evento'"
+        cursor.execute(sql_select_redes, (id,))
+        redes = cursor.fetchall()
+        redes_sociales = {red: url for red, url in redes}
+
+        # Cargar los datos para la galería del evento (si hay)
+        sql_select_galeria = "SELECT urlImagen FROM galeriaeven WHERE ideven = %s"
+        cursor.execute(sql_select_galeria, (id,))
+        galeria = cursor.fetchall()
+
+        cursor.close()
+
+        # Preparar datos para enviar al template
+        datos_evento = {
+            'nombre_evento': evento[1],
+            'tipo_evento': evento[3],
+            'contacto_evento': evento[8],
+            'correo_evento': evento[9],
+            'fecha_evento':  fechas[0],
+            'horarioEntrada': fechas[1],
+            'horarioSalida': fechas[2],
+            'descripcion_evento': evento[4],
+            'pagina_evento': evento[5],
+            'boletos_evento': evento[6],
+            'red_Instagram': redes_sociales.get('instagram', ''),
+            'red_Tiktok': redes_sociales.get('tiktok', ''),
+            'descripcionAdicional': evento[7],
+            'galeria': [{'urlImagen': imagen[0]} for imagen in galeria]
+        }
+
+        return render_template('editarEvento1.html', evento=datos_evento, evento_id=id,admin_id = codadmin,)
+
+@evento.route('/editarEventoUbicacion/<int:id>/', methods=['GET', 'POST'])
+def editarEventoUbicacion(id):
+    db = get_db()
+    cursor = db.cursor()
+
+    codadmin = session.get('admin_id')
+
+    # Obtener el evento específico según el ID
+    sql_select_evento = "SELECT * FROM eventos WHERE ideven = %s"
+    cursor.execute(sql_select_evento, (id,))
+    evento = cursor.fetchone()
+
+    # Si el evento no existe, redireccionar a algún lugar adecuado o mostrar un error
+    if not evento:
+        flash('El evento especificado no existe', 'error')
+        return redirect(url_for('admin.index_admin'))
+
+    if request.method == 'POST':
+        ubicaciones = request.form.getlist('direccionesEditar[]')
+
+        try:
+            # Eliminar las ubicaciones actuales del evento
+            cursor.execute("DELETE FROM ubicacioneven WHERE ideven = %s", (id,))
+            
+            # Insertar las nuevas ubicaciones
+            for ubicacion in ubicaciones:
+                if ubicacion:  # Comprobar que la ubicación no esté vacía
+                    cursor.execute("INSERT INTO ubicacioneven (ideven, ubicacion) VALUES (%s, %s)", (id, ubicacion))
+            
+            db.commit()
+            flash('Ubicaciones actualizadas correctamente', 'success')
+            return redirect(url_for('admin.index_admin'))
+        
+        except Exception as e:
+            db.rollback()
+            flash(f'Error al actualizar las ubicaciones: {str(e)}', 'error')
+            return redirect(url_for('evento.editarEventoUbicacion', id=id))
+
+    # Obtener las ubicaciones actuales del evento para prellenar el formulario
+    sql_select_ubicaciones = "SELECT ubicacion FROM ubicacioneven WHERE ideven = %s"
+    cursor.execute(sql_select_ubicaciones, (id,))
+    ubicaciones = [ubicacion[0] for ubicacion in cursor.fetchall()]
+    cursor.close()
+        
+    return render_template('editarEvento2.html', admin_id=codadmin, evento_id=id)
 
 #*******************************************************************************************Ruta para json de detalles de eventos***********************
 @evento.route('/eventoDetalleJson/<int:id>',methods=['GET'])

@@ -140,6 +140,164 @@ def publicar_emprendimientoLocation():
         return redirect(url_for('admin.index_admin'))
     return render_template('formularioEmprende2.html',admin_id = admin_id)
 
+
+#********************************************************Editar emprendimiento*************************************************************
+@emprende.route('/editarEmprendimiento/<int:id>', methods=['GET', 'POST'])
+def editarEmprende(id):
+    
+    db = get_db()
+    cursor = db.cursor()
+    
+    current_app.config['FOLDER_EMPREN'] = os.path.join(current_app.root_path, 'static', 'galeriaEmprende')
+    
+    codadmin = session.get('admin_id') 
+    
+    if request.method == 'POST':
+        emprende_id = cursor.lastrowid
+        session['emprende_id'] = emprende_id
+        
+        logoEmprende = request.files.get("logo_Emprende")
+        relativePath = None
+        
+        if logoEmprende and allowed_file(logoEmprende.filename):
+            filename = secure_filename(logoEmprende.filename)
+            path = os.path.join(current_app.config['FOLDER_EMPREN'], filename)
+            logoEmprende.save(path) 
+            relativePath =  os.path.join('galeriaEmprende',filename)
+        
+        nombre_Emprende = request.form.get('nombre_Emprende')
+        type_Emprende = request.form.get('type_Emprende')
+        descripcion_Emprende = request.form.get('descripcion_Emprende')
+        pagina_Emprende = request.form.get('pagina_Emprende')
+        produc_empre = request.form.get('produc_empre')
+        horario_Emprende = request.form.get('horario_Emprende')
+        horarioEntrada = request.form.get('horarioEntrada')
+        horarioSalida = request.form.get('horarioSalida')
+        correo_empre = request.form.get('correo_empre')
+        tel_empre = request.form.get('tel_empre')
+        red_Instagram = request.form.get('red_Instagram')
+        red_Tiktok = request.form.get('red_Tiktok')
+        fechaPublicacion = datetime.now().date()
+        galeria  = request.files.getlist('galeria_emprende[]')
+        
+        sql_emprendimeinto = """
+            UPDATE emprendimientos SET 
+            nombreempre = %s, logo = %s, tipoempre = %s, descripempre = %s, horarioempre = %s, horarioApertura = %s, 
+            horarioCierre = %s, paginaempre = %s, producempre = %s, correoempre = %s, telempre = %s, fecha_publicacion = %s
+            WHERE codadmin = %s
+        """
+        cursor.execute(sql_emprendimeinto,(nombre_Emprende,relativePath,type_Emprende,descripcion_Emprende,horario_Emprende,horarioEntrada,horarioSalida,pagina_Emprende,produc_empre,correo_empre,tel_empre,fechaPublicacion,id))
+        db.commit()
+        
+        # Actualizar la tabla de redes_sociales
+        sql_redes = """
+                UPDATE redes_sociales SET 
+                url = %s 
+                WHERE entidad_id = %s AND entidad_tipo = %s AND red = %s
+            """
+        
+        # Actualizar Instagram
+        entidad_tipo = 'emprendimiento'
+        cursor.execute(sql_redes, (red_Instagram, id, entidad_tipo, 'Instagram'))
+        db.commit()
+
+        # Actualizar Tiktok
+        cursor.execute(sql_redes, (red_Tiktok, id, entidad_tipo, 'Tiktok'))
+        db.commit()
+        
+        #galeria de imagenes
+        
+        cursor.execute("DELETE FROM galeriaempre WHERE idempre = %s", (id,))
+        
+        upload_folder = current_app.config['FOLDER_EMPREN']
+        if not os.path.exists(upload_folder):
+            os.makedirs(upload_folder)
+            
+        for imagen in galeria:
+            if imagen and allowed_file(imagen.filename):
+                filename = secure_filename(imagen.filename)
+                path = os.path.join(upload_folder, filename)
+                imagen.save(path)
+                relative_path = os.path.join('galeriaEmprende',filename)
+                cursor.execute("INSERT INTO galeriaempre (idempre, imagenempre, descripcion) VALUES (%s, %s, %s)", (id, relative_path, "Imágen de emprendimiento"))
+        
+        db.commit()
+        return redirect(url_for('emprende.editarEmprendeUbicacion',id = id))
+    
+    else:
+        sql_select_emprende = "SELECT * FROM emprendimientos WHERE idempre = %s"
+        cursor.execute(sql_select_emprende, (id,))
+        emprendimiento = cursor.fetchone()
+ 
+        sql_select_redes = "SELECT red, url FROM redes_sociales WHERE entidad_id = %s AND entidad_tipo = 'emprendimiento'"  
+        cursor.execute(sql_select_redes, (id,))
+        redes = cursor.fetchall()
+        redes_sociales = {red: url for red, url in redes}
+        
+        cursor.close()
+        
+        # Preparar datos para enviar al template
+        datos_emprende = {
+            'nombre_emprende': emprendimiento[1],
+            'tipo_emprende': emprendimiento[3],
+            'contacto_emprende': emprendimiento[11],
+            'correo_emprende': emprendimiento[10],
+            'descripcion_emprende': emprendimiento[4],
+            'horario_emprende': emprendimiento[5],
+            'horarioEntrada': emprendimiento[6],
+            'horarioSalida': emprendimiento[7],
+            'pagina_emprende': emprendimiento[8],
+            'productos_emprende': emprendimiento[9],
+            'red_Instagram': redes_sociales.get('instagram', ''),
+            'red_Tiktok': redes_sociales.get('tiktok', ''),
+        }
+
+        return render_template('editarEmprende1.html', emprende=datos_emprende, emprende_id = id,admin_id = codadmin,)
+            
+@emprende.route('/editarEmprendeUbicacion/<int:id>/', methods=['GET', 'POST'])
+def editarEmprendeUbicacion(id):   
+    
+    db = get_db()
+    cursor = db.cursor()   
+    codadmin = session.get('admin_id')
+    
+    sql_select_emprende = "SELECT * FROM emprendimientos WHERE idempre = %s"
+    cursor.execute(sql_select_emprende, (id,))
+    emprendimiento = cursor.fetchone()
+    
+    if not emprendimiento:
+        flash('El evento especificado no existe', 'error')
+        return redirect(url_for('admin.index_admin'))
+    
+    if request.method == 'POST':
+        ubicaciones = request.form.getlist('direccionesEditar[]')
+        
+        try:
+            # Eliminar las ubicaciones actuales del evento
+            cursor.execute("DELETE FROM ubicacionempre WHERE idempre = %s", (id,))
+            
+            # Insertar las nuevas ubicaciones
+            for ubicacion in ubicaciones:
+                if ubicacion:  # Comprobar que la ubicación no esté vacía
+                    cursor.execute("INSERT INTO ubicacionempre (idempre, ubicacion) VALUES (%s, %s)", (id, ubicacion))
+            
+            db.commit()
+            flash('Ubicaciones actualizadas correctamente', 'success')
+            return redirect(url_for('admin.index_admin'))
+        
+        except Exception as e:
+            db.rollback()
+            flash(f'Error al actualizar las ubicaciones: {str(e)}', 'error')
+            return redirect(url_for('emprende.editarEmprende', id=id))
+    
+    sql_select_ubicaciones = "SELECT ubicacion FROM ubicacionempre WHERE idempre = %s"
+    cursor.execute(sql_select_ubicaciones, (id,))
+    ubicaciones = [ubicacion[0] for ubicacion in cursor.fetchall()]
+    cursor.close()
+
+    return render_template('editarEmprende2.html', admin_id=codadmin, emprende_id = id)
+        
+        
 #********************************************************Ruta para json de detalles******************************************************************
 @emprende.route('/emprendimientoDetalleJson/<int:id>', methods=['GET'])
 def detallesEmprendeJson(id):

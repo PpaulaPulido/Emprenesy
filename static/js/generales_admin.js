@@ -191,8 +191,10 @@ function regresarForm(btnRegresar,redireccionarForm){
             confirmButtonText: "Sí, deseo regresar!",
             cancelButtonText: "Cancelar",
             customClass: {
+                confirmButton: 'btn-blue',
                 popup: 'border-blue',
-                icon: 'success-icon',
+                title: 'title-swal',
+                icon: 'icon-swal',
             }
         }).then((result) => {
             if (result.isConfirmed) {
@@ -203,8 +205,10 @@ function regresarForm(btnRegresar,redireccionarForm){
                     icon: "info",
                     timer: 4000,
                     customClass: {
+                        confirmButton: 'btn-blue',
                         popup: 'border-blue',
-                        icon: 'success-icon',
+                        title: 'title-swal',
+                        icon: 'icon-swal',
                     }
                 }).then(() => {
 

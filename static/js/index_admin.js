@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     subirPublicacionEven();
     subirPublicacionEmprende();
     subirPublicacionRes();
-
     user_sesion().then(() => {
         inicializarBuscador();
     }).catch(error => console.error('Error al inicializar sesión con administrador:', error));
@@ -137,6 +136,35 @@ function estadoContenido(datos, container, config) {
         botonV.id = `editar${publicacion[config.idCampo]}`;
         botonV.textContent = "Editar";
 
+        // Agregar atributo data-tipo basado en config.titulo
+        if (config.titulo.toLowerCase().includes('mis eventos')) {
+            botonV.setAttribute('data-tipo', 'evento');
+        } else if (config.titulo.toLowerCase().includes('mis emprendimientos')) {
+            botonV.setAttribute('data-tipo', 'emprendimiento');
+        } else if (config.titulo.toLowerCase().includes('mis restaurantes')) {
+            botonV.setAttribute('data-tipo', 'restaurante');
+        }
+
+        botonV.addEventListener('click', function() {
+            const eventoId = publicacionIndex.getAttribute('data-id'); // Obtener el ID del evento
+            const tipo = botonV.getAttribute('data-tipo'); // Obtener el tipo de evento
+
+            // Redireccionar a la página de edición correspondiente según el tipo
+            switch (tipo) {
+                case 'evento':
+                    window.location.href = `/evento/editarEvento/${eventoId}`;
+                    break;
+                case 'emprendimiento':
+                    window.location.href = `/emprende/editarEmprendimiento/${eventoId}`;
+                    break;
+                case 'restaurante':
+                    window.location.href = `/res/editarRestaurante/${eventoId}`;
+                    break;
+                default:
+                    console.error('Tipo de evento no reconocido');
+            }
+        });
+
         const botonE = document.createElement('a');
         botonE.classList.add("btnEli", "botonesPub");
         botonE.textContent = "Eliminar";
@@ -198,3 +226,4 @@ function menu_lateralIndex() {
 
     });
 }
+

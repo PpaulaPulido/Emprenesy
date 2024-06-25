@@ -137,6 +137,161 @@ def restauranteLocation():
         return redirect(url_for('admin.index_admin'))
     return render_template('publicacionRes2.html',admin_id = admin_id)
 
+
+#**************************************************Editar restaurante**************************************************************
+@res.route('/editarRestaurante/<int:id>', methods=['GET', 'POST'])
+def editarRes(id):
+    
+    db = get_db()
+    cursor = db.cursor()
+    
+    current_app.config['FOLDER_RES'] = os.path.join(current_app.root_path, 'static', 'galeriaRes')
+    codadmin = session.get('admin_id') 
+    
+    if request.method == 'POST':
+        
+        logoRes = request.files.get("logo_Res")
+        relativePath = None
+        
+        galeria = request.files.getlist('galeriaRes[]')
+        
+        if logoRes and allowed_file(logoRes.filename):
+            filename = secure_filename(logoRes.filename)
+            path = os.path.join(current_app.config['FOLDER_RES'], filename)
+            logoRes.save(path) 
+            relativePath =  os.path.join('galeriaRes',filename)
+        
+        nombre_Res = request.form.get('nombre_Res')
+        type_Res = request.form.get('type_Res')
+        horario_Res = request.form.get('horario_Res')
+        horarioEntrada = request.form.get('horarioEntrada')
+        horarioSalida = request.form.get('horarioSalida')
+        pagina_Res = request.form.get('pagina_Res')
+        menu_Res = request.form.get('menu_Res')
+        descripcion_Res = request.form.get('descripcion_Res')
+        red_Instagram = request.form.get('red_Instagram')
+        red_Tiktok = request.form.get('red_Tiktok')
+        correo_Res = request.form.get('correo_Res')
+        contacto_Res = request.form.get('contacto_Res')
+        fechaPublicacion = datetime.now().date()
+        
+        sql_res = """
+            UPDATE restaurantes SET 
+            nombreresta = %s, logo = %s, tiporesta = %s, descripresta = %s, paginaresta = %s, menu = %s, horario = %s, 
+            horarioApertura = %s, horarioCierre = %s, correoresta = %s, telresta = %s, fecha_publicacion = %s 
+            WHERE idresta = %s AND codadmin = %s
+        """
+        
+        cursor.execute(sql_res, (nombre_Res, relativePath, type_Res, descripcion_Res, pagina_Res, menu_Res, horario_Res, horarioEntrada, horarioSalida, correo_Res, contacto_Res, fechaPublicacion, id, codadmin))
+         
+        # Actualizar la tabla de redes_sociales
+        sql_redes = """
+                UPDATE redes_sociales SET 
+                url = %s 
+                WHERE entidad_id = %s AND entidad_tipo = %s AND red = %s
+            """
+        
+        # Actualizar Instagram
+        entidad_tipo = 'restaurante'
+        cursor.execute(sql_redes, (red_Instagram, id, entidad_tipo, 'Instagram'))
+        
+        # Actualizar Tiktok
+        cursor.execute(sql_redes, (red_Tiktok, id, entidad_tipo, 'Tiktok'))
+        
+        # galeria de imagenes
+        cursor.execute("DELETE FROM galeriaresta WHERE idresta = %s", (id,)) 
+        
+        upload_folder = current_app.config['FOLDER_RES']
+        if not os.path.exists(upload_folder):
+            os.makedirs(upload_folder)
+        for imagen in galeria:
+            if imagen and allowed_file(imagen.filename):
+                filename = secure_filename(imagen.filename)
+                path = os.path.join(current_app.config['FOLDER_RES'], filename)
+                imagen.save(path)
+                relative_path = os.path.join('galeriaRes', filename)  # Ruta relativa de la imagen
+                cursor.execute("INSERT INTO galeriaresta (idresta, imagenresta, descripcion) VALUES (%s, %s, %s)",
+                                (id, relative_path, "Imagen de la galería del restaurante"))
+        
+        db.commit()
+        return redirect(url_for('res.editarResUbicacion', id=id))
+    
+    else:
+        # Obtener los datos actuales del restaurante para prellenar el formulario
+        sql_select_restaurante = "SELECT * FROM restaurantes WHERE idresta = %s"
+        cursor.execute(sql_select_restaurante, (id,))
+        restaurante = cursor.fetchone()
+ 
+        sql_select_redes = "SELECT red, url FROM redes_sociales WHERE entidad_id = %s AND entidad_tipo = 'restaurante'"
+        
+        cursor.execute(sql_select_redes, (id,))
+        redes = cursor.fetchall()
+        redes_sociales = {red.lower(): url for red, url in redes}
+
+        cursor.close()
+        
+        # Preparar datos para enviar al template
+        datos_res = {
+            'nombre_res': restaurante[1],
+            'tipo_res': restaurante[3],
+            'contacto_res': restaurante[11],
+            'correo_res': restaurante[10],
+            'descripcion_res': restaurante[4],
+            'pagina_res': restaurante[5],
+            'horario_res': restaurante[7],
+            'horarioEntrada': restaurante[8],
+            'horarioSalida': restaurante[9],
+            'menu_res': restaurante[6],
+            'red_Instagram': redes_sociales.get('instagram', ''),
+            'red_Tiktok': redes_sociales.get('tiktok', ''),
+        }
+
+        return render_template('editarRestaurante1.html', datos_res=datos_res, res_id=id, admin_id=codadmin)
+
+                
+@res.route('/editarResUbicacion/<int:id>/', methods=['GET', 'POST'])
+def editarResUbicacion(id):
+    db = get_db()
+    cursor = db.cursor()
+
+    codadmin = session.get('admin_id')
+    
+    sql_select_res = "SELECT * FROM restaurantes WHERE idresta = %s"
+    cursor.execute(sql_select_res, (id,))
+    restaurante= cursor.fetchone()
+    
+    if not restaurante:
+        flash('El restaurante especificado no existe', 'error')
+        return redirect(url_for('admin.index_admin'))
+    
+    if request.method == 'POST':
+        ubicaciones = request.form.getlist('direccionesEditar[]')
+        try:
+            # Eliminar las ubicaciones actuales del evento
+            cursor.execute("DELETE FROM ubicacionresta WHERE idresta = %s", (id,))
+            
+            # Insertar las nuevas ubicaciones
+            for ubicacion in ubicaciones:
+                if ubicacion:  # Comprobar que la ubicación no esté vacía
+                    cursor.execute("INSERT INTO  ubicacionresta(idresta, ubicacion) VALUES (%s, %s)", (id, ubicacion))
+            
+            db.commit()
+            flash('Ubicaciones actualizadas correctamente', 'success')
+            return redirect(url_for('admin.index_admin'))
+        
+        except Exception as e:
+            db.rollback()
+            flash(f'Error al actualizar las ubicaciones: {str(e)}', 'error')
+            return redirect(url_for('res.editarRes', id=id))
+    
+    # Obtener las ubicaciones actuales del evento para prellenar el formulario
+    sql_select_ubicaciones = "SELECT ubicacion FROM ubicacionresta WHERE idresta = %s"
+    cursor.execute(sql_select_ubicaciones, (id,))
+    ubicaciones = [ubicacion[0] for ubicacion in cursor.fetchall()]
+    cursor.close()
+        
+    return render_template('editarRestaurante2.html', admin_id=codadmin, res_id=id)
+
 #********************************************************Ruta para json de detalles******************************************************************
 @res.route('/restauranteDetalleJson/<int:id>', methods=['GET'])
 def detallesResJson(id):

@@ -735,25 +735,28 @@ select {
 }
 
 /*estilos del sweatalert*/
-
 .border-blue {
     border: 3px solid #213859 !important;
     box-shadow: 0 0 15px #fff;
-    top: -10% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    position: fixed !important;
 }
-
-.swal2-success-ring {
+.swal2-success-ring{
     border: 3px solid #213859 !important;
 }
-
-.swal2-title {
+.swal2-title{
     color: #050047;
     font-size: 25px;
 }
-
+.custom-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
 @media only screen and (max-width: 920px) {
     .publicaciones_contenido {
         padding: 20px 5px;

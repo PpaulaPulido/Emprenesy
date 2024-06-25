@@ -47,7 +47,7 @@ function subirPublicacionEmprende() {
             containerEm.innerHTML = "";
 
             if (datosEm.length == 0) {
-                estadoVacio(containerEm, 'restaurantes', 'fa-solid', 'fa-utensils');
+                estadoVacio(containerEm, 'emprendimientos', 'fa-solid', 'fa-utensils');
 
             } else {
                 estadoContenido(datosEm, containerEm, {
@@ -76,7 +76,7 @@ function subirPublicacionRes() {
             containerRes.innerHTML = "";
 
             if (datos.length == 0) {
-                estadoVacio(containerRes, 'eventos', 'bi', 'bi-calendar-check');
+                estadoVacio(containerRes, 'restaurantes', 'bi', 'bi-calendar-check');
 
             } else {
                 estadoContenido(datos, containerRes, {

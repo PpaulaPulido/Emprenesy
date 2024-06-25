@@ -232,13 +232,15 @@ function regresarForm(btnRegresar,redireccionarForm){
     });
 
 }
-function alertaPu(formulario,redireccionar){
+function alertaPu(formulario, redireccionar,message) {
     formulario.addEventListener('submit', (e) => {
-        //e.preventDefault();
+        e.preventDefault(); // Prevenir el envío del formulario por defecto
+
+        // Mostrar la alerta de SweetAlert
         Swal.fire({
             position: "center",
             icon: "success",
-            title: "Registro de publicación exitosa",
+            title: message,
             showConfirmButton: false,
             timer: 4000,
             customClass: {
@@ -246,9 +248,27 @@ function alertaPu(formulario,redireccionar){
                 icon: 'success-icon',
             }
         }).then(() => {
-            // Después de que la alerta se cierre, redirigir a la página especificada
-            window.location.href = redireccionar;
+            // Crear un objeto FormData con los datos del formulario
+            const formData = new FormData(formulario);
+
+            // Enviar el formulario manualmente usando fetch
+            fetch(formulario.action, {
+                method: 'POST',
+                body: formData
+            }).then(response => {
+                if (response.ok) {
+                    // Después de que el formulario se envíe, redirigir a la página especificada
+                    setTimeout(() => {
+                        window.location.href = redireccionar;
+                    }, 1000); // Retardo adicional de 1 segundo (1000 milisegundos)
+                } else {
+                    // Manejar el error de envío
+                    console.error('Error al enviar el formulario:', response.statusText);
+                }
+            }).catch(error => {
+                // Manejar errores de red
+                console.error('Error de red al enviar el formulario:', error);
+            });
         });
     });
-
 }

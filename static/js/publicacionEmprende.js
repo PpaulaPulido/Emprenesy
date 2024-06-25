@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const redireccionar = document.getElementById('index').getAttribute('data-url');
     const redireccionarFormEm = document.getElementById('form_emprendimiento').getAttribute('data-url');
 
-    alertaPu(formularioEm,redireccionar)
+    alertaPu(formularioEm,redireccionar,"Registro de publicación exitosa")
     regresarForm(btnRegresarEm,redireccionarFormEm)
 
 })

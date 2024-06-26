@@ -46,6 +46,27 @@ VALUES (@idresta, ' Av. Boyacá #19 Bogotá'),
 (@idresta, ' Cl. 8 Sur #7184 Bogotá, '),
 (@idresta, 'Av. Ferrocarril de Occidente #27-49 LC C 27 Bogotá'),
 (@idresta,' Calle 185 #45-03 Bogotá');
+#**********************************************************************************************
+INSERT INTO restaurantes (nombreresta, logo, tiporesta, descripresta, paginaresta, menu, horario, horarioApertura,
+ horarioCierre, correoresta, telresta, fecha_publicacion, codadmin) 
+VALUES ('La Kasta Grill and Wine', 'galeriaRes/logoKasta.png', 'Parillas y asaderos', 'La Kasta es un lugar acogedor y de moda en Bogotá, especializado en parrillas y carnes. Ofrecen una variedad de opciones, desde cortes de carne hasta platos con pollo, pescado y mariscos. También cuentan con opciones vegetarianas, vinos, licores y cócteles internacionales',
+ 'https://linktr.ee/lakasta', 'https://qr.precompro.com/?source=lakasta.precompro.com', 'Lunes a Viernes', '12:00:00', '22:00:00',
+ null, '315 4501130', '2024-05-15', 2);
+ 
+SELECT LAST_INSERT_ID() INTO @idresta;
+
+INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) 
+VALUES (@idresta, 'restaurante', 'Instagram', 'https://www.instagram.com/lakasta.dc/'),
+       (@idresta, 'restaurante', 'TikTok', 'https://www.tiktok.com/@foodievaro/video/7308477694268689669');
+
+INSERT INTO galeriaresta (idresta, imagenresta, descripcion) 
+VALUES (@idresta, 'galeriaRes\\kasta1.jpg', 'Imágen de restaurante'),
+       (@idresta, 'galeriaRes\\kasta2.jpg', 'Imágen de restaurante'),
+       (@idresta, 'galeriaRes\\kasta3.jpg', 'Imágen de restaurante'),
+       (@idresta, 'galeriaRes\\kasta4.jpg', 'Imágen de restaurante');
+INSERT INTO ubicacionresta (idresta, ubicacion) 
+VALUES (@idresta, 'Calle 40 #21-34, Bogotá'), (@idresta, 'Calle 106 # 18a-41, Bogotá');
+#**********************************************************************************************
 #**********************************************************************************************************************
 INSERT INTO restaurantes (nombreresta, logo, tiporesta, descripresta, paginaresta, menu, horario, horarioApertura,
  horarioCierre, correoresta, telresta, fecha_publicacion, codadmin) 
@@ -338,7 +359,7 @@ Artistas: Diego Trujillo, John Alex Toro, Emmanuel Esparza',
 SELECT LAST_INSERT_ID() INTO @ideven;
 
 INSERT INTO fechaseven (ideven,fechaseven,horarioEntrada,horarioSalida)
-VALUES (1,'2024-06-01','18:00:00','19:00:00');
+VALUES (@ideven,'2024-06-01','18:00:00','19:00:00');
 
 INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) 
 VALUES (@ideven, 'evento', 'Instagram', 'https://www.instagram.com/casaeborrero/p/C6htb96N08x/'),
@@ -432,3 +453,82 @@ VALUES (@ideven, 'galeriaEventos\\arte1.png', 'Imagen del evento'),
 
 INSERT INTO ubicacioneven (ideven, ubicacion) 
 VALUES (@ideven, ' Carrera 4A #26C-37 Bogotá ');
+
+#**********************************************************************************************
+INSERT INTO eventos ( nombreeven, logo, tipoevento, descripeven, paginaeven, boletaseven , 
+infoAdicional, contacto , correoeven, fecha_publicacion,codadmin) 
+VALUES ('WEBCONGRESS LATAM','galeriaEventos/logoWebcongress.png','Ferias tecnológicas','WebCongress es el evento líder en marketing digital, innovación y nuevas tecnologías en el mundo. La Edición #12 en Colombia se llevará a cabo los días 8 y 9 de agosto de 2024 en Bogotá. El tema central es “AI EVERYWHERE: La Inteligencia Artificial está impactando tu realidad”.El evento ofrece conferencias internacionales, networking, expo interactiva y talleres para desarrollar habilidades',
+'https://www.webcongress.com/latam','https://welcu.com/webcongress-inc/webcongress-latam-2024',
+'Conecta con cientos de tomadores de decisión en la industria tecnológica.Lanzamiento del libro “A.I Everywhere: La Inteligencia Artificial es el nuevo oxígeno de los Negocios” por @Ouali.Sesiones prácticas con expertos en temas como transformación digital, publicidad, estrategia de marketing, emprendimiento, ciencia de datos y más.',
+null,'info@webcongress.com','2024-05-15',2);
+
+ SELECT LAST_INSERT_ID() INTO @ideven;
+
+INSERT INTO fechaseven (ideven,fechaseven,horarioEntrada,horarioSalida)
+VALUES (@ideven,'2024-08-08','09:00:00','18:00:00');
+
+INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) 
+VALUES (@ideven, 'evento', 'Instagram', 'https://www.instagram.com/webcongress'),
+       (@ideven, 'evento', 'TikTok', null);
+       
+INSERT INTO galeriaeven (ideven ,urlImagen, descripcion) 
+VALUES (@ideven, 'galeriaEventos\\webcongress1.png', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\webcongress2.png', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\webcongress3.png', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\webcongress4.png', 'Imagen del  evento');
+
+INSERT INTO ubicacioneven (ideven, ubicacion) 
+VALUES (@ideven, 'Cra. 47 ##91-38 La Castellana Bogotá ');
+
+#**********************************************************************************************
+INSERT INTO eventos ( nombreeven, logo, tipoevento, descripeven, paginaeven, boletaseven , 
+infoAdicional, contacto , correoeven, fecha_publicacion,codadmin) 
+VALUES ('Media maratón de Bogotá','galeriaEventos/logoMaraton.png','Eventos deportivos','Este próximo domingo 28 de julio llega uno de los eventos más esperados del año, la Media Maratón de Bogotá (MMB) 2024, la cual continúa posicionando a la capital colombiana como epicentro de la cultura y la recreación, ya que se trata de una de las carreras más importantes y con más acogida en Sudamérica',
+'https://www.mediamaratonbogota.com/2024/index.php','https://www.mediamaratonbogota.com/2024/app/runner/login',
+'Los filtros para acceder al carril de salida, ubicado sobre la Carrera 60, se habilitarán una hora antes de cada largada. Para la carrera de 21K, esto será a las 7:30 a.m. Las vías por donde circulará la media maratón de Bogotá estarán disponibles para los atletas en los siguientes horarios: de 8:30 a.m. a 1:00 p.m. Se recomienda a los atletas realizar el recorrido dentro de los tiempos establecidos para garantizar una experiencia segura y organizada.',
+'601 2563765','info@correcaminoscolombia.com','2024-05-15',2);
+
+ SELECT LAST_INSERT_ID() INTO @ideven;
+
+INSERT INTO fechaseven (ideven,fechaseven,horarioEntrada,horarioSalida)
+VALUES (@ideven,'2024-07-28','08:30:00','18:00:00');
+
+INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) 
+VALUES (@ideven, 'evento', 'Instagram', 'https://www.instagram.com/mmboficial'),
+       (@ideven, 'evento', 'TikTok', null);
+       
+INSERT INTO galeriaeven (ideven ,urlImagen, descripcion) 
+VALUES (@ideven, 'galeriaEventos\\maraton1.jpg', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\maraton2.jpg', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\maraton3.jpg', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\maraton4.png', 'Imagen del  evento');
+
+INSERT INTO ubicacioneven (ideven, ubicacion) 
+VALUES (@ideven, 'parque simon bolivar bogotá');
+
+
+#**********************************************************************************************
+INSERT INTO eventos ( nombreeven, logo, tipoevento, descripeven, paginaeven, boletaseven , 
+infoAdicional, contacto , correoeven, fecha_publicacion,codadmin) 
+VALUES ('Festival Cordillera','galeriaEventos/logoFestival.png','Conciertos de música','El Parque Simón Bolívar volverá a recibir el sol de septiembre con el sello de los sonidos latinoamericanos en toda su magnitud global. Vuelve el Festival Cordillera para celebrar su tercera edición el 14 y 15 de septiembre de 2024 en el corazón geográfico de Bogotá. Este año le cantaremos a los paisajes más impresionantes que el ojo haya visto, al cariño inmenso de la abuela, a los panas, los parceros, los manitos, los cuates, los pibes y las pibas.',
+'https://www.eticket.co/masinformacion.aspx?idevento=14672','https://www.eticket.co/masinformacion.aspx?idevento=14672',
+'Artistas confirmados: La alineación incluye a Juan Luis Guerra, Hombres G, Fito Páez, Molotov, Babasónicos, León Larregui, Trueno, Bersuit Vergarabat, Bacilos, Maldita Vecindad, y muchos más.',
+'350 3100460','ayuda.eticket.com.co','2024-05-15',2);
+
+ SELECT LAST_INSERT_ID() INTO @ideven;
+
+INSERT INTO fechaseven (ideven,fechaseven,horarioEntrada,horarioSalida)
+VALUES (@ideven,'2024-09-14','18:00:00','02:00:00');
+
+INSERT INTO redes_sociales (entidad_id, entidad_tipo, red, url) 
+VALUES (@ideven, 'evento', 'Instagram', 'https://www.instagram.com/cordillerafestival/?hl=es'),
+       (@ideven, 'evento', 'TikTok', 'https://www.tiktok.com/tag/festivalcordillera');
+       
+INSERT INTO galeriaeven (ideven ,urlImagen, descripcion) 
+VALUES (@ideven, 'galeriaEventos\\cordillera1.png', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\cordillera2.png', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\cordillera3.png', 'Imagen del evento'),
+       (@ideven, 'galeriaEventos\\cordillera4.png', 'Imagen del  evento');
+
+INSERT INTO ubicacioneven (ideven, ubicacion) 
+VALUES (@ideven, 'Carrera 13 A 98 75 Bogotá');

@@ -90,13 +90,13 @@ function inicializarBuscador() {
             'mar': 'Comida de Mar',
             'mariscos': 'Comida de Mar',
             'frutos del mar': 'Comida de Mar',
-            'parrillas y asaderos': 'Parrillas y asaderos',
-            'parillas': 'Parrillas y asaderos',
-            'asaderos': 'Parrillas y asaderos',
-            'parrillada': 'Parrillas y asaderos',
-            'barbacoa': 'Parrillas y asaderos',
-            'grill': 'Parrillas y asaderos',
-            'bbq': 'Parrillas y asaderos'
+            'parrillas y asaderos': 'Parillas y asaderos',
+            'parrillas': 'Parillas y asaderos',
+            'asaderos': 'Parillas y asaderos',
+            'parrillada': 'Parillas y asaderos',
+            'barbacoa': 'Parillas y asaderos',
+            'grill': 'Parillas y asaderos',
+            'bbq': 'Parillas y asaderos'
         };
 
         const tipoEventos = {
@@ -120,6 +120,7 @@ function inicializarBuscador() {
             'eventos deportivos': 'Eventos deportivos',
             'deportivos': 'Eventos deportivos',
             'deporte': 'Eventos deportivos',
+            'deportes': 'Eventos deportivos',
             'competiciones deportivas': 'Eventos deportivos',
             'torneos deportivos': 'Eventos deportivos',
             'exposiciones de arte': 'Exposiciones de arte',

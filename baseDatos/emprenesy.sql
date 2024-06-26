@@ -1,4 +1,3 @@
-
 create database emprenesy;
 use emprenesy;
 
@@ -6,7 +5,7 @@ CREATE TABLE mensajes_contacto (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    tema VARCHAR(255) NOT NULL,
+    tema VARCHAR(500) NOT NULL,
     mensaje TEXT,
     fecha_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -20,7 +19,6 @@ fechanac_usu date DEFAULT NULL,
 correousu varchar (50) DEFAULT NULL,
 contrasena varchar(255) DEFAULT NULL
 );
-select * from usuario;
 
 INSERT INTO usuario (nombreusu, apellidousu, telusu, fechanac_usu, correousu, contrasena) 
 VALUES ('Juan', 'Pérez', '1234567890', '1990-01-15', 'juan.perez@example.com', 'ContraseñaSegura123');
@@ -36,8 +34,6 @@ fechanac_admin date DEFAULT NULL,
 contrasena varchar(255) DEFAULT NULL
 );
 
-select * from administrador;
-
 INSERT INTO administrador (nombreadmin, apellidoadmin, telfadmin, correoadmin, codsitio, fechanac_admin, contrasena) 
 VALUES ('Juan', 'Pérez', '123-456-7890', 'juan.perez@example.com', 1, '1980-05-15', '12345');
 
@@ -47,8 +43,8 @@ create table datosAdmin(
     direccion varchar(100) DEFAULT NULL,
     ciudad varchar(50)  DEFAULT NULL,
     descripcionAcerca text default NULL,
-    sitioWeb varchar(250) default null,
-    blog varchar(250) default null,
+    sitioWeb varchar(300) default null,
+    blog varchar(300) default null,
     FOREIGN KEY (cod_admin) REFERENCES administrador(codadmin)
 );
 create table datosUsuario(
@@ -57,17 +53,15 @@ create table datosUsuario(
     direccionUsu varchar(100) DEFAULT NULL,
     ciudadUsu varchar(50)  DEFAULT NULL,
     descripcionAcercaUsu text default NULL,
-    sitioWebUsu varchar(250) default null,
-    blogUsu varchar(250) default null,
+    sitioWebUsu varchar(300) default null,
+    blogUsu varchar(300) default null,
     FOREIGN KEY (codusuario) REFERENCES usuario(codusuario)
 );
-
-select * from datosUsuario where codusuario = 2;
 
 CREATE TABLE fotos_admin (
     id_foto INT AUTO_INCREMENT PRIMARY KEY,
     cod_admin INT NOT NULL,
-    ruta_foto VARCHAR(255) NOT NULL,
+    ruta_foto VARCHAR(300) NOT NULL,
     tipo_foto ENUM('portada', 'general','perfil') DEFAULT 'general',
     FOREIGN KEY (cod_admin) REFERENCES administrador(codadmin)
 );
@@ -75,7 +69,7 @@ CREATE TABLE fotos_admin (
 CREATE TABLE fotos_usuario (
     id_foto INT AUTO_INCREMENT PRIMARY KEY,
     cod_usuario INT NOT NULL,
-    ruta_foto VARCHAR(255) NOT NULL,
+    ruta_foto VARCHAR(300) NOT NULL,
     tipo_foto ENUM('portada', 'general','perfil') DEFAULT 'general',
     FOREIGN KEY (cod_usuario) REFERENCES usuario(codusuario)
 );
@@ -85,10 +79,10 @@ CREATE TABLE eventos(
     nombreeven VARCHAR(100) NOT NULL,
     logo VARCHAR(255) DEFAULT NULL,
     tipoevento VARCHAR(50) DEFAULT NULL,
-    descripeven VARCHAR(250) DEFAULT NULL,
+    descripeven VARCHAR(600) DEFAULT NULL,
     paginaeven VARCHAR(250) DEFAULT NULL,
     boletaseven VARCHAR(250) DEFAULT NULL,
-    infoAdicional VARCHAR(400)DEFAULT NULL,
+    infoAdicional VARCHAR(600)DEFAULT NULL,
     contacto VARCHAR(50)DEFAULT NULL,
     correoeven VARCHAR(100)DEFAULT NULL,
     fecha_publicacion DATE DEFAULT NULL,
@@ -96,7 +90,6 @@ CREATE TABLE eventos(
     FOREIGN KEY (codadmin) REFERENCES administrador(codadmin)
 );
 
-select * from eventos where ideven = 1;
 CREATE TABLE fechaseven(
     codfechas INT PRIMARY KEY AUTO_INCREMENT,
     ideven INT NOT NULL,
@@ -109,7 +102,7 @@ CREATE TABLE fechaseven(
 CREATE TABLE redes_sociales (
     id_red_social INT AUTO_INCREMENT PRIMARY KEY,
     entidad_id INT DEFAULT NULL,
-    entidad_tipo VARCHAR(50) DEFAULT NULL,  -- 'evento' o 'emprendimiento' o 'restaurante'
+    entidad_tipo VARCHAR(50) DEFAULT NULL,  -- 'evento' o 'emprendimiento'
     red VARCHAR(50) DEFAULT NULL,
     url VARCHAR(250) DEFAULT NULL
 );
@@ -135,7 +128,7 @@ idempre int primary key auto_increment,
 nombreempre varchar(100) NOT NULL,
 logo varchar(255) DEFAULT NULL,
 tipoempre varchar(100) DEFAULT NULL,
-descripempre varchar(250)DEFAULT NULL,
+descripempre varchar(600)DEFAULT NULL,
 horarioempre varchar(100)DEFAULT NULL,
 horarioApertura TIME DEFAULT NULL, 
 horarioCierre TIME DEFAULT NULL,
@@ -147,7 +140,7 @@ fecha_publicacion DATE DEFAULT NULL,
 codadmin int,
 foreign key (codadmin) references administrador (codadmin)
 );
-select * from emprendimientos;
+
 create table galeriaempre(
 codgaleria int primary key auto_increment,
 idempre int NOT NULL,
@@ -168,7 +161,7 @@ CREATE TABLE restaurantes (
     nombreresta VARCHAR(100) NOT NULL,
     logo VARCHAR(255) DEFAULT NULL,
     tiporesta VARCHAR(250) DEFAULT NULL,
-    descripresta VARCHAR(250) DEFAULT NULL,
+    descripresta VARCHAR(600) DEFAULT NULL,
     paginaresta VARCHAR(250) DEFAULT NULL,
     menu VARCHAR(255) DEFAULT NULL,
     horario VARCHAR(255) DEFAULT NULL,
@@ -180,11 +173,6 @@ CREATE TABLE restaurantes (
     codadmin INT,
     FOREIGN KEY (codadmin) REFERENCES administrador(codadmin)
 );
-select * from restaurantes where idresta = 1;
-SELECT * FROM restaurantes WHERE tiporesta = 'gourmet' ORDER BY fecha_publicacion DESC;
-
-use emprenesy;
-
 
 CREATE TABLE galeriaresta (
     codgaleria INT PRIMARY KEY AUTO_INCREMENT,
@@ -193,8 +181,6 @@ CREATE TABLE galeriaresta (
     descripcion VARCHAR(255) DEFAULT NULL,
     FOREIGN KEY (idresta) REFERENCES restaurantes(idresta)
 );
-select imagenresta from galeriaresta where idresta = 11;
-use emprenesy;
 
 CREATE TABLE ubicacionresta (
     codubicacion INT PRIMARY KEY AUTO_INCREMENT,
@@ -216,6 +202,22 @@ CREATE TABLE Resenas (
     FOREIGN KEY (entidad_id) REFERENCES emprendimientos (idempre),
     FOREIGN KEY (entidad_id) REFERENCES eventos(ideven),
     FOREIGN KEY (entidad_id) REFERENCES restaurantes(idresta)
+);
+CREATE TABLE IF NOT EXISTS favoritosUsuario (
+    idfavorito INT PRIMARY KEY AUTO_INCREMENT,
+    codusuario INT NOT NULL,
+    entidad_id INT NOT NULL,
+    entidad_tipo ENUM('evento', 'emprendimiento', 'restaurante') NOT NULL,
+    fecha_agregado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (codusuario) REFERENCES usuario(codusuario)
+);
+CREATE TABLE IF NOT EXISTS favoritosAdmin (
+    idfavorito INT PRIMARY KEY AUTO_INCREMENT,
+    codadmin INT NOT NULL,
+    entidad_id INT NOT NULL,
+    entidad_tipo ENUM('evento', 'emprendimiento', 'restaurante') NOT NULL,
+    fecha_agregado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (codadmin) REFERENCES administrador(codadmin)
 );
 
 select * from usuario;
@@ -415,23 +417,6 @@ SELECT em.idempre,
 			em.fecha_publicacion DESC;
        
 
-CREATE TABLE IF NOT EXISTS favoritosUsuario (
-    idfavorito INT PRIMARY KEY AUTO_INCREMENT,
-    codusuario INT NOT NULL,
-    entidad_id INT NOT NULL,
-    entidad_tipo ENUM('evento', 'emprendimiento', 'restaurante') NOT NULL,
-    fecha_agregado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (codusuario) REFERENCES usuario(codusuario)
-);
-
-CREATE TABLE IF NOT EXISTS favoritosAdmin (
-    idfavorito INT PRIMARY KEY AUTO_INCREMENT,
-    codadmin INT NOT NULL,
-    entidad_id INT NOT NULL,
-    entidad_tipo ENUM('evento', 'emprendimiento', 'restaurante') NOT NULL,
-    fecha_agregado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (codadmin) REFERENCES administrador(codadmin)
-);
 
 select * from favoritosUsuario;
 delete from favoritosUsuario;

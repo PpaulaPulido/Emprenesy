@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
-
+<!-- Medidas query David -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalle</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
     <link rel="icon" href="{{url_for ('static', filename='img/Logo2.jpeg')}}" type="image/icon type">
-    <link rel="stylesheet" href="../static/styles/detalles.css">
     <link rel="stylesheet" href="../static/styles/generales_user.css">
+    <link rel="stylesheet" href="../static/styles/detalles.css">
+    <link rel="stylesheet" href="/static/styles/whatssap.css">
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/detalles.css')}}">
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/generales_user.css')}}">
 
+
+    <!-- Enlace a la fuente de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <script src="https://kit.fontawesome.com/ea06c7c0f7.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
@@ -19,13 +24,35 @@
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
 
+
+
 </head>
 
 <body>
     <header id="cabecera">
         <div id="cabeza">
             <div class="logoedit">
-                <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+                <img style="height: 80px; width: 80px; margin-left: 35px;"
+                    src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+            </div>
+        </div>
+        <div id="menuLateralToggle">
+            <div id="toggle">
+                <div class="nav-list2" id="nav-list2">
+                    <div class="menu-toggle" id="mobile-menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                    <ul class="menu-opciones">
+                        <li><i class="fa-solid fa-x" id="cerrar"></i></li>
+                        <li><img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
+                                class="logoToggle"></li>
+                        <li><a href="{{url_for('usuarios.nosotros_user')}}">Sobre Nosotros</a></li>
+                        <li><a href="{{url_for('usuarios.index_user')}}">Inicio</a></li>
+                        <li><a href="{{url_for('usuarios.favoritos_user')}}">Mis favoritos</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </header>
@@ -33,10 +60,14 @@
         <div id="enlaces" style="display: none;">
             <a id="url_nosotros" data-url="{{url_for('usuarios.nosotros_user')}}"></a>
             <a id="url_index" data-url="{{url_for('usuarios.index_user')}}"></a>
+            <a id="url_favoritos" data-url="{{url_for('usuarios.favoritos_user')}}"></a>
+            <a id="url_perfil" data-url="{{url_for('usuarios.perfil_usuario')}}"></a>
+            <a id="url_editarPerfil" data-url="{{ url_for('usuarios.editarPerfilUsuario', id=user_id) }}"></a>
+            <a id="url_cerrarSesion" data-url="{{url_for('usuarios.logout')}}"></a>
         </div>
         <div class="container_efect">
             <div class="bublles" id="bubblesContainer"></div>
-            <div class="contenedor_title">
+            <div class="contenedor_title title_evento">
                 <h2 class="info_title" id="title"></h2>
             </div>
         </div>
@@ -108,16 +139,42 @@
                         <div id="panel"></div>
                     </div>
                     <div class="ubicacion">
-                        <h3>Encuentranos en: </h3>
+                        <h3>Encuéntranos en: </h3>
                         <ul id="location"></ul>
-                        <div class="contenedor_button">
-                            <button class="btn_info">Ver Mapa</button>
-                        </div>
                     </div>
                 </div>
             </div>
         </section>
+        <!--WHATSAPP BUTTON-->
+        <div class="nav-bottom">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <div class="popup-whatsapp fadeIn">
+                <div class="content-whatsapp -top">
+                    <button type="button" class="closePopup">
+                        <i class="material-icons icon-font-color">close</i>
+                    </button>
+                    <p> <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" width="35"
+                            id="image-whatssap">
+                        Hola, ¿cómo podemos ayudate? </p>
+                </div>
 
+                <div class="content-whatsapp -bottom">
+                    <input class="whats-input" id="whats-in" type="text" Placeholder="Enviar mensaje..." />
+                    <button class="send-msPopup" id="send-btn" type="button">
+                        <i class="material-icons icon-font-color--black">send</i>
+                    </button>
+                </div>
+
+            </div>
+
+            <button type="button" id="whats-openPopup" class="whatsapp-button">
+                <div class="float">
+                    <i class="fa fa-whatsapp my-float"></i>
+                </div>
+            </button>
+
+            <div class="circle-anime"></div>
+        </div>
     </main>
 
     <footer>
@@ -161,7 +218,6 @@
                         <li>Siguenos en</li>
                         <div class="iconos">
                             <img src="{{ url_for('static', filename='img/tik-tok.png') }}" alt="tiktok">
-                            <img src="{{ url_for('static', filename='img/facebook.png') }}" alt="facebook">
                             <img src="{{ url_for('static', filename='img/instagram1.png') }}" alt="instagram">
                         </div>
                     </ul>
@@ -181,6 +237,7 @@
     <script src="../static/js/detalles_event.js"></script>
     <script src="../static/js/fav.js"></script>
     <script type="text/javascript" src='../static/js/demo.js'></script>
+    <script src="/static/js/whattssap.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>

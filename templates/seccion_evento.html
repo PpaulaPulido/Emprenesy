@@ -15,6 +15,7 @@
     <!-- Enlace a los estilos locales -->
     <link rel="stylesheet" href="../static/styles/generales_user.css">
     <link rel="stylesheet" href="../static/styles/seccion_evento.css">
+    <link rel="stylesheet" href="/static/styles/whatssap.css">
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/seccion_evento.css')}}">
     <link rel="stylesheet" href="{{url_for ('static', filename='styles/generales_user.css')}}">
 
@@ -33,27 +34,56 @@
     <header id="cabecera">
         <div id="cabeza">
             <div class="logoedit">
-                <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+                <img style="height: 80px; width: 80px; margin-left: 35px;"
+                    src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy" class="logo">
+            </div>
+        </div>
+
+        <div id="menuLateralToggle">
+            <div id="toggle">
+                <div class="nav-list2" id="nav-list2">
+                    <div class="menu-toggle" id="mobile-menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                    <ul class="menu-opciones">
+                        <li><i class="fa-solid fa-x" id="cerrar"></i></li>
+                        <li><img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
+                                class="logoToggle"></li>
+                        <li><a href="{{url_for('usuarios.nosotros_user')}}">Sobre Nosotros</a></li>
+                        <li><a href="{{url_for('usuarios.index_user')}}">Inicio</a></li>
+                        <li><a href="{{url_for('usuarios.favoritos_user')}}">Mis favoritos</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </header>
     <main>
+
         <div id="url" style="display: none;">
             <a id="detalle-evento-url" data-url="{{ url_for('evento.eventoDetalle') }}"></a>
             <a id="url_nosotros" data-url="{{url_for('usuarios.nosotros_user')}}"></a>
             <a id="url_index" data-url="{{url_for('usuarios.index_user')}}"></a>
+            <a id="url_favoritos" data-url="{{url_for('usuarios.favoritos_user')}}"></a>
+            <a id="url_perfil" data-url="{{url_for('usuarios.perfil_usuario')}}"></a>
+            <a id="url_editarPerfil" data-url="{{ url_for('usuarios.editarPerfilUsuario', id=user_id) }}"></a>
+            <a id="url_cerrarSesion" data-url="{{url_for('usuarios.logout')}}"></a>
         </div>
+
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-interval="2000">
+
             <div class="carousel-inner">
-                <div class="carousel-item ">
+
+                <div class="carousel-item">
                     <div class="carousel-img with-text"></div>
-                    <div class="carousel_text">
+                    <div class="carousel_text carousel_text1">
                         <p>¡Descubre emocionantes eventos para todos los gustos!</p>
                         <div class="container-btn">
                             <button class="btn slider_btn1"><a href="#section_novedades">Explorar Eventos</a></button>
                         </div>
                         <div class="container_img">
-                            <img src="../img/music.png" alt="imagen de musica">
+                            <img src="{{url_for('static',filename = 'img/music.png')}}" alt="imagen de musica">
                         </div>
                     </div>
                 </div>
@@ -64,10 +94,13 @@
                         <h2>¡Descubre el Espectáculo de tu Vida!</h2>
                         <p>¡Emoción, música, diversión! Descubre nuestros shows y vive momentos únicos!</p>
                         <div class="container-btn">
-                            <button class="btn slider_btn3"><a href="#">Ver ahora</a></button>
+                            <button class="slider_btn3"><a
+                                    href="{{ url_for('publicacionDash.eventoTipo', tipo='Eventos de teatro') }}">Ver
+                                    ahora</a></button>
                         </div>
                     </div>
                 </div>
+
 
                 <div class="carousel-item">
                     <div class="carousel-img2 with-text"></div>
@@ -80,11 +113,13 @@
                             <img src="https://images.ctfassets.net/3klebcd0t2ch/4tfFnVEL5lZ7e3UmcSxhrU/be7a432bfbb3a35838ebf32a62150344/Un_teatro_con_historia_5__1_.jpg"
                                 alt="imagen evento">
                         </div>
-                        <div class="contenido_text">
+                        <div class="contenido_text carouselText2">
                             <h2>2024</h2>
                             <p>¡No te pierdas los últimos conciertos de este mes!</p>
                             <div class="container-btn">
-                                <button class="btn slider_btn2"><a href="#">Conocer Más</a></button>
+                                <button class=".slider_btn2  slider_btn3"><a
+                                        href="{{ url_for('publicacionDash.eventoTipo', tipo='Concierto de música') }}">Conocer
+                                        Más</a></button>
                             </div>
                         </div>
                         <div class="contenido_circle">
@@ -93,32 +128,45 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
         <div class="container_cards">
-            <div class="cards_contenido card1">
-                <div class="contenido_title">
-                    <h3>Conciertos de música</h3>
-                </div>
-            </div>
-            <div class="cards_contenido card2">
-                <div class="contenido_title">
-                    <h3>Obras de Teatro</h3>
-                </div>
-            </div>
-            <div class="cards_contenido card3">
-                <div class="contenido_title">
-                    <h3>Exposiciones de arte</h3>
-                </div>
 
-            </div>
-
-            <div class="cards_contenido card4">
-                <div class="contenido_title">
-                    <h3>Ferias de libros</h3>
+            <a href="{{ url_for('publicacionDash.eventoTipo', tipo='Conciertos de musica') }}">
+                <div class="cards_contenido card1">
+                    <div class="contenido_title">
+                        <h3>Conciertos de música</h3>
+                    </div>
                 </div>
-            </div>
+            </a>
+
+            <a href="{{ url_for('publicacionDash.eventoTipo', tipo='Obras de teatro') }}">
+                <div class="cards_contenido card2">
+                    <div class="contenido_title">
+                        <h3>Obras de Teatro</h3>
+                    </div>
+                </div>
+            </a>
+
+            <a href="{{ url_for('publicacionDash.eventoTipo', tipo='Exposiciones de arte') }}">
+                <div class="cards_contenido card3">
+                    <div class="contenido_title">
+                        <h3>Exposiciones de arte</h3>
+                    </div>
+
+                </div>
+            </a>
+
+            <a href="{{ url_for('publicacionDash.eventoTipo', tipo='Ferias de libros') }}">
+                <div class="cards_contenido card4">
+                    <div class="contenido_title">
+                        <h3>Ferias de libros</h3>
+                    </div>
+                </div>
+            </a>
+
         </div>
 
         <section class="section" id="section_novedades">
@@ -135,27 +183,39 @@
         </section>
 
         <div class="container_cards">
-            <div class="cards_contenido card5">
-                <div class="contenido_title">
-                    <h3>Eventos de danza</h3>
+            <a href="{{ url_for('publicacionDash.eventoTipo', tipo='Evento de danza') }}">
+                <div class="cards_contenido card5">
+                    <div class="contenido_title">
+                        <h3>Eventos de danza</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="cards_contenido card6">
-                <div class="contenido_title">
-                    <h3>Ferias gastronómicas</h3>
-                </div>
-            </div>
-            <div class="cards_contenido card7">
-                <div class="contenido_title">
-                    <h3>Ferias tecnológicas</h3>
-                </div>
+            </a>
 
-            </div>
-            <div class="cards_contenido card8">
-                <div class="contenido_title">
-                    <h3>Eventos deportivos</h3>
+            <a href="{{ url_for('publicacionDash.eventoTipo', tipo='Ferias gastronómicas') }}">
+                <div class="cards_contenido card6">
+                    <div class="contenido_title">
+                        <h3>Ferias gastronómicas</h3>
+                    </div>
                 </div>
-            </div>
+            </a>
+
+            <a href="{{ url_for('publicacionDash.eventoTipo', tipo='Ferias tecnológicas') }}">
+                <div class="cards_contenido card7">
+                    <div class="contenido_title">
+                        <h3>Ferias tecnológicas</h3>
+                    </div>
+
+                </div>
+            </a>
+
+            <a href="{{ url_for('publicacionDash.eventoTipo', tipo='Eventos deportivos') }}">
+                <div class="cards_contenido card8">
+                    <div class="contenido_title">
+                        <h3>Eventos deportivos</h3>
+                    </div>
+                </div>
+            </a>
+
         </div>
 
         <section class="section2">
@@ -216,6 +276,37 @@
                 </div>
             </div>
         </div>
+
+        <!--WHATSAPP BUTTON-->
+        <div class="nav-bottom">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <div class="popup-whatsapp fadeIn">
+                <div class="content-whatsapp -top">
+                    <button type="button" class="closePopup">
+                        <i class="material-icons icon-font-color">close</i>
+                    </button>
+                    <p> <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" width="35"
+                            id="image-whatssap">
+                        Hola, ¿cómo podemos ayudate? </p>
+                </div>
+
+                <div class="content-whatsapp -bottom">
+                    <input class="whats-input" id="whats-in" type="text" Placeholder="Enviar mensaje..." />
+                    <button class="send-msPopup" id="send-btn" type="button">
+                        <i class="material-icons icon-font-color--black">send</i>
+                    </button>
+                </div>
+
+            </div>
+
+            <button type="button" id="whats-openPopup" class="whatsapp-button">
+                <div class="float">
+                    <i class="fa fa-whatsapp my-float"></i>
+                </div>
+            </button>
+
+            <div class="circle-anime"></div>
+        </div>
     </main>
 
     <footer>
@@ -259,7 +350,6 @@
                         <li>Siguenos en</li>
                         <div class="iconos">
                             <img src="{{ url_for('static', filename='img/tik-tok.png') }}" alt="tiktok">
-                            <img src="{{ url_for('static', filename='img/facebook.png') }}" alt="facebook">
                             <img src="{{ url_for('static', filename='img/instagram1.png') }}" alt="instagram">
                         </div>
                     </ul>
@@ -270,7 +360,9 @@
         </div>
     </footer>
 
+
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
@@ -279,6 +371,7 @@
     <script src="../static/js/datos.js"></script>
     <script src="../static/js/fav.js"></script>
     <script src="../static/js/seccion_Evento.js"></script>
+    <script src="/static/js/whattssap.js"></script>
 
 </body>
 

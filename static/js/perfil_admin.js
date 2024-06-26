@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    menu_lateral();
+    menu_lateral2();
 
     user_sesion().then(() => {
         inicializarBuscador();
@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     galeryMin();
     Myphotos();
+    resenasAdmin();
 
 })
 
@@ -22,25 +23,7 @@ function galeryMin() {
             if (fotos.length === 0) {
                 // No hay fotos, mostrar un mensaje
                 galeria.style.display = 'block';
-
-                const containerPhoto = document.createElement('div');
-                containerPhoto.classList.add('containerPhoto');
-
-                const containerIcon = document.createElement('div');
-                containerIcon.classList.add('iconContainer');
-
-                const iconPhoto = document.createElement('i');
-                iconPhoto.classList.add('fa-solid', 'fa-camera-retro');
-
-                const textPhoto = document.createElement('p');
-                textPhoto.className = "textPhoto";
-                textPhoto.textContent = "No hay fotos para mostrar";
-
-                containerIcon.appendChild(iconPhoto);
-                containerPhoto.appendChild(containerIcon);
-                containerPhoto.appendChild(textPhoto);
-
-                galeria.appendChild(containerPhoto);
+                sinDatos(galeria, 'fa-solid', 'fa-camera-retro')
 
             } else {
                 // Hay fotos, mostrarlas
@@ -59,7 +42,7 @@ function galeryMin() {
         });
 }
 
-function Myphotos(){
+function Myphotos() {
 
     fetch('/admin/MisFotos')
         .then(response => response.json())  // Parsear la respuesta como JSON
@@ -74,26 +57,8 @@ function Myphotos(){
                 // No hay fotos, mostrar un mensaje
                 photo.style.display = 'block';
 
-                const containerPhoto = document.createElement('div');
-                containerPhoto.classList.add('containerMyPhotos');
-
-                const containerImg = document.createElement('div');
-                containerImg.classList.add('MyphotosImg');
-
-                const img = document.createElement('img');
-                img.className =  "imgPhoto"
-                img.src = "/static/img/camara.png";
-
-                const textPhoto = document.createElement('p');
-                textPhoto.className = "textPhotoImg";
-                textPhoto.textContent = "No hay fotos para mostrar";
-
-                containerImg.appendChild(img);
-                containerPhoto.appendChild(containerImg);
-                containerPhoto.appendChild(textPhoto);
-
-                photo.appendChild(containerPhoto);
-
+                containerDatosVacio(photo,"/static/img/camara.png","No hay fotos para mostrar");
+            
             } else {
                 // Hay fotos, mostrarlas
                 photo.style.display = 'grid';
@@ -110,10 +75,80 @@ function Myphotos(){
                     divImg.appendChild(imgGaleria);
                     photo.appendChild(divImg);
                 });
-                
+
             }
         })
         .catch(error => {
             console.error('Error al cargar las fotos:', error);
         });
+}
+function resenasAdmin() {
+
+    fetch('/admin/reseñasAdmin')
+        .then(response => response.json())  
+        .then(resenas => {
+
+            const resena = document.getElementById('opciones__resultado');
+
+            // Limpiar el contenido anterior de la galería
+            resena.innerHTML = '';
+
+            if (resenas.length == 0) {
+                resena.style.display = 'block';
+
+                containerDatosVacio(resena,"/static/img/resenas.jpg","No hay reseñas para mostrar");
+            
+            } else {
+                resena.style.display = 'grid';
+                //resenas.forEach(rese=> {});
+                console.log("reseñas aqui");
+
+            }
+        })
+        .catch(error => {
+            console.error('Error al cargar las reseñas:', error);
+        });
+}
+function sinDatos(container, icon1, icon2) {
+
+    const containerPhoto = document.createElement('div');
+    containerPhoto.classList.add('containerPhoto');
+
+    const containerIcon = document.createElement('div');
+    containerIcon.classList.add('iconContainer');
+
+    const iconPhoto = document.createElement('i');
+    iconPhoto.classList.add(`${icon1}`, `${icon2}`);
+
+    const textPhoto = document.createElement('p');
+    textPhoto.className = "textPhoto";
+    textPhoto.textContent = "No hay fotos para mostrar";
+
+    containerIcon.appendChild(iconPhoto);
+    containerPhoto.appendChild(containerIcon);
+    containerPhoto.appendChild(textPhoto);
+
+    container.appendChild(containerPhoto);
+}
+function containerDatosVacio(container,urlImg,texto) {
+
+    const containerPhoto = document.createElement('div');
+    containerPhoto.classList.add('containerMyPhotos');
+
+    const containerImg = document.createElement('div');
+    containerImg.classList.add('MyphotosImg');
+
+    const img = document.createElement('img');
+    img.className = "imgPhoto"
+    img.src = `${urlImg}`;
+
+    const textPhoto = document.createElement('p');
+    textPhoto.className = "textPhotoImg";
+    textPhoto.textContent = `${texto}`;
+
+    containerImg.appendChild(img);
+    containerPhoto.appendChild(containerImg);
+    containerPhoto.appendChild(textPhoto);
+
+    container.appendChild(containerPhoto);
 }

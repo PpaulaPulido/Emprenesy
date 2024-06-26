@@ -1,33 +1,71 @@
-document.getElementById("loginForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // Evita el envío del formulario por defecto
+$(document).ready(function () {
+    $('form').on('submit', function (event) {
+      event.preventDefault();
 
-    // Captura los datos del formulario
-    var correo = document.getElementById("usuario").value;
-    var contrasena = document.getElementById("contrasena").value;
-    var rol = document.querySelector('input[name="rol"]:checked').value;
-
-    // Guarda los datos en el almacenamiento local
-    localStorage.setItem("correo", correo);
-    localStorage.setItem("contrasena", contrasena);
-    localStorage.setItem("rol", rol);
-
-    // Muestra un mensaje de éxito
-    Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Has iniciado sesión correctamente",
-        showConfirmButton: false,
-        timer: 2000,
-        customClass: {
-            popup: 'border-blue',// Clase CSS para el borde del SweetAlert
-            icon: 'success-icon',
+      var formData = $(this).serialize();
+  
+      $.ajax({
+        type: 'POST',
+        url: '/usuarios/recuperarContrasena',
+        data: formData,
+        dataType: 'json',
+        success: function (response) {
+          if (response.success) {
+            if (response.registrado) {
+                popRegistroExitoso("Contraseña Actualizada", true);// True indica redirigir
+            } 
+          } else {
+            popupRegistro("Error", response.message, false); // False indica no redirigir
+          }
+        },
+        error: function (error) {
+          console.error('Error en la solicitud AJAX:', error);
+          popupRegistro("Error", "Hubo un problema al procesar la solicitud.", false); // False indica no redirigir
         }
-    }).then(function () {
-        localStorage.setItem('usuarioRegistrado', 'true');
-        if (rol === 'usuario') {
-            window.location.href = '{{ url_for("usuarios.perfil_usuario") }}';
-        } else if (rol === 'Administrador') {
-            window.location.href = '{{ url_for("usuarios.perfil_admin") }}';
-        }
+      });
     });
-});
+  });
+  
+function popupRegistro(titulo, mensaje, redirigir) {
+    Swal.fire({
+      icon: "error",
+      title: titulo,
+      text: mensaje,
+      showClass: {
+        popup: 'animate__animated animate__fadeInUp animate__faster'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutDown animate__faster'
+      },
+      customClass: {
+        confirmButton: 'btn-blue',
+        popup: 'border-blue',
+        title: 'title-swal',
+        icon: 'icon-swal',
+      }
+    }).then(() => {
+      if (redirigir) {
+        window.location.href = "http://127.0.0.1:3036/usuarios/login";
+      }
+    });
+  }
+  
+  function popRegistroExitoso(titulo, redirigir) {
+    Swal.fire({
+      icon: "success",
+      title: titulo,
+      showConfirmButton: false,
+      timer: 1500,
+      customClass: {
+        confirmButton: 'btn-red',
+        popup: 'border-blue',
+        title: 'title-swal',
+        icon: 'icon-swal',
+        container: 'custom-container'
+      }
+    }).then(() => {
+      if (redirigir) {
+        window.location.href = "http://127.0.0.1:3036/usuarios/login";
+      }
+    });
+  }

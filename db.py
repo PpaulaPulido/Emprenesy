@@ -7,6 +7,7 @@ def get_db():
         password='',
         database='emprenesy'
     )
+   
 
 def get_cursor(db):
     return db.cursor()

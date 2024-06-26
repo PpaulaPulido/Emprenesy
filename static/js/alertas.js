@@ -1,30 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    publicacion();
-})
-
-function publicacion() {
-
     const formulario = document.getElementById('formularioLocation');
-    const redireccionar = document.getElementById('form_url').getAttribute('data-url');
-
-    formulario.addEventListener('submit', (e) => {
-        e.preventDefault();
-    
-        Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Registro de publicación exitosa",
-            showConfirmButton: false,
-            timer: 3500,
-            customClass: {
-                popup: 'border-blue',// Clase CSS para el borde del SweetAlert
-                icon: 'success-icon',
-            },
-            willClose: () => {
-                window.location.href = redireccionar;
-            }
-        });
-    });
+    const btnRegresar = document.getElementById('btn_regresar');
+    const redireccionar = document.getElementById('index').getAttribute('data-url');
+    const redireccionarForm = document.getElementById('form_evento').getAttribute('data-url');
 
 
-}
+    alertaPu(formulario,redireccionar,"Registro de publicación exitosa")
+    regresarForm(btnRegresar,redireccionarForm)
+   
+
+});

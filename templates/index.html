@@ -11,10 +11,12 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
   <link rel="icon" href="{{url_for ('static', filename='img/Logo2.jpeg')}}" type="image/icon type">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+  <script src="https://kit.fontawesome.com/ea06c7c0f7.js" crossorigin="anonymous"></script>
 
-  <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
-
-  <link rel="stylesheet" href="{{url_for ('static', filename='../static/styles/index.css')}}">
+  <link rel="stylesheet" href="/static/styles/index.css">
+  <link rel="stylesheet" href="{{url_for ('static', filename='/static/styles/index.css')}}">
+  <link rel="stylesheet" href="/static/styles/whatssap.css">
 </head>
 
 <body>
@@ -37,14 +39,16 @@
       <!--barra de navegacion-->
       <div id="cabeza">
         <div class="logoedit">
-          <img class="logo" src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="Emprenesy">
+          <img class="logo" style="height: 80px; width: 80px; margin-left: 35px;"
+            src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="Emprenesy">
         </div>
+
         <div id="Barra">
           <nav class="barraedit">
-            <a class="link" href="/templates/MVQ.html">Sobre Nosotros</a>
-            <a class="link" href="/templates/index.html">Inicio</a>
+            <a class="link" href="{{url_for('inicio.nosotros')}}">Sobre Nosotros</a>
+            <a class="link" href="{{url_for('inicio.index')}}">Inicio</a>
             <a class="link" href="{{url_for('usuarios.inicio_sesion')}}">Iniciar Sesión</a>
-            <a class="link1" href="/templates/registro.html">Crear Cuenta</a>
+            <a class="link1" href="{{url_for('usuarios.registrar_usuario')}}">Crear Cuenta</a>
           </nav>
         </div>
       </div>
@@ -57,7 +61,7 @@
           <div id="ctn-icon-search container_icon">
             <i class="fas fa-search" id="icon-search"></i>
           </div>
-          <div class="button_buscador">
+          <div class="button_buscador"  id="ctn-icon-search">
             <button>Search</button>
           </div>
         </div>
@@ -65,6 +69,31 @@
         <div id="cover-ctn-search"></div>
       </div>
     </section>
+
+    <div id="menuLateralToggle">
+      <div id="toggle">
+        <div class="nav-list2" id="nav-list2">
+          <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <ul class="menu-opciones">
+            <li><i class="fa-solid fa-x" id="cerrar"></i></li>
+            <li><img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="logo emprenesy"
+                class="logoToggle"></li>
+            <li><a href="{{url_for('inicio.nosotros')}}">Sobre Nosotros</a></li>
+            <li><a href="{{url_for('inicio.index')}}">Inicio</a></li>
+            <li><a href="{{url_for('usuarios.inicio_sesion')}}">Iniciar Sesión</a></li>
+            <li><a href="{{url_for('usuarios.registrar_usuario')}}">Crear Cuenta</a></li>
+          </ul>
+        </div>
+        <div class="container__img">
+          <img class="toggle_logo" style="height: 80px; width: 80px; margin-left: 35px;"
+            src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" alt="Emprenesy">
+        </div>
+      </div>
+    </div>
   </header>
 
   <main>
@@ -72,6 +101,7 @@
     <div id="url" style="display: none;">
       <a id="detalle-res-url" data-url="{{ url_for('res.restauranteDetalle') }}"></a>
       <a id="detalle-evento-url" data-url="{{ url_for('evento.eventoDetalle') }}"></a>
+      <a id="detalle-emprende-url" data-url="{{ url_for('emprende.emprendeDetalle') }}"></a>
     </div>
 
     <section class="contenedor_tarjetas">
@@ -122,7 +152,7 @@
     <section class="contenedor_slider contenedor_restaurantes">
       <div class="contenedor_texto">
         <h2>Los restaurantes más populares</h2>
-        <a id="res_link" href="./seccion_res.html" onclick="parametros()">Ver todo</a>
+        <a id="res_link" onclick="popupInfo()">Ver todo</a>
       </div>
       <div class="container_slider">
         <div class="slider_tarjetas">
@@ -144,7 +174,7 @@
     <section class="contenedor_slider contenedor_eventos">
       <div class="contenedor_texto">
         <h2>Últimos eventos</h2>
-        <a id="evento_link" href="/templates/seccion_evento.html" onclick="parametros()">Ver todo</a>
+        <a id="evento_link" onclick="popupInfo()">Ver todo</a>
       </div>
       <div class="container_slider">
         <div class="slider_tarjetas2">
@@ -166,7 +196,7 @@
     <section class="contenedor_slider contenedor_emprendimientos">
       <div class="contenedor_texto">
         <h2>Conoce los emprendimientos más recientes</h2>
-        <a id="emprende_link" href="/templates/seccion_empren.html" onclick="parametros()">Ver todo</a>
+        <a id="emprende_link" onclick="popupInfo()">Ver todo</a>
       </div>
       <div class="container_slider">
         <div class="slider_tarjetas3">
@@ -195,8 +225,7 @@
           <p>¡Dale vida a tu curiosidad! Haz clic y adéntrate en un universo de negocios diversos. Explora, conoce y
             conecta con historias que inspiran, innovan y transforman la manera en que vemos el mundo empresarial hoy.!
           </p>
-          <button class="emprendimiento_btn"><a id="emprende_link2" href="/templates/seccion_empren.html"
-              onclick="parametros()">Ver Más</a></button>
+          <button class="emprendimiento_btn"><a id="emprende_link2" href="#" onclick="popupInfo()">Ver Más</a></button>
         </div>
       </div>
     </section>
@@ -212,14 +241,44 @@
       </div>
       <div class="contacto_info">
         <h3>Envía tu Mensaje</h3>
-        <form class="info__form">
+        <form action="{{ url_for('inicio.enviar') }}" method="POST" class="info__form" id="form_contacto">
           <input type="text" id="nombre" name="nombre" placeholder="Nombres" required>
           <input type="email" id="email" name="email" placeholder="Correo Electrónico" required>
           <input type="text" id="tema" name="tema" placeholder="Tema del mensaje" required>
-          <textarea name="mensaje" id="mensaje" cols="100" rows="8" placeholder="Mensaje"></textarea>
+          <textarea name="mensaje" id="mensaje" cols="100" rows="8" placeholder="Mensaje" required></textarea>
           <input type="submit" value="Enviar" id="btn_enviar">
         </form>
       </div>
+    </div>
+
+    <!--WHATSAPP BUTTON-->
+    <div class="nav-bottom">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <div class="popup-whatsapp fadeIn">
+        <div class="content-whatsapp -top">
+          <button type="button" class="closePopup">
+            <i class="material-icons icon-font-color">close</i>
+          </button>
+          <p> <img src="{{ url_for('static', filename='img/logo_Emprenesy.png') }}" width="35" id="image-whatssap">
+            Hola, ¿cómo podemos ayudate? </p>
+        </div>
+
+        <div class="content-whatsapp -bottom">
+          <input class="whats-input" id="whats-in" type="text" Placeholder="Enviar mensaje..." />
+          <button class="send-msPopup" id="send-btn" type="button">
+            <i class="material-icons icon-font-color--black">send</i>
+          </button>
+        </div>
+
+      </div>
+
+      <button type="button" id="whats-openPopup" class="whatsapp-button">
+        <div class="float">
+          <i class="fa fa-whatsapp my-float"></i>
+        </div>
+      </button>
+
+      <div class="circle-anime"></div>
     </div>
   </main>
 
@@ -263,7 +322,6 @@
             <li>Siguenos en</li>
             <div class="iconos">
               <img src="{{ url_for('static', filename='img/tik-tok.png') }}" alt="tiktok">
-              <img src="{{ url_for('static', filename='img/facebook.png') }}" alt="facebook">
               <img src="{{ url_for('static', filename='img/instagram1.png') }}" alt="instagram">
             </div>
           </ul>
@@ -274,9 +332,11 @@
     </div>
   </footer>
 </body>
-<script src="../static/js/datos.js"></script>
-<script src="../static/js/index.js"></script>
-<script src="../static/js/buscador.js"></script>
+<script src="/static/js/datos.js"></script>
+<script src="/static/js/indexGeneral.js"></script>
+<script src="/static/js/buscadorIndex.js"></script>
+<script src="/static/js/whattssap.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 

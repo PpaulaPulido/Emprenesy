@@ -1,12 +1,22 @@
+document.addEventListener('DOMContentLoaded',()=>{
+    no_user();
+    menuToggle();
+})
 function no_user() {
     const header = document.querySelector('#cabecera');
     const nav = document.querySelector('#cabeza');
 
+    const urlNosotros = document.getElementById('url_nosotros').getAttribute('data-url');
+    const urlIndex = document.getElementById('url_index').getAttribute('data-url');
+    const urlIniciarSesion = document.getElementById('url_iniciarSesion').getAttribute('data-url');
+    const urlRegistro = document.getElementById('url_registro').getAttribute('data-url');
+
+
     const links = [
-        { text: 'Sobre Nosotros', href: '/templates/MVQ.html', class: 'link' },
-        { text: 'Inicio', href: '/templates/index.html', class: 'link' },
-        { text: 'Iniciar Sesión', href: '/templates/iniciar_sesion.html', class: 'link' },
-        { text: 'Crear Cuenta', href: '/templates/registro.html', class: 'link1' }
+        { text: 'Sobre Nosotros', href: urlNosotros, class: 'link' },
+        { text: 'Inicio', href: urlIndex, class: 'link' },
+        { text: 'Iniciar Sesión', href: urlIniciarSesion, class: 'link' },
+        { text: 'Crear Cuenta', href: urlRegistro, class: 'link1' }
     ];
 
     const menu = document.createElement('nav');
@@ -51,18 +61,44 @@ function no_user() {
     lista_ul.setAttribute('id', 'box-search');
 
     const div_box = document.createElement('div');
-    div_box.setAttribute('id','cover-ctn-search');
+    div_box.setAttribute('id', 'cover-ctn-search');
 
     ctn_bars.appendChild(input);
     ctn_icon.appendChild(icon);
     container_input.appendChild(ctn_bars);
     container_input.appendChild(ctn_icon);
-    
+
     buscador.appendChild(container_input);
     buscador.appendChild(lista_ul);
     buscador.appendChild(div_box);
     header.appendChild(buscador);
 }
+function menuToggle() {
+
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navList = document.getElementById('nav-list2');
+    const cerrar = document.getElementById('cerrar');
 
 
-no_user();
+    document.addEventListener('click', function (event) {
+        // Comprobar si el clic no fue dentro del menú o el botón de toggle
+        if (!navList.contains(event.target) && !mobileMenu.contains(event.target)) {
+            // Cerrar el menú
+            navList.classList.remove('active');
+            mobileMenu.classList.remove('is-active');
+        }
+    });
+
+    mobileMenu.addEventListener('click', () => {
+        console.log("menuToggle() called");
+        navList.classList.toggle('active');
+        mobileMenu.classList.toggle('is-active');
+    });
+
+    cerrar.addEventListener('click', () => {
+        navList.style.transition = 'left 0.9s ease';
+        navList.classList.remove('active');
+        mobileMenu.classList.remove('is-active');
+    })
+}
+

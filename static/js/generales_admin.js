@@ -25,13 +25,19 @@ function crearNav(imagenURL) {
     ];
 
     const perfilAdminUrl = document.getElementById('data-container').getAttribute('data-perfil-url');
+    const adminId = document.getElementById('data-container').getAttribute('data-admin-id');
+    const indexUrl = document.getElementById('url_dash').getAttribute('data-url');
+    const urlAdminEdit = document.getElementById('url_editarPerfil').getAttribute('data-url');
+    const urlCerrarSesion = document.getElementById('url_cerrarSesion').getAttribute('data-url');
+
+
+
     // Elementos del submenu
     const subMenuItems = [
         { text: 'Ver perfil', href: perfilAdminUrl },
-        { text: 'Ver dashboard', href: perfilAdminUrl },
-        { text: 'Notificaciones', href: '#' },
-        { text: 'Configuración', href: '#' },
-        { text: 'Cerrar sesión', href: '#' }
+        { text: 'Ver dashboard', href: indexUrl },
+        { text: 'Configuración', href: urlAdminEdit },
+        { text: 'Cerrar sesión', href: urlCerrarSesion }
     ];
 
     const nav_user = document.createElement('nav');
@@ -52,7 +58,28 @@ function crearNav(imagenURL) {
     const header = document.querySelector('#cabeza');
     header.appendChild(header_barra);
 
-   
+    const cerrarSesionElement = nav_list.querySelector('a[href="' + urlCerrarSesion + '"]');
+    cerrarSesionElement.addEventListener('click', function(event) {
+        event.preventDefault(); 
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Cerrando sesión...",
+            showConfirmButton: false,
+            timer: 2000,
+            customClass: {
+                confirmButton: 'btn-red',
+                popup: 'border-blue swal2-popup-custom',
+                title: 'swal2-title',
+                icon: 'icon-swal',
+                container: 'custom-container'
+            }
+        });
+        setTimeout(function() {
+            window.location.href = 'http://127.0.0.1:3036/' // Redirigir a la página de inicio
+        }, 2000);
+        
+    });
 }
 
 function crearBuscadorNav(nav_list) {
@@ -129,6 +156,16 @@ function menu_lateral() {
     });
 }
 
+function menu_lateral2() {
+    // sidebar toggle
+    const btnToggle = document.querySelector('.toggle-btn');
+
+    btnToggle.addEventListener('click', function () {
+        document.getElementById('sidebar').classList.toggle('active');
+        console.log(document.getElementById('sidebar'))
+    });
+}
+
 function menu_form(){
 
     const btnToggle = document.querySelector('.toggle-btn');
@@ -137,5 +174,100 @@ function menu_form(){
         document.getElementById('sidebar').classList.toggle('active');
         document.getElementById('publicaciones__form').classList.toggle('active');
         console.log(document.getElementById('sidebar'))
+    });
+}
+
+
+function regresarForm(btnRegresar,redireccionarForm){
+    btnRegresar.addEventListener('click', () => {
+        Swal.fire({
+            title: "¿Estás seguro de que deseas regresar?",
+            text: "Si regresas, podrías tener que reingresar algunos datos.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sí, deseo regresar!",
+            cancelButtonText: "Cancelar",
+            customClass: {
+                confirmButton: 'btn-blue',
+                popup: 'border-blue',
+                title: 'title-swal',
+                icon: 'icon-swal',
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Si el usuario confirma, redirigir a la página especificada
+                Swal.fire({
+                    title: "Volviste al formulario anterior",
+                    text: "Verifica los datos antes de continuar",
+                    icon: "info",
+                    timer: 4000,
+                    customClass: {
+                        confirmButton: 'btn-blue',
+                        popup: 'border-blue',
+                        title: 'title-swal',
+                        icon: 'icon-swal',
+                    }
+                }).then(() => {
+
+                    window.location.href = redireccionarForm;
+                });
+
+            } else {
+                // Si el usuario cancela, simplemente cerrar la alerta y permanecer en la página
+                Swal.fire({
+                    title: "Cancelado",
+                    text: "Continúa con el formulario actual.",
+                    icon: "info",
+                    timer: 2000,
+                    customClass: {
+                        popup: 'border-blue',
+                        icon: 'success-icon',
+                    }
+                });
+            }
+        });
+    });
+
+}
+function alertaPu(formulario, redireccionar,message) {
+    formulario.addEventListener('submit', (e) => {
+        e.preventDefault(); // Prevenir el envío del formulario por defecto
+
+        // Mostrar la alerta de SweetAlert
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: message,
+            showConfirmButton: false,
+            timer: 2000,
+            customClass: {
+                popup: 'border-blue', // Clase CSS para el borde del SweetAlert
+                icon: 'success-icon',
+            }
+        }).then(() => {
+            // Crear un objeto FormData con los datos del formulario
+            const formData = new FormData(formulario);
+
+            // Enviar el formulario manualmente usando fetch
+            fetch(formulario.action, {
+                method: 'POST',
+                body: formData
+            }).then(response => {
+                if (response.ok) {
+                    // Después de que el formulario se envíe, redirigir a la página especificada
+                    setTimeout(() => {
+                        window.location.href = redireccionar;
+                    }, 1000); // Retardo adicional de 1 segundo (1000 milisegundos)
+                } else {
+                    // Manejar el error de envío
+                    console.error('Error al enviar el formulario:', response.statusText);
+                }
+            }).catch(error => {
+                // Manejar errores de red
+                console.error('Error de red al enviar el formulario:', error);
+            });
+        });
     });
 }

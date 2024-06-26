@@ -17,9 +17,14 @@ const detalleEmprendeUrl = document.getElementById('detalle-emprende-url').getAt
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  cntSliderTarjetas(datosTarjetas, sliderTarjetas, btn_anterior, btn_siguiente, 'res',detalleResUrl);
-  cntSliderTarjetas(datosEventos, sliderTarjetas2, btn_anterior2, btn_siguiente2, 'evento',detalleEventoUrl);
-  cntSliderTarjetas(datosEmpredimientos, sliderTarjetas3, btn_anterior3, btn_siguiente3, 'emprende',detalleEmprendeUrl);
+  user_sesion();
+  inicializarBuscador();
+  menuToggle();
+  cerrarSesion();
+
+  cntSliderTarjetas(datosTarjetas, sliderTarjetas, btn_anterior, btn_siguiente, 'res', detalleResUrl);
+  cntSliderTarjetas(datosEventos, sliderTarjetas2, btn_anterior2, btn_siguiente2, 'evento', detalleEventoUrl);
+  cntSliderTarjetas(datosEmpredimientos, sliderTarjetas3, btn_anterior3, btn_siguiente3, 'emprende', detalleEmprendeUrl);
 
   // Función que se ejecuta cuando se hace scroll
   window.onscroll = function () {
@@ -28,7 +33,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+document.getElementById('form_contacto').addEventListener('submit', function(event) {
+  event.preventDefault(); // Evitar que el formulario se envíe por defecto
 
+  // Llamar a la función para mostrar el SweetAlert
+  enviarFormulario();
+});
+
+function user_sesion() {
+  return fetch('/usuarios/perfilImagen_user')
+    .then(response => {
+      if (!response.ok) {
+        //indica si la solicitud no fue existosa
+        throw new Error('Respuesta no fue correcta');
+      }
+      return response.blob();
+    })
+    .then(imageBlob => {
+      const imagenURL = URL.createObjectURL(imageBlob);
+      crearNav(imagenURL)
+    })
+    .catch(error => {
+      console.error('Error al cargar la imagen del perfil:', error);
+      const imagenURL = '/static/img/perfil_user.png';
+      crearNav(imagenURL);
+    });
+}
+function crearNav(imagenURL) {
+  const imagen = document.getElementById('imgPerfil');
+  imagen.src = `${imagenURL}`;
+}
 function parametros() {
 
   const link_evento = document.getElementById('evento_link');
@@ -53,14 +87,22 @@ function parametros() {
 }
 
 function scrollFunction() {
+<<<<<<< HEAD
   if (document.body.scrollTop > 380 || document.documentElement.scrollTop > 380) {
     document.getElementById("cabeza").style.backgroundColor = "#213859"; // Cambia el color a azul
+=======
+  if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+    document.getElementById("cabeza").style.backgroundColor = "#3d77ba"; // Cambia el color a azul
+  } else if (document.body.scrollTop > 380 || document.documentElement.scrollTop > 380) {
+    document.getElementById("cabeza").style.backgroundColor = "#3d77ba";
+>>>>>>> paula
   } else {
     document.getElementById("cabeza").style.backgroundColor = "transparent"; // Vuelve a ser transparente
   }
+
 }
 
-function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, tipo,enlace) {
+function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, tipo, enlace) {
 
   // Función para mostrar las tarjetas
   function mostrarTarjeta(index, cardSlider) {
@@ -93,7 +135,9 @@ function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, t
   }
 
   let cardSlider = 3;
-  if (window.innerWidth < 1024) {
+  if (window.innerWidth < 920) {
+    cardSlider = 1;
+  } else if (window.innerWidth < 1024) {
     cardSlider = 2;
   }
   // Índice inicial del conjunto de tarjetas que se muestra en el html
@@ -132,6 +176,7 @@ function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, t
     h3.textContent = data.titulo;
 
     let a = document.createElement("a");
+    a.classList.add('verDetalles')
 
     if (tipo == 'res') {
       a.href = `${enlace}?id=${data.id}&tipo=res`;
@@ -140,8 +185,8 @@ function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, t
     } else {
       a.href = `${enlace}?id=${data.id}&tipo=emprende`;
     }
-
     a.textContent = "Ver detalles";
+
 
     frontImagenDiv.appendChild(img);
     frontDiv.appendChild(frontImagenDiv);
@@ -164,3 +209,96 @@ function cntSliderTarjetas(datos, contenedor_slider, btnAnteior, btnSiguiente, t
     return tarjetasDiv;
   }
 };
+
+function popupInfo() {
+  Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: "Por favor Iniciar sesión!",
+    customClass: {
+      confirmButton: 'btn-blue',
+      popup: 'border-blue',
+      title: 'title-swal',
+      icon: 'icon-swal',
+
+    }
+  });
+}
+
+function menuToggle() {
+
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navList = document.getElementById('nav-list2');
+  const cerrar = document.getElementById('cerrar');
+
+  document.addEventListener('click', function (event) {
+    // Comprobar si el clic no fue dentro del menú o el botón de toggle
+    if (!navList.contains(event.target) && !mobileMenu.contains(event.target)) {
+      // Cerrar el menú
+      navList.classList.remove('active');
+      mobileMenu.classList.remove('is-active');
+    }
+  });
+
+  mobileMenu.addEventListener('click', () => {
+    console.log("menuToggle() called");
+    navList.classList.toggle('active');
+    mobileMenu.classList.toggle('is-active');
+  });
+
+  cerrar.addEventListener('click', () => {
+    navList.style.transition = 'left 0.9s ease';
+    navList.classList.remove('active');
+    mobileMenu.classList.remove('is-active');
+  })
+}
+function cerrarSesion() {
+
+  const cerrar = document.getElementById('cerrarSesion');
+
+  cerrar.addEventListener('click', function (event) {
+    event.preventDefault();
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Cerrando sesión...",
+      showConfirmButton: false,
+      timer: 2000,
+      customClass: {
+        confirmButton: 'btn-red',
+        popup: 'border-blue swal2-popup-custom',
+        title: 'swal2-title',
+        icon: 'icon-swal',
+        container: 'custom-container'
+      }
+    });
+    setTimeout(function () {
+      window.location.href = 'http://127.0.0.1:3036/' // Redirigir a la página de inicio
+    }, 2000);
+
+  });
+
+}
+
+function enviarFormulario() {
+  Swal.fire({
+    icon: 'success',
+    title: 'Envío exitoso',
+    showConfirmButton: false,
+    timer: 1500,
+    customClass: {
+      confirmButton: 'btn-red',
+      popup: 'border-blue swal2-popup-custom',
+      title: 'swal2-title',
+      icon: 'icon-swal',
+      container: 'custom-container'
+    }
+  }).then(() => {
+    document.getElementById('form_contacto').submit();
+  }).then((result) => {
+    // Resetear los campos del formulario después de cerrar el SweetAlert
+    if (result.dismiss === Swal.DismissReason.timer) {
+      document.getElementById('form_contacto').reset();
+    }
+  });
+}
